@@ -8,6 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 class RetrofitService {
     companion object{
         private const val baseUrl = "https://gits-capstone.herokuapp.com/"
+
         private fun getInterseptor(): OkHttpClient {
             val logging = HttpLoggingInterceptor()
             logging.level = HttpLoggingInterceptor.Level.BODY
@@ -15,6 +16,7 @@ class RetrofitService {
                 .addInterceptor(logging)
                 .build()
         }
+
         private fun getRetrofit(): Retrofit {
             return Retrofit.Builder()
                 .baseUrl(baseUrl)
@@ -22,6 +24,7 @@ class RetrofitService {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
         }
+
         fun getService(): Service = getRetrofit().create(Service::class.java)
     }
 }
