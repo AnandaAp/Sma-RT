@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".loginFragment"
+    android:background="#79B4B7"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/logosmart"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:src="@drawable/logowhite" />
+
+        <ImageView
+            android:id="@+id/logowelcome"
+            android:layout_width="700dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/logosmart"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="0dp"
+            android:src="@drawable/welcomeillustration" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/containersec"
+        android:layout_width="match_parent"
+        android:layout_height="431dp"
+        android:background="@drawable/backgroundsec">
+
+        <Button
+            android:id="@+id/btnrt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="100dp"
+            android:background="@drawable/buttonloginas"
+            android:text="Login as RT"
+            android:textSize="18sp"
+            android:layout_marginBottom="10dp"/>
+
+        <Button
+            android:id="@+id/btnwarga"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btnrt"
+            android:layout_alignStart="@+id/btnrt"
+            android:background="@drawable/buttonloginas"
+            android:text="Login as Warga"
+            android:textSize="18sp"/>
+
+    </RelativeLayout>
+
+
+</LinearLayout>
