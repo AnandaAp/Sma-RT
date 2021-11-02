@@ -1,4 +1,4 @@
-package com.maluku.sma_rt.model.keluarga
+package com.maluku.sma_rt.model.updateanddelete
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
