@@ -1,25 +1,24 @@
-package com.maluku.sma_rt.model
+package com.maluku.sma_rt.model.keluarga
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
-import kotlinx.parcelize.Parcelize
-
+import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class GetAllKeluargaResponse(
 
-	@field:SerializedName("code")
+    @field:SerializedName("code")
 	val code: Int? = null,
 
-	@field:SerializedName("data")
-	val data: List<DataItem?>? = null,
+    @field:SerializedName("get_all_keluarga")
+	val getAllKeluarga: List<GetAllKeluargaItem?>? = null,
 
-	@field:SerializedName("message")
+    @field:SerializedName("message")
 	val message: String? = null
 ) : Parcelable
 
 @Parcelize
-data class DataItem(
+data class GetAllKeluargaItem(
 
 	@field:SerializedName("id_rt")
 	val idRt: String? = null,
@@ -34,5 +33,8 @@ data class DataItem(
 	val createdAt: String? = null,
 
 	@field:SerializedName("id")
-	val id: String? = null
+	val id: String? = null,
+
+	@field:SerializedName("alamat")
+	val alamat: String? = null
 ) : Parcelable
