@@ -30,7 +30,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:testOnly="true"
-        android:theme="@style/Theme.SmaRT"
+        android:theme="@style/Theme.CustomSplashScreenTheme"
         android:usesCleartextTraffic="true" >
         <activity
             android:name="com.maluku.sma_rt.view.MainActivity"
@@ -42,6 +42,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
 
         <uses-library
             android:name="androidx.window.extensions"
