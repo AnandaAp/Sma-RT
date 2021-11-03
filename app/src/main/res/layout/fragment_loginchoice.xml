@@ -43,9 +43,9 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="100dp"
+            android:layout_marginBottom="15dp"
             android:background="@drawable/btnrt"
-            android:textSize="18sp"
-            android:layout_marginBottom="15dp"/>
+            android:textSize="18sp" />
 
         <Button
             android:id="@+id/btnwarga"
@@ -54,7 +54,7 @@
             android:layout_below="@+id/btnrt"
             android:layout_alignStart="@+id/btnrt"
             android:background="@drawable/btnwarga"
-            android:textSize="18sp"/>
+            android:textSize="18sp" />
 
     </RelativeLayout>
 
