@@ -4,7 +4,11 @@
         "source": "C:\\Users\\PC\\AndroidStudioProjects\\Sma-RT\\app\\src\\main\\res\\layout\\activity_main.xml"
     },
     {
-        "merged": "C:\\Users\\PC\\AndroidStudioProjects\\Sma-RT\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_login.xml",
-        "source": "C:\\Users\\PC\\AndroidStudioProjects\\Sma-RT\\app\\src\\main\\res\\layout\\fragment_login.xml"
+        "merged": "C:\\Users\\PC\\AndroidStudioProjects\\Sma-RT\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_loginchoice.xml",
+        "source": "C:\\Users\\PC\\AndroidStudioProjects\\Sma-RT\\app\\src\\main\\res\\layout\\fragment_loginchoice.xml"
+    },
+    {
+        "merged": "C:\\Users\\PC\\AndroidStudioProjects\\Sma-RT\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_onboarding_one.xml",
+        "source": "C:\\Users\\PC\\AndroidStudioProjects\\Sma-RT\\app\\src\\main\\res\\layout\\fragment_onboarding_one.xml"
     }
 ]

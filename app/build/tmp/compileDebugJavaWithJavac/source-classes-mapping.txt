@@ -1,3 +1,7 @@
+androidx/databinding/DataBindingComponent.java
+ androidx.databinding.DataBindingComponent
+androidx/databinding/library/baseAdapters/BR.java
+ androidx.databinding.library.baseAdapters.BR
 com/maluku/sma_rt/BR.java
  com.maluku.sma_rt.BR
 com/maluku/sma_rt/BuildConfig.java
@@ -10,11 +14,9 @@ androidx/databinding/DataBinderMapperImpl.java
  androidx.databinding.DataBinderMapperImpl
 com/maluku/sma_rt/DataBindingTriggerClass.java
  com.maluku.sma_rt.DataBindingTriggerClass
-androidx/databinding/library/baseAdapters/BR.java
- androidx.databinding.library.baseAdapters.BR
-com/maluku/sma_rt/databinding/FragmentLoginBinding.java
- com.maluku.sma_rt.databinding.FragmentLoginBinding
+com/maluku/sma_rt/databinding/FragmentLoginchoiceBinding.java
+ com.maluku.sma_rt.databinding.FragmentLoginchoiceBinding
+com/maluku/sma_rt/databinding/FragmentOnboardingOneBinding.java
+ com.maluku.sma_rt.databinding.FragmentOnboardingOneBinding
 com/maluku/sma_rt/databinding/ActivityMainBinding.java
  com.maluku.sma_rt.databinding.ActivityMainBinding
-androidx/databinding/DataBindingComponent.java
- androidx.databinding.DataBindingComponent

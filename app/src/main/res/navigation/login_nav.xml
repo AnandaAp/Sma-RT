@@ -3,11 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/login_nav"
-    app:startDestination="@id/loginFragment">
+    app:startDestination="@id/onboardingFragmentOne">
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.maluku.sma_rt.loginFragment"
+        android:name="com.maluku.sma_rt.view.loginchoiceFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login" />
+        tools:layout="@layout/fragment_loginchoice" />
+    <fragment
+        android:id="@+id/onboardingFragmentOne"
+        android:name="com.maluku.sma_rt.view.OnboardingFragmentOne"
+        android:label="fragment_onboarding_one"
+        tools:layout="@layout/fragment_onboarding_one" />
 </navigation>
