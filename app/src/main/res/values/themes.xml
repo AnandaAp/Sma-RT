@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.SmaRT" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.SmaRT" parent="Theme.AppCompat.DayNight">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -14,9 +14,9 @@
         <!-- Customize your theme here. -->
     </style>
     <style name="Theme.CustomSplashScreenTheme" parent="Theme.SplashScreen">
-        <item name="windowSplashScreenBackground">@color/white</item>
-<!--        <item name="windowSplashScreenAnimatedIcon">@drawable/logo</item>-->
-        <item name="windowSplashScreenAnimationDuration">4000</item>
+        <item name="windowSplashScreenBackground">#4B6858</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/logowhite</item>
+        <item name="windowSplashScreenAnimationDuration">5000</item>
         <item name="postSplashScreenTheme">@style/Theme.SmaRT</item>
     </style>
 </resources>

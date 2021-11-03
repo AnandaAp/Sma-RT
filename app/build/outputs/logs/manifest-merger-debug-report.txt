@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml:2:1-35:12
-INJECTED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml:2:1-35:12
-INJECTED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml:2:1-35:12
-INJECTED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml:2:1-35:12
+ADDED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml:2:1-39:12
+INJECTED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml:2:1-39:12
+INJECTED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml:2:1-39:12
+INJECTED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml:2:1-39:12
 MERGED from [androidx.databinding:databinding-adapters:7.0.3] C:\Users\PC\.gradle\caches\transforms-3\aca5323f41fff6a5399ab1feab2c0853\transformed\databinding-adapters-7.0.3\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.databinding:databinding-ktx:7.0.3] C:\Users\PC\.gradle\caches\transforms-3\a30f48f7c92407b2b66411575a610af6\transformed\jetified-databinding-ktx-7.0.3\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.databinding:databinding-runtime:7.0.3] C:\Users\PC\.gradle\caches\transforms-3\3360494b66d453647e1af8cb6b573426\transformed\databinding-runtime-7.0.3\AndroidManifest.xml:17:1-22:12
@@ -90,27 +90,27 @@ MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\PC\.gradle\cache
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\PC\.gradle\caches\transforms-3\32ed46722c25f8ff186617980ab223b3\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:17:1-27:12
 MERGED from [androidx.tracing:tracing:1.0.0] C:\Users\PC\.gradle\caches\transforms-3\00b55d5c4e4e0c36521619e6aa3b29e5\transformed\jetified-tracing-1.0.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.annotation:annotation-experimental:1.1.0] C:\Users\PC\.gradle\caches\transforms-3\0596a1b724b0d59175b5be0925bf1225\transformed\jetified-annotation-experimental-1.1.0\AndroidManifest.xml:17:1-24:12
-INJECTED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml:2:1-35:12
-INJECTED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml:2:1-35:12
-INJECTED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml:2:1-35:12
+INJECTED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml:2:1-39:12
+INJECTED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml:2:1-39:12
+INJECTED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml:2:1-39:12
 	package
 		ADDED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml:4:5-32
 		INJECTED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml:2:1-35:12
+		ADDED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml:2:1-39:12
 		INJECTED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml
 	xmlns:tools
 		ADDED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml:3:5-51
 	android:versionCode
 		INJECTED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml:2:1-35:12
+		ADDED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml:2:1-39:12
 		INJECTED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml:2:11-69
 uses-permission#android.permission.INTERNET
-ADDED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml:5:5-66
+ADDED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml:6:5-67
 MERGED from [com.google.android.gms:play-services-analytics:17.0.1] C:\Users\PC\.gradle\caches\transforms-3\2b159a41998c4cb34ae1955068cae5f8\transformed\jetified-play-services-analytics-17.0.1\AndroidManifest.xml:23:5-67
 MERGED from [com.google.android.gms:play-services-analytics:17.0.1] C:\Users\PC\.gradle\caches\transforms-3\2b159a41998c4cb34ae1955068cae5f8\transformed\jetified-play-services-analytics-17.0.1\AndroidManifest.xml:23:5-67
 MERGED from [com.google.firebase:firebase-storage:20.0.0] C:\Users\PC\.gradle\caches\transforms-3\950970412f377211826bac1ce88d5783\transformed\jetified-firebase-storage-20.0.0\AndroidManifest.xml:27:5-67
@@ -118,21 +118,21 @@ MERGED from [com.google.firebase:firebase-storage:20.0.0] C:\Users\PC\.gradle\ca
 MERGED from [com.google.android.gms:play-services-analytics-impl:17.0.1] C:\Users\PC\.gradle\caches\transforms-3\498a9b8287e0a942d1c9ac5ec18b0ba1\transformed\jetified-play-services-analytics-impl-17.0.1\AndroidManifest.xml:23:5-67
 MERGED from [com.google.android.gms:play-services-analytics-impl:17.0.1] C:\Users\PC\.gradle\caches\transforms-3\498a9b8287e0a942d1c9ac5ec18b0ba1\transformed\jetified-play-services-analytics-impl-17.0.1\AndroidManifest.xml:23:5-67
 	android:name
-		ADDED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml:5:22-64
+		ADDED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml:6:22-64
 uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
-ADDED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml:6:5-8:38
+ADDED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml:7:5-9:38
 	android:maxSdkVersion
-		ADDED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml:8:9-35
+		ADDED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml:9:9-35
 	android:name
-		ADDED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml:7:9-65
+		ADDED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml:8:9-65
 uses-permission#android.permission.READ_EXTERNAL_STORAGE
-ADDED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml:9:5-11:38
+ADDED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml:10:5-12:38
 	android:maxSdkVersion
-		ADDED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml:11:9-35
+		ADDED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml:12:9-35
 	android:name
-		ADDED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml:10:9-64
+		ADDED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml:11:9-64
 application
-ADDED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml:13:5-33:19
+ADDED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml:14:5-37:19
 MERGED from [androidx.window:window:1.0.0-beta02] C:\Users\PC\.gradle\caches\transforms-3\6ffd8330e0c0a576d6aabd37fbc2122d\transformed\jetified-window-1.0.0-beta02\AndroidManifest.xml:24:5-31:19
 MERGED from [androidx.window:window:1.0.0-beta02] C:\Users\PC\.gradle\caches\transforms-3\6ffd8330e0c0a576d6aabd37fbc2122d\transformed\jetified-window-1.0.0-beta02\AndroidManifest.xml:24:5-31:19
 MERGED from [com.google.android.material:material:1.4.0] C:\Users\PC\.gradle\caches\transforms-3\918233ed11209c9e2e60d729dadce31d\transformed\material-1.4.0\AndroidManifest.xml:22:5-20
@@ -186,41 +186,47 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\PC
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.6.0] C:\Users\PC\.gradle\caches\transforms-3\d953b6af544b1596e5fb02294864ea52\transformed\core-1.6.0\AndroidManifest.xml:24:18-86
 	android:supportsRtl
-		ADDED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml:19:9-35
+		ADDED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml:20:9-35
 	android:label
-		ADDED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml:17:9-41
+		ADDED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml:18:9-41
 	android:fullBackupContent
-		ADDED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml:15:9-59
+		ADDED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml:16:9-59
 	android:roundIcon
-		ADDED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml:18:9-54
+		ADDED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml:19:9-54
 	tools:targetApi
-		ADDED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml:22:9-28
+		ADDED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml:23:9-28
 	android:icon
-		ADDED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml:16:9-43
+		ADDED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml:17:9-43
 	android:allowBackup
-		ADDED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml:14:9-35
+		ADDED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml:15:9-35
 	android:theme
-		ADDED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml:21:9-43
+		ADDED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml:21:9-61
 	android:usesCleartextTraffic
-		ADDED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml:20:9-44
+		ADDED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml:22:9-44
 activity#com.maluku.sma_rt.view.MainActivity
-ADDED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml:23:9-32:20
+ADDED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml:24:9-33:20
 	android:enabled
-		ADDED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml:25:13-35
+		ADDED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml:26:13-35
 	android:exported
-		ADDED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml:26:13-36
+		ADDED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml:27:13-36
 	android:name
-		ADDED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml:24:13-46
+		ADDED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml:25:13-46
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml:27:13-31:29
+ADDED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml:28:13-32:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml:28:17-69
+ADDED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml:29:17-69
 	android:name
-		ADDED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml:28:25-66
+		ADDED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml:29:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml:30:17-77
+ADDED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml:31:17-77
 	android:name
-		ADDED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml:30:27-74
+		ADDED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml:31:27-74
+meta-data#preloaded_fonts
+ADDED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml:34:9-36:57
+	android:resource
+		ADDED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml:36:13-54
+	android:name
+		ADDED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml:35:13-43
 uses-sdk
 INJECTED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\PC\AndroidStudioProjects\Sma-RT\app\src\main\AndroidManifest.xml
