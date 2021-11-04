@@ -1,4 +1,4 @@
-package com.maluku.sma_rt.testing
+package com.maluku.sma_rt.view.testing
 
 import android.os.Bundle
 import android.view.LayoutInflater

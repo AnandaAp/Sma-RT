@@ -15,12 +15,11 @@ import com.maluku.sma_rt.extentions.UserSession.Companion.SHARED_PREFERENCE_PHON
 import com.maluku.sma_rt.extentions.UserSession.Companion.SHARED_PREFERENCE_TOKEN_KEY
 import com.maluku.sma_rt.extentions.UserValidator
 import com.maluku.sma_rt.model.warga.CreateWargaResponse
-import com.maluku.sma_rt.view.viewInterface.RegisterTestInterface
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-const val TAG = "REGISTER PRESENTER"
+private const val TAG = "REGISTER PRESENTER"
 class WargaRegisterPresenter(private val activity: Activity) {
 
     //register new user
