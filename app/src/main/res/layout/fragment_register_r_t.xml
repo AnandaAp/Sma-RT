@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/green"
+    tools:context=".RegisterRT">
+
+    <ScrollView
+        android:layout_width="874dp"
+        android:layout_height="1070dp"
+        android:layout_marginTop="18dp"
+        android:background="@drawable/shapebackgroundlogin"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="-232dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="874dp"
+            android:layout_height="1070dp"
+            tools:ignore="MissingConstraints">
+
+
+            <EditText
+                android:id="@+id/kodepos"
+                android:layout_width="370dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/shapebutton"
+                android:ems="10"
+                android:hint="Kode Pos"
+                android:inputType="number"
+                android:padding="10dp"
+                android:paddingStart="20dp"
+
+                android:textColorHint="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/alamat"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <EditText
+                android:id="@+id/etnamalengkap"
+                android:layout_width="370dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/shapebutton"
+                android:ems="10"
+                android:hint="Masukkan nama lengkap anda"
+                android:inputType="textPersonName"
+                android:padding="10dp"
+                android:paddingStart="20dp"
+                android:textColorHint="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.501"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewusername"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <Spinner
+                android:id="@+id/spinnerjk"
+                android:layout_width="370dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/shapebutton"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.501"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etnamalengkap"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <EditText
+                android:id="@+id/email"
+                android:layout_width="370dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/shapebutton"
+                android:ems="10"
+
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                android:padding="10dp"
+                android:paddingStart="20dp"
+                android:textColorHint="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.501"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/spinnerjk"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <EditText
+                android:id="@+id/pw"
+                android:layout_width="372dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/shapebutton"
+                android:ems="10"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:padding="10dp"
+                android:paddingStart="20dp"
+
+                android:textColorHint="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/nohp"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <EditText
+                android:id="@+id/confirmpw"
+                android:layout_width="370dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/shapebutton"
+                android:ems="10"
+                android:hint="Confirm Password"
+                android:inputType="number"
+                android:padding="10dp"
+                android:paddingStart="20dp"
+
+                android:textColorHint="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/pw"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <EditText
+                android:id="@+id/idrt"
+                android:layout_width="370dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/shapebutton"
+                android:ems="10"
+                android:hint="ID RT"
+                android:inputType="number"
+
+                android:padding="10dp"
+                android:paddingStart="20dp"
+                android:textColorHint="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/confirmpw"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <EditText
+                android:id="@+id/alamat"
+                android:layout_width="370dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/shapebutton"
+                android:ems="10"
+                android:hint="Alamat"
+                android:inputType="number"
+                android:padding="10dp"
+                android:paddingStart="20dp"
+                android:textColorHint="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/idrt"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <EditText
+                android:id="@+id/nohp"
+                android:layout_width="370dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/shapebutton"
+                android:ems="10"
+                android:hint="No handphone"
+                android:inputType="number"
+
+                android:padding="10dp"
+                android:paddingStart="20dp"
+                android:textColorHint="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.501"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/email"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <Button
+                android:id="@+id/btndaftar"
+                android:layout_width="342dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="152dp"
+                android:background="@drawable/shapebutton"
+                android:backgroundTint="@color/primarybtn"
+                android:fontFamily="@font/montserrat"
+                android:text="Login"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.501"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view"
+                app:layout_constraintVertical_bias="0.395" />
+
+            <Button
+                android:id="@+id/btnlgn"
+                android:layout_width="342dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shapebutton"
+                android:backgroundTint="@color/primarybtn"
+                android:fontFamily="@font/montserrat"
+                android:text="Daftar"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:layout_editor_absoluteY="710dp" />
+
+            <TextView
+                android:id="@+id/textViewusername"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="60dp"
+                android:text="Biodata"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.305"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="340dp"
+                android:layout_height="3dp"
+                android:layout_marginTop="28dp"
+                android:background="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.503"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btnlgn" />
+
+            <CheckBox
+                android:id="@+id/checkBoxsk"
+                style="@android:style/Widget.CompoundButton.CheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:backgroundTint="@color/white"
+                android:minHeight="48dp"
+                android:text="Saya setuju dengan S&amp;K yang berlaku"
+                app:layout_constraintBottom_toTopOf="@+id/btnlgn"
+                app:layout_constraintTop_toBottomOf="@+id/kodepos"
+                app:layout_constraintVertical_bias="0.0"
+                tools:layout_editor_absoluteX="241dp" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="312dp"
+        android:layout_height="128dp"
+        android:src="@mipmap/ic_launcher_round"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="-15dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
