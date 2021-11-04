@@ -1,8 +1,11 @@
 package com.maluku.sma_rt.model.rt
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
-data class CreateRTAccountResponse(
+@Parcelize
+data class CreateRTResponse(
 
 	@field:SerializedName("code")
 	val code: Int? = null,
@@ -12,15 +15,16 @@ data class CreateRTAccountResponse(
 
 	@field:SerializedName("create_rt")
 	val createRt: CreateRt? = null
-)
+) : Parcelable
 
+@Parcelize
 data class CreateRt(
 
 	@field:SerializedName("provinsi")
 	val provinsi: String? = null,
 
 	@field:SerializedName("keluarga")
-	val keluarga: Any? = null,
+	val keluarga: String? = null,
 
 	@field:SerializedName("kota")
 	val kota: String? = null,
@@ -29,7 +33,7 @@ data class CreateRt(
 	val updatedAt: String? = null,
 
 	@field:SerializedName("pengurus_rt")
-	val pengurusRt: Any? = null,
+	val pengurusRt: String? = null,
 
 	@field:SerializedName("kecamatan")
 	val kecamatan: String? = null,
@@ -51,4 +55,4 @@ data class CreateRt(
 
 	@field:SerializedName("kelurahan")
 	val kelurahan: String? = null
-)
+) : Parcelable
