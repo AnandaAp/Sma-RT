@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.RegisterWarga"
+    android:orientation="vertical"
+    android:background="@drawable/bg_login">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/biodata"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp">
+
+            <ImageView
+                android:id="@+id/logosmart"
+                android:layout_width="200dp"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:paddingTop="50dp"
+                android:paddingBottom="84dp"
+                android:src="@drawable/logo" />
+
+            <TextView
+                android:id="@+id/tv_biodata"
+                android:layout_below="@+id/logosmart"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Biodata"
+                android:textSize="18sp"
+                android:fontFamily="@font/montserrat_semibold"
+                android:textColor="@android:color/white"
+                android:paddingBottom="18dp"/>
+
+            <EditText
+                android:id="@+id/namalengkap"
+                android:layout_width="match_parent"
+                android:layout_height="41dp"
+                android:layout_below="@+id/tv_biodata"
+                android:layout_marginBottom="13dp"
+                android:background="@drawable/shapebutton"
+                android:hint="Masukkan Nama Lengkap Anda"
+                android:textColorHint="@color/grey"
+                android:inputType="textCapWords"
+                android:paddingStart="18dp"
+                android:paddingTop="13dp"
+                android:paddingBottom="12dp"
+                android:textSize="12sp" />
+
+            <Spinner
+                android:id="@+id/jeniskelamin"
+                android:layout_width="match_parent"
+                android:layout_height="41dp"
+                android:layout_below="@+id/namalengkap"
+                android:layout_marginBottom="13dp"
+                android:background="@drawable/style_spinner"
+                android:entries="@array/jenis_kelamin"
+                android:hint="Jenis Kelamin"
+                android:paddingStart="18dp"
+                android:paddingTop="13dp"
+                android:paddingBottom="12dp" />
+
+            <EditText
+                android:id="@+id/emailwarga"
+                android:layout_width="match_parent"
+                android:layout_height="41dp"
+                android:layout_below="@+id/jeniskelamin"
+                android:layout_marginBottom="13dp"
+                android:background="@drawable/shapebutton"
+                android:hint="Email"
+                android:textColorHint="@color/grey"
+                android:inputType="textEmailAddress"
+                android:paddingStart="18dp"
+                android:paddingTop="13dp"
+                android:paddingBottom="12dp"
+                android:textSize="12sp" />
+
+            <EditText
+                android:id="@+id/nohandphone"
+                android:layout_width="match_parent"
+                android:layout_height="41dp"
+                android:layout_below="@+id/emailwarga"
+                android:layout_marginBottom="13dp"
+                android:background="@drawable/shapebutton"
+                android:hint="No handphone"
+                android:inputType="number"
+                android:paddingStart="18dp"
+                android:paddingTop="13dp"
+                android:paddingBottom="12dp"
+                android:textColorHint="@color/grey"
+                android:textSize="12sp" />
+
+            <EditText
+                android:id="@+id/password"
+                android:layout_width="match_parent"
+                android:layout_height="41dp"
+                android:layout_below="@+id/nohandphone"
+                android:layout_marginBottom="13dp"
+                android:background="@drawable/shapebutton"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:paddingStart="18dp"
+                android:paddingTop="13dp"
+                android:paddingBottom="12dp"
+                android:textColorHint="@color/grey"
+                android:textSize="12sp" />
+
+            <EditText
+                android:id="@+id/confirmpassword"
+                android:layout_width="match_parent"
+                android:layout_height="41dp"
+                android:layout_below="@+id/password"
+                android:layout_marginBottom="13dp"
+                android:background="@drawable/shapebutton"
+                android:hint="Confirm Password"
+                android:paddingStart="18dp"
+                android:paddingTop="13dp"
+                android:paddingBottom="12dp"
+                android:textColorHint="@color/grey"
+                android:textSize="12sp" />
+
+            <EditText
+                android:id="@+id/idkeluarga"
+                android:layout_width="match_parent"
+                android:layout_height="41dp"
+                android:layout_below="@+id/confirmpassword"
+                android:layout_marginBottom="13dp"
+                android:background="@drawable/shapebutton"
+                android:hint="ID Keluarga"
+                android:inputType="textPassword"
+                android:textColorHint="@color/grey"
+                android:paddingStart="18dp"
+                android:paddingTop="13dp"
+                android:paddingBottom="12dp"
+                android:textSize="12sp" />
+
+            <EditText
+                android:id="@+id/alamat"
+                android:layout_width="match_parent"
+                android:layout_height="41dp"
+                android:layout_below="@+id/idkeluarga"
+                android:layout_marginBottom="13dp"
+                android:background="@drawable/shapebutton"
+                android:hint="Alamat"
+                android:inputType="textCapWords"
+                android:textColorHint="@color/grey"
+                android:paddingStart="18dp"
+                android:paddingTop="13dp"
+                android:paddingBottom="12dp"
+                android:textSize="12sp" />
+
+            <EditText
+                android:id="@+id/kodepos"
+                android:layout_width="match_parent"
+                android:layout_height="41dp"
+                android:layout_below="@+id/alamat"
+                android:layout_marginBottom="25dp"
+                android:background="@drawable/shapebutton"
+                android:hint="Kode Pos"
+                android:inputType="number"
+                android:textColorHint="@color/grey"
+                android:paddingStart="18dp"
+                android:paddingTop="13dp"
+                android:paddingBottom="12dp"
+                android:textSize="12sp" />
+
+            <CheckBox
+                android:id="@+id/ceksyarat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/kodepos"
+                android:layout_marginBottom="29dp"
+                android:buttonTint="@android:color/white"
+                android:checked="true"
+                android:fontFamily="@font/montserrat_semibold"
+                android:text="Saya Setuju Dengan Syarat dan Ketentuan Berlaku"
+                android:textColor="@android:color/white"
+                android:textSize="12dp" />
+
+            <Button
+                android:id="@+id/btn_daftar"
+                android:layout_below="@+id/ceksyarat"
+                android:layout_width="match_parent"
+                android:layout_height="47dp"
+                android:layout_marginBottom="34dp"
+                android:background="@drawable/roundedbtn"
+                android:fontFamily="@font/montserrat_semibold"
+                android:text="Daftar"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:textSize="22sp" />
+
+            <ImageView
+                android:id="@+id/line"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/btn_daftar"
+                android:layout_marginBottom="29dp"
+                android:src="@drawable/line" />
+
+            <Button
+                android:id="@+id/btn_login"
+                android:layout_width="match_parent"
+                android:layout_height="47dp"
+                android:layout_below="@+id/line"
+                android:background="@drawable/roundedbtn"
+                android:fontFamily="@font/montserrat_semibold"
+                android:text="Login"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:textSize="22sp"
+                android:layout_marginBottom="50dp"/>
+        </RelativeLayout>
+    </androidx.core.widget.NestedScrollView>
+
+
+
+</LinearLayout>
