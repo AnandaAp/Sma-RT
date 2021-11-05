@@ -20,10 +20,8 @@
             android:layout_width="874dp"
             android:layout_height="1070dp"
             tools:ignore="MissingConstraints">
-
-
             <EditText
-                android:id="@+id/kodepos"
+                android:id="@+id/inputKodePos"
                 android:layout_width="370dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="12dp"
@@ -38,11 +36,11 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/alamat"
+                app:layout_constraintTop_toBottomOf="@+id/inputAlamatAdmin"
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <EditText
-                android:id="@+id/etnamalengkap"
+                android:id="@+id/inputNamaAdmin"
                 android:layout_width="370dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="12dp"
@@ -60,19 +58,18 @@
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <Spinner
-                android:id="@+id/spinnerjk"
+                android:id="@+id/spGenderAdmin"
                 android:layout_width="370dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="12dp"
-                android:background="@drawable/shapebutton"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.501"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/etnamalengkap"
+                app:layout_constraintTop_toBottomOf="@+id/inputNamaAdmin"
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <EditText
-                android:id="@+id/email"
+                android:id="@+id/inputEmailAdmin"
                 android:layout_width="370dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="12dp"
@@ -87,11 +84,11 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.501"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/spinnerjk"
+                app:layout_constraintTop_toBottomOf="@+id/spGenderAdmin"
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <EditText
-                android:id="@+id/pw"
+                android:id="@+id/inputPassword"
                 android:layout_width="372dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="12dp"
@@ -105,11 +102,11 @@
                 android:textColorHint="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/nohp"
+                app:layout_constraintTop_toBottomOf="@+id/inputNoHpAdmin"
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <EditText
-                android:id="@+id/confirmpw"
+                android:id="@+id/inputConfirmPassword"
                 android:layout_width="370dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="12dp"
@@ -124,11 +121,11 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/pw"
+                app:layout_constraintTop_toBottomOf="@+id/inputPassword"
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <EditText
-                android:id="@+id/idrt"
+                android:id="@+id/inputIdRT"
                 android:layout_width="370dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="12dp"
@@ -143,11 +140,11 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/confirmpw"
+                app:layout_constraintTop_toBottomOf="@+id/inputConfirmPassword"
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <EditText
-                android:id="@+id/alamat"
+                android:id="@+id/inputAlamatAdmin"
                 android:layout_width="370dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="12dp"
@@ -161,11 +158,11 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/idrt"
+                app:layout_constraintTop_toBottomOf="@+id/inputIdRT"
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <EditText
-                android:id="@+id/nohp"
+                android:id="@+id/inputNoHpAdmin"
                 android:layout_width="370dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="12dp"
@@ -180,7 +177,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.501"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/email"
+                app:layout_constraintTop_toBottomOf="@+id/inputEmailAdmin"
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <Button
@@ -248,7 +245,7 @@
                 android:minHeight="48dp"
                 android:text="Saya setuju dengan S&amp;K yang berlaku"
                 app:layout_constraintBottom_toTopOf="@+id/btnlgn"
-                app:layout_constraintTop_toBottomOf="@+id/kodepos"
+                app:layout_constraintTop_toBottomOf="@+id/inputKodePos"
                 app:layout_constraintVertical_bias="0.0"
                 tools:layout_editor_absoluteX="241dp" />
 
