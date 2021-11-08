@@ -21,6 +21,7 @@ class RegisterRT : Fragment() {
     private lateinit var inputConfirmPassword: String
     private lateinit var inputPassword: String
     private lateinit var inputKodePos: String
+    private lateinit var inputEmailAdmin: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,6 +45,7 @@ class RegisterRT : Fragment() {
         inputPassword = binding.inputPassword.toString()
         inputConfirmPassword = binding.inputConfirmPassword.toString()
         inputKodePos = binding.inputKodePos.toString()
+        inputEmailAdmin = binding.inputEmailAdmin.toString()
         binding.spGenderAdmin.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onItemSelected(adapterView: AdapterView<*>?, view: View?, positiion: Int, id: Long) {
                 if (isSpinnerInitial){
