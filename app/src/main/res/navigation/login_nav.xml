@@ -16,9 +16,9 @@
     </fragment>
     <fragment
         android:id="@+id/onboardingFragmentOne"
-        android:name="com.maluku.sma_rt.view.OnboardingFragmentOne"
+        android:name="com.maluku.sma_rt.RegisterRT"
         android:label="fragment_onboarding_one"
-        tools:layout="@layout/fragment_onboarding_one" />
+        tools:layout="@layout/fragment_register_r_t" />
     <fragment
         android:id="@+id/login_RT"
         android:name="com.maluku.sma_rt.Login_RT"

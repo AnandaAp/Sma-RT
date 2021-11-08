@@ -9,16 +9,20 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="1070dp"
-        android:layout_marginTop="18dp"
-        android:background="@drawable/ornamen_register_rt"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="-232dp">
+        android:layout_height="match_parent"
+        android:layout_marginTop="104dp"
+        android:background="@drawable/bgsec"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints">
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="1070dp"
+            android:layout_height="10dp"
             tools:ignore="MissingConstraints">
+
             <EditText
                 android:id="@+id/inputKodePos"
                 android:layout_width="370dp"
@@ -183,7 +187,7 @@
                 android:id="@+id/btndaftar"
                 android:layout_width="342dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="152dp"
+                android:layout_marginTop="24dp"
                 android:background="@drawable/shapebutton"
                 android:backgroundTint="@color/primarybtn"
                 android:fontFamily="@font/montserrat"
@@ -191,10 +195,10 @@
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.501"
+                app:layout_constraintHorizontal_bias="0.495"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/view"
-                app:layout_constraintVertical_bias="0.395" />
+                app:layout_constraintVertical_bias="0.0" />
 
             <Button
                 android:id="@+id/btnlgn"
@@ -214,12 +218,12 @@
                 android:id="@+id/textViewusername"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="60dp"
+                android:layout_marginTop="70dp"
                 android:text="Biodata"
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.305"
+                app:layout_constraintHorizontal_bias="0.091"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -245,8 +249,8 @@
                 android:text="Saya setuju dengan S&amp;K yang berlaku"
                 app:layout_constraintBottom_toTopOf="@+id/btnlgn"
                 app:layout_constraintTop_toBottomOf="@+id/inputKodePos"
-                app:layout_constraintVertical_bias="0.0"
-                tools:layout_editor_absoluteX="241dp" />
+                app:layout_constraintVertical_bias="1.0"
+                tools:layout_editor_absoluteX="16dp" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -254,12 +258,14 @@
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="312dp"
-        android:layout_height="128dp"
-        android:src="@mipmap/ic_launcher_round"
+        android:layout_width="446dp"
+        android:layout_height="280dp"
+        android:layout_marginBottom="776dp"
+        android:src="@mipmap/logosmart_foreground"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="-15dp" />
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
