@@ -8,16 +8,15 @@
     tools:context=".RegisterRT">
 
     <ScrollView
-        android:layout_width="874dp"
+        android:layout_width="match_parent"
         android:layout_height="1070dp"
         android:layout_marginTop="18dp"
-        android:background="@drawable/shapebackgroundlogin"
+        android:background="@drawable/ornamen_register_rt"
         app:layout_constraintTop_toBottomOf="@+id/imageView2"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="-232dp">
-
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="874dp"
+            android:layout_width="match_parent"
             android:layout_height="1070dp"
             tools:ignore="MissingConstraints">
             <EditText
