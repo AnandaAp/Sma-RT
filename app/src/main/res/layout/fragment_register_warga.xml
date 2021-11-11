@@ -1,224 +1,270 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.RegisterWarga"
-    android:orientation="vertical"
-    android:background="@drawable/bg_login">
+    android:background="@color/green"
+    tools:context=".view.RegisterWarga">
 
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    <ImageView
+        android:id="@+id/logosmart"
+        android:layout_width="167dp"
+        android:layout_height="66dp"
+        android:src="@drawable/logo"
+        android:layout_marginTop="68dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <RelativeLayout
-            android:id="@+id/biodata"
+    <ScrollView
+        android:id="@+id/scroll"
+        android:layout_width="815dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/shapebackgroundlogin"
+        app:layout_constraintTop_toBottomOf="@+id/logosmart"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="-202dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/container_register"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingStart="20dp"
-            android:paddingEnd="20dp">
-
-            <ImageView
-                android:id="@+id/logosmart"
-                android:layout_width="200dp"
-                android:layout_height="match_parent"
-                android:layout_centerHorizontal="true"
-                android:paddingTop="50dp"
-                android:paddingBottom="84dp"
-                android:src="@drawable/logo" />
+            android:layout_height="match_parent"
+            android:paddingBottom="100dp"
+            tools:ignore="MissingConstraints">
 
             <TextView
                 android:id="@+id/tv_biodata"
-                android:layout_below="@+id/logosmart"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="70dp"
+                android:fontFamily="@font/montserrat"
                 android:text="Biodata"
+                android:textColor="@color/white"
                 android:textSize="18sp"
-                android:fontFamily="@font/montserrat_semibold"
-                android:textColor="@android:color/white"
-                android:paddingBottom="18dp"/>
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.298"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
-                android:id="@+id/namalengkap"
-                android:layout_width="match_parent"
-                android:layout_height="41dp"
-                android:layout_below="@+id/tv_biodata"
-                android:layout_marginBottom="13dp"
+                android:id="@+id/et_namalengkap"
+                android:layout_width="370dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="18dp"
                 android:background="@drawable/shapebutton"
-                android:hint="Masukkan Nama Lengkap Anda"
-                android:textColorHint="@color/grey"
+                android:hint="Masukkan nama lengkap anda"
+                android:textSize="14sp"
                 android:inputType="textCapWords"
-                android:paddingStart="18dp"
-                android:paddingTop="13dp"
-                android:paddingBottom="12dp"
-                android:textSize="12sp" />
+                android:paddingStart="20dp"
+                android:textColorHint="@color/grey"
+                android:fontFamily="@font/montserrat"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.501"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_biodata"/>
 
             <Spinner
-                android:id="@+id/jeniskelamin"
-                android:layout_width="match_parent"
-                android:layout_height="41dp"
-                android:layout_below="@+id/namalengkap"
-                android:layout_marginBottom="13dp"
+                android:id="@+id/et_jeniskelamin"
+                android:layout_width="370dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="13dp"
                 android:background="@drawable/style_spinner"
-                android:entries="@array/jenis_kelamin"
                 android:hint="Jenis Kelamin"
-                android:paddingStart="18dp"
-                android:paddingTop="13dp"
-                android:paddingBottom="12dp" />
+                android:entries="@array/jenis_kelamin"
+                android:textSize="14sp"
+                android:paddingStart="20dp"
+                android:textColorHint="@color/grey"
+                android:fontFamily="@font/montserrat"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.501"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_namalengkap"/>
 
             <EditText
-                android:id="@+id/emailwarga"
-                android:layout_width="match_parent"
-                android:layout_height="41dp"
-                android:layout_below="@+id/jeniskelamin"
-                android:layout_marginBottom="13dp"
+                android:id="@+id/et_email"
+                android:layout_width="370dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="13dp"
                 android:background="@drawable/shapebutton"
                 android:hint="Email"
-                android:textColorHint="@color/grey"
+                android:textSize="14sp"
                 android:inputType="textEmailAddress"
-                android:paddingStart="18dp"
-                android:paddingTop="13dp"
-                android:paddingBottom="12dp"
-                android:textSize="12sp" />
-
-            <EditText
-                android:id="@+id/nohandphone"
-                android:layout_width="match_parent"
-                android:layout_height="41dp"
-                android:layout_below="@+id/emailwarga"
-                android:layout_marginBottom="13dp"
-                android:background="@drawable/shapebutton"
-                android:hint="No handphone"
-                android:inputType="number"
-                android:paddingStart="18dp"
-                android:paddingTop="13dp"
-                android:paddingBottom="12dp"
+                android:paddingStart="20dp"
                 android:textColorHint="@color/grey"
-                android:textSize="12sp" />
+                android:fontFamily="@font/montserrat"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.501"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_jeniskelamin"/>
 
             <EditText
-                android:id="@+id/password"
-                android:layout_width="match_parent"
-                android:layout_height="41dp"
-                android:layout_below="@+id/nohandphone"
-                android:layout_marginBottom="13dp"
+                android:id="@+id/et_handphone"
+                android:layout_width="370dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="13dp"
+                android:background="@drawable/shapebutton"
+                android:hint="No Handphone"
+                android:textSize="14sp"
+                android:inputType="phone"
+                android:paddingStart="20dp"
+                android:textColorHint="@color/grey"
+                android:fontFamily="@font/montserrat"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.501"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_email"/>
+
+            <EditText
+                android:id="@+id/et_password"
+                android:layout_width="370dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="13dp"
                 android:background="@drawable/shapebutton"
                 android:hint="Password"
+                android:textSize="14sp"
                 android:inputType="textPassword"
-                android:paddingStart="18dp"
-                android:paddingTop="13dp"
-                android:paddingBottom="12dp"
+                android:paddingStart="20dp"
                 android:textColorHint="@color/grey"
-                android:textSize="12sp" />
+                android:fontFamily="@font/montserrat"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.501"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_handphone"/>
 
             <EditText
-                android:id="@+id/confirmpassword"
-                android:layout_width="match_parent"
-                android:layout_height="41dp"
-                android:layout_below="@+id/password"
-                android:layout_marginBottom="13dp"
+                android:id="@+id/et_confirmpass"
+                android:layout_width="370dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="13dp"
                 android:background="@drawable/shapebutton"
                 android:hint="Confirm Password"
-                android:paddingStart="18dp"
-                android:paddingTop="13dp"
-                android:paddingBottom="12dp"
+                android:textSize="14sp"
+                android:inputType="textPassword"
+                android:paddingStart="20dp"
                 android:textColorHint="@color/grey"
-                android:textSize="12sp" />
+                android:fontFamily="@font/montserrat"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.501"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_password"/>
 
             <EditText
-                android:id="@+id/idkeluarga"
-                android:layout_width="match_parent"
-                android:layout_height="41dp"
-                android:layout_below="@+id/confirmpassword"
-                android:layout_marginBottom="13dp"
+                android:id="@+id/et_idkeluarga"
+                android:layout_width="370dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="13dp"
                 android:background="@drawable/shapebutton"
                 android:hint="ID Keluarga"
-                android:inputType="textPassword"
+                android:textSize="14sp"
+                android:paddingStart="20dp"
                 android:textColorHint="@color/grey"
-                android:paddingStart="18dp"
-                android:paddingTop="13dp"
-                android:paddingBottom="12dp"
-                android:textSize="12sp" />
+                android:fontFamily="@font/montserrat"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.501"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_confirmpass"/>
 
             <EditText
-                android:id="@+id/alamat"
-                android:layout_width="match_parent"
-                android:layout_height="41dp"
-                android:layout_below="@+id/idkeluarga"
-                android:layout_marginBottom="13dp"
+                android:id="@+id/et_alamat"
+                android:layout_width="370dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="13dp"
                 android:background="@drawable/shapebutton"
                 android:hint="Alamat"
                 android:inputType="textCapWords"
+                android:textSize="14sp"
+                android:paddingStart="20dp"
                 android:textColorHint="@color/grey"
-                android:paddingStart="18dp"
-                android:paddingTop="13dp"
-                android:paddingBottom="12dp"
-                android:textSize="12sp" />
+                android:fontFamily="@font/montserrat"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.501"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_idkeluarga"/>
 
             <EditText
-                android:id="@+id/kodepos"
-                android:layout_width="match_parent"
-                android:layout_height="41dp"
-                android:layout_below="@+id/alamat"
-                android:layout_marginBottom="25dp"
+                android:id="@+id/et_kodepos"
+                android:layout_width="370dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="13dp"
                 android:background="@drawable/shapebutton"
                 android:hint="Kode Pos"
                 android:inputType="number"
+                android:textSize="14sp"
+                android:paddingStart="20dp"
                 android:textColorHint="@color/grey"
-                android:paddingStart="18dp"
-                android:paddingTop="13dp"
-                android:paddingBottom="12dp"
-                android:textSize="12sp" />
+                android:fontFamily="@font/montserrat"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.501"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_alamat"/>
 
             <CheckBox
-                android:id="@+id/ceksyarat"
-                android:layout_width="match_parent"
+                android:id="@+id/checkbox_syarat"
+                style="@android:style/Widget.CompoundButton.CheckBox"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/kodepos"
-                android:layout_marginBottom="29dp"
-                android:buttonTint="@android:color/white"
+                android:layout_marginTop="24dp"
+                android:backgroundTint="@color/white"
+                android:minHeight="48dp"
                 android:checked="true"
-                android:fontFamily="@font/montserrat_semibold"
-                android:text="Saya Setuju Dengan Syarat dan Ketentuan Berlaku"
-                android:textColor="@android:color/white"
-                android:textSize="12dp" />
+                android:text="Saya setuju dengan S&amp;K yang berlaku"
+                app:layout_constraintTop_toBottomOf="@+id/et_kodepos"
+                tools:layout_editor_absoluteX="222dp" />
 
             <Button
-                android:id="@+id/btn_daftar"
-                android:layout_below="@+id/ceksyarat"
-                android:layout_width="match_parent"
-                android:layout_height="47dp"
-                android:layout_marginBottom="34dp"
+                android:id="@+id/btn_daftar_warga"
+                android:layout_width="370dp"
+                android:layout_height="54dp"
+                android:layout_marginTop="31dp"
                 android:background="@drawable/roundedbtn"
-                android:fontFamily="@font/montserrat_semibold"
+                android:fontFamily="@font/montserrat"
                 android:text="Daftar"
                 android:textAllCaps="false"
-                android:textColor="@android:color/white"
-                android:textSize="22sp" />
+                android:textSize="22sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/checkbox_syarat"/>
 
-            <ImageView
-                android:id="@+id/line"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/btn_daftar"
-                android:layout_marginBottom="29dp"
-                android:src="@drawable/line" />
+
+
+            <View
+                android:id="@+id/view_line"
+                android:layout_width="370dp"
+                android:layout_height="3dp"
+                android:layout_marginTop="96dp"
+                android:background="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.501"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/btn_daftar_warga" />
 
             <Button
-                android:id="@+id/btn_login"
-                android:layout_width="match_parent"
-                android:layout_height="47dp"
-                android:layout_below="@+id/line"
+                android:id="@+id/btn_login_warga"
+                android:layout_width="370dp"
+                android:layout_height="54dp"
+                android:layout_marginTop="48dp"
                 android:background="@drawable/roundedbtn"
-                android:fontFamily="@font/montserrat_semibold"
+                android:fontFamily="@font/montserrat"
                 android:text="Login"
                 android:textAllCaps="false"
-                android:textColor="@android:color/white"
                 android:textSize="22sp"
-                android:layout_marginBottom="50dp"/>
-        </RelativeLayout>
-    </androidx.core.widget.NestedScrollView>
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view_line"
+                app:layout_constraintVertical_bias="0.185"
+                android:layout_marginBottom="100dp"/>
 
 
 
-</LinearLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
