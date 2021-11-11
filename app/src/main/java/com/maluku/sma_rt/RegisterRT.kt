@@ -9,8 +9,10 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import com.maluku.sma_rt.databinding.FragmentRegisterRTBinding
+import com.maluku.sma_rt.presenter.AdminRTRegisterPresenter
+import com.maluku.sma_rt.view.viewInterface.RegisterAdminInterface
 
-class RegisterRT : Fragment() {
+class RegisterRT : Fragment(), RegisterAdminInterface {
     // TODO: Rename and change types of parameters
     private lateinit var binding: FragmentRegisterRTBinding
     private lateinit var inputIdRT: String
@@ -58,6 +60,27 @@ class RegisterRT : Fragment() {
 
             }
         }
+        binding.btndaftar.setOnClickListener {
+            registerAdmin(inputIdRT,inputNamaAdmin,inputEmailAdmin,)
+        }
+    }
+
+    override fun registerAdmin(
+        inputIdRT: String,
+        inputNamaAdmin: String,
+        inputAlamatAdmin: String,
+        inputGenderAdmin: String,
+        inputNoHpAdmin: String,
+        inputConfirmPassword: String,
+        inputPassword: String,
+        inputKodePos: String
+    ) {
+
+        AdminRTRegisterPresenter(requireActivity(), this).registerNewAdmin()
+    }
+
+    override fun onRegisterSuccess(message: String) {
+        Toast.makeText(requireActivity(), message,Toast.LENGTH_LONG).show()
     }
 
 }

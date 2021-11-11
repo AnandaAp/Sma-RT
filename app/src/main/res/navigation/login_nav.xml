@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/login_nav"
-    app:startDestination="@id/onboardingFragmentOne">
+    app:startDestination="@id/registerRT">
 
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.maluku.sma_rt.view.LoginChoiceFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_loginchoice" >
+        tools:layout="@layout/fragment_loginchoice">
         <action
             android:id="@+id/action_loginFragment_to_login_RT"
             app:destination="@id/login_RT" />

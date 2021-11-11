@@ -7,13 +7,14 @@ import com.maluku.sma_rt.api.RetrofitService
 import com.maluku.sma_rt.extentions.AdminSession
 import com.maluku.sma_rt.extentions.UserValidator
 import com.maluku.sma_rt.model.pengurus.CreatePengurusResponse
+import com.maluku.sma_rt.view.viewInterface.RegisterAdminInterface
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 private const val TAG = "REGISTER RT PRESENTER"
 
-class AdminRTRegisterPresenter(private val activity: Activity) {
+class AdminRTRegisterPresenter(private val activity: Activity, private val view: RegisterAdminInterface) {
     //register new user
     fun registerNewAdmin(
         idAdminRT: String,
