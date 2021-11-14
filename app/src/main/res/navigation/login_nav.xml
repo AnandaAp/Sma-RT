@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/login_nav"
-    app:startDestination="@id/onboardingFragmentOne">
+    app:startDestination="@id/dashboard">
 
     <fragment
         android:id="@+id/loginFragment"
@@ -29,4 +29,8 @@
         android:name="com.maluku.sma_rt.RegisterRT"
         android:label="fragment_register_r_t"
         tools:layout="@layout/fragment_register_r_t" />
+    <fragment
+        android:id="@+id/dashboard"
+        android:name="com.maluku.sma_rt.view.FragmentSurat_Masuk"
+        tools:layout="@layout/fragment_informasi"/>
 </navigation>

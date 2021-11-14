@@ -12,10 +12,10 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.maluku.sma_rt.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_Warga"
+        android:name="com.maluku.sma_rt.ui.warga.WargaFragment"
+        android:label="@string/title_Warga"
+        tools:layout="@layout/fragment_warga" />
 
     <fragment
         android:id="@+id/navigation_notifications"

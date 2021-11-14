@@ -1,4 +1,4 @@
-package com.maluku.sma_rt.ui.dashboard
+package com.maluku.sma_rt.ui.warga
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,13 +8,12 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.maluku.sma_rt.R
-import com.maluku.sma_rt.databinding.FragmentDashboardBinding
+import com.maluku.sma_rt.databinding.FragmentWargaBinding
 
-class DashboardFragment : Fragment() {
+class WargaFragment : Fragment() {
 
-    private lateinit var dashboardViewModel: DashboardViewModel
-    private var _binding: FragmentDashboardBinding? = null
+    private lateinit var wargaViewModel: WargaViewModel
+    private var _binding: FragmentWargaBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -25,14 +24,14 @@ class DashboardFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        dashboardViewModel =
-            ViewModelProvider(this).get(DashboardViewModel::class.java)
+        wargaViewModel =
+            ViewModelProvider(this).get(WargaViewModel::class.java)
 
-        _binding = FragmentDashboardBinding.inflate(inflater, container, false)
+        _binding = FragmentWargaBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textDashboard
-        dashboardViewModel.text.observe(viewLifecycleOwner, Observer {
+        val textView: TextView = binding.textView10
+        wargaViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
         return root

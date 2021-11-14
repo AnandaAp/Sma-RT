@@ -22,9 +22,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
         <activity
-            android:name=".Dashboard_RT"
+            android:name=".Warga_RT"
             android:exported="false"
-            android:label="@string/title_activity_dashboard_rt" />
+            android:label="@string/title_activity_Warga_rt" />
         <activity
             android:name=".view.MainActivity"
             android:enabled="true"

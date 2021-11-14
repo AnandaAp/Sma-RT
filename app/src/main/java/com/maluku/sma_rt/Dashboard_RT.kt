@@ -9,7 +9,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.maluku.sma_rt.databinding.ActivityDashboardRtBinding
 
-class Dashboard_RT : AppCompatActivity() {
+class Warga_RT : AppCompatActivity() {
 
     private lateinit var binding: ActivityDashboardRtBinding
 
@@ -21,12 +21,10 @@ class Dashboard_RT : AppCompatActivity() {
 
         val navView: BottomNavigationView = binding.navView
 
-        val navController = findNavController(R.id.nav_host_fragment_activity_dashboard_rt)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
+        val navController = findNavController(R.id.nav_host_fragment_activity_Warga_rt)
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications
+                R.id.navigation_home, R.id.navigation_Warga, R.id.navigation_notifications
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
