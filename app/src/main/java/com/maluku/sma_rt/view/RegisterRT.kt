@@ -3,6 +3,7 @@ package com.maluku.sma_rt.view
 import android.os.Bundle
 import android.provider.ContactsContract
 import android.util.Log
+import android.util.Patterns
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -15,6 +16,7 @@ import com.maluku.sma_rt.R
 import com.maluku.sma_rt.databinding.FragmentRegisterRTBinding
 import com.maluku.sma_rt.presenter.AdminRTRegisterPresenter
 import com.maluku.sma_rt.view.viewInterface.RegisterAdminInterface
+import java.util.regex.Pattern
 
 class RegisterRT : Fragment(), RegisterAdminInterface {
     private lateinit var binding: FragmentRegisterRTBinding
@@ -26,7 +28,6 @@ class RegisterRT : Fragment(), RegisterAdminInterface {
     private  var password: String = ""
     private  var confirmPassword: String = ""
     private var validRegister: Boolean = true
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -37,20 +38,14 @@ class RegisterRT : Fragment(), RegisterAdminInterface {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val genderList = listOf("laki-laki", "perempuan")
+        val genderList = listOf("Laki-Laki", "Perempuan")
         val adapter = ArrayAdapter<String>(context!!,
             R.layout.support_simple_spinner_dropdown_item,genderList)
-        var isSpinnerInitial = true
         binding.spGenderAdmin.adapter = adapter
         binding.spGenderAdmin.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onItemSelected(adapterView: AdapterView<*>?, view: View?, positiion: Int, id: Long) {
-                if (isSpinnerInitial){
-                    isSpinnerInitial = false
-                } else {
-                    genderAdmin = adapterView?.getItemAtPosition(positiion).toString().trim()
-                    Toast.makeText(context,"Gender: $genderAdmin", Toast.LENGTH_SHORT).show()
-                    Toast.makeText(context,"You selected ${adapterView?.getItemAtPosition(positiion).toString()}",Toast.LENGTH_SHORT).show()
-                }
+                genderAdmin = adapterView?.getItemAtPosition(positiion).toString().lowercase().trim()
+                Toast.makeText(context,"Gender: $genderAdmin", Toast.LENGTH_SHORT).show()
             }
             override fun onNothingSelected(p0: AdapterView<*>?) {
 
@@ -63,26 +58,57 @@ class RegisterRT : Fragment(), RegisterAdminInterface {
             noHpAdmin = binding.inputNoHpAdmin.text.trim().toString()
             emailAdmin = binding.inputEmailAdmin.text.trim().toString()
             kodeRT = binding.inputKodeRT.text.trim().toString()
-            if (password=="" && confirmPassword=="" && namaAdmin=="" && noHpAdmin=="" && emailAdmin=="" && kodeRT==""){
-                validRegister = false
-                Toast.makeText(context,"Seluruh field harus terisi",Toast.LENGTH_SHORT).show()
-                Log.d("TAG", "nama: $namaAdmin; no hp: $noHpAdmin; email: $emailAdmin; kode: $kodeRT; password: $password; confirm pass: $confirmPassword;")
+            if (namaAdmin.isEmpty()){
+                binding.inputNamaAdmin.error = "Masukan username!"
+                return@setOnClickListener
+            } else if (emailAdmin.isEmpty()){
+                binding.inputEmailAdmin.error = "Masukan email!"
+                return@setOnClickListener
+            } else if (noHpAdmin.isEmpty()){
+                binding.inputNoHpAdmin.error = "Masukan No HP!"
+                return@setOnClickListener
+            } else if (password.isEmpty()){
+                binding.inputPassword.error = "Masukan password!"
+                return@setOnClickListener
+            } else if (confirmPassword.isEmpty()){
+                binding.inputConfirmPassword.error = "Masukan konfirmasi password!"
+                return@setOnClickListener
+            } else if (kodeRT.isEmpty()){
+                binding.inputKodeRT.error = "Masukan kode RT!"
+                return@setOnClickListener
             } else {
-                Log.d("TAG", "nama: $namaAdmin; no hp: $noHpAdmin; email: $emailAdmin; kode: $kodeRT; password: $password; confirm pass: $confirmPassword;")
-            }
-            if (!binding.checkBoxsk.isChecked){
-                validRegister = false
-                Toast.makeText(context,"Anda harus setuju dengan syarat dan ketentuan yang berlaku!",Toast.LENGTH_LONG).show()
-            }
-            if (password != confirmPassword){
-                validRegister = false
-                Toast.makeText(context,"Password tidak sesuai!",Toast.LENGTH_LONG).show()
-            }
-            if (validRegister){
-                Toast.makeText(context,"Valid boi", Toast.LENGTH_SHORT).show()
-                registerAdmin(kodeRT,genderAdmin, noHpAdmin,namaAdmin, emailAdmin, password)
+                if (!binding.checkBoxsk.isChecked){
+                    validRegister = false
+                    Toast.makeText(context,"Anda harus setuju dengan syarat dan ketentuan yang berlaku!",Toast.LENGTH_LONG).show()
+                }
+                if (!Patterns.EMAIL_ADDRESS.matcher(emailAdmin).matches()) {
+                    validRegister = false
+                    binding.inputEmailAdmin.error = "Email tidak valid!"
+                    return@setOnClickListener
+                }
+                if (isValidPassword(password)) {
+                    if (password != confirmPassword){
+                        validRegister = false
+                        binding.inputConfirmPassword.error = "Password tidak sesuai!"
+                        return@setOnClickListener
+                    }
+                } else {
+                    binding.inputPassword.error = "Password panjangnya min. 8 karakter, serta mengandung min. 1 huruf besar, 1 huruf kecil, dan 1 angka!"
+                }
+                if (validRegister){
+                    Log.d("TAG", "nama: $namaAdmin; no hp: $noHpAdmin; email: $emailAdmin; kode: $kodeRT; password: $password; confirm pass: $confirmPassword;")
+                    registerAdmin(kodeRT,genderAdmin, noHpAdmin,namaAdmin, emailAdmin, password)
+                }
             }
         }
+    }
+
+    fun isValidPassword(password: String?) : Boolean {
+        password?.let {
+            val passwordPattern = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{8,}$"
+            val passwordMatcher = Regex(passwordPattern)
+            return passwordMatcher.find(password) != null
+        } ?: return false
     }
 
     override fun registerAdmin(
