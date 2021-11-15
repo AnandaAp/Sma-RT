@@ -26,7 +26,7 @@
         tools:layout="@layout/fragment_login__r_t" />
     <fragment
         android:id="@+id/registerRT"
-        android:name="com.maluku.sma_rt.RegisterRT"
+        android:name="com.maluku.sma_rt.view.RegisterRT"
         android:label="fragment_register_r_t"
         tools:layout="@layout/fragment_register_r_t" />
 </navigation>

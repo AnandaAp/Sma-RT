@@ -55,4 +55,5 @@ class UserSession(activity: Activity) {
         const val SHARED_PREFERENCE_PHONE_NUMBER_KEY = "NOHP CODE"
         const val SHARED_PREFERENCE_SESSION_KEY = "SESSION CODE"
     }
+
 }

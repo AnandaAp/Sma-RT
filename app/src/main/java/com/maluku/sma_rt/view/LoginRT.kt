@@ -1,4 +1,4 @@
-package com.maluku.sma_rt
+package com.maluku.sma_rt.view
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,7 +9,7 @@ import com.maluku.sma_rt.databinding.FragmentLoginRTBinding
 import com.maluku.sma_rt.databinding.FragmentRegisterRTBinding
 
 
-class Login_RT : Fragment() {
+class LoginRT : Fragment() {
     private lateinit var binding: FragmentLoginRTBinding
     private lateinit var inputUsernameAdmin: String
     private lateinit var inputPasswordAdmin: String

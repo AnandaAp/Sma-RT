@@ -24,15 +24,11 @@ interface Service {
     @FormUrlEncoded
     @POST("pengurus")
     fun signUpAdminRT(
-        @Field("id") id_admin_rt: String,
-        @Field("id_rt") id_rt: String,
+        @Field("kode_rt") kode_rt: String,
+        @Field("gender") genderAdmin: String,
+        @Field("no_hp") noHpAdmin: String,
         @Field("nama") namaAdmin: String,
         @Field("email") emailAdmin: String,
-//        @Field("alamat") alamatAdmin: String,
-//        @Field("gender") genderAdmin: String,
-        @Field("password") password: String,
-//        @Field("confirm_password") confirmPassword: String,
-//        @Field("no_hp") noHp: String,
-//        @Field("kode_pos") kodePos: String
+        @Field("password") password: String
     ): Call<CreatePengurusResponse>
 }

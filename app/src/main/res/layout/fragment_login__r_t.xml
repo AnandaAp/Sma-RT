@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/green"
-    tools:context=".Login_RT">
+    tools:context=".view.LoginRT">
 
     <!-- TODO: Update blank fragment layout -->
 
