@@ -4,9 +4,9 @@ import android.app.Activity
 import android.content.Context
 import android.content.SharedPreferences
 
-class UserSession(activity: Activity) {
+class AdminSession(activity: Activity) {
     private var sharedPreferences: SharedPreferences
-    private val SHARED_PREFERENCE_CODE = "LOGIN SESSION"
+    private val SHARED_PREFERENCE_CODE = "LOGIN ADMIN SESSION"
 
     init {
         sharedPreferences = activity
@@ -44,8 +44,7 @@ class UserSession(activity: Activity) {
     }
 
     companion object {
-        const val SHARED_PREFERENCE_ID_KEY = "ID CODE"
-        const val SHARED_PREFERENCE_FAMILY_ID_KEY = "FAMILY ID CODE"
+        const val SHARED_PREFERENCE_ID_RT_KEY = "ID RT CODE"
         const val SHARED_PREFERENCE_TOKEN_KEY = "TOKEN CODE"
         const val SHARED_PREFERENCE_EMAIL_KEY = "EMAIL CODE"
         const val SHARED_PREFERENCE_PASSWORD_KEY = "PASSWORD CODE"
@@ -55,5 +54,4 @@ class UserSession(activity: Activity) {
         const val SHARED_PREFERENCE_PHONE_NUMBER_KEY = "NOHP CODE"
         const val SHARED_PREFERENCE_SESSION_KEY = "SESSION CODE"
     }
-
 }

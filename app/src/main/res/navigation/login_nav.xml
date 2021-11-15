@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/login_nav"
-    app:startDestination="@id/onboardingFragmentOne">
+    app:startDestination="@id/registerRT">
 
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.maluku.sma_rt.view.LoginChoiceFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_loginchoice" >
+        tools:layout="@layout/fragment_loginchoice">
         <action
             android:id="@+id/action_loginFragment_to_login_RT"
             app:destination="@id/login_RT" />
@@ -19,9 +19,9 @@
     </fragment>
     <fragment
         android:id="@+id/onboardingFragmentOne"
-        android:name="com.maluku.sma_rt.view.OnboardingFragmentOne"
+        android:name="com.maluku.sma_rt.RegisterRT"
         android:label="fragment_onboarding_one"
-        tools:layout="@layout/fragment_onboarding_one" />
+        tools:layout="@layout/fragment_register_r_t" />
     <fragment
         android:id="@+id/login_RT"
         android:name="com.maluku.sma_rt.Login_RT"
@@ -33,7 +33,7 @@
     </fragment>
     <fragment
         android:id="@+id/registerRT"
-        android:name="com.maluku.sma_rt.RegisterRT"
+        android:name="com.maluku.sma_rt.view.RegisterRT"
         android:label="fragment_register_r_t"
         tools:layout="@layout/fragment_register_r_t" />
     <fragment

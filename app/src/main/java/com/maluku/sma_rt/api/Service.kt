@@ -1,5 +1,6 @@
 package com.maluku.sma_rt.api
 
+import com.maluku.sma_rt.model.pengurus.CreatePengurusResponse
 import com.maluku.sma_rt.model.warga.CreateWargaResponse
 import retrofit2.Call
 import retrofit2.http.Field
@@ -19,4 +20,15 @@ interface Service {
         @Field("no_hp") no_hp: String,
         @Field("gender") gender: String
     ): Call<CreateWargaResponse>
+
+    @FormUrlEncoded
+    @POST("pengurus")
+    fun signUpAdminRT(
+        @Field("kode_rt") kode_rt: String,
+        @Field("gender") genderAdmin: String,
+        @Field("no_hp") noHpAdmin: String,
+        @Field("nama") namaAdmin: String,
+        @Field("email") emailAdmin: String,
+        @Field("password") password: String
+    ): Call<CreatePengurusResponse>
 }

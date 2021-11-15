@@ -1,51 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/green"
-    tools:context=".RegisterRT">
+    tools:context=".view.RegisterRT">
 
-    <ScrollView
-        android:layout_width="874dp"
-        android:layout_height="1070dp"
-        android:layout_marginTop="18dp"
-        android:background="@drawable/shapebackgroundlogin"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="-232dp">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+        <ImageView
+            android:id="@+id/logoSmart"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:src="@mipmap/logosmart_foreground"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="874dp"
-            android:layout_height="1070dp"
-            tools:ignore="MissingConstraints">
-
-
-            <EditText
-                android:id="@+id/kodepos"
-                android:layout_width="370dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="12dp"
-                android:background="@drawable/shapebutton"
-                android:ems="10"
-                android:hint="Kode Pos"
-                android:inputType="number"
-                android:padding="10dp"
-                android:paddingStart="20dp"
-
-                android:textColorHint="@color/black"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bgsec"
+            android:padding = "20dp"
+            app:layout_constraintTop_toBottomOf="@+id/logoSmart"
+            >
+            <TextView
+                android:id="@+id/biodata"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:text="Biodata"
+                android:textColor="@color/white"
+                android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/alamat"
-                tools:ignore="SpeakableTextPresentCheck" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
-                android:id="@+id/etnamalengkap"
-                android:layout_width="370dp"
+                android:id="@+id/inputNamaAdmin"
+                android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="16dp"
+                android:textColor="@color/black"
                 android:background="@drawable/shapebutton"
                 android:ems="10"
                 android:hint="Masukkan nama lengkap anda"
@@ -54,154 +57,124 @@
                 android:paddingStart="20dp"
                 android:textColorHint="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.501"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewusername"
+                app:layout_constraintTop_toBottomOf="@+id/biodata"
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <Spinner
-                android:id="@+id/spinnerjk"
-                android:layout_width="370dp"
+                android:id="@+id/spGenderAdmin"
+                android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginTop="12dp"
-                android:background="@drawable/shapebutton"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.501"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/etnamalengkap"
+                app:layout_constraintTop_toBottomOf="@+id/inputNamaAdmin"
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <EditText
-                android:id="@+id/email"
-                android:layout_width="370dp"
+                android:id="@+id/inputEmailAdmin"
+                android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginTop="12dp"
+                android:textColor="@color/black"
                 android:background="@drawable/shapebutton"
                 android:ems="10"
-
                 android:hint="Email"
                 android:inputType="textEmailAddress"
                 android:padding="10dp"
                 android:paddingStart="20dp"
                 android:textColorHint="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.501"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/spinnerjk"
+                app:layout_constraintTop_toBottomOf="@+id/spGenderAdmin"
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <EditText
-                android:id="@+id/pw"
-                android:layout_width="372dp"
+                android:id="@+id/inputPassword"
+                android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginTop="12dp"
                 android:background="@drawable/shapebutton"
                 android:ems="10"
                 android:hint="Password"
+                android:textColor="@color/black"
                 android:inputType="textPassword"
                 android:padding="10dp"
                 android:paddingStart="20dp"
-
                 android:textColorHint="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/nohp"
+                app:layout_constraintTop_toBottomOf="@+id/inputNoHpAdmin"
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <EditText
-                android:id="@+id/confirmpw"
-                android:layout_width="370dp"
+                android:id="@+id/inputConfirmPassword"
+                android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginTop="12dp"
                 android:background="@drawable/shapebutton"
                 android:ems="10"
                 android:hint="Confirm Password"
-                android:inputType="number"
+                android:inputType="textPassword"
                 android:padding="10dp"
+                android:textColor="@color/black"
                 android:paddingStart="20dp"
-
                 android:textColorHint="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/pw"
+                app:layout_constraintTop_toBottomOf="@+id/inputPassword"
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <EditText
-                android:id="@+id/idrt"
-                android:layout_width="370dp"
+                android:id="@+id/inputKodeRT"
+                android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginTop="12dp"
                 android:background="@drawable/shapebutton"
                 android:ems="10"
-                android:hint="ID RT"
-                android:inputType="number"
-
+                android:hint="Kode RT"
+                android:textColor="@color/black"
+                android:inputType="text"
                 android:padding="10dp"
                 android:paddingStart="20dp"
                 android:textColorHint="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/confirmpw"
+                app:layout_constraintTop_toBottomOf="@+id/inputConfirmPassword"
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <EditText
-                android:id="@+id/alamat"
-                android:layout_width="370dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="12dp"
-                android:background="@drawable/shapebutton"
-                android:ems="10"
-                android:hint="Alamat"
-                android:inputType="number"
-                android:padding="10dp"
-                android:paddingStart="20dp"
-                android:textColorHint="@color/black"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/idrt"
-                tools:ignore="SpeakableTextPresentCheck" />
-
-            <EditText
-                android:id="@+id/nohp"
-                android:layout_width="370dp"
+                android:id="@+id/inputNoHpAdmin"
+                android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginTop="12dp"
                 android:background="@drawable/shapebutton"
                 android:ems="10"
                 android:hint="No handphone"
                 android:inputType="number"
-
                 android:padding="10dp"
+                android:textColor="@color/black"
                 android:paddingStart="20dp"
                 android:textColorHint="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.501"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/email"
+                app:layout_constraintTop_toBottomOf="@+id/inputEmailAdmin"
                 tools:ignore="SpeakableTextPresentCheck" />
-
-            <Button
-                android:id="@+id/btndaftar"
-                android:layout_width="342dp"
+            <CheckBox
+                android:id="@+id/checkBoxsk"
+                style="@android:style/Widget.CompoundButton.CheckBox"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="152dp"
-                android:background="@drawable/shapebutton"
-                android:backgroundTint="@color/primarybtn"
-                android:fontFamily="@font/montserrat"
-                android:text="Login"
-                android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.501"
+                android:backgroundTint="@color/white"
+                android:minHeight="48dp"
+                android:text="Saya setuju dengan S&amp;K yang berlaku"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/view"
-                app:layout_constraintVertical_bias="0.395" />
-
+                app:layout_constraintTop_toBottomOf="@+id/inputKodeRT" />
             <Button
-                android:id="@+id/btnlgn"
+                android:id="@+id/btnDaftar"
                 android:layout_width="342dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/shapebutton"
@@ -210,60 +183,37 @@
                 android:text="Daftar"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
-                tools:layout_editor_absoluteY="710dp" />
-
-            <TextView
-                android:id="@+id/textViewusername"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="60dp"
-                android:text="Biodata"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.305"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/checkBoxsk" />
 
             <View
                 android:id="@+id/view"
                 android:layout_width="340dp"
                 android:layout_height="3dp"
-                android:layout_marginTop="28dp"
+                android:layout_marginTop="12dp"
                 android:background="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.503"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btnlgn" />
+                app:layout_constraintTop_toBottomOf="@+id/btnDaftar" />
 
-            <CheckBox
-                android:id="@+id/checkBoxsk"
-                style="@android:style/Widget.CompoundButton.CheckBox"
-                android:layout_width="wrap_content"
+            <Button
+                android:id="@+id/btnLogin"
+                android:layout_width="342dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:backgroundTint="@color/white"
-                android:minHeight="48dp"
-                android:text="Saya setuju dengan S&amp;K yang berlaku"
-                app:layout_constraintBottom_toTopOf="@+id/btnlgn"
-                app:layout_constraintTop_toBottomOf="@+id/kodepos"
-                app:layout_constraintVertical_bias="0.0"
-                tools:layout_editor_absoluteX="241dp" />
-
-
+                android:layout_marginTop="10dp"
+                android:background="@drawable/shapebutton"
+                android:backgroundTint="@color/primarybtn"
+                android:fontFamily="@font/montserrat"
+                android:text="Login"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.495"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view"
+                app:layout_constraintVertical_bias="0.0" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="312dp"
-        android:layout_height="128dp"
-        android:src="@mipmap/ic_launcher_round"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="-15dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
