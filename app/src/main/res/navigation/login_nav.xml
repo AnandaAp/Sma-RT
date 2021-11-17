@@ -3,42 +3,28 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/login_nav"
-    app:startDestination="@id/registerRT">
-
+    app:startDestination="@id/splashScreen">
     <fragment
-        android:id="@+id/loginFragment"
-        android:name="com.maluku.sma_rt.view.LoginChoiceFragment"
-        android:label="fragment_login"
-        tools:layout="@layout/fragment_loginchoice">
+        android:id="@+id/splashScreen"
+        android:name="com.maluku.sma_rt.view.SplashScreen"
+        android:label="fragment_splash_screen"
+        tools:layout="@layout/fragment_splash_screen" >
         <action
-            android:id="@+id/action_loginFragment_to_login_RT"
-            app:destination="@id/login_RT" />
+            android:id="@+id/action_splashScreen_to_loginChoice"
+            app:destination="@id/loginChoice" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginChoice"
+        android:name="com.maluku.sma_rt.view.LoginChoice"
+        android:label="fragment_login_choice"
+        tools:layout="@layout/fragment_login_choice" >
         <action
-            android:id="@+id/action_loginFragment_to_loginWarga"
+            android:id="@+id/action_loginChoice_to_loginWarga"
             app:destination="@id/loginWarga" />
     </fragment>
     <fragment
-        android:id="@+id/onboardingFragmentOne"
-        android:name="com.maluku.sma_rt.RegisterRT"
-        android:label="fragment_onboarding_one"
-        tools:layout="@layout/fragment_register_r_t" />
-    <fragment
-        android:id="@+id/login_RT"
-        android:name="com.maluku.sma_rt.Login_RT"
-        android:label="fragment_login__r_t"
-        tools:layout="@layout/fragment_login__r_t" >
-        <action
-            android:id="@+id/action_login_RT_to_registerRT"
-            app:destination="@id/registerRT" />
-    </fragment>
-    <fragment
-        android:id="@+id/registerRT"
-        android:name="com.maluku.sma_rt.view.RegisterRT"
-        android:label="fragment_register_r_t"
-        tools:layout="@layout/fragment_register_r_t" />
-    <fragment
         android:id="@+id/loginWarga"
-        android:name="com.maluku.sma_rt.view.LoginWarga"
+        android:name="com.maluku.sma_rt.view.warga.LoginWarga"
         android:label="fragment_login_warga"
         tools:layout="@layout/fragment_login_warga" >
         <action
@@ -47,7 +33,22 @@
     </fragment>
     <fragment
         android:id="@+id/registerWarga"
-        android:name="com.maluku.sma_rt.view.RegisterWarga"
+        android:name="com.maluku.sma_rt.view.warga.RegisterWarga"
         android:label="fragment_register_warga"
-        tools:layout="@layout/fragment_register_warga" />
+        tools:layout="@layout/fragment_register_warga" >
+        <action
+            android:id="@+id/action_registerWarga_to_loginWarga"
+            app:destination="@id/loginWarga" />
+        <action
+            android:id="@+id/action_registerWarga_to_loginChoice"
+            app:destination="@id/loginChoice" />
+        <action
+            android:id="@+id/action_registerWarga_to_viewPagerFragment"
+            app:destination="@id/viewPagerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/viewPagerFragment"
+        android:name="com.maluku.sma_rt.view.onboarding.ViewPagerFragment"
+        android:label="fragment_view_pager"
+        tools:layout="@layout/fragment_view_pager" />
 </navigation>
