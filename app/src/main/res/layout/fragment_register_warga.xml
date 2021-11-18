@@ -57,13 +57,14 @@
                     android:layout_marginEnd="20dp">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etNamaLengkap"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:background="@drawable/btn_rounded"
-                        android:hint="Masukkan Nama Lengkap Anda"
                         android:fontFamily="@font/montserrat"
-                        android:paddingStart="18dp"
+                        android:hint="Masukkan Nama Lengkap Anda"
                         android:inputType="textCapWords"
+                        android:paddingStart="18dp"
                         android:textColorHint="@color/grey"
                         android:textSize="12sp" />
 
@@ -80,11 +81,12 @@
                     android:layout_marginEnd="20dp">
 
                     <AutoCompleteTextView
-                        android:id="@+id/tv_autocomplete"
+                        android:id="@+id/etJenisKelamin"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:background="@drawable/btn_rounded"
                         android:hint="Jenis Kelamin"
+                        android:inputType="none"
                         android:paddingStart="18dp"
                         android:fontFamily="@font/montserrat"
                         android:textColorHint="@color/grey"
@@ -106,13 +108,14 @@
                     android:layout_marginEnd="20dp">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etEmail"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:background="@drawable/btn_rounded"
-                        android:hint="Email"
                         android:fontFamily="@font/montserrat"
-                        android:paddingStart="18dp"
+                        android:hint="Email"
                         android:inputType="textEmailAddress"
+                        android:paddingStart="18dp"
                         android:textColorHint="@color/grey"
                         android:textSize="12sp" />
 
@@ -129,14 +132,15 @@
                     android:layout_marginEnd="20dp">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etNoHP"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:background="@drawable/btn_rounded"
-                        android:hint="No Handphone"
                         android:fontFamily="@font/montserrat"
+                        android:hint="No Handphone"
+                        android:inputType="phone"
                         android:paddingStart="18dp"
                         android:textColorHint="@color/grey"
-                        android:inputType="phone"
                         android:textSize="12sp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -153,14 +157,15 @@
                     android:layout_marginEnd="20dp">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etPassword"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:background="@drawable/btn_rounded"
-                        android:hint="Password"
                         android:fontFamily="@font/montserrat"
+                        android:hint="Password"
+                        android:inputType="textPassword"
                         android:paddingStart="18dp"
                         android:textColorHint="@color/grey"
-                        android:inputType="textPassword"
                         android:textSize="12sp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -177,14 +182,15 @@
                     android:layout_marginEnd="20dp">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etPasswordConfirm"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:background="@drawable/btn_rounded"
-                        android:hint="Confirm Password"
                         android:fontFamily="@font/montserrat"
+                        android:hint="Confirm Password"
+                        android:inputType="textPassword"
                         android:paddingStart="18dp"
                         android:textColorHint="@color/grey"
-                        android:inputType="textPassword"
                         android:textSize="12sp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -200,14 +206,14 @@
                     android:layout_marginEnd="20dp">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etIdKeluarga"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:background="@drawable/btn_rounded"
-                        android:hint="ID Keluarga"
                         android:fontFamily="@font/montserrat"
+                        android:hint="ID Keluarga"
                         android:paddingStart="18dp"
                         android:textColorHint="@color/grey"
-                        android:inputType="number"
                         android:textSize="12sp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -223,14 +229,15 @@
                     android:layout_marginEnd="20dp">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etAlamat"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:background="@drawable/btn_rounded"
-                        android:hint="Alamat"
                         android:fontFamily="@font/montserrat"
+                        android:hint="Alamat"
+                        android:inputType="textCapWords"
                         android:paddingStart="18dp"
                         android:textColorHint="@color/grey"
-                        android:inputType="textCapWords"
                         android:textSize="12sp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -246,14 +253,15 @@
                     android:layout_marginEnd="20dp">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etKodePos"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:background="@drawable/btn_rounded"
-                        android:hint="Kode Pos"
                         android:fontFamily="@font/montserrat"
+                        android:hint="Kode Pos"
+                        android:inputType="number"
                         android:paddingStart="18dp"
                         android:textColorHint="@color/grey"
-                        android:inputType="number"
                         android:textSize="12sp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -266,8 +274,8 @@
                     android:layout_below="@id/kodepos"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="28dp"
-                    android:textColor="@color/white"
-                    android:text="Saya setuju dengan SnK yang berlaku" />
+                    android:text="Saya setuju dengan SnK yang berlaku"
+                    android:textColor="@color/white" />
 
 
                 <Button

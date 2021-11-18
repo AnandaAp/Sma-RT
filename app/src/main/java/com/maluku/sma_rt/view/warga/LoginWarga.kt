@@ -18,11 +18,21 @@ class LoginWarga : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentLoginWargaBinding.inflate(layoutInflater)
+        val view = bindingView()
 
+        btnDaftarNavigateToRegisterWarga()
+
+        return view
+    }
+
+    private fun bindingView(): View {
+        binding = FragmentLoginWargaBinding.inflate(layoutInflater)
+        return binding.root
+    }
+
+    private fun btnDaftarNavigateToRegisterWarga() {
         binding.btnDaftar.setOnClickListener{
             findNavController().navigate(R.id.action_loginWarga_to_registerWarga)
         }
-        return binding.root
     }
 }

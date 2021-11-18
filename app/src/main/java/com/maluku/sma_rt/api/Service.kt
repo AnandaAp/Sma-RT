@@ -13,12 +13,12 @@ interface Service {
     @FormUrlEncoded
     @POST("warga")
     fun signUpWarga(
-        @Field("id_keluarga") id_keluarga: String,
+        @Field("kode_keluarga") kode_keluarga: String,
+        @Field("gender") gender: String,
+        @Field("no_hp") no_hp: String,
         @Field("nama") nama: String,
         @Field("email") email: String,
-        @Field("password") password: String,
-        @Field("no_hp") no_hp: String,
-        @Field("gender") gender: String
+        @Field("password") password: String
     ): Call<CreateWargaResponse>
 
     @FormUrlEncoded
