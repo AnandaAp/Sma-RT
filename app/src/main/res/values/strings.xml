@@ -4,4 +4,8 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="btnskip"><u>Skip</u></string>
     <string name="test">test</string>
+    <string name="title_activity_Warga_rt">Warga_RT</string>
+    <string name="title_home">Home</string>
+    <string name="title_Warga">Warga</string>
+    <string name="title_notifications">Notifications</string>
 </resources>
