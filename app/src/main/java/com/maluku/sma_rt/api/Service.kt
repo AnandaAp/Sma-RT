@@ -1,5 +1,6 @@
 package com.maluku.sma_rt.api
 
+import com.maluku.sma_rt.model.login.OnLoginSuccessResponse
 import com.maluku.sma_rt.model.pengurus.CreatePengurusResponse
 import com.maluku.sma_rt.model.warga.CreateWargaResponse
 import retrofit2.Call
@@ -31,4 +32,11 @@ interface Service {
         @Field("email") emailAdmin: String,
         @Field("password") password: String
     ): Call<CreatePengurusResponse>
+
+    @FormUrlEncoded
+    @POST("pengurus/login")
+    fun loginAdmin(
+        @Field("email") email: String,
+        @Field("password") password: String
+    ): Call<OnLoginSuccessResponse>
 }
