@@ -30,6 +30,11 @@ class FirstScreen : Fragment() {
             viewPager?.currentItem = 1
         }
 
+        binding.skip.setOnClickListener{
+            val intent = Intent (activity, SecondActivity::class.java)
+            startActivity(intent)
+        }
+
 
 
 

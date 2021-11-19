@@ -26,8 +26,8 @@ class ThirdScreen : Fragment() {
         val viewPager =  activity?.findViewById<ViewPager2>(R.id.viewPager)
 
         binding.getstarted.setOnClickListener{
-            val intent = Intent (activity, SecondActivity::class.java)
-            startActivity(intent)
+        val intent = Intent (activity, SecondActivity::class.java)
+        startActivity(intent)
         }
 
 

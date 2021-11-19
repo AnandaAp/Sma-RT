@@ -74,4 +74,6 @@ dependencies {
     implementation 'androidx.core:core-splashscreen:1.0.0-alpha02'
     // ViewPager2
     implementation 'androidx.viewpager2:viewpager2:1.0.0'
+    // imageprofile circle
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
 }
