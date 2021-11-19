@@ -79,12 +79,7 @@ class AdminRTLoginPresenter(private val activity: Activity, private val view: Lo
         adminSession.save(AdminSession.SHARED_PREFERENCE_TOKEN_KEY,token)
         adminSession.save(AdminSession.SHARED_PREFERENCE_EMAIL_KEY,emailAdmin)
         adminSession.save(AdminSession.SHARED_PREFERENCE_PASSWORD_KEY,password)
-        navigateToAdminDashboard()
+        view.onLoginSuccess(activity.getString(R.string.login_sukses))
     }
 
-    //navigate to admin dashboard
-    private fun navigateToAdminDashboard() {
-//        Toast.makeText(activity,"Selamat Datang", Toast.LENGTH_LONG).show()
-        Toast.makeText(activity,"Berhasil Login",Toast.LENGTH_LONG).show()
-    }
 }

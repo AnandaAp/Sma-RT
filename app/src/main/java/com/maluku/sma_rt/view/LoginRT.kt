@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
+import com.maluku.sma_rt.R
 import com.maluku.sma_rt.databinding.FragmentLoginRTBinding
 import com.maluku.sma_rt.presenter.AdminRTLoginPresenter
 import com.maluku.sma_rt.presenter.AdminRTRegisterPresenter
@@ -46,8 +48,13 @@ class LoginRT : Fragment(), LoginAdminInterface {
     }
 
     override fun onLoginSuccess(message: String) {
+        navigateToAdminDashboard()
         Toast.makeText(context,"$message", Toast.LENGTH_LONG).show()
     }
 
+    //navigate to admin dashboard
+    private fun navigateToAdminDashboard() {
+        findNavController().navigate(R.id.action_registerRT_to_homeFragment)
+    }
 
 }

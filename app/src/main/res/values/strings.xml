@@ -8,4 +8,5 @@
     <string name="title_home">Home</string>
     <string name="title_Warga">Warga</string>
     <string name="title_notifications">Notifications</string>
+    <string name="login_sukses">Anda berhasil login!</string>
 </resources>
