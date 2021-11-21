@@ -35,7 +35,6 @@
             android:layout_marginStart="20dp"
             android:text="E-Mail"
             android:fontFamily="@font/montserrat"
-            android:text="Username"
             android:textColor="@color/white"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"

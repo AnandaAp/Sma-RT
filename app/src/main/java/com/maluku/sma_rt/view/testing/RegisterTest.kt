@@ -38,13 +38,14 @@ class RegisterTest : Fragment(),RegisterTestInterface {
         gender: String,
         noHP: String
     ) {
-        WargaRegisterPresenter(requireActivity()).registerNewUser(
-            idKeluarga,
-            email,
-            password,
-            name,
-            gender,
-            noHP)
+//        WargaRegisterPresenter(requireActivity(), this).registerNewUser(
+//            idKeluarga,
+//            email,
+//            password,
+//            name,
+//            gender,
+//            noHP)
+        // maaf Kak Anan aku comment dulu hehehe
     }
 
 

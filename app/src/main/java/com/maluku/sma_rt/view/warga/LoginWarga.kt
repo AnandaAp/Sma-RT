@@ -1,5 +1,6 @@
 package com.maluku.sma_rt.view.warga
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Patterns
 import androidx.fragment.app.Fragment
@@ -12,6 +13,7 @@ import com.maluku.sma_rt.R
 import com.maluku.sma_rt.databinding.FragmentLoginWargaBinding
 import com.maluku.sma_rt.presenter.WargaLoginPresenter
 import com.maluku.sma_rt.presenter.WargaRegisterPresenter
+import com.maluku.sma_rt.view.activity.SecondActivity
 import com.maluku.sma_rt.view.viewInterface.LoginWargaInterface
 
 class LoginWarga : Fragment(), LoginWargaInterface{
@@ -83,14 +85,26 @@ class LoginWarga : Fragment(), LoginWargaInterface{
 
 
     override fun loginWarga(email: String, password: String) {
-        WargaLoginPresenter(requireActivity())
+        WargaLoginPresenter(requireActivity(), this)
             .loginUser(
                 email,
                 password
             )
     }
 
+    private fun navigateToDashboard() {
+        Thread.sleep(1000)
+        val intent = Intent(
+            requireActivity(),
+            SecondActivity::class.java
+        )
+        startActivity(intent)
+        requireActivity().finish()
+    }
+
     override fun onLoginSuccess(message: String) {
         Toast.makeText(context,message,Toast.LENGTH_LONG).show()
+        navigateToDashboard()
+
     }
 }

@@ -5,6 +5,7 @@ import android.app.Activity
 import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
+import com.maluku.sma_rt.R
 import com.maluku.sma_rt.api.RetrofitService
 import com.maluku.sma_rt.extentions.UserSession
 import com.maluku.sma_rt.extentions.UserSession.Companion.SHARED_PREFERENCE_EMAIL_KEY
@@ -16,12 +17,13 @@ import com.maluku.sma_rt.extentions.UserSession.Companion.SHARED_PREFERENCE_PHON
 import com.maluku.sma_rt.extentions.UserSession.Companion.SHARED_PREFERENCE_TOKEN_KEY
 import com.maluku.sma_rt.extentions.UserValidator
 import com.maluku.sma_rt.model.warga.CreateWargaResponse
+import com.maluku.sma_rt.view.viewInterface.RegisterWargaInterface
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 private const val TAG = "REGISTER PRESENTER"
-class WargaRegisterPresenter(private val activity: Activity) {
+class WargaRegisterPresenter(private val activity: Activity, private val view: RegisterWargaInterface) {
 
     //register new user
     fun registerNewUser(
@@ -113,6 +115,7 @@ class WargaRegisterPresenter(private val activity: Activity) {
         userSession.save(SHARED_PREFERENCE_GENDER_KEY,gender)
         userSession.save(SHARED_PREFERENCE_PHONE_NUMBER_KEY,no_hp)
         userSession.save(SHARED_PREFERENCE_FAMILY_ID_KEY,kode_keluarga)
+        view.onRegisterSuccess(activity.getString(R.string.register_sukses))
         //navigateToWargaDashboard()
 
 

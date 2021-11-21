@@ -6,7 +6,8 @@
     <string name="test">test</string>
     <string name="jenis_kelamin">Jenis Kelamin</string>
     <string name="login_failed_message">Maaf Email atau Password anda Salah</string>
-
+    <string name="login_sukses">Login berhasil!</string>
+    <string name="register_sukses">Pendaftaran berhasil!</string>
     <string-array name="jenis_kelamin">
         <item>Laki-laki</item>
         <item>Perempuan</item>

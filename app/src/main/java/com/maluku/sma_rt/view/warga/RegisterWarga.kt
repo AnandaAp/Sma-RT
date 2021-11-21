@@ -1,5 +1,6 @@
 package com.maluku.sma_rt.view.warga
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Patterns
 import androidx.fragment.app.Fragment
@@ -15,6 +16,7 @@ import com.maluku.sma_rt.R
 import com.maluku.sma_rt.databinding.FragmentLoginWargaBinding
 import com.maluku.sma_rt.databinding.FragmentRegisterWargaBinding
 import com.maluku.sma_rt.presenter.WargaRegisterPresenter
+import com.maluku.sma_rt.view.activity.SecondActivity
 import com.maluku.sma_rt.view.viewInterface.RegisterWargaInterface
 
 class RegisterWarga : Fragment(), RegisterWargaInterface {
@@ -174,7 +176,7 @@ class RegisterWarga : Fragment(), RegisterWargaInterface {
         email: String,
         password: String
     ) {
-        WargaRegisterPresenter(requireActivity())
+        WargaRegisterPresenter(requireActivity(), this)
             .registerNewUser(
                 kode_keluarga,
                 gender,
@@ -185,7 +187,18 @@ class RegisterWarga : Fragment(), RegisterWargaInterface {
             )
     }
 
+    private fun navigateToDashboard() {
+        Thread.sleep(1000)
+        val intent = Intent(
+            requireActivity(),
+            SecondActivity::class.java
+        )
+        startActivity(intent)
+        requireActivity().finish()
+    }
+
     override fun onRegisterSuccess(message: String) {
         Toast.makeText(context,message,Toast.LENGTH_LONG).show()
+        navigateToDashboard()
     }
 }
