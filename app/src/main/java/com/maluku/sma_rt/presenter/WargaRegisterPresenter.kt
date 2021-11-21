@@ -102,11 +102,8 @@ class WargaRegisterPresenter(private val activity: Activity) {
         userSession.save(SHARED_PREFERENCE_GENDER_KEY,gender)
         userSession.save(SHARED_PREFERENCE_PHONE_NUMBER_KEY,noHP)
         userSession.save(SHARED_PREFERENCE_FAMILY_ID_KEY,idKeluarga)
-        navigateToWargaDashboard()
-    }
 
-    //navigate to warga dashboard
-    private fun navigateToWargaDashboard() {
-        Toast.makeText(activity,"Selamat Datang",Toast.LENGTH_LONG).show()
+        //memanggil fungsi dari interface view login warga
+
     }
 }

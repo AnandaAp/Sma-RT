@@ -22,9 +22,12 @@
         android:layout_width="815dp"
         android:layout_height="689dp"
         android:layout_marginTop="8dp"
-        android:background="@drawable/bg_circle"
-        tools:layout_editor_absoluteX="-202dp"
+        android:background="@drawable/bg_login"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logosmart"
+        app:layout_constraintVertical_bias="0.0"
         tools:ignore="MissingConstraints">
 
         <TextView
@@ -32,8 +35,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="56dp"
-            android:text="Username"
             android:fontFamily="@font/montserrat"
+            android:text="Username"
             android:textColor="@color/white"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -58,8 +61,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Password"
             android:fontFamily="@font/montserrat"
+            android:text="Password"
             android:textColor="@color/white"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -83,8 +86,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Lupa password ?"
             android:fontFamily="@font/montserrat"
+            android:text="Lupa password ?"
             android:textColor="@color/white"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -105,8 +108,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_lupapassword"/>
-
+            app:layout_constraintTop_toBottomOf="@+id/tv_lupapassword" />
 
 
         <View
@@ -136,8 +138,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_lupapassword"
             app:layout_constraintVertical_bias="0.185" />
-
-
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

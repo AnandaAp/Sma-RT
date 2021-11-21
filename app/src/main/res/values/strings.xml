@@ -5,6 +5,7 @@
     <string name="btnskip"><u>Skip</u></string>
     <string name="test">test</string>
     <string name="jenis_kelamin">Jenis Kelamin</string>
+    <string name="login_failed_message">Maaf Email atau Password anda Salah</string>
 
     <string-array name="jenis_kelamin">
         <item>Laki-laki</item>
