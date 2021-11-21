@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottom_nav_host"
+    app:startDestination="@id/homeWarga">
+
+    <fragment
+        android:id="@+id/homeWarga"
+        android:name="com.maluku.sma_rt.view.warga.HomeWarga"
+        android:label="fragment_home_warga"
+        tools:layout="@layout/fragment_home_warga" />
+    <fragment
+        android:id="@+id/jualbeliWarga"
+        android:name="com.maluku.sma_rt.view.warga.JualbeliWarga"
+        android:label="fragment_jualbeli_warga"
+        tools:layout="@layout/fragment_jualbeli_warga" />
+    <fragment
+        android:id="@+id/catatanWarga"
+        android:name="com.maluku.sma_rt.view.warga.CatatanWarga"
+        android:label="fragment_catatan_warga"
+        tools:layout="@layout/fragment_catatan_warga" />
+    <fragment
+        android:id="@+id/akunWarga"
+        android:name="com.maluku.sma_rt.view.warga.AkunWarga"
+        android:label="fragment_akun_warga"
+        tools:layout="@layout/fragment_akun_warga" />
+</navigation>

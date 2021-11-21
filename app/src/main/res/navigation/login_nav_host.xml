@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/login_nav"
+    app:startDestination="@id/splashScreen">
+    <fragment
+        android:id="@+id/splashScreen"
+        android:name="com.maluku.sma_rt.view.SplashScreen"
+        android:label="fragment_splash_screen"
+        tools:layout="@layout/fragment_splash_screen" >
+        <action
+            android:id="@+id/action_splashScreen_to_loginChoice"
+            app:destination="@id/loginChoice" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginChoice"
+        android:name="com.maluku.sma_rt.view.LoginChoice"
+        android:label="fragment_login_choice"
+        tools:layout="@layout/fragment_login_choice" >
+        <action
+            android:id="@+id/action_loginChoice_to_loginWarga"
+            app:destination="@id/loginWarga" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginWarga"
+        android:name="com.maluku.sma_rt.view.warga.LoginWarga"
+        android:label="fragment_login_warga"
+        tools:layout="@layout/fragment_login_warga" >
+        <action
+            android:id="@+id/action_loginWarga_to_registerWarga"
+            app:destination="@id/registerWarga" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerWarga"
+        android:name="com.maluku.sma_rt.view.warga.RegisterWarga"
+        android:label="fragment_register_warga"
+        tools:layout="@layout/fragment_register_warga" >
+        <action
+            android:id="@+id/action_registerWarga_to_loginWarga"
+            app:destination="@id/loginWarga" />
+        <action
+            android:id="@+id/action_registerWarga_to_loginChoice"
+            app:destination="@id/loginChoice" />
+        <action
+            android:id="@+id/action_registerWarga_to_viewPagerFragment"
+            app:destination="@id/viewPagerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/viewPagerFragment"
+        android:name="com.maluku.sma_rt.view.onboarding.ViewPagerFragment"
+        android:label="fragment_view_pager"
+        tools:layout="@layout/fragment_view_pager" />
+</navigation>
