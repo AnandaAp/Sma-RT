@@ -35,7 +35,7 @@ class LoginChoiceFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_loginchoice, container, false)
+        return inflater.inflate(R.layout.fragment_login_choice, container, false)
     }
 
     companion object {

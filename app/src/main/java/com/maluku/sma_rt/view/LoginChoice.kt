@@ -23,6 +23,9 @@ class LoginChoice : Fragment() {
         binding.btnLoginwarga.setOnClickListener{
             findNavController().navigate(R.id.action_loginChoice_to_loginWarga)
         }
+        binding.btnLoginrt.setOnClickListener {
+            findNavController().navigate(R.id.action_loginChoice_to_loginRT)
+        }
         return binding.root
 
 

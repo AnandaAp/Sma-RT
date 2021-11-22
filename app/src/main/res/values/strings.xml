@@ -8,7 +8,6 @@
     <string name="title_home">Home</string>
     <string name="title_Warga">Warga</string>
     <string name="title_notifications">Notifications</string>
-    <string name="login_sukses">Anda berhasil login!</string>
     <string name="jenis_kelamin">Jenis Kelamin</string>
     <string name="login_failed_message">Maaf Email atau Password anda Salah</string>
     <string name="login_sukses">Login berhasil!</string>

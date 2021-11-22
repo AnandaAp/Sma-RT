@@ -54,7 +54,7 @@ class LoginRT : Fragment(), LoginAdminInterface {
 
     //navigate to admin dashboard
     private fun navigateToAdminDashboard() {
-        findNavController().navigate(R.id.action_registerRT_to_homeFragment)
+        findNavController().navigate(R.id.action_loginRT_to_homeFragment2)
     }
 
 }
