@@ -5,6 +5,7 @@ import android.app.Activity
 import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
+import com.maluku.sma_rt.R
 import com.maluku.sma_rt.api.RetrofitService
 import com.maluku.sma_rt.extentions.UserSession
 import com.maluku.sma_rt.extentions.UserSession.Companion.SHARED_PREFERENCE_EMAIL_KEY
@@ -16,46 +17,53 @@ import com.maluku.sma_rt.extentions.UserSession.Companion.SHARED_PREFERENCE_PHON
 import com.maluku.sma_rt.extentions.UserSession.Companion.SHARED_PREFERENCE_TOKEN_KEY
 import com.maluku.sma_rt.extentions.UserValidator
 import com.maluku.sma_rt.model.warga.CreateWargaResponse
+import com.maluku.sma_rt.view.viewInterface.RegisterWargaInterface
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 private const val TAG = "REGISTER PRESENTER"
-class WargaRegisterPresenter(private val activity: Activity) {
+class WargaRegisterPresenter(private val activity: Activity, private val view: RegisterWargaInterface) {
 
     //register new user
     fun registerNewUser(
-        idKeluarga: String,
-        email: String,
-        password: String,
-        name: String,
+        kode_keluarga: String,
         gender: String,
-        noHP: String) {
-        when (UserValidator.verifyData(email, password, name)) {
+        no_hp: String,
+        nama: String,
+        email: String,
+        password: String) {
+        when (UserValidator.verifyData(email, password, nama)) {
             true -> {
-                pushToCloud(idKeluarga, email, password, name, gender, noHP)
+                pushToCloud(
+                    kode_keluarga,
+                    gender,
+                    no_hp,
+                    nama,
+                    email,
+                    password)
             }
         }
     }
 
     //push new data to cloud so user can register to server
     private fun pushToCloud(
-        idKeluarga: String,
-        email: String,
-        password: String,
-        name: String,
+        kode_keluarga: String,
         gender: String,
-        noHP: String
+        no_hp: String,
+        nama: String,
+        email: String,
+        password: String
     ) {
         RetrofitService
             .getService()
             .signUpWarga(
-                idKeluarga,
-                name,
+                kode_keluarga,
+                gender,
+                no_hp,
+                nama,
                 email,
-                password,
-                noHP,
-                gender)
+                password)
             .enqueue(object : Callback<CreateWargaResponse> {
                 override fun onResponse(
                     call: Call<CreateWargaResponse>,
@@ -65,15 +73,20 @@ class WargaRegisterPresenter(private val activity: Activity) {
                     when(response.isSuccessful){
                         true -> {
                             when(token.isNotEmpty()) {
-                                true -> saveSession(name,
-                                    idKeluarga,
+                                true -> saveSession(
+                                    kode_keluarga,
+                                    gender,
+                                    no_hp,
+                                    nama,
                                     email,
                                     password,
-                                    gender,
-                                    noHP,
                                     token
                                 )
                             }
+                            Toast.makeText(activity,"Pesan: ${response.message()}",Toast.LENGTH_SHORT).show()
+                        }
+                        false -> {
+                            Toast.makeText(activity,"Error: ${response.message()}",Toast.LENGTH_SHORT).show()
                         }
                     }
                 }
@@ -86,17 +99,17 @@ class WargaRegisterPresenter(private val activity: Activity) {
 
     //save user data to session
     private fun saveSession(
-        idKeluarga: String,
-        name: String,
+        kode_keluarga: String,
+        gender: String,
+        no_hp: String,
+        nama: String,
         email: String,
         password: String,
-        gender: String,
-        noHP: String,
         token: String
     ) {
         val userSession = UserSession(activity)
         userSession.save(SHARED_PREFERENCE_TOKEN_KEY,token)
-        userSession.save(SHARED_PREFERENCE_NAME_KEY,name)
+        userSession.save(SHARED_PREFERENCE_NAME_KEY,nama)
         userSession.save(SHARED_PREFERENCE_EMAIL_KEY,email)
         userSession.save(SHARED_PREFERENCE_PASSWORD_KEY,password)
         userSession.save(SHARED_PREFERENCE_GENDER_KEY,gender)
@@ -108,5 +121,13 @@ class WargaRegisterPresenter(private val activity: Activity) {
     //navigate to warga Warga
     private fun navigateToWargaWarga() {
         Toast.makeText(activity,"Selamat Datang",Toast.LENGTH_LONG).show()
+        userSession.save(SHARED_PREFERENCE_PHONE_NUMBER_KEY,no_hp)
+        userSession.save(SHARED_PREFERENCE_FAMILY_ID_KEY,kode_keluarga)
+        view.onRegisterSuccess(activity.getString(R.string.register_sukses))
+        //navigateToWargaDashboard()
+
+
+        //memanggil fungsi dari interface view login warga
+
     }
 }

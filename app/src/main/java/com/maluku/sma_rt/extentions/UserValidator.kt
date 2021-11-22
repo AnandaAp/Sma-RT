@@ -12,6 +12,14 @@ object UserValidator {
         }
         return status
     }
+    fun verifyData(email: String,password: String): Boolean{
+        var status = false
+        when(isEmailValid(email) &&
+                isPasswordsValid(password)){
+            true -> status = true
+        }
+        return status
+    }
 
     private fun isEmailValid(email: String): Boolean =  Patterns.EMAIL_ADDRESS.matcher(email).matches()
 
