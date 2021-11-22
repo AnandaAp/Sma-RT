@@ -101,7 +101,7 @@ class WargaRegisterPresenter(private val activity: Activity, private val view: R
     private fun saveSession(
         kode_keluarga: String,
         gender: String,
-        no_hp: String,
+        noHP: String,
         nama: String,
         email: String,
         password: String,
@@ -113,13 +113,16 @@ class WargaRegisterPresenter(private val activity: Activity, private val view: R
         userSession.save(SHARED_PREFERENCE_EMAIL_KEY,email)
         userSession.save(SHARED_PREFERENCE_PASSWORD_KEY,password)
         userSession.save(SHARED_PREFERENCE_GENDER_KEY,gender)
-        userSession.save(SHARED_PREFERENCE_PHONE_NUMBER_KEY,no_hp)
+        userSession.save(SHARED_PREFERENCE_PHONE_NUMBER_KEY,noHP)
         userSession.save(SHARED_PREFERENCE_FAMILY_ID_KEY,kode_keluarga)
+        navigateToWargaWarga()
+    }
+
+    //navigate to warga Warga
+    private fun navigateToWargaWarga() {
+        Toast.makeText(activity,"Selamat Datang",Toast.LENGTH_LONG).show()
         view.onRegisterSuccess(activity.getString(R.string.register_sukses))
         //navigateToWargaDashboard()
-
-
         //memanggil fungsi dari interface view login warga
-
     }
 }

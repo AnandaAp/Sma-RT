@@ -11,8 +11,8 @@
     <!-- TODO: Update blank fragment layout -->
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="815dp"
-        android:layout_height="689dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:background="@drawable/shapebackgroundlogin"
         app:layout_constraintTop_toBottomOf="@+id/imageView2"
@@ -62,10 +62,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.674"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/inputPasswordAdmin" />
+            app:layout_constraintTop_toBottomOf="@+id/etLoginPasswordAdmin" />
 
         <EditText
-            android:id="@+id/inputPasswordAdmin"
+            android:id="@+id/etLoginPasswordAdmin"
             android:layout_width="370dp"
             android:layout_height="48dp"
             android:layout_marginTop="132dp"
@@ -85,15 +85,15 @@
             android:text="Password"
             android:textColor="@color/white"
             android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/inputPasswordAdmin"
+            app:layout_constraintBottom_toTopOf="@+id/etLoginPasswordAdmin"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.312"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/inputUsernameAdmin"
+            app:layout_constraintTop_toBottomOf="@+id/etLoginEmailAdmin"
             app:layout_constraintVertical_bias="0.725" />
 
         <EditText
-            android:id="@+id/inputUsernameAdmin"
+            android:id="@+id/etLoginEmailAdmin"
             android:layout_width="370dp"
             android:layout_height="48dp"
             android:layout_marginTop="16dp"
@@ -111,7 +111,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="56dp"
-            android:text="Username"
+            android:text="Email"
             android:textColor="@color/white"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -135,7 +135,7 @@
         android:id="@+id/imageView2"
         android:layout_width="312dp"
         android:layout_height="128dp"
-        android:src="@mipmap/ic_launcher_round"
+        android:src="@mipmap/logosmart_foreground"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints"

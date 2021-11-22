@@ -42,4 +42,11 @@ interface Service {
         @Field("email") emailAdmin: String,
         @Field("password") password: String
     ): Call<CreatePengurusResponse>
+
+    @FormUrlEncoded
+    @POST("pengurus/login")
+    fun loginAdmin(
+        @Field("email") email: String,
+        @Field("password") password: String
+    ): Call<OnLoginSuccessResponse>
 }
