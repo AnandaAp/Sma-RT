@@ -23,7 +23,7 @@
         tools:targetApi="m" >
         <activity
             android:name=".view.activity.DashboardRTActivity"
-            android:theme="@style/Theme.AppCompat.Light"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:exported="false" />
         <activity
             android:name=".view.activity.SecondActivity"

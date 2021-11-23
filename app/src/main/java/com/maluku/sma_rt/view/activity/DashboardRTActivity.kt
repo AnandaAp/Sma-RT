@@ -28,7 +28,7 @@ class DashboardRTActivity : AppCompatActivity() {
                 R.id.navigation_home, R.id.navigation_warga, R.id.navigation_manage,R.id.navigation_profil
             )
         )
-        setupActionBarWithNavController(navController, appBarConfiguration)
+//        setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }
 }

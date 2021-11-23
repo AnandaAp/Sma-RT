@@ -38,7 +38,6 @@ class LoginRT : Fragment(), LoginAdminInterface {
         binding.btnlgn.setOnClickListener {
             binding.etLoginEmailAdmin.clearFocus()
             binding.etLoginPasswordAdmin.clearFocus()
-            Log.d("TAG", "Login --> email: $emailAdmin; password: $passwordAdmin")
             submitForm()
         }
     }
