@@ -9,17 +9,17 @@
     <item
         android:id="@+id/navigation_warga"
         android:icon="@drawable/ic_warganavbar"
-        android:title="Warga" />
+        android:title="@string/warga" />
 
     <item
         android:id="@+id/navigation_manage"
         android:icon="@drawable/ic_managenavbar"
-        android:title="Manage" />
+        android:title="@string/manage" />
 
     <item
         android:id="@+id/navigation_profil"
         android:icon="@drawable/ic_accountnavbar"
-        android:title="Profil" />
+        android:title="@string/profil" />
 
 
 </menu>
