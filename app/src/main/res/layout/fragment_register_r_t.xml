@@ -11,209 +11,274 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         >
         <ImageView
-            android:id="@+id/logoSmart"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:src="@mipmap/logosmart_foreground"
+            android:id="@+id/logo_smart"
+            android:layout_width="167dp"
+            android:layout_height="66dp"
+            android:layout_marginTop="66dp"
+            android:src="@drawable/logo_smart"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bgsec"
-            android:padding = "20dp"
-            app:layout_constraintTop_toBottomOf="@+id/logoSmart"
-            >
-            <TextView
-                android:id="@+id/biodata"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
-                android:text="Biodata"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_register"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@+id/logo_smart">
 
-            <EditText
-                android:id="@+id/inputNamaAdmin"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginTop="16dp"
-                android:textColor="@color/black"
-                android:background="@drawable/shapebutton"
-                android:ems="10"
-                android:hint="Masukkan nama lengkap anda"
-                android:inputType="textPersonName"
-                android:padding="10dp"
-                android:paddingStart="20dp"
-                android:textColorHint="@color/black"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/biodata"
-                tools:ignore="SpeakableTextPresentCheck" />
+                android:layout_height="match_parent"
+                android:layout_marginTop="113dp"
+                android:layout_marginBottom="50dp">
 
-            <Spinner
-                android:id="@+id/spGenderAdmin"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginTop="12dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/inputNamaAdmin"
-                tools:ignore="SpeakableTextPresentCheck" />
+                <TextView
+                    android:id="@+id/tv_biodata"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:fontFamily="@font/montserrat"
+                    android:text="Biodata"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/inputEmailAdmin"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginTop="12dp"
-                android:textColor="@color/black"
-                android:background="@drawable/shapebutton"
-                android:ems="10"
-                android:hint="Email"
-                android:inputType="textEmailAddress"
-                android:padding="10dp"
-                android:paddingStart="20dp"
-                android:textColorHint="@color/black"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/spGenderAdmin"
-                tools:ignore="SpeakableTextPresentCheck" />
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/TILinputNamaAdmin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_biodata"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginEnd="20dp">
 
-            <EditText
-                android:id="@+id/inputPassword"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginTop="12dp"
-                android:background="@drawable/shapebutton"
-                android:ems="10"
-                android:hint="Password"
-                android:textColor="@color/black"
-                android:inputType="textPassword"
-                android:padding="10dp"
-                android:paddingStart="20dp"
-                android:textColorHint="@color/black"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/inputNoHpAdmin"
-                tools:ignore="SpeakableTextPresentCheck" />
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/inputNamaAdmin"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@drawable/btn_rounded"
+                        android:fontFamily="@font/montserrat"
+                        android:hint="Masukkan Nama Lengkap Anda"
+                        android:inputType="textCapWords"
+                        android:paddingStart="18dp"
+                        android:textColorHint="@color/grey"
+                        android:textSize="12sp" />
 
-            <EditText
-                android:id="@+id/inputConfirmPassword"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginTop="12dp"
-                android:background="@drawable/shapebutton"
-                android:ems="10"
-                android:hint="Confirm Password"
-                android:inputType="textPassword"
-                android:padding="10dp"
-                android:textColor="@color/black"
-                android:paddingStart="20dp"
-                android:textColorHint="@color/black"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/inputPassword"
-                tools:ignore="SpeakableTextPresentCheck" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-            <EditText
-                android:id="@+id/inputKodeRT"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginTop="12dp"
-                android:background="@drawable/shapebutton"
-                android:ems="10"
-                android:hint="Kode RT"
-                android:textColor="@color/black"
-                android:inputType="text"
-                android:padding="10dp"
-                android:paddingStart="20dp"
-                android:textColorHint="@color/black"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/inputConfirmPassword"
-                tools:ignore="SpeakableTextPresentCheck" />
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                    android:id="@+id/TILspGenderAdmin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/TILinputNamaAdmin"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginEnd="20dp">
 
-            <EditText
-                android:id="@+id/inputNoHpAdmin"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginTop="12dp"
-                android:background="@drawable/shapebutton"
-                android:ems="10"
-                android:hint="No handphone"
-                android:inputType="number"
-                android:padding="10dp"
-                android:textColor="@color/black"
-                android:paddingStart="20dp"
-                android:textColorHint="@color/black"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.501"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/inputEmailAdmin"
-                tools:ignore="SpeakableTextPresentCheck" />
-            <CheckBox
-                android:id="@+id/checkBoxsk"
-                style="@android:style/Widget.CompoundButton.CheckBox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/white"
-                android:minHeight="48dp"
-                android:text="Saya setuju dengan S&amp;K yang berlaku"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/inputKodeRT" />
-            <Button
-                android:id="@+id/btnDaftar"
-                android:layout_width="342dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/shapebutton"
-                android:backgroundTint="@color/primarybtn"
-                android:fontFamily="@font/montserrat"
-                android:text="Daftar"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/checkBoxsk" />
+                    <AutoCompleteTextView
+                        android:id="@+id/spGenderAdmin"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@drawable/btn_rounded"
+                        android:hint="Jenis Kelamin"
+                        android:inputType="none"
+                        android:paddingStart="18dp"
+                        android:fontFamily="@font/montserrat"
+                        android:textColorHint="@color/grey"
+                        android:textSize="12sp"
+                        android:entries="@array/jenis_kelamin"/>
 
-            <View
-                android:id="@+id/view"
-                android:layout_width="340dp"
-                android:layout_height="3dp"
-                android:layout_marginTop="12dp"
-                android:background="@color/white"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btnDaftar" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-            <Button
-                android:id="@+id/btnLogin"
-                android:layout_width="342dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/shapebutton"
-                android:backgroundTint="@color/primarybtn"
-                android:fontFamily="@font/montserrat"
-                android:text="Login"
-                android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.495"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/view"
-                app:layout_constraintVertical_bias="0.0" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/TILinputEmailAdmin"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/TILspGenderAdmin"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginEnd="20dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/inputEmailAdmin"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@drawable/btn_rounded"
+                        android:fontFamily="@font/montserrat"
+                        android:hint="Email"
+                        android:inputType="textEmailAddress"
+                        android:paddingStart="18dp"
+                        android:textColorHint="@color/grey"
+                        android:textSize="12sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/TILinputNoHpAdmin"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/TILinputEmailAdmin"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginEnd="20dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/inputNoHpAdmin"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@drawable/btn_rounded"
+                        android:fontFamily="@font/montserrat"
+                        android:hint="No Handphone"
+                        android:inputType="phone"
+                        android:paddingStart="18dp"
+                        android:textColorHint="@color/grey"
+                        android:textSize="12sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/TILinputPassword"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/TILinputNoHpAdmin"
+                    app:passwordToggleEnabled="true"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginEnd="20dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/inputPassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@drawable/btn_rounded"
+                        android:fontFamily="@font/montserrat"
+                        android:hint="Password"
+                        android:inputType="textPassword"
+                        android:paddingStart="18dp"
+                        android:textColorHint="@color/grey"
+                        android:textSize="12sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/TILinputConfirmPassword"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/TILinputPassword"
+                    app:passwordToggleEnabled="true"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginEnd="20dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/inputConfirmPassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@drawable/btn_rounded"
+                        android:fontFamily="@font/montserrat"
+                        android:hint="Confirm Password"
+                        android:inputType="textPassword"
+                        android:paddingStart="18dp"
+                        android:textColorHint="@color/grey"
+                        android:textSize="12sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/TILinputKodeRT"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/TILinputConfirmPassword"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginEnd="20dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/inputKodeRT"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@drawable/btn_rounded"
+                        android:fontFamily="@font/montserrat"
+                        android:hint="Kode RT"
+                        android:paddingStart="18dp"
+                        android:textColorHint="@color/grey"
+                        android:textSize="12sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <CheckBox
+                    android:id="@+id/checkBoxsk"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/TILinputKodeRT"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="28dp"
+                    android:text="Saya setuju dengan SnK yang berlaku"
+                    android:textColor="@color/white" />
+
+
+                <Button
+                    android:id="@+id/btnDaftar"
+                    android:layout_width="match_parent"
+                    android:layout_height="47dp"
+                    android:layout_below="@id/checkBoxsk"
+                    android:layout_centerInParent="true"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="28dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/btn_rounded"
+                    android:backgroundTint="@color/primarybtn"
+                    android:fontFamily="@font/montserrat"
+                    android:text="Daftar"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
+
+                <View
+                    android:id="@+id/view_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="3dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_below="@+id/btnDaftar"
+                    android:layout_centerInParent="true"
+                    android:layout_marginTop="35dp"
+                    android:background="@color/white" />
+
+
+                <Button
+                    android:id="@+id/btnLogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="47dp"
+                    android:layout_below="@+id/view_line"
+                    android:layout_centerInParent="true"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/btn_rounded"
+                    android:backgroundTint="@color/primarybtn"
+                    android:text="Login"
+                    android:fontFamily="@font/montserrat"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
+
+            </RelativeLayout>
+        </LinearLayout>
+   </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>

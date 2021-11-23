@@ -9,17 +9,44 @@
         android:id="@+id/navigation_home"
         android:name="com.maluku.sma_rt.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_warga"
+            app:destination="@id/navigation_warga" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_manage"
+            app:destination="@id/navigation_manage" />
+    </fragment>
 
     <fragment
-        android:id="@+id/navigation_Warga"
+        android:id="@+id/navigation_warga"
         android:name="com.maluku.sma_rt.ui.warga.WargaFragment"
         android:label="@string/title_Warga"
-        tools:layout="@layout/fragment_warga" />
+        tools:layout="@layout/fragment_warga" >
+        <action
+            android:id="@+id/action_navigation_warga_to_navigation_home"
+            app:destination="@id/navigation_home" />
+        <action
+            android:id="@+id/action_navigation_warga_to_navigation_manage"
+            app:destination="@id/navigation_manage" />
+    </fragment>
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.maluku.sma_rt.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/navigation_manage"
+        android:name="com.maluku.sma_rt.ui.manage.ManageFragment"
+        android:label="@string/title_Manage"
+        tools:layout="@layout/fragment_manage" >
+        <action
+            android:id="@+id/action_navigation_manage_to_navigation_warga"
+            app:destination="@id/navigation_warga" />
+        <action
+            android:id="@+id/action_navigation_manage_to_navigation_home"
+            app:destination="@id/navigation_home" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_profil"
+        android:name="com.maluku.sma_rt.ui.manage.ManageFragment"
+        android:label="@string/title_Manage"
+        tools:layout="@layout/fragment_manage" />
 </navigation>

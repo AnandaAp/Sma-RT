@@ -11,13 +11,16 @@
     <!-- TODO: Update blank fragment layout -->
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/shapebackgroundlogin"
+        android:id="@+id/bgsecond"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/bgsec"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2"
-        tools:layout_editor_absoluteX="-202dp"
-        tools:ignore="MissingConstraints">
+        app:layout_constraintVertical_bias="1.0">
 
         <Button
             android:id="@+id/btndaftar"
@@ -30,24 +33,24 @@
             android:text="Daftar sebagai RT"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/btnlgn"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/btnlgn"
             app:layout_constraintTop_toBottomOf="@+id/textViewlupapassword"
-            app:layout_constraintVertical_bias="0.185" />
+            app:layout_constraintVertical_bias="0.034" />
 
         <Button
             android:id="@+id/btnlgn"
             android:layout_width="342dp"
             android:layout_height="61dp"
-            android:layout_marginTop="44dp"
+            android:layout_marginTop="24dp"
             android:background="@drawable/shapebutton"
             android:backgroundTint="@color/primarybtn"
             android:fontFamily="@font/montserrat"
             android:text="Login"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintHorizontal_bias="0.507"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewlupapassword" />
 
@@ -55,12 +58,12 @@
             android:id="@+id/textViewlupapassword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="20dp"
             android:text="Lupa password ?"
             android:textColor="@color/white"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.674"
+            app:layout_constraintHorizontal_bias="0.931"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/etLoginPasswordAdmin" />
 
@@ -72,9 +75,11 @@
             android:background="@drawable/shapebutton"
             android:ems="10"
             android:inputType="textPassword"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            app:layout_constraintEnd_toEndOf="@+id/etLoginEmailAdmin"
             app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/etLoginEmailAdmin"
             app:layout_constraintTop_toBottomOf="@+id/textViewusername"
             tools:ignore="SpeakableTextPresentCheck" />
 
@@ -87,10 +92,10 @@
             android:textSize="16sp"
             app:layout_constraintBottom_toTopOf="@+id/etLoginPasswordAdmin"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.312"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/textViewusername"
             app:layout_constraintTop_toBottomOf="@+id/etLoginEmailAdmin"
-            app:layout_constraintVertical_bias="0.725" />
+            app:layout_constraintVertical_bias="0.673" />
 
         <EditText
             android:id="@+id/etLoginEmailAdmin"
@@ -100,6 +105,8 @@
             android:background="@drawable/shapebutton"
             android:ems="10"
             android:inputType="textPersonName"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
@@ -110,12 +117,12 @@
             android:id="@+id/textViewusername"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="56dp"
+            android:layout_marginTop="60dp"
             android:text="Email"
             android:textColor="@color/white"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.314"
+            app:layout_constraintHorizontal_bias="0.056"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -123,23 +130,24 @@
             android:id="@+id/view"
             android:layout_width="340dp"
             android:layout_height="3dp"
-            android:layout_marginTop="96dp"
+            android:layout_marginTop="88dp"
             android:background="@color/white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.501"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/btnlgn"
+            app:layout_constraintHorizontal_bias="0.492"
+            app:layout_constraintStart_toStartOf="@+id/btnlgn"
             app:layout_constraintTop_toTopOf="@+id/btnlgn" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="312dp"
-        android:layout_height="128dp"
+        android:layout_width="344dp"
+        android:layout_height="135dp"
+        android:layout_marginTop="40dp"
+        android:contentDescription="TODO"
         android:src="@mipmap/logosmart_foreground"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="-15dp"
-        android:contentDescription="TODO" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

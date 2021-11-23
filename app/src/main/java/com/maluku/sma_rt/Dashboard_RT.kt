@@ -24,7 +24,7 @@ class Warga_RT : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_activity_Warga_rt)
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_home, R.id.navigation_Warga, R.id.navigation_notifications
+                R.id.navigation_home, R.id.navigation_warga, R.id.navigation_manage,R.id.navigation_profil
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)

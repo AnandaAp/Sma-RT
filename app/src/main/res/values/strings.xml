@@ -7,7 +7,7 @@
     <string name="title_activity_Warga_rt">Warga_RT</string>
     <string name="title_home">Home</string>
     <string name="title_Warga">Warga</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_Manage">Manage</string>
     <string name="jenis_kelamin">Jenis Kelamin</string>
     <string name="login_failed_message">Maaf Email atau Password anda Salah</string>
     <string name="login_sukses">Login berhasil!</string>
