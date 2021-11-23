@@ -22,8 +22,8 @@
             android:id="@+id/action_loginChoice_to_loginWarga"
             app:destination="@id/loginWarga" />
         <action
-            android:id="@+id/action_loginChoice_to_registerRT2"
-            app:destination="@id/registerRT2" />
+            android:id="@+id/action_loginChoice_to_registerRT"
+            app:destination="@id/registerRT" />
         <action
             android:id="@+id/action_loginChoice_to_loginRT"
             app:destination="@id/loginRT" />
@@ -59,25 +59,20 @@
         tools:layout="@layout/fragment_view_pager" />
     <fragment
         android:id="@+id/loginRT"
-        android:name="com.maluku.sma_rt.view.LoginRT"
+        android:name="com.maluku.sma_rt.view.pengurus.LoginRT"
         android:label="fragment_login__r_t"
         tools:layout="@layout/fragment_login__r_t" >
         <action
-            android:id="@+id/action_loginRT_to_homeFragment2"
-            app:destination="@id/homeFragment2" />
+            android:id="@+id/action_loginRT_to_registerRT"
+            app:destination="@id/registerRT" />
     </fragment>
     <fragment
-        android:id="@+id/registerRT2"
-        android:name="com.maluku.sma_rt.view.RegisterRT"
+        android:id="@+id/registerRT"
+        android:name="com.maluku.sma_rt.view.pengurus.RegisterRT"
         android:label="fragment_register_r_t"
         tools:layout="@layout/fragment_register_r_t" >
         <action
-            android:id="@+id/action_registerRT2_to_homeFragment2"
-            app:destination="@id/homeFragment2" />
+            android:id="@+id/action_registerRT_to_loginRT"
+            app:destination="@id/loginRT" />
     </fragment>
-    <fragment
-        android:id="@+id/homeFragment2"
-        android:name="com.maluku.sma_rt.ui.home.HomeFragment"
-        android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
 </navigation>

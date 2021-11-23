@@ -21,9 +21,9 @@ object UserValidator {
         return status
     }
 
-    private fun isEmailValid(email: String): Boolean =  Patterns.EMAIL_ADDRESS.matcher(email).matches()
+    fun isEmailValid(email: String): Boolean =  Patterns.EMAIL_ADDRESS.matcher(email).matches()
 
-    private fun isPasswordsValid(password: String): Boolean{
+    fun isPasswordsValid(password: String): Boolean{
         var status = false
         when(passwordLengthValidator(password)){
             true -> {
@@ -38,7 +38,7 @@ object UserValidator {
         return status
     }
 
-    private fun isNameValid(name: String): Boolean{
+    fun isNameValid(name: String): Boolean{
         var status = false
         when(isNameIncludeLetters(name)){
             true -> status = true
@@ -46,7 +46,7 @@ object UserValidator {
         return status
     }
 
-    private fun isNameIncludeLetters(name: String): Boolean{
+    fun isNameIncludeLetters(name: String): Boolean{
         val letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
         var status = false
         if( name.matches( Regex(".*[$letters].*") ) ) {
@@ -55,7 +55,7 @@ object UserValidator {
         return status
     }
 
-    private fun passwordLengthValidator(password: String): Boolean{
+    fun passwordLengthValidator(password: String): Boolean{
         val minPasswordLength = 8
         var status = false
         if( password.length >= minPasswordLength){
@@ -64,7 +64,7 @@ object UserValidator {
         return status
     }
 
-    private fun isPasswordWithNumber(password: String): Boolean{
+    fun isPasswordWithNumber(password: String): Boolean{
         var status = false
         val numbers = "0123456789"
 
@@ -74,7 +74,7 @@ object UserValidator {
         return status
     }
 
-    private fun isPasswordIncludeUppercase(password: String): Boolean{
+    fun isPasswordIncludeUppercase(password: String): Boolean{
         val uppercaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
         var status = false
         if( password.matches( Regex(".*[$uppercaseLetters].*") ) ){
@@ -83,7 +83,7 @@ object UserValidator {
         return status
     }
 
-    private fun isPasswordIncludeLetters(password: String): Boolean{
+    fun isPasswordIncludeLetters(password: String): Boolean{
         val letters = "abcdefghijklmnopqrstuvwxyz"
         var status = false
         if( password.matches( Regex(".*[$letters].*") ) ) {

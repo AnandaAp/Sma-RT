@@ -1,4 +1,4 @@
-package com.maluku.sma_rt
+package com.maluku.sma_rt.view.activity
 
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -7,9 +7,10 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.maluku.sma_rt.R
 import com.maluku.sma_rt.databinding.ActivityDashboardRtBinding
 
-class Warga_RT : AppCompatActivity() {
+class DashboardRTActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDashboardRtBinding
 
@@ -21,7 +22,7 @@ class Warga_RT : AppCompatActivity() {
 
         val navView: BottomNavigationView = binding.navView
 
-        val navController = findNavController(R.id.nav_host_fragment_activity_Warga_rt)
+        val navController = findNavController(R.id.nav_host_fragment_activity_dashboard)
         val appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.navigation_home, R.id.navigation_warga, R.id.navigation_manage,R.id.navigation_profil

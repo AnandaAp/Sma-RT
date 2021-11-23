@@ -203,18 +203,6 @@
             <LayoutPositions>
               <option name="myPositions">
                 <map>
-                  <entry key="homeFragment2">
-                    <value>
-                      <LayoutPositions>
-                        <option name="myPosition">
-                          <Point>
-                            <option name="x" value="1189" />
-                            <option name="y" value="592" />
-                          </Point>
-                        </option>
-                      </LayoutPositions>
-                    </value>
-                  </entry>
                   <entry key="loginChoice">
                     <value>
                       <LayoutPositions>
@@ -236,7 +224,7 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
-                            <entry key="action_loginChoice_to_registerRT2">
+                            <entry key="action_loginChoice_to_registerRT">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -257,7 +245,7 @@
                         </option>
                         <option name="myPositions">
                           <map>
-                            <entry key="action_loginRT_to_homeFragment2">
+                            <entry key="action_loginRT_to_registerRT">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -288,18 +276,18 @@
                       </LayoutPositions>
                     </value>
                   </entry>
-                  <entry key="registerRT2">
+                  <entry key="registerRT">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="764" />
-                            <option name="y" value="601" />
+                            <option name="x" value="12" />
+                            <option name="y" value="12" />
                           </Point>
                         </option>
                         <option name="myPositions">
                           <map>
-                            <entry key="action_registerRT2_to_homeFragment2">
+                            <entry key="action_registerRT_to_loginRT">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -414,8 +402,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-1850" />
-                            <option name="y" value="-719" />
+                            <option name="x" value="-1579" />
+                            <option name="y" value="-228" />
                           </Point>
                         </option>
                         <option name="myPositions">
@@ -440,8 +428,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-2198" />
-                            <option name="y" value="-447" />
+                            <option name="x" value="-1827" />
+                            <option name="y" value="-132" />
                           </Point>
                         </option>
                       </LayoutPositions>
@@ -469,6 +457,52 @@
                               </value>
                             </entry>
                           </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </LayoutPositions>
+          </value>
+        </entry>
+        <entry key="mobile_navigation2.xml">
+          <value>
+            <LayoutPositions>
+              <option name="myPositions">
+                <map>
+                  <entry key="navigation_dashboard">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="256" />
+                            <option name="y" value="12" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="navigation_home">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="12" />
+                            <option name="y" value="12" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="navigation_notifications">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="12" />
+                            <option name="y" value="368" />
+                          </Point>
                         </option>
                       </LayoutPositions>
                     </value>
