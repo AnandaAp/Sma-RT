@@ -8,11 +8,20 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.maluku.sma_rt.R
 import com.maluku.sma_rt.databinding.FragmentHomeBinding
+import com.maluku.sma_rt.view.pengurus.adapter.GaleriAdapter
+import com.maluku.sma_rt.view.pengurus.adapter.InfoAdapter
+import com.maluku.sma_rt.view.warga.adapter.RecyclerViewGaleri
+import com.maluku.sma_rt.view.warga.adapter.RecyclerViewInfo
 
 class HomeFragment : Fragment() {
-
+    private lateinit var rvGaleri: RecyclerView
+    private lateinit var adapterGaleri: GaleriAdapter
+    private lateinit var rvInfo: RecyclerView
+    private lateinit var adapterInfo: InfoAdapter
     private lateinit var homeViewModel: HomeViewModel
     private var _binding: FragmentHomeBinding? = null
 
@@ -25,17 +34,18 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        homeViewModel =
-            ViewModelProvider(this).get(HomeViewModel::class.java)
+        val view = inflater.inflate(R.layout.fragment_home, container, false)
 
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        rvGaleri = view.findViewById(R.id.rv_galeriWarga)
+        adapterGaleri = GaleriAdapter()
+        rvInfo = view.findViewById(R.id.rv_infoTerkini)
+        adapterInfo = InfoAdapter()
+        rvGaleri.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL,false)
+        rvGaleri.adapter = adapterGaleri
+        rvInfo.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL,false)
+        rvInfo.adapter = adapterInfo
 
-        val textView: TextView = binding.textHome
-        homeViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
-        return root
+        return view
     }
 
     override fun onDestroyView() {
