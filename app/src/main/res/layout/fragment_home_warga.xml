@@ -66,17 +66,16 @@
                 app:layout_constraintTop_toBottomOf="@+id/angkasaldo" />
 
 
-            <Button
-                android:id="@+id/btn_isisaldo"
+            <TextView
+                android:id="@+id/tv_isisaldo"
                 android:layout_width="wrap_content"
-                android:layout_height="35dp"
+                android:layout_height="wrap_content"
                 android:layout_marginEnd="10dp"
-                android:background="@drawable/bg_roundedmax"
-                android:backgroundTint="@color/light_green"
+                android:background="@drawable/bg_isiwallet"
+                android:padding="8dp"
                 android:text="isi saldo"
                 android:textAllCaps="false"
-                android:textColor="@color/white"
-                android:textSize="10sp"
+                android:textColor="@color/light_green"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -209,7 +208,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
-            android:text="Hi, Kevin"
+            android:text="Hi, Abghi"
             android:textSize="16sp"
             android:textColor="@color/white"
             android:textStyle="bold"
@@ -263,6 +262,14 @@
         android:layout_marginTop="10dp"
         app:layout_constraintTop_toBottomOf="@+id/tv_info"/>
 
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/green"
+        app:layout_constraintTop_toBottomOf="@+id/rv_info" />
+
     <TextView
         android:id="@+id/tv_galeri"
         android:layout_width="wrap_content"
@@ -272,7 +279,7 @@
         android:layout_marginStart="18dp"
         android:layout_marginTop="20dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rv_info" />
+        app:layout_constraintTop_toBottomOf="@+id/view" />
 
     <TextView
         android:id="@+id/tv_lihatsemuagaleri"
@@ -285,13 +292,13 @@
         android:textSize="12sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rv_info" />
+        app:layout_constraintTop_toBottomOf="@+id/view" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_galeri"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintTop_toBottomOf="@+id/tv_galeri"/>
 
 

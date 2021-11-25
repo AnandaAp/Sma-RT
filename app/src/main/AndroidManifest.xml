@@ -29,7 +29,7 @@
             android:name=".view.activity.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".view.activity.SecondActivity"
+            android:name=".view.activity.DashboardWargaActivity"
             android:enabled="true"
             android:exported="true" >
             <intent-filter>

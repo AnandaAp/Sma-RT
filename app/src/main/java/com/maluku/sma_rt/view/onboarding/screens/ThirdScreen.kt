@@ -10,7 +10,7 @@ import androidx.viewpager2.widget.ViewPager2
 
 import com.maluku.sma_rt.R
 import com.maluku.sma_rt.databinding.FragmentThirdScreenBinding
-import com.maluku.sma_rt.view.activity.SecondActivity
+import com.maluku.sma_rt.view.activity.DashboardWargaActivity
 
 class ThirdScreen : Fragment() {
 
@@ -26,7 +26,7 @@ class ThirdScreen : Fragment() {
         val viewPager =  activity?.findViewById<ViewPager2>(R.id.viewPager)
 
         binding.getstarted.setOnClickListener{
-        val intent = Intent (activity, SecondActivity::class.java)
+        val intent = Intent (activity, DashboardWargaActivity::class.java)
         startActivity(intent)
         }
 
