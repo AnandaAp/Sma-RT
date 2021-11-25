@@ -30,5 +30,6 @@ class DashboardRTActivity : AppCompatActivity() {
         )
 //        setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+        navView.setItemIconTintList(null)
     }
 }
