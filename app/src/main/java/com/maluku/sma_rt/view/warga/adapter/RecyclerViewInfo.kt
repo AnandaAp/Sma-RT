@@ -11,7 +11,7 @@ class RecyclerViewInfo: RecyclerView.Adapter<RecyclerViewInfo.MyViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.info_recycler_row_item, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.recycler_infowarga_item, parent, false)
         return MyViewHolder(view)
     }
 

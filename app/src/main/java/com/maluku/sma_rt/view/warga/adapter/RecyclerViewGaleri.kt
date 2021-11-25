@@ -9,7 +9,7 @@ import com.maluku.sma_rt.R
 class RecyclerViewGaleri: RecyclerView.Adapter<RecyclerViewGaleri.MyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.galeri_recycler_row_item, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.recycler_galeriwarga_item, parent, false)
         return MyViewHolder(view)
     }
 

@@ -26,10 +26,10 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:exported="false" />
         <activity
-            android:name=".view.activity.SecondActivity"
+            android:name=".view.activity.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".view.activity.MainActivity"
+            android:name=".view.activity.SecondActivity"
             android:enabled="true"
             android:exported="true" >
             <intent-filter>

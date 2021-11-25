@@ -10,7 +10,7 @@ class RecyclerViewTerlaris: RecyclerView.Adapter<RecyclerViewTerlaris.MyViewHold
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.terlaris_recycler_vertical_item, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.recycler_terlaris_item, parent, false)
         return MyViewHolder(view)
     }
 
