@@ -336,15 +336,16 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_infoTerkini"
         android:layout_width="0dp"
         android:layout_height="202dp"
         app:layout_constraintBottom_toTopOf="@+id/view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_home"
-        tools:listitem="@layout/galeri_kegiatan_warga_rt"/>
+        app:layout_constraintTop_toBottomOf="@+id/text_home" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_galeriWarga"
         android:layout_width="0dp"
         android:layout_height="202dp"
         app:layout_constraintBottom_toBottomOf="parent"
