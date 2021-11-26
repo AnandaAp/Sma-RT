@@ -7,32 +7,27 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.maluku.sma_rt.R
+import com.maluku.sma_rt.databinding.FragmentTambahProdukBinding
 
 
-import com.maluku.sma_rt.databinding.FragmentKelolaTokoBinding
+class TambahProduk : Fragment() {
 
-class KelolaToko : Fragment() {
+    private lateinit var binding: FragmentTambahProdukBinding
 
-    private lateinit var binding: FragmentKelolaTokoBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentKelolaTokoBinding.inflate(layoutInflater)
+        binding = FragmentTambahProdukBinding.inflate(layoutInflater)
 
         binding.btnBack.setOnClickListener{
-            findNavController().navigate(R.id.action_kelolaToko_to_akunWarga)
+            findNavController().navigate(R.id.action_tambahProduk_to_produkWarga)
         }
 
-        binding.cardProduk.setOnClickListener{
-            findNavController().navigate(R.id.action_kelolaToko_to_produkWarga)
-        }
 
 
         return binding.root
     }
-
-
 }

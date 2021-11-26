@@ -8,6 +8,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ListView
+import androidx.navigation.fragment.findNavController
+import com.maluku.sma_rt.R
 import com.maluku.sma_rt.databinding.FragmentAkunWargaBinding
 import com.maluku.sma_rt.view.activity.DashboardWargaActivity
 
@@ -17,8 +19,6 @@ import com.maluku.sma_rt.view.activity.DashboardWargaActivity
 class AkunWarga : Fragment() {
 
     private lateinit var binding: FragmentAkunWargaBinding
-    private lateinit var listView: ListView
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,6 +30,10 @@ class AkunWarga : Fragment() {
         binding.btnBack.setOnClickListener{
             val intent = Intent (activity, DashboardWargaActivity::class.java)
             startActivity(intent)
+        }
+
+        binding.menuKelolatoko.setOnClickListener{
+            findNavController().navigate(R.id.action_akunWarga_to_kelolaToko)
         }
 
 

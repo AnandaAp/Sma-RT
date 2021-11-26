@@ -1,0 +1,66 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="10dp"
+        android:backgroundTint="#F5F5F5"
+        android:elevation="6dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imageBarang"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:padding="12dp"
+                android:src="@drawable/gambarproduk1" />
+
+            <TextView
+                android:id="@+id/tv_namabarang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="20dp"
+                android:text="Gulaku"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/montserrat"
+                app:layout_constraintStart_toEndOf="@+id/imageBarang"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_hargabarang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Rp. 14.000/kg"
+                android:textSize="12sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/montserrat"
+                app:layout_constraintStart_toStartOf="@+id/tv_namabarang"
+                app:layout_constraintTop_toBottomOf="@+id/tv_namabarang" />
+
+            <ImageView
+                android:id="@+id/img_forward"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_margin="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:backgroundTint="@color/black"
+                app:srcCompat="@drawable/ic_arrow_forward_ios" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

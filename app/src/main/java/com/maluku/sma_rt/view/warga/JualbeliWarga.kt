@@ -8,11 +8,15 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.maluku.sma_rt.R
+import com.maluku.sma_rt.databinding.FragmentAkunWargaBinding
+import com.maluku.sma_rt.databinding.FragmentJualbeliWargaBinding
 import com.maluku.sma_rt.view.warga.adapter.RecyclerViewInfo
 import com.maluku.sma_rt.view.warga.adapter.RecyclerViewTerlaris
 import com.maluku.sma_rt.view.warga.adapter.RecyclerViewToko
 
 class JualbeliWarga : Fragment() {
+
+    private lateinit var binding: FragmentJualbeliWargaBinding
 
     private lateinit var rvToko: RecyclerView
     private lateinit var rvTerlaris: RecyclerView
@@ -25,20 +29,20 @@ class JualbeliWarga : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_jualbeli_warga, container, false)
+        binding = FragmentJualbeliWargaBinding.inflate(layoutInflater)
 
 
-        rvToko = view.findViewById(R.id.rv_toko)
+        rvToko = binding.rvToko
         adapterToko = RecyclerViewToko()
 
-        rvTerlaris = view.findViewById(R.id.rv_terlaris)
+        rvTerlaris = binding.rvTerlaris
         adapterTerlaris = RecyclerViewTerlaris()
 
         //Horizontal RecyclerView
         rvToko.layoutManager = LinearLayoutManager(activity,LinearLayoutManager.HORIZONTAL,false)
         rvToko.setAdapter(adapterToko)
 
-
+        //Vertical Recyclerview
         rvTerlaris.layoutManager = LinearLayoutManager(activity,LinearLayoutManager.VERTICAL,false)
         rvTerlaris.setAdapter(adapterTerlaris)
 
@@ -48,7 +52,7 @@ class JualbeliWarga : Fragment() {
 
 
 
-        return view
+        return binding.root
     }
 
 }
