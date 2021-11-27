@@ -21,7 +21,6 @@ private const val TAG = "TOKEN LOGIN"
 
 class WargaFragment : Fragment(), DaftarWargaViewInterface {
     private lateinit var binding: FragmentWargaBinding
-    private lateinit var token: String
     private lateinit var rvWarga: RecyclerView
     private lateinit var adapterWarga: WargaAdapter
 
@@ -36,8 +35,9 @@ class WargaFragment : Fragment(), DaftarWargaViewInterface {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        getToken()
-        DaftarWargaPresenter(requireActivity(), this).getDaftarWargaPresenter(token)
+        rvWarga = binding.rvListWarga
+        adapterWarga = WargaAdapter(arrayListOf())
+        DaftarWargaPresenter(requireActivity(), this).getDaftarWargaPresenter(getToken())
     }
 
     private fun bindingView(): View {
@@ -46,9 +46,7 @@ class WargaFragment : Fragment(), DaftarWargaViewInterface {
     }
 
     override fun adapterStart() {
-        rvWarga = binding.rvListWarga
-        adapterWarga = WargaAdapter(arrayListOf())
-        rvWarga.layoutManager = LinearLayoutManager(requireActivity())
+        rvWarga.layoutManager = LinearLayoutManager(requireContext())
         rvWarga.adapter = adapterWarga
     }
 
@@ -64,10 +62,11 @@ class WargaFragment : Fragment(), DaftarWargaViewInterface {
         Toast.makeText(requireContext(),"Pesan: $t",Toast.LENGTH_LONG).show()
     }
 
-    private fun getToken(){
+    private fun getToken(): String {
         val preferences = AdminSession(requireActivity())
-        token = preferences.getValueString(SHARED_PREFERENCE_TOKEN_KEY)
+        val token = preferences.getValueString(SHARED_PREFERENCE_TOKEN_KEY)
         Log.d(TAG,token)
+        return token
     }
 
     override fun resultSuccess(warga: List<GetAllWargaItem>) {
