@@ -1,28 +1,19 @@
-package com.maluku.sma_rt.ui.warga
+package com.maluku.sma_rt.view.pengurus.bottomnavigation
 
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentContainer
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.maluku.sma_rt.R
-import com.maluku.sma_rt.databinding.FragmentRegisterRTBinding
 import com.maluku.sma_rt.databinding.FragmentWargaBinding
 import com.maluku.sma_rt.extentions.AdminSession
 import com.maluku.sma_rt.extentions.AdminSession.Companion.SHARED_PREFERENCE_TOKEN_KEY
-import com.maluku.sma_rt.extentions.UserSession
 import com.maluku.sma_rt.model.warga.GetAllWargaItem
 import com.maluku.sma_rt.presenter.DaftarWargaPresenter
-import com.maluku.sma_rt.view.pengurus.adapter.GaleriAdapter
-import com.maluku.sma_rt.view.pengurus.adapter.InfoAdapter
 import com.maluku.sma_rt.view.pengurus.adapter.WargaAdapter
 import com.maluku.sma_rt.view.viewInterface.DaftarWargaViewInterface
 
