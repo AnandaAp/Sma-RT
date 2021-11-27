@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 class WargaViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is Warga Fragment"
+        value = "Daftar Warga"
     }
     val text: LiveData<String> = _text
 }
