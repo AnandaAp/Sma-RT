@@ -1,12 +1,18 @@
 package com.maluku.sma_rt.api
 
+import com.maluku.sma_rt.extentions.UserSession
 import com.maluku.sma_rt.model.login.OnLoginSuccessResponse
 import com.maluku.sma_rt.model.pengurus.CreatePengurusResponse
 import com.maluku.sma_rt.model.warga.CreateWargaResponse
 import com.maluku.sma_rt.model.warga.DetailLoginedWargaResponse
+import com.maluku.sma_rt.model.warga.GetAllWargaResponse
 import com.maluku.sma_rt.model.warga.WargaLoginResponse
 import retrofit2.Call
 import retrofit2.http.*
+import retrofit2.http.GET
+
+
+
 
 interface Service {
 
@@ -49,4 +55,19 @@ interface Service {
         @Field("email") email: String,
         @Field("password") password: String
     ): Call<OnLoginSuccessResponse>
+
+//    @Headers("Authorization: Bearer Token")
+//    @GET("warga")
+//    fun getDaftarWarga(
+//        @Field("Token") token: String
+//    ): Call<GetAllWargaResponse>
+
+    @GET("warga")
+    fun getDaftarWarga(
+        @Header("Authorization") authHeader: String
+    ): Call<GetAllWargaResponse>
+
+//    @Header("Authorization")
+//    @GET("/warga")
+//    fun getDaftarWarga(): Call<GetAllWargaResponse>
 }

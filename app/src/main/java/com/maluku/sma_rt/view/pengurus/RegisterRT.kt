@@ -260,7 +260,7 @@ class RegisterRT : Fragment(), RegisterAdminInterface {
 
     private fun btnLoginNavigateToLoginAdmin() {
         binding.btnLogin.setOnClickListener{
-            findNavController().navigate(R.id.action_loginRT_to_registerRT)
+            findNavController().navigate(R.id.action_registerRT_to_loginRT)
         }
     }
 

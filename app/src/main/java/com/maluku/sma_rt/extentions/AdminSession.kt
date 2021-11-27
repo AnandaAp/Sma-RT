@@ -45,7 +45,7 @@ class AdminSession(activity: Activity) {
 
     companion object {
         const val SHARED_PREFERENCE_ID_RT_KEY = "ID RT CODE"
-        const val SHARED_PREFERENCE_TOKEN_KEY = "TOKEN CODE"
+        const val SHARED_PREFERENCE_TOKEN_KEY = "TOKEN ADMIN CODE"
         const val SHARED_PREFERENCE_EMAIL_KEY = "EMAIL CODE"
         const val SHARED_PREFERENCE_PASSWORD_KEY = "PASSWORD CODE"
         const val SHARED_PREFERENCE_NAME_KEY = "NAME CODE"

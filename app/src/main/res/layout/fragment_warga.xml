@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.warga.WargaFragment">
+    tools:context=".view.pengurus.bottomnavigation.WargaFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout4"
@@ -16,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/textView10"
+            android:id="@+id/titleDaftarWarga"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Daftar Warga"
@@ -87,6 +87,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_list_warga"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="2dp"
