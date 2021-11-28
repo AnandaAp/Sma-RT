@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.activity.SecondActivity">
+    tools:context=".view.activity.DashboardWargaActivity">
 
 
     <fragment
-        android:id="@+id/fragmentBottom"
+        android:id="@+id/fragment_dashboard_warga"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
