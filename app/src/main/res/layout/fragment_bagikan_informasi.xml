@@ -21,12 +21,12 @@
 
     <Spinner
         android:id="@+id/spinner"
-        android:layout_width="214dp"
+        android:layout_width="259dp"
         android:layout_height="48dp"
         android:background="@drawable/rectangle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.62"
+        app:layout_constraintHorizontal_bias="0.47"
         app:layout_constraintStart_toEndOf="@+id/textView11"
         app:layout_constraintTop_toTopOf="@+id/textView11"
         app:layout_constraintVertical_bias="0.0"
@@ -53,7 +53,8 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/textView12"
         app:layout_constraintTop_toBottomOf="@+id/textView12"
-        tools:ignore="SpeakableTextPresentCheck" />
+        tools:ignore="SpeakableTextPresentCheck"
+        android:autofillHints="" />
 
     <TextView
         android:id="@+id/textView13"
@@ -76,7 +77,8 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/textView13"
         app:layout_constraintTop_toBottomOf="@+id/textView13"
-        tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
+        tools:ignore="MissingConstraints,SpeakableTextPresentCheck"
+        android:autofillHints="" />
 
     <TextView
         android:id="@+id/textView14"
