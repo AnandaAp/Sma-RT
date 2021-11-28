@@ -65,18 +65,19 @@
                 app:layout_constraintStart_toEndOf="@+id/wallet"
                 app:layout_constraintTop_toBottomOf="@+id/angkasaldo" />
 
-
-            <Button
-                android:id="@+id/btn_isisaldo"
+            <TextView
+                android:id="@+id/tv_isisaldo"
                 android:layout_width="wrap_content"
-                android:layout_height="35dp"
+                android:layout_height="wrap_content"
                 android:layout_marginEnd="10dp"
-                android:background="@drawable/bg_roundedmax"
-                android:backgroundTint="@color/light_green"
+                android:background="@drawable/bg_isiwallet"
+                android:gravity="center"
+                android:padding="8dp"
                 android:text="isi saldo"
+                android:textSize="12sp"
                 android:textAllCaps="false"
-                android:textColor="@color/white"
-                android:textSize="10sp"
+                android:fontFamily="@font/montserrat_regular"
+                android:textColor="@color/light_green"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
