@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import androidx.viewpager2.widget.ViewPager2
 import com.maluku.sma_rt.R
 import com.maluku.sma_rt.databinding.FragmentFirstScreenBinding
-import com.maluku.sma_rt.view.activity.SecondActivity
+import com.maluku.sma_rt.view.activity.DashboardWargaActivity
 
 
 class FirstScreen : Fragment() {
@@ -31,7 +31,7 @@ class FirstScreen : Fragment() {
         }
 
         binding.skip.setOnClickListener{
-            val intent = Intent (activity, SecondActivity::class.java)
+            val intent = Intent (activity, DashboardWargaActivity::class.java)
             startActivity(intent)
         }
 

@@ -2,7 +2,6 @@ package com.maluku.sma_rt.view.warga
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Patterns
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,8 +11,7 @@ import androidx.navigation.fragment.findNavController
 import com.maluku.sma_rt.R
 import com.maluku.sma_rt.databinding.FragmentLoginWargaBinding
 import com.maluku.sma_rt.presenter.WargaLoginPresenter
-import com.maluku.sma_rt.presenter.WargaRegisterPresenter
-import com.maluku.sma_rt.view.activity.SecondActivity
+import com.maluku.sma_rt.view.activity.DashboardWargaActivity
 import com.maluku.sma_rt.view.viewInterface.LoginWargaInterface
 
 class LoginWarga : Fragment(), LoginWargaInterface{
@@ -96,7 +94,7 @@ class LoginWarga : Fragment(), LoginWargaInterface{
         Thread.sleep(1000)
         val intent = Intent(
             requireActivity(),
-            SecondActivity::class.java
+            DashboardWargaActivity::class.java
         )
         startActivity(intent)
         requireActivity().finish()

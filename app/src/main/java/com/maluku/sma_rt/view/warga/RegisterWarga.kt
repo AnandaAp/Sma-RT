@@ -13,10 +13,9 @@ import android.widget.AutoCompleteTextView
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.maluku.sma_rt.R
-import com.maluku.sma_rt.databinding.FragmentLoginWargaBinding
 import com.maluku.sma_rt.databinding.FragmentRegisterWargaBinding
 import com.maluku.sma_rt.presenter.WargaRegisterPresenter
-import com.maluku.sma_rt.view.activity.SecondActivity
+import com.maluku.sma_rt.view.activity.DashboardWargaActivity
 import com.maluku.sma_rt.view.viewInterface.RegisterWargaInterface
 
 class RegisterWarga : Fragment(), RegisterWargaInterface {
@@ -191,7 +190,7 @@ class RegisterWarga : Fragment(), RegisterWargaInterface {
         Thread.sleep(1000)
         val intent = Intent(
             requireActivity(),
-            SecondActivity::class.java
+            DashboardWargaActivity::class.java
         )
         startActivity(intent)
         requireActivity().finish()
