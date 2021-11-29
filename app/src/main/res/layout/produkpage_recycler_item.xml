@@ -17,11 +17,12 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/imageBarang"
+                android:id="@+id/img_barang"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:padding="12dp"
-                android:src="@drawable/gambarproduk1" />
+                android:src="@drawable/gambarproduk1"
+                tools:ignore="MissingConstraints" />
 
             <TextView
                 android:id="@+id/tv_namabarang"
@@ -33,7 +34,7 @@
                 android:textSize="16sp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/montserrat"
-                app:layout_constraintStart_toEndOf="@+id/imageBarang"
+                app:layout_constraintStart_toEndOf="@+id/img_barang"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
