@@ -80,6 +80,23 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <TextView
+            android:id="@+id/btn_cobaedit"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_margin="20dp"
+            android:background="@drawable/btn_rounded2"
+            android:backgroundTint="@color/green"
+            android:clickable="true"
+            android:fontFamily="@font/montserrat_semibold"
+            android:foreground="?attr/selectableItemBackground"
+            android:padding="10dp"
+            android:text="Coba Edit Produk"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_produkpage"

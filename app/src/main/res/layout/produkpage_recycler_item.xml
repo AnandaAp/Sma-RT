@@ -17,7 +17,7 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/img_barang"
+                android:id="@+id/img_produk"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:padding="12dp"
@@ -25,7 +25,7 @@
                 tools:ignore="MissingConstraints" />
 
             <TextView
-                android:id="@+id/tv_namabarang"
+                android:id="@+id/tv_namaproduk"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
@@ -34,11 +34,11 @@
                 android:textSize="16sp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/montserrat"
-                app:layout_constraintStart_toEndOf="@+id/img_barang"
+                app:layout_constraintStart_toEndOf="@+id/img_produk"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/tv_hargabarang"
+                android:id="@+id/tv_hargaproduk"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -46,8 +46,8 @@
                 android:textSize="12sp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/montserrat"
-                app:layout_constraintStart_toStartOf="@+id/tv_namabarang"
-                app:layout_constraintTop_toBottomOf="@+id/tv_namabarang" />
+                app:layout_constraintStart_toStartOf="@+id/tv_namaproduk"
+                app:layout_constraintTop_toBottomOf="@+id/tv_namaproduk" />
 
             <ImageView
                 android:id="@+id/img_forward"

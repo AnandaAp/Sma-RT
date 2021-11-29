@@ -40,6 +40,10 @@ class ProdukPage : Fragment() {
             findNavController().navigate(R.id.action_produkPage_to_tambahProduk)
         }
 
+        binding.btnCobaedit.setOnClickListener {
+            findNavController().navigate(R.id.action_produkPage_to_editProduk)
+        }
+
 
         return binding.root
     }

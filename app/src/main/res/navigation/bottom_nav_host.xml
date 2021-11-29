@@ -52,6 +52,9 @@
         <action
             android:id="@+id/action_produkPage_to_tambahProduk"
             app:destination="@id/tambahProduk" />
+        <action
+            android:id="@+id/action_produkPage_to_editProduk"
+            app:destination="@id/editProduk" />
     </fragment>
     <fragment
         android:id="@+id/tambahProduk"
@@ -60,6 +63,15 @@
         tools:layout="@layout/fragment_tambah_produk" >
         <action
             android:id="@+id/action_tambahProduk_to_produkPage"
+            app:destination="@id/produkPage" />
+    </fragment>
+    <fragment
+        android:id="@+id/editProduk"
+        android:name="com.maluku.sma_rt.view.warga.EditProduk"
+        android:label="fragment_edit_produk"
+        tools:layout="@layout/fragment_edit_produk" >
+        <action
+            android:id="@+id/action_editProduk_to_produkPage"
             app:destination="@id/produkPage" />
     </fragment>
 </navigation>
