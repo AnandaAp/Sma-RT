@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_navigation_home_to_navigation_manage"
             app:destination="@id/navigation_manage" />
+        <action
+            android:id="@+id/action_navigation_home_to_tambahKeluargaFragment"
+            app:destination="@id/tambahKeluargaFragment" />
     </fragment>
 
     <fragment
@@ -49,4 +52,9 @@
         android:name="com.maluku.sma_rt.view.pengurus.bottomnavigation.AccountFragment"
         android:label="@string/title_Manage"
         tools:layout="@layout/fragment_account" />
+    <fragment
+        android:id="@+id/tambahKeluargaFragment"
+        android:name="com.maluku.sma_rt.view.pengurus.TambahKeluargaFragment"
+        android:label="fragment_tambah_keluarga"
+        tools:layout="@layout/fragment_tambah_keluarga" />
 </navigation>

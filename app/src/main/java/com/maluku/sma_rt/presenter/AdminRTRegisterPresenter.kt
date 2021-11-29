@@ -3,8 +3,16 @@ package com.maluku.sma_rt.presenter
 import android.app.Activity
 import android.util.Log
 import android.widget.Toast
+import com.maluku.sma_rt.R
 import com.maluku.sma_rt.api.RetrofitService
-import com.maluku.sma_rt.extentions.AdminSession
+import com.maluku.sma_rt.extentions.UserSession
+import com.maluku.sma_rt.extentions.UserSession.Companion.SHARED_PREFERENCE_EMAIL_KEY
+import com.maluku.sma_rt.extentions.UserSession.Companion.SHARED_PREFERENCE_GENDER_KEY
+import com.maluku.sma_rt.extentions.UserSession.Companion.SHARED_PREFERENCE_ID_RT_KEY
+import com.maluku.sma_rt.extentions.UserSession.Companion.SHARED_PREFERENCE_NAME_KEY
+import com.maluku.sma_rt.extentions.UserSession.Companion.SHARED_PREFERENCE_PASSWORD_KEY
+import com.maluku.sma_rt.extentions.UserSession.Companion.SHARED_PREFERENCE_PHONE_NUMBER_KEY
+import com.maluku.sma_rt.extentions.UserSession.Companion.SHARED_PREFERENCE_TOKEN_KEY
 import com.maluku.sma_rt.extentions.UserValidator
 import com.maluku.sma_rt.model.pengurus.CreatePengurusResponse
 import com.maluku.sma_rt.view.viewInterface.RegisterAdminInterface
@@ -71,6 +79,7 @@ class AdminRTRegisterPresenter(private val activity: Activity, private val view:
                                 )
                             }
                             Toast.makeText(activity,"Pesan: ${response.message()}",Toast.LENGTH_SHORT).show()
+                            view.onRegisterSuccess(activity.getString(R.string.login_sukses))
                         }
                         false -> {
                             Toast.makeText(activity,"Pesan: ${response.message()}",Toast.LENGTH_SHORT).show()
@@ -93,20 +102,14 @@ class AdminRTRegisterPresenter(private val activity: Activity, private val view:
         password: String,
         token: String
     ) {
-        val adminSession = AdminSession(activity)
-        adminSession.save(AdminSession.SHARED_PREFERENCE_TOKEN_KEY,token)
-        adminSession.save(AdminSession.SHARED_PREFERENCE_ID_RT_KEY,kodeRT)
-        adminSession.save(AdminSession.SHARED_PREFERENCE_NAME_KEY,namaAdmin)
-        adminSession.save(AdminSession.SHARED_PREFERENCE_GENDER_KEY,genderAdmin)
-        adminSession.save(AdminSession.SHARED_PREFERENCE_PHONE_NUMBER_KEY,noHpAdmin)
-        adminSession.save(AdminSession.SHARED_PREFERENCE_EMAIL_KEY,emailAdmin)
-        adminSession.save(AdminSession.SHARED_PREFERENCE_PASSWORD_KEY,password)
-        navigateToAdminDashboard()
-    }
-
-    //navigate to admin dashboard
-    private fun navigateToAdminDashboard() {
-        Toast.makeText(activity,"Selamat Datang", Toast.LENGTH_LONG).show()
+        val userSession = UserSession(activity)
+        userSession.save(SHARED_PREFERENCE_TOKEN_KEY,token)
+        userSession.save(SHARED_PREFERENCE_ID_RT_KEY,kodeRT)
+        userSession.save(SHARED_PREFERENCE_NAME_KEY,namaAdmin)
+        userSession.save(SHARED_PREFERENCE_GENDER_KEY,genderAdmin)
+        userSession.save(SHARED_PREFERENCE_PHONE_NUMBER_KEY,noHpAdmin)
+        userSession.save(SHARED_PREFERENCE_EMAIL_KEY,emailAdmin)
+        userSession.save(SHARED_PREFERENCE_PASSWORD_KEY,password)
     }
 
 }
