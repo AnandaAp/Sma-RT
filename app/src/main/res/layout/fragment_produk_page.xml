@@ -75,6 +75,8 @@
             android:text="Tambah "
             android:textColor="@color/white"
             android:textSize="14sp"
+            android:foreground="?attr/selectableItemBackground"
+            android:clickable="true"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

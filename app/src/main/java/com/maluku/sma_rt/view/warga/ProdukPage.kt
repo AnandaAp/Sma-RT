@@ -36,9 +36,9 @@ class ProdukPage : Fragment() {
             findNavController().navigate(R.id.action_produkPage_to_kelolaToko)
         }
 
-//        binding.btnTambahproduk.setOnClickListener{
-//            findNavController().navigate(R.id.action_produkPage_to_tambahProduk)
-//        }
+        binding.btnTambahproduk.setOnClickListener{
+            findNavController().navigate(R.id.action_produkPage_to_tambahProduk)
+        }
 
 
         return binding.root

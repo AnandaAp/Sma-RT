@@ -19,4 +19,8 @@
     <string name="warga">Warga</string>
     <string name="manage">Manage</string>
     <string name="profil">Profil</string>
+
+    <string name="stok_habis">Jika stok produk habis maka harga produk akan diganti dengan stok habis</string>
+    <string name="aktifkan_produk">Jika produk diaktifkan maka akan tampil di menu dalam aplikasi</string>
+    <string name="hapus_produk">Jika produk dihapus maka tidak akan bisa tampil di menu dalam aplikasi</string>
 </resources>
