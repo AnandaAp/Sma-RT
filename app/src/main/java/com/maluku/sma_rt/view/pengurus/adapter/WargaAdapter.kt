@@ -24,7 +24,7 @@ class WargaAdapter(val listWarga: ArrayList<GetAllWargaItem>): RecyclerView.Adap
         val data = listWarga[position]
         holder.nama.text = data.nama.toString()
         holder.noHp.text = data.noHp.toString()
-        holder.email.text = data.idKeluarga.toString()
+        holder.email.text = data.email.toString()
         holder.gender.text = data.gender.toString()
     }
 

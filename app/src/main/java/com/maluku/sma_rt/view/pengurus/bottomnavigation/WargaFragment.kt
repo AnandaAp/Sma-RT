@@ -35,8 +35,7 @@ class WargaFragment : Fragment(), DaftarWargaViewInterface {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        rvWarga = binding.rvListWarga
-        adapterWarga = WargaAdapter(arrayListOf())
+        setRecyclerViewWarga()
         DaftarWargaPresenter(requireActivity(), this).getDaftarWargaPresenter(getToken())
     }
 
@@ -45,8 +44,10 @@ class WargaFragment : Fragment(), DaftarWargaViewInterface {
         return binding.root
     }
 
-    override fun adapterStart() {
+    private fun setRecyclerViewWarga(){
+        rvWarga = binding.rvListWarga
         rvWarga.layoutManager = LinearLayoutManager(requireContext())
+        adapterWarga = WargaAdapter(arrayListOf())
         rvWarga.adapter = adapterWarga
     }
 
@@ -70,7 +71,6 @@ class WargaFragment : Fragment(), DaftarWargaViewInterface {
     }
 
     override fun resultSuccess(warga: List<GetAllWargaItem>) {
-        adapterStart()
         showDataWarga(warga)
     }
 
