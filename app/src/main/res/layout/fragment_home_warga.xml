@@ -212,7 +212,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
-            android:text="Hi, Kevin"
+            android:text="Hi, Abghi"
             android:textSize="16sp"
             android:textColor="@color/white"
             android:textStyle="bold"
