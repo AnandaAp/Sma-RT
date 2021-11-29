@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="30dp"
     android:background="@color/white"
     tools:context=".view.warga.JualbeliWarga">
 
@@ -13,7 +14,6 @@
         android:layout_height="180dp"
         android:background="@drawable/bg_market"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -23,12 +23,14 @@
             android:layout_marginStart="13dp"
             android:layout_marginEnd="13dp"
             android:layout_marginBottom="16dp"
+            android:textCursorDrawable="@drawable/color_cursor"
             android:background="@drawable/btn_rounded2"
             android:drawableEnd="@drawable/ic_search"
             android:hint="Cari kebutuhan anda..."
             android:paddingStart="18dp"
             android:textColorHint="@color/grey"
             android:textSize="14sp"
+            android:fontFamily="@font/montserrat_medium"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -39,8 +41,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="18dp"
             android:layout_marginTop="40dp"
-            android:text="Hi, Kevin"
-            android:fontFamily="@font/montserrat"
+            android:text="Hi, Abghi"
+            android:fontFamily="@font/montserrat_semibold"
             android:textColor="@color/white"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -49,8 +51,8 @@
 
         <ImageView
             android:id="@+id/troli"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_marginEnd="18dp"
             android:src="@drawable/ic_troli"
             app:layout_constraintBottom_toBottomOf="@+id/tv_nama"
@@ -77,10 +79,10 @@
                     android:id="@+id/tv_numbertroli"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="5"
+                    android:text="2"
                     android:textColor="@color/white"
                     android:textSize="12sp"
-                    android:textStyle="bold"
+                    android:fontFamily="@font/montserrat_semibold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -95,7 +97,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="18dp"
         android:layout_marginTop="26dp"
-        android:fontFamily="@font/montserrat"
+        android:fontFamily="@font/montserrat_semibold"
         android:text="Toko/Warung"
         android:textColor="@color/black"
         android:textSize="16sp"
@@ -109,24 +111,34 @@
         android:layout_marginTop="12dp"
         app:layout_constraintTop_toBottomOf="@+id/tv_warung"/>
 
-    <TextView
-        android:id="@+id/tv_terlaris"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
-        android:layout_marginTop="26dp"
-        android:fontFamily="@font/montserrat"
-        android:text="Terlaris"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rv_toko" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_terlaris"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        app:layout_constraintTop_toBottomOf="@+id/tv_terlaris"
-        tools:layout_editor_absoluteX="1dp" />
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/rv_toko">
+
+        <TextView
+            android:id="@+id/tv_terlaris"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="26dp"
+            android:fontFamily="@font/montserrat_semibold"
+            android:text="Terlaris"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rv_toko" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_terlaris"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:layout_constraintTop_toBottomOf="@+id/tv_terlaris"/>
+
+
+    </LinearLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

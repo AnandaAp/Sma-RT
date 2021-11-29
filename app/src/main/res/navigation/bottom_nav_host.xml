@@ -24,5 +24,42 @@
         android:id="@+id/akunWarga"
         android:name="com.maluku.sma_rt.view.warga.AkunWarga"
         android:label="fragment_akun_warga"
-        tools:layout="@layout/fragment_akun_warga" />
+        tools:layout="@layout/fragment_akun_warga" >
+        <action
+            android:id="@+id/action_akunWarga_to_kelolaToko"
+            app:destination="@id/kelolaToko" />
+    </fragment>
+    <fragment
+        android:id="@+id/kelolaToko"
+        android:name="com.maluku.sma_rt.view.warga.KelolaToko"
+        android:label="fragment_kelola_toko"
+        tools:layout="@layout/fragment_kelola_toko" >
+        <action
+            android:id="@+id/action_kelolaToko_to_akunWarga"
+            app:destination="@id/akunWarga" />
+        <action
+            android:id="@+id/action_kelolaToko_to_produkPage"
+            app:destination="@id/produkPage" />
+    </fragment>
+    <fragment
+        android:id="@+id/produkPage"
+        android:name="com.maluku.sma_rt.view.warga.ProdukPage"
+        android:label="fragment_produk_page"
+        tools:layout="@layout/fragment_produk_page" >
+        <action
+            android:id="@+id/action_produkPage_to_kelolaToko"
+            app:destination="@id/kelolaToko" />
+        <action
+            android:id="@+id/action_produkPage_to_tambahProduk"
+            app:destination="@id/tambahProduk" />
+    </fragment>
+    <fragment
+        android:id="@+id/tambahProduk"
+        android:name="com.maluku.sma_rt.view.warga.TambahProduk"
+        android:label="fragment_tambah_produk"
+        tools:layout="@layout/fragment_tambah_produk" >
+        <action
+            android:id="@+id/action_tambahProduk_to_produkPage"
+            app:destination="@id/produkPage" />
+    </fragment>
 </navigation>
