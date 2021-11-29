@@ -24,5 +24,18 @@
         android:id="@+id/akunWarga"
         android:name="com.maluku.sma_rt.view.warga.AkunWarga"
         android:label="fragment_akun_warga"
-        tools:layout="@layout/fragment_akun_warga" />
+        tools:layout="@layout/fragment_akun_warga" >
+        <action
+            android:id="@+id/action_akunWarga_to_kelolaToko"
+            app:destination="@id/kelolaToko" />
+    </fragment>
+    <fragment
+        android:id="@+id/kelolaToko"
+        android:name="com.maluku.sma_rt.view.warga.KelolaToko"
+        android:label="fragment_kelola_toko"
+        tools:layout="@layout/fragment_kelola_toko" >
+        <action
+            android:id="@+id/action_kelolaToko_to_akunWarga"
+            app:destination="@id/akunWarga" />
+    </fragment>
 </navigation>
