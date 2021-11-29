@@ -3,6 +3,7 @@ package com.maluku.sma_rt.presenter
 import android.app.Activity
 import android.util.Log
 import android.widget.Toast
+import com.maluku.sma_rt.R
 import com.maluku.sma_rt.api.RetrofitService
 import com.maluku.sma_rt.extentions.AdminSession
 import com.maluku.sma_rt.extentions.UserValidator
@@ -71,6 +72,7 @@ class AdminRTRegisterPresenter(private val activity: Activity, private val view:
                                 )
                             }
                             Toast.makeText(activity,"Pesan: ${response.message()}",Toast.LENGTH_SHORT).show()
+                            view.onRegisterSuccess(activity.getString(R.string.login_sukses))
                         }
                         false -> {
                             Toast.makeText(activity,"Pesan: ${response.message()}",Toast.LENGTH_SHORT).show()
@@ -101,12 +103,6 @@ class AdminRTRegisterPresenter(private val activity: Activity, private val view:
         adminSession.save(AdminSession.SHARED_PREFERENCE_PHONE_NUMBER_KEY,noHpAdmin)
         adminSession.save(AdminSession.SHARED_PREFERENCE_EMAIL_KEY,emailAdmin)
         adminSession.save(AdminSession.SHARED_PREFERENCE_PASSWORD_KEY,password)
-        navigateToAdminDashboard()
-    }
-
-    //navigate to admin dashboard
-    private fun navigateToAdminDashboard() {
-        Toast.makeText(activity,"Selamat Datang", Toast.LENGTH_LONG).show()
     }
 
 }

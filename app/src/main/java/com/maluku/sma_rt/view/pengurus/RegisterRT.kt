@@ -1,5 +1,6 @@
 package com.maluku.sma_rt.view.pengurus
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -12,6 +13,7 @@ import com.maluku.sma_rt.R
 import com.maluku.sma_rt.databinding.FragmentRegisterRTBinding
 import com.maluku.sma_rt.extentions.UserValidator
 import com.maluku.sma_rt.presenter.AdminRTRegisterPresenter
+import com.maluku.sma_rt.view.activity.DashboardRTActivity
 import com.maluku.sma_rt.view.viewInterface.RegisterAdminInterface
 
 private const val TAG = "REGISTER RT"
@@ -64,6 +66,7 @@ class RegisterRT : Fragment(), RegisterAdminInterface {
         val validConfirmPassword = !binding.inputConfirmPassword.text.isNullOrEmpty()
         val validKodeRT = !binding.inputKodeRT.text.isNullOrEmpty()
         val validNoHp = !binding.inputNoHpAdmin.text.isNullOrEmpty()
+        val validGender = !genderAdmin.isNullOrEmpty()
         if (validName && validEmail && validPassword && validConfirmPassword && validKodeRT && validNoHp){
             if (password != confirmPassword){
                 binding.TILinputConfirmPassword.helperText = "Password tidak sesuai!"
@@ -74,6 +77,9 @@ class RegisterRT : Fragment(), RegisterAdminInterface {
         } else {
             if (!validName){
                 binding.TILinputNamaAdmin.helperText = "Masukan nama!"
+            }
+            if (!validGender){
+                binding.TILspGenderAdmin.helperText = "Pilih jenis kelamin!"
             }
             if (!validEmail){
                 binding.TILinputEmailAdmin.helperText = "Masukan email!"
@@ -233,6 +239,7 @@ class RegisterRT : Fragment(), RegisterAdminInterface {
 
     override fun onRegisterSuccess(message: String) {
         Toast.makeText(context,message,Toast.LENGTH_LONG).show()
+        navigateToDashboard()
     }
 
     private fun setFormJenisKelamin() {
@@ -242,7 +249,6 @@ class RegisterRT : Fragment(), RegisterAdminInterface {
         autoCompleteTextView.setAdapter(arrayAdapter)
         binding.spGenderAdmin.onItemClickListener = AdapterView.OnItemClickListener { parent, view, position, id ->
             genderAdmin = parent.getItemAtPosition(position).toString().lowercase().trim()
-            Toast.makeText(context,"Gender: $genderAdmin",Toast.LENGTH_LONG).show()
         }
     }
 
@@ -255,6 +261,16 @@ class RegisterRT : Fragment(), RegisterAdminInterface {
         binding.btnLogin.setOnClickListener{
             findNavController().navigate(R.id.action_registerRT_to_loginRT)
         }
+    }
+
+    private fun navigateToDashboard() {
+        Thread.sleep(1000)
+        val intent = Intent(
+            requireActivity(),
+            DashboardRTActivity::class.java
+        )
+        startActivity(intent)
+        requireActivity().finish()
     }
 
 }
