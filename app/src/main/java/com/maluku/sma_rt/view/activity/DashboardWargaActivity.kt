@@ -28,10 +28,11 @@ class DashboardWargaActivity : AppCompatActivity() {
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
-                R.id.homeWarga -> bottomNav.visibility = View.VISIBLE
-                R.id.jualbeliWarga -> bottomNav.visibility = View.VISIBLE
-                R.id.catatanWarga -> bottomNav.visibility = View.VISIBLE
-                R.id.akunWarga -> bottomNav.visibility = View.VISIBLE
+                R.id.homeWarga,
+                R.id.jualbeliWarga,
+                R.id.catatanWarga,
+                R.id.akunWarga,
+                -> bottomNav.visibility = View.VISIBLE
                 else -> bottomNav.visibility = View.GONE
             }
         }
