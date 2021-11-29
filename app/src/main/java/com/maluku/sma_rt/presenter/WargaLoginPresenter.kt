@@ -73,6 +73,7 @@ class WargaLoginPresenter(private val activity: Activity, private val view: Logi
         token: String
     ) {
         val userSession = UserSession(activity)
+        userSession.save(UserSession.SHARED_PREFERENCE_ROLE_KEY,"warga")
         userSession.save(SHARED_PREFERENCE_TOKEN_KEY,token)
         userSession.save(SHARED_PREFERENCE_EMAIL_KEY,email)
         userSession.save(SHARED_PREFERENCE_PASSWORD_KEY,password)

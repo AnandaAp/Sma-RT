@@ -10,6 +10,11 @@ import androidx.navigation.Navigation
 import com.maluku.sma_rt.R
 import com.maluku.sma_rt.api.RetrofitService
 import com.maluku.sma_rt.extentions.AdminSession
+import com.maluku.sma_rt.extentions.UserSession
+import com.maluku.sma_rt.extentions.UserSession.Companion.SHARED_PREFERENCE_EMAIL_KEY
+import com.maluku.sma_rt.extentions.UserSession.Companion.SHARED_PREFERENCE_PASSWORD_KEY
+import com.maluku.sma_rt.extentions.UserSession.Companion.SHARED_PREFERENCE_ROLE_KEY
+import com.maluku.sma_rt.extentions.UserSession.Companion.SHARED_PREFERENCE_TOKEN_KEY
 import com.maluku.sma_rt.extentions.UserValidator
 import com.maluku.sma_rt.model.login.OnLoginSuccessResponse
 import com.maluku.sma_rt.view.viewInterface.LoginAdminInterface
@@ -75,10 +80,11 @@ class AdminRTLoginPresenter(private val activity: Activity, private val view: Lo
         password: String,
         token: String
     ) {
-        val adminSession = AdminSession(activity)
-        adminSession.save(AdminSession.SHARED_PREFERENCE_TOKEN_KEY,token)
-        adminSession.save(AdminSession.SHARED_PREFERENCE_EMAIL_KEY,emailAdmin)
-        adminSession.save(AdminSession.SHARED_PREFERENCE_PASSWORD_KEY,password)
+        val userSession = UserSession(activity)
+        userSession.save(SHARED_PREFERENCE_ROLE_KEY,"pengurus")
+        userSession.save(SHARED_PREFERENCE_TOKEN_KEY,token)
+        userSession.save(SHARED_PREFERENCE_EMAIL_KEY,emailAdmin)
+        userSession.save(SHARED_PREFERENCE_PASSWORD_KEY,password)
         view.onLoginSuccess(activity.getString(R.string.login_sukses))
     }
 
