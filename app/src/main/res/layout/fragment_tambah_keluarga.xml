@@ -5,7 +5,7 @@
     android:id="@+id/frameLayout7"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.pengurus.Tambah_Keluarga_Fragment"
+    tools:context=".view.pengurus.TambahKeluargaFragment"
     android:padding="1dp">
 
     <TextView

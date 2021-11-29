@@ -5,14 +5,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.request.RequestOptions
+import com.google.firebase.storage.FirebaseStorage
 import com.maluku.sma_rt.R
 import com.maluku.sma_rt.databinding.FragmentHomeBinding
+import com.maluku.sma_rt.databinding.FragmentWargaBinding
 import com.maluku.sma_rt.view.pengurus.adapter.GaleriAdapter
 import com.maluku.sma_rt.view.pengurus.adapter.InfoAdapter
+import java.io.File
 
 class HomeFragment : Fragment() {
+    private lateinit var binding: FragmentHomeBinding
     private lateinit var rvGaleri: RecyclerView
     private lateinit var adapterGaleri: GaleriAdapter
     private lateinit var rvInfo: RecyclerView
@@ -23,18 +32,36 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_home, container, false)
+        val view = bindingView()
+        return view
+    }
 
-        rvGaleri = view.findViewById(R.id.rv_galeriWarga)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setRecyclerViewDaftarWarga()
+        navigateDashboardToTambahKelurga()
+    }
+
+    private fun setRecyclerViewDaftarWarga(){
+        rvGaleri = binding.rvGaleriWarga
         adapterGaleri = GaleriAdapter()
-        rvInfo = view.findViewById(R.id.rv_infoTerkini)
+        rvInfo = binding.rvInfoTerkini
         adapterInfo = InfoAdapter()
         rvGaleri.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL,false)
         rvGaleri.adapter = adapterGaleri
         rvInfo.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL,false)
         rvInfo.adapter = adapterInfo
+    }
 
-        return view
+    private fun navigateDashboardToTambahKelurga() {
+        binding.btnTambahKeluarga.setOnClickListener{
+            findNavController().navigate(R.id.action_navigation_home_to_tambahKeluargaFragment)
+        }
+    }
+
+    private fun bindingView(): View {
+        binding = FragmentHomeBinding.inflate(layoutInflater)
+        return binding.root
     }
 
 }

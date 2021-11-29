@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.maluku.sma_rt.databinding.FragmentAccountBinding
+import com.maluku.sma_rt.extentions.AdminSession
 import com.maluku.sma_rt.extentions.UserSession
 import com.maluku.sma_rt.view.activity.MainActivity
 
@@ -34,7 +35,7 @@ class AccountFragment : Fragment() {
 
     private fun logout(){
         binding.buttonLogOut.setOnClickListener {
-            val preferences = UserSession(requireActivity())
+            val preferences = AdminSession(requireActivity())
             preferences.clearSharedPreference()
             val intent = Intent(requireActivity(), MainActivity::class.java)
             startActivity(intent)
