@@ -10,8 +10,8 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.maluku.sma_rt.databinding.FragmentWargaBinding
-import com.maluku.sma_rt.extentions.AdminSession
-import com.maluku.sma_rt.extentions.AdminSession.Companion.SHARED_PREFERENCE_TOKEN_KEY
+import com.maluku.sma_rt.extentions.UserSession
+import com.maluku.sma_rt.extentions.UserSession.Companion.SHARED_PREFERENCE_TOKEN_KEY
 import com.maluku.sma_rt.model.warga.GetAllWargaItem
 import com.maluku.sma_rt.presenter.DaftarWargaPresenter
 import com.maluku.sma_rt.view.pengurus.adapter.WargaAdapter
@@ -64,7 +64,7 @@ class WargaFragment : Fragment(), DaftarWargaViewInterface {
     }
 
     private fun getToken(): String {
-        val preferences = AdminSession(requireActivity())
+        val preferences = UserSession(requireActivity())
         val token = preferences.getValueString(SHARED_PREFERENCE_TOKEN_KEY)
         Log.d(TAG,token)
         return token

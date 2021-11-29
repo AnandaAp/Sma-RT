@@ -9,7 +9,6 @@ import android.widget.Toast
 import androidx.navigation.Navigation
 import com.maluku.sma_rt.R
 import com.maluku.sma_rt.api.RetrofitService
-import com.maluku.sma_rt.extentions.AdminSession
 import com.maluku.sma_rt.extentions.UserSession
 import com.maluku.sma_rt.extentions.UserSession.Companion.SHARED_PREFERENCE_EMAIL_KEY
 import com.maluku.sma_rt.extentions.UserSession.Companion.SHARED_PREFERENCE_PASSWORD_KEY
