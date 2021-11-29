@@ -25,6 +25,10 @@ class KelolaToko : Fragment() {
             findNavController().navigate(R.id.action_kelolaToko_to_akunWarga)
         }
 
+        binding.cardProduk.setOnClickListener{
+            findNavController().navigate(R.id.action_kelolaToko_to_produkPage)
+        }
+
 
 
         return binding.root

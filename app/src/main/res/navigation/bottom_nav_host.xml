@@ -37,5 +37,17 @@
         <action
             android:id="@+id/action_kelolaToko_to_akunWarga"
             app:destination="@id/akunWarga" />
+        <action
+            android:id="@+id/action_kelolaToko_to_produkPage"
+            app:destination="@id/produkPage" />
+    </fragment>
+    <fragment
+        android:id="@+id/produkPage"
+        android:name="com.maluku.sma_rt.view.warga.ProdukPage"
+        android:label="fragment_produk_page"
+        tools:layout="@layout/fragment_produk_page" >
+        <action
+            android:id="@+id/action_produkPage_to_kelolaToko"
+            app:destination="@id/kelolaToko" />
     </fragment>
 </navigation>
