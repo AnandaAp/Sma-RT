@@ -24,4 +24,9 @@
         <item name="postSplashScreenTheme">@style/Theme.SmaRT</item>
         <item name="android:windowContentTransitions">true</item>
     </style>
+
+    <style name="Widget.MyApp.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="boxStrokeWidth">0dp</item>
+        <item name="boxStrokeWidthFocused">0dp</item>
+    </style>
 </resources>
