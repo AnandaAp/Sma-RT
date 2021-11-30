@@ -169,7 +169,33 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
+                            <entry key="action_kelolaToko_to_pesananPenjualPage">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_kelolaToko_to_produkPage">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="pesananPenjualPage">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="33" />
+                            <option name="y" value="825" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_pesananPenjualPage_to_kelolaToko">
                               <value>
                                 <LayoutPositions />
                               </value>

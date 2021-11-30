@@ -118,7 +118,7 @@
                                 android:layout_margin="10dp"
                                 android:background="@android:color/transparent"
                                 android:backgroundTint="@color/green"
-                                android:src="@drawable/ic_arrow_down" />
+                                android:src="@drawable/ic_arrow_up" />
 
 
                         </LinearLayout>

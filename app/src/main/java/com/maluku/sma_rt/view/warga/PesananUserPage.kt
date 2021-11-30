@@ -43,11 +43,11 @@ class PesananUserPage : Fragment() {
             if (hiddenLayout.visibility == View.VISIBLE) {
                 TransitionManager.beginDelayedTransition(cardView, AutoTransition())
                 hiddenLayout.visibility = View.GONE
-                showButton.setImageResource(R.drawable.ic_arrow_down)
+                showButton.setImageResource(R.drawable.ic_arrow_up)
             } else {
                 TransitionManager.beginDelayedTransition(cardView, AutoTransition())
                 hiddenLayout.visibility = View.VISIBLE
-                showButton.setImageResource(R.drawable.ic_arrow_up)
+                showButton.setImageResource(R.drawable.ic_arrow_down)
             }
         }
 
