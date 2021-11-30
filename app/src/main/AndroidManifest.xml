@@ -26,8 +26,9 @@
             android:exported="false" />
         <activity
             android:name=".view.activity.DashboardRTActivity"
-            android:exported="false"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:exported="false">
+
+        </activity>
         <activity
             android:name=".view.activity.MainActivity"
             android:enabled="true"

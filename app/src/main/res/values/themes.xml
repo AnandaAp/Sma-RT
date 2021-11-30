@@ -19,8 +19,8 @@
     </style>
     <style name="Theme.CustomSplashScreenTheme" parent="Theme.SplashScreen">
         <item name="windowSplashScreenBackground">#4B6858</item>
-        <item name="windowSplashScreenAnimatedIcon">@mipmap/logosmart_foreground</item>
-        <item name="windowSplashScreenAnimationDuration">10000</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/logo_smart</item>
+        <item name="windowSplashScreenAnimationDuration">5000</item>
         <item name="postSplashScreenTheme">@style/Theme.SmaRT</item>
         <item name="android:windowContentTransitions">true</item>
     </style>
