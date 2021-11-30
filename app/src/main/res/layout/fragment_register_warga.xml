@@ -218,60 +218,12 @@
 
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/alamat"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/idkeluarga"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="13dp"
-                    android:layout_marginEnd="20dp">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/etAlamat"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:background="@drawable/btn_rounded"
-                        android:fontFamily="@font/montserrat"
-                        android:hint="Alamat"
-                        android:inputType="textCapWords"
-                        android:paddingStart="18dp"
-                        android:textColorHint="@color/grey"
-                        android:textSize="12sp" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/kodepos"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/alamat"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="13dp"
-                    android:layout_marginEnd="20dp">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/etKodePos"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:background="@drawable/btn_rounded"
-                        android:fontFamily="@font/montserrat"
-                        android:hint="Kode Pos"
-                        android:inputType="number"
-                        android:paddingStart="18dp"
-                        android:textColorHint="@color/grey"
-                        android:textSize="12sp" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
 
                 <CheckBox
                     android:id="@+id/checkbox_syarat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/kodepos"
+                    android:layout_below="@id/idkeluarga"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="28dp"
                     android:text="Saya setuju dengan SnK yang berlaku"
