@@ -108,6 +108,15 @@
                             <option name="y" value="486" />
                           </Point>
                         </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_editProduk_to_produkPage">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
                       </LayoutPositions>
                     </value>
                   </entry>
@@ -131,6 +140,15 @@
                             <option name="x" value="-1030" />
                             <option name="y" value="-4" />
                           </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_jualbeliWarga_to_pesananUserPage">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
                         </option>
                       </LayoutPositions>
                     </value>
@@ -161,6 +179,27 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="pesananUserPage">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-456" />
+                            <option name="y" value="-174" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_pesananUserPage_to_jualbeliWarga">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="produkPage">
                     <value>
                       <LayoutPositions>
@@ -172,6 +211,11 @@
                         </option>
                         <option name="myPositions">
                           <map>
+                            <entry key="action_produkPage_to_editProduk">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_produkPage_to_kelolaToko">
                               <value>
                                 <LayoutPositions />

@@ -14,7 +14,11 @@
         android:id="@+id/jualbeliWarga"
         android:name="com.maluku.sma_rt.view.warga.JualbeliWarga"
         android:label="fragment_jualbeli_warga"
-        tools:layout="@layout/fragment_jualbeli_warga" />
+        tools:layout="@layout/fragment_jualbeli_warga" >
+        <action
+            android:id="@+id/action_jualbeliWarga_to_pesananUserPage"
+            app:destination="@id/pesananUserPage" />
+    </fragment>
     <fragment
         android:id="@+id/catatanWarga"
         android:name="com.maluku.sma_rt.view.warga.CatatanWarga"
@@ -73,5 +77,14 @@
         <action
             android:id="@+id/action_editProduk_to_produkPage"
             app:destination="@id/produkPage" />
+    </fragment>
+    <fragment
+        android:id="@+id/pesananUserPage"
+        android:name="com.maluku.sma_rt.view.warga.PesananUserPage"
+        android:label="fragment_pesanan_user_page"
+        tools:layout="@layout/fragment_pesanan_user_page" >
+        <action
+            android:id="@+id/action_pesananUserPage_to_jualbeliWarga"
+            app:destination="@id/jualbeliWarga" />
     </fragment>
 </navigation>

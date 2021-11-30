@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.maluku.sma_rt.R
@@ -18,6 +20,8 @@ class JualbeliWarga : Fragment() {
     private lateinit var rvTerlaris: RecyclerView
     private lateinit var adapterToko: RecyclerViewToko
     private lateinit var adapterTerlaris: RecyclerViewTerlaris
+
+
 
 
     override fun onCreateView(
@@ -42,6 +46,10 @@ class JualbeliWarga : Fragment() {
         rvTerlaris.layoutManager = LinearLayoutManager(activity,LinearLayoutManager.VERTICAL,false)
         rvTerlaris.setAdapter(adapterTerlaris)
 
+        val buttonTroli = view.findViewById<ImageView>(R.id.troli)
+        buttonTroli.setOnClickListener {
+            findNavController().navigate(R.id.action_jualbeliWarga_to_pesananUserPage)
+        }
 
 
 
