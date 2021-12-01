@@ -104,6 +104,9 @@
         <action
             android:id="@+id/action_pesananUserPage_to_jualbeliWarga"
             app:destination="@id/jualbeliWarga" />
+        <action
+            android:id="@+id/action_pesananUserPage_to_pesananUserMenunggu"
+            app:destination="@id/pesananUserMenunggu" />
     </fragment>
     <fragment
         android:id="@+id/pesananPenjualPage"
@@ -113,5 +116,38 @@
         <action
             android:id="@+id/action_pesananPenjualPage_to_kelolaToko"
             app:destination="@id/kelolaToko" />
+    </fragment>
+    <fragment
+        android:id="@+id/pesananUserMenunggu"
+        android:name="com.maluku.sma_rt.view.warga.PesananUserMenunggu"
+        android:label="fragment_pesanan_user_menunggu"
+        tools:layout="@layout/fragment_pesanan_user_menunggu" >
+        <action
+            android:id="@+id/action_pesananUserMenunggu_to_pesananUserDiproses"
+            app:destination="@id/pesananUserDiproses" />
+        <action
+            android:id="@+id/action_pesananUserMenunggu_to_produkPage"
+            app:destination="@id/produkPage" />
+    </fragment>
+    <fragment
+        android:id="@+id/pesananUserDiproses"
+        android:name="com.maluku.sma_rt.view.warga.PesananUserDiproses"
+        android:label="fragment_pesanan_user_diproses"
+        tools:layout="@layout/fragment_pesanan_user_diproses" >
+        <action
+            android:id="@+id/action_pesananUserDiproses_to_pesananUserSudahsiap"
+            app:destination="@id/pesananUserSudahsiap" />
+        <action
+            android:id="@+id/action_pesananUserDiproses_to_produkPage"
+            app:destination="@id/produkPage" />
+    </fragment>
+    <fragment
+        android:id="@+id/pesananUserSudahsiap"
+        android:name="com.maluku.sma_rt.view.warga.PesananUserSudahsiap"
+        android:label="fragment_pesanan_user_sudahsiap"
+        tools:layout="@layout/fragment_pesanan_user_sudahsiap" >
+        <action
+            android:id="@+id/action_pesananUserSudahsiap_to_produkPage"
+            app:destination="@id/produkPage" />
     </fragment>
 </navigation>
