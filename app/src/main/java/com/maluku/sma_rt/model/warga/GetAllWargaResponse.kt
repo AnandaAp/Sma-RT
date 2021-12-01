@@ -44,6 +44,9 @@ data class GetAllWargaItem(
 	@field:SerializedName("id_keluarga")
 	val idKeluarga: String? = null,
 
+	@field:SerializedName("gambar")
+	val gambar: String? = null,
+
 	@field:SerializedName("email")
 	val email: String? = null
 ) : Parcelable

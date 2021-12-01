@@ -24,7 +24,7 @@
             android:background="@drawable/rectangle">
 
             <ImageView
-                android:id="@+id/imageView10"
+                android:id="@+id/ivProfilWarga"
                 android:layout_width="85dp"
                 android:layout_height="95dp"
                 android:backgroundTint="@color/black"

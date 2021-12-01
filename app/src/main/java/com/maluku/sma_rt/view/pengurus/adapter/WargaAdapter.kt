@@ -3,8 +3,13 @@ package com.maluku.sma_rt.view.pengurus.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.request.RequestOptions
 import com.maluku.sma_rt.R
 import com.maluku.sma_rt.model.warga.GetAllWargaItem
 
@@ -26,6 +31,10 @@ class WargaAdapter(val listWarga: ArrayList<GetAllWargaItem>): RecyclerView.Adap
         holder.noHp.text = data.noHp.toString()
         holder.email.text = data.email.toString()
         holder.gender.text = data.gender.toString()
+        Glide.with(holder.itemView)
+            .load(data.gambar)
+            .apply(RequestOptions().transform(CenterCrop(), RoundedCorners(20)))
+            .into(holder.gambar)
     }
 
     override fun getItemCount(): Int {
@@ -37,5 +46,6 @@ class WargaAdapter(val listWarga: ArrayList<GetAllWargaItem>): RecyclerView.Adap
         var noHp: TextView = itemView.findViewById(R.id.tv_noHp)
         var email: TextView = itemView.findViewById(R.id.tv_email)
         var gender: TextView = itemView.findViewById(R.id.tv_gender)
+        var gambar: ImageView = itemView.findViewById(R.id.ivProfilWarga)
     }
 }
