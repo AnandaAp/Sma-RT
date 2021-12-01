@@ -63,7 +63,7 @@ interface Service {
 //    ): Call<GetAllWargaResponse>
 
     @GET("warga")
-    fun getDaftarWarga(
+    fun getListWarga(
         @Header("Authorization") authHeader: String
     ): Call<GetAllWargaResponse>
 

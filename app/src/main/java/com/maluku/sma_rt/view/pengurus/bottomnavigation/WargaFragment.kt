@@ -13,13 +13,13 @@ import com.maluku.sma_rt.databinding.FragmentWargaBinding
 import com.maluku.sma_rt.extentions.UserSession
 import com.maluku.sma_rt.extentions.UserSession.Companion.SHARED_PREFERENCE_TOKEN_KEY
 import com.maluku.sma_rt.model.warga.GetAllWargaItem
-import com.maluku.sma_rt.presenter.DaftarWargaPresenter
+import com.maluku.sma_rt.presenter.ListWargaPresenter
 import com.maluku.sma_rt.view.pengurus.adapter.WargaAdapter
-import com.maluku.sma_rt.view.viewInterface.DaftarWargaViewInterface
+import com.maluku.sma_rt.view.viewInterface.ListWargaViewInterface
 
 private const val TAG = "TOKEN LOGIN"
 
-class WargaFragment : Fragment(), DaftarWargaViewInterface {
+class WargaFragment : Fragment(), ListWargaViewInterface {
     private lateinit var binding: FragmentWargaBinding
     private lateinit var rvWarga: RecyclerView
     private lateinit var adapterWarga: WargaAdapter
@@ -36,7 +36,7 @@ class WargaFragment : Fragment(), DaftarWargaViewInterface {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setRecyclerViewWarga()
-        DaftarWargaPresenter(requireActivity(), this).getDaftarWargaPresenter(getToken())
+        ListWargaPresenter(requireActivity(), this).getListWargaPresenter(getToken())
     }
 
     private fun bindingView(): View {
