@@ -126,7 +126,7 @@
                         <option name="myPosition">
                           <Point>
                             <option name="x" value="-1039" />
-                            <option name="y" value="-345" />
+                            <option name="y" value="-764" />
                           </Point>
                         </option>
                       </LayoutPositions>
@@ -205,13 +205,55 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="pesananUserDiproses">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="51" />
+                            <option name="y" value="-619" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_pesananUserDiproses_to_pesananUserSudahsiap">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="pesananUserMenunggu">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-318" />
+                            <option name="y" value="-621" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_pesananUserMenunggu_to_pesananUserDiproses">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="pesananUserPage">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-456" />
-                            <option name="y" value="-174" />
+                            <option name="x" value="-633" />
+                            <option name="y" value="4" />
                           </Point>
                         </option>
                         <option name="myPositions">
@@ -221,7 +263,24 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
+                            <entry key="action_pesananUserPage_to_pesananUserMenunggu">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                           </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="pesananUserSudahsiap">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="450" />
+                            <option name="y" value="-613" />
+                          </Point>
                         </option>
                       </LayoutPositions>
                     </value>

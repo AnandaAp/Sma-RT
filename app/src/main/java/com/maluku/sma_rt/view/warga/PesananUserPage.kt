@@ -68,6 +68,12 @@ class PesananUserPage : Fragment() {
         }
 
 
+        val btnPesan = view.findViewById<TextView>(R.id.btn_pesan)
+        btnPesan.setOnClickListener {
+            findNavController().navigate(R.id.action_pesananUserPage_to_pesananUserMenunggu)
+        }
+
+
 
 
         return view

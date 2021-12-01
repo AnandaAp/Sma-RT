@@ -25,7 +25,7 @@
                 tools:ignore="MissingConstraints" />
 
             <TextView
-                android:id="@+id/tv_namaproduk"
+                android:id="@+id/tv_namaprodukpage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
@@ -38,7 +38,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/tv_hargaproduk"
+                android:id="@+id/tv_hargaprodukpage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -46,8 +46,8 @@
                 android:textSize="12sp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/montserrat"
-                app:layout_constraintStart_toStartOf="@+id/tv_namaproduk"
-                app:layout_constraintTop_toBottomOf="@+id/tv_namaproduk" />
+                app:layout_constraintStart_toStartOf="@+id/tv_namaprodukpage"
+                app:layout_constraintTop_toBottomOf="@+id/tv_namaprodukpage" />
 
             <ImageView
                 android:id="@+id/img_forward"
