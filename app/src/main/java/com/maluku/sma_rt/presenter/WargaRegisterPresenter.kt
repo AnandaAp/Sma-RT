@@ -122,7 +122,5 @@ class WargaRegisterPresenter(private val activity: Activity, private val view: R
     private fun navigateToWargaWarga() {
         Toast.makeText(activity,"Selamat Datang",Toast.LENGTH_LONG).show()
         view.onRegisterSuccess(activity.getString(R.string.register_sukses))
-        //navigateToWargaDashboard()
-        //memanggil fungsi dari interface view login warga
     }
 }
