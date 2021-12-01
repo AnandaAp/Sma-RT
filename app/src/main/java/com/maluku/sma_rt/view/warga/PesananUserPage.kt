@@ -1,5 +1,6 @@
 package com.maluku.sma_rt.view.warga
 
+import android.animation.LayoutTransition
 import android.os.Bundle
 import android.transition.AutoTransition
 import android.transition.TransitionManager
@@ -38,18 +39,22 @@ class PesananUserPage : Fragment() {
         cardView = view.findViewById(R.id.card_view)
         showButton = view.findViewById(R.id.image_button)
         hiddenLayout = view.findViewById(R.id.layout_expand)
+        hiddenLayout.layoutTransition.enableTransitionType(LayoutTransition.CHANGING)
+
 
         showButton.setOnClickListener {
             if (hiddenLayout.visibility == View.VISIBLE) {
                 TransitionManager.beginDelayedTransition(cardView, AutoTransition())
                 hiddenLayout.visibility = View.GONE
-                showButton.setImageResource(R.drawable.ic_arrow_up)
+                showButton.setImageResource(R.drawable.ic_arrow_down)
             } else {
                 TransitionManager.beginDelayedTransition(cardView, AutoTransition())
                 hiddenLayout.visibility = View.VISIBLE
-                showButton.setImageResource(R.drawable.ic_arrow_down)
+                showButton.setImageResource(R.drawable.ic_arrow_up)
             }
         }
+
+
 
         rvPesananuser = view.findViewById(R.id.rv_pesnanuser)
         adapterPesananuser = RecyclerViewPesananuser()
