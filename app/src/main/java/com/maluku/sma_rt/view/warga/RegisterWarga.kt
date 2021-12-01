@@ -36,7 +36,7 @@ class RegisterWarga : Fragment(), RegisterWargaInterface {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         val view = bindingView()
         return view

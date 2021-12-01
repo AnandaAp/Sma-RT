@@ -20,7 +20,7 @@ class AkunWarga : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val view = bindingView()
         return view
     }
