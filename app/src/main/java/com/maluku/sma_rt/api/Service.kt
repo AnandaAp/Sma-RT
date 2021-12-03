@@ -1,8 +1,10 @@
 package com.maluku.sma_rt.api
 
 import com.maluku.sma_rt.extentions.UserSession
+import com.maluku.sma_rt.model.keluarga.CreateKeluargaResponse
 import com.maluku.sma_rt.model.login.OnLoginSuccessResponse
 import com.maluku.sma_rt.model.pengurus.CreatePengurusResponse
+import com.maluku.sma_rt.model.produk.CreateProductResponse
 import com.maluku.sma_rt.model.warga.CreateWargaResponse
 import com.maluku.sma_rt.model.warga.DetailLoginedWargaResponse
 import com.maluku.sma_rt.model.warga.GetAllWargaResponse
@@ -56,18 +58,19 @@ interface Service {
         @Field("password") password: String
     ): Call<OnLoginSuccessResponse>
 
-//    @Headers("Authorization: Bearer Token")
-//    @GET("warga")
-//    fun getDaftarWarga(
-//        @Field("Token") token: String
-//    ): Call<GetAllWargaResponse>
 
     @GET("warga")
     fun getListWarga(
         @Header("Authorization") authHeader: String
     ): Call<GetAllWargaResponse>
 
-//    @Header("Authorization")
-//    @GET("/warga")
-//    fun getDaftarWarga(): Call<GetAllWargaResponse>
+
+    // Tambah Keluarga
+    @FormUrlEncoded
+    @POST("keluarga")
+    fun tambahKeluarga(
+        @Header("Authorization") authHeader: String,
+        @Field("nama") nama: String,
+    ): Call<CreateKeluargaResponse>
+
 }

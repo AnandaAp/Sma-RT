@@ -16,12 +16,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textInputLayout"
+        app:layout_constraintStart_toStartOf="@+id/TILinputNamaKeluarga"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.259" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout"
+        android:id="@+id/TILinputNamaKeluarga"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -33,13 +33,14 @@
         app:layout_constraintVertical_bias="0.0">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/inputNamaKeluarga"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/rectangle" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/btnTambahKeluarga"
         android:layout_width="167dp"
         android:layout_height="54dp"
         android:background="@color/btnsecondary"
@@ -49,6 +50,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
+        app:layout_constraintTop_toBottomOf="@+id/TILinputNamaKeluarga"
         app:layout_constraintVertical_bias="0.06" />
 </androidx.constraintlayout.widget.ConstraintLayout>

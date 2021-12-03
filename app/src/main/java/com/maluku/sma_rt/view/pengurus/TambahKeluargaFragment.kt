@@ -1,60 +1,81 @@
 package com.maluku.sma_rt.view.pengurus
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.maluku.sma_rt.R
+import android.widget.Toast
+import com.maluku.sma_rt.databinding.FragmentTambahKeluargaBinding
+import com.maluku.sma_rt.extentions.UserSession
+import com.maluku.sma_rt.presenter.TambahKeluargaPresenter
+import com.maluku.sma_rt.view.viewInterface.TambahKeluargaInterface
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+private const val TAG = "TAMBAH KELUARGA"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [Tambah_Keluarga_Fragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class TambahKeluargaFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+class TambahKeluargaFragment : Fragment(), TambahKeluargaInterface {
+    private lateinit var binding: FragmentTambahKeluargaBinding
+    private lateinit var namaKeluarga: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_tambah_keluarga, container, false)
+        val view = bindingView()
+        return view
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment Tambah_Keluarga_Fragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            TambahKeluargaFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        tambahKeluarga()
+    }
+
+    private fun tambahKeluarga() {
+        binding.btnTambahKeluarga.setOnClickListener {
+            binding.inputNamaKeluarga.clearFocus()
+            submitForm()
+        }
+    }
+
+    private fun submitForm(){
+        val validNama = !binding.inputNamaKeluarga.text.isNullOrEmpty()
+        if (validNama){
+            namaKeluarga = binding.inputNamaKeluarga.text.toString()
+            addFamily(namaKeluarga)
+        } else {
+            if (!validNama){
+                binding.TILinputNamaKeluarga.helperText = "Masukan nama keluarga!"
             }
+            Toast.makeText(requireContext(),"Seluruh field harus terisi!", Toast.LENGTH_LONG).show()
+        }
+    }
+
+    private fun bindingView(): View {
+        binding = FragmentTambahKeluargaBinding.inflate(layoutInflater)
+        return binding.root
+    }
+
+    override fun addFamily(nama: String) {
+        TambahKeluargaPresenter(requireActivity(),this).addFamilyPresenter(
+            getToken(),
+            namaKeluarga
+        )
+    }
+
+    override fun onCreateSuccess(message: String) {
+        binding.inputNamaKeluarga.text = null
+        Toast.makeText(context,message, Toast.LENGTH_LONG).show()
+    }
+
+    override fun onCreateFailed(message: String) {
+        Toast.makeText(context,message, Toast.LENGTH_LONG).show()
+    }
+
+    private fun getToken(): String {
+        val preferences = UserSession(requireActivity())
+        val token = preferences.getValueString(UserSession.SHARED_PREFERENCE_TOKEN_KEY)
+        Log.d(TAG,token)
+        return token
     }
 }
