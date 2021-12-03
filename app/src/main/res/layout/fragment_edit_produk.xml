@@ -58,7 +58,8 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbar_editproduk">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -66,7 +67,7 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/tv_detailproduk"
+                android:id="@+id/text_detailproduk"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
@@ -88,7 +89,7 @@
                 android:textColor="@color/black"
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_detailproduk" />
+                app:layout_constraintTop_toBottomOf="@+id/text_detailproduk" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardView2"
@@ -170,6 +171,7 @@
                 app:boxBackgroundMode="none"
                 app:endIconMode="clear_text"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_hargaproduk">
 
@@ -184,6 +186,46 @@
                     android:textCursorDrawable="@drawable/color_cursor" />
             </com.google.android.material.textfield.TextInputLayout>
 
+            <TextView
+                android:id="@+id/tv_detailproduk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/montserrat_semibold"
+                android:text="Detail Produk"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textlayout_hargaproduk" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textlayout_detailproduk"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                app:boxBackgroundMode="none"
+                app:endIconMode="clear_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_detailproduk">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ed_detailproduk"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_edtext_grey"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:text="Produk ini terbuat dari gula"
+                    android:paddingTop="10dp"
+                    android:gravity="top"
+                    android:lines="6"
+                    android:textCursorDrawable="@drawable/color_cursor" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
             <androidx.cardview.widget.CardView
                 android:id="@+id/card_stokhabis"
                 android:layout_width="match_parent"
@@ -195,7 +237,7 @@
                 android:elevation="10dp"
                 app:cardCornerRadius="10dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textlayout_hargaproduk">
+                app:layout_constraintTop_toBottomOf="@+id/textlayout_detailproduk">
 
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -377,7 +419,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="50dp"
                 android:layout_marginEnd="20dp"
-                android:layout_marginBottom="80dp"
+                android:layout_marginBottom="50dp"
                 android:background="@drawable/btn_rounded"
                 android:backgroundTint="@color/green"
                 android:clickable="true"
@@ -394,6 +436,7 @@
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     </ScrollView>
 
