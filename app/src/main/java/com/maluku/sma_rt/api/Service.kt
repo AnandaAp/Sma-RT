@@ -2,9 +2,12 @@ package com.maluku.sma_rt.api
 
 import com.maluku.sma_rt.extentions.UserSession
 import com.maluku.sma_rt.model.keluarga.CreateKeluargaResponse
+import com.maluku.sma_rt.model.keluarga.GetAllProdukKeluargaResponse
 import com.maluku.sma_rt.model.login.OnLoginSuccessResponse
 import com.maluku.sma_rt.model.pengurus.CreatePengurusResponse
 import com.maluku.sma_rt.model.produk.CreateProductResponse
+import com.maluku.sma_rt.model.produk.DeleteProductByIDResponse
+import com.maluku.sma_rt.model.produk.UpdateProductByIDResponse
 import com.maluku.sma_rt.model.warga.CreateWargaResponse
 import com.maluku.sma_rt.model.warga.DetailLoginedWargaResponse
 import com.maluku.sma_rt.model.warga.GetAllWargaResponse
@@ -72,5 +75,41 @@ interface Service {
         @Header("Authorization") authHeader: String,
         @Field("nama") nama: String,
     ): Call<CreateKeluargaResponse>
+
+    // Get Produk Warga Dengan Token
+    @GET("produk/keluarga")
+    fun getAllProdukKeluarga(
+        @Header("Authorization") authHeader: String
+    ): Call<GetAllProdukKeluargaResponse>
+
+    // Tambah Produk
+    @FormUrlEncoded
+    @POST("produk")
+    fun createProduct(
+        @Header("Authorization") authHeader: String,
+        @Field("nama") nama: String,
+        @Field("detail") detail: String,
+        @Field("gambar") gambar: String,
+        @Field("harga") harga: String,
+    ): Call<CreateProductResponse>
+
+    // Update Produk
+    @FormUrlEncoded
+    @PUT("produk/{product_id}")
+    fun updateProductByID(
+        @Header("Authorization") authHeader: String,
+        @Path("product_id") product_id: String,
+        @Field("nama") nama: String,
+        @Field("detail") detail: String,
+        @Field("gambar") gambar: String,
+        @Field("harga") harga: String,
+    ): Call<UpdateProductByIDResponse>
+
+    // Hapus produk
+    @DELETE("produk/{product_id}")
+    fun deleteProductByID(
+        @Header("Authorization") authHeader: String,
+        @Path("product_id") product_id: String,
+    ): Call<DeleteProductByIDResponse>
 
 }
