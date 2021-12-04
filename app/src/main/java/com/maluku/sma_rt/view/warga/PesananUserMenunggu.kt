@@ -30,6 +30,10 @@ class PesananUserMenunggu : Fragment() {
             findNavController().navigate(R.id.action_pesananUserMenunggu_to_pesananUserDiproses)
         }
 
+        binding.cardPesananusermenunggu.setOnClickListener {
+            findNavController().navigate(R.id.action_pesananUserMenunggu_to_pesananuserMenungguDetails)
+        }
+
         return binding.root
     }
 

@@ -54,6 +54,7 @@
         app:layout_constraintTop_toBottomOf="@+id/toolbar_pesananuserdiproses">
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/card_pesananuserdiproses"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"

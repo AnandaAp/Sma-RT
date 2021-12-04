@@ -25,6 +25,10 @@ class PesananUserSudahsiap : Fragment() {
             findNavController().navigate(R.id.action_pesananUserSudahsiap_to_produkPage)
         }
 
+        binding.cardPesananuserselesai.setOnClickListener {
+            findNavController().navigate(R.id.action_pesananUserSudahsiap_to_pesananuserSelesaiDetails)
+        }
+
         return binding.root
     }
 }

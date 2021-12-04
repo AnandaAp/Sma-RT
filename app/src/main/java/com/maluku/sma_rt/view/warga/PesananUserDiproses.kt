@@ -30,6 +30,10 @@ class PesananUserDiproses : Fragment() {
             findNavController().navigate(R.id.action_pesananUserDiproses_to_pesananUserSudahsiap)
         }
 
+        binding.cardPesananuserdiproses.setOnClickListener {
+            findNavController().navigate(R.id.action_pesananUserDiproses_to_pesananuserDiprosesDetails)
+        }
+
 
         return binding.root
     }

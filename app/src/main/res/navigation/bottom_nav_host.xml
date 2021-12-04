@@ -128,6 +128,9 @@
         <action
             android:id="@+id/action_pesananUserMenunggu_to_produkPage"
             app:destination="@id/produkPage" />
+        <action
+            android:id="@+id/action_pesananUserMenunggu_to_pesananuserMenungguDetails"
+            app:destination="@id/pesananuserMenungguDetails" />
     </fragment>
     <fragment
         android:id="@+id/pesananUserDiproses"
@@ -140,6 +143,9 @@
         <action
             android:id="@+id/action_pesananUserDiproses_to_produkPage"
             app:destination="@id/produkPage" />
+        <action
+            android:id="@+id/action_pesananUserDiproses_to_pesananuserDiprosesDetails"
+            app:destination="@id/pesananuserDiprosesDetails" />
     </fragment>
     <fragment
         android:id="@+id/pesananUserSudahsiap"
@@ -149,5 +155,23 @@
         <action
             android:id="@+id/action_pesananUserSudahsiap_to_produkPage"
             app:destination="@id/produkPage" />
+        <action
+            android:id="@+id/action_pesananUserSudahsiap_to_pesananuserSelesaiDetails"
+            app:destination="@id/pesananuserSelesaiDetails" />
     </fragment>
+    <fragment
+        android:id="@+id/pesananuserMenungguDetails"
+        android:name="com.maluku.sma_rt.view.warga.PesananuserMenungguDetails"
+        android:label="fragment_pesananuser_menunggu_details"
+        tools:layout="@layout/fragment_pesananuser_menunggu_details" />
+    <fragment
+        android:id="@+id/pesananuserDiprosesDetails"
+        android:name="com.maluku.sma_rt.view.warga.PesananuserDiprosesDetails"
+        android:label="fragment_pesananuser_diproses_details"
+        tools:layout="@layout/fragment_pesananuser_diproses_details" />
+    <fragment
+        android:id="@+id/pesananuserSelesaiDetails"
+        android:name="com.maluku.sma_rt.view.warga.PesananuserSelesaiDetails"
+        android:label="fragment_pesananuser_selesai_details"
+        tools:layout="@layout/fragment_pesananuser_selesai_details" />
 </navigation>
