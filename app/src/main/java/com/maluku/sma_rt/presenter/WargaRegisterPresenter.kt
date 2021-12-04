@@ -14,6 +14,7 @@ import com.maluku.sma_rt.extentions.UserSession.Companion.SHARED_PREFERENCE_GEND
 import com.maluku.sma_rt.extentions.UserSession.Companion.SHARED_PREFERENCE_NAME_KEY
 import com.maluku.sma_rt.extentions.UserSession.Companion.SHARED_PREFERENCE_PASSWORD_KEY
 import com.maluku.sma_rt.extentions.UserSession.Companion.SHARED_PREFERENCE_PHONE_NUMBER_KEY
+import com.maluku.sma_rt.extentions.UserSession.Companion.SHARED_PREFERENCE_ROLE_KEY
 import com.maluku.sma_rt.extentions.UserSession.Companion.SHARED_PREFERENCE_TOKEN_KEY
 import com.maluku.sma_rt.extentions.UserValidator
 import com.maluku.sma_rt.model.warga.CreateWargaResponse
@@ -108,6 +109,7 @@ class WargaRegisterPresenter(private val activity: Activity, private val view: R
         token: String
     ) {
         val userSession = UserSession(activity)
+        userSession.save(SHARED_PREFERENCE_ROLE_KEY,"warga")
         userSession.save(SHARED_PREFERENCE_TOKEN_KEY,token)
         userSession.save(SHARED_PREFERENCE_NAME_KEY,nama)
         userSession.save(SHARED_PREFERENCE_EMAIL_KEY,email)

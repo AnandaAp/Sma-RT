@@ -8,12 +8,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.result.ActivityResultCallback
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.navigation.fragment.findNavController
+import com.google.firebase.storage.FirebaseStorage
 import com.maluku.sma_rt.R
 import com.maluku.sma_rt.databinding.FragmentTambahProdukBinding
 import com.maluku.sma_rt.extentions.UserSession
 import com.maluku.sma_rt.presenter.WargaTokoTambahProdukPresenter
 import com.maluku.sma_rt.view.viewInterface.TambahProdukInterface
+import java.text.SimpleDateFormat
+import java.util.*
 
 private const val TAG = "TOKEN LOGIN"
 
@@ -40,9 +46,38 @@ class TambahProduk : Fragment(), TambahProdukInterface {
         super.onViewCreated(view, savedInstanceState)
         namaFocusListener()
         hargaFocusListener()
+//        val getImage = registerForActivityResult(
+//            ActivityResultContracts.GetContent(),
+//            ActivityResultCallback {
+//                imageUri = it
+//                binding.gam.setImageURI(it)
+//            }
+//        )
+//        pickImage(getImage)
         tambahProduk()
         goBack()
     }
+
+//    private fun pickImage(getImage: ActivityResultLauncher<String>){
+//        binding.btnInsertGambar.setOnClickListener {
+//            getImage.launch("image/*")
+//        }
+//    }
+//
+//    private fun uploadImage(){
+//        val formatter = SimpleDateFormat("yyyy_MM-dd_HH_mm_ss", Locale.getDefault())
+//        val now = Date()
+//        val fileName = "${namaProduk}_${formatter.format(now)}"
+//        gambarProduk = fileName
+//        val storageReference = FirebaseStorage.getInstance().getReference("produk/$fileName")
+//        storageReference.putFile(imageUri!!)
+//            .addOnSuccessListener {
+//                binding.ivGambarProduk.setImageURI(null)
+//                Toast.makeText(requireContext(),"Upload gambar sukses!",Toast.LENGTH_LONG).show()
+//            }.addOnFailureListener {
+//                Toast.makeText(requireContext(),"Upload gambar gagal!",Toast.LENGTH_LONG).show()
+//            }
+//    }
 
     private fun tambahProduk() {
         binding.btnSimpan.setOnClickListener {

@@ -12,6 +12,7 @@ import com.maluku.sma_rt.extentions.UserSession.Companion.SHARED_PREFERENCE_ID_R
 import com.maluku.sma_rt.extentions.UserSession.Companion.SHARED_PREFERENCE_NAME_KEY
 import com.maluku.sma_rt.extentions.UserSession.Companion.SHARED_PREFERENCE_PASSWORD_KEY
 import com.maluku.sma_rt.extentions.UserSession.Companion.SHARED_PREFERENCE_PHONE_NUMBER_KEY
+import com.maluku.sma_rt.extentions.UserSession.Companion.SHARED_PREFERENCE_ROLE_KEY
 import com.maluku.sma_rt.extentions.UserSession.Companion.SHARED_PREFERENCE_TOKEN_KEY
 import com.maluku.sma_rt.extentions.UserValidator
 import com.maluku.sma_rt.model.pengurus.CreatePengurusResponse
@@ -103,6 +104,7 @@ class AdminRTRegisterPresenter(private val activity: Activity, private val view:
         token: String
     ) {
         val userSession = UserSession(activity)
+        userSession.save(SHARED_PREFERENCE_ROLE_KEY,"pengurus")
         userSession.save(SHARED_PREFERENCE_TOKEN_KEY,token)
         userSession.save(SHARED_PREFERENCE_ID_RT_KEY,kodeRT)
         userSession.save(SHARED_PREFERENCE_NAME_KEY,namaAdmin)
