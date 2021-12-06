@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/login_nav"
-    app:startDestination="@id/wargaHomeTesting">
+    app:startDestination="@id/splashScreen">
     <fragment
         android:id="@+id/splashScreen"
         android:name="com.maluku.sma_rt.view.SplashScreen"
@@ -75,9 +75,4 @@
             android:id="@+id/action_registerRT_to_loginRT"
             app:destination="@id/loginRT" />
     </fragment>
-    <fragment
-        android:id="@+id/wargaHomeTesting"
-        android:name="com.maluku.sma_rt.view.testing.WargaHomeTesting"
-        android:label="fragment_warga_home_testing"
-        tools:layout="@layout/fragment_warga_home_testing" />
 </navigation>
