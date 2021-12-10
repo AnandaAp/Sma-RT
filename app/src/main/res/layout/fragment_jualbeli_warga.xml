@@ -11,29 +11,36 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout3"
         android:layout_width="match_parent"
-        android:layout_height="180dp"
+        android:layout_height="150dp"
         android:background="@drawable/bg_market"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <EditText
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textlayout_namaproduk"
             android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginStart="13dp"
-            android:layout_marginEnd="13dp"
-            android:layout_marginBottom="16dp"
-            android:textCursorDrawable="@drawable/color_cursor"
-            android:background="@drawable/btn_rounded2"
-            android:drawableEnd="@drawable/ic_search"
-            android:hint="Cari kebutuhan anda..."
-            android:paddingStart="18dp"
-            android:textColorHint="@color/grey"
-            android:textSize="14sp"
-            android:fontFamily="@font/montserrat_medium"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:hint=" "
+            app:boxBackgroundMode="none"
+            app:endIconMode="clear_text"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:startIconDrawable="@drawable/ic_search2"
+            tools:layout_editor_absoluteX="20dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ed_namaproduk"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:background="@drawable/btn_rounded2"
+                android:fontFamily="@font/montserrat_regular"
+                android:hint="Cari kebutuhan anda ..."
+                android:padding="2dp"
+                android:textCursorDrawable="@drawable/color_cursor" />
+
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
             android:id="@+id/tv_nama"
