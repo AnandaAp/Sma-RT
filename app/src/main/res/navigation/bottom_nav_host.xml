@@ -32,6 +32,9 @@
         <action
             android:id="@+id/action_akunWarga_to_kelolaToko"
             app:destination="@id/kelolaToko" />
+        <action
+            android:id="@+id/action_akunWarga_to_editProfile"
+            app:destination="@id/editProfile" />
     </fragment>
     <fragment
         android:id="@+id/kelolaToko"
@@ -174,4 +177,13 @@
         android:name="com.maluku.sma_rt.view.warga.PesananuserSelesaiDetails"
         android:label="fragment_pesananuser_selesai_details"
         tools:layout="@layout/fragment_pesananuser_selesai_details" />
+    <fragment
+        android:id="@+id/editProfile"
+        android:name="com.maluku.sma_rt.view.warga.EditProfile"
+        android:label="fragment_edit_profile"
+        tools:layout="@layout/fragment_edit_profile" >
+        <action
+            android:id="@+id/action_editProfile_to_akunWarga"
+            app:destination="@id/akunWarga" />
+    </fragment>
 </navigation>

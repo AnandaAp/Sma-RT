@@ -120,6 +120,18 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="editProfile">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-442" />
+                            <option name="y" value="1307" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="homeWarga">
                     <value>
                       <LayoutPositions>
@@ -304,6 +316,11 @@
                         </option>
                         <option name="myPositions">
                           <map>
+                            <entry key="action_pesananUserSudahsiap_to_pesananuserSelesaiDetails">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_pesananUserSudahsiap_to_produkPage">
                               <value>
                                 <LayoutPositions />
