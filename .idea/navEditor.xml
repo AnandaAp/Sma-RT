@@ -77,6 +77,11 @@
                         </option>
                         <option name="myPositions">
                           <map>
+                            <entry key="action_akunWarga_to_editProfile">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_akunWarga_to_kelolaToko">
                               <value>
                                 <LayoutPositions />
@@ -128,6 +133,15 @@
                             <option name="x" value="-442" />
                             <option name="y" value="1307" />
                           </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_editProfile_to_akunWarga">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
                         </option>
                       </LayoutPositions>
                     </value>
@@ -192,6 +206,18 @@
                               </value>
                             </entry>
                           </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="pengaturanToko">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="82" />
+                            <option name="y" value="1291" />
+                          </Point>
                         </option>
                       </LayoutPositions>
                     </value>

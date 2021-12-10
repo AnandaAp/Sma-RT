@@ -50,6 +50,9 @@
         <action
             android:id="@+id/action_kelolaToko_to_pesananPenjualPage"
             app:destination="@id/pesananPenjualPage" />
+        <action
+            android:id="@+id/action_kelolaToko_to_pengaturanToko"
+            app:destination="@id/pengaturanToko" />
     </fragment>
     <fragment
         android:id="@+id/produkPage"
@@ -185,5 +188,14 @@
         <action
             android:id="@+id/action_editProfile_to_akunWarga"
             app:destination="@id/akunWarga" />
+    </fragment>
+    <fragment
+        android:id="@+id/pengaturanToko"
+        android:name="com.maluku.sma_rt.view.warga.PengaturanToko"
+        android:label="fragment_pengaturan_toko"
+        tools:layout="@layout/fragment_pengaturan_toko" >
+        <action
+            android:id="@+id/action_pengaturanToko_to_kelolaToko"
+            app:destination="@id/kelolaToko" />
     </fragment>
 </navigation>

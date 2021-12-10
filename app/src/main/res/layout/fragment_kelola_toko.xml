@@ -179,6 +179,7 @@
 
                 <!-- Column 1 -->
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/card_saldo"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:layout_marginLeft="16dp"
@@ -218,6 +219,7 @@
 
                 <!-- Column 2 -->
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/card_pengaturan"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:layout_marginLeft="16dp"
