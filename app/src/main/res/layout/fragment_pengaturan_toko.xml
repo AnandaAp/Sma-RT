@@ -70,7 +70,7 @@
             android:layout_height="100dp"
             android:layout_marginTop="30dp"
             android:src="@drawable/warunbuagung"
-            app:civ_border_color="@color/black"
+            app:civ_border_color="@color/green"
             app:civ_border_width="1dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -78,9 +78,9 @@
 
         <TextView
             android:id="@+id/btn_pickprofile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/btn_changeimage"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:background="@drawable/btn_changeprofile"
             app:layout_constraintBottom_toBottomOf="@+id/profile_toko"
             app:layout_constraintEnd_toEndOf="@+id/profile_toko"
             app:layout_constraintHorizontal_bias="1.0"
@@ -111,16 +111,17 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
+                app:endIconMode="clear_text"
                 app:boxBackgroundMode="none"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_namawarga">
+                app:layout_constraintTop_toBottomOf="@+id/tv_namatoko">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/ed_namatoko"
                     android:layout_width="match_parent"
                     android:layout_height="46dp"
-                    android:background="@drawable/bg_edtext_grey"
+                    android:background="@drawable/bg_edtext_border"
                     android:fontFamily="@font/montserrat_regular"
                     android:inputType="textCapWords"
                     android:padding="2dp"
@@ -130,40 +131,24 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
+
             <TextView
-                android:id="@+id/tv_detailproduk"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="16dp"
-                android:fontFamily="@font/montserrat_semibold"
-                android:text="Deskripsi Toko"
-                android:textColor="@color/black"
-                android:textSize="14sp" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textlayout_detailproduk"
+                android:id="@+id/btn_ubahtoko"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="43dp"
                 android:layout_marginStart="20dp"
+                android:layout_marginTop="30dp"
                 android:layout_marginEnd="20dp"
-                app:boxBackgroundMode="none"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_detailproduk">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/ed_detailproduk"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/bg_edtext_grey"
-                    android:fontFamily="@font/montserrat_regular"
-                    android:text="Toko ini selalu buka dan tidak pernah tutup, dan semua barang disini gratis"
-                    android:paddingTop="10dp"
-                    android:gravity="top"
-                    android:lines="6"
-                    android:textCursorDrawable="@drawable/color_cursor" />
-            </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginBottom="50dp"
+                android:background="@drawable/btn_rounded"
+                android:backgroundTint="@color/green"
+                android:clickable="true"
+                android:fontFamily="@font/montserrat_semibold"
+                android:foreground="?attr/selectableItemBackground"
+                android:gravity="center"
+                android:text="Ubah Toko"
+                android:textColor="@color/white"
+                android:textSize="18sp"/>
 
 
             </LinearLayout>

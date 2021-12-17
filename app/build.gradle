@@ -72,7 +72,7 @@ dependencies {
     //easy permissions
     implementation 'pub.devrel:easypermissions:3.0.0'
     //lottie
-    implementation "com.airbnb.android:lottie:4.2.0"
+    implementation 'com.airbnb.android:lottie:4.2.2'
     //biometric
     implementation "androidx.biometric:biometric:1.1.0"
     //splashscreen api
@@ -83,4 +83,6 @@ dependencies {
     implementation 'androidx.viewpager2:viewpager2:1.0.0'
     // imageprofile circle
     implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+
 }

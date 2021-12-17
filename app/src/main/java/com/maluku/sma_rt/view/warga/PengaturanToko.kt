@@ -1,7 +1,10 @@
 package com.maluku.sma_rt.view.warga
 
 import android.app.Activity
+import android.app.Dialog
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
@@ -9,10 +12,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
+import android.widget.TextView
 import androidx.navigation.fragment.findNavController
 import com.maluku.sma_rt.R
 import com.maluku.sma_rt.databinding.FragmentEditProfileBinding
 import com.maluku.sma_rt.databinding.FragmentPengaturanTokoBinding
+import com.maluku.sma_rt.extentions.UserSession
 
 
 class PengaturanToko : Fragment() {
@@ -34,6 +40,7 @@ class PengaturanToko : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         goBack()
         imagePick()
+        tokoProfile()
     }
 
     private fun goBack() {
@@ -62,6 +69,25 @@ class PengaturanToko : Fragment() {
         if (resultCode == Activity.RESULT_OK && requestCode == pickImage) {
             imageUri = data?.data
             binding.profileToko.setImageURI(imageUri)
+        }
+    }
+
+    private fun tokoProfile() {
+        binding.btnUbahtoko.setOnClickListener {
+            val preferences = UserSession(requireActivity())
+            preferences.clearSharedPreference()
+            val dialog = Dialog(requireActivity())
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+            dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            dialog.setContentView(R.layout.custom_dialog_profiletoko)
+            val btnSimpan = dialog.findViewById<TextView>(R.id.btn_ok)
+
+            btnSimpan.setOnClickListener {
+                dialog.dismiss()
+            }
+
+
+            dialog.show()
         }
     }
 
