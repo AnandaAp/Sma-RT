@@ -1,5 +1,6 @@
 package com.maluku.sma_rt.view.pengurus.bottomnavigation
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,10 +16,8 @@ import com.bumptech.glide.request.RequestOptions
 import com.google.firebase.storage.FirebaseStorage
 import com.maluku.sma_rt.R
 import com.maluku.sma_rt.databinding.FragmentHomeBinding
-import com.maluku.sma_rt.databinding.FragmentWargaBinding
 import com.maluku.sma_rt.view.pengurus.adapter.GaleriAdapter
 import com.maluku.sma_rt.view.pengurus.adapter.InfoAdapter
-import java.io.File
 
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
@@ -40,6 +39,7 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setRecyclerViewDaftarWarga()
         navigateDashboardToTambahKelurga()
+        navigateDashboardToSurat()
     }
 
     private fun setRecyclerViewDaftarWarga(){
@@ -56,6 +56,12 @@ class HomeFragment : Fragment() {
     private fun navigateDashboardToTambahKelurga() {
         binding.btnTambahKeluarga.setOnClickListener{
             findNavController().navigate(R.id.action_navigation_home_to_tambahKeluargaFragment)
+        }
+    }
+
+    private fun navigateDashboardToSurat() {
+        binding.btnSurat.setOnClickListener{
+            findNavController().navigate(R.id.action_navigation_home_to_suratFragment)
         }
     }
 

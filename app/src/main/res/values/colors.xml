@@ -15,7 +15,9 @@
     <color name="btnsecondary">#0CBC8B</color>
     <color name="grey">#9B9B9B</color>
     <color name="red">#E81111</color>
+    <color name="redbtn">#BC2C0C</color>
     <color name="yellow">#FFFF00</color>
+    <color name="putih_abu">#E7E3E3</color>
 
 
 </resources>

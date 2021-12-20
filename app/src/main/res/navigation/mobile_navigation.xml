@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_navigation_home_to_tambahKeluargaFragment"
             app:destination="@id/tambahKeluargaFragment" />
+        <action
+            android:id="@+id/action_navigation_home_to_suratFragment"
+            app:destination="@id/suratFragment" />
     </fragment>
 
     <fragment
@@ -57,4 +60,37 @@
         android:name="com.maluku.sma_rt.view.pengurus.TambahKeluargaFragment"
         android:label="fragment_tambah_keluarga"
         tools:layout="@layout/fragment_tambah_keluarga" />
+    <fragment
+        android:id="@+id/fragmentSuratMasuk"
+        android:name="com.maluku.sma_rt.view.pengurus.FragmentSuratMasuk"
+        android:label="fragment_surat__masuk"
+        tools:layout="@layout/fragment_surat_masuk" >
+        <action
+            android:id="@+id/action_fragmentSuratMasuk_to_suratFragment"
+            app:destination="@id/suratFragment" />
+        <action
+            android:id="@+id/action_fragmentSuratMasuk_to_fragmentSuratKeluar"
+            app:destination="@id/fragmentSuratKeluar" />
+    </fragment>
+    <fragment
+        android:id="@+id/suratFragment"
+        android:name="com.maluku.sma_rt.view.pengurus.SuratFragment"
+        android:label="fragment_surat"
+        tools:layout="@layout/fragment_surat" >
+        <action
+            android:id="@+id/action_suratFragment_to_navigation_home"
+            app:destination="@id/navigation_home" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentSuratKeluar"
+        android:name="com.maluku.sma_rt.view.pengurus.FragmentSuratKeluar"
+        android:label="fragment_surat__keluar"
+        tools:layout="@layout/fragment_surat_keluar" >
+        <action
+            android:id="@+id/action_fragmentSuratKeluar_to_suratFragment"
+            app:destination="@id/suratFragment" />
+        <action
+            android:id="@+id/action_fragmentSuratKeluar_to_fragmentSuratMasuk"
+            app:destination="@id/fragmentSuratMasuk" />
+    </fragment>
 </navigation>

@@ -33,7 +33,7 @@ class AccountFragment : Fragment() {
     }
 
     private fun logout(){
-        binding.buttonLogOut.setOnClickListener {
+        binding.btnLogout.setOnClickListener {
             val preferences = UserSession(requireActivity())
             preferences.clearSharedPreference()
             val intent = Intent(requireActivity(), MainActivity::class.java)
