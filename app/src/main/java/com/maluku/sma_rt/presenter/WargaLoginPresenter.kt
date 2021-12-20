@@ -53,10 +53,12 @@ class WargaLoginPresenter(private val activity: Activity, private val view: Logi
                                     token
                                 )
                             }
-                            Toast.makeText(activity,"Pesan: ${response.message()}",Toast.LENGTH_SHORT).show()
+                            Toast.makeText(activity,"Pesan: ${response.message()}",
+                                Toast.LENGTH_SHORT).show()
                         }
                         false -> {
-                            Toast.makeText(activity,"Error: ${response.message()}",Toast.LENGTH_SHORT).show()
+                            Toast.makeText(activity,"Error: ${response.message()}",
+                                Toast.LENGTH_SHORT).show()
                         }
                     }
                 }
