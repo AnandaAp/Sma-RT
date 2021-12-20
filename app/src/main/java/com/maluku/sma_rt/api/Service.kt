@@ -8,6 +8,9 @@ import com.maluku.sma_rt.model.pengurus.CreatePengurusResponse
 import com.maluku.sma_rt.model.produk.CreateProductResponse
 import com.maluku.sma_rt.model.produk.DeleteProductByIDResponse
 import com.maluku.sma_rt.model.produk.UpdateProductByIDResponse
+import com.maluku.sma_rt.model.tagihan.CreateTagihanResponse
+import com.maluku.sma_rt.model.tagihan.GetAllTagihanResponse
+import com.maluku.sma_rt.model.updateanddelete.OnDataResponse
 import com.maluku.sma_rt.model.warga.CreateWargaResponse
 import com.maluku.sma_rt.model.warga.DetailLoginedWargaResponse
 import com.maluku.sma_rt.model.warga.GetAllWargaResponse
@@ -112,4 +115,29 @@ interface Service {
         @Path("product_id") product_id: String,
     ): Call<DeleteProductByIDResponse>
 
+    // Tambah Tagihan
+    @FormUrlEncoded
+    @POST("tagihan")
+    fun crateTagihan(
+        @Header("Authorization") authHeader: String,
+        @Field("nama") nama: String,
+        @Field("detail") detail: String,
+        @Field("jumlah") jumlah: Double,
+    ): Call<CreateTagihanResponse>
+
+    //ambil seluruh data pada tagihan
+    @GET("tagihan")
+    fun getAllTagihan(
+        @Header("Authorization") authHeader: String,
+        @Field("id_keluarga") idKeluarga: String
+    ): Call<GetAllTagihanResponse>
+
+    //bayar tagihan
+
+    @FormUrlEncoded
+    @PUT("tagihan/{token}")
+    fun bayarTagihan(
+        @Header("Authorization") authHeader: String,
+        @Path("token") token: String
+    ): Call<OnDataResponse>
 }

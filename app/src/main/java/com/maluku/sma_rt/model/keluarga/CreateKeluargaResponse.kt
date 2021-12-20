@@ -6,17 +6,14 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class CreateKeluargaResponse(
-
     @field:SerializedName("code")
 	val code: Int? = null,
-
     @field:SerializedName("create_keluarga")
 	val createKeluarga: CreateKeluarga? = null,
 
     @field:SerializedName("message")
 	val message: String? = null
 ) : Parcelable
-
 @Parcelize
 data class CreateKeluarga(
 

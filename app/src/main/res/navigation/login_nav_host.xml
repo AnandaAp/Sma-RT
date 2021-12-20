@@ -75,9 +75,4 @@
             android:id="@+id/action_registerRT_to_loginRT"
             app:destination="@id/loginRT" />
     </fragment>
-    <fragment
-        android:id="@+id/wargaHomeTesting"
-        android:name="com.maluku.sma_rt.view.testing.WargaHomeTesting"
-        android:label="fragment_warga_home_testing"
-        tools:layout="@layout/fragment_warga_home_testing" />
 </navigation>
