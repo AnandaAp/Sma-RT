@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import androidx.navigation.fragment.findNavController
 import com.maluku.sma_rt.R
 
 
@@ -49,6 +51,11 @@ class HomeWarga : Fragment() {
         rvGaleri.layoutManager = LinearLayoutManager(activity,LinearLayoutManager.HORIZONTAL,false)
         rvGaleri.setAdapter(adapterGaleri)
 
+
+        val menuLaporan = view.findViewById<ImageView>(R.id.btn_laporan)
+        menuLaporan.setOnClickListener {
+            findNavController().navigate(R.id.action_homeWarga_to_laporanWarga)
+        }
 
         return view
     }

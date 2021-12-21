@@ -9,7 +9,11 @@
         android:id="@+id/homeWarga"
         android:name="com.maluku.sma_rt.view.warga.HomeWarga"
         android:label="fragment_home_warga"
-        tools:layout="@layout/fragment_home_warga" />
+        tools:layout="@layout/fragment_home_warga" >
+        <action
+            android:id="@+id/action_homeWarga_to_laporanWarga"
+            app:destination="@id/laporanWarga" />
+    </fragment>
     <fragment
         android:id="@+id/jualbeliWarga"
         android:name="com.maluku.sma_rt.view.warga.JualbeliWarga"
@@ -197,5 +201,14 @@
         <action
             android:id="@+id/action_pengaturanToko_to_kelolaToko"
             app:destination="@id/kelolaToko" />
+    </fragment>
+    <fragment
+        android:id="@+id/laporanWarga"
+        android:name="com.maluku.sma_rt.view.warga.LaporanWarga"
+        android:label="fragment_laporan_warga"
+        tools:layout="@layout/fragment_laporan_warga" >
+        <action
+            android:id="@+id/action_laporanWarga_to_homeWarga"
+            app:destination="@id/homeWarga" />
     </fragment>
 </navigation>

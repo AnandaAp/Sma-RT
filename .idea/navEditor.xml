@@ -155,6 +155,15 @@
                             <option name="y" value="-764" />
                           </Point>
                         </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_homeWarga_to_laporanWarga">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
                       </LayoutPositions>
                     </value>
                   </entry>
@@ -195,6 +204,11 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
+                            <entry key="action_kelolaToko_to_pengaturanToko">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_kelolaToko_to_pesananPenjualPage">
                               <value>
                                 <LayoutPositions />
@@ -210,6 +224,18 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="laporanWarga">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-841" />
+                            <option name="y" value="-919" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="pengaturanToko">
                     <value>
                       <LayoutPositions>
@@ -218,6 +244,15 @@
                             <option name="x" value="82" />
                             <option name="y" value="1291" />
                           </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_pengaturanToko_to_kelolaToko">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
                         </option>
                       </LayoutPositions>
                     </value>
