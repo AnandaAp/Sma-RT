@@ -26,8 +26,7 @@
             app:boxBackgroundMode="none"
             app:endIconMode="clear_text"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:startIconDrawable="@drawable/ic_search2"
-            tools:layout_editor_absoluteX="20dp">
+            app:startIconDrawable="@drawable/ic_search2">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/ed_namaproduk"

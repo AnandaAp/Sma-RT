@@ -36,6 +36,9 @@
         <action
             android:id="@+id/action_loginWarga_to_registerWarga"
             app:destination="@id/registerWarga" />
+        <action
+            android:id="@+id/action_loginWarga_to_lupaPassword"
+            app:destination="@id/lupaPassword" />
     </fragment>
     <fragment
         android:id="@+id/registerWarga"
@@ -74,5 +77,26 @@
         <action
             android:id="@+id/action_registerRT_to_loginRT"
             app:destination="@id/loginRT" />
+    </fragment>
+    <fragment
+        android:id="@+id/lupaPassword"
+        android:name="com.maluku.sma_rt.view.warga.LupaPassword"
+        android:label="fragment_lupa_password"
+        tools:layout="@layout/fragment_lupa_password" >
+        <action
+            android:id="@+id/action_lupaPassword_to_loginWarga"
+            app:destination="@id/loginWarga" />
+        <action
+            android:id="@+id/action_lupaPassword_to_resetPassword"
+            app:destination="@id/resetPassword" />
+    </fragment>
+    <fragment
+        android:id="@+id/resetPassword"
+        android:name="com.maluku.sma_rt.view.warga.ResetPassword"
+        android:label="fragment_reset_password"
+        tools:layout="@layout/fragment_reset_password" >
+        <action
+            android:id="@+id/action_resetPassword_to_lupaPassword"
+            app:destination="@id/lupaPassword" />
     </fragment>
 </navigation>

@@ -34,6 +34,7 @@ class LoginWarga : Fragment(), LoginWargaInterface{
         super.onViewCreated(view, savedInstanceState)
         btnDaftarNavigateToRegisterWarga()
         btnLoginOnLogin()
+        forgotPassword()
 
 
     }
@@ -87,6 +88,12 @@ class LoginWarga : Fragment(), LoginWargaInterface{
                 email,
                 password
             )
+    }
+
+    private fun forgotPassword() {
+        binding.tvLupapass.setOnClickListener{
+            findNavController().navigate(R.id.action_loginWarga_to_lupaPassword)
+        }
     }
 
     private fun navigateToDashboard() {
