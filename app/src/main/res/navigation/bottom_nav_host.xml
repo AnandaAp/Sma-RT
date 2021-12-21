@@ -63,6 +63,9 @@
         <action
             android:id="@+id/action_kelolaToko_to_pengaturanToko"
             app:destination="@id/pengaturanToko" />
+        <action
+            android:id="@+id/action_kelolaToko_to_isisaldoTariksaldo"
+            app:destination="@id/isisaldoTariksaldo" />
     </fragment>
     <fragment
         android:id="@+id/produkPage"
@@ -232,5 +235,14 @@
         <action
             android:id="@+id/action_topupSaldo_to_homeWarga"
             app:destination="@id/homeWarga" />
+    </fragment>
+    <fragment
+        android:id="@+id/isisaldoTariksaldo"
+        android:name="com.maluku.sma_rt.view.warga.IsisaldoTariksaldo"
+        android:label="fragment_isisaldo_tariksaldo"
+        tools:layout="@layout/fragment_isisaldo_tariksaldo" >
+        <action
+            android:id="@+id/action_isisaldoTariksaldo_to_kelolaToko"
+            app:destination="@id/kelolaToko" />
     </fragment>
 </navigation>

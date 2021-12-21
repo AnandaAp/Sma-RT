@@ -42,7 +42,7 @@ class TopupSaldo : Fragment() {
 
     private fun btnBack() {
         binding.btnBack.setOnClickListener{
-            findNavController().navigate(R.id.action_persuratanWarga_to_homeWarga)
+            findNavController().navigate(R.id.action_topupSaldo_to_homeWarga)
         }
     }
 

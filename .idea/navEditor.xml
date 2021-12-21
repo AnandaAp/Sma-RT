@@ -167,6 +167,32 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
+                            <entry key="action_homeWarga_to_topupSaldo">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="isisaldoTariksaldo">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="97" />
+                            <option name="y" value="1972" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_isisaldoTariksaldo_to_kelolaToko">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                           </map>
                         </option>
                       </LayoutPositions>
@@ -205,6 +231,11 @@
                         <option name="myPositions">
                           <map>
                             <entry key="action_kelolaToko_to_akunWarga">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_kelolaToko_to_isisaldoTariksaldo">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -523,6 +554,15 @@
                             <option name="x" value="-756" />
                             <option name="y" value="-1314" />
                           </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_topupSaldo_to_homeWarga">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
                         </option>
                       </LayoutPositions>
                     </value>
