@@ -68,7 +68,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/angkasaldo" />
 
             <TextView
-                android:id="@+id/tv_isisaldo"
+                android:id="@+id/btn_isisaldo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="10dp"

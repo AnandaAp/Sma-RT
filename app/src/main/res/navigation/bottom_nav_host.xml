@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_homeWarga_to_persuratanWarga"
             app:destination="@id/persuratanWarga" />
+        <action
+            android:id="@+id/action_homeWarga_to_topupSaldo"
+            app:destination="@id/topupSaldo" />
     </fragment>
     <fragment
         android:id="@+id/jualbeliWarga"
@@ -220,6 +223,14 @@
         android:label="PersuratanWarga" >
         <action
             android:id="@+id/action_persuratanWarga_to_homeWarga"
+            app:destination="@id/homeWarga" />
+    </fragment>
+    <fragment
+        android:id="@+id/topupSaldo"
+        android:name="com.maluku.sma_rt.view.warga.TopupSaldo"
+        android:label="TopupSaldo" >
+        <action
+            android:id="@+id/action_topupSaldo_to_homeWarga"
             app:destination="@id/homeWarga" />
     </fragment>
 </navigation>
