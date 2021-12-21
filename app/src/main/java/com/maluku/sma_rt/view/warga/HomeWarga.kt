@@ -57,6 +57,11 @@ class HomeWarga : Fragment() {
             findNavController().navigate(R.id.action_homeWarga_to_laporanWarga)
         }
 
+        val menuPersuratan = view.findViewById<ImageView>(R.id.btn_persuratan)
+        menuPersuratan.setOnClickListener {
+            findNavController().navigate(R.id.action_homeWarga_to_persuratanWarga)
+        }
+
         return view
     }
 

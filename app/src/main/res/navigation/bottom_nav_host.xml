@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_homeWarga_to_laporanWarga"
             app:destination="@id/laporanWarga" />
+        <action
+            android:id="@+id/action_homeWarga_to_persuratanWarga"
+            app:destination="@id/persuratanWarga" />
     </fragment>
     <fragment
         android:id="@+id/jualbeliWarga"
@@ -209,6 +212,14 @@
         tools:layout="@layout/fragment_laporan_warga" >
         <action
             android:id="@+id/action_laporanWarga_to_homeWarga"
+            app:destination="@id/homeWarga" />
+    </fragment>
+    <fragment
+        android:id="@+id/persuratanWarga"
+        android:name="com.maluku.sma_rt.view.warga.PersuratanWarga"
+        android:label="PersuratanWarga" >
+        <action
+            android:id="@+id/action_persuratanWarga_to_homeWarga"
             app:destination="@id/homeWarga" />
     </fragment>
 </navigation>

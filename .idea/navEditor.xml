@@ -162,6 +162,11 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
+                            <entry key="action_homeWarga_to_persuratanWarga">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                           </map>
                         </option>
                       </LayoutPositions>
@@ -229,9 +234,18 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-841" />
-                            <option name="y" value="-919" />
+                            <option name="x" value="-755" />
+                            <option name="y" value="-527" />
                           </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_laporanWarga_to_homeWarga">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
                         </option>
                       </LayoutPositions>
                     </value>
@@ -248,6 +262,27 @@
                         <option name="myPositions">
                           <map>
                             <entry key="action_pengaturanToko_to_kelolaToko">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="persuratanWarga">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-754" />
+                            <option name="y" value="-932" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_persuratanWarga_to_homeWarga">
                               <value>
                                 <LayoutPositions />
                               </value>
