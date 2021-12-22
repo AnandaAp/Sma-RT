@@ -8,6 +8,7 @@ import com.maluku.sma_rt.api.RetrofitService
 import com.maluku.sma_rt.extentions.UserSession
 import com.maluku.sma_rt.extentions.UserSession.Companion.SHARED_PREFERENCE_EMAIL_KEY
 import com.maluku.sma_rt.extentions.UserSession.Companion.SHARED_PREFERENCE_PASSWORD_KEY
+import com.maluku.sma_rt.extentions.UserSession.Companion.SHARED_PREFERENCE_ROLE_KEY
 import com.maluku.sma_rt.extentions.UserSession.Companion.SHARED_PREFERENCE_TOKEN_KEY
 import com.maluku.sma_rt.model.warga.WargaLoginResponse
 import com.maluku.sma_rt.view.viewInterface.LoginWargaInterface
@@ -52,10 +53,12 @@ class WargaLoginPresenter(private val activity: Activity, private val view: Logi
                                     token
                                 )
                             }
-                            Toast.makeText(activity,"Pesan: ${response.message()}",Toast.LENGTH_SHORT).show()
+                            Toast.makeText(activity,"Pesan: ${response.message()}",
+                                Toast.LENGTH_SHORT).show()
                         }
                         false -> {
-                            Toast.makeText(activity,"Error: ${response.message()}",Toast.LENGTH_SHORT).show()
+                            Toast.makeText(activity,"Error: ${response.message()}",
+                                Toast.LENGTH_SHORT).show()
                         }
                     }
                 }
@@ -73,7 +76,7 @@ class WargaLoginPresenter(private val activity: Activity, private val view: Logi
         token: String
     ) {
         val userSession = UserSession(activity)
-        userSession.save(UserSession.SHARED_PREFERENCE_ROLE_KEY,"warga")
+        userSession.save(SHARED_PREFERENCE_ROLE_KEY,"warga")
         userSession.save(SHARED_PREFERENCE_TOKEN_KEY,token)
         userSession.save(SHARED_PREFERENCE_EMAIL_KEY,email)
         userSession.save(SHARED_PREFERENCE_PASSWORD_KEY,password)

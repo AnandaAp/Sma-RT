@@ -51,6 +51,7 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/TILinputNamaAdmin"
+                    app:helperTextTextColor="@color/yellow"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tv_biodata"
@@ -75,6 +76,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
                     android:id="@+id/TILspGenderAdmin"
+                    app:helperTextTextColor="@color/yellow"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/TILinputNamaAdmin"
@@ -102,6 +104,7 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/TILinputEmailAdmin"
+                    app:helperTextTextColor="@color/yellow"
                     style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -126,6 +129,7 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/TILinputNoHpAdmin"
+                    app:helperTextTextColor="@color/yellow"
                     style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -150,6 +154,7 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/TILinputPassword"
+                    app:helperTextTextColor="@color/yellow"
                     style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -175,6 +180,7 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/TILinputConfirmPassword"
+                    app:helperTextTextColor="@color/yellow"
                     style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -200,6 +206,7 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/TILinputKodeRT"
+                    app:helperTextTextColor="@color/yellow"
                     style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

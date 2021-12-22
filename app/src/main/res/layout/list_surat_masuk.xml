@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
@@ -121,15 +121,15 @@
                 app:layout_constraintTop_toTopOf="@+id/textView38" />
 
             <TextView
-                android:id="@+id/textView50"
+                android:id="@+id/vwJudulMasuk"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="TextView"
-                app:layout_constraintStart_toStartOf="@+id/textView51"
+                app:layout_constraintStart_toStartOf="@+id/vwTujuanMasuk"
                 app:layout_constraintTop_toTopOf="@+id/textView39" />
 
             <TextView
-                android:id="@+id/textView51"
+                android:id="@+id/vwTujuanMasuk"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
@@ -138,27 +138,27 @@
                 app:layout_constraintTop_toTopOf="@+id/textView40" />
 
             <TextView
-                android:id="@+id/textView52"
+                android:id="@+id/vwTanggalMasuk"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="TextView"
-                app:layout_constraintStart_toStartOf="@+id/textView51"
+                app:layout_constraintStart_toStartOf="@+id/vwTujuanMasuk"
                 app:layout_constraintTop_toTopOf="@+id/textView41" />
 
             <TextView
-                android:id="@+id/textView53"
+                android:id="@+id/vwKeperluanMasuk"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="TextView"
-                app:layout_constraintStart_toStartOf="@+id/textView52"
+                app:layout_constraintStart_toStartOf="@+id/vwTanggalMasuk"
                 app:layout_constraintTop_toTopOf="@+id/textView42" />
 
             <TextView
-                android:id="@+id/textView54"
+                android:id="@+id/vwStatusMasuk"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="TextView"
-                app:layout_constraintStart_toStartOf="@+id/textView53"
+                app:layout_constraintStart_toStartOf="@+id/vwKeperluanMasuk"
                 app:layout_constraintTop_toTopOf="@+id/textView43" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

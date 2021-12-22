@@ -66,7 +66,7 @@ class SplashScreen : Fragment() {
             if (role == "pengurus"){
                 kodeKeluarga = preferences
                     .getValueString(SHARED_PREFERENCE_ID_RT_KEY)
-            } else if(role == "pengurus"){
+            } else if(role == "warga"){
                 kodeKeluarga = preferences
                     .getValueString(SHARED_PREFERENCE_FAMILY_ID_KEY)
             }

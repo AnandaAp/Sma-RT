@@ -77,11 +77,6 @@
                         </option>
                         <option name="myPositions">
                           <map>
-                            <entry key="action_akunWarga_to_editProfile">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
                             <entry key="action_akunWarga_to_kelolaToko">
                               <value>
                                 <LayoutPositions />
@@ -99,18 +94,6 @@
                           <Point>
                             <option name="x" value="-1027" />
                             <option name="y" value="351" />
-                          </Point>
-                        </option>
-                      </LayoutPositions>
-                    </value>
-                  </entry>
-                  <entry key="changePassword">
-                    <value>
-                      <LayoutPositions>
-                        <option name="myPosition">
-                          <Point>
-                            <option name="x" value="-415" />
-                            <option name="y" value="1865" />
                           </Point>
                         </option>
                       </LayoutPositions>
@@ -137,85 +120,14 @@
                       </LayoutPositions>
                     </value>
                   </entry>
-                  <entry key="editProfile">
-                    <value>
-                      <LayoutPositions>
-                        <option name="myPosition">
-                          <Point>
-                            <option name="x" value="-442" />
-                            <option name="y" value="1307" />
-                          </Point>
-                        </option>
-                        <option name="myPositions">
-                          <map>
-                            <entry key="action_editProfile_to_akunWarga">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
-                          </map>
-                        </option>
-                      </LayoutPositions>
-                    </value>
-                  </entry>
                   <entry key="homeWarga">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
                             <option name="x" value="-1039" />
-                            <option name="y" value="-764" />
+                            <option name="y" value="-345" />
                           </Point>
-                        </option>
-                        <option name="myPositions">
-                          <map>
-                            <entry key="action_homeWarga_to_laporanWarga">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
-                            <entry key="action_homeWarga_to_persuratanWarga">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
-                            <entry key="action_homeWarga_to_topupSaldo">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
-                          </map>
-                        </option>
-                      </LayoutPositions>
-                    </value>
-                  </entry>
-                  <entry key="isisaldoTariksaldo">
-                    <value>
-                      <LayoutPositions>
-                        <option name="myPosition">
-                          <Point>
-                            <option name="x" value="97" />
-                            <option name="y" value="1972" />
-                          </Point>
-                        </option>
-                        <option name="myPositions">
-                          <map>
-                            <entry key="action_isisaldoTariksaldo_to_kelolaToko">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
-                            <entry key="action_isisaldoTariksaldo_to_tarikSaldo">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
-                            <entry key="action_isisaldoTariksaldo_to_topupSaldo">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
-                          </map>
                         </option>
                       </LayoutPositions>
                     </value>
@@ -257,85 +169,12 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
-                            <entry key="action_kelolaToko_to_isisaldoTariksaldo">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
-                            <entry key="action_kelolaToko_to_pengaturanToko">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
                             <entry key="action_kelolaToko_to_pesananPenjualPage">
                               <value>
                                 <LayoutPositions />
                               </value>
                             </entry>
                             <entry key="action_kelolaToko_to_produkPage">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
-                          </map>
-                        </option>
-                      </LayoutPositions>
-                    </value>
-                  </entry>
-                  <entry key="laporanWarga">
-                    <value>
-                      <LayoutPositions>
-                        <option name="myPosition">
-                          <Point>
-                            <option name="x" value="-755" />
-                            <option name="y" value="-527" />
-                          </Point>
-                        </option>
-                        <option name="myPositions">
-                          <map>
-                            <entry key="action_laporanWarga_to_homeWarga">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
-                          </map>
-                        </option>
-                      </LayoutPositions>
-                    </value>
-                  </entry>
-                  <entry key="pengaturanToko">
-                    <value>
-                      <LayoutPositions>
-                        <option name="myPosition">
-                          <Point>
-                            <option name="x" value="82" />
-                            <option name="y" value="1291" />
-                          </Point>
-                        </option>
-                        <option name="myPositions">
-                          <map>
-                            <entry key="action_pengaturanToko_to_kelolaToko">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
-                          </map>
-                        </option>
-                      </LayoutPositions>
-                    </value>
-                  </entry>
-                  <entry key="persuratanWarga">
-                    <value>
-                      <LayoutPositions>
-                        <option name="myPosition">
-                          <Point>
-                            <option name="x" value="-754" />
-                            <option name="y" value="-932" />
-                          </Point>
-                        </option>
-                        <option name="myPositions">
-                          <map>
-                            <entry key="action_persuratanWarga_to_homeWarga">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -366,75 +205,13 @@
                       </LayoutPositions>
                     </value>
                   </entry>
-                  <entry key="pesananUserDiproses">
-                    <value>
-                      <LayoutPositions>
-                        <option name="myPosition">
-                          <Point>
-                            <option name="x" value="51" />
-                            <option name="y" value="-619" />
-                          </Point>
-                        </option>
-                        <option name="myPositions">
-                          <map>
-                            <entry key="action_pesananUserDiproses_to_pesananUserSudahsiap">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
-                            <entry key="action_pesananUserDiproses_to_pesananuserDiprosesDetails">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
-                            <entry key="action_pesananUserDiproses_to_produkPage">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
-                          </map>
-                        </option>
-                      </LayoutPositions>
-                    </value>
-                  </entry>
-                  <entry key="pesananUserMenunggu">
-                    <value>
-                      <LayoutPositions>
-                        <option name="myPosition">
-                          <Point>
-                            <option name="x" value="-318" />
-                            <option name="y" value="-621" />
-                          </Point>
-                        </option>
-                        <option name="myPositions">
-                          <map>
-                            <entry key="action_pesananUserMenunggu_to_pesananUserDiproses">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
-                            <entry key="action_pesananUserMenunggu_to_pesananuserMenungguDetails">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
-                            <entry key="action_pesananUserMenunggu_to_produkPage">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
-                          </map>
-                        </option>
-                      </LayoutPositions>
-                    </value>
-                  </entry>
                   <entry key="pesananUserPage">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-633" />
-                            <option name="y" value="4" />
+                            <option name="x" value="-456" />
+                            <option name="y" value="-174" />
                           </Point>
                         </option>
                         <option name="myPositions">
@@ -444,74 +221,7 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
-                            <entry key="action_pesananUserPage_to_pesananUserMenunggu">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
                           </map>
-                        </option>
-                      </LayoutPositions>
-                    </value>
-                  </entry>
-                  <entry key="pesananUserSudahsiap">
-                    <value>
-                      <LayoutPositions>
-                        <option name="myPosition">
-                          <Point>
-                            <option name="x" value="450" />
-                            <option name="y" value="-613" />
-                          </Point>
-                        </option>
-                        <option name="myPositions">
-                          <map>
-                            <entry key="action_pesananUserSudahsiap_to_pesananuserSelesaiDetails">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
-                            <entry key="action_pesananUserSudahsiap_to_produkPage">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
-                          </map>
-                        </option>
-                      </LayoutPositions>
-                    </value>
-                  </entry>
-                  <entry key="pesananuserDiprosesDetails">
-                    <value>
-                      <LayoutPositions>
-                        <option name="myPosition">
-                          <Point>
-                            <option name="x" value="50" />
-                            <option name="y" value="-1039" />
-                          </Point>
-                        </option>
-                      </LayoutPositions>
-                    </value>
-                  </entry>
-                  <entry key="pesananuserMenungguDetails">
-                    <value>
-                      <LayoutPositions>
-                        <option name="myPosition">
-                          <Point>
-                            <option name="x" value="-320" />
-                            <option name="y" value="-1022" />
-                          </Point>
-                        </option>
-                      </LayoutPositions>
-                    </value>
-                  </entry>
-                  <entry key="pesananuserSelesaiDetails">
-                    <value>
-                      <LayoutPositions>
-                        <option name="myPosition">
-                          <Point>
-                            <option name="x" value="451" />
-                            <option name="y" value="-1048" />
-                          </Point>
                         </option>
                       </LayoutPositions>
                     </value>
@@ -559,48 +269,6 @@
                         <option name="myPositions">
                           <map>
                             <entry key="action_tambahProduk_to_produkPage">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
-                          </map>
-                        </option>
-                      </LayoutPositions>
-                    </value>
-                  </entry>
-                  <entry key="tarikSaldo">
-                    <value>
-                      <LayoutPositions>
-                        <option name="myPosition">
-                          <Point>
-                            <option name="x" value="570" />
-                            <option name="y" value="1730" />
-                          </Point>
-                        </option>
-                        <option name="myPositions">
-                          <map>
-                            <entry key="action_tarikSaldo_to_isisaldoTariksaldo">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
-                          </map>
-                        </option>
-                      </LayoutPositions>
-                    </value>
-                  </entry>
-                  <entry key="topupSaldo">
-                    <value>
-                      <LayoutPositions>
-                        <option name="myPosition">
-                          <Point>
-                            <option name="x" value="-756" />
-                            <option name="y" value="-1314" />
-                          </Point>
-                        </option>
-                        <option name="myPositions">
-                          <map>
-                            <entry key="action_topupSaldo_to_homeWarga">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -725,6 +393,11 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
+                            <entry key="action_navigation_home_to_tambahKeluargaFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                           </map>
                         </option>
                       </LayoutPositions>
@@ -762,33 +435,7 @@
                         </option>
                         <option name="myPositions">
                           <map>
-                            <entry key="action_loginWarga_to_lupaPassword">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
                             <entry key="action_loginWarga_to_registerWarga">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
-                          </map>
-                        </option>
-                      </LayoutPositions>
-                    </value>
-                  </entry>
-                  <entry key="lupaPassword">
-                    <value>
-                      <LayoutPositions>
-                        <option name="myPosition">
-                          <Point>
-                            <option name="x" value="1028" />
-                            <option name="y" value="-52" />
-                          </Point>
-                        </option>
-                        <option name="myPositions">
-                          <map>
-                            <entry key="action_lupaPassword_to_loginWarga">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -815,6 +462,18 @@
                               </value>
                             </entry>
                           </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="tambahKeluargaFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-1346" />
+                            <option name="y" value="392" />
+                          </Point>
                         </option>
                       </LayoutPositions>
                     </value>
@@ -846,18 +505,6 @@
                               </value>
                             </entry>
                           </map>
-                        </option>
-                      </LayoutPositions>
-                    </value>
-                  </entry>
-                  <entry key="resetPassword">
-                    <value>
-                      <LayoutPositions>
-                        <option name="myPosition">
-                          <Point>
-                            <option name="x" value="1296" />
-                            <option name="y" value="-70" />
-                          </Point>
                         </option>
                       </LayoutPositions>
                     </value>
@@ -980,17 +627,17 @@
                         </option>
                         <option name="myPositions">
                           <map>
-                            <entry key="action_navigation_home_to_tambahKeluargaFragment">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
                             <entry key="action_navigation_warga_to_navigation_home">
                               <value>
                                 <LayoutPositions />
                               </value>
                             </entry>
                             <entry key="action_navigation_warga_to_navigation_manage">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_navigation_home_to_tambahKeluargaFragment">
                               <value>
                                 <LayoutPositions />
                               </value>
