@@ -104,6 +104,18 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="changePassword">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-415" />
+                            <option name="y" value="1865" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="editProduk">
                     <value>
                       <LayoutPositions>
@@ -189,6 +201,16 @@
                         <option name="myPositions">
                           <map>
                             <entry key="action_isisaldoTariksaldo_to_kelolaToko">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_isisaldoTariksaldo_to_tarikSaldo">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_isisaldoTariksaldo_to_topupSaldo">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -537,6 +559,27 @@
                         <option name="myPositions">
                           <map>
                             <entry key="action_tambahProduk_to_produkPage">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="tarikSaldo">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="570" />
+                            <option name="y" value="1730" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_tarikSaldo_to_isisaldoTariksaldo">
                               <value>
                                 <LayoutPositions />
                               </value>

@@ -12,12 +12,15 @@ import android.view.Window
 import android.widget.TextView
 import androidx.navigation.fragment.findNavController
 import com.maluku.sma_rt.R
+import com.maluku.sma_rt.databinding.FragmentTarikSaldoBinding
 import com.maluku.sma_rt.databinding.FragmentTopupSaldoBinding
 import com.maluku.sma_rt.extentions.UserSession
 
-class TopupSaldo : Fragment() {
 
-    private lateinit var binding: FragmentTopupSaldoBinding
+class TarikSaldo : Fragment() {
+
+    private lateinit var binding: FragmentTarikSaldoBinding
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,34 +33,32 @@ class TopupSaldo : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         goBack()
-        isiSaldo()
+        tarikSaldo()
 
     }
 
-
     private fun bindingView(): View {
-        binding = FragmentTopupSaldoBinding.inflate(layoutInflater)
+        binding = FragmentTarikSaldoBinding.inflate(layoutInflater)
         return binding.root
     }
 
     private fun goBack() {
         binding.btnBack.setOnClickListener{
-            findNavController().navigate(R.id.action_topupSaldo_to_homeWarga)
+            findNavController().navigate(R.id.action_tarikSaldo_to_isisaldoTariksaldo)
         }
     }
 
-
-    private fun isiSaldo(){
-        binding.btnIsisaldo.setOnClickListener {
+    private fun tarikSaldo(){
+        binding.btnTariksaldo.setOnClickListener {
             val preferences = UserSession(requireActivity())
             preferences.clearSharedPreference()
             val dialog = Dialog(requireActivity())
             dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
             dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            dialog.setContentView(R.layout.custom_dialog_topupsaldo)
-            val btnTopup = dialog.findViewById<TextView>(R.id.btn_ok)
+            dialog.setContentView(R.layout.custom_dialog_tariksaldo)
+            val btnTarik = dialog.findViewById<TextView>(R.id.btn_ok)
 
-            btnTopup.setOnClickListener {
+            btnTarik.setOnClickListener {
                 dialog.dismiss()
             }
 
@@ -65,5 +66,4 @@ class TopupSaldo : Fragment() {
             dialog.show()
         }
     }
-
 }

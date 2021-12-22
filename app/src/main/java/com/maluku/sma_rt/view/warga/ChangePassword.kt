@@ -7,12 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.maluku.sma_rt.R
+import com.maluku.sma_rt.databinding.FragmentChangePasswordBinding
 import com.maluku.sma_rt.databinding.FragmentIsisaldoTariksaldoBinding
 
 
-class IsisaldoTariksaldo : Fragment() {
+class ChangePassword : Fragment() {
 
-    private lateinit var binding: FragmentIsisaldoTariksaldoBinding
+    private lateinit var binding: FragmentChangePasswordBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,27 +25,21 @@ class IsisaldoTariksaldo : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        topupSaldo()
-        tarikSaldo()
+        goBack()
 
     }
 
     private fun bindingView(): View {
-        binding = FragmentIsisaldoTariksaldoBinding.inflate(layoutInflater)
+        binding = FragmentChangePasswordBinding.inflate(layoutInflater)
         return binding.root
     }
 
-    private fun topupSaldo() {
-        binding.cardIsisaldo.setOnClickListener{
-            findNavController().navigate(R.id.action_isisaldoTariksaldo_to_topupSaldo)
+    private fun goBack() {
+        binding.btnBack.setOnClickListener{
+            findNavController().navigate(R.id.action_changePassword_to_akunWarga)
         }
     }
 
-    private fun tarikSaldo() {
-        binding.cardTariksaldo.setOnClickListener{
-            findNavController().navigate(R.id.action_isisaldoTariksaldo_to_tarikSaldo)
-        }
-    }
 
 
 }

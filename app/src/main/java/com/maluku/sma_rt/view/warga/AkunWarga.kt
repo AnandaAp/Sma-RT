@@ -35,13 +35,38 @@ class AkunWarga : Fragment() {
         goBack()
         navigateToKelolaToko()
         navigateToEditProfile()
+        navigateToChangePassword()
         logout()
+    }
+
+    private fun bindingView(): View {
+        binding = FragmentAkunWargaBinding.inflate(layoutInflater)
+        return binding.root
     }
 
     private fun goBack() {
         binding.btnBack.setOnClickListener{
             val intent = Intent (activity, DashboardWargaActivity::class.java)
             startActivity(intent)
+        }
+    }
+
+
+    private fun navigateToKelolaToko() {
+        binding.menuKelolatoko.setOnClickListener{
+            findNavController().navigate(R.id.action_akunWarga_to_kelolaToko)
+        }
+    }
+
+    private fun navigateToEditProfile() {
+        binding.menuEditprofile.setOnClickListener{
+            findNavController().navigate(R.id.action_akunWarga_to_editProfile)
+        }
+    }
+
+    private fun navigateToChangePassword() {
+        binding.menuChangepassword.setOnClickListener{
+            findNavController().navigate(R.id.action_akunWarga_to_changePassword)
         }
     }
 
@@ -60,7 +85,7 @@ class AkunWarga : Fragment() {
 
 
             btnOk.setOnClickListener {
-                dialog ->startActivity(intent)
+                    dialog ->startActivity(intent)
                 requireActivity().finish()
             }
             btnBatal.setOnClickListener {
@@ -72,22 +97,7 @@ class AkunWarga : Fragment() {
         }
     }
 
-    private fun navigateToKelolaToko() {
-        binding.menuKelolatoko.setOnClickListener{
-            findNavController().navigate(R.id.action_akunWarga_to_kelolaToko)
-        }
-    }
 
-    private fun navigateToEditProfile() {
-        binding.menuEditprofile.setOnClickListener{
-            findNavController().navigate(R.id.action_akunWarga_to_editProfile)
-        }
-    }
-
-    private fun bindingView(): View {
-        binding = FragmentAkunWargaBinding.inflate(layoutInflater)
-        return binding.root
-    }
 
 
 }
