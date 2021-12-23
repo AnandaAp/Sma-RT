@@ -117,6 +117,9 @@
         <argument
             android:name="product_price"
             app:argType="string" />
+        <argument
+            android:name="product_status"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/pesananUserPage"

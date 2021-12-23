@@ -37,8 +37,8 @@ class RecyclerViewProdukpage(
     }
 
     class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-        var namaProduk: TextView = itemView.findViewById(R.id.tv_namaproduk)
-        var hargaProduk: TextView = itemView.findViewById(R.id.tv_hargaproduk)
+        var namaProduk: TextView = itemView.findViewById(R.id.tv_namaprodukpage)
+        var hargaProduk: TextView = itemView.findViewById(R.id.tv_hargaprodukpage)
         var gambarProduk: ImageView = itemView.findViewById(R.id.img_produk)
     }
 
@@ -72,7 +72,7 @@ class RecyclerViewProdukpage(
         holder.itemView.setOnClickListener { view ->
             val direction = ProdukPageDirections
                 .actionProdukPageToEditProduk(
-                    data.id.toString(),data.nama.toString(),data.detail.toString(),data.gambar.toString(),data.harga.toString()
+                    data.id.toString(),data.nama.toString(),data.detail.toString(),data.gambar.toString(),data.harga.toString(),data.tersedia.toString()
                 )
             view.findNavController().navigate(direction)
         }
