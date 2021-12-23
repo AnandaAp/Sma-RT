@@ -1,6 +1,10 @@
 package com.maluku.sma_rt.api
 
 import com.maluku.sma_rt.extentions.UserSession
+import com.maluku.sma_rt.model.aduan.CreateAduanResponse
+import com.maluku.sma_rt.model.aduan.GetAduanByIDResponse
+import com.maluku.sma_rt.model.aduan.GetAduanById
+import com.maluku.sma_rt.model.aduan.GetAllAduanResponse
 import com.maluku.sma_rt.model.keluarga.CreateKeluargaResponse
 import com.maluku.sma_rt.model.keluarga.GetAllProdukKeluargaResponse
 import com.maluku.sma_rt.model.login.OnLoginSuccessResponse
@@ -133,11 +137,54 @@ interface Service {
     ): Call<GetAllTagihanResponse>
 
     //bayar tagihan
-
     @FormUrlEncoded
     @PUT("tagihan/{token}")
     fun bayarTagihan(
         @Header("Authorization") authHeader: String,
         @Path("token") token: String
     ): Call<OnDataResponse>
+
+    //Aduan
+    //Create
+    // Tambah Tagihan
+    @FormUrlEncoded
+    @POST("aduan")
+    fun createAduan(
+        @Header("Authorization") authHeader: String,
+        @Field("judul") judul: String,
+        @Field("gambar") gambar: String,
+        @Field("deskripsi") deskripsi: String,
+    ): Call<CreateAduanResponse>
+
+    //update
+    @FormUrlEncoded
+    @PUT("aduan/{token}")
+    fun updateAduan(
+        @Header("Authorization") authHeader: String,
+        @Path("id") id: String,
+        @Field("judul") judul: String,
+        @Field("gambar") gambar: String,
+        @Field("deskripsi") deskripsi: String,
+    ): Call<OnDataResponse>
+
+    //delete
+    @FormUrlEncoded
+    @DELETE("aduan/{id}")
+    fun deleteAduan(
+        @Header("Authorization") authHeader: String,
+        @Path("id") id: String
+    ): Call<OnDataResponse>
+
+    //get data aduan by ID
+    @GET("aduan/{id}")
+    fun getAduanByID(
+        @Header("Authorization") authHeader: String,
+        @Path("token") token: String
+    ): Call<GetAduanByIDResponse>
+
+    //Get Data All Aduan
+    @GET("aduan")
+    fun getAllAduan(
+        @Header("Authorization") authHeader: String
+    ): Call<GetAllAduanResponse>
 }
