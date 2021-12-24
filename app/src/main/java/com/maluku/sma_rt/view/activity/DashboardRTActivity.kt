@@ -1,6 +1,7 @@
 package com.maluku.sma_rt.view.activity
 
 import android.os.Bundle
+import android.view.View
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -14,21 +15,24 @@ import com.maluku.sma_rt.databinding.ActivityDashboardRtBinding
 import com.maluku.sma_rt.view.pengurus.adapter.GaleriAdapter
 
 class DashboardRTActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityDashboardRtBinding
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        binding = ActivityDashboardRtBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
-
-        val navView: BottomNavigationView = binding.navView
+        setContentView(R.layout.activity_dashboard_rt)
+        val navView = findViewById<BottomNavigationView>(R.id.nav_view)
         val navController = findNavController(R.id.nav_host_fragment_activity_dashboard)
 
         navView.setupWithNavController(navController)
         navView.itemIconTintList = null
 
-
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.navigation_home,
+                R.id.navigation_profil,
+                R.id.navigation_manage,
+                R.id.navigation_warga,
+                -> navView.visibility = View.VISIBLE
+                else -> navView.visibility = View.GONE
+            }
+        }
     }
 }

@@ -739,11 +739,6 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
-                            <entry key="action_navigation_home_to_tambahKeluargaFragment">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
                           </map>
                         </option>
                       </LayoutPositions>
@@ -781,7 +776,38 @@
                         </option>
                         <option name="myPositions">
                           <map>
+                            <entry key="action_loginWarga_to_lupaPassword">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_loginWarga_to_registerWarga">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="lupaPassword">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="256" />
+                            <option name="y" value="12" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_lupaPassword_to_loginWarga">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_lupaPassword_to_resetPassword">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -834,6 +860,27 @@
                               </value>
                             </entry>
                             <entry key="action_registerWarga_to_viewPagerFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="resetPassword">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="12" />
+                            <option name="y" value="12" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_resetPassword_to_lupaPassword">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -898,6 +945,58 @@
             <LayoutPositions>
               <option name="myPositions">
                 <map>
+                  <entry key="fragmentSuratKeluar">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="12" />
+                            <option name="y" value="20" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_fragmentSuratKeluar_to_fragmentSuratMasuk">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_fragmentSuratKeluar_to_suratFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="fragmentSuratMasuk">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="256" />
+                            <option name="y" value="63" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_fragmentSuratMasuk_to_fragmentSuratKeluar">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_fragmentSuratMasuk_to_suratFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="navigation_home">
                     <value>
                       <LayoutPositions>
@@ -915,6 +1014,16 @@
                               </value>
                             </entry>
                             <entry key="action_navigation_home_to_navigation_warga">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_navigation_home_to_suratFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_navigation_home_to_tambahKeluargaFragment">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -983,6 +1092,23 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
+                          </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="suratFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="500" />
+                            <option name="y" value="20" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_suratFragment_to_navigation_home">
                             <entry key="action_navigation_warga_to_navigation_manage">
                               <value>
                                 <LayoutPositions />

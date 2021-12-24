@@ -5,24 +5,32 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.maluku.sma_rt.R
 import com.maluku.sma_rt.databinding.FragmentWargaBinding
 import com.maluku.sma_rt.extentions.UserSession
 import com.maluku.sma_rt.extentions.UserSession.Companion.SHARED_PREFERENCE_TOKEN_KEY
+import com.maluku.sma_rt.model.keluarga.GetAllKeluargaWargaItem
 import com.maluku.sma_rt.model.warga.GetAllWargaItem
+import com.maluku.sma_rt.presenter.ListKeluargaPresenter
 import com.maluku.sma_rt.presenter.ListWargaPresenter
 import com.maluku.sma_rt.view.pengurus.adapter.WargaAdapter
+import com.maluku.sma_rt.view.viewInterface.ListKeluargaViewInterface
 import com.maluku.sma_rt.view.viewInterface.ListWargaViewInterface
 
-private const val TAG = "TOKEN LOGIN"
+private const val TAG = "WARGA FRAGMENT"
 
-class WargaFragment : Fragment(), ListWargaViewInterface {
+class WargaFragment : Fragment(), ListWargaViewInterface, ListKeluargaViewInterface {
     private lateinit var binding: FragmentWargaBinding
     private lateinit var rvWarga: RecyclerView
     private lateinit var adapterWarga: WargaAdapter
+    private var idKeluarga: String? = null
+    private var isSpinnerInitial = true
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,8 +43,15 @@ class WargaFragment : Fragment(), ListWargaViewInterface {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        // Refresh Data Warga
+        onStart()
         setRecyclerViewWarga()
-        ListWargaPresenter(requireActivity(), this).getListWargaPresenter(getToken())
+    }
+
+    override fun onStart() {
+        super.onStart()
+        ListKeluargaPresenter(requireActivity(),this).getListKeluargaPresenter(getToken())
+        ListWargaPresenter(requireActivity(), this).getListWargaPresenter(getToken(), idKeluarga)
     }
 
     private fun bindingView(): View {
@@ -51,15 +66,7 @@ class WargaFragment : Fragment(), ListWargaViewInterface {
         rvWarga.adapter = adapterWarga
     }
 
-    override fun showDataWarga(warga: List<GetAllWargaItem>) {
-        updateDataWarga(warga)
-    }
-
-    override fun updateDataWarga(warga: List<GetAllWargaItem>) {
-        adapterWarga.setData(warga as ArrayList<GetAllWargaItem>)
-    }
-
-    override fun resultFailed(t: Throwable) {
+    override fun resultListWargaFailed(t: Throwable) {
         Toast.makeText(requireContext(),"Pesan: $t",Toast.LENGTH_LONG).show()
     }
 
@@ -70,8 +77,41 @@ class WargaFragment : Fragment(), ListWargaViewInterface {
         return token
     }
 
-    override fun resultSuccess(warga: List<GetAllWargaItem>) {
-        showDataWarga(warga)
+    override fun resultListWargaSuccess(warga: List<GetAllWargaItem>) {
+        adapterWarga.setData(warga as ArrayList<GetAllWargaItem>)
     }
 
+    override fun resultListKeluargaSuccess(result: List<GetAllKeluargaWargaItem>) {
+        val spListFamily = binding.spListFam
+        val listIdKeluarga: ArrayList<String?> = arrayListOf(idKeluarga)
+        val listKeluarga: ArrayList<String> = arrayListOf("Pilih Keluarga")
+        for (data in result){
+            listIdKeluarga.add(data.id.toString())
+            listKeluarga.add(data.nama.toString())
+        }
+        val adapter = ArrayAdapter(requireActivity(), R.layout.support_simple_spinner_dropdown_item,listKeluarga)
+        spListFamily.adapter = adapter
+        spListFamily.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            override fun onItemSelected(adapterView: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                if(isSpinnerInitial)
+                {
+                    isSpinnerInitial = false
+                }
+                else  {
+                    idKeluarga = listIdKeluarga[position]
+                    Toast.makeText(requireContext(),"${adapterView?.getItemAtPosition(position).toString()} dengan ID $idKeluarga", Toast.LENGTH_LONG).show()
+                }
+                ListWargaPresenter(requireActivity(), this@WargaFragment).getListWargaPresenter(getToken(), idKeluarga)
+            }
+
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+                TODO("Not yet implemented")
+            }
+        }
+
+    }
+
+    override fun resultListKeluargaFailed(t: Throwable) {
+        Toast.makeText(requireContext(),"Pesan: $t",Toast.LENGTH_LONG).show()
+    }
 }
