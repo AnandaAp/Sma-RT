@@ -39,7 +39,6 @@ class ProdukPage : Fragment(), ListProdukInterface {
         super.onViewCreated(view, savedInstanceState)
         setRecyclerViewListProduk()
         goBack()
-        navigateToEditProduk()
         navigateToTambahProduk()
         WargaTokoListProdukKeluargaPresenter(requireActivity(), this).getListProdukByToken(getToken())
     }
@@ -64,12 +63,6 @@ class ProdukPage : Fragment(), ListProdukInterface {
             arrayListOf()
         )
         rvProduk.adapter = adapterProduk
-    }
-
-    private fun navigateToEditProduk() {
-        binding.btnCobaedit.setOnClickListener {
-            findNavController().navigate(R.id.action_produkPage_to_editProduk)
-        }
     }
 
     private fun navigateToTambahProduk() {

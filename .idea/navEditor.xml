@@ -911,6 +911,18 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="tambahKeluargaFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-1346" />
+                            <option name="y" value="392" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="viewPagerFragment">
                     <value>
                       <LayoutPositions>
@@ -1070,12 +1082,12 @@
                         </option>
                         <option name="myPositions">
                           <map>
-                            <entry key="action_navigation_warga_to_navigation_home">
+                            <entry key="action_navigation_home_to_tambahKeluargaFragment">
                               <value>
                                 <LayoutPositions />
                               </value>
                             </entry>
-                            <entry key="action_navigation_warga_to_navigation_manage">
+                            <entry key="action_navigation_warga_to_navigation_home">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -1097,6 +1109,7 @@
                         <option name="myPositions">
                           <map>
                             <entry key="action_suratFragment_to_navigation_home">
+                            <entry key="action_navigation_warga_to_navigation_manage">
                               <value>
                                 <LayoutPositions />
                               </value>

@@ -226,66 +226,6 @@
 
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/card_stokhabis"
-                android:layout_width="match_parent"
-                android:layout_height="88dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="40dp"
-                android:layout_marginEnd="20dp"
-                android:backgroundTint="#EDEDED"
-                android:elevation="10dp"
-                app:cardCornerRadius="10dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textlayout_detailproduk">
-
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-
-                    <TextView
-                        android:id="@+id/tv_stokhabis"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="12dp"
-                        android:layout_marginTop="14dp"
-                        android:fontFamily="@font/montserrat_semibold"
-                        android:text="Stok Habis"
-                        android:textColor="@color/black"
-                        android:textSize="14sp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/tv_detailstokhabis"
-                        android:layout_width="220dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="12dp"
-                        android:layout_marginTop="12dp"
-                        android:fontFamily="@font/montserrat_regular"
-                        android:text="@string/stok_habis"
-                        android:textAlignment="textStart"
-                        android:textColor="@color/black"
-                        android:textSize="10sp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tv_stokhabis" />
-
-                    <Switch
-                        android:id="@+id/sw_stokhabis"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="12dp"
-                        android:checked="true"
-                        android:thumb="@drawable/bg_thumb"
-                        android:track="@drawable/bg_track"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
                 android:id="@+id/card_aktifkanproduk"
                 android:layout_width="match_parent"
                 android:layout_height="88dp"
@@ -296,7 +236,7 @@
                 android:elevation="10dp"
                 app:cardCornerRadius="10dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/card_stokhabis">
+                app:layout_constraintTop_toBottomOf="@+id/textlayout_detailproduk">
 
 
                 <androidx.constraintlayout.widget.ConstraintLayout
