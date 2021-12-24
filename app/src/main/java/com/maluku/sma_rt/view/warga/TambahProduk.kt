@@ -46,38 +46,38 @@ class TambahProduk : Fragment(), TambahProdukInterface {
         super.onViewCreated(view, savedInstanceState)
         namaFocusListener()
         hargaFocusListener()
-//        val getImage = registerForActivityResult(
-//            ActivityResultContracts.GetContent(),
-//            ActivityResultCallback {
-//                imageUri = it
-//                binding.gam.setImageURI(it)
-//            }
-//        )
-//        pickImage(getImage)
+        val getImage = registerForActivityResult(
+            ActivityResultContracts.GetContent(),
+            ActivityResultCallback {
+                imageUri = it
+                binding.imgProduk.setImageURI(it)
+            }
+        )
+        pickImage(getImage)
         tambahProduk()
         goBack()
     }
 
-//    private fun pickImage(getImage: ActivityResultLauncher<String>){
-//        binding.btnInsertGambar.setOnClickListener {
-//            getImage.launch("image/*")
-//        }
-//    }
-//
-//    private fun uploadImage(){
-//        val formatter = SimpleDateFormat("yyyy_MM-dd_HH_mm_ss", Locale.getDefault())
-//        val now = Date()
-//        val fileName = "${namaProduk}_${formatter.format(now)}"
-//        gambarProduk = fileName
-//        val storageReference = FirebaseStorage.getInstance().getReference("produk/$fileName")
-//        storageReference.putFile(imageUri!!)
-//            .addOnSuccessListener {
-//                binding.ivGambarProduk.setImageURI(null)
-//                Toast.makeText(requireContext(),"Upload gambar sukses!",Toast.LENGTH_LONG).show()
-//            }.addOnFailureListener {
-//                Toast.makeText(requireContext(),"Upload gambar gagal!",Toast.LENGTH_LONG).show()
-//            }
-//    }
+    private fun pickImage(getImage: ActivityResultLauncher<String>){
+        binding.pickerGallery.setOnClickListener {
+            getImage.launch("image/*")
+        }
+    }
+
+    private fun uploadImage(){
+        val formatter = SimpleDateFormat("yyyy_MM-dd_HH_mm_ss", Locale.getDefault())
+        val now = Date()
+        val fileName = "${namaProduk}_${formatter.format(now)}"
+        gambarProduk = fileName
+        val storageReference = FirebaseStorage.getInstance().getReference("produk/$fileName")
+        storageReference.putFile(imageUri!!)
+            .addOnSuccessListener {
+                binding.imgProduk.setImageURI(null)
+                Toast.makeText(requireContext(),"Upload gambar sukses!",Toast.LENGTH_LONG).show()
+            }.addOnFailureListener {
+                Toast.makeText(requireContext(),"Upload gambar gagal!",Toast.LENGTH_LONG).show()
+            }
+    }
 
     private fun tambahProduk() {
         binding.btnSimpan.setOnClickListener {
@@ -90,20 +90,20 @@ class TambahProduk : Fragment(), TambahProdukInterface {
     private fun validasiTambahProduk(){
         val validNama = !binding.edNamaproduk.text.isNullOrEmpty()
         val validHarga = !binding.edHargaproduk.text.isNullOrEmpty()
-//        val validDetail = !binding.etKeteranganProduk.text.isNullOrEmpty()
+        val validDetail = !binding.edDetailproduk.text.isNullOrEmpty()
 
         if (validNama && validHarga){
-//            if (imageUri != null){
-//                uploadImage()
-//            }
+            if (imageUri != null){
+                uploadImage()
+            }
             addProduct(namaProduk,detailProduk,gambarProduk,hargaProduk)
         } else {
             if (!validNama){
                 binding.edNamaproduk.error = "Masukan nama produk!"
             }
-//            if (!validDetail){
-//                binding.etKeteranganProduk.error = "Berikan deskripsi produk!"
-//            }
+            if (!validDetail){
+                binding.edDetailproduk.error = "Berikan deskripsi produk!"
+            }
             if (!validHarga){
                 binding.edHargaproduk.error = "Masukan harga!"
             }

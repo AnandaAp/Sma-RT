@@ -11,6 +11,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.result.ActivityResultCallback
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
@@ -24,6 +27,8 @@ import com.maluku.sma_rt.extentions.UserSession
 import com.maluku.sma_rt.presenter.WargaTokoEditProdukPresenter
 import com.maluku.sma_rt.view.viewInterface.EditProdukInterface
 import java.io.File
+import java.text.SimpleDateFormat
+import java.util.*
 
 private const val TAG = "TOKEN LOGIN"
 
@@ -37,6 +42,7 @@ class EditProduk : Fragment(), EditProdukInterface {
     private var detailProduk: String = ""
     private var hargaProduk: String = ""
     private var gambarProduk: String = "default_image"
+    private var statusProduk: Boolean = false
     private var imageUri: Uri? = null
 
     override fun onCreateView(
@@ -52,6 +58,14 @@ class EditProduk : Fragment(), EditProdukInterface {
         bindData()
         namaFocusListener()
         hargaFocusListener()
+        val getImage = registerForActivityResult(
+            ActivityResultContracts.GetContent(),
+            ActivityResultCallback {
+                imageUri = it
+                binding.imgProduk.setImageURI(it)
+            }
+        )
+        pickImage(getImage)
         updateProduk()
         goBack()
     }
@@ -62,9 +76,12 @@ class EditProduk : Fragment(), EditProdukInterface {
         gambarProduk = args.productImage
         detailProduk = args.productDetail
         hargaProduk = args.productPrice
+        statusProduk = args.productStatus.toBoolean()
 
         binding.edNamaproduk.setText(namaProduk)
         binding.edHargaproduk.setText(hargaProduk)
+        binding.edDetailproduk.setText(detailProduk)
+        binding.swAktifkanproduk.isChecked = statusProduk
 
         // Firebase Storage
         val storageRef = FirebaseStorage.getInstance().reference.child("produk/${gambarProduk}")
@@ -86,6 +103,12 @@ class EditProduk : Fragment(), EditProdukInterface {
 
     }
 
+    private fun pickImage(getImage: ActivityResultLauncher<String>){
+        binding.imgProduk.setOnClickListener {
+            getImage.launch("image/*")
+        }
+    }
+
     private fun konfirmasiHapusProduk() {
         binding.btnHapusproduk.setOnClickListener {
             var builder = AlertDialog.Builder(requireContext())
@@ -104,6 +127,21 @@ class EditProduk : Fragment(), EditProdukInterface {
         }
     }
 
+    private fun uploadImage(){
+        val formatter = SimpleDateFormat("yyyy_MM-dd_HH_mm_ss", Locale.getDefault())
+        val now = Date()
+        val fileName = "${namaProduk}_${formatter.format(now)}"
+        gambarProduk = fileName
+        val storageReference = FirebaseStorage.getInstance().getReference("produk/$fileName")
+        storageReference.putFile(imageUri!!)
+            .addOnSuccessListener {
+                binding.imgProduk.setImageURI(null)
+                Toast.makeText(requireContext(),"Upload gambar sukses!",Toast.LENGTH_LONG).show()
+            }.addOnFailureListener {
+                Toast.makeText(requireContext(),"Upload gambar gagal!",Toast.LENGTH_LONG).show()
+            }
+    }
+
     private fun updateProduk() {
         binding.btnSimpan.setOnClickListener {
             binding.edNamaproduk.clearFocus()
@@ -115,19 +153,20 @@ class EditProduk : Fragment(), EditProdukInterface {
     private fun validasiUpdateProduk(){
         val validNama = !binding.edNamaproduk.text.isNullOrEmpty()
         val validHarga = !binding.edHargaproduk.text.isNullOrEmpty()
+        val validDetail = !binding.edDetailproduk.text.isNullOrEmpty()
 
         if (validNama && validHarga){
             if (imageUri != null){
-//                uploadImage()
+                uploadImage()
             }
             updateProduct(namaProduk,detailProduk,gambarProduk,hargaProduk)
         } else {
             if (!validNama){
                 binding.edNamaproduk.error = "Masukan nama produk!"
             }
-//            if (!validDetail){
-//                binding.etKeteranganProduk.error = "Berikan deskripsi produk!"
-//            }
+            if (!validDetail){
+                binding.edDetailproduk.error = "Berikan deskripsi produk!"
+            }
             if (!validHarga){
                 binding.edHargaproduk.error = "Masukan harga!"
             }
