@@ -22,7 +22,7 @@ class ListWargaPresenter(private val activity: Activity, private var view: ListW
                 ) {
                     if (response.isSuccessful){
                         val result = response.body()?.getAllWarga as List<GetAllWargaItem>
-                        view.resultSuccess(result)
+                        view.resultListWargaSuccess(result)
                         Toast.makeText(activity,"Pesan: ${response.message()}",Toast.LENGTH_SHORT).show()
                     } else{
                         Toast.makeText(activity,"Pesan: ${response.message()}",Toast.LENGTH_SHORT).show()
@@ -30,7 +30,7 @@ class ListWargaPresenter(private val activity: Activity, private var view: ListW
                 }
 
                 override fun onFailure(call: Call<GetAllWargaResponse>, t: Throwable) {
-                    view.resultFailed(t)
+                    view.resultListWargaFailed(t)
                 }
             })
     }

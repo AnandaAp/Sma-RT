@@ -7,6 +7,7 @@ import com.maluku.sma_rt.model.aduan.GetAduanById
 import com.maluku.sma_rt.model.aduan.GetAllAduanResponse
 import com.maluku.sma_rt.model.keluarga.CreateKeluargaResponse
 import com.maluku.sma_rt.model.keluarga.GetAllProdukKeluargaResponse
+import com.maluku.sma_rt.model.keluarga.GetListKeluargaResponse
 import com.maluku.sma_rt.model.login.OnLoginSuccessResponse
 import com.maluku.sma_rt.model.pengurus.CreatePengurusResponse
 import com.maluku.sma_rt.model.produk.CreateProductResponse
@@ -68,7 +69,7 @@ interface Service {
         @Field("password") password: String
     ): Call<OnLoginSuccessResponse>
 
-
+    // Get Data Warga
     @GET("warga")
     fun getListWarga(
         @Header("Authorization") authHeader: String
@@ -82,6 +83,12 @@ interface Service {
         @Header("Authorization") authHeader: String,
         @Field("nama") nama: String,
     ): Call<CreateKeluargaResponse>
+
+    // Get All Data Keluarga
+    @GET("keluarga/warga")
+    fun getListKeluarga(
+        @Header("Authorization") authHeader: String,
+    ): Call<GetListKeluargaResponse>
 
     // Get Produk Warga Dengan Token
     @GET("produk/keluarga")
