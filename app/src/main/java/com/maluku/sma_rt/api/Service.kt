@@ -16,10 +16,7 @@ import com.maluku.sma_rt.model.produk.UpdateProductByIDResponse
 import com.maluku.sma_rt.model.tagihan.CreateTagihanResponse
 import com.maluku.sma_rt.model.tagihan.GetAllTagihanResponse
 import com.maluku.sma_rt.model.updateanddelete.OnDataResponse
-import com.maluku.sma_rt.model.warga.CreateWargaResponse
-import com.maluku.sma_rt.model.warga.DetailLoginedWargaResponse
-import com.maluku.sma_rt.model.warga.GetAllWargaResponse
-import com.maluku.sma_rt.model.warga.WargaLoginResponse
+import com.maluku.sma_rt.model.warga.*
 import retrofit2.Call
 import retrofit2.http.*
 import retrofit2.http.GET
@@ -75,6 +72,12 @@ interface Service {
         @Header("Authorization") authHeader: String
     ): Call<GetAllWargaResponse>
 
+    // Get Warga By ID Keluarga
+    @GET("warga")
+    fun getWargaByIDKeluarga(
+        @Header("Authorization") authHeader: String,
+        @Query("id_keluarga") idKeluarga: String
+    ): Call<GetAllWargaResponse>
 
     // Tambah Keluarga
     @FormUrlEncoded

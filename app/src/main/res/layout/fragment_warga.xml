@@ -75,7 +75,6 @@
 
         <Spinner
             android:id="@+id/spListFam"
-            android:entries="@array/jenis_kelamin"
             android:layout_width="246dp"
             android:layout_height="48dp"
             android:layout_marginStart="24dp"
