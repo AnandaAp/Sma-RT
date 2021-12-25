@@ -58,6 +58,7 @@ class EditProduk : Fragment(), EditProdukInterface {
         bindData()
         namaFocusListener()
         hargaFocusListener()
+        detailFocusListener()
         val getImage = registerForActivityResult(
             ActivityResultContracts.GetContent(),
             ActivityResultCallback {
@@ -146,6 +147,10 @@ class EditProduk : Fragment(), EditProdukInterface {
         binding.btnSimpan.setOnClickListener {
             binding.edNamaproduk.clearFocus()
             binding.edHargaproduk.clearFocus()
+            binding.edDetailproduk.clearFocus()
+            statusProduk = binding.swAktifkanproduk.isChecked
+            Toast.makeText(requireContext(),"Status: ${statusProduk}",Toast.LENGTH_LONG).show()
+            Toast.makeText(requireContext(),"Detail: ${detailProduk}",Toast.LENGTH_LONG).show()
             validasiUpdateProduk()
         }
     }
@@ -213,6 +218,22 @@ class EditProduk : Fragment(), EditProdukInterface {
         return null
     }
 
+    private fun detailFocusListener() {
+        binding.edDetailproduk.setOnFocusChangeListener { view, focused ->
+            if (!focused){
+                binding.edDetailproduk.error = validDetailProduk()
+            }
+        }
+    }
+
+    private fun validDetailProduk(): String? {
+        detailProduk = binding.edDetailproduk.text.toString().trim()
+        if (detailProduk.isEmpty()){
+            return "Masukan detail produk!"
+        }
+        return null
+    }
+
     private fun goBack() {
         binding.btnBack.setOnClickListener {
             findNavController().navigate(R.id.action_editProduk_to_produkPage)
@@ -231,7 +252,8 @@ class EditProduk : Fragment(), EditProdukInterface {
             namaProduk,
             detailProduk,
             gambarProduk,
-            hargaProduk
+            hargaProduk,
+            statusProduk.toString()
         )
     }
 

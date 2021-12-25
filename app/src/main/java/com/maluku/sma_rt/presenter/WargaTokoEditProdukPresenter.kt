@@ -22,7 +22,8 @@ class WargaTokoEditProdukPresenter(private val activity: Activity, private val v
         nama: String,
         detail: String,
         gambar: String,
-        harga: String
+        harga: String,
+        tersedia: String
     ) {
         RetrofitService
             .getService()
@@ -32,7 +33,8 @@ class WargaTokoEditProdukPresenter(private val activity: Activity, private val v
                 nama,
                 detail,
                 gambar,
-                harga
+                harga,
+                tersedia
             )
             .enqueue(object : Callback<UpdateProductByIDResponse> {
                 override fun onResponse(
@@ -42,7 +44,7 @@ class WargaTokoEditProdukPresenter(private val activity: Activity, private val v
                     if (response.isSuccessful){
                         view.onUpdateSuccess("Berhasil mengubah produk!")
                     }
-                    Toast.makeText(activity,"Pesan: ${response.body()?.message.toString()}", Toast.LENGTH_SHORT).show()
+//                    Toast.makeText(activity,"Pesan: ${response.body()?.message.toString()}", Toast.LENGTH_SHORT).show()
                 }
 
                 override fun onFailure(call: Call<UpdateProductByIDResponse>, t: Throwable) {

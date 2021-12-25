@@ -23,7 +23,7 @@ class WargaTokoListProdukKeluargaPresenter(private val activity: Activity, priva
                     if (response.isSuccessful){
                         val result = response.body()?.getAllProdukKeluarga as List<GetAllProdukKeluargaItem>
                         view.resultSuccess(result)
-                        Toast.makeText(activity,"Pesan: ${response.message()}", Toast.LENGTH_SHORT).show()
+//                        Toast.makeText(activity,"Pesan: ${response.message()}", Toast.LENGTH_SHORT).show()
                     } else{
                         Toast.makeText(activity,"Pesan: ${response.message()}", Toast.LENGTH_SHORT).show()
                     }

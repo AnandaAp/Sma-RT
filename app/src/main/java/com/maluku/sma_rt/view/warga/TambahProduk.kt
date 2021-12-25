@@ -46,6 +46,7 @@ class TambahProduk : Fragment(), TambahProdukInterface {
         super.onViewCreated(view, savedInstanceState)
         namaFocusListener()
         hargaFocusListener()
+        detailFocusListener()
         val getImage = registerForActivityResult(
             ActivityResultContracts.GetContent(),
             ActivityResultCallback {
@@ -83,6 +84,7 @@ class TambahProduk : Fragment(), TambahProdukInterface {
         binding.btnSimpan.setOnClickListener {
             binding.edNamaproduk.clearFocus()
             binding.edHargaproduk.clearFocus()
+            binding.edDetailproduk.clearFocus()
             validasiTambahProduk()
         }
     }
@@ -139,6 +141,22 @@ class TambahProduk : Fragment(), TambahProdukInterface {
         hargaProduk = binding.edHargaproduk.text.toString().trim()
         if (hargaProduk.isEmpty()){
             return "Masukan harga produk!"
+        }
+        return null
+    }
+
+    private fun detailFocusListener() {
+        binding.edDetailproduk.setOnFocusChangeListener { view, focused ->
+            if (!focused){
+                binding.edDetailproduk.error = validDetailProduk()
+            }
+        }
+    }
+
+    private fun validDetailProduk(): String? {
+        detailProduk = binding.edDetailproduk.text.toString().trim()
+        if (detailProduk.isEmpty()){
+            return "Masukan detail produk!"
         }
         return null
     }

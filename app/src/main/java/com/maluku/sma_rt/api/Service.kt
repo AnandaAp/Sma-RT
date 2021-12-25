@@ -121,6 +121,7 @@ interface Service {
         @Field("detail") detail: String,
         @Field("gambar") gambar: String,
         @Field("harga") harga: String,
+        @Field("tersedia") tersedia: String,
     ): Call<UpdateProductByIDResponse>
 
     // Hapus produk
