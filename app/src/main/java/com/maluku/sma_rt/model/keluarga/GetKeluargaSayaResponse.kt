@@ -5,20 +5,20 @@ import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class GetAllKeluargaResponse(
+data class GetKeluargaSayaResponse(
 
 	@field:SerializedName("code")
 	val code: Int? = null,
 
-	@field:SerializedName("get_all_keluarga")
-	val getAllKeluarga: List<GetAllKeluargaItem?>? = null,
-
 	@field:SerializedName("message")
-	val message: String? = null
+	val message: String? = null,
+
+	@field:SerializedName("get_keluarga_saya")
+	val getKeluargaSaya: GetKeluargaSaya? = null
 ) : Parcelable
 
 @Parcelize
-data class GetAllKeluargaItem(
+data class GetKeluargaSaya(
 
 	@field:SerializedName("id_rt")
 	val idRt: String? = null,
@@ -52,7 +52,7 @@ data class GetAllKeluargaItem(
 ) : Parcelable
 
 @Parcelize
-data class DompetKeluarga(
+data class DompetKeluargaSaya(
 
 	@field:SerializedName("jumlah")
 	val jumlah: Int? = null,
