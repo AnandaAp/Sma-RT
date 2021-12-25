@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -46,8 +45,8 @@ class HomeFragment : Fragment(), ListKegiatanInterface, ListInfoTerkiniInterface
 
     override fun onStart() {
         super.onStart()
-        ListKegiatanPresenter(requireActivity(),this).getListKegiatanPresenter(getToken())
-        ListInfoTerkiniPresenter(requireActivity(),this).getListInfoTerkiniPresenter(getToken())
+        ListKegiatanPresenter(requireActivity(),this).getListKegiatan(getToken())
+        ListInfoTerkiniPresenter(requireActivity(),this).getListInfoTerkini(getToken())
     }
 
     private fun setRecyclerViewInformasi(){
@@ -90,20 +89,19 @@ class HomeFragment : Fragment(), ListKegiatanInterface, ListInfoTerkiniInterface
         return token
     }
 
-    override fun onGetInfoTerkiniSuccess(result: List<GetAllInformasiItem>) {
-        adapterInfo.setData(result as ArrayList<GetAllInformasiItem>)
+    override fun showDataInfoTerkini(info: List<GetAllInformasiItem>) {
+        updateDataInfoTerkini(info)
     }
 
-    override fun onGetInfoTerkiniFailed(message: String) {
-        Toast.makeText(requireContext(),"Pesan: $message", Toast.LENGTH_LONG).show()
+    override fun updateDataInfoTerkini(info: List<GetAllInformasiItem>) {
+        adapterInfo.setData(info as ArrayList<GetAllInformasiItem>)
     }
 
-    override fun onGetKegiatanSuccess(result: List<GetAllInformasiItem>) {
-        adapterGaleri.setData(result as ArrayList<GetAllInformasiItem>)
+    override fun showDataKegiatan(kegiatan: List<GetAllInformasiItem>) {
+        updateDataKegiatan(kegiatan)
     }
 
-    override fun onGetKegiatanFailed(message: String) {
-        Toast.makeText(requireContext(),"Pesan: $message", Toast.LENGTH_LONG).show()
+    override fun updateDataKegiatan(kegiatan: List<GetAllInformasiItem>) {
+        adapterGaleri.setData(kegiatan as ArrayList<GetAllInformasiItem>)
     }
-
 }
