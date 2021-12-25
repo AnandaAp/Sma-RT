@@ -5,56 +5,99 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.maluku.sma_rt.R
+import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.maluku.sma_rt.databinding.FragmentInformasiMasukBinding
+import com.maluku.sma_rt.databinding.FragmentLaporanBinding
+import com.maluku.sma_rt.extentions.UserSession
+import com.maluku.sma_rt.model.aduan.GetAduanById
+import com.maluku.sma_rt.model.aduan.GetAllAduanItem
+import com.maluku.sma_rt.model.informasi.GetAllInformasiItem
+import com.maluku.sma_rt.presenter.ListKeluargaPresenter
+import com.maluku.sma_rt.presenter.WargaAduanPresenter
+import com.maluku.sma_rt.view.pengurus.adapter.LaporanAdapter
+import com.maluku.sma_rt.view.viewInterface.WargaAduanInterface
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [LaporanFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class LaporanFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
-
+class LaporanFragment : Fragment(), WargaAduanInterface {
+    private lateinit var binding: FragmentLaporanBinding
+    private lateinit var rvLaporan: RecyclerView
+    private lateinit var adapterLaporan: LaporanAdapter
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_laporan, container, false)
+    ): View {
+        return bindingView()
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment LaporanFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            LaporanFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        // Refresh Data Laporan
+        onStart()
+        setRecyclerViewLaporan()
     }
+
+    override fun onStart() {
+        super.onStart()
+        WargaAduanPresenter(this).getAllDataAduan(getToken())
+    }
+
+    private fun setRecyclerViewLaporan() {
+        rvLaporan = binding.rvListLaporan
+        rvLaporan.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL ,false)
+        adapterLaporan = LaporanAdapter(arrayListOf())
+        rvLaporan.adapter = adapterLaporan
+    }
+
+    private fun bindingView(): View {
+        binding = FragmentLaporanBinding.inflate(layoutInflater)
+        return binding.root
+    }
+
+    private fun getToken(): String {
+        val preferences = UserSession(requireActivity())
+        return preferences.getValueString(UserSession.SHARED_PREFERENCE_TOKEN_KEY)
+    }
+
+    override fun onCreateSuccess(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onCreateFailed(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onUpdateSuccess(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onUpdateFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onDeleteSuccess(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onDeleteFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetAllDataSuccess(list: List<GetAllAduanItem?>?) {
+        adapterLaporan.setData(list as ArrayList<GetAllAduanItem>)
+    }
+
+    override fun onGetAllDataFailed(message: String) {
+        Toast.makeText(requireContext(),"Pesan: $message",Toast.LENGTH_LONG).show()
+    }
+
+    override fun onGetDataByIDSuccess(list: GetAduanById?) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetDataByIDFailed(message: String) {
+        TODO("Not yet implemented")
+    }
+
 }

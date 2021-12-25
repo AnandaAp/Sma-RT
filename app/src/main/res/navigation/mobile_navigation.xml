@@ -25,6 +25,9 @@
         <action
             android:id="@+id/action_navigation_home_to_informasiFragment"
             app:destination="@id/informasiFragment" />
+        <action
+            android:id="@+id/action_navigation_home_to_laporanFragment"
+            app:destination="@id/laporanFragment" />
     </fragment>
 
     <fragment
@@ -54,6 +57,18 @@
         <action
             android:id="@+id/action_navigation_manage_to_informasiFragment"
             app:destination="@id/informasiFragment" />
+        <action
+            android:id="@+id/action_navigation_manage_to_kasFragment"
+            app:destination="@id/kasFragment" />
+        <action
+            android:id="@+id/action_navigation_manage_to_tambahKeluargaFragment"
+            app:destination="@id/tambahKeluargaFragment" />
+        <action
+            android:id="@+id/action_navigation_manage_to_suratFragment"
+            app:destination="@id/suratFragment" />
+        <action
+            android:id="@+id/action_navigation_manage_to_laporanFragment"
+            app:destination="@id/laporanFragment" />
     </fragment>
 
     <fragment
@@ -65,7 +80,11 @@
         android:id="@+id/tambahKeluargaFragment"
         android:name="com.maluku.sma_rt.view.pengurus.TambahKeluargaFragment"
         android:label="fragment_tambah_keluarga"
-        tools:layout="@layout/fragment_tambah_keluarga" />
+        tools:layout="@layout/fragment_tambah_keluarga" >
+        <action
+            android:id="@+id/action_tambahKeluargaFragment_to_navigation_manage"
+            app:destination="@id/navigation_manage" />
+    </fragment>
     <fragment
         android:id="@+id/fragmentSuratMasuk"
         android:name="com.maluku.sma_rt.view.pengurus.FragmentSuratMasuk"
@@ -86,6 +105,9 @@
         <action
             android:id="@+id/action_suratFragment_to_navigation_home"
             app:destination="@id/navigation_home" />
+        <action
+            android:id="@+id/action_suratFragment_to_navigation_manage"
+            app:destination="@id/navigation_manage" />
     </fragment>
     <fragment
         android:id="@+id/fragmentSuratKeluar"
@@ -109,6 +131,27 @@
             app:destination="@id/navigation_home" />
         <action
             android:id="@+id/action_informasiFragment_to_navigation_manage"
+            app:destination="@id/navigation_manage" />
+    </fragment>
+    <fragment
+        android:id="@+id/kasFragment"
+        android:name="com.maluku.sma_rt.view.pengurus.KasFragment"
+        android:label="fragment_kas"
+        tools:layout="@layout/fragment_kas" >
+        <action
+            android:id="@+id/action_kasFragment_to_navigation_manage"
+            app:destination="@id/navigation_manage" />
+    </fragment>
+    <fragment
+        android:id="@+id/laporanFragment"
+        android:name="com.maluku.sma_rt.view.pengurus.LaporanFragment"
+        android:label="fragment_laporan"
+        tools:layout="@layout/fragment_laporan" >
+        <action
+            android:id="@+id/action_laporanFragment_to_navigation_home"
+            app:destination="@id/navigation_home" />
+        <action
+            android:id="@+id/action_laporanFragment_to_navigation_manage"
             app:destination="@id/navigation_manage" />
     </fragment>
 </navigation>

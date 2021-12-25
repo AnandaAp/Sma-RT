@@ -25,12 +25,19 @@ class ManageFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        manageToTambahInformasi()
+        navigateManageToTambahInformasi()
+        navigateManageToLaporan()
     }
 
-    private fun manageToTambahInformasi(){
+    private fun navigateManageToTambahInformasi(){
         binding.btnInformasi.setOnClickListener {
             findNavController().navigate(R.id.action_navigation_manage_to_informasiFragment)
+        }
+    }
+
+    private fun navigateManageToLaporan() {
+        binding.btnLaporan.setOnClickListener{
+            findNavController().navigate(R.id.action_navigation_manage_to_laporanFragment)
         }
     }
 

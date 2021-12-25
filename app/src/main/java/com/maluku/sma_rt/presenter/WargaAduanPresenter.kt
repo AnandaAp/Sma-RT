@@ -1,9 +1,12 @@
 package com.maluku.sma_rt.presenter
 
+import android.widget.Toast
 import com.maluku.sma_rt.api.RetrofitService
 import com.maluku.sma_rt.model.aduan.CreateAduanResponse
 import com.maluku.sma_rt.model.aduan.GetAduanByIDResponse
+import com.maluku.sma_rt.model.aduan.GetAllAduanItem
 import com.maluku.sma_rt.model.aduan.GetAllAduanResponse
+import com.maluku.sma_rt.model.keluarga.GetAllKeluargaWargaItem
 import com.maluku.sma_rt.model.updateanddelete.OnDataResponse
 import com.maluku.sma_rt.view.viewInterface.WargaAduanInterface
 import retrofit2.Call
@@ -104,14 +107,18 @@ class WargaAduanPresenter(private val view: WargaAduanInterface) {
     fun getAllDataAduan(token: String){
         RetrofitService
             .getService()
-            .getAllAduan(token)
+            .getAllAduan("Bearer $token")
             .enqueue(object : Callback<GetAllAduanResponse>{
                 override fun onResponse(
                     call: Call<GetAllAduanResponse>,
                     response: Response<GetAllAduanResponse>
                 ) {
-                    val list = response.body()?.getAllAduan
-                    view.onGetAllDataSuccess(list)
+                    if (response.isSuccessful){
+                        val list = response.body()?.getAllAduan as List<GetAllAduanItem>
+                        view.onGetAllDataSuccess(list)
+                    } else{
+                        view.onGetAllDataFailed(response.message())
+                    }
                 }
 
                 override fun onFailure(call: Call<GetAllAduanResponse>, t: Throwable) {

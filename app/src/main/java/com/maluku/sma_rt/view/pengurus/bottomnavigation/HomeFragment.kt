@@ -41,6 +41,7 @@ class HomeFragment : Fragment(), ListKegiatanInterface, ListInfoTerkiniInterface
         navigateDashboardToTambahKelurga()
         navigateDashboardToSurat()
         navigateDashboardToInformasi()
+        navigateDashboardToLaporan()
     }
 
     override fun onStart() {
@@ -75,6 +76,12 @@ class HomeFragment : Fragment(), ListKegiatanInterface, ListInfoTerkiniInterface
     private fun navigateDashboardToInformasi() {
         binding.btnInformasi.setOnClickListener{
             findNavController().navigate(R.id.action_navigation_home_to_informasiFragment)
+        }
+    }
+
+    private fun navigateDashboardToLaporan() {
+        binding.btnLaporan.setOnClickListener{
+            findNavController().navigate(R.id.action_navigation_home_to_laporanFragment)
         }
     }
 

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <androidx.cardview.widget.CardView
         android:layout_width="0dp"
@@ -25,9 +25,9 @@
             android:padding="10dp">
 
             <ImageView
-                android:id="@+id/imageView21"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/ivLaporan"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.024"
@@ -37,27 +37,27 @@
                 tools:srcCompat="@tools:sample/avatars" />
 
             <TextView
-                android:id="@+id/textView85"
+                android:id="@+id/tvJudulLaporan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="TextView"
+                android:text="Judul Laporan"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.082"
-                app:layout_constraintStart_toEndOf="@+id/imageView21"
+                app:layout_constraintStart_toEndOf="@+id/ivLaporan"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/textView86"
+                android:id="@+id/tvKetLaporan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:text="TextView"
+                android:text="Keterangan Laporan"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/textView85"
+                app:layout_constraintEnd_toEndOf="@+id/tvJudulLaporan"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/textView85"
-                app:layout_constraintTop_toBottomOf="@+id/textView85"
+                app:layout_constraintStart_toStartOf="@+id/tvJudulLaporan"
+                app:layout_constraintTop_toBottomOf="@+id/tvJudulLaporan"
                 app:layout_constraintVertical_bias="0.053" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
