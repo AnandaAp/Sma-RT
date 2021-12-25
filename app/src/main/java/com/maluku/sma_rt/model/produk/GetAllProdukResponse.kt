@@ -2,10 +2,10 @@ package com.maluku.sma_rt.model.produk
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
-import kotlinx.parcelize.Parcelize
+import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class GetAllProductResponse(
+data class GetAllProdukResponse(
 
 	@field:SerializedName("get_all_produk")
 	val getAllProduk: List<GetAllProdukItem?>? = null,
@@ -19,6 +19,9 @@ data class GetAllProductResponse(
 
 @Parcelize
 data class GetAllProdukItem(
+
+	@field:SerializedName("tersedia")
+	val tersedia: Boolean? = null,
 
 	@field:SerializedName("nama")
 	val nama: String? = null,
@@ -39,5 +42,8 @@ data class GetAllProdukItem(
 	val detail: String? = null,
 
 	@field:SerializedName("id_keluarga")
-	val idKeluarga: String? = null
+	val idKeluarga: String? = null,
+
+	@field:SerializedName("gambar")
+	val gambar: String? = null
 ) : Parcelable

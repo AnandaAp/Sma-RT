@@ -11,6 +11,7 @@ import com.maluku.sma_rt.model.login.OnLoginSuccessResponse
 import com.maluku.sma_rt.model.pengurus.CreatePengurusResponse
 import com.maluku.sma_rt.model.produk.CreateProductResponse
 import com.maluku.sma_rt.model.produk.DeleteProductByIDResponse
+import com.maluku.sma_rt.model.produk.GetAllProdukResponse
 import com.maluku.sma_rt.model.produk.UpdateProductByIDResponse
 import com.maluku.sma_rt.model.tagihan.CreateTagihanResponse
 import com.maluku.sma_rt.model.tagihan.GetAllTagihanResponse
@@ -101,6 +102,19 @@ interface Service {
         @Field("nama_toko") nama_toko: String,
         @Field("gambar") gambar: String,
     ): Call<UpdateKeluargaResponse>
+
+    // Get All Keluarga
+    @GET("keluarga")
+    fun getAllKeluarga(
+        @Header("Authorization") authHeader: String,
+    ): Call<GetAllKeluargaResponse>
+
+    // Get All Produk
+    @GET("produk")
+    fun getAllProduk(
+        @Header("Authorization") authHeader: String
+    ): Call<GetAllProdukResponse>
+
 
     // Get All Data Keluarga
     @GET("keluarga/warga")

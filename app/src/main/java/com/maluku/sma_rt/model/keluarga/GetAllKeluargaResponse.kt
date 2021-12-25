@@ -52,7 +52,7 @@ data class GetAllKeluargaItem(
 ) : Parcelable
 
 @Parcelize
-data class DompetKeluarga(
+data class DompetKeluargaItem(
 
 	@field:SerializedName("jumlah")
 	val jumlah: Int? = null,
