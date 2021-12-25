@@ -5,6 +5,7 @@ import com.maluku.sma_rt.model.aduan.CreateAduanResponse
 import com.maluku.sma_rt.model.aduan.GetAduanByIDResponse
 import com.maluku.sma_rt.model.aduan.GetAduanById
 import com.maluku.sma_rt.model.aduan.GetAllAduanResponse
+import com.maluku.sma_rt.model.informasi.*
 import com.maluku.sma_rt.model.keluarga.CreateKeluargaResponse
 import com.maluku.sma_rt.model.keluarga.GetAllProdukKeluargaResponse
 import com.maluku.sma_rt.model.keluarga.GetListKeluargaResponse
@@ -197,4 +198,63 @@ interface Service {
     fun getAllAduan(
         @Header("Authorization") authHeader: String
     ): Call<GetAllAduanResponse>
+
+    //Informasi
+    //Create
+    @FormUrlEncoded
+    @POST("informasi")
+    fun createInformasi(
+        @Header("Authorization") authHeader: String,
+        @Field("judul") judul: String,
+        @Field("gambar") gambar: String,
+        @Field("detail") detail: String,
+        @Field("kategori") kategori: String,
+        @Field("lokasi") lokasi: String
+    ): Call<CreateInformasiResponse>
+
+    //update
+    @FormUrlEncoded
+    @PUT("informasi/{token}")
+    fun updateInformasi(
+        @Header("Authorization") authHeader: String,
+        @Path("id") id: String,
+        @Field("judul") judul: String,
+        @Field("gambar") gambar: String,
+        @Field("detail") detail: String,
+        @Field("kategori") kategori: String,
+        @Field("lokasi") lokasi: String
+    ): Call<UpdateInformasiResponse>
+
+    //delete
+    @FormUrlEncoded
+    @DELETE("informasi/{id}")
+    fun deleteInformasi(
+        @Header("Authorization") authHeader: String,
+        @Path("id") id: String
+    ): Call<DeleteInformasiResponse>
+
+    //get data aduan by ID
+    @GET("informasi/{id}")
+    fun getInformasiByID(
+        @Header("Authorization") authHeader: String,
+        @Path("token") token: String
+    ): Call<GetInformasiByIDResponse>
+
+    //Get Data All Informasi
+    @GET("informasi")
+    fun getAllInformasi(
+        @Header("Authorization") authHeader: String
+    ): Call<GetAllInformasiResponse>
+
+    //Get Data All Informasi
+    @GET("infoterkini")
+    fun getInfoTerkini(
+        @Header("Authorization") authHeader: String
+    ): Call<GetAllInformasiResponse>
+
+    //Get Data All Informasi
+    @GET("kegiatan")
+    fun getKegiatan(
+        @Header("Authorization") authHeader: String
+    ): Call<GetAllInformasiResponse>
 }

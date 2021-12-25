@@ -3,6 +3,7 @@ package com.maluku.sma_rt.view
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -20,10 +21,15 @@ import com.maluku.sma_rt.extentions.UserSession.Companion.SHARED_PREFERENCE_PASS
 import com.maluku.sma_rt.extentions.UserSession.Companion.SHARED_PREFERENCE_PHONE_NUMBER_KEY
 import com.maluku.sma_rt.extentions.UserSession.Companion.SHARED_PREFERENCE_ROLE_KEY
 import com.maluku.sma_rt.extentions.UserSession.Companion.SHARED_PREFERENCE_TOKEN_KEY
+import com.maluku.sma_rt.presenter.CekLoginSessionPresenter
+import com.maluku.sma_rt.presenter.WargaTokoListProdukKeluargaPresenter
 import com.maluku.sma_rt.view.activity.DashboardRTActivity
 import com.maluku.sma_rt.view.activity.DashboardWargaActivity
+import com.maluku.sma_rt.view.viewInterface.CekLoginSessionInterface
 
-class SplashScreen : Fragment() {
+private const val TAG = "SPLASH SCREEN"
+
+class SplashScreen : Fragment(), CekLoginSessionInterface {
     private lateinit var binding: FragmentSplashScreenBinding
     private var isLogin: Boolean = false
     private var role: String = ""
@@ -45,8 +51,7 @@ class SplashScreen : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        checkSessions()
-        navigateToDashboard()
+        CekLoginSessionPresenter(requireActivity(), this).cekLoginSession(getToken())
     }
 
     private fun bindView(): View {
@@ -54,13 +59,15 @@ class SplashScreen : Fragment() {
         return  binding.root
     }
 
+    private fun getToken(): String {
+        val preferences = UserSession(requireActivity())
+        val token = preferences.getValueString(UserSession.SHARED_PREFERENCE_TOKEN_KEY)
+        Log.d(TAG,token)
+        return token
+    }
+
     private fun checkSessions() {
         val preferences = UserSession(requireActivity())
-        token = preferences
-            .getValueString(SHARED_PREFERENCE_TOKEN_KEY)
-        if (!token.isNullOrEmpty()){
-            isLogin = true
-        }
         if(isLogin){
             role = preferences.getValueString(SHARED_PREFERENCE_ROLE_KEY)
             if (role == "pengurus"){
@@ -103,5 +110,19 @@ class SplashScreen : Fragment() {
                 findNavController().navigate(R.id.action_splashScreen_to_loginChoice)
             }, 3000)
         }
+    }
+
+    override fun resultSuccess(result: Boolean) {
+        if(result == true) {
+            isLogin = true
+        } else {
+            isLogin = false
+        }
+        checkSessions()
+        navigateToDashboard()
+    }
+
+    override fun resultFailed(t: Throwable) {
+        TODO("Not yet implemented")
     }
 }

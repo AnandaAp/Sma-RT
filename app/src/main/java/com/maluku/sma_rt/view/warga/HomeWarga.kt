@@ -1,12 +1,11 @@
 package com.maluku.sma_rt.view.warga
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.navigation.fragment.findNavController
 import com.maluku.sma_rt.R
 
@@ -15,61 +14,111 @@ import com.maluku.sma_rt.R
 import androidx.recyclerview.widget.LinearLayoutManager
 
 import androidx.recyclerview.widget.RecyclerView
-import com.maluku.sma_rt.view.warga.adapter.RecyclerViewGaleri
-import com.maluku.sma_rt.view.warga.adapter.RecyclerViewInfo
+import com.maluku.sma_rt.databinding.FragmentHomeWargaBinding
+import com.maluku.sma_rt.extentions.UserSession
+import com.maluku.sma_rt.model.informasi.GetAllInformasiItem
+import com.maluku.sma_rt.presenter.ListInfoTerkiniPresenter
+import com.maluku.sma_rt.presenter.ListKegiatanPresenter
+import com.maluku.sma_rt.presenter.WargaTokoListProdukKeluargaPresenter
+import com.maluku.sma_rt.view.viewInterface.ListInfoTerkiniInterface
+import com.maluku.sma_rt.view.viewInterface.ListKegiatanInterface
+import com.maluku.sma_rt.view.warga.adapter.RecyclerViewKegiatanWarga
+import com.maluku.sma_rt.view.warga.adapter.RecyclerViewInfoTerkini
+import com.maluku.sma_rt.view.warga.adapter.RecyclerViewProdukpage
 
+private const val TAG = "HOME WARGA"
 
-
-
-
-class HomeWarga : Fragment() {
+class HomeWarga : Fragment(), ListInfoTerkiniInterface, ListKegiatanInterface {
+    private lateinit var binding: FragmentHomeWargaBinding
 
     private lateinit var rvInfo: RecyclerView
-    private lateinit var rvGaleri: RecyclerView
-    private lateinit var adapterInfo: RecyclerViewInfo
-    private lateinit var adapterGaleri: RecyclerViewGaleri
+    private lateinit var rvKegiatan: RecyclerView
+    private lateinit var adapterInfo: RecyclerViewInfoTerkini
+    private lateinit var adapterKegiatan: RecyclerViewKegiatanWarga
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_home_warga, container, false)
+        return bindingView()
+    }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setRecyclerViewInfoTerkini()
+        setRecyclerViewKegiatanWarga()
+        ListInfoTerkiniPresenter(requireActivity(), this).getListInfoTerkini(getToken())
+        ListKegiatanPresenter(requireActivity(), this).getListKegiatan(getToken())
+        navigateToMenuLaporan()
+        navigateToMenuPersuratan()
+        navigateToTopUpSaldo()
+    }
 
-        rvInfo = view.findViewById(R.id.rv_info)
-        adapterInfo = RecyclerViewInfo()
-
-        rvGaleri = view.findViewById(R.id.rv_galeri)
-        adapterGaleri = RecyclerViewGaleri()
-
-
-        //Horizontal RecyclerView
-        rvInfo.layoutManager = LinearLayoutManager(activity,LinearLayoutManager.HORIZONTAL,false)
-        rvInfo.setAdapter(adapterInfo)
-
-        rvGaleri.layoutManager = LinearLayoutManager(activity,LinearLayoutManager.HORIZONTAL,false)
-        rvGaleri.setAdapter(adapterGaleri)
-
-
-        val btnTopup = view.findViewById<TextView>(R.id.btn_isisaldo)
-        btnTopup.setOnClickListener {
+    private fun navigateToTopUpSaldo() {
+        binding.btnIsisaldo.setOnClickListener {
             findNavController().navigate(R.id.action_homeWarga_to_topupSaldo)
         }
+    }
 
-
-        val menuLaporan = view.findViewById<ImageView>(R.id.btn_laporan)
-        menuLaporan.setOnClickListener {
+    private fun navigateToMenuLaporan() {
+        binding.btnLaporan.setOnClickListener {
             findNavController().navigate(R.id.action_homeWarga_to_laporanWarga)
         }
+    }
 
-        val menuPersuratan = view.findViewById<ImageView>(R.id.btn_persuratan)
-        menuPersuratan.setOnClickListener {
+    private fun navigateToMenuPersuratan() {
+        binding.btnPersuratan.setOnClickListener {
             findNavController().navigate(R.id.action_homeWarga_to_persuratanWarga)
         }
+    }
 
-        return view
+    private fun setRecyclerViewInfoTerkini() {
+        rvInfo = binding.rvInfo
+        rvInfo.setHasFixedSize(true)
+        rvInfo.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL,false)
+        adapterInfo = RecyclerViewInfoTerkini(
+            arrayListOf()
+        )
+        rvInfo.adapter = adapterInfo
+    }
+
+    private fun setRecyclerViewKegiatanWarga() {
+        rvKegiatan = binding.rvKegiatan
+        rvKegiatan.setHasFixedSize(true)
+        rvKegiatan.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL,false)
+        adapterKegiatan = RecyclerViewKegiatanWarga(
+            arrayListOf()
+        )
+        rvKegiatan.adapter = adapterKegiatan
+    }
+
+    private fun getToken(): String {
+        val preferences = UserSession(requireActivity())
+        val token = preferences.getValueString(UserSession.SHARED_PREFERENCE_TOKEN_KEY)
+        Log.d(TAG,token)
+        return token
+    }
+
+    private fun bindingView(): View {
+        binding = FragmentHomeWargaBinding.inflate(layoutInflater)
+        return binding.root
+    }
+
+    override fun showDataInfoTerkini(info: List<GetAllInformasiItem>) {
+        updateDataInfoTerkini(info)
+    }
+
+    override fun updateDataInfoTerkini(info: List<GetAllInformasiItem>) {
+        adapterInfo.setData(info as ArrayList<GetAllInformasiItem>)
+    }
+
+    override fun showDataKegiatan(kegiatan: List<GetAllInformasiItem>) {
+        updateDataKegiatan(kegiatan)
+    }
+
+    override fun updateDataKegiatan(kegiatan: List<GetAllInformasiItem>) {
+        adapterKegiatan.setData((kegiatan as ArrayList<GetAllInformasiItem>))
     }
 
 }
