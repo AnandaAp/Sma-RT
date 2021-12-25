@@ -76,7 +76,7 @@ class HomeWarga : Fragment(), ListInfoTerkiniInterface, ListKegiatanInterface {
     private fun setRecyclerViewInfoTerkini() {
         rvInfo = binding.rvInfo
         rvInfo.setHasFixedSize(true)
-        rvInfo.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL,false)
+        rvInfo.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL,false)
         adapterInfo = RecyclerViewInfoTerkini(
             arrayListOf()
         )
@@ -86,7 +86,7 @@ class HomeWarga : Fragment(), ListInfoTerkiniInterface, ListKegiatanInterface {
     private fun setRecyclerViewKegiatanWarga() {
         rvKegiatan = binding.rvKegiatan
         rvKegiatan.setHasFixedSize(true)
-        rvKegiatan.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL,false)
+        rvKegiatan.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL,false)
         adapterKegiatan = RecyclerViewKegiatanWarga(
             arrayListOf()
         )

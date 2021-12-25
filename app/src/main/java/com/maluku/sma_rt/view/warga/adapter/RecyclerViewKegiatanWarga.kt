@@ -1,5 +1,7 @@
 package com.maluku.sma_rt.view.warga.adapter
 
+import android.content.ContentValues
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,8 +11,11 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
 import com.maluku.sma_rt.R
 import com.maluku.sma_rt.model.informasi.GetAllInformasiItem
+import java.io.File
 
 class RecyclerViewKegiatanWarga(
     private val listKegiatan: ArrayList<GetAllInformasiItem>
@@ -29,23 +34,23 @@ class RecyclerViewKegiatanWarga(
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val data = listKegiatan[position]
-        // Firebase Storage
-//        val storageRef = FirebaseStorage.getInstance().reference.child("images/${data.gambar}")
-//        Log.d(ContentValues.TAG,"Adapter get ref image: $storageRef")
-//        val localFile = File.createTempFile("tempFile","jpg")
-//        storageRef.getFile(localFile).addOnSuccessListener {
-//            Glide.with(holder.itemView)
-//                .load(localFile.path)
-//                .apply(RequestOptions().transform(CenterCrop(), RoundedCorners(20)))
-//                .into(holder.gambarInfo)
-//        }.addOnFailureListener {
-//
-//        }
+//        Firebase Storage
+        val storageRef = FirebaseStorage.getInstance().reference.child("images/${data.gambar}")
+        Log.d(ContentValues.TAG,"Adapter get ref image: $storageRef")
+        val localFile = File.createTempFile("tempFile","jpg")
+        storageRef.getFile(localFile).addOnSuccessListener {
+            Glide.with(holder.itemView)
+                .load(localFile.path)
+                .apply(RequestOptions().transform(CenterCrop(), RoundedCorners(20)))
+                .into(holder.gambarKegiatan)
+        }.addOnFailureListener {
 
-        Glide.with(holder.itemView)
-            .load("${data.gambar}")
-            .apply(RequestOptions().transform(CenterCrop(), RoundedCorners(20)))
-            .into(holder.gambarKegiatan)
+        }
+
+//        Glide.with(holder.itemView)
+//            .load("${data.gambar}")
+//            .apply(RequestOptions().transform(CenterCrop(), RoundedCorners(20)))
+//            .into(holder.gambarKegiatan)
     }
 
     override fun getItemCount(): Int {
