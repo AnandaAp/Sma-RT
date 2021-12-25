@@ -51,7 +51,6 @@ class WargaFragment : Fragment(), ListWargaViewInterface, ListKeluargaViewInterf
     override fun onStart() {
         super.onStart()
         ListKeluargaPresenter(requireActivity(),this).getListKeluargaPresenter(getToken())
-        ListWargaPresenter(requireActivity(), this).getListWargaPresenter(getToken(), idKeluarga)
     }
 
     private fun bindingView(): View {
@@ -89,7 +88,7 @@ class WargaFragment : Fragment(), ListWargaViewInterface, ListKeluargaViewInterf
             listIdKeluarga.add(data.id.toString())
             listKeluarga.add(data.nama.toString())
         }
-        val adapter = ArrayAdapter(requireActivity(), R.layout.support_simple_spinner_dropdown_item,listKeluarga)
+        val adapter = ArrayAdapter(requireContext(), R.layout.dropdown_item,listKeluarga)
         spListFamily.adapter = adapter
         spListFamily.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onItemSelected(adapterView: AdapterView<*>?, view: View?, position: Int, id: Long) {

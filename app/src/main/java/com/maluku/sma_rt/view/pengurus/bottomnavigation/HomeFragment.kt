@@ -1,6 +1,5 @@
 package com.maluku.sma_rt.view.pengurus.bottomnavigation
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,17 +8,18 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.bitmap.CenterCrop
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners
-import com.bumptech.glide.request.RequestOptions
-import com.google.firebase.storage.FirebaseStorage
 import com.maluku.sma_rt.R
 import com.maluku.sma_rt.databinding.FragmentHomeBinding
+import com.maluku.sma_rt.extentions.UserSession
+import com.maluku.sma_rt.model.informasi.GetAllInformasiItem
+import com.maluku.sma_rt.presenter.ListInfoTerkiniPresenter
+import com.maluku.sma_rt.presenter.ListKegiatanPresenter
 import com.maluku.sma_rt.view.pengurus.adapter.GaleriAdapter
 import com.maluku.sma_rt.view.pengurus.adapter.InfoAdapter
+import com.maluku.sma_rt.view.viewInterface.ListInfoTerkiniInterface
+import com.maluku.sma_rt.view.viewInterface.ListKegiatanInterface
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(), ListKegiatanInterface, ListInfoTerkiniInterface {
     private lateinit var binding: FragmentHomeBinding
     private lateinit var rvGaleri: RecyclerView
     private lateinit var adapterGaleri: GaleriAdapter
@@ -37,16 +37,23 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setRecyclerViewDaftarWarga()
+        setRecyclerViewInformasi()
         navigateDashboardToTambahKelurga()
         navigateDashboardToSurat()
+        navigateDashboardToInformasi()
     }
 
-    private fun setRecyclerViewDaftarWarga(){
+    override fun onStart() {
+        super.onStart()
+        ListKegiatanPresenter(requireActivity(),this).getListKegiatan(getToken())
+        ListInfoTerkiniPresenter(requireActivity(),this).getListInfoTerkini(getToken())
+    }
+
+    private fun setRecyclerViewInformasi(){
         rvGaleri = binding.rvGaleriWarga
-        adapterGaleri = GaleriAdapter()
+        adapterGaleri = GaleriAdapter(arrayListOf())
         rvInfo = binding.rvInfoTerkini
-        adapterInfo = InfoAdapter()
+        adapterInfo = InfoAdapter(arrayListOf())
         rvGaleri.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL,false)
         rvGaleri.adapter = adapterGaleri
         rvInfo.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL,false)
@@ -65,9 +72,36 @@ class HomeFragment : Fragment() {
         }
     }
 
+    private fun navigateDashboardToInformasi() {
+        binding.btnInformasi.setOnClickListener{
+            findNavController().navigate(R.id.action_navigation_home_to_informasiFragment)
+        }
+    }
+
     private fun bindingView(): View {
         binding = FragmentHomeBinding.inflate(layoutInflater)
         return binding.root
     }
 
+    private fun getToken(): String {
+        val preferences = UserSession(requireActivity())
+        val token = preferences.getValueString(UserSession.SHARED_PREFERENCE_TOKEN_KEY)
+        return token
+    }
+
+    override fun showDataInfoTerkini(info: List<GetAllInformasiItem>) {
+        updateDataInfoTerkini(info)
+    }
+
+    override fun updateDataInfoTerkini(info: List<GetAllInformasiItem>) {
+        adapterInfo.setData(info as ArrayList<GetAllInformasiItem>)
+    }
+
+    override fun showDataKegiatan(kegiatan: List<GetAllInformasiItem>) {
+        updateDataKegiatan(kegiatan)
+    }
+
+    override fun updateDataKegiatan(kegiatan: List<GetAllInformasiItem>) {
+        adapterGaleri.setData(kegiatan as ArrayList<GetAllInformasiItem>)
+    }
 }

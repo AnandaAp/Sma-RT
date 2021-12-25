@@ -10,6 +10,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+
 class ListKegiatanPresenter(private val activity: Activity, private var view: ListKegiatanInterface) {
     fun getListKegiatan(token: String) {
         RetrofitService

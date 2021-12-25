@@ -7,8 +7,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 
 
-private const val TAG = "SURAT PAGER ADAPTER"
-class SuratPagerAdapter(private val listFragment: ArrayList<Fragment>, fragment: Fragment) :
+class PagerAdapter(private val listFragment: ArrayList<Fragment>, fragment: Fragment) :
     FragmentStateAdapter(fragment) {
 
     override fun getItemCount(): Int {
