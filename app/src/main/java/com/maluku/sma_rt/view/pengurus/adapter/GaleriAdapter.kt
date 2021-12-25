@@ -15,17 +15,16 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.google.firebase.storage.FirebaseStorage
 import com.maluku.sma_rt.R
+import com.maluku.sma_rt.model.informasi.GetAllInformasiItem
+import com.maluku.sma_rt.model.warga.GetAllWargaItem
 import java.io.File
 
-class GaleriAdapter: RecyclerView.Adapter<GaleriAdapter.ViewHolder>() {
-    // Membuat array untuk menampung gambar kegiatan
-    private var arrGambar = arrayOf(
-        "gotong_royong.jpg",
-        "hut_ri.jpg",
-        "kerja_bakti.jpg",
-        "kerja_bakti_2.jpg",
-        "kerja_bakti_3.jpg"
-    )
+class GaleriAdapter(val listKegiatan: ArrayList<GetAllInformasiItem>): RecyclerView.Adapter<GaleriAdapter.ViewHolder>() {
+    fun setData(data : List<GetAllInformasiItem>){
+        listKegiatan.clear()
+        listKegiatan.addAll(data)
+        notifyDataSetChanged()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.galeri_kegiatan_warga_rt,parent,false)
@@ -33,14 +32,12 @@ class GaleriAdapter: RecyclerView.Adapter<GaleriAdapter.ViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val gambarKegiatan = arrGambar[position]
+        val data = listKegiatan[position]
         // Firebase Storage
-        val storageRef = FirebaseStorage.getInstance().reference.child("images/${gambarKegiatan}")
+        val storageRef = FirebaseStorage.getInstance().reference.child("images/${data.gambar}")
         Log.d(ContentValues.TAG,"Adapter get ref image: $storageRef")
         val localFile = File.createTempFile("tempFile","jpg")
         storageRef.getFile(localFile).addOnSuccessListener {
-//            val bitmap = BitmapFactory.decodeFile(localFile.absolutePath)
-//            holder.gambarProduk.setImageBitmap(bitmap)
             // Tampilkan gambar dengan Glide
             Glide.with(holder.itemView)
                 .load(localFile.path)
@@ -52,10 +49,10 @@ class GaleriAdapter: RecyclerView.Adapter<GaleriAdapter.ViewHolder>() {
     }
 
     override fun getItemCount(): Int {
-        return arrGambar.size
+        return listKegiatan.size
     }
 
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-        var galeriWarga: ImageView = itemView.findViewById(R.id.ivGaleriWargaRT)
+        val galeriWarga: ImageView = itemView.findViewById(R.id.ivGaleriWargaRT)
     }
 }

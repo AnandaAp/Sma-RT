@@ -5,14 +5,16 @@ import android.util.Log
 import android.widget.Toast
 import com.maluku.sma_rt.api.RetrofitService
 import com.maluku.sma_rt.model.informasi.CreateInformasiResponse
-import com.maluku.sma_rt.view.viewInterface.BagikanInformasiInterface
+import com.maluku.sma_rt.model.informasi.GetAllInformasiItem
+import com.maluku.sma_rt.model.informasi.GetAllInformasiResponse
+import com.maluku.sma_rt.view.viewInterface.CreateInformasiInterface
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 private const val TAG = "InformasiPresenter"
 
-class BagikanInformasiPresenter(private val activity: Activity, private val view: BagikanInformasiInterface) {
+class CreateInformasiPresenter(private val activity: Activity, private val view: CreateInformasiInterface) {
     fun createInformasiPresenter(
         token: String,
         judul: String,
@@ -37,7 +39,6 @@ class BagikanInformasiPresenter(private val activity: Activity, private val view
                     response: Response<CreateInformasiResponse>
                 ) {
                     if (response.isSuccessful){
-                        Toast.makeText(activity, "Ini bagikan informasi presenter",Toast.LENGTH_LONG).show()
                         view.onCreateInformasiSuccess("Berhasil menambah informasi!")
                     } else {
                         view.onCreateInformasiFailed("Gagal menambah informasi!")
@@ -46,7 +47,7 @@ class BagikanInformasiPresenter(private val activity: Activity, private val view
 
                 override fun onFailure(call: Call<CreateInformasiResponse>, t: Throwable) {
                     view.onCreateInformasiFailed("Gagal menambah informasi!")
-                    Log.i(TAG, "onFailure: ${t.message}")
+                    Log.i(TAG, "onFailure: ${t.message.toString()}")
                 }
             })
     }

@@ -8,18 +8,6 @@
             <LayoutPositions>
               <option name="myPositions">
                 <map>
-                  <entry key="bagikanInformasiFragment">
-                    <value>
-                      <LayoutPositions>
-                        <option name="myPosition">
-                          <Point>
-                            <option name="x" value="1248" />
-                            <option name="y" value="623" />
-                          </Point>
-                        </option>
-                      </LayoutPositions>
-                    </value>
-                  </entry>
                   <entry key="fragmentSuratKeluar">
                     <value>
                       <LayoutPositions>
@@ -72,6 +60,32 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="informasiFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="1185" />
+                            <option name="y" value="245" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_informasiFragment_to_navigation_home">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_informasiFragment_to_navigation_manage">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="navigation_home">
                     <value>
                       <LayoutPositions>
@@ -83,6 +97,11 @@
                         </option>
                         <option name="myPositions">
                           <map>
+                            <entry key="action_navigation_home_to_informasiFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_navigation_home_to_navigation_manage">
                               <value>
                                 <LayoutPositions />
@@ -119,6 +138,11 @@
                         </option>
                         <option name="myPositions">
                           <map>
+                            <entry key="action_navigation_manage_to_informasiFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_navigation_manage_to_navigation_home">
                               <value>
                                 <LayoutPositions />
@@ -139,8 +163,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="12" />
-                            <option name="y" value="12" />
+                            <option name="x" value="280" />
+                            <option name="y" value="432" />
                           </Point>
                         </option>
                       </LayoutPositions>

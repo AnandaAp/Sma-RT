@@ -6,6 +6,7 @@ import com.maluku.sma_rt.model.aduan.GetAduanByIDResponse
 import com.maluku.sma_rt.model.aduan.GetAduanById
 import com.maluku.sma_rt.model.aduan.GetAllAduanResponse
 import com.maluku.sma_rt.model.informasi.CreateInformasiResponse
+import com.maluku.sma_rt.model.informasi.GetAllInformasiResponse
 import com.maluku.sma_rt.model.keluarga.CreateKeluargaResponse
 import com.maluku.sma_rt.model.keluarga.GetAllProdukKeluargaResponse
 import com.maluku.sma_rt.model.keluarga.GetListKeluargaResponse
@@ -211,4 +212,17 @@ interface Service {
         @Field("detail") detail: String,
         @Field("gambar") gambar: String,
     ): Call<CreateInformasiResponse>
+
+    //Get Data All Informasi
+    // Informasi Kegiatan
+    @GET("kegiatan")
+    fun getAllKegiatan(
+        @Header("Authorization") authHeader: String
+    ): Call<GetAllInformasiResponse>
+
+    // Informasi Terkini
+    @GET("infoterkini")
+    fun getAllInfoTerkini(
+        @Header("Authorization") authHeader: String
+    ): Call<GetAllInformasiResponse>
 }

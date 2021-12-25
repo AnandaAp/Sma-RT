@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.net.Uri
-import android.util.Log
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -17,13 +16,13 @@ import com.google.firebase.storage.FirebaseStorage
 import com.maluku.sma_rt.R
 import com.maluku.sma_rt.databinding.FragmentBagikanInformasiBinding
 import com.maluku.sma_rt.extentions.UserSession
-import com.maluku.sma_rt.presenter.BagikanInformasiPresenter
-import com.maluku.sma_rt.view.viewInterface.BagikanInformasiInterface
+import com.maluku.sma_rt.presenter.CreateInformasiPresenter
+import com.maluku.sma_rt.view.viewInterface.CreateInformasiInterface
 import java.text.SimpleDateFormat
 import java.util.*
 
 private const val TAG = "BagiInformasiFragment"
-class BagikanInformasiFragment : Fragment(), BagikanInformasiInterface {
+class BagikanInformasiFragment : Fragment(), CreateInformasiInterface {
     private lateinit var binding: FragmentBagikanInformasiBinding
     private var judul: String = ""
     private var lokasi: String = ""
@@ -75,7 +74,7 @@ class BagikanInformasiFragment : Fragment(), BagikanInformasiInterface {
             if (imageUri != null){
                 uploadImage()
             }
-            BagikanInformasiPresenter(requireActivity(),this).createInformasiPresenter(getToken(),judul,kategori,lokasi,detail,gambarInformasi)
+            CreateInformasiPresenter(requireActivity(),this).createInformasiPresenter(getToken(),judul,kategori,lokasi,detail,gambarInformasi)
         } else {
             if (!validJudul){
                 binding.etJudul.error = "Masukan judul informasi!"

@@ -9,7 +9,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.maluku.sma_rt.R
-import com.maluku.sma_rt.view.pengurus.adapter.SuratPagerAdapter
+import com.maluku.sma_rt.view.pengurus.adapter.PagerAdapter
 
 class SuratFragment : Fragment() {
 
@@ -25,7 +25,7 @@ class SuratFragment : Fragment() {
         val listFragment: ArrayList<Fragment> = arrayListOf(FragmentSuratMasuk(),FragmentSuratKeluar())
         val tabLayout = view.findViewById<TabLayout>(R.id.tabLayoutSurat)
         val viewPager = view.findViewById<ViewPager2>(R.id.vwSuratPager)
-        val suratAdapter = SuratPagerAdapter(listFragment,this)
+        val suratAdapter = PagerAdapter(listFragment,this)
         viewPager.adapter = suratAdapter
         TabLayoutMediator(tabLayout,viewPager){tab,position->
             when(position){

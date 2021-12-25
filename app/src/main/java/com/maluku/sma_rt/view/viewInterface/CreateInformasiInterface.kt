@@ -1,6 +1,8 @@
 package com.maluku.sma_rt.view.viewInterface
 
-interface BagikanInformasiInterface {
+import com.maluku.sma_rt.model.informasi.GetAllInformasiItem
+
+interface CreateInformasiInterface {
     fun onCreateInformasiSuccess(message: String)
     fun onCreateInformasiFailed(message: String)
 }

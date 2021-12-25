@@ -29,8 +29,8 @@ class ManageFragment : Fragment() {
     }
 
     private fun manageToTambahInformasi(){
-        binding.btnTambahInformasi.setOnClickListener {
-            findNavController().navigate(R.id.action_navigation_manage_to_bagikanInformasiFragment)
+        binding.btnInformasi.setOnClickListener {
+            findNavController().navigate(R.id.action_navigation_manage_to_informasiFragment)
         }
     }
 
