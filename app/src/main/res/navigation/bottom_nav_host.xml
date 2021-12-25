@@ -216,6 +216,15 @@
         <action
             android:id="@+id/action_pengaturanToko_to_kelolaToko"
             app:destination="@id/kelolaToko" />
+        <argument
+            android:name="keluarga_id"
+            app:argType="string" />
+        <argument
+            android:name="keluarga_nama_toko"
+            app:argType="string" />
+        <argument
+            android:name="keluarga_gambar"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/laporanWarga"

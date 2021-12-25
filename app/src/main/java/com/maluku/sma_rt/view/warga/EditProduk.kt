@@ -30,7 +30,7 @@ import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
 
-private const val TAG = "TOKEN LOGIN"
+private const val TAG = "EDIT PRODUK"
 
 class EditProduk : Fragment(), EditProdukInterface {
     val args: EditProdukArgs by navArgs()
@@ -137,7 +137,7 @@ class EditProduk : Fragment(), EditProdukInterface {
         storageReference.putFile(imageUri!!)
             .addOnSuccessListener {
                 binding.imgProduk.setImageURI(null)
-                Toast.makeText(requireContext(),"Upload gambar sukses!",Toast.LENGTH_LONG).show()
+//                Toast.makeText(requireContext(),"Upload gambar sukses!",Toast.LENGTH_LONG).show()
             }.addOnFailureListener {
                 Toast.makeText(requireContext(),"Upload gambar gagal!",Toast.LENGTH_LONG).show()
             }
@@ -160,7 +160,7 @@ class EditProduk : Fragment(), EditProdukInterface {
         val validHarga = !binding.edHargaproduk.text.isNullOrEmpty()
         val validDetail = !binding.edDetailproduk.text.isNullOrEmpty()
 
-        if (validNama && validHarga){
+        if (validNama && validHarga && validDetail){
             if (imageUri != null){
                 uploadImage()
             }

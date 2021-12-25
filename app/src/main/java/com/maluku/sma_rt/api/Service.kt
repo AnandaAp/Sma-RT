@@ -6,9 +6,7 @@ import com.maluku.sma_rt.model.aduan.GetAduanByIDResponse
 import com.maluku.sma_rt.model.aduan.GetAduanById
 import com.maluku.sma_rt.model.aduan.GetAllAduanResponse
 import com.maluku.sma_rt.model.informasi.*
-import com.maluku.sma_rt.model.keluarga.CreateKeluargaResponse
-import com.maluku.sma_rt.model.keluarga.GetAllProdukKeluargaResponse
-import com.maluku.sma_rt.model.keluarga.GetListKeluargaResponse
+import com.maluku.sma_rt.model.keluarga.*
 import com.maluku.sma_rt.model.login.OnLoginSuccessResponse
 import com.maluku.sma_rt.model.pengurus.CreatePengurusResponse
 import com.maluku.sma_rt.model.produk.CreateProductResponse
@@ -87,6 +85,22 @@ interface Service {
         @Header("Authorization") authHeader: String,
         @Field("nama") nama: String,
     ): Call<CreateKeluargaResponse>
+
+    // Get Keluarga Saya
+    @GET("keluargasaya")
+    fun getKeluargaSaya(
+        @Header("Authorization") authHeader: String
+    ): Call<GetKeluargaSayaResponse>
+
+    // Update Toko
+    @FormUrlEncoded
+    @PUT("keluarga/{id_keluarga}")
+    fun updateToko(
+        @Header("Authorization") authHeader: String,
+        @Path("id_keluarga") product_id: String,
+        @Field("nama_toko") nama_toko: String,
+        @Field("gambar") gambar: String,
+    ): Call<UpdateKeluargaResponse>
 
     // Get All Data Keluarga
     @GET("keluarga/warga")
