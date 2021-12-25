@@ -5,30 +5,34 @@ import android.widget.Toast
 import com.maluku.sma_rt.api.RetrofitService
 import com.maluku.sma_rt.model.informasi.GetAllInformasiItem
 import com.maluku.sma_rt.model.informasi.GetAllInformasiResponse
-import com.maluku.sma_rt.view.viewInterface.ListInfoTerkiniInterface
+import com.maluku.sma_rt.view.viewInterface.CekLoginSessionInterface
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ListInfoTerkiniPresenter(private val activity: Activity, private var view: ListInfoTerkiniInterface) {
-    fun getListInfoTerkini(token: String) {
+class CekLoginSessionPresenter(private val activity: Activity, private var view: CekLoginSessionInterface) {
+    fun cekLoginSession(token: String) {
         RetrofitService
             .getService()
-            .getInfoTerkini("Bearer $token")
+            .getAllInformasi("Bearer $token")
             .enqueue(object : Callback<GetAllInformasiResponse> {
                 override fun onResponse(
                     call: Call<GetAllInformasiResponse>,
                     response: Response<GetAllInformasiResponse>
                 ) {
                     if (response.isSuccessful){
-                        val result = response.body()?.getAllInformasi as List<GetAllInformasiItem>
-                        view.showDataInfoTerkini(result)
+                        val code = response.body()?.code
+                        if(code == 200) {
+                            view.resultSuccess(true)
+                        } else {
+                            view.resultSuccess(false)
+                        }
                     } else{
+                        view.resultSuccess(false)
                     }
                 }
-
                 override fun onFailure(call: Call<GetAllInformasiResponse>, t: Throwable) {
-                    Toast.makeText(activity,"Pesan: error", Toast.LENGTH_SHORT).show()
+                    view.resultFailed(t)
                 }
             })
     }

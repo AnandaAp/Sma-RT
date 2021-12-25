@@ -291,7 +291,7 @@
         app:layout_constraintTop_toBottomOf="@+id/rv_info" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_galeri"
+        android:id="@+id/rv_kegiatan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"

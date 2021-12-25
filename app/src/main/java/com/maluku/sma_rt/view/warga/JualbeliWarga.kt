@@ -10,7 +10,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.maluku.sma_rt.R
-import com.maluku.sma_rt.view.warga.adapter.RecyclerViewInfo
 import com.maluku.sma_rt.view.warga.adapter.RecyclerViewTerlaris
 import com.maluku.sma_rt.view.warga.adapter.RecyclerViewToko
 

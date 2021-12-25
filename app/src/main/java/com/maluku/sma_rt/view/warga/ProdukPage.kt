@@ -18,7 +18,7 @@ import com.maluku.sma_rt.presenter.WargaTokoListProdukKeluargaPresenter
 import com.maluku.sma_rt.view.viewInterface.ListProdukInterface
 import com.maluku.sma_rt.view.warga.adapter.RecyclerViewProdukpage
 
-private const val TAG = "TOKEN LOGIN"
+private const val TAG = "PRODUK PAGE"
 
 class ProdukPage : Fragment(), ListProdukInterface {
 

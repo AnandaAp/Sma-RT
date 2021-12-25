@@ -10,11 +10,12 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ListKegiatanPresenter(private val activity: Activity, private val view: ListKegiatanInterface) {
-    fun getListKegiatanPresenter(token: String) {
+
+class ListKegiatanPresenter(private val activity: Activity, private var view: ListKegiatanInterface) {
+    fun getListKegiatan(token: String) {
         RetrofitService
             .getService()
-            .getAllKegiatan("Bearer $token")
+            .getKegiatan("Bearer $token")
             .enqueue(object : Callback<GetAllInformasiResponse> {
                 override fun onResponse(
                     call: Call<GetAllInformasiResponse>,
@@ -22,15 +23,13 @@ class ListKegiatanPresenter(private val activity: Activity, private val view: Li
                 ) {
                     if (response.isSuccessful){
                         val result = response.body()?.getAllInformasi as List<GetAllInformasiItem>
-                        view.onGetKegiatanSuccess(result)
-                        Toast.makeText(activity,"Pesan: ${response.message()}", Toast.LENGTH_SHORT).show()
+                        view.showDataKegiatan(result)
                     } else{
-                        Toast.makeText(activity,"Pesan: ${response.message()}", Toast.LENGTH_SHORT).show()
                     }
                 }
 
                 override fun onFailure(call: Call<GetAllInformasiResponse>, t: Throwable) {
-                    view.onGetKegiatanFailed(t.message.toString())
+                    Toast.makeText(activity,"Pesan: error", Toast.LENGTH_SHORT).show()
                 }
             })
     }

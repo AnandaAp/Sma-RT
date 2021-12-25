@@ -200,29 +200,62 @@ interface Service {
         @Header("Authorization") authHeader: String
     ): Call<GetAllAduanResponse>
 
-    // Informasi
-    // Buat Informasi
+    //Informasi
+    //Create
     @FormUrlEncoded
     @POST("informasi")
     fun createInformasi(
         @Header("Authorization") authHeader: String,
         @Field("judul") judul: String,
-        @Field("kategori") kategori: String,
-        @Field("lokasi") lokasi: String,
-        @Field("detail") detail: String,
         @Field("gambar") gambar: String,
+        @Field("detail") detail: String,
+        @Field("kategori") kategori: String,
+        @Field("lokasi") lokasi: String
     ): Call<CreateInformasiResponse>
 
+    //update
+    @FormUrlEncoded
+    @PUT("informasi/{token}")
+    fun updateInformasi(
+        @Header("Authorization") authHeader: String,
+        @Path("id") id: String,
+        @Field("judul") judul: String,
+        @Field("gambar") gambar: String,
+        @Field("detail") detail: String,
+        @Field("kategori") kategori: String,
+        @Field("lokasi") lokasi: String
+    ): Call<UpdateInformasiResponse>
+
+    //delete
+    @FormUrlEncoded
+    @DELETE("informasi/{id}")
+    fun deleteInformasi(
+        @Header("Authorization") authHeader: String,
+        @Path("id") id: String
+    ): Call<DeleteInformasiResponse>
+
+    //get data aduan by ID
+    @GET("informasi/{id}")
+    fun getInformasiByID(
+        @Header("Authorization") authHeader: String,
+        @Path("token") token: String
+    ): Call<GetInformasiByIDResponse>
+
     //Get Data All Informasi
-    // Informasi Kegiatan
-    @GET("kegiatan")
-    fun getAllKegiatan(
+    @GET("informasi")
+    fun getAllInformasi(
         @Header("Authorization") authHeader: String
     ): Call<GetAllInformasiResponse>
 
-    // Informasi Terkini
+    //Get Data All Informasi
     @GET("infoterkini")
-    fun getAllInfoTerkini(
+    fun getInfoTerkini(
+        @Header("Authorization") authHeader: String
+    ): Call<GetAllInformasiResponse>
+
+    //Get Data All Informasi
+    @GET("kegiatan")
+    fun getKegiatan(
         @Header("Authorization") authHeader: String
     ): Call<GetAllInformasiResponse>
 }
