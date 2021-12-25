@@ -5,6 +5,7 @@ import com.maluku.sma_rt.model.aduan.CreateAduanResponse
 import com.maluku.sma_rt.model.aduan.GetAduanByIDResponse
 import com.maluku.sma_rt.model.aduan.GetAduanById
 import com.maluku.sma_rt.model.aduan.GetAllAduanResponse
+import com.maluku.sma_rt.model.informasi.CreateInformasiResponse
 import com.maluku.sma_rt.model.keluarga.CreateKeluargaResponse
 import com.maluku.sma_rt.model.keluarga.GetAllProdukKeluargaResponse
 import com.maluku.sma_rt.model.keluarga.GetListKeluargaResponse
@@ -197,4 +198,17 @@ interface Service {
     fun getAllAduan(
         @Header("Authorization") authHeader: String
     ): Call<GetAllAduanResponse>
+
+    // Informasi
+    // Buat Informasi
+    @FormUrlEncoded
+    @POST("informasi")
+    fun createInformasi(
+        @Header("Authorization") authHeader: String,
+        @Field("judul") judul: String,
+        @Field("kategori") kategori: String,
+        @Field("lokasi") lokasi: String,
+        @Field("detail") detail: String,
+        @Field("gambar") gambar: String,
+    ): Call<CreateInformasiResponse>
 }

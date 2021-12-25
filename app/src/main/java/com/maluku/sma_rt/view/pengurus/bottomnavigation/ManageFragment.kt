@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.maluku.sma_rt.R
 import com.maluku.sma_rt.databinding.FragmentManageBinding
 
 
@@ -21,8 +23,20 @@ class ManageFragment : Fragment() {
         return view
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        manageToTambahInformasi()
+    }
+
+    private fun manageToTambahInformasi(){
+        binding.btnTambahInformasi.setOnClickListener {
+            findNavController().navigate(R.id.action_navigation_manage_to_bagikanInformasiFragment)
+        }
+    }
+
     private fun bindingView(): View {
         binding = FragmentManageBinding.inflate(layoutInflater)
         return binding.root
     }
+
 }

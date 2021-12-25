@@ -4,57 +4,191 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
+import android.net.Uri
+import android.util.Log
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Toast
+import androidx.activity.result.ActivityResultCallback
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
+import com.google.firebase.storage.FirebaseStorage
 import com.maluku.sma_rt.R
+import com.maluku.sma_rt.databinding.FragmentBagikanInformasiBinding
+import com.maluku.sma_rt.extentions.UserSession
+import com.maluku.sma_rt.presenter.BagikanInformasiPresenter
+import com.maluku.sma_rt.view.viewInterface.BagikanInformasiInterface
+import java.text.SimpleDateFormat
+import java.util.*
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [BagikanInformasiFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class BagikanInformasiFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+private const val TAG = "BagiInformasiFragment"
+class BagikanInformasiFragment : Fragment(), BagikanInformasiInterface {
+    private lateinit var binding: FragmentBagikanInformasiBinding
+    private var judul: String = ""
+    private var lokasi: String = ""
+    private var detail: String = ""
+    private var kategori: String = ""
+    private var imageUri: Uri? = null
+    private var gambarInformasi: String = "default_image"
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        judulFocusListener()
+        lokasiFocusListener()
+        detailFocusListener()
+        kategoriFocusListener()
+        val getImage = registerForActivityResult(
+            ActivityResultContracts.GetContent(),
+            ActivityResultCallback {
+                imageUri = it
+            }
+        )
+        pickImage(getImage)
+        buatInformasi()
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_bagikan_informasi, container, false)
+        return bindingView()
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment BagikanInformasiFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            BagikanInformasiFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+    private fun bindingView(): View? {
+        binding = FragmentBagikanInformasiBinding.inflate(layoutInflater)
+        return binding.root
+    }
+
+    private fun buatInformasi(){
+        binding.btnBuatInformasi.setOnClickListener {
+            Toast.makeText(requireContext(),"Detail: $detail",Toast.LENGTH_LONG).show()
+            submitForm()
+        }
+    }
+
+    private fun submitForm() {
+        val validJudul = !binding.etJudul.text.isNullOrEmpty()
+        val validDetail = !binding.etDetailInformasi.text.isNullOrEmpty()
+        val validLokasi = !binding.etLokasi.text.isNullOrEmpty()
+        if (validJudul && validDetail && validLokasi){
+            if (imageUri != null){
+                uploadImage()
             }
+            BagikanInformasiPresenter(requireActivity(),this).createInformasiPresenter(getToken(),judul,kategori,lokasi,detail,gambarInformasi)
+        } else {
+            if (!validJudul){
+                binding.etJudul.error = "Masukan judul informasi!"
+            }
+            if (!validLokasi){
+                binding.etLokasi.error = "Masukan lokasi informasi!"
+            }
+            if (!validDetail){
+                binding.etDetailInformasi.error = "Berikan detail informasi!"
+            }
+            Toast.makeText(requireContext(),"Seluruh field harus terisi!", Toast.LENGTH_LONG).show()
+        }
+    }
+
+    private fun uploadImage() {
+        val formatter = SimpleDateFormat("yyyy_MM-dd_HH_mm_ss", Locale.getDefault())
+        val now = Date()
+        val fileName = "${judul}_${formatter.format(now)}"
+        gambarInformasi = fileName
+        val storageReference = FirebaseStorage.getInstance().getReference("images/$fileName")
+        storageReference.putFile(imageUri!!)
+            .addOnSuccessListener {
+                Toast.makeText(requireContext(),"Upload gambar sukses!",Toast.LENGTH_LONG).show()
+            }.addOnFailureListener {
+                Toast.makeText(requireContext(),"Upload gambar gagal!",Toast.LENGTH_LONG).show()
+            }
+    }
+
+    private fun lokasiFocusListener() {
+        binding.etLokasi.setOnFocusChangeListener { view, focused ->
+            if (!focused){
+                binding.etLokasi.error = validLokasi()
+            }
+        }
+    }
+
+    private fun validLokasi(): String? {
+        lokasi = binding.etLokasi.text.toString().trim()
+        if (lokasi.isEmpty()){
+            return "Masukan lokasi informasi!"
+        }
+        return null
+    }
+
+    private fun judulFocusListener() {
+        binding.etJudul.setOnFocusChangeListener { view, focused ->
+            if (!focused){
+                binding.etJudul.error = validJudul()
+            }
+        }
+    }
+
+    private fun validJudul(): String?{
+        judul = binding.etJudul.text.toString().trim()
+        if (judul.isEmpty()){
+            return "Masukan judul informasi!"
+        }
+        return null
+    }
+
+    private fun kategoriFocusListener() {
+        val spKategori = binding.spKategori
+        val arrKategori =  resources.getStringArray(R.array.kategori)
+        val adapterKategori = ArrayAdapter(requireContext(), R.layout.support_simple_spinner_dropdown_item, arrKategori)
+        spKategori.adapter = adapterKategori
+        spKategori.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            override fun onItemSelected(adapterView: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                kategori = adapterView?.getItemAtPosition(position).toString()
+                Toast.makeText(requireContext(),"$kategori", Toast.LENGTH_LONG).show()
+            }
+
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+                TODO("Not yet implemented")
+            }
+        }
+    }
+
+    private fun detailFocusListener() {
+        binding.etDetailInformasi.setOnFocusChangeListener { view, focused ->
+            if (!focused){
+                binding.etDetailInformasi.error = validDetail()
+            }
+        }
+    }
+
+    private fun validDetail(): String?{
+        detail = binding.etDetailInformasi.text.toString()
+        if (detail.isEmpty()){
+            return "Berikan detail informasi!"
+        }
+        return null
+    }
+
+    private fun pickImage(getImage: ActivityResultLauncher<String>){
+        binding.btnPickImg.setOnClickListener {
+            getImage.launch("image/*")
+        }
+    }
+
+    override fun onCreateInformasiSuccess(message: String) {
+        binding.etJudul.text = null
+        binding.etLokasi.text = null
+        binding.etDetailInformasi.text = null
+        Toast.makeText(requireContext(),message,Toast.LENGTH_LONG).show()
+    }
+
+    override fun onCreateInformasiFailed(message: String) {
+        Toast.makeText(requireContext(),"Pesan: $message",Toast.LENGTH_LONG).show()
+    }
+
+    private fun getToken(): String {
+        val preferences = UserSession(requireActivity())
+        val token = preferences.getValueString(UserSession.SHARED_PREFERENCE_TOKEN_KEY)
+        return token
     }
 }

@@ -48,6 +48,9 @@
         <action
             android:id="@+id/action_navigation_manage_to_navigation_home"
             app:destination="@id/navigation_home" />
+        <action
+            android:id="@+id/action_navigation_manage_to_bagikanInformasiFragment"
+            app:destination="@id/bagikanInformasiFragment" />
     </fragment>
 
     <fragment
@@ -92,5 +95,14 @@
         <action
             android:id="@+id/action_fragmentSuratKeluar_to_fragmentSuratMasuk"
             app:destination="@id/fragmentSuratMasuk" />
+    </fragment>
+    <fragment
+        android:id="@+id/bagikanInformasiFragment"
+        android:name="com.maluku.sma_rt.view.pengurus.BagikanInformasiFragment"
+        android:label="fragment_bagikan_informasi"
+        tools:layout="@layout/fragment_bagikan_informasi" >
+        <action
+            android:id="@+id/action_bagikanInformasiFragment_to_navigation_manage"
+            app:destination="@id/navigation_manage" />
     </fragment>
 </navigation>

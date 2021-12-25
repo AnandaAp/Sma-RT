@@ -15,6 +15,10 @@
         <item>Laki-laki</item>
         <item>Perempuan</item>
     </string-array>
+    <string-array name="kategori">
+        <item>Kegiatan</item>
+        <item>Informasi</item>
+    </string-array>
     <string name="title_activity_dashboard_admin_rt">DashboardAdminRT</string>
     <string name="warga">Warga</string>
     <string name="manage">Manage</string>
