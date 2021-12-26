@@ -78,6 +78,25 @@ interface Service {
         @Query("id_keluarga") idKeluarga: String
     ): Call<GetAllWargaResponse>
 
+    // Get Warga By ID Keluarga
+    @GET("warga/me")
+    fun getDataLoginWarga(
+        @Header("Authorization") authHeader: String
+    ): Call<WargaGetDataLoginResponse>
+
+    // Update Warga
+    @FormUrlEncoded
+    @PUT("warga/{warga_id}")
+    fun updateWarga(
+        @Header("Authorization") authHeader: String,
+        @Path("warga_id") warga_id: String,
+        @Field("gender") gender: String,
+        @Field("no_hp") no_hp: String,
+        @Field("nama") nama: String,
+        @Field("email") email: String,
+        @Field("gambar") gambar: String,
+    ): Call<UpdateWargaResponse>
+
     // Tambah Keluarga
     @FormUrlEncoded
     @POST("keluarga")

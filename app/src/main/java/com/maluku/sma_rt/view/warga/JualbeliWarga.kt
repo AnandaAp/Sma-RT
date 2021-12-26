@@ -43,9 +43,6 @@ class JualbeliWarga : Fragment(), WargaJualBeliInterface {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-
-
-
         return bindingView()
     }
 

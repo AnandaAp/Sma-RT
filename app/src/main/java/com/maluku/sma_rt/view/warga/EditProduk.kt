@@ -149,8 +149,6 @@ class EditProduk : Fragment(), EditProdukInterface {
             binding.edHargaproduk.clearFocus()
             binding.edDetailproduk.clearFocus()
             statusProduk = binding.swAktifkanproduk.isChecked
-            Toast.makeText(requireContext(),"Status: ${statusProduk}",Toast.LENGTH_LONG).show()
-            Toast.makeText(requireContext(),"Detail: ${detailProduk}",Toast.LENGTH_LONG).show()
             validasiUpdateProduk()
         }
     }
