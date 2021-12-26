@@ -27,6 +27,7 @@ class ManageFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         navigateManageToTambahInformasi()
         navigateManageToLaporan()
+        navigateManageToKas()
     }
 
     private fun navigateManageToTambahInformasi(){
@@ -40,6 +41,13 @@ class ManageFragment : Fragment() {
             findNavController().navigate(R.id.action_navigation_manage_to_laporanFragment)
         }
     }
+
+    private fun navigateManageToKas() {
+        binding.btnKas.setOnClickListener{
+            findNavController().navigate(R.id.action_navigation_manage_to_kasFragment)
+        }
+    }
+
 
     private fun bindingView(): View {
         binding = FragmentManageBinding.inflate(layoutInflater)

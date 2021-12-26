@@ -11,14 +11,14 @@ data class GetAllDompetRTResponse(
 	val code: Int? = null,
 
 	@field:SerializedName("get_all_dompet")
-	val getAllDompet: List<GetAllDompetItem?>? = null,
+	val getAllDompet: List<GetAllDompetRTItem?>? = null,
 
 	@field:SerializedName("message")
 	val message: String? = null
 ) : Parcelable
 
 @Parcelize
-data class GetAllDompetItem(
+data class GetAllDompetRTItem(
 
 	@field:SerializedName("id_rt")
 	val idRt: String? = null,
