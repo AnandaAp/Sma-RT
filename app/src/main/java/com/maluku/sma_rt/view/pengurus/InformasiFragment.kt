@@ -17,15 +17,15 @@ class InformasiFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_surat, container, false)
+        return inflater.inflate(R.layout.fragment_informasi, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val listFragment: ArrayList<Fragment> = arrayListOf(BagikanInformasiFragment(),InformasiMasukFragment())
-        val tabLayout = view.findViewById<TabLayout>(R.id.tabLayoutSurat)
-        val viewPager = view.findViewById<ViewPager2>(R.id.vwSuratPager)
-        val suratAdapter = PagerAdapter(listFragment,this)
-        viewPager.adapter = suratAdapter
+        val tabLayout = view.findViewById<TabLayout>(R.id.tabLayoutInformasi)
+        val viewPager = view.findViewById<ViewPager2>(R.id.vwInformasiPager)
+        val informasiAdapter = PagerAdapter(listFragment,this)
+        viewPager.adapter = informasiAdapter
         TabLayoutMediator(tabLayout,viewPager){tab,position->
             when(position){
                 0->{

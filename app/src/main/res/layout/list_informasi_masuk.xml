@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/frameLayout3"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".view.pengurus.InformasiMasukFragment">
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.cardview.widget.CardView
         android:layout_width="0dp"
@@ -25,7 +23,7 @@
             android:padding="15dp">
 
             <ImageView
-                android:id="@+id/imageView11"
+                android:id="@+id/ivInformasi"
                 android:layout_width="267dp"
                 android:layout_height="144dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -44,7 +42,7 @@
                 android:layout_marginTop="24dp"
                 android:text="Judul"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView11"
+                app:layout_constraintTop_toBottomOf="@+id/ivInformasi"
                 tools:ignore="MissingConstraints" />
 
             <TextView
@@ -64,7 +62,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="Tanggal"
+                android:text="Kategori"
                 app:layout_constraintEnd_toStartOf="@+id/textView48"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/textView32"
@@ -91,7 +89,7 @@
                 android:layout_height="wrap_content"
                 android:text=":"
                 app:layout_constraintBottom_toTopOf="@+id/textView47"
-                app:layout_constraintEnd_toStartOf="@+id/textView55"
+                app:layout_constraintEnd_toStartOf="@+id/tvJudulInformasi"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/textView48"
                 app:layout_constraintTop_toTopOf="@+id/textView31"
@@ -103,7 +101,7 @@
                 android:layout_height="wrap_content"
                 android:text=":"
                 app:layout_constraintBottom_toTopOf="@+id/textView48"
-                app:layout_constraintEnd_toStartOf="@+id/textView56"
+                app:layout_constraintEnd_toStartOf="@+id/tvLokasiInformasi"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/textView48"
                 app:layout_constraintTop_toTopOf="@+id/textView32"
@@ -135,43 +133,43 @@
                 app:layout_constraintVertical_bias="0.0" />
 
             <TextView
-                android:id="@+id/textView55"
+                android:id="@+id/tvJudulInformasi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="TextView"
-                app:layout_constraintBottom_toTopOf="@+id/textView56"
+                app:layout_constraintBottom_toTopOf="@+id/tvLokasiInformasi"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/textView56"
+                app:layout_constraintStart_toStartOf="@+id/tvLokasiInformasi"
                 app:layout_constraintTop_toTopOf="@+id/textView46"
                 app:layout_constraintVertical_bias="0.0" />
 
             <TextView
-                android:id="@+id/textView56"
+                android:id="@+id/tvLokasiInformasi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="TextView"
-                app:layout_constraintBottom_toTopOf="@+id/textView57"
+                app:layout_constraintBottom_toTopOf="@+id/tvKategoriInformasi"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/textView57"
+                app:layout_constraintStart_toStartOf="@+id/tvKategoriInformasi"
                 app:layout_constraintTop_toTopOf="@+id/textView47"
                 app:layout_constraintVertical_bias="0.0" />
 
             <TextView
-                android:id="@+id/textView57"
+                android:id="@+id/tvKategoriInformasi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="TextView"
-                app:layout_constraintBottom_toTopOf="@+id/textView58"
+                app:layout_constraintBottom_toTopOf="@+id/tvDetailInformasi"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/textView58"
+                app:layout_constraintStart_toStartOf="@+id/tvDetailInformasi"
                 app:layout_constraintTop_toTopOf="@+id/textView48"
                 app:layout_constraintVertical_bias="0.0" />
 
             <TextView
-                android:id="@+id/textView58"
+                android:id="@+id/tvDetailInformasi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -185,4 +183,5 @@
                 tools:ignore="MissingConstraints" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

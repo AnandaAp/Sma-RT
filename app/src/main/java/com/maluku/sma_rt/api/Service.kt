@@ -1,10 +1,9 @@
 package com.maluku.sma_rt.api
 
-import com.maluku.sma_rt.extentions.UserSession
 import com.maluku.sma_rt.model.aduan.CreateAduanResponse
 import com.maluku.sma_rt.model.aduan.GetAduanByIDResponse
-import com.maluku.sma_rt.model.aduan.GetAduanById
 import com.maluku.sma_rt.model.aduan.GetAllAduanResponse
+import com.maluku.sma_rt.model.dompetrt.GetDompetRTByLoginResponse
 import com.maluku.sma_rt.model.informasi.*
 import com.maluku.sma_rt.model.keluarga.*
 import com.maluku.sma_rt.model.login.OnLoginSuccessResponse
@@ -286,4 +285,11 @@ interface Service {
     fun getKegiatan(
         @Header("Authorization") authHeader: String
     ): Call<GetAllInformasiResponse>
+
+    // DompetRT
+    //Get Data All Informasi
+    @GET("dompetrt/me")
+    fun getDompetRT(
+        @Header("Authorization") authHeader: String
+    ): Call<GetDompetRTByLoginResponse>
 }
