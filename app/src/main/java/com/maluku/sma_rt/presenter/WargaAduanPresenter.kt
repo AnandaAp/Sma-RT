@@ -1,6 +1,5 @@
 package com.maluku.sma_rt.presenter
 
-import android.widget.Toast
 import com.maluku.sma_rt.api.RetrofitService
 import com.maluku.sma_rt.model.aduan.CreateAduanResponse
 import com.maluku.sma_rt.model.aduan.GetAduanByIDResponse
@@ -17,14 +16,14 @@ class WargaAduanPresenter(private val view: WargaAduanInterface) {
 
     fun createAduan(
         token: String,
-        judul: String = "",
-        gambar: String = "",
-        deskripsi: String = ""
+        judul: String,
+        gambar: String,
+        deskripsi: String
     ){
         RetrofitService
             .getService()
             .createAduan(
-                token,
+                "Bearer $token",
                 judul,
                 gambar,
                 deskripsi
@@ -35,7 +34,12 @@ class WargaAduanPresenter(private val view: WargaAduanInterface) {
                         response: Response<CreateAduanResponse>
                     ) {
                         val message = response.body()?.message.toString()
-                        view.onCreateSuccess(message)
+                        if (response.isSuccessful) {
+//                            Toast.makeText(activity,"Pesan: ${response.message()}", Toast.LENGTH_SHORT).show()
+                            view.onCreateSuccess(message)
+                        } else {
+                            view.onCreateFailed(message)
+                        }
                     }
 
                     override fun onFailure(call: Call<CreateAduanResponse>, t: Throwable) {
