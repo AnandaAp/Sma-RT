@@ -28,10 +28,10 @@ class CreateInformasiPresenter(private val activity: Activity, private val view:
             .createInformasi(
                 "Bearer $token",
                 judul,
-                kategori,
-                lokasi,
+                gambar,
                 detail,
-                gambar
+                kategori,
+                lokasi
             )
             .enqueue(object : Callback<CreateInformasiResponse> {
                 override fun onResponse(
