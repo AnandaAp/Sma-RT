@@ -121,7 +121,7 @@
                 android:fontFamily="@font/montserrat_regular"
                 android:padding="2dp"
                 android:inputType="number"
-                android:text="50.000"
+                android:hint="Masukkan jumlah penarikan"
                 android:textSize="20sp"
                 android:textCursorDrawable="@drawable/color_cursor" />
         </com.google.android.material.textfield.TextInputLayout>

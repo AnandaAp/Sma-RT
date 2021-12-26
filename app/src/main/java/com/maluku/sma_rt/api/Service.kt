@@ -3,6 +3,7 @@ package com.maluku.sma_rt.api
 import com.maluku.sma_rt.model.aduan.CreateAduanResponse
 import com.maluku.sma_rt.model.aduan.GetAduanByIDResponse
 import com.maluku.sma_rt.model.aduan.GetAllAduanResponse
+import com.maluku.sma_rt.model.dompetkeluarga.*
 import com.maluku.sma_rt.model.dompetrt.GetDompetRTByLoginResponse
 import com.maluku.sma_rt.model.informasi.*
 import com.maluku.sma_rt.model.keluarga.*
@@ -311,4 +312,40 @@ interface Service {
     fun getDompetRT(
         @Header("Authorization") authHeader: String
     ): Call<GetDompetRTByLoginResponse>
+
+    // Dompet Keluarga
+    // Get All Dompet Keluarga
+    @GET("dompetkeluarga")
+    fun getAllDompetKeluarga(
+        @Header("Authorization") authHeader: String
+    ): Call<GetAllDompetKeluargaResponse>
+
+    // Get Dompet Keluarga Dengan Login
+    @GET("dompetkeluarga/me")
+    fun getDompetKeluargaByLoginSession(
+        @Header("Authorization") authHeader: String
+    ): Call<GetDompetKeluargaByIdResponse>
+
+    // Get Dompet Keluarga dengan Id Keluarga
+    @PUT("dompetkeluarga/{id_keluarga}")
+    fun getDompetKeluargaById(
+        @Header("Authorization") authHeader: String,
+        @Path("id_keluarga") product_id: String
+    ): Call<GetDompetKeluargaByIdResponse>
+
+    // Top Up Dompet Keluarga
+    @FormUrlEncoded
+    @PUT("dompetkeluarga/topup")
+    fun topUpDompetKeluarga(
+        @Header("Authorization") authHeader: String,
+        @Field("jumlah") jumlah: String
+    ): Call<DefaultDompetKeluargaResponse>
+
+    // Top Up Dompet Keluarga
+    @FormUrlEncoded
+    @PUT("dompetkeluarga/withdraw")
+    fun withdrawDompetKeluarga(
+        @Header("Authorization") authHeader: String,
+        @Field("jumlah") jumlah: String
+    ): Call<DefaultDompetKeluargaResponse>
 }

@@ -4,34 +4,99 @@ import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
 import android.widget.TextView
+import android.widget.Toast
+import androidx.activity.result.ActivityResultLauncher
 import androidx.navigation.fragment.findNavController
+import com.google.firebase.storage.FirebaseStorage
 import com.maluku.sma_rt.R
 import com.maluku.sma_rt.databinding.FragmentTopupSaldoBinding
 import com.maluku.sma_rt.extentions.UserSession
+import com.maluku.sma_rt.model.dompetkeluarga.GetAllDompetKeluargaItem
+import com.maluku.sma_rt.model.dompetkeluarga.GetDompetKeluargaById
+import com.maluku.sma_rt.presenter.DompetKeluargaPresenter
+import com.maluku.sma_rt.view.viewInterface.DompetKeluargaInterface
+import java.text.SimpleDateFormat
+import java.util.*
 
-class TopupSaldo : Fragment() {
+private const val TAG = "TOP UP SALDO"
+
+class TopupSaldo : Fragment(), DompetKeluargaInterface {
 
     private lateinit var binding: FragmentTopupSaldoBinding
+
+    private var jumlahTopUp: String = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = bindingView()
-        return view
+        return bindingView()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         goBack()
-        isiSaldo()
+        jumlahTopUpFocusListener()
+        submitTopUpSaldo()
+    }
 
+    private fun submitTopUpSaldo(){
+        binding.btnIsisaldo.setOnClickListener {
+            binding.edIsisaldo.clearFocus()
+            validasiTopUpSaldo()
+        }
+    }
+
+    private fun validasiTopUpSaldo(){
+        val validJumlahTopUp = !binding.edIsisaldo.text.isNullOrEmpty()
+
+        if (validJumlahTopUp){
+            topUpSaldo()
+        } else {
+            if (!validJumlahTopUp){
+                binding.edIsisaldo.error = "Masukan jumlah top up!"
+            }
+            Toast.makeText(requireContext(),"Seluruh field harus terisi!", Toast.LENGTH_LONG).show()
+        }
+    }
+
+    private fun jumlahTopUpFocusListener() {
+        binding.edIsisaldo.setOnFocusChangeListener { view, focused ->
+            if (!focused){
+                binding.edIsisaldo.error = jumlahTopUp()
+            }
+        }
+    }
+
+    private fun jumlahTopUp(): String? {
+        jumlahTopUp = binding.edIsisaldo.text.toString().trim()
+        if (jumlahTopUp.isEmpty()){
+            return "Masukan jumlah top up!"
+        }
+        return null
+    }
+
+    private fun dialogSukses() {
+        val dialog = Dialog(requireActivity())
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.setContentView(R.layout.custom_dialog_topupsaldo)
+        val btnTopup = dialog.findViewById<TextView>(R.id.btn_ok)
+
+        btnTopup.setOnClickListener {
+            dialog.dismiss()
+            val direction = TopupSaldoDirections.actionTopupSaldoToHomeWarga()
+            findNavController().navigate(direction)
+        }
+
+        dialog.show()
     }
 
 
@@ -46,24 +111,50 @@ class TopupSaldo : Fragment() {
         }
     }
 
+    private fun getToken(): String {
+        val preferences = UserSession(requireActivity())
+        val token = preferences.getValueString(UserSession.SHARED_PREFERENCE_TOKEN_KEY)
+        Log.d(TAG,token)
+        return token
+    }
 
-    private fun isiSaldo(){
-        binding.btnIsisaldo.setOnClickListener {
-            val preferences = UserSession(requireActivity())
-            preferences.clearSharedPreference()
-            val dialog = Dialog(requireActivity())
-            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-            dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            dialog.setContentView(R.layout.custom_dialog_topupsaldo)
-            val btnTopup = dialog.findViewById<TextView>(R.id.btn_ok)
+    private fun topUpSaldo(){
+        DompetKeluargaPresenter(this).topup(
+            getToken(),
+            jumlahTopUp
+        )
+    }
 
-            btnTopup.setOnClickListener {
-                dialog.dismiss()
-            }
+    override fun onTopupSuccess(message: String) {
+        dialogSukses()
+    }
 
+    override fun onTopupFailure(message: String) {
+        Toast.makeText(requireContext(),message, Toast.LENGTH_LONG).show()
+    }
 
-            dialog.show()
-        }
+    override fun onWithdrawSuccess(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onWithdrawFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetAllDataSuccess(list: List<GetAllDompetKeluargaItem?>?) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetAllDataFailed(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetDataSuccess(list: GetDompetKeluargaById?) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetDataFailed(message: String) {
+        TODO("Not yet implemented")
     }
 
 }
