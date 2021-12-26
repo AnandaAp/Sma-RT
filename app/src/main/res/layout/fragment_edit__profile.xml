@@ -19,6 +19,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView20" />
 
+    <TextView
+        android:id="@+id/btn_pick_profil_img"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:background="@drawable/btn_changeprofile"
+        app:layout_constraintBottom_toTopOf="@+id/textView80"
+        app:layout_constraintEnd_toEndOf="@+id/imageView20"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.716" />
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout7"
         android:layout_width="0dp"
@@ -90,7 +102,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Status"
+        android:text="Jenis Kelamin (Tidak Bisa Diedit)"
         app:layout_constraintStart_toStartOf="@+id/textInputLayout9"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout9" />
 
@@ -109,42 +121,15 @@
             android:background="@drawable/round" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <TextView
-        android:id="@+id/textView84"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Pekerjaan"
-        app:layout_constraintStart_toStartOf="@+id/textInputLayout10"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout10" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout11"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/round"
-        app:layout_constraintEnd_toEndOf="@+id/textInputLayout10"
-        app:layout_constraintStart_toStartOf="@+id/textView84"
-        app:layout_constraintTop_toBottomOf="@+id/textView84">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/round" />
-    </com.google.android.material.textfield.TextInputLayout>
-
     <Button
         android:id="@+id/button13"
         android:layout_width="100dp"
         android:layout_height="60dp"
-        android:layout_marginStart="4dp"
         android:layout_marginBottom="68dp"
         android:backgroundTint="@color/green"
         android:text="Simpan"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/textInputLayout11"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout11"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintStart_toStartOf="@+id/textInputLayout10" />
 
     <Button
         android:id="@+id/button14"
@@ -152,7 +137,7 @@
         android:layout_height="60dp"
         android:backgroundTint="@color/redbtn"
         android:text="Batal"
-        app:layout_constraintEnd_toEndOf="@+id/textInputLayout11"
+        app:layout_constraintEnd_toEndOf="@+id/textInputLayout10"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/button13"
         app:layout_constraintTop_toTopOf="@+id/button13" />
