@@ -195,6 +195,12 @@ interface Service {
         @Field("id_keluarga") idKeluarga: String
     ): Call<GetAllTagihanResponse>
 
+    //ambil seluruh data pada tagihan untuk pengurus RT
+    @GET("tagihan")
+    fun getAllTagihanRT(
+        @Header("Authorization") authHeader: String
+    ): Call<GetAllTagihanResponse>
+
     //bayar tagihan
     @FormUrlEncoded
     @PUT("tagihan/{token}")

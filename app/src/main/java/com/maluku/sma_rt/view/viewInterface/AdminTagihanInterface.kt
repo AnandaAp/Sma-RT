@@ -7,6 +7,6 @@ import com.maluku.sma_rt.model.tagihan.GetAllTagihanItem
 interface AdminTagihanInterface {
     fun onCreateSuccess(message: String)
     fun onCreateFailed(message: String)
-    fun onGetDataSuccess(message: String, list: ArrayList<GetAllTagihanItem?>?)
+    fun onGetDataSuccess(message: String, list: List<GetAllTagihanItem>)
     fun onGetDataFailed(message: String)
 }

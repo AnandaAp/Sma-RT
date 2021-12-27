@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
+import com.maluku.sma_rt.R
 import com.maluku.sma_rt.databinding.FragmentKasBinding
 import com.maluku.sma_rt.extentions.UserSession
 import com.maluku.sma_rt.model.dompetrt.GetAllDompetRTItem
@@ -33,6 +35,7 @@ class KasFragment : Fragment(), DompetRTInterface {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        navigateKasToRiwayat()
         AdminRTKasPresenter(this).getDompetRT(getToken())
     }
 
@@ -53,6 +56,12 @@ class KasFragment : Fragment(), DompetRTInterface {
         val localeID =  Locale("in", "ID")
         val numberFormat = NumberFormat.getCurrencyInstance(localeID)
         return numberFormat.format(number).toString()
+    }
+
+    private fun navigateKasToRiwayat() {
+        binding.btnRiwayatKas.setOnClickListener{
+            findNavController().navigate(R.id.action_kasFragment_to_riwayatKasFragment)
+        }
     }
 
 
