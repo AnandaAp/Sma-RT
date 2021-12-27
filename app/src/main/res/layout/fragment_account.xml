@@ -8,8 +8,8 @@
     tools:context=".view.pengurus.bottomnavigation.AccountFragment">
 
     <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="106dp"
+        android:id="@+id/ivPengurus"
+        android:layout_width="110dp"
         android:layout_height="110dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="40dp"
@@ -18,7 +18,7 @@
         tools:src="@drawable/circleimg" />
 
     <TextView
-        android:id="@+id/textView29"
+        android:id="@+id/namaPengurus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="84dp"
@@ -26,7 +26,7 @@
         android:text="Gilang"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.142"
-        app:layout_constraintStart_toEndOf="@+id/imageView4"
+        app:layout_constraintStart_toEndOf="@+id/ivPengurus"
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
@@ -37,7 +37,7 @@
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4">
+        app:layout_constraintTop_toBottomOf="@+id/ivPengurus">
 
         <LinearLayout
             android:layout_width="100dp"
@@ -178,6 +178,7 @@
         app:layout_constraintVertical_bias="0.17000002">
 
         <LinearLayout
+            android:id="@+id/btnEditProfil"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"

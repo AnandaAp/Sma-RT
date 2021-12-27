@@ -12,6 +12,8 @@ import com.maluku.sma_rt.model.login.OnLoginSuccessResponse
 import com.maluku.sma_rt.model.order.CreateOrderBody
 import com.maluku.sma_rt.model.order.CreateOrderResponse
 import com.maluku.sma_rt.model.pengurus.CreatePengurusResponse
+import com.maluku.sma_rt.model.pengurus.DefaultPengurusResponse
+import com.maluku.sma_rt.model.pengurus.GetDataPengurusByLoginResponse
 import com.maluku.sma_rt.model.produk.CreateProductResponse
 import com.maluku.sma_rt.model.produk.DeleteProductByIDResponse
 import com.maluku.sma_rt.model.produk.GetAllProdukResponse
@@ -51,6 +53,7 @@ interface Service {
     @GET("/me")
     fun getMyData(@Field("token") token: String): Call<DetailLoginedWargaResponse>
 
+    // Pengurus RT - Admin RT
     @FormUrlEncoded
     @POST("pengurus")
     fun signUpAdminRT(
@@ -69,6 +72,26 @@ interface Service {
         @Field("password") password: String
     ): Call<OnLoginSuccessResponse>
 
+    // Get Data Pengurus RT By Login
+    @GET("pengurus/me")
+    fun getDataLoginPengurus(
+        @Header("Authorization") authHeader: String
+    ): Call<GetDataPengurusByLoginResponse>
+
+    // Update Pengurus
+    @FormUrlEncoded
+    @PUT("pengurus/{pengurus_id}")
+    fun updatePengurus(
+        @Header("Authorization") authHeader: String,
+        @Path("pengurus_id") pengurus_id: String,
+        @Field("gender") gender: String,
+        @Field("no_hp") no_hp: String,
+        @Field("nama") nama: String,
+        @Field("email") email: String,
+        @Field("gambar") gambar: String
+    ): Call<DefaultPengurusResponse>
+
+    // Warga
     // Get Data Warga
     @GET("warga")
     fun getListWarga(
@@ -316,7 +339,7 @@ interface Service {
     ): Call<GetAllInformasiResponse>
 
     // Dompet RT
-    //Get Data Dompet RT berdasarkan Login
+    // Get Data Dompet RT berdasarkan Login
     @GET("dompetrt/me")
     fun getDompetRT(
         @Header("Authorization") authHeader: String

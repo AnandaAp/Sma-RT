@@ -15,17 +15,20 @@ import com.maluku.sma_rt.extentions.UserSession
 import com.maluku.sma_rt.model.dompetrt.GetDompetById
 import com.maluku.sma_rt.model.informasi.GetAllInformasiItem
 import com.maluku.sma_rt.model.informasi.GetInformasiById
+import com.maluku.sma_rt.model.pengurus.GetPengurusById
+import com.maluku.sma_rt.presenter.AdminRTProfilePresenter
 import com.maluku.sma_rt.presenter.DompetRTPresenter
 import com.maluku.sma_rt.presenter.InformasiPresenter
 import com.maluku.sma_rt.view.pengurus.adapter.GaleriAdapter
 import com.maluku.sma_rt.view.pengurus.adapter.InfoAdapter
+import com.maluku.sma_rt.view.viewInterface.AdminRTProfileInterface
 import com.maluku.sma_rt.view.viewInterface.DompetRTInterface
 import com.maluku.sma_rt.view.viewInterface.InformasiInterface
 import java.text.NumberFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
-class HomeFragment : Fragment(), InformasiInterface, DompetRTInterface {
+class HomeFragment : Fragment(), InformasiInterface, DompetRTInterface, AdminRTProfileInterface {
     private lateinit var binding: FragmentHomeBinding
     private lateinit var rvGaleri: RecyclerView
     private lateinit var adapterGaleri: GaleriAdapter
@@ -55,6 +58,7 @@ class HomeFragment : Fragment(), InformasiInterface, DompetRTInterface {
         InformasiPresenter(this).getAllInfoTerkini(getToken())
         InformasiPresenter(this).getAllKegiatan(getToken())
         DompetRTPresenter(this).getDompetRTByLogin(getToken())
+        AdminRTProfilePresenter(this).getDataLoginPengurus(getToken())
     }
 
     private fun setRecyclerViewInformasi(){
@@ -170,5 +174,21 @@ class HomeFragment : Fragment(), InformasiInterface, DompetRTInterface {
         val localeID =  Locale("in", "ID")
         val numberFormat = NumberFormat.getCurrencyInstance(localeID)
         return numberFormat.format(number).toString()
+    }
+
+    override fun onUpdateSuccess(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onUpdateFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetDataSuccess(result: GetPengurusById?) {
+        binding.tvNamaPengurus.text = "Hi, ${result?.nama.toString()}"
+    }
+
+    override fun onGetDataFailed(message: String) {
+        Toast.makeText(requireContext(),"Pesan: $message",Toast.LENGTH_LONG).show()
     }
 }

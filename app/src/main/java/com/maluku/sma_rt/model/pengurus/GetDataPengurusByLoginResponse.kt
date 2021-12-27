@@ -2,10 +2,10 @@ package com.maluku.sma_rt.model.pengurus
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
-import kotlinx.parcelize.Parcelize
+import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class GetPengurusByIDResponse(
+data class GetDataPengurusByLoginResponse(
 
 	@field:SerializedName("code")
 	val code: Int? = null,
@@ -26,6 +26,12 @@ data class GetPengurusById(
 	@field:SerializedName("password")
 	val password: String? = null,
 
+	@field:SerializedName("no_hp")
+	val noHp: String? = null,
+
+	@field:SerializedName("gender")
+	val gender: String? = null,
+
 	@field:SerializedName("nama")
 	val nama: String? = null,
 
@@ -37,6 +43,9 @@ data class GetPengurusById(
 
 	@field:SerializedName("id")
 	val id: String? = null,
+
+	@field:SerializedName("gambar")
+	val gambar: String? = null,
 
 	@field:SerializedName("email")
 	val email: String? = null
