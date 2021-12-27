@@ -8,6 +8,8 @@ import com.maluku.sma_rt.model.dompetrt.GetDompetRTByLoginResponse
 import com.maluku.sma_rt.model.informasi.*
 import com.maluku.sma_rt.model.keluarga.*
 import com.maluku.sma_rt.model.login.OnLoginSuccessResponse
+import com.maluku.sma_rt.model.order.CreateOrderBody
+import com.maluku.sma_rt.model.order.CreateOrderResponse
 import com.maluku.sma_rt.model.pengurus.CreatePengurusResponse
 import com.maluku.sma_rt.model.produk.CreateProductResponse
 import com.maluku.sma_rt.model.produk.DeleteProductByIDResponse
@@ -354,4 +356,13 @@ interface Service {
         @Header("Authorization") authHeader: String,
         @Field("jumlah") jumlah: String
     ): Call<DefaultDompetKeluargaResponse>
+
+    //Order
+    // Create Order
+    @FormUrlEncoded
+    @POST("order")
+    fun createOrder(
+        @Header("Authorization") authHeader: String,
+        @Field("order") order: ArrayList<CreateOrderBody>
+    ): Call<CreateOrderResponse>
 }

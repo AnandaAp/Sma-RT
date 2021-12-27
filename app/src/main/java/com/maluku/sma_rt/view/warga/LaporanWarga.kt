@@ -180,12 +180,13 @@ class LaporanWarga : Fragment(), WargaAduanInterface {
     }
 
     private fun createLaporan() {
-        WargaAduanPresenter(this).createAduan(
-            getToken(),
-            judul,
-            gambar,
-            deskripsi
-        )
+        WargaAduanPresenter(this)
+            .createAduan(
+                getToken(),
+                judul,
+                gambar,
+                deskripsi
+            )
     }
 
     override fun onCreateSuccess(message: String) {

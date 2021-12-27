@@ -1,44 +1,42 @@
 package com.maluku.sma_rt.view.warga
 
+
 import android.content.ContentValues
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.maluku.sma_rt.R
-
-
-
 import androidx.recyclerview.widget.LinearLayoutManager
-
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.google.firebase.storage.FirebaseStorage
+import com.maluku.sma_rt.R
 import com.maluku.sma_rt.databinding.FragmentHomeWargaBinding
 import com.maluku.sma_rt.extentions.UserSession
 import com.maluku.sma_rt.model.dompetkeluarga.GetAllDompetKeluargaItem
 import com.maluku.sma_rt.model.dompetkeluarga.GetDompetKeluargaById
 import com.maluku.sma_rt.model.informasi.GetAllInformasiItem
 import com.maluku.sma_rt.model.warga.GetMe
-import com.maluku.sma_rt.presenter.*
+import com.maluku.sma_rt.presenter.DompetKeluargaPresenter
+import com.maluku.sma_rt.presenter.ListInfoTerkiniPresenter
+import com.maluku.sma_rt.presenter.ListKegiatanPresenter
+import com.maluku.sma_rt.presenter.WargaEditProfilePresenter
 import com.maluku.sma_rt.view.viewInterface.DompetKeluargaInterface
 import com.maluku.sma_rt.view.viewInterface.ListInfoTerkiniInterface
 import com.maluku.sma_rt.view.viewInterface.ListKegiatanInterface
 import com.maluku.sma_rt.view.viewInterface.WargaEditProfileInterface
-import com.maluku.sma_rt.view.warga.adapter.RecyclerViewKegiatanWarga
 import com.maluku.sma_rt.view.warga.adapter.RecyclerViewInfoTerkini
-import com.maluku.sma_rt.view.warga.adapter.RecyclerViewProdukpage
+import com.maluku.sma_rt.view.warga.adapter.RecyclerViewKegiatanWarga
 import java.io.File
 import java.text.NumberFormat
 import java.util.*
-import kotlin.collections.ArrayList
 
 private const val TAG = "HOME WARGA"
 
@@ -57,7 +55,7 @@ class HomeWarga : Fragment(), ListInfoTerkiniInterface, ListKegiatanInterface, D
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         WargaEditProfilePresenter(this).getDataLogin(getToken())
         ListInfoTerkiniPresenter(requireActivity(), this).getListInfoTerkini(getToken())
         ListKegiatanPresenter(requireActivity(), this).getListKegiatan(getToken())
@@ -80,7 +78,7 @@ class HomeWarga : Fragment(), ListInfoTerkiniInterface, ListKegiatanInterface, D
     }
 
     private fun setDataWarga(data: GetMe) {
-        namaWarga = data!!.nama.toString()
+        namaWarga = data.nama.toString()
 
         binding.textView4.text = "Hi, ${namaWarga}"
 
@@ -95,7 +93,8 @@ class HomeWarga : Fragment(), ListInfoTerkiniInterface, ListKegiatanInterface, D
                 .apply(RequestOptions().transform(CenterCrop(), RoundedCorners(20)))
                 .into(binding.profileImage)
         }.addOnFailureListener {
-
+            Log.i(TAG, "error on get Data from Firebase Storage" +
+                    "\nmessage :${it.message}")
         }
 
     }
