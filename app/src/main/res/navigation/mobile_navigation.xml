@@ -141,6 +141,21 @@
         <action
             android:id="@+id/action_kasFragment_to_navigation_manage"
             app:destination="@id/navigation_manage" />
+        <action
+            android:id="@+id/action_kasFragment_to_riwayatKasFragment"
+            app:destination="@id/riwayatKasFragment" />
+        <action
+            android:id="@+id/action_kasFragment_to_buatIuranFragment2"
+            app:destination="@id/buatIuranFragment2" />
+        <action
+            android:id="@+id/action_kasFragment_to_kasWithdrawFragment"
+            app:destination="@id/kasWithdrawFragment" />
+        <action
+            android:id="@+id/action_kasFragment_to_buatIuranFragment22"
+            app:destination="@id/buatIuranFragment2" />
+        <action
+            android:id="@+id/action_kasFragment_to_daftarBuatIuranFragment"
+            app:destination="@id/daftarBuatIuranFragment" />
     </fragment>
     <fragment
         android:id="@+id/laporanFragment"
@@ -153,5 +168,77 @@
         <action
             android:id="@+id/action_laporanFragment_to_navigation_manage"
             app:destination="@id/navigation_manage" />
+    </fragment>
+    <fragment
+        android:id="@+id/buatIuranFragment2"
+        android:name="com.maluku.sma_rt.view.pengurus.BuatIuranFragment"
+        android:label="fragment_buat_iuran"
+        tools:layout="@layout/fragment_buat_iuran" >
+        <action
+            android:id="@+id/action_buatIuranFragment2_to_kasFragment"
+            app:destination="@id/kasFragment" />
+        <action
+            android:id="@+id/action_buatIuranFragment2_to_daftarBuatIuranFragment"
+            app:destination="@id/daftarBuatIuranFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/kasWithdrawFragment"
+        android:name="com.maluku.sma_rt.view.pengurus.KasWithdrawFragment"
+        android:label="fragment_kas_withdraw"
+        tools:layout="@layout/fragment_kas_withdraw" >
+        <action
+            android:id="@+id/action_kasWithdrawFragment_to_kasFragment"
+            app:destination="@id/kasFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/riwayatKasFragment"
+        android:name="com.maluku.sma_rt.view.pengurus.RiwayatKasFragment"
+        android:label="fragment_riwayat_kas"
+        tools:layout="@layout/fragment_riwayat_kas" >
+        <action
+            android:id="@+id/action_riwayatKasFragment_to_kasFragment"
+            app:destination="@id/kasFragment" />
+        <action
+            android:id="@+id/action_riwayatKasFragment_to_detailsBuatIuranFragment"
+            app:destination="@id/detailsBuatIuranFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/daftarBuatIuranFragment"
+        android:name="com.maluku.sma_rt.view.pengurus.DaftarBuatIuranFragment"
+        android:label="fragment_daftar_buat_iuran"
+        tools:layout="@layout/fragment_daftar_buat_iuran" >
+        <action
+            android:id="@+id/action_daftarBuatIuranFragment_to_kasFragment"
+            app:destination="@id/kasFragment" />
+        <action
+            android:id="@+id/action_daftarBuatIuranFragment_to_buatIuranFragment2"
+            app:destination="@id/buatIuranFragment2" />
+        <action
+            android:id="@+id/action_daftarBuatIuranFragment_to_detailsBuatIuranFragment"
+            app:destination="@id/detailsBuatIuranFragment" />
+        <action
+            android:id="@+id/action_daftarBuatIuranFragment_to_detailsBuatIuranFragment2"
+            app:destination="@id/detailsBuatIuranFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsBuatIuranFragment"
+        android:name="com.maluku.sma_rt.view.pengurus.DetailsBuatIuranFragment"
+        android:label="fragment_details_buat_iuran"
+        tools:layout="@layout/fragment_details_buat_iuran" >
+        <action
+            android:id="@+id/action_detailsBuatIuranFragment_to_riwayatKasFragment"
+            app:destination="@id/riwayatKasFragment" />
+        <argument
+            android:name="tagihan_id"
+            app:argType="string" />
+        <argument
+            android:name="nama_tagihan"
+            app:argType="string" />
+        <argument
+            android:name="jumlah_tagihan"
+            app:argType="string" />
+        <argument
+            android:name="detail_tagihan"
+            app:argType="string" />
     </fragment>
 </navigation>

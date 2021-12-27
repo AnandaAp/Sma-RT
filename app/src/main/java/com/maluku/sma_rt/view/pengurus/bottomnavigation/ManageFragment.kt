@@ -48,7 +48,6 @@ class ManageFragment : Fragment() {
         }
     }
 
-
     private fun bindingView(): View {
         binding = FragmentManageBinding.inflate(layoutInflater)
         return binding.root

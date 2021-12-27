@@ -2,10 +2,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/frameLayout7"
+    android:id="@+id/fragment_details_buat_iuran"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.pengurus.Details_Buat_IuranFragment">
+    tools:context=".view.pengurus.DetailsBuatIuranFragment">
 
     <TextView
         android:id="@+id/textView84"
@@ -32,6 +32,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView84">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etEditNamaTagihan"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@drawable/rectangle_round"
@@ -62,6 +63,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView97">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etEditJumlahTagihan"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@drawable/rectangle_round"
@@ -91,6 +93,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView98">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etEditDetailTagihan"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:background="@drawable/rectangle_round"
@@ -115,7 +118,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
-        android:id="@+id/button15"
+        android:id="@+id/btnUpdateTagihan"
         android:layout_width="159dp"
         android:layout_height="52dp"
         android:background="@drawable/btn_rounded"

@@ -187,7 +187,7 @@ interface Service {
         @Header("Authorization") authHeader: String,
         @Field("nama") nama: String,
         @Field("detail") detail: String,
-        @Field("jumlah") jumlah: Double,
+        @Field("jumlah") jumlah: String,
     ): Call<CreateTagihanResponse>
 
     //ambil seluruh data pada tagihan
@@ -195,6 +195,12 @@ interface Service {
     fun getAllTagihan(
         @Header("Authorization") authHeader: String,
         @Field("id_keluarga") idKeluarga: String
+    ): Call<GetAllTagihanResponse>
+
+    //ambil seluruh data pada tagihan untuk pengurus RT
+    @GET("tagihan")
+    fun getAllTagihanRT(
+        @Header("Authorization") authHeader: String
     ): Call<GetAllTagihanResponse>
 
     //bayar tagihan

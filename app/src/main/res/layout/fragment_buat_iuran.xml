@@ -2,10 +2,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/frameLayout6"
+    android:id="@+id/fragment_buat_iuran"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.pengurus.Buat_IuranFragment" >
+    tools:context=".view.pengurus.BuatIuranFragment" >
 
     <TextView
         android:id="@+id/textView84"
@@ -32,12 +32,13 @@
         app:layout_constraintTop_toBottomOf="@+id/textView84">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etNamaTagihan"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@drawable/rectangle_round"
             android:padding="2dp"
             android:paddingStart="8dp"
-            android:text="text"
+            android:hint="text"
             android:textSize="20dp"
             tools:ignore="SpeakableTextPresentCheck" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -62,11 +63,12 @@
         app:layout_constraintTop_toBottomOf="@+id/textView97">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etJumlah"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@drawable/rectangle_round"
             android:padding="2dp"
-            android:text="Rp"
+            android:hint="Rp"
             android:paddingStart="8dp"
             android:textSize="20sp" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -91,15 +93,15 @@
         app:layout_constraintTop_toBottomOf="@+id/textView98">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etDetail"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:background="@drawable/rectangle_round"
-            android:inputType="textLongMessage"
             tools:ignore="SpeakableTextPresentCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/btnBack"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
@@ -112,30 +114,17 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
-        android:id="@+id/button15"
+        android:id="@+id/btnSimpanTagihan"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:background="@drawable/btn_rounded"
         android:backgroundTint="@color/green"
         android:text="Buat Tagihan"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="@+id/button4"
+        app:layout_constraintBottom_toBottomOf="@+id/btnBack"
         app:layout_constraintEnd_toEndOf="@+id/textInputLayout14"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/button4"
-        app:layout_constraintTop_toTopOf="@+id/button4" />
+        app:layout_constraintStart_toEndOf="@+id/btnBack"
+        app:layout_constraintTop_toTopOf="@+id/btnBack" />
 
-    <TextView
-        android:id="@+id/textView99"
-        android:layout_width="175dp"
-        android:layout_height="126dp"
-        android:text="Jika Data Kosong langsung Masuk Form"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.836" />
 </androidx.constraintlayout.widget.ConstraintLayout>

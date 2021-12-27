@@ -1,7 +1,9 @@
 package com.maluku.sma_rt.presenter
 
 import com.maluku.sma_rt.api.RetrofitService
+import com.maluku.sma_rt.model.informasi.GetAllInformasiItem
 import com.maluku.sma_rt.model.tagihan.CreateTagihanResponse
+import com.maluku.sma_rt.model.tagihan.GetAllTagihanItem
 import com.maluku.sma_rt.model.tagihan.GetAllTagihanResponse
 import com.maluku.sma_rt.view.viewInterface.AdminTagihanInterface
 import retrofit2.Call
@@ -9,10 +11,10 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class AdminTagihanPresenter(private val view: AdminTagihanInterface) {
-    fun createProduk(
+    fun createTagihan(
         nama: String,
         detail: String,
-        jumlah: Double,
+        jumlah: String,
         token: String
     ){
         RetrofitService
@@ -28,8 +30,12 @@ class AdminTagihanPresenter(private val view: AdminTagihanInterface) {
                     call: Call<CreateTagihanResponse>,
                     response: Response<CreateTagihanResponse>
                 ) {
-                    val message = response.body()?.message.toString()
-                    view.onCreateSuccess(message)
+                    if (response.isSuccessful){
+                        val message = response.body()?.message.toString()
+                        view.onCreateSuccess(message)
+                    } else{
+                        view.onCreateFailed(response.message().toString())
+                    }
                 }
 
                 override fun onFailure(call: Call<CreateTagihanResponse>, t: Throwable) {
@@ -37,21 +43,24 @@ class AdminTagihanPresenter(private val view: AdminTagihanInterface) {
                 }
             })
     }
-    fun getAllTagihan(idKeluarga: String,token: String){
+    fun getAllTagihan(token: String){
         RetrofitService
             .getService()
-            .getAllTagihan(
-                "Bearer $token",
-                idKeluarga
+            .getAllTagihanRT(
+                "Bearer $token"
             )
             .enqueue(object : Callback<GetAllTagihanResponse>{
                 override fun onResponse(
                     call: Call<GetAllTagihanResponse>,
                     response: Response<GetAllTagihanResponse>
                 ) {
-                    val message = response.body()?.message.toString()
-                    val list =  response.body()?.getAllTagihan
-                    view.onGetDataSuccess(message,list)
+                    if (response.isSuccessful){
+                        val message = response.body()?.message.toString()
+                        val list =  response.body()?.getAllTagihan as List<GetAllTagihanItem>
+                        view.onGetDataSuccess(message,list)
+                    } else{
+                        view.onGetDataFailed(response.message().toString())
+                    }
                 }
 
                 override fun onFailure(call: Call<GetAllTagihanResponse>, t: Throwable) {
