@@ -28,6 +28,9 @@
         <action
             android:id="@+id/action_navigation_home_to_laporanFragment"
             app:destination="@id/laporanFragment" />
+        <action
+            android:id="@+id/action_navigation_home_to_riwayatKasFragment"
+            app:destination="@id/riwayatKasFragment" />
     </fragment>
 
     <fragment
