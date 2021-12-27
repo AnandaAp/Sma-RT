@@ -153,6 +153,9 @@
         <action
             android:id="@+id/action_kasFragment_to_buatIuranFragment22"
             app:destination="@id/buatIuranFragment2" />
+        <action
+            android:id="@+id/action_kasFragment_to_daftarBuatIuranFragment"
+            app:destination="@id/daftarBuatIuranFragment" />
     </fragment>
     <fragment
         android:id="@+id/laporanFragment"
@@ -174,6 +177,9 @@
         <action
             android:id="@+id/action_buatIuranFragment2_to_kasFragment"
             app:destination="@id/kasFragment" />
+        <action
+            android:id="@+id/action_buatIuranFragment2_to_daftarBuatIuranFragment"
+            app:destination="@id/daftarBuatIuranFragment" />
     </fragment>
     <fragment
         android:id="@+id/kasWithdrawFragment"
@@ -192,5 +198,17 @@
         <action
             android:id="@+id/action_riwayatKasFragment_to_kasFragment"
             app:destination="@id/kasFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/daftarBuatIuranFragment"
+        android:name="com.maluku.sma_rt.view.pengurus.DaftarBuatIuranFragment"
+        android:label="fragment_daftar_buat_iuran"
+        tools:layout="@layout/fragment_daftar_buat_iuran" >
+        <action
+            android:id="@+id/action_daftarBuatIuranFragment_to_kasFragment"
+            app:destination="@id/kasFragment" />
+        <action
+            android:id="@+id/action_daftarBuatIuranFragment_to_buatIuranFragment2"
+            app:destination="@id/buatIuranFragment2" />
     </fragment>
 </navigation>

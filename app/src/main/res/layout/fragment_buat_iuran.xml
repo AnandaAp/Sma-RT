@@ -101,7 +101,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/btnBack"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
@@ -121,10 +121,10 @@
         android:backgroundTint="@color/green"
         android:text="Buat Tagihan"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="@+id/button4"
+        app:layout_constraintBottom_toBottomOf="@+id/btnBack"
         app:layout_constraintEnd_toEndOf="@+id/textInputLayout14"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/button4"
-        app:layout_constraintTop_toTopOf="@+id/button4" />
+        app:layout_constraintStart_toEndOf="@+id/btnBack"
+        app:layout_constraintTop_toTopOf="@+id/btnBack" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

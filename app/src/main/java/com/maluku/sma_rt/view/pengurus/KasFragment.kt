@@ -67,9 +67,8 @@ class KasFragment : Fragment(), DompetRTInterface {
 
     private fun navigateKasToBuatTagihan() {
         binding.btnBuatTagihan.setOnClickListener{
-            findNavController().navigate(R.id.action_kasFragment_to_buatIuranFragment22)
+            findNavController().navigate(R.id.action_kasFragment_to_daftarBuatIuranFragment)
         }
     }
-
 
 }

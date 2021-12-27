@@ -817,6 +817,18 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="daftarBuatIuranFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-425" />
+                            <option name="y" value="-122" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="fragmentSuratKeluar">
                     <value>
                       <LayoutPositions>
@@ -900,8 +912,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="211" />
-                            <option name="y" value="236" />
+                            <option name="x" value="163" />
+                            <option name="y" value="218" />
                           </Point>
                         </option>
                         <option name="myPositions">

@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
+import com.maluku.sma_rt.R
 import com.maluku.sma_rt.databinding.FragmentBuatIuranBinding
 import com.maluku.sma_rt.extentions.UserSession
 import com.maluku.sma_rt.model.tagihan.GetAllTagihanItem
@@ -26,6 +28,7 @@ class BuatIuranFragment : Fragment(), AdminTagihanInterface {
         jumlahFocusListener()
         detailFocusListener()
         buatTagihan()
+        navigateBackToKas()
     }
 
     override fun onCreateView(
@@ -138,6 +141,12 @@ class BuatIuranFragment : Fragment(), AdminTagihanInterface {
 
     override fun onGetDataFailed(message: String) {
         TODO("Not yet implemented")
+    }
+
+    private fun navigateBackToKas(){
+        binding.btnBack.setOnClickListener {
+            findNavController().navigate(R.id.action_buatIuranFragment2_to_kasFragment)
+        }
     }
 
 }
