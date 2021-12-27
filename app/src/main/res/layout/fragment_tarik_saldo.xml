@@ -74,7 +74,7 @@
             android:layout_marginTop="20dp"
             android:fontFamily="@font/montserrat_semibold"
             android:text="150.000"
-            android:textSize="50sp"
+            android:textSize="28sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView27" />
@@ -109,6 +109,7 @@
             android:layout_marginStart="40dp"
             android:layout_marginEnd="40dp"
             app:boxBackgroundMode="none"
+            android:hint=" "
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_jumlahsaldotarik">
@@ -122,7 +123,7 @@
                 android:padding="2dp"
                 android:inputType="number"
                 android:hint="Masukkan jumlah penarikan"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textCursorDrawable="@drawable/color_cursor" />
         </com.google.android.material.textfield.TextInputLayout>
 

@@ -24,6 +24,7 @@ class IsisaldoTariksaldo : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        goBack()
         topupSaldo()
         tarikSaldo()
 
@@ -32,6 +33,12 @@ class IsisaldoTariksaldo : Fragment() {
     private fun bindingView(): View {
         binding = FragmentIsisaldoTariksaldoBinding.inflate(layoutInflater)
         return binding.root
+    }
+
+    private fun goBack() {
+        binding.btnBack.setOnClickListener {
+            findNavController().navigate(R.id.action_isisaldoTariksaldo_to_kelolaToko)
+        }
     }
 
     private fun topupSaldo() {
