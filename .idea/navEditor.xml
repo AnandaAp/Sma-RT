@@ -807,6 +807,11 @@
                         </option>
                         <option name="myPositions">
                           <map>
+                            <entry key="action_buatIuranFragment2_to_daftarBuatIuranFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_buatIuranFragment2_to_kasFragment">
                               <value>
                                 <LayoutPositions />
@@ -822,9 +827,54 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-425" />
-                            <option name="y" value="-122" />
+                            <option name="x" value="-513" />
+                            <option name="y" value="-162" />
                           </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_daftarBuatIuranFragment_to_buatIuranFragment2">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_daftarBuatIuranFragment_to_detailsBuatIuranFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_daftarBuatIuranFragment_to_detailsBuatIuranFragment2">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_daftarBuatIuranFragment_to_kasFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="detailsBuatIuranFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-402" />
+                            <option name="y" value="215" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_detailsBuatIuranFragment_to_riwayatKasFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
                         </option>
                       </LayoutPositions>
                     </value>
@@ -924,6 +974,11 @@
                               </value>
                             </entry>
                             <entry key="action_kasFragment_to_buatIuranFragment22">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_kasFragment_to_daftarBuatIuranFragment">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -1141,6 +1196,11 @@
                         </option>
                         <option name="myPositions">
                           <map>
+                            <entry key="action_riwayatKasFragment_to_detailsBuatIuranFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_riwayatKasFragment_to_kasFragment">
                               <value>
                                 <LayoutPositions />
