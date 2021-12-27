@@ -87,6 +87,8 @@ class SplashScreen : Fragment(), CekLoginSessionInterface {
                 .getValueString(SHARED_PREFERENCE_GENDER_KEY)
             noHP = preferences
                 .getValueString(SHARED_PREFERENCE_PHONE_NUMBER_KEY)
+        } else {
+            preferences.clearSharedPreference()
         }
     }
 
