@@ -63,7 +63,9 @@ class BagikanInformasiFragment : Fragment(), InformasiInterface {
 
     private fun buatInformasi(){
         binding.btnBuatInformasi.setOnClickListener {
-            Toast.makeText(requireContext(),"Detail: $detail",Toast.LENGTH_LONG).show()
+            binding.etJudul.clearFocus()
+            binding.etDetailInformasi.clearFocus()
+            binding.etLokasi.clearFocus()
             submitForm()
         }
     }

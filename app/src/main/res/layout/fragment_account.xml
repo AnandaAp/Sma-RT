@@ -93,7 +93,7 @@
                 android:textSize="12sp" />
 
             <TextView
-                android:id="@+id/textView63"
+                android:id="@+id/tvTotalKasRT"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Rp. 150.000"

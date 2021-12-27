@@ -1008,13 +1008,18 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-147" />
-                            <option name="y" value="474" />
+                            <option name="x" value="-130" />
+                            <option name="y" value="573" />
                           </Point>
                         </option>
                         <option name="myPositions">
                           <map>
                             <entry key="action_kasWithdrawFragment_to_kasFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_kasWithdrawFragment_to_navigation_home">
                               <value>
                                 <LayoutPositions />
                               </value>

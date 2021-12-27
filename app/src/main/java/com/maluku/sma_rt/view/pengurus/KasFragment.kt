@@ -10,9 +10,8 @@ import androidx.navigation.fragment.findNavController
 import com.maluku.sma_rt.R
 import com.maluku.sma_rt.databinding.FragmentKasBinding
 import com.maluku.sma_rt.extentions.UserSession
-import com.maluku.sma_rt.model.dompetrt.GetAllDompetRTItem
 import com.maluku.sma_rt.model.dompetrt.GetDompetById
-import com.maluku.sma_rt.presenter.AdminRTKasPresenter
+import com.maluku.sma_rt.presenter.DompetRTPresenter
 import com.maluku.sma_rt.view.viewInterface.DompetRTInterface
 import java.text.NumberFormat
 import java.util.*
@@ -37,7 +36,8 @@ class KasFragment : Fragment(), DompetRTInterface {
         super.onViewCreated(view, savedInstanceState)
         navigateKasToRiwayat()
         navigateKasToBuatTagihan()
-        AdminRTKasPresenter(this).getDompetRT(getToken())
+        navigateKasToWithdraw()
+        DompetRTPresenter(this).getDompetRTByLogin(getToken())
     }
 
     private fun getToken(): String {
@@ -51,6 +51,14 @@ class KasFragment : Fragment(), DompetRTInterface {
 
     override fun onGetAllDataFailed(message: String) {
         Toast.makeText(requireContext(),"Pesan: $message",Toast.LENGTH_LONG).show()
+    }
+
+    override fun onWithdrawSuccess(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onWithdrawFailed(message: String) {
+        TODO("Not yet implemented")
     }
 
     private fun rupiah(number: Double): String{
@@ -70,5 +78,13 @@ class KasFragment : Fragment(), DompetRTInterface {
             findNavController().navigate(R.id.action_kasFragment_to_daftarBuatIuranFragment)
         }
     }
+
+    private fun navigateKasToWithdraw() {
+        binding.btnToWithdraw.setOnClickListener{
+            findNavController().navigate(R.id.action_kasFragment_to_kasWithdrawFragment)
+        }
+    }
+
+
 
 }

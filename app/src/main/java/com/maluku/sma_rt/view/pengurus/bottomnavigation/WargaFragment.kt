@@ -37,15 +37,13 @@ class WargaFragment : Fragment(), ListWargaViewInterface, ListKeluargaViewInterf
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val view = bindingView()
-        return view
+        return bindingView()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         // Refresh Data Warga
         onStart()
-        setRecyclerViewWarga()
     }
 
     override fun onStart() {
@@ -77,6 +75,7 @@ class WargaFragment : Fragment(), ListWargaViewInterface, ListKeluargaViewInterf
     }
 
     override fun resultListWargaSuccess(warga: List<GetAllWargaItem>) {
+        setRecyclerViewWarga()
         adapterWarga.setData(warga as ArrayList<GetAllWargaItem>)
     }
 
@@ -98,7 +97,6 @@ class WargaFragment : Fragment(), ListWargaViewInterface, ListKeluargaViewInterf
                 }
                 else  {
                     idKeluarga = listIdKeluarga[position]
-                    Toast.makeText(requireContext(),"${adapterView?.getItemAtPosition(position).toString()} dengan ID $idKeluarga", Toast.LENGTH_LONG).show()
                 }
                 ListWargaPresenter(requireActivity(), this@WargaFragment).getListWargaPresenter(getToken(), idKeluarga)
             }
