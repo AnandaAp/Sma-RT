@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -11,15 +12,20 @@ import androidx.recyclerview.widget.RecyclerView
 import com.maluku.sma_rt.R
 import com.maluku.sma_rt.databinding.FragmentHomeBinding
 import com.maluku.sma_rt.extentions.UserSession
+import com.maluku.sma_rt.model.dompetrt.GetDompetById
 import com.maluku.sma_rt.model.informasi.GetAllInformasiItem
-import com.maluku.sma_rt.presenter.ListInfoTerkiniPresenter
-import com.maluku.sma_rt.presenter.ListKegiatanPresenter
+import com.maluku.sma_rt.model.informasi.GetInformasiById
+import com.maluku.sma_rt.presenter.DompetRTPresenter
+import com.maluku.sma_rt.presenter.InformasiPresenter
 import com.maluku.sma_rt.view.pengurus.adapter.GaleriAdapter
 import com.maluku.sma_rt.view.pengurus.adapter.InfoAdapter
-import com.maluku.sma_rt.view.viewInterface.ListInfoTerkiniInterface
-import com.maluku.sma_rt.view.viewInterface.ListKegiatanInterface
+import com.maluku.sma_rt.view.viewInterface.DompetRTInterface
+import com.maluku.sma_rt.view.viewInterface.InformasiInterface
+import java.text.NumberFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
-class HomeFragment : Fragment(), ListKegiatanInterface, ListInfoTerkiniInterface {
+class HomeFragment : Fragment(), InformasiInterface, DompetRTInterface {
     private lateinit var binding: FragmentHomeBinding
     private lateinit var rvGaleri: RecyclerView
     private lateinit var adapterGaleri: GaleriAdapter
@@ -31,8 +37,7 @@ class HomeFragment : Fragment(), ListKegiatanInterface, ListInfoTerkiniInterface
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val view = bindingView()
-        return view
+        return bindingView()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -42,12 +47,14 @@ class HomeFragment : Fragment(), ListKegiatanInterface, ListInfoTerkiniInterface
         navigateDashboardToSurat()
         navigateDashboardToInformasi()
         navigateDashboardToLaporan()
+        navigateDashboardToRiwayat()
     }
 
     override fun onStart() {
         super.onStart()
-        ListKegiatanPresenter(requireActivity(),this).getListKegiatan(getToken())
-        ListInfoTerkiniPresenter(requireActivity(),this).getListInfoTerkini(getToken())
+        InformasiPresenter(this).getAllInfoTerkini(getToken())
+        InformasiPresenter(this).getAllKegiatan(getToken())
+        DompetRTPresenter(this).getDompetRTByLogin(getToken())
     }
 
     private fun setRecyclerViewInformasi(){
@@ -64,6 +71,12 @@ class HomeFragment : Fragment(), ListKegiatanInterface, ListInfoTerkiniInterface
     private fun navigateDashboardToTambahKelurga() {
         binding.btnTambahKeluarga.setOnClickListener{
             findNavController().navigate(R.id.action_navigation_home_to_tambahKeluargaFragment)
+        }
+    }
+
+    private fun navigateDashboardToRiwayat() {
+        binding.btnToRiwayat.setOnClickListener{
+            findNavController().navigate(R.id.action_navigation_home_to_riwayatKasFragment)
         }
     }
 
@@ -92,8 +105,31 @@ class HomeFragment : Fragment(), ListKegiatanInterface, ListInfoTerkiniInterface
 
     private fun getToken(): String {
         val preferences = UserSession(requireActivity())
-        val token = preferences.getValueString(UserSession.SHARED_PREFERENCE_TOKEN_KEY)
-        return token
+        return preferences.getValueString(UserSession.SHARED_PREFERENCE_TOKEN_KEY)
+    }
+
+    override fun onCreateInformasiSuccess(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onCreateInformasiFailed(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetAllInformasiSuccess(result: List<GetAllInformasiItem>) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetAllInformasiFailed(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetInformasiSuccess(result: List<GetInformasiById>) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetInformasiFailed(message: String) {
+        TODO("Not yet implemented")
     }
 
     override fun showDataInfoTerkini(info: List<GetAllInformasiItem>) {
@@ -110,5 +146,29 @@ class HomeFragment : Fragment(), ListKegiatanInterface, ListInfoTerkiniInterface
 
     override fun updateDataKegiatan(kegiatan: List<GetAllInformasiItem>) {
         adapterGaleri.setData(kegiatan as ArrayList<GetAllInformasiItem>)
+    }
+
+    override fun onGetAllDataSuccess(result: GetDompetById?) {
+        if (result != null) {
+            binding.tvTotalKasRT.text = rupiah(result.jumlah.toString().toDouble())
+        }
+    }
+
+    override fun onGetAllDataFailed(message: String) {
+        Toast.makeText(requireContext(),"Pesan: $message",Toast.LENGTH_LONG).show()
+    }
+
+    override fun onWithdrawSuccess(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onWithdrawFailed(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    private fun rupiah(number: Double): String{
+        val localeID =  Locale("in", "ID")
+        val numberFormat = NumberFormat.getCurrencyInstance(localeID)
+        return numberFormat.format(number).toString()
     }
 }

@@ -1,5 +1,7 @@
 package com.maluku.sma_rt.view.pengurus.adapter
 
+import android.content.ContentValues
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,8 +12,10 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
+import com.google.firebase.storage.FirebaseStorage
 import com.maluku.sma_rt.R
 import com.maluku.sma_rt.model.warga.GetAllWargaItem
+import java.io.File
 
 class WargaAdapter(val listWarga: ArrayList<GetAllWargaItem>): RecyclerView.Adapter<WargaAdapter.ViewHolder>()  {
     fun setData(data : List<GetAllWargaItem>){
@@ -31,10 +35,19 @@ class WargaAdapter(val listWarga: ArrayList<GetAllWargaItem>): RecyclerView.Adap
         holder.noHp.text = data.noHp.toString()
         holder.email.text = data.email.toString()
         holder.gender.text = data.gender.toString()
-        Glide.with(holder.itemView)
-            .load(data.gambar)
-            .apply(RequestOptions().transform(CenterCrop(), RoundedCorners(20)))
-            .into(holder.gambar)
+        // Firebase Storage
+        val storageRef = FirebaseStorage.getInstance().reference.child("user/${data.gambar}")
+        Log.d(ContentValues.TAG,"Adapter get ref image: $storageRef")
+        val localFile = File.createTempFile("tempFile","jpg")
+        storageRef.getFile(localFile).addOnSuccessListener {
+            // Tampilkan gambar dengan Glide
+            Glide.with(holder.itemView)
+                .load(localFile.path)
+                .apply(RequestOptions().transform(CenterCrop(), RoundedCorners(10)))
+                .into(holder.gambar)
+        }.addOnFailureListener {
+
+        }
     }
 
     override fun getItemCount(): Int {

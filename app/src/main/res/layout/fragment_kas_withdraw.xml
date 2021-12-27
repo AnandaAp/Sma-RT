@@ -39,7 +39,7 @@
                 app:layout_constraintVertical_bias="0.137" />
 
             <TextView
-                android:id="@+id/textView88"
+                android:id="@+id/tvTotalKas"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="236dp"
@@ -114,12 +114,14 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etJumlahWithdraw"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:background="@drawable/rectangle_round"
                     android:padding="2dp"
+                    android:inputType="number"
                     android:paddingStart="8dp"
-                    android:text="Rp"
+                    android:hint="Rp"
                     android:textSize="20sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -128,7 +130,7 @@
     </androidx.cardview.widget.CardView>
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/btnWithdrawRT"
         android:layout_width="152dp"
         android:layout_height="54dp"
         android:layout_marginTop="176dp"

@@ -49,8 +49,8 @@ class ListWargaPresenter(private val activity: Activity, private var view: ListW
                         if (response.isSuccessful){
                             Log.d(TAG,"Tidak ada ID Keluarga")
                             val result = response.body()?.getAllWarga as List<GetAllWargaItem>
-                            view.resultListWargaSuccess(result)
                             Toast.makeText(activity,"Pesan: ${response.message()}",Toast.LENGTH_SHORT).show()
+                            view.resultListWargaSuccess(result)
                         } else{
                             Toast.makeText(activity,"Pesan: ${response.message()}",Toast.LENGTH_SHORT).show()
                         }

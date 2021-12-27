@@ -46,6 +46,9 @@ class BuatIuranFragment : Fragment(), AdminTagihanInterface {
 
     private fun buatTagihan(){
         binding.btnSimpanTagihan.setOnClickListener {
+            binding.etNamaTagihan.clearFocus()
+            binding.etJumlah.clearFocus()
+            binding.etDetail.clearFocus()
             submitForm()
         }
     }

@@ -23,15 +23,10 @@ import com.maluku.sma_rt.extentions.UserSession
 import com.maluku.sma_rt.model.dompetkeluarga.GetAllDompetKeluargaItem
 import com.maluku.sma_rt.model.dompetkeluarga.GetDompetKeluargaById
 import com.maluku.sma_rt.model.informasi.GetAllInformasiItem
+import com.maluku.sma_rt.model.informasi.GetInformasiById
 import com.maluku.sma_rt.model.warga.GetMe
-import com.maluku.sma_rt.presenter.DompetKeluargaPresenter
-import com.maluku.sma_rt.presenter.ListInfoTerkiniPresenter
-import com.maluku.sma_rt.presenter.ListKegiatanPresenter
-import com.maluku.sma_rt.presenter.WargaEditProfilePresenter
-import com.maluku.sma_rt.view.viewInterface.DompetKeluargaInterface
-import com.maluku.sma_rt.view.viewInterface.ListInfoTerkiniInterface
-import com.maluku.sma_rt.view.viewInterface.ListKegiatanInterface
-import com.maluku.sma_rt.view.viewInterface.WargaEditProfileInterface
+import com.maluku.sma_rt.presenter.*
+import com.maluku.sma_rt.view.viewInterface.*
 import com.maluku.sma_rt.view.warga.adapter.RecyclerViewInfoTerkini
 import com.maluku.sma_rt.view.warga.adapter.RecyclerViewKegiatanWarga
 import java.io.File
@@ -40,7 +35,7 @@ import java.util.*
 
 private const val TAG = "HOME WARGA"
 
-class HomeWarga : Fragment(), ListInfoTerkiniInterface, ListKegiatanInterface, DompetKeluargaInterface, WargaEditProfileInterface {
+class HomeWarga : Fragment(), InformasiInterface, DompetKeluargaInterface, WargaEditProfileInterface {
     private lateinit var binding: FragmentHomeWargaBinding
 
     private lateinit var rvInfo: RecyclerView
@@ -57,8 +52,8 @@ class HomeWarga : Fragment(), ListInfoTerkiniInterface, ListKegiatanInterface, D
         savedInstanceState: Bundle?
     ): View {
         WargaEditProfilePresenter(this).getDataLogin(getToken())
-        ListInfoTerkiniPresenter(requireActivity(), this).getListInfoTerkini(getToken())
-        ListKegiatanPresenter(requireActivity(), this).getListKegiatan(getToken())
+        InformasiPresenter(this).getAllInfoTerkini(getToken())
+        InformasiPresenter(this).getAllKegiatan(getToken())
         DompetKeluargaPresenter(this).getDompetKeluargaByLoginSession(getToken())
         return bindingView()
     }
@@ -147,6 +142,30 @@ class HomeWarga : Fragment(), ListInfoTerkiniInterface, ListKegiatanInterface, D
     private fun bindingView(): View {
         binding = FragmentHomeWargaBinding.inflate(layoutInflater)
         return binding.root
+    }
+
+    override fun onCreateInformasiSuccess(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onCreateInformasiFailed(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetAllInformasiSuccess(result: List<GetAllInformasiItem>) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetAllInformasiFailed(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetInformasiSuccess(result: List<GetInformasiById>) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetInformasiFailed(message: String) {
+        TODO("Not yet implemented")
     }
 
     override fun showDataInfoTerkini(info: List<GetAllInformasiItem>) {
