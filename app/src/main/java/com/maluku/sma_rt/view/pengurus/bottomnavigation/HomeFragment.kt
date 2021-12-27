@@ -30,7 +30,7 @@ class HomeFragment : Fragment(), ListKegiatanInterface, ListInfoTerkiniInterface
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val view = bindingView()
         return view
     }
