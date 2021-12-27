@@ -24,7 +24,6 @@ class ListKegiatanPresenter(private val activity: Activity, private var view: Li
                     if (response.isSuccessful){
                         val result = response.body()?.getAllInformasi as List<GetAllInformasiItem>
                         view.showDataKegiatan(result)
-                    } else{
                     }
                 }
 

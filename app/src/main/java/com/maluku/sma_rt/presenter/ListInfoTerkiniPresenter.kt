@@ -21,9 +21,8 @@ class ListInfoTerkiniPresenter(private val activity: Activity, private var view:
                     response: Response<GetAllInformasiResponse>
                 ) {
                     if (response.isSuccessful){
-                        val result = response.body()?.getAllInformasi as List<GetAllInformasiItem>
+                        val result = response.body()?.getAllInformasi as ArrayList<GetAllInformasiItem>
                         view.showDataInfoTerkini(result)
-                    } else{
                     }
                 }
 

@@ -11,7 +11,7 @@ data class GetAllAduanResponse(
 	val code: Int? = null,
 
 	@field:SerializedName("get_all_aduan")
-	val getAllAduan: List<GetAllAduanItem?>? = null,
+	val getAllAduan: ArrayList<GetAllAduanItem?>? = null,
 
 	@field:SerializedName("message")
 	val message: String? = null

@@ -1,20 +1,17 @@
 package com.maluku.sma_rt.view.pengurus
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.maluku.sma_rt.databinding.FragmentInformasiMasukBinding
 import com.maluku.sma_rt.databinding.FragmentLaporanBinding
 import com.maluku.sma_rt.extentions.UserSession
 import com.maluku.sma_rt.model.aduan.GetAduanById
 import com.maluku.sma_rt.model.aduan.GetAllAduanItem
-import com.maluku.sma_rt.model.informasi.GetAllInformasiItem
-import com.maluku.sma_rt.presenter.ListKeluargaPresenter
 import com.maluku.sma_rt.presenter.WargaAduanPresenter
 import com.maluku.sma_rt.view.pengurus.adapter.LaporanAdapter
 import com.maluku.sma_rt.view.viewInterface.WargaAduanInterface
