@@ -11,10 +11,10 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class AdminTagihanPresenter(private val view: AdminTagihanInterface) {
-    fun createProduk(
+    fun createTagihan(
         nama: String,
         detail: String,
-        jumlah: Double,
+        jumlah: String,
         token: String
     ){
         RetrofitService
@@ -30,8 +30,12 @@ class AdminTagihanPresenter(private val view: AdminTagihanInterface) {
                     call: Call<CreateTagihanResponse>,
                     response: Response<CreateTagihanResponse>
                 ) {
-                    val message = response.body()?.message.toString()
-                    view.onCreateSuccess(message)
+                    if (response.isSuccessful){
+                        val message = response.body()?.message.toString()
+                        view.onCreateSuccess(message)
+                    } else{
+                        view.onCreateFailed(response.message().toString())
+                    }
                 }
 
                 override fun onFailure(call: Call<CreateTagihanResponse>, t: Throwable) {

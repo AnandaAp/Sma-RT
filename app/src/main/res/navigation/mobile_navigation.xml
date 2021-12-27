@@ -150,6 +150,9 @@
         <action
             android:id="@+id/action_kasFragment_to_kasWithdrawFragment"
             app:destination="@id/kasWithdrawFragment" />
+        <action
+            android:id="@+id/action_kasFragment_to_buatIuranFragment22"
+            app:destination="@id/buatIuranFragment2" />
     </fragment>
     <fragment
         android:id="@+id/laporanFragment"

@@ -900,13 +900,18 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="42" />
-                            <option name="y" value="189" />
+                            <option name="x" value="211" />
+                            <option name="y" value="236" />
                           </Point>
                         </option>
                         <option name="myPositions">
                           <map>
                             <entry key="action_kasFragment_to_buatIuranFragment2">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_kasFragment_to_buatIuranFragment22">
                               <value>
                                 <LayoutPositions />
                               </value>

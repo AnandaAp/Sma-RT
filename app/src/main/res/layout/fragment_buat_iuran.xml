@@ -32,12 +32,13 @@
         app:layout_constraintTop_toBottomOf="@+id/textView84">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etNamaTagihan"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@drawable/rectangle_round"
             android:padding="2dp"
             android:paddingStart="8dp"
-            android:text="text"
+            android:hint="text"
             android:textSize="20dp"
             tools:ignore="SpeakableTextPresentCheck" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -62,11 +63,12 @@
         app:layout_constraintTop_toBottomOf="@+id/textView97">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etJumlah"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@drawable/rectangle_round"
             android:padding="2dp"
-            android:text="Rp"
+            android:hint="Rp"
             android:paddingStart="8dp"
             android:textSize="20sp" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -91,10 +93,10 @@
         app:layout_constraintTop_toBottomOf="@+id/textView98">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etDetail"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:background="@drawable/rectangle_round"
-            android:inputType="textLongMessage"
             tools:ignore="SpeakableTextPresentCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -112,7 +114,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
-        android:id="@+id/button15"
+        android:id="@+id/btnSimpanTagihan"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:background="@drawable/btn_rounded"

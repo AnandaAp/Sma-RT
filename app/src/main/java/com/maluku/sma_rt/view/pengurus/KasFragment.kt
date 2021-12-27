@@ -36,6 +36,7 @@ class KasFragment : Fragment(), DompetRTInterface {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         navigateKasToRiwayat()
+        navigateKasToBuatTagihan()
         AdminRTKasPresenter(this).getDompetRT(getToken())
     }
 
@@ -61,6 +62,12 @@ class KasFragment : Fragment(), DompetRTInterface {
     private fun navigateKasToRiwayat() {
         binding.btnRiwayatKas.setOnClickListener{
             findNavController().navigate(R.id.action_kasFragment_to_riwayatKasFragment)
+        }
+    }
+
+    private fun navigateKasToBuatTagihan() {
+        binding.btnBuatTagihan.setOnClickListener{
+            findNavController().navigate(R.id.action_kasFragment_to_buatIuranFragment22)
         }
     }
 
