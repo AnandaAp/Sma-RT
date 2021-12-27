@@ -11,11 +11,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.maluku.sma_rt.databinding.FragmentInformasiMasukBinding
 import com.maluku.sma_rt.extentions.UserSession
 import com.maluku.sma_rt.model.informasi.GetAllInformasiItem
-import com.maluku.sma_rt.presenter.ListAllInformationPresenter
+import com.maluku.sma_rt.model.informasi.GetInformasiById
+import com.maluku.sma_rt.presenter.InformasiPresenter
 import com.maluku.sma_rt.view.pengurus.adapter.InformasiMasukAdapter
-import com.maluku.sma_rt.view.viewInterface.ListAllInformationInterface
+import com.maluku.sma_rt.view.viewInterface.InformasiInterface
 
-class InformasiMasukFragment : Fragment(), ListAllInformationInterface{
+class InformasiMasukFragment : Fragment(), InformasiInterface{
     private lateinit var binding: FragmentInformasiMasukBinding
     private lateinit var rvInformasi: RecyclerView
     private lateinit var adapterInformasi: InformasiMasukAdapter
@@ -44,7 +45,7 @@ class InformasiMasukFragment : Fragment(), ListAllInformationInterface{
 
     override fun onStart() {
         super.onStart()
-        ListAllInformationPresenter(this).getListAllInformation(getToken())
+        InformasiPresenter(this).getAllInformasi(getToken())
     }
 
     private fun bindingView(): View {
@@ -58,12 +59,44 @@ class InformasiMasukFragment : Fragment(), ListAllInformationInterface{
         return token
     }
 
-    override fun resultListAllInformationSuccess(result: List<GetAllInformasiItem>) {
+    override fun onCreateInformasiSuccess(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onCreateInformasiFailed(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetAllInformasiSuccess(result: List<GetAllInformasiItem>) {
         adapterInformasi.setData(result as ArrayList<GetAllInformasiItem>)
     }
 
-    override fun resultListAllInformationFailed(message: String) {
+    override fun onGetAllInformasiFailed(message: String) {
         Toast.makeText(requireContext(),"Pesan: $message",Toast.LENGTH_LONG).show()
+    }
+
+    override fun onGetInformasiSuccess(result: List<GetInformasiById>) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetInformasiFailed(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun showDataInfoTerkini(info: List<GetAllInformasiItem>) {
+        TODO("Not yet implemented")
+    }
+
+    override fun updateDataInfoTerkini(info: List<GetAllInformasiItem>) {
+        TODO("Not yet implemented")
+    }
+
+    override fun showDataKegiatan(kegiatan: List<GetAllInformasiItem>) {
+        TODO("Not yet implemented")
+    }
+
+    override fun updateDataKegiatan(kegiatan: List<GetAllInformasiItem>) {
+        TODO("Not yet implemented")
     }
 
 }

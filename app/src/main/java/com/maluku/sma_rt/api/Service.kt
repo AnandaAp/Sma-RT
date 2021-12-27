@@ -289,11 +289,11 @@ interface Service {
         @Path("id") id: String
     ): Call<DeleteInformasiResponse>
 
-    //get data aduan by ID
+    //get informasi by ID
     @GET("informasi/{id}")
     fun getInformasiByID(
         @Header("Authorization") authHeader: String,
-        @Path("token") token: String
+        @Path("id") id: String
     ): Call<GetInformasiByIDResponse>
 
     //Get Data All Informasi

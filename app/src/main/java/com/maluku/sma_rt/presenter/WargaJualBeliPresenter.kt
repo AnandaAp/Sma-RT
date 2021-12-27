@@ -3,13 +3,10 @@ package com.maluku.sma_rt.presenter
 import android.app.Activity
 import android.widget.Toast
 import com.maluku.sma_rt.api.RetrofitService
-import com.maluku.sma_rt.model.informasi.GetAllInformasiItem
-import com.maluku.sma_rt.model.informasi.GetAllInformasiResponse
 import com.maluku.sma_rt.model.keluarga.GetAllKeluargaItem
 import com.maluku.sma_rt.model.keluarga.GetAllKeluargaResponse
 import com.maluku.sma_rt.model.produk.GetAllProdukItem
 import com.maluku.sma_rt.model.produk.GetAllProdukResponse
-import com.maluku.sma_rt.view.viewInterface.ListKegiatanInterface
 import com.maluku.sma_rt.view.viewInterface.WargaJualBeliInterface
 import retrofit2.Call
 import retrofit2.Callback
