@@ -4,6 +4,7 @@ import com.maluku.sma_rt.model.aduan.CreateAduanResponse
 import com.maluku.sma_rt.model.aduan.GetAduanByIDResponse
 import com.maluku.sma_rt.model.aduan.GetAllAduanResponse
 import com.maluku.sma_rt.model.dompetkeluarga.*
+import com.maluku.sma_rt.model.dompetrt.DefaultDompetRTResponse
 import com.maluku.sma_rt.model.dompetrt.GetDompetRTByLoginResponse
 import com.maluku.sma_rt.model.informasi.*
 import com.maluku.sma_rt.model.keluarga.*
@@ -314,12 +315,20 @@ interface Service {
         @Header("Authorization") authHeader: String
     ): Call<GetAllInformasiResponse>
 
-    // DompetRT
-    //Get Data All Informasi
+    // Dompet RT
+    //Get Data Dompet RT berdasarkan Login
     @GET("dompetrt/me")
     fun getDompetRT(
         @Header("Authorization") authHeader: String
     ): Call<GetDompetRTByLoginResponse>
+
+    // Withdraw Dompet RT
+    @FormUrlEncoded
+    @PUT("dompetrt/withdraw")
+    fun withdrawDompetRT(
+        @Header("Authorization") authHeader: String,
+        @Field("jumlah") jumlah: String
+    ): Call<DefaultDompetRTResponse>
 
     // Dompet Keluarga
     // Get All Dompet Keluarga
