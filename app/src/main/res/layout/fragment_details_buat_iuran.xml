@@ -2,10 +2,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/frameLayout6"
+    android:id="@+id/fragment_details_buat_iuran"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.pengurus.Buat_IuranFragment" >
+    tools:context=".view.pengurus.DetailsBuatIuranFragment">
 
     <TextView
         android:id="@+id/textView84"
@@ -37,7 +37,7 @@
             android:background="@drawable/rectangle_round"
             android:padding="2dp"
             android:paddingStart="8dp"
-            android:text="text"
+            android:text="Tagihan Air"
             android:textSize="20dp"
             tools:ignore="SpeakableTextPresentCheck" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -66,8 +66,8 @@
             android:layout_height="50dp"
             android:background="@drawable/rectangle_round"
             android:padding="2dp"
-            android:text="Rp"
             android:paddingStart="8dp"
+            android:text="Rp"
             android:textSize="20sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -95,16 +95,19 @@
             android:layout_height="100dp"
             android:background="@drawable/rectangle_round"
             android:inputType="textLongMessage"
+            android:padding="2dp"
+            android:textSize="20sp"
+            android:text="Tagihan Air Bulanan"
             tools:ignore="SpeakableTextPresentCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/button4"
-        android:layout_width="130dp"
-        android:layout_height="wrap_content"
+        android:layout_width="159dp"
+        android:layout_height="52dp"
         android:layout_marginTop="48dp"
         android:background="@drawable/btn_green_outside"
-        android:text="Batal"
+        android:text="Hapus"
         android:textColor="@color/green"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/textInputLayout14"
@@ -113,29 +116,17 @@
 
     <Button
         android:id="@+id/button15"
-        android:layout_width="130dp"
-        android:layout_height="wrap_content"
+        android:layout_width="159dp"
+        android:layout_height="52dp"
         android:background="@drawable/btn_rounded"
         android:backgroundTint="@color/green"
-        android:text="Buat Tagihan"
+        android:text="Simpan Perubahan"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="@+id/button4"
         app:layout_constraintEnd_toEndOf="@+id/textInputLayout14"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/button4"
-        app:layout_constraintTop_toTopOf="@+id/button4" />
+        app:layout_constraintTop_toTopOf="@+id/button4"
+        app:layout_constraintVertical_bias="1.0" />
 
-    <TextView
-        android:id="@+id/textView99"
-        android:layout_width="175dp"
-        android:layout_height="126dp"
-        android:text="Jika Data Kosong langsung Masuk Form"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.836" />
 </androidx.constraintlayout.widget.ConstraintLayout>
