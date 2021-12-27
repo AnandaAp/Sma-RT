@@ -12,14 +12,13 @@ import com.maluku.sma_rt.R
 import com.maluku.sma_rt.databinding.FragmentHomeBinding
 import com.maluku.sma_rt.extentions.UserSession
 import com.maluku.sma_rt.model.informasi.GetAllInformasiItem
-import com.maluku.sma_rt.presenter.ListInfoTerkiniPresenter
-import com.maluku.sma_rt.presenter.ListKegiatanPresenter
+import com.maluku.sma_rt.model.informasi.GetInformasiById
+import com.maluku.sma_rt.presenter.InformasiPresenter
 import com.maluku.sma_rt.view.pengurus.adapter.GaleriAdapter
 import com.maluku.sma_rt.view.pengurus.adapter.InfoAdapter
-import com.maluku.sma_rt.view.viewInterface.ListInfoTerkiniInterface
-import com.maluku.sma_rt.view.viewInterface.ListKegiatanInterface
+import com.maluku.sma_rt.view.viewInterface.InformasiInterface
 
-class HomeFragment : Fragment(), ListKegiatanInterface, ListInfoTerkiniInterface {
+class HomeFragment : Fragment(), InformasiInterface {
     private lateinit var binding: FragmentHomeBinding
     private lateinit var rvGaleri: RecyclerView
     private lateinit var adapterGaleri: GaleriAdapter
@@ -46,8 +45,8 @@ class HomeFragment : Fragment(), ListKegiatanInterface, ListInfoTerkiniInterface
 
     override fun onStart() {
         super.onStart()
-        ListKegiatanPresenter(requireActivity(),this).getListKegiatan(getToken())
-        ListInfoTerkiniPresenter(requireActivity(),this).getListInfoTerkini(getToken())
+        InformasiPresenter(this).getAllInfoTerkini(getToken())
+        InformasiPresenter(this).getAllKegiatan(getToken())
     }
 
     private fun setRecyclerViewInformasi(){
@@ -94,6 +93,30 @@ class HomeFragment : Fragment(), ListKegiatanInterface, ListInfoTerkiniInterface
         val preferences = UserSession(requireActivity())
         val token = preferences.getValueString(UserSession.SHARED_PREFERENCE_TOKEN_KEY)
         return token
+    }
+
+    override fun onCreateInformasiSuccess(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onCreateInformasiFailed(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetAllInformasiSuccess(result: List<GetAllInformasiItem>) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetAllInformasiFailed(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetInformasiSuccess(result: List<GetInformasiById>) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetInformasiFailed(message: String) {
+        TODO("Not yet implemented")
     }
 
     override fun showDataInfoTerkini(info: List<GetAllInformasiItem>) {

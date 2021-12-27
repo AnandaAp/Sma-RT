@@ -6,25 +6,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.maluku.sma_rt.R
-import com.maluku.sma_rt.databinding.FragmentHomeWargaBinding
 import com.maluku.sma_rt.databinding.FragmentJualbeliWargaBinding
 import com.maluku.sma_rt.extentions.UserSession
-import com.maluku.sma_rt.model.informasi.GetAllInformasiItem
 import com.maluku.sma_rt.model.keluarga.GetAllKeluargaItem
-import com.maluku.sma_rt.model.keluarga.GetAllKeluargaResponse
 import com.maluku.sma_rt.model.produk.GetAllProdukItem
-import com.maluku.sma_rt.model.produk.GetAllProdukResponse
-import com.maluku.sma_rt.presenter.ListInfoTerkiniPresenter
 import com.maluku.sma_rt.presenter.WargaJualBeliPresenter
-import com.maluku.sma_rt.presenter.WargaKelolaTokoPresenter
 import com.maluku.sma_rt.view.viewInterface.WargaJualBeliInterface
-import com.maluku.sma_rt.view.warga.adapter.RecyclerViewInfoTerkini
-import com.maluku.sma_rt.view.warga.adapter.RecyclerViewKegiatanWarga
 import com.maluku.sma_rt.view.warga.adapter.RecyclerViewTerlaris
 import com.maluku.sma_rt.view.warga.adapter.RecyclerViewToko
 

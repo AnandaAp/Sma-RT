@@ -16,13 +16,15 @@ import com.google.firebase.storage.FirebaseStorage
 import com.maluku.sma_rt.R
 import com.maluku.sma_rt.databinding.FragmentBagikanInformasiBinding
 import com.maluku.sma_rt.extentions.UserSession
-import com.maluku.sma_rt.presenter.CreateInformasiPresenter
-import com.maluku.sma_rt.view.viewInterface.CreateInformasiInterface
+import com.maluku.sma_rt.model.informasi.GetAllInformasiItem
+import com.maluku.sma_rt.model.informasi.GetInformasiById
+import com.maluku.sma_rt.presenter.InformasiPresenter
+import com.maluku.sma_rt.view.viewInterface.InformasiInterface
 import java.text.SimpleDateFormat
 import java.util.*
 
 private const val TAG = "BagiInformasiFragment"
-class BagikanInformasiFragment : Fragment(), CreateInformasiInterface {
+class BagikanInformasiFragment : Fragment(), InformasiInterface {
     private lateinit var binding: FragmentBagikanInformasiBinding
     private var judul: String = ""
     private var lokasi: String = ""
@@ -74,7 +76,7 @@ class BagikanInformasiFragment : Fragment(), CreateInformasiInterface {
             if (imageUri != null){
                 uploadImage()
             }
-            CreateInformasiPresenter(requireActivity(),this).createInformasiPresenter(getToken(),judul,kategori,lokasi,detail,gambarInformasi)
+            InformasiPresenter(this).createInformasi(getToken(),judul,kategori,lokasi,detail,gambarInformasi)
         } else {
             if (!validJudul){
                 binding.etJudul.error = "Masukan judul informasi!"
@@ -183,6 +185,38 @@ class BagikanInformasiFragment : Fragment(), CreateInformasiInterface {
 
     override fun onCreateInformasiFailed(message: String) {
         Toast.makeText(requireContext(),"Pesan: $message",Toast.LENGTH_LONG).show()
+    }
+
+    override fun onGetAllInformasiSuccess(result: List<GetAllInformasiItem>) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetAllInformasiFailed(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetInformasiSuccess(result: List<GetInformasiById>) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetInformasiFailed(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun showDataInfoTerkini(info: List<GetAllInformasiItem>) {
+        TODO("Not yet implemented")
+    }
+
+    override fun updateDataInfoTerkini(info: List<GetAllInformasiItem>) {
+        TODO("Not yet implemented")
+    }
+
+    override fun showDataKegiatan(kegiatan: List<GetAllInformasiItem>) {
+        TODO("Not yet implemented")
+    }
+
+    override fun updateDataKegiatan(kegiatan: List<GetAllInformasiItem>) {
+        TODO("Not yet implemented")
     }
 
     private fun getToken(): String {
