@@ -95,7 +95,9 @@ interface Service {
     // Get Data Warga
     @GET("warga")
     fun getListWarga(
-        @Header("Authorization") authHeader: String
+        @Header("Authorization") authHeader: String,
+        @Query("id_keluarga") idKeluarga: String?,
+        @Query("nama") nama: String?
     ): Call<GetAllWargaResponse>
 
     // Get Warga By ID Keluarga
