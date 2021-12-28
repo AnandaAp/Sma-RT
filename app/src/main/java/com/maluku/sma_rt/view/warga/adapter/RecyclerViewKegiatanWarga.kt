@@ -58,7 +58,7 @@ class RecyclerViewKegiatanWarga(
     }
 
     class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-        var gambarKegiatan: ImageView = itemView.findViewById(R.id.ivKegiatan)
+        var gambarKegiatan: ImageView = itemView.findViewById(R.id.ivKegiatanWarga)
     }
 
 }

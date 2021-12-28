@@ -36,6 +36,8 @@
                 android:background="@drawable/btn_rounded2"
                 android:fontFamily="@font/montserrat_regular"
                 android:hint="Cari kebutuhan anda ..."
+                android:imeOptions="actionSearch"
+                android:inputType="text"
                 android:padding="2dp"
                 android:textCursorDrawable="@drawable/color_cursor" />
 
