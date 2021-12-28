@@ -82,7 +82,7 @@ class AccountFragment : Fragment(), DompetRTInterface, AdminRTProfileInterface, 
         }
     }
 
-    override fun onGetAllDataFailed(message: String) {
+    override fun onGetAllDataFailure(message: String) {
         Toast.makeText(requireContext(),"Pesan $message", Toast.LENGTH_LONG).show()
     }
 
@@ -90,7 +90,7 @@ class AccountFragment : Fragment(), DompetRTInterface, AdminRTProfileInterface, 
         TODO("Not yet implemented")
     }
 
-    override fun onWithdrawFailed(message: String) {
+    override fun onWithdrawFailure(message: String) {
         TODO("Not yet implemented")
     }
 

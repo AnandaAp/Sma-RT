@@ -17,6 +17,7 @@ import com.maluku.sma_rt.extentions.UserSession.Companion.SHARED_PREFERENCE_TOKE
 import com.maluku.sma_rt.extentions.UserValidator
 import com.maluku.sma_rt.model.login.OnLoginSuccessResponse
 import com.maluku.sma_rt.view.viewInterface.LoginAdminInterface
+import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -29,7 +30,6 @@ class AdminRTLoginPresenter(private val activity: Activity, private val view: Lo
         password: String
     ) {
         pushToCloud(emailAdmin, password)
-        Toast.makeText(activity,"$emailAdmin dan $password",Toast.LENGTH_LONG).show()
     }
 
     //push new data to cloud so user can register to server
@@ -60,19 +60,24 @@ class AdminRTLoginPresenter(private val activity: Activity, private val view: Lo
                                     token
                                 )
                             }
-                            Toast.makeText(activity,"Pesan: ${response.message()}", Toast.LENGTH_SHORT).show()
+                            view.onLoginSuccess(activity.getString(R.string.login_sukses))
                         }
                         false -> {
-                            Toast.makeText(activity,"Pesan: ${response.message()}", Toast.LENGTH_SHORT).show()
+                            val jObjError = JSONObject(response.errorBody()?.string())
+                            val message = jObjError.getString("message")
+                            Toast.makeText(activity,"Pesan: $message", Toast.LENGTH_SHORT).show()
+                            view.onLoginFailure(activity.getString(R.string.login_gagal))
                         }
                     }
                 }
 
                 override fun onFailure(call: Call<OnLoginSuccessResponse>, t: Throwable) {
-                    Log.i(TAG, "onFailure: ${t.message}")
+                    Toast.makeText(activity,"Pesan: ${t.message.toString()}", Toast.LENGTH_SHORT).show()
+                    view.onLoginFailure(activity.getString(R.string.login_gagal))
                 }
             })
     }
+
     //save user data to session
     private fun saveSession(
         emailAdmin: String,
@@ -84,7 +89,5 @@ class AdminRTLoginPresenter(private val activity: Activity, private val view: Lo
         userSession.save(SHARED_PREFERENCE_TOKEN_KEY,token)
         userSession.save(SHARED_PREFERENCE_EMAIL_KEY,emailAdmin)
         userSession.save(SHARED_PREFERENCE_PASSWORD_KEY,password)
-        view.onLoginSuccess(activity.getString(R.string.login_sukses))
     }
-
 }

@@ -1,10 +1,10 @@
 package com.maluku.sma_rt.presenter
 
 import com.maluku.sma_rt.api.RetrofitService
-import com.maluku.sma_rt.model.dompetkeluarga.DefaultDompetKeluargaResponse
 import com.maluku.sma_rt.model.dompetrt.DefaultDompetRTResponse
 import com.maluku.sma_rt.model.dompetrt.GetDompetRTByLoginResponse
 import com.maluku.sma_rt.view.viewInterface.DompetRTInterface
+import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -23,12 +23,14 @@ class DompetRTPresenter(private var view: DompetRTInterface) {
                         val result = response.body()?.getDompetById
                         view.onGetAllDataSuccess(result)
                     } else{
-                        view.onGetAllDataFailed(response.message().toString())
+                        val jObjError = JSONObject(response.errorBody()?.string())
+                        val message = jObjError.getString("message")
+                        view.onGetAllDataFailure(message)
                     }
                 }
 
                 override fun onFailure(call: Call<GetDompetRTByLoginResponse>, t: Throwable) {
-                    view.onGetAllDataFailed(t.message.toString())
+                    view.onGetAllDataFailure(t.message.toString())
                 }
             })
     }
@@ -52,12 +54,14 @@ class DompetRTPresenter(private var view: DompetRTInterface) {
                     if (response.isSuccessful){
                         view.onWithdrawSuccess(message!!)
                     } else {
-                        view.onWithdrawFailed(message!!)
+                        val jObjError = JSONObject(response.errorBody()?.string())
+                        val message = jObjError.getString("message")
+                        view.onWithdrawFailure(message)
                     }
                 }
 
                 override fun onFailure(call: Call<DefaultDompetRTResponse>, t: Throwable) {
-                    view.onWithdrawFailed("Withdraw failed")
+                    view.onWithdrawFailure("Withdraw failed")
                 }
             })
     }

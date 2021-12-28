@@ -48,7 +48,7 @@ class WargaFragment : Fragment(), ListWargaViewInterface, ListKeluargaViewInterf
 
     override fun onStart() {
         super.onStart()
-        ListKeluargaPresenter(requireActivity(),this).getListKeluargaPresenter(getToken())
+        ListKeluargaPresenter(this).getListKeluargaPresenter(getToken())
     }
 
     private fun bindingView(): View {
@@ -108,7 +108,8 @@ class WargaFragment : Fragment(), ListWargaViewInterface, ListKeluargaViewInterf
 
     }
 
-    override fun resultListKeluargaFailed(t: Throwable) {
-        Toast.makeText(requireContext(),"Pesan: $t",Toast.LENGTH_LONG).show()
+    override fun resultListKeluargaFailure(message: String) {
+        Toast.makeText(requireContext(),message,Toast.LENGTH_LONG).show()
     }
+
 }

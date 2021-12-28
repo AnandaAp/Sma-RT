@@ -168,7 +168,7 @@ class HomeFragment : Fragment(), InformasiInterface, DompetRTInterface, AdminRTP
         }
     }
 
-    override fun onGetAllDataFailed(message: String) {
+    override fun onGetAllDataFailure(message: String) {
         Toast.makeText(requireContext(),"Pesan: $message",Toast.LENGTH_LONG).show()
     }
 
@@ -176,7 +176,7 @@ class HomeFragment : Fragment(), InformasiInterface, DompetRTInterface, AdminRTP
         TODO("Not yet implemented")
     }
 
-    override fun onWithdrawFailed(message: String) {
+    override fun onWithdrawFailure(message: String) {
         TODO("Not yet implemented")
     }
 

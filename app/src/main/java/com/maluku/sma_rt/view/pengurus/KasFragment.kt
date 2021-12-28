@@ -49,7 +49,7 @@ class KasFragment : Fragment(), DompetRTInterface {
         binding.tvTotalKas.text = rupiah(result?.jumlah.toString().toDouble())
     }
 
-    override fun onGetAllDataFailed(message: String) {
+    override fun onGetAllDataFailure(message: String) {
         Toast.makeText(requireContext(),"Pesan: $message",Toast.LENGTH_LONG).show()
     }
 
@@ -57,7 +57,7 @@ class KasFragment : Fragment(), DompetRTInterface {
         TODO("Not yet implemented")
     }
 
-    override fun onWithdrawFailed(message: String) {
+    override fun onWithdrawFailure(message: String) {
         TODO("Not yet implemented")
     }
 

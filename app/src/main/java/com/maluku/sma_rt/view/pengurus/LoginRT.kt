@@ -51,8 +51,12 @@ class LoginRT : Fragment(), LoginAdminInterface {
     }
 
     override fun onLoginSuccess(message: String) {
-        Toast.makeText(context,"$message", Toast.LENGTH_LONG).show()
+        Toast.makeText(context,message, Toast.LENGTH_LONG).show()
         navigateToAdminDashboard()
+    }
+
+    override fun onLoginFailure(message: String) {
+        Toast.makeText(context,message, Toast.LENGTH_LONG).show()
     }
 
     private fun submitForm() {
