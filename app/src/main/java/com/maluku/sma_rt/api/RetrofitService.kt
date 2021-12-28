@@ -6,7 +6,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitService {
-    private const val baseUrl = "https://gits-capstone.herokuapp.com/"
+    private const val baseUrl = "http://103.176.79.147:2001/"
     private fun getInterseptor(): OkHttpClient {
         val logging = HttpLoggingInterceptor()
         logging.level = HttpLoggingInterceptor.Level.BODY
