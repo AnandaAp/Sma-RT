@@ -4,5 +4,5 @@ import com.maluku.sma_rt.model.warga.GetAllWargaItem
 
 interface ListWargaViewInterface {
     fun resultListWargaSuccess(result: List<GetAllWargaItem>)
-    fun resultListWargaFailed(t: Throwable)
+    fun resultListWargaFailure(message: String)
 }

@@ -30,6 +30,7 @@ class WargaFragment : Fragment(), ListWargaViewInterface, ListKeluargaViewInterf
     private lateinit var rvWarga: RecyclerView
     private lateinit var adapterWarga: WargaAdapter
     private var idKeluarga: String? = null
+    private var nama: String? = null
     private var isSpinnerInitial = true
 
     override fun onCreateView(
@@ -44,6 +45,8 @@ class WargaFragment : Fragment(), ListWargaViewInterface, ListKeluargaViewInterf
         super.onViewCreated(view, savedInstanceState)
         // Refresh Data Warga
         onStart()
+        nama = binding.etCariWarga.text.toString().trim()
+        Log.d(TAG,"Nama Warga: $nama")
     }
 
     override fun onStart() {
@@ -63,8 +66,8 @@ class WargaFragment : Fragment(), ListWargaViewInterface, ListKeluargaViewInterf
         rvWarga.adapter = adapterWarga
     }
 
-    override fun resultListWargaFailed(t: Throwable) {
-        Toast.makeText(requireContext(),"Pesan: $t",Toast.LENGTH_LONG).show()
+    override fun resultListWargaFailure(message: String) {
+        Toast.makeText(requireContext(),"Pesan: $message",Toast.LENGTH_LONG).show()
     }
 
     private fun getToken(): String {
@@ -98,7 +101,7 @@ class WargaFragment : Fragment(), ListWargaViewInterface, ListKeluargaViewInterf
                 else  {
                     idKeluarga = listIdKeluarga[position]
                 }
-                ListWargaPresenter(requireActivity(), this@WargaFragment).getListWargaPresenter(getToken(), idKeluarga)
+                ListWargaPresenter(requireActivity(), this@WargaFragment).getListWargaPresenter(getToken(), idKeluarga, nama)
             }
 
             override fun onNothingSelected(p0: AdapterView<*>?) {

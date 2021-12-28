@@ -62,7 +62,7 @@ class AccountFragment : Fragment(), DompetRTInterface, AdminRTProfileInterface, 
         navigateAkunToEditProfil()
         AdminRTProfilePresenter(this).getDataLoginPengurus(getToken())
         DompetRTPresenter(this).getDompetRTByLogin(getToken())
-        ListWargaPresenter(requireActivity(),this).getListWargaPresenter(getToken(),null)
+        ListWargaPresenter(requireActivity(),this).getListWargaPresenter(getToken(),null,null)
         logout()
     }
 
@@ -153,8 +153,8 @@ class AccountFragment : Fragment(), DompetRTInterface, AdminRTProfileInterface, 
         binding.tvTotalWarga.text = result.size.toString()
     }
 
-    override fun resultListWargaFailed(t: Throwable) {
-        Toast.makeText(requireContext(),"Pesan ${t.message.toString()}", Toast.LENGTH_LONG).show()
+    override fun resultListWargaFailure(message: String) {
+        Toast.makeText(requireContext(),"Pesan $message", Toast.LENGTH_LONG).show()
     }
 
 }
