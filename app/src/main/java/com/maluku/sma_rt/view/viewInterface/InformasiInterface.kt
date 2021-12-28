@@ -5,13 +5,13 @@ import com.maluku.sma_rt.model.informasi.GetInformasiById
 
 interface InformasiInterface {
     fun onCreateInformasiSuccess(message: String)
-    fun onCreateInformasiFailed(message: String)
+    fun onCreateInformasiFailure(message: String)
     fun onGetAllInformasiSuccess(result: List<GetAllInformasiItem>)
-    fun onGetAllInformasiFailed(message: String)
-    fun onGetInformasiSuccess(result: List<GetInformasiById>)
-    fun onGetInformasiFailed(message: String)
-    fun showDataInfoTerkini(info: List<GetAllInformasiItem>)
-    fun updateDataInfoTerkini(info: List<GetAllInformasiItem>)
-    fun showDataKegiatan(kegiatan: List<GetAllInformasiItem>)
-    fun updateDataKegiatan(kegiatan: List<GetAllInformasiItem>)
+    fun onGetAllInformasiFailure(message: String)
+    fun onGetInformasiSuccess(result: GetInformasiById?)
+    fun onGetInformasiFailure(message: String)
+    fun onGetInfoTerkiniSuccess(result: List<GetAllInformasiItem>)
+    fun onGetInfoTerkiniFailure(message: String)
+    fun onGetKegiatanSuccess(result: List<GetAllInformasiItem>)
+    fun onGetKegiatanFailure(message: String)
 }

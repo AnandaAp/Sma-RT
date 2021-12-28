@@ -9,8 +9,8 @@ import com.maluku.sma_rt.model.produk.DeleteProductByIDResponse
 import com.maluku.sma_rt.model.produk.UpdateProductByIDResponse
 import com.maluku.sma_rt.model.warga.UpdateWargaResponse
 import com.maluku.sma_rt.model.warga.WargaGetDataLoginResponse
-import com.maluku.sma_rt.view.viewInterface.EditProdukInterface
 import com.maluku.sma_rt.view.viewInterface.WargaEditProfileInterface
+import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -33,13 +33,14 @@ class WargaEditProfilePresenter(private val view: WargaEditProfileInterface) {
                         view.onGetDataSuccess(result)
 //                        Toast.makeText(activity,"Pesan: ${response.message()}", Toast.LENGTH_SHORT).show()
                     } else{
-                        response.body()?.message?.let { view.onGetDataFailed(it) }
-//                        Toast.makeText(activity,"Pesan: ${response.message()}", Toast.LENGTH_SHORT).show()
+                        val jObjError = JSONObject(response.errorBody()?.string())
+                        val message = jObjError.getString("message")
+                        view.onGetDataFailure(message)
                     }
                 }
 
                 override fun onFailure(call: Call<WargaGetDataLoginResponse>, t: Throwable) {
-                    view.onGetDataFailed("failed")
+                    view.onGetDataFailure(t.message.toString())
                 }
             })
     }
@@ -72,13 +73,14 @@ class WargaEditProfilePresenter(private val view: WargaEditProfileInterface) {
                     if (response.isSuccessful){
                         view.onUpdateSuccess("Berhasil memperbaharui data!")
                     } else {
-                        view.onUpdateFailure("Gagal memperbaharui data!")
+                        val jObjError = JSONObject(response.errorBody()?.string())
+                        val message = jObjError.getString("message")
+                        view.onGetDataFailure(message)
                     }
-//                    Toast.makeText(activity,"Pesan: ${response.body()?.message.toString()}", Toast.LENGTH_SHORT).show()
                 }
 
                 override fun onFailure(call: Call<UpdateWargaResponse>, t: Throwable) {
-                    view.onUpdateFailure("Gagal memperbaharui data!")
+                    view.onUpdateFailure(t.message.toString())
                     Log.i(TAG, "onFailure: ${t.message}")
                 }
             })

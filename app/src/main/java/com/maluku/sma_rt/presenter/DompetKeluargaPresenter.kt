@@ -7,6 +7,7 @@ import com.maluku.sma_rt.model.dompetkeluarga.*
 import com.maluku.sma_rt.model.keluarga.GetKeluargaSayaResponse
 import com.maluku.sma_rt.model.keluarga.UpdateKeluargaResponse
 import com.maluku.sma_rt.view.viewInterface.DompetKeluargaInterface
+import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -24,16 +25,17 @@ class DompetKeluargaPresenter(private var view: DompetKeluargaInterface) {
                     call: Call<GetDompetKeluargaByIdResponse>,
                     response: Response<GetDompetKeluargaByIdResponse>
                 ) {
-                    val message = response.body()?.message
                     if (response.isSuccessful){
                         val result = response.body()?.getDompetKeluargaById
                         view.onGetDataSuccess(result)
                     } else{
-                        view.onGetDataFailed(message!!)
+                        val jObjError = JSONObject(response.errorBody()?.string())
+                        val message = jObjError.getString("message")
+                        view.onGetDataFailure(message!!)
                     }
                 }
                 override fun onFailure(call: Call<GetDompetKeluargaByIdResponse>, t: Throwable) {
-                    view.onGetDataFailed("failed")
+                    view.onGetDataFailure(t.message.toString())
                 }
             })
     }
@@ -47,16 +49,17 @@ class DompetKeluargaPresenter(private var view: DompetKeluargaInterface) {
                     call: Call<GetAllDompetKeluargaResponse>,
                     response: Response<GetAllDompetKeluargaResponse>
                 ) {
-                    val message = response.body()?.message
                     if (response.isSuccessful){
                         val result = response.body()?.getAllDompetKeluarga as List<GetAllDompetKeluargaItem>
                         view.onGetAllDataSuccess(result)
                     } else{
+                        val jObjError = JSONObject(response.errorBody()?.string())
+                        val message = jObjError.getString("message")
                         view.onGetAllDataFailed(message!!)
                     }
                 }
                 override fun onFailure(call: Call<GetAllDompetKeluargaResponse>, t: Throwable) {
-                    view.onGetAllDataFailed("get all dompet keluarga failed")
+                    view.onGetAllDataFailed(t.message.toString())
                 }
             })
     }
@@ -76,16 +79,17 @@ class DompetKeluargaPresenter(private var view: DompetKeluargaInterface) {
                     call: Call<GetDompetKeluargaByIdResponse>,
                     response: Response<GetDompetKeluargaByIdResponse>
                 ) {
-                    val message = response.body()?.message
                     if (response.isSuccessful){
                         val result = response.body()?.getDompetKeluargaById
                         view.onGetDataSuccess(result)
                     } else{
-                        view.onGetDataFailed(message!!)
+                        val jObjError = JSONObject(response.errorBody()?.string())
+                        val message = jObjError.getString("message")
+                        view.onGetDataFailure(message!!)
                     }
                 }
                 override fun onFailure(call: Call<GetDompetKeluargaByIdResponse>, t: Throwable) {
-                    view.onGetDataFailed("get dompet keluarga by id failed")
+                    view.onGetDataFailure(t.message.toString())
                 }
             })
     }
@@ -105,16 +109,17 @@ class DompetKeluargaPresenter(private var view: DompetKeluargaInterface) {
                     call: Call<DefaultDompetKeluargaResponse>,
                     response: Response<DefaultDompetKeluargaResponse>
                 ) {
-                    val message = response.body()?.message
                     if (response.isSuccessful){
                         view.onTopupSuccess("Berhasil top up!")
                     } else {
+                        val jObjError = JSONObject(response.errorBody()?.string())
+                        val message = jObjError.getString("message")
                         view.onTopupFailure(message!!)
                     }
                 }
 
                 override fun onFailure(call: Call<DefaultDompetKeluargaResponse>, t: Throwable) {
-                    view.onWithdrawFailure("top up failed")
+                    view.onWithdrawFailure(t.message.toString())
                 }
             })
     }
@@ -134,16 +139,17 @@ class DompetKeluargaPresenter(private var view: DompetKeluargaInterface) {
                     call: Call<DefaultDompetKeluargaResponse>,
                     response: Response<DefaultDompetKeluargaResponse>
                 ) {
-                    val message = response.body()?.message
                     if (response.isSuccessful){
                         view.onWithdrawSuccess("Berhasil withdraw!")
                     } else {
-                        view.onWithdrawFailure(message!!)
+                        val jObjError = JSONObject(response.errorBody()?.string())
+                        val message = jObjError.getString("message")
+                        view.onWithdrawFailure(message)
                     }
                 }
 
                 override fun onFailure(call: Call<DefaultDompetKeluargaResponse>, t: Throwable) {
-                    view.onWithdrawFailure("withdraw failed")
+                    view.onWithdrawFailure(t.message.toString())
                 }
             })
     }

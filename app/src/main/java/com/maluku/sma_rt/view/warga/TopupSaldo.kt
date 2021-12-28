@@ -153,8 +153,7 @@ class TopupSaldo : Fragment(), DompetKeluargaInterface {
         TODO("Not yet implemented")
     }
 
-    override fun onGetDataFailed(message: String) {
+    override fun onGetDataFailure(message: String) {
         TODO("Not yet implemented")
     }
-
 }

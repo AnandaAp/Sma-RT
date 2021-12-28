@@ -8,12 +8,13 @@ import com.maluku.sma_rt.model.keluarga.GetAllKeluargaResponse
 import com.maluku.sma_rt.model.produk.GetAllProdukItem
 import com.maluku.sma_rt.model.produk.GetAllProdukResponse
 import com.maluku.sma_rt.view.viewInterface.WargaJualBeliInterface
+import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 
-class WargaJualBeliPresenter(private val activity: Activity, private var view: WargaJualBeliInterface) {
+class WargaJualBeliPresenter(private var view: WargaJualBeliInterface) {
     fun getAllKeluarga(token: String) {
         RetrofitService
             .getService()
@@ -25,13 +26,16 @@ class WargaJualBeliPresenter(private val activity: Activity, private var view: W
                 ) {
                     if (response.isSuccessful){
                         val result = response.body()?.getAllKeluarga as List<GetAllKeluargaItem>
-                        view.showDataToko(result)
+                        view.onGetAllTokoSuccess(result)
                     } else{
+                        val jObjError = JSONObject(response.errorBody()?.string())
+                        val message = jObjError.getString("message")
+                        view.onGetAllTokoFailure(message)
                     }
                 }
 
                 override fun onFailure(call: Call<GetAllKeluargaResponse>, t: Throwable) {
-                    Toast.makeText(activity,"Pesan: error", Toast.LENGTH_SHORT).show()
+                    view.onGetAllTokoFailure(t.message.toString())
                 }
             })
     }
@@ -47,13 +51,16 @@ class WargaJualBeliPresenter(private val activity: Activity, private var view: W
                 ) {
                     if (response.isSuccessful){
                         val result = response.body()?.getAllProduk as List<GetAllProdukItem>
-                        view.showDataProduk(result)
+                        view.onGetAllProdukSuccess(result)
                     } else{
+                        val jObjError = JSONObject(response.errorBody()?.string())
+                        val message = jObjError.getString("message")
+                        view.onGetAllProdukFailure(message)
                     }
                 }
 
                 override fun onFailure(call: Call<GetAllProdukResponse>, t: Throwable) {
-                    Toast.makeText(activity,"Pesan: error", Toast.LENGTH_SHORT).show()
+                    view.onGetAllProdukFailure(t.message.toString())
                 }
             })
     }

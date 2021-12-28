@@ -223,11 +223,11 @@ class ChangePassword : Fragment(), WargaEditProfileInterface {
         Toast.makeText(activity,message, Toast.LENGTH_SHORT).show()
     }
 
-    override fun onGetDataSuccess(list: GetMe?) {
+    override fun onGetDataSuccess(result: GetMe?) {
     }
 
-    override fun onGetDataFailed(message: String) {
+    override fun onGetDataFailure(message: String) {
+        Toast.makeText(activity,message, Toast.LENGTH_SHORT).show()
     }
-
 
 }

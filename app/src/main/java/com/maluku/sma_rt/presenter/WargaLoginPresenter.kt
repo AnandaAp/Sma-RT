@@ -15,6 +15,10 @@ import com.maluku.sma_rt.view.viewInterface.LoginWargaInterface
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import org.json.JSONObject
+
+
+
 
 private const val TAG = "LOGIN PRESENTER"
 class WargaLoginPresenter(private val activity: Activity, private val view: LoginWargaInterface) {
@@ -53,12 +57,11 @@ class WargaLoginPresenter(private val activity: Activity, private val view: Logi
                                     token
                                 )
                             }
-                            Toast.makeText(activity,"Pesan: ${response.message()}",
-                                Toast.LENGTH_SHORT).show()
                         }
                         false -> {
-                            Toast.makeText(activity,"Error: ${response.message()}",
-                                Toast.LENGTH_SHORT).show()
+                            val jObjError = JSONObject(response.errorBody()?.string())
+                            val message = jObjError.getString("message")
+                            view.onLoginFailure(message)
                         }
                     }
                 }

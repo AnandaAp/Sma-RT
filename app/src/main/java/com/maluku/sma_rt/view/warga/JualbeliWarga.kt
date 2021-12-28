@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.maluku.sma_rt.R
 import com.maluku.sma_rt.databinding.FragmentJualbeliWargaBinding
 import com.maluku.sma_rt.extentions.UserSession
+import com.maluku.sma_rt.extentions.UserSession.Companion.SHARED_PREFERENCE_NAME_KEY
 import com.maluku.sma_rt.model.keluarga.GetAllKeluargaItem
 import com.maluku.sma_rt.model.produk.GetAllProdukItem
 import com.maluku.sma_rt.presenter.WargaJualBeliPresenter
@@ -29,6 +30,8 @@ class JualbeliWarga : Fragment(), WargaJualBeliInterface {
     private lateinit var adapterToko: RecyclerViewToko
     private lateinit var adapterTerlaris: RecyclerViewTerlaris
 
+    private var namaWarga: String = ""
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -39,11 +42,19 @@ class JualbeliWarga : Fragment(), WargaJualBeliInterface {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        WargaJualBeliPresenter(requireActivity(), this).getAllKeluarga(getToken())
-        WargaJualBeliPresenter(requireActivity(), this).getAllProduk(getToken())
+        WargaJualBeliPresenter(this).getAllKeluarga(getToken())
+        WargaJualBeliPresenter(this).getAllProduk(getToken())
         setRecyclerViewToko()
         setRecyclerViewProduk()
+        setDataWarga()
         navigateToBasket()
+    }
+
+    private fun setDataWarga() {
+        val userSession = UserSession(requireActivity())
+        namaWarga = userSession
+            .getValueString(SHARED_PREFERENCE_NAME_KEY)
+        binding.tvNama.text = "Hi, ${namaWarga}"
     }
 
     private fun navigateToBasket() {
@@ -84,20 +95,20 @@ class JualbeliWarga : Fragment(), WargaJualBeliInterface {
         return binding.root
     }
 
-    override fun showDataToko(toko: List<GetAllKeluargaItem>) {
-        updateDataToko(toko)
+    override fun onGetAllTokoSuccess(result: List<GetAllKeluargaItem>) {
+        adapterToko.setData(result as ArrayList<GetAllKeluargaItem>)
     }
 
-    override fun updateDataToko(toko: List<GetAllKeluargaItem>) {
-        adapterToko.setData(toko as ArrayList<GetAllKeluargaItem>)
+    override fun onGetAllTokoFailure(message: String) {
+        TODO("Not yet implemented")
     }
 
-    override fun showDataProduk(produk: List<GetAllProdukItem>) {
-        updateDataProduk(produk)
+    override fun onGetAllProdukSuccess(result: List<GetAllProdukItem>) {
+        adapterTerlaris.setData(result as ArrayList<GetAllProdukItem>)
     }
 
-    override fun updateDataProduk(produk: List<GetAllProdukItem>) {
-        adapterTerlaris.setData(produk as ArrayList<GetAllProdukItem>)
+    override fun onGetAllProdukFailure(message: String) {
+        TODO("Not yet implemented")
     }
 
 }

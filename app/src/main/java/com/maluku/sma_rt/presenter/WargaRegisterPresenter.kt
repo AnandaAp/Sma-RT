@@ -19,6 +19,7 @@ import com.maluku.sma_rt.extentions.UserSession.Companion.SHARED_PREFERENCE_TOKE
 import com.maluku.sma_rt.extentions.UserValidator
 import com.maluku.sma_rt.model.warga.CreateWargaResponse
 import com.maluku.sma_rt.view.viewInterface.RegisterWargaInterface
+import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -87,12 +88,15 @@ class WargaRegisterPresenter(private val activity: Activity, private val view: R
                             Toast.makeText(activity,"Pesan: ${response.message()}",Toast.LENGTH_SHORT).show()
                         }
                         false -> {
-                            Toast.makeText(activity,"Error: ${response.message()}",Toast.LENGTH_SHORT).show()
+                            val jObjError = JSONObject(response.errorBody()?.string())
+                            val message = jObjError.getString("message")
+                            view.onRegisterFailure(message)
                         }
                     }
                 }
 
                 override fun onFailure(call: Call<CreateWargaResponse>, t: Throwable) {
+                    view.onRegisterFailure(t.message.toString())
                     Log.i(TAG, "onFailure: ${t.message}")
                 }
             })

@@ -8,8 +8,8 @@ interface DompetKeluargaInterface {
     fun onTopupFailure(message: String)
     fun onWithdrawSuccess(message: String)
     fun onWithdrawFailure(message: String)
-    fun onGetAllDataSuccess(list: List<GetAllDompetKeluargaItem?>?)
+    fun onGetAllDataSuccess(result: List<GetAllDompetKeluargaItem?>?)
     fun onGetAllDataFailed(message: String)
-    fun onGetDataSuccess(list: GetDompetKeluargaById?)
-    fun onGetDataFailed(message: String)
+    fun onGetDataSuccess(result: GetDompetKeluargaById?)
+    fun onGetDataFailure(message: String)
 }

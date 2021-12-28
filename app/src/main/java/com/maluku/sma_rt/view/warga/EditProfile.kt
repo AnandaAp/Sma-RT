@@ -165,7 +165,7 @@ class EditProfile : Fragment(), WargaEditProfileInterface {
 
         btnSimpan.setOnClickListener {
             dialog.dismiss()
-            val direction = EditProfileDirections.actionEditProfileToAkunWarga()
+            val direction = EditProfileDirections.actionEditProfileToHomeWarga()
             findNavController().navigate(direction)
         }
 
@@ -291,13 +291,12 @@ class EditProfile : Fragment(), WargaEditProfileInterface {
         Toast.makeText(activity,message, Toast.LENGTH_SHORT).show()
     }
 
-    override fun onGetDataSuccess(list: GetMe?) {
+    override fun onGetDataSuccess(result: GetMe?) {
         TODO("Not yet implemented")
     }
 
-    override fun onGetDataFailed(message: String) {
+    override fun onGetDataFailure(message: String) {
         TODO("Not yet implemented")
     }
-
 
 }

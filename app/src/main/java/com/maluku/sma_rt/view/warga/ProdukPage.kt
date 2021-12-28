@@ -14,13 +14,14 @@ import com.maluku.sma_rt.R
 import com.maluku.sma_rt.databinding.FragmentProdukPageBinding
 import com.maluku.sma_rt.extentions.UserSession
 import com.maluku.sma_rt.model.keluarga.GetAllProdukKeluargaItem
-import com.maluku.sma_rt.presenter.WargaTokoListProdukKeluargaPresenter
-import com.maluku.sma_rt.view.viewInterface.ListProdukInterface
+import com.maluku.sma_rt.model.produk.GetProdukById
+import com.maluku.sma_rt.presenter.ProdukPresenter
+import com.maluku.sma_rt.view.viewInterface.ProdukInterface
 import com.maluku.sma_rt.view.warga.adapter.RecyclerViewProdukpage
 
 private const val TAG = "PRODUK PAGE"
 
-class ProdukPage : Fragment(), ListProdukInterface {
+class ProdukPage : Fragment(), ProdukInterface {
 
     private lateinit var binding: FragmentProdukPageBinding
 
@@ -40,12 +41,12 @@ class ProdukPage : Fragment(), ListProdukInterface {
         setRecyclerViewListProduk()
         goBack()
         navigateToTambahProduk()
-        WargaTokoListProdukKeluargaPresenter(requireActivity(), this).getListProdukByToken(getToken())
+//        ProdukPresenter(this).getListProdukByToken(getToken())
     }
 
     override fun onStart() {
         super.onStart()
-        WargaTokoListProdukKeluargaPresenter(requireActivity(), this).getListProdukByToken(getToken())
+        ProdukPresenter(this).getListProdukByToken(getToken())
     }
 
     private fun getToken(): String {
@@ -81,30 +82,61 @@ class ProdukPage : Fragment(), ListProdukInterface {
         binding = FragmentProdukPageBinding.inflate(layoutInflater)
         return binding.root
     }
+//
+//    override fun showDataProduk(produk: List<GetAllProdukKeluargaItem>) {
+//        updateDataProduk(produk)
+//    }
+//
+//    override fun updateDataProduk(produk: List<GetAllProdukKeluargaItem>) {
+//        adapterProduk.setData(produk as ArrayList<GetAllProdukKeluargaItem>)
+//    }
+//
+//    override fun resultSuccess(result: List<GetAllProdukKeluargaItem>) {
+//        showDataProduk(result)
+//    }
+//
+//    override fun resultFailed(t: Throwable) {
+//        Toast.makeText(requireContext(),"Pesan: $t", Toast.LENGTH_LONG).show()
+//    }
 
-    override fun showDataProduk(produk: List<GetAllProdukKeluargaItem>) {
-        updateDataProduk(produk)
+    override fun onGetAllDataSuccess(data: List<GetAllProdukKeluargaItem?>?) {
+        adapterProduk.setData(data as ArrayList<GetAllProdukKeluargaItem>)
     }
 
-    override fun updateDataProduk(produk: List<GetAllProdukKeluargaItem>) {
-        adapterProduk.setData(produk as ArrayList<GetAllProdukKeluargaItem>)
+    override fun onGetAllDataFailure(message: String) {
+        Toast.makeText(requireContext(),message, Toast.LENGTH_LONG).show()
     }
 
-    override fun resultSuccess(result: List<GetAllProdukKeluargaItem>) {
-        showDataProduk(result)
+    override fun onGetDataSuccess(data: GetProdukById?) {
+        TODO("Not yet implemented")
     }
 
-    override fun resultFailed(t: Throwable) {
-        Toast.makeText(requireContext(),"Pesan: $t", Toast.LENGTH_LONG).show()
+    override fun onGetDataFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onCreateSuccess(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onCreateFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onUpdateSuccess(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onUpdateFailure(message: String) {
+        TODO("Not yet implemented")
     }
 
     override fun onDeleteSuccess(message: String) {
-        Toast.makeText(context,message, Toast.LENGTH_LONG).show()
-        WargaTokoListProdukKeluargaPresenter(requireActivity(), this).getListProdukByToken(getToken())
+        TODO("Not yet implemented")
     }
 
     override fun onDeleteFailure(message: String) {
-        Toast.makeText(context,message, Toast.LENGTH_LONG).show()
+        TODO("Not yet implemented")
     }
 
 }

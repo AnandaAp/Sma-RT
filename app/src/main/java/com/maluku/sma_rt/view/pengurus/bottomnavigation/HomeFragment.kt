@@ -124,7 +124,7 @@ class HomeFragment : Fragment(), InformasiInterface, DompetRTInterface, AdminRTP
         TODO("Not yet implemented")
     }
 
-    override fun onCreateInformasiFailed(message: String) {
+    override fun onCreateInformasiFailure(message: String) {
         TODO("Not yet implemented")
     }
 
@@ -132,32 +132,34 @@ class HomeFragment : Fragment(), InformasiInterface, DompetRTInterface, AdminRTP
         TODO("Not yet implemented")
     }
 
-    override fun onGetAllInformasiFailed(message: String) {
+    override fun onGetAllInformasiFailure(message: String) {
         TODO("Not yet implemented")
     }
 
-    override fun onGetInformasiSuccess(result: List<GetInformasiById>) {
+    override fun onGetInformasiSuccess(result: GetInformasiById?) {
         TODO("Not yet implemented")
     }
 
-    override fun onGetInformasiFailed(message: String) {
+    override fun onGetInformasiFailure(message: String) {
         TODO("Not yet implemented")
     }
 
-    override fun showDataInfoTerkini(info: List<GetAllInformasiItem>) {
-        updateDataInfoTerkini(info)
+
+    override fun onGetInfoTerkiniSuccess(data: List<GetAllInformasiItem>) {
+        adapterInfo.setData(data as ArrayList<GetAllInformasiItem>)
     }
 
-    override fun updateDataInfoTerkini(info: List<GetAllInformasiItem>) {
-        adapterInfo.setData(info as ArrayList<GetAllInformasiItem>)
+    override fun onGetInfoTerkiniFailure(message: String) {
+        TODO("Not yet implemented")
     }
 
-    override fun showDataKegiatan(kegiatan: List<GetAllInformasiItem>) {
-        updateDataKegiatan(kegiatan)
+
+    override fun onGetKegiatanSuccess(data: List<GetAllInformasiItem>) {
+        adapterGaleri.setData(data as ArrayList<GetAllInformasiItem>)
     }
 
-    override fun updateDataKegiatan(kegiatan: List<GetAllInformasiItem>) {
-        adapterGaleri.setData(kegiatan as ArrayList<GetAllInformasiItem>)
+    override fun onGetKegiatanFailure(message: String) {
+        TODO("Not yet implemented")
     }
 
     override fun onGetAllDataSuccess(result: GetDompetById?) {

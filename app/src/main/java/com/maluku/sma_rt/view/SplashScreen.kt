@@ -22,7 +22,6 @@ import com.maluku.sma_rt.extentions.UserSession.Companion.SHARED_PREFERENCE_PHON
 import com.maluku.sma_rt.extentions.UserSession.Companion.SHARED_PREFERENCE_ROLE_KEY
 import com.maluku.sma_rt.extentions.UserSession.Companion.SHARED_PREFERENCE_TOKEN_KEY
 import com.maluku.sma_rt.presenter.CekLoginSessionPresenter
-import com.maluku.sma_rt.presenter.WargaTokoListProdukKeluargaPresenter
 import com.maluku.sma_rt.view.activity.DashboardRTActivity
 import com.maluku.sma_rt.view.activity.DashboardWargaActivity
 import com.maluku.sma_rt.view.viewInterface.CekLoginSessionInterface

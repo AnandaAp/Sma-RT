@@ -16,14 +16,16 @@ import com.google.firebase.storage.FirebaseStorage
 import com.maluku.sma_rt.R
 import com.maluku.sma_rt.databinding.FragmentTambahProdukBinding
 import com.maluku.sma_rt.extentions.UserSession
-import com.maluku.sma_rt.presenter.WargaTokoTambahProdukPresenter
-import com.maluku.sma_rt.view.viewInterface.TambahProdukInterface
+import com.maluku.sma_rt.model.keluarga.GetAllProdukKeluargaItem
+import com.maluku.sma_rt.model.produk.GetProdukById
+import com.maluku.sma_rt.presenter.ProdukPresenter
+import com.maluku.sma_rt.view.viewInterface.ProdukInterface
 import java.text.SimpleDateFormat
 import java.util.*
 
 private const val TAG = "TAMBAH PRODUK"
 
-class TambahProduk : Fragment(), TambahProdukInterface {
+class TambahProduk : Fragment(), ProdukInterface {
 
     private lateinit var binding: FragmentTambahProdukBinding
 
@@ -98,7 +100,7 @@ class TambahProduk : Fragment(), TambahProdukInterface {
             if (imageUri != null){
                 uploadImage()
             }
-            addProduct(namaProduk,detailProduk,gambarProduk,hargaProduk)
+            tambahProduk(namaProduk,detailProduk,gambarProduk,hargaProduk)
         } else {
             if (!validNama){
                 binding.edNamaproduk.error = "Masukan nama produk!"
@@ -179,8 +181,8 @@ class TambahProduk : Fragment(), TambahProdukInterface {
         return binding.root
     }
 
-    override fun addProduct(nama: String, detail: String, gambar: String, harga: String) {
-        WargaTokoTambahProdukPresenter(requireActivity(),this).tambahProduk(
+    fun tambahProduk(nama: String, detail: String, gambar: String, harga: String) {
+        ProdukPresenter(this).tambahProduk(
             getToken(),
             namaProduk,
             detailProduk,
@@ -189,13 +191,45 @@ class TambahProduk : Fragment(), TambahProdukInterface {
         )
     }
 
+    override fun onGetAllDataSuccess(data: List<GetAllProdukKeluargaItem?>?) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetAllDataFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetDataSuccess(data: GetProdukById?) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetDataFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
     override fun onCreateSuccess(message: String) {
         Toast.makeText(context,message, Toast.LENGTH_LONG).show()
         val direction = TambahProdukDirections.actionTambahProdukToProdukPage()
         findNavController().navigate(direction)
     }
 
-    override fun onCreateFailed(message: String) {
+    override fun onCreateFailure(message: String) {
         Toast.makeText(context,message, Toast.LENGTH_LONG).show()
+    }
+
+    override fun onUpdateSuccess(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onUpdateFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onDeleteSuccess(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onDeleteFailure(message: String) {
+        TODO("Not yet implemented")
     }
 }

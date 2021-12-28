@@ -24,15 +24,17 @@ import com.google.firebase.storage.FirebaseStorage
 import com.maluku.sma_rt.R
 import com.maluku.sma_rt.databinding.FragmentEditProdukBinding
 import com.maluku.sma_rt.extentions.UserSession
-import com.maluku.sma_rt.presenter.WargaTokoEditProdukPresenter
-import com.maluku.sma_rt.view.viewInterface.EditProdukInterface
+import com.maluku.sma_rt.model.keluarga.GetAllProdukKeluargaItem
+import com.maluku.sma_rt.model.produk.GetProdukById
+import com.maluku.sma_rt.presenter.ProdukPresenter
+import com.maluku.sma_rt.view.viewInterface.ProdukInterface
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
 
 private const val TAG = "EDIT PRODUK"
 
-class EditProduk : Fragment(), EditProdukInterface {
+class EditProduk : Fragment(), ProdukInterface {
     val args: EditProdukArgs by navArgs()
 
     private lateinit var binding: FragmentEditProdukBinding
@@ -162,7 +164,7 @@ class EditProduk : Fragment(), EditProdukInterface {
             if (imageUri != null){
                 uploadImage()
             }
-            updateProduct(namaProduk,detailProduk,gambarProduk,hargaProduk)
+            updateProduk(namaProduk,detailProduk,gambarProduk,hargaProduk)
         } else {
             if (!validNama){
                 binding.edNamaproduk.error = "Masukan nama produk!"
@@ -178,7 +180,7 @@ class EditProduk : Fragment(), EditProdukInterface {
     }
 
     private fun hapusProduk() {
-        WargaTokoEditProdukPresenter(requireActivity(),this).hapusProduk(
+        ProdukPresenter(this).hapusProduk(
             getToken(),
             idProduk
         )
@@ -243,8 +245,8 @@ class EditProduk : Fragment(), EditProdukInterface {
         return binding.root
     }
 
-    override fun updateProduct(nama: String, detail: String, gambar: String, harga: String) {
-        WargaTokoEditProdukPresenter(requireActivity(),this).updateProduk(
+    fun updateProduk(nama: String, detail: String, gambar: String, harga: String) {
+        ProdukPresenter(this).updateProduk(
             getToken(),
             idProduk,
             namaProduk,
@@ -253,6 +255,30 @@ class EditProduk : Fragment(), EditProdukInterface {
             hargaProduk,
             statusProduk.toString()
         )
+    }
+
+    override fun onGetAllDataSuccess(data: List<GetAllProdukKeluargaItem?>?) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetAllDataFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetDataSuccess(data: GetProdukById?) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetDataFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onCreateSuccess(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onCreateFailure(message: String) {
+        TODO("Not yet implemented")
     }
 
     override fun onUpdateSuccess(message: String) {

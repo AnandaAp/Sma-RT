@@ -63,39 +63,40 @@ class InformasiMasukFragment : Fragment(), InformasiInterface{
         TODO("Not yet implemented")
     }
 
-    override fun onCreateInformasiFailed(message: String) {
+    override fun onCreateInformasiFailure(message: String) {
         TODO("Not yet implemented")
     }
+
 
     override fun onGetAllInformasiSuccess(result: List<GetAllInformasiItem>) {
         adapterInformasi.setData(result as ArrayList<GetAllInformasiItem>)
     }
 
-    override fun onGetAllInformasiFailed(message: String) {
+    override fun onGetAllInformasiFailure(message: String) {
         Toast.makeText(requireContext(),"Pesan: $message",Toast.LENGTH_LONG).show()
     }
 
-    override fun onGetInformasiSuccess(result: List<GetInformasiById>) {
+    override fun onGetInformasiSuccess(result: GetInformasiById?) {
         TODO("Not yet implemented")
     }
 
-    override fun onGetInformasiFailed(message: String) {
+    override fun onGetInformasiFailure(message: String) {
         TODO("Not yet implemented")
     }
 
-    override fun showDataInfoTerkini(info: List<GetAllInformasiItem>) {
+    override fun onGetInfoTerkiniSuccess(data: List<GetAllInformasiItem>) {
         TODO("Not yet implemented")
     }
 
-    override fun updateDataInfoTerkini(info: List<GetAllInformasiItem>) {
+    override fun onGetInfoTerkiniFailure(message: String) {
         TODO("Not yet implemented")
     }
 
-    override fun showDataKegiatan(kegiatan: List<GetAllInformasiItem>) {
+    override fun onGetKegiatanSuccess(data: List<GetAllInformasiItem>) {
         TODO("Not yet implemented")
     }
 
-    override fun updateDataKegiatan(kegiatan: List<GetAllInformasiItem>) {
+    override fun onGetKegiatanFailure(message: String) {
         TODO("Not yet implemented")
     }
 

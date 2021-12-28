@@ -163,7 +163,7 @@ class TarikSaldo : Fragment(), DompetKeluargaInterface {
         setDompetKeluarga(list!!)
     }
 
-    override fun onGetDataFailed(message: String) {
-        Toast.makeText(requireContext(),message, Toast.LENGTH_LONG).show()
+    override fun onGetDataFailure(message: String) {
+        TODO("Not yet implemented")
     }
 }

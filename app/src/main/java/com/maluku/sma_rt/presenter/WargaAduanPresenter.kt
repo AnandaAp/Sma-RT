@@ -8,6 +8,7 @@ import com.maluku.sma_rt.model.aduan.GetAllAduanResponse
 import com.maluku.sma_rt.model.keluarga.GetAllKeluargaWargaItem
 import com.maluku.sma_rt.model.updateanddelete.OnDataResponse
 import com.maluku.sma_rt.view.viewInterface.WargaAduanInterface
+import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -33,11 +34,12 @@ class WargaAduanPresenter(private val view: WargaAduanInterface) {
                         call: Call<CreateAduanResponse>,
                         response: Response<CreateAduanResponse>
                     ) {
-                        val message = response.body()?.message.toString()
                         if (response.isSuccessful) {
-//                            Toast.makeText(activity,"Pesan: ${response.message()}", Toast.LENGTH_SHORT).show()
+                            val message = response.body()?.message.toString()
                             view.onCreateSuccess(message)
                         } else {
+                            val jObjError = JSONObject(response.errorBody()?.string())
+                            val message = jObjError.getString("message")
                             view.onCreateFailed(message)
                         }
                     }
@@ -121,7 +123,9 @@ class WargaAduanPresenter(private val view: WargaAduanInterface) {
                         val list = response.body()?.getAllAduan as List<GetAllAduanItem>
                         view.onGetAllDataSuccess(list)
                     } else{
-                        view.onGetAllDataFailed(response.message())
+                        val jObjError = JSONObject(response.errorBody()?.string())
+                        val message = jObjError.getString("message")
+                        view.onGetAllDataFailed(message)
                     }
                 }
 

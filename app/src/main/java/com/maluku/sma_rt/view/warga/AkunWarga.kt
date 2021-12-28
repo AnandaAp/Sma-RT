@@ -53,7 +53,7 @@ class AkunWarga : Fragment(), WargaEditProfileInterface {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        WargaEditProfilePresenter(this).getDataLogin(getToken())
+        setDataWarga()
         goBack()
         navigateToKelolaToko()
         navigateToEditProfile()
@@ -73,19 +73,20 @@ class AkunWarga : Fragment(), WargaEditProfileInterface {
         return binding.root
     }
 
-    private fun setDataWarga(data: GetMe) {
-        idWarga = data!!.id.toString()
-        nama = data!!.nama.toString()
-        noHp = data!!.noHp.toString()
-        email = data!!.email.toString()
-        gender = data!!.gender.toString()
-        password = data!!.password.toString()
-        gambarWarga = data!!.gambar.toString()
+    private fun setDataWarga() {
+        val userSession = UserSession(requireActivity())
+        idWarga = userSession.getValueString(UserSession.SHARED_PREFERENCE_ID_KEY)
+        nama = userSession.getValueString(UserSession.SHARED_PREFERENCE_NAME_KEY)
+        noHp = userSession.getValueString(UserSession.SHARED_PREFERENCE_PHONE_NUMBER_KEY)
+        email = userSession.getValueString(UserSession.SHARED_PREFERENCE_EMAIL_KEY)
+        gender = userSession.getValueString(UserSession.SHARED_PREFERENCE_GENDER_KEY)
+        password = userSession.getValueString(UserSession.SHARED_PREFERENCE_PASSWORD_KEY)
+        gambarWarga = userSession.getValueString(UserSession.SHARED_PREFERENCE_PICTURE_KEY)
 
         binding.namaWarga.text = nama
 
         // Firebase Storage
-        val storageRef = FirebaseStorage.getInstance().reference.child("user/${data.gambar}")
+        val storageRef = FirebaseStorage.getInstance().reference.child("user/${gambarWarga}")
         Log.d(ContentValues.TAG,"Adapter get ref image: $storageRef")
         val localFile = File.createTempFile("tempFile","jpg")
         storageRef.getFile(localFile).addOnSuccessListener {
@@ -97,7 +98,6 @@ class AkunWarga : Fragment(), WargaEditProfileInterface {
         }.addOnFailureListener {
 
         }
-
     }
 
     private fun goBack() {
@@ -169,13 +169,12 @@ class AkunWarga : Fragment(), WargaEditProfileInterface {
         TODO("Not yet implemented")
     }
 
-    override fun onGetDataSuccess(list: GetMe?) {
-        setDataWarga(list!!)
+    override fun onGetDataSuccess(result: GetMe?) {
+//        setDataWarga(result!!)
     }
 
-    override fun onGetDataFailed(message: String) {
+    override fun onGetDataFailure(message: String) {
         Toast.makeText(requireContext(),message, Toast.LENGTH_LONG).show()
     }
-
 
 }

@@ -6,6 +6,7 @@ import android.widget.Toast
 import com.maluku.sma_rt.api.RetrofitService
 import com.maluku.sma_rt.model.informasi.*
 import com.maluku.sma_rt.view.viewInterface.InformasiInterface
+import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -39,12 +40,14 @@ class InformasiPresenter(private val view: InformasiInterface) {
                     if (response.isSuccessful){
                         view.onCreateInformasiSuccess("Berhasil menambah informasi!")
                     } else {
-                        view.onCreateInformasiFailed("Gagal menambah informasi!")
+                        val jObjError = JSONObject(response.errorBody()?.string())
+                        val message = jObjError.getString("message")
+                        view.onCreateInformasiFailure(message)
                     }
                 }
 
                 override fun onFailure(call: Call<CreateInformasiResponse>, t: Throwable) {
-                    view.onCreateInformasiFailed("Gagal menambah informasi!")
+                    view.onCreateInformasiFailure(t.message.toString())
                     Log.i(TAG, "onFailure: ${t.message.toString()}")
                 }
             })
@@ -63,12 +66,14 @@ class InformasiPresenter(private val view: InformasiInterface) {
                         val result = response.body()?.getAllInformasi as List<GetAllInformasiItem>
                         view.onGetAllInformasiSuccess(result)
                     } else{
-                        view.onGetAllInformasiFailed(response.message().toString())
+                        val jObjError = JSONObject(response.errorBody()?.string())
+                        val message = jObjError.getString("message")
+                        view.onGetAllInformasiFailure(message)
                     }
                 }
 
                 override fun onFailure(call: Call<GetAllInformasiResponse>, t: Throwable) {
-                    view.onGetAllInformasiFailed("Pesan: ${t.message.toString()}")
+                    view.onGetAllInformasiFailure(t.message.toString())
                 }
             })
     }
@@ -84,14 +89,16 @@ class InformasiPresenter(private val view: InformasiInterface) {
                 ) {
                     if (response.isSuccessful){
                         val result = response.body()?.getAllInformasi as List<GetAllInformasiItem>
-                        view.showDataInfoTerkini(result)
+                        view.onGetInfoTerkiniSuccess(result)
                     } else{
-                        view.onGetAllInformasiFailed(response.message().toString())
+                        val jObjError = JSONObject(response.errorBody()?.string())
+                        val message = jObjError.getString("message")
+                        view.onGetInfoTerkiniFailure(message)
                     }
                 }
 
                 override fun onFailure(call: Call<GetAllInformasiResponse>, t: Throwable) {
-                    view.onGetAllInformasiFailed("Pesan: ${t.message.toString()}")
+                    view.onGetInfoTerkiniFailure(t.message.toString())
                 }
             })
     }
@@ -107,14 +114,16 @@ class InformasiPresenter(private val view: InformasiInterface) {
                 ) {
                     if (response.isSuccessful){
                         val result = response.body()?.getAllInformasi as List<GetAllInformasiItem>
-                        view.showDataKegiatan(result)
+                        view.onGetKegiatanSuccess(result)
                     } else{
-                        view.onGetAllInformasiFailed(response.message().toString())
+                        val jObjError = JSONObject(response.errorBody()?.string())
+                        val message = jObjError.getString("message")
+                        view.onGetInfoTerkiniFailure(message)
                     }
                 }
 
                 override fun onFailure(call: Call<GetAllInformasiResponse>, t: Throwable) {
-                    view.onGetAllInformasiFailed("Pesan: ${t.message.toString()}")
+                    view.onGetKegiatanFailure(t.message.toString())
                 }
             })
     }
@@ -135,15 +144,17 @@ class InformasiPresenter(private val view: InformasiInterface) {
                     response: Response<GetInformasiByIDResponse>
                 ) {
                     if (response.isSuccessful){
-                        val result = response.body()?.getInformasiById as List<GetInformasiById>
+                        val result = response.body()?.getInformasiById as GetInformasiById
                         view.onGetInformasiSuccess(result)
                     } else{
-                        view.onGetInformasiFailed(response.message().toString())
+                        val jObjError = JSONObject(response.errorBody()?.string())
+                        val message = jObjError.getString("message")
+                        view.onGetInformasiFailure(message)
                     }
                 }
 
                 override fun onFailure(call: Call<GetInformasiByIDResponse>, t: Throwable) {
-                    view.onGetInformasiFailed("Pesan: ${t.message.toString()}")
+                    view.onGetInformasiFailure(t.message.toString())
                 }
             })
     }

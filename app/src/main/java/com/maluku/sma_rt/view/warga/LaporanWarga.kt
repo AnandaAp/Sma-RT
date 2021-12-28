@@ -25,7 +25,6 @@ import com.maluku.sma_rt.extentions.UserSession
 import com.maluku.sma_rt.model.aduan.GetAduanById
 import com.maluku.sma_rt.model.aduan.GetAllAduanItem
 import com.maluku.sma_rt.presenter.WargaAduanPresenter
-import com.maluku.sma_rt.presenter.WargaTokoTambahProdukPresenter
 import com.maluku.sma_rt.view.viewInterface.WargaAduanInterface
 import java.text.SimpleDateFormat
 import java.util.*

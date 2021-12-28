@@ -167,7 +167,7 @@ class RegisterWarga : Fragment(), RegisterWargaInterface {
         return binding.root
     }
 
-    override fun registerWarga(
+    fun registerWarga(
         kode_keluarga: String,
         gender: String,
         no_hp: String,
@@ -200,4 +200,9 @@ class RegisterWarga : Fragment(), RegisterWargaInterface {
         Toast.makeText(context,message,Toast.LENGTH_LONG).show()
         navigateToDashboard()
     }
+
+    override fun onRegisterFailure(message: String) {
+        Toast.makeText(context,message,Toast.LENGTH_LONG).show()
+    }
+
 }

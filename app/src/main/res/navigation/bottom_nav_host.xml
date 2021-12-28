@@ -225,6 +225,9 @@
         <argument
             android:name="warga_gambar"
             app:argType="string" />
+        <action
+            android:id="@+id/action_editProfile_to_homeWarga"
+            app:destination="@id/homeWarga" />
     </fragment>
     <fragment
         android:id="@+id/pengaturanToko"

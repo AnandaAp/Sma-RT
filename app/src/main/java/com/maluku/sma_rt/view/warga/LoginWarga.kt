@@ -82,7 +82,7 @@ class LoginWarga : Fragment(), LoginWargaInterface{
     }
 
 
-    override fun loginWarga(email: String, password: String) {
+    fun loginWarga(email: String, password: String) {
         WargaLoginPresenter(requireActivity(), this)
             .loginUser(
                 email,
@@ -109,6 +109,9 @@ class LoginWarga : Fragment(), LoginWargaInterface{
     override fun onLoginSuccess(message: String) {
         Toast.makeText(context,message,Toast.LENGTH_LONG).show()
         navigateToDashboard()
+    }
 
+    override fun onLoginFailure(message: String) {
+        Toast.makeText(context,message,Toast.LENGTH_LONG).show()
     }
 }

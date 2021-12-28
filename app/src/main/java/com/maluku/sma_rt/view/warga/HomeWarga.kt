@@ -20,6 +20,14 @@ import com.google.firebase.storage.FirebaseStorage
 import com.maluku.sma_rt.R
 import com.maluku.sma_rt.databinding.FragmentHomeWargaBinding
 import com.maluku.sma_rt.extentions.UserSession
+import com.maluku.sma_rt.extentions.UserSession.Companion.SHARED_PREFERENCE_EMAIL_KEY
+import com.maluku.sma_rt.extentions.UserSession.Companion.SHARED_PREFERENCE_FAMILY_ID_KEY
+import com.maluku.sma_rt.extentions.UserSession.Companion.SHARED_PREFERENCE_GENDER_KEY
+import com.maluku.sma_rt.extentions.UserSession.Companion.SHARED_PREFERENCE_ID_KEY
+import com.maluku.sma_rt.extentions.UserSession.Companion.SHARED_PREFERENCE_NAME_KEY
+import com.maluku.sma_rt.extentions.UserSession.Companion.SHARED_PREFERENCE_PASSWORD_KEY
+import com.maluku.sma_rt.extentions.UserSession.Companion.SHARED_PREFERENCE_PHONE_NUMBER_KEY
+import com.maluku.sma_rt.extentions.UserSession.Companion.SHARED_PREFERENCE_PICTURE_KEY
 import com.maluku.sma_rt.model.dompetkeluarga.GetAllDompetKeluargaItem
 import com.maluku.sma_rt.model.dompetkeluarga.GetDompetKeluargaById
 import com.maluku.sma_rt.model.informasi.GetAllInformasiItem
@@ -73,6 +81,16 @@ class HomeWarga : Fragment(), InformasiInterface, DompetKeluargaInterface, Warga
     }
 
     private fun setDataWarga(data: GetMe) {
+        val userSession = UserSession(requireActivity())
+        userSession.save(SHARED_PREFERENCE_NAME_KEY, data.nama!!)
+        userSession.save(SHARED_PREFERENCE_EMAIL_KEY, data.email!!)
+        userSession.save(SHARED_PREFERENCE_GENDER_KEY, data.gender!!)
+        userSession.save(SHARED_PREFERENCE_ID_KEY, data.id!!)
+        userSession.save(SHARED_PREFERENCE_FAMILY_ID_KEY, data.idKeluarga!!)
+        userSession.save(SHARED_PREFERENCE_PICTURE_KEY, data.gambar!!)
+        userSession.save(SHARED_PREFERENCE_PHONE_NUMBER_KEY, data.noHp!!)
+        userSession.save(SHARED_PREFERENCE_PASSWORD_KEY, data.password!!)
+
         namaWarga = data.nama.toString()
 
         binding.textView4.text = "Hi, ${namaWarga}"
@@ -148,7 +166,7 @@ class HomeWarga : Fragment(), InformasiInterface, DompetKeluargaInterface, Warga
         TODO("Not yet implemented")
     }
 
-    override fun onCreateInformasiFailed(message: String) {
+    override fun onCreateInformasiFailure(message: String) {
         TODO("Not yet implemented")
     }
 
@@ -156,32 +174,32 @@ class HomeWarga : Fragment(), InformasiInterface, DompetKeluargaInterface, Warga
         TODO("Not yet implemented")
     }
 
-    override fun onGetAllInformasiFailed(message: String) {
+    override fun onGetAllInformasiFailure(message: String) {
         TODO("Not yet implemented")
     }
 
-    override fun onGetInformasiSuccess(result: List<GetInformasiById>) {
+    override fun onGetInformasiSuccess(result: GetInformasiById?) {
         TODO("Not yet implemented")
     }
 
-    override fun onGetInformasiFailed(message: String) {
+    override fun onGetInformasiFailure(message: String) {
         TODO("Not yet implemented")
     }
 
-    override fun showDataInfoTerkini(info: List<GetAllInformasiItem>) {
-        updateDataInfoTerkini(info)
+    override fun onGetInfoTerkiniSuccess(result: List<GetAllInformasiItem>) {
+        adapterInfo.setData(result as ArrayList<GetAllInformasiItem>)
     }
 
-    override fun updateDataInfoTerkini(info: List<GetAllInformasiItem>) {
-        adapterInfo.setData(info as ArrayList<GetAllInformasiItem>)
+    override fun onGetInfoTerkiniFailure(message: String) {
+        TODO("Not yet implemented")
     }
 
-    override fun showDataKegiatan(kegiatan: List<GetAllInformasiItem>) {
-        updateDataKegiatan(kegiatan)
+    override fun onGetKegiatanSuccess(result: List<GetAllInformasiItem>) {
+        adapterKegiatan.setData((result as ArrayList<GetAllInformasiItem>))
     }
 
-    override fun updateDataKegiatan(kegiatan: List<GetAllInformasiItem>) {
-        adapterKegiatan.setData((kegiatan as ArrayList<GetAllInformasiItem>))
+    override fun onGetKegiatanFailure(message: String) {
+        TODO("Not yet implemented")
     }
 
     private fun toRupiah(number: Double): String{
@@ -206,7 +224,7 @@ class HomeWarga : Fragment(), InformasiInterface, DompetKeluargaInterface, Warga
         TODO("Not yet implemented")
     }
 
-    override fun onGetAllDataSuccess(list: List<GetAllDompetKeluargaItem?>?) {
+    override fun onGetAllDataSuccess(result: List<GetAllDompetKeluargaItem?>?) {
         TODO("Not yet implemented")
     }
 
@@ -214,8 +232,8 @@ class HomeWarga : Fragment(), InformasiInterface, DompetKeluargaInterface, Warga
         TODO("Not yet implemented")
     }
 
-    override fun onGetDataSuccess(list: GetDompetKeluargaById?) {
-        setDompetKeluarga(list!!)
+    override fun onGetDataSuccess(result: GetDompetKeluargaById?) {
+        setDompetKeluarga(result!!)
     }
 
     override fun onUpdateSuccess(message: String) {
@@ -226,11 +244,11 @@ class HomeWarga : Fragment(), InformasiInterface, DompetKeluargaInterface, Warga
         TODO("Not yet implemented")
     }
 
-    override fun onGetDataSuccess(list: GetMe?) {
-        setDataWarga(list!!)
+    override fun onGetDataSuccess(result: GetMe?) {
+        setDataWarga(result!!)
     }
 
-    override fun onGetDataFailed(message: String) {
+    override fun onGetDataFailure(message: String) {
         Toast.makeText(requireContext(),message, Toast.LENGTH_LONG).show()
     }
 
