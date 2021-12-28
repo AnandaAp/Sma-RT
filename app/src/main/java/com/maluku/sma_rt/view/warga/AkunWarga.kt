@@ -54,7 +54,6 @@ class AkunWarga : Fragment(), WargaEditProfileInterface {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setDataWarga()
-        goBack()
         navigateToKelolaToko()
         navigateToEditProfile()
         navigateToChangePassword()
@@ -100,12 +99,6 @@ class AkunWarga : Fragment(), WargaEditProfileInterface {
         }
     }
 
-    private fun goBack() {
-        binding.btnBack.setOnClickListener{
-            val intent = Intent (activity, DashboardWargaActivity::class.java)
-            startActivity(intent)
-        }
-    }
 
 
     private fun navigateToKelolaToko() {
