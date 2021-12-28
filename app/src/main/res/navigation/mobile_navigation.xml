@@ -78,7 +78,11 @@
         android:id="@+id/navigation_profil"
         android:name="com.maluku.sma_rt.view.pengurus.bottomnavigation.AccountFragment"
         android:label="@string/title_Manage"
-        tools:layout="@layout/fragment_account" />
+        tools:layout="@layout/fragment_account" >
+        <action
+            android:id="@+id/action_navigation_profil_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
+    </fragment>
     <fragment
         android:id="@+id/tambahKeluargaFragment"
         android:name="com.maluku.sma_rt.view.pengurus.TambahKeluargaFragment"
@@ -245,6 +249,33 @@
             app:argType="string" />
         <argument
             android:name="detail_tagihan"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.maluku.sma_rt.view.pengurus.EditProfileFragment"
+        android:label="fragment_edit_profile_rt"
+        tools:layout="@layout/fragment_edit_profile_rt" >
+        <action
+            android:id="@+id/action_editProfileFragment_to_navigation_profil"
+            app:destination="@id/navigation_profil" />
+        <argument
+            android:name="pengurus_id"
+            app:argType="string" />
+        <argument
+            android:name="nama_pengurus"
+            app:argType="string" />
+        <argument
+            android:name="gambar_pengurus"
+            app:argType="string" />
+        <argument
+            android:name="no_hp"
+            app:argType="string" />
+        <argument
+            android:name="jenis_kelamin"
+            app:argType="string" />
+        <argument
+            android:name="email_pengurus"
             app:argType="string" />
     </fragment>
 </navigation>
