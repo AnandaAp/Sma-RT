@@ -21,17 +21,20 @@ import com.maluku.sma_rt.databinding.FragmentAccountBinding
 import com.maluku.sma_rt.extentions.UserSession
 import com.maluku.sma_rt.model.dompetrt.GetDompetById
 import com.maluku.sma_rt.model.pengurus.GetPengurusById
+import com.maluku.sma_rt.model.warga.GetAllWargaItem
 import com.maluku.sma_rt.presenter.AdminRTProfilePresenter
 import com.maluku.sma_rt.presenter.DompetRTPresenter
+import com.maluku.sma_rt.presenter.ListWargaPresenter
 import com.maluku.sma_rt.view.activity.MainActivity
 import com.maluku.sma_rt.view.pengurus.DaftarBuatIuranFragmentDirections
 import com.maluku.sma_rt.view.viewInterface.AdminRTProfileInterface
 import com.maluku.sma_rt.view.viewInterface.DompetRTInterface
+import com.maluku.sma_rt.view.viewInterface.ListWargaViewInterface
 import java.io.File
 import java.text.NumberFormat
 import java.util.*
 
-class AccountFragment : Fragment(), DompetRTInterface, AdminRTProfileInterface {
+class AccountFragment : Fragment(), DompetRTInterface, AdminRTProfileInterface, ListWargaViewInterface {
     private lateinit var binding: FragmentAccountBinding
     private var idPengurus : String = ""
     private var nama : String = ""
@@ -59,6 +62,7 @@ class AccountFragment : Fragment(), DompetRTInterface, AdminRTProfileInterface {
         navigateAkunToEditProfil()
         AdminRTProfilePresenter(this).getDataLoginPengurus(getToken())
         DompetRTPresenter(this).getDompetRTByLogin(getToken())
+        ListWargaPresenter(requireActivity(),this).getListWargaPresenter(getToken(),null)
         logout()
     }
 
@@ -145,5 +149,12 @@ class AccountFragment : Fragment(), DompetRTInterface, AdminRTProfileInterface {
         }
     }
 
+    override fun resultListWargaSuccess(result: List<GetAllWargaItem>) {
+        binding.tvTotalWarga.text = result.size.toString()
+    }
+
+    override fun resultListWargaFailed(t: Throwable) {
+        Toast.makeText(requireContext(),"Pesan ${t.message.toString()}", Toast.LENGTH_LONG).show()
+    }
 
 }

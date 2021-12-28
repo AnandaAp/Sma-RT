@@ -1,6 +1,8 @@
 package com.maluku.sma_rt.view.pengurus.bottomnavigation
 
+import android.content.ContentValues
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +11,11 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.request.RequestOptions
+import com.google.firebase.storage.FirebaseStorage
 import com.maluku.sma_rt.R
 import com.maluku.sma_rt.databinding.FragmentHomeBinding
 import com.maluku.sma_rt.extentions.UserSession
@@ -24,6 +31,7 @@ import com.maluku.sma_rt.view.pengurus.adapter.InfoAdapter
 import com.maluku.sma_rt.view.viewInterface.AdminRTProfileInterface
 import com.maluku.sma_rt.view.viewInterface.DompetRTInterface
 import com.maluku.sma_rt.view.viewInterface.InformasiInterface
+import java.io.File
 import java.text.NumberFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -186,6 +194,19 @@ class HomeFragment : Fragment(), InformasiInterface, DompetRTInterface, AdminRTP
 
     override fun onGetDataSuccess(result: GetPengurusById?) {
         binding.tvNamaPengurus.text = "Hi, ${result?.nama.toString()}"
+        // Firebase Storage
+        val storageRef = FirebaseStorage.getInstance().reference.child("user/${result?.gambar}")
+        Log.d(ContentValues.TAG,"Adapter get ref image: $storageRef")
+        val localFile = File.createTempFile("tempFile","jpg")
+        storageRef.getFile(localFile).addOnSuccessListener {
+            // Tampilkan gambar dengan Glide
+            Glide.with(this)
+                .load(localFile.path)
+                .apply(RequestOptions().transform(CenterCrop(), RoundedCorners(10)))
+                .into(binding.ivProfilPengurus)
+        }.addOnFailureListener {
+
+        }
     }
 
     override fun onGetDataFailed(message: String) {

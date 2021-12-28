@@ -62,10 +62,10 @@
                 android:textSize="12sp" />
 
             <TextView
-                android:id="@+id/textView61"
+                android:id="@+id/tvTotalWarga"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="40"
+                android:text="100"
                 android:textAlignment="center"
                 android:textSize="12sp" />
         </LinearLayout>
@@ -124,7 +124,7 @@
                 android:textSize="12sp" />
 
             <TextView
-                android:id="@+id/textView65"
+                android:id="@+id/tvTotalSurat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="5"
@@ -155,7 +155,7 @@
                 android:textSize="12sp" />
 
             <TextView
-                android:id="@+id/textView67"
+                android:id="@+id/tvTotalLaporan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="5"

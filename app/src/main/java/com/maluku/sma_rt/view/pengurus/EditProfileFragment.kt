@@ -12,12 +12,14 @@ import android.widget.Toast
 import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.google.firebase.storage.FirebaseStorage
+import com.maluku.sma_rt.R
 import com.maluku.sma_rt.databinding.FragmentEditProfileRtBinding
 import com.maluku.sma_rt.extentions.UserSession
 import com.maluku.sma_rt.model.pengurus.GetPengurusById
@@ -64,6 +66,9 @@ class EditProfileFragment : Fragment(), AdminRTProfileInterface {
         )
         pickImage(getImage)
         savePengurusProfil()
+        binding.btnBatalEdit.setOnClickListener {
+            navigateEditProfilToAccount()
+        }
     }
 
     private fun bindData() {
@@ -192,6 +197,7 @@ class EditProfileFragment : Fragment(), AdminRTProfileInterface {
             if (imageUri != null){
                 uploadImage()
             }
+//            Log.d("EDIT_PROFILE","ID = $id, nama = $nama, email = $email, NoHP = $noHp, Gambar = $gambarPengurus, Gender = $jenisKelamin")
             updateProfile()
         } else {
             if (!validNama){
@@ -224,6 +230,7 @@ class EditProfileFragment : Fragment(), AdminRTProfileInterface {
 
     override fun onUpdateSuccess(message: String) {
         Toast.makeText(requireContext(),message, Toast.LENGTH_SHORT).show()
+        navigateEditProfilToAccount()
     }
 
     override fun onUpdateFailure(message: String) {
@@ -237,5 +244,11 @@ class EditProfileFragment : Fragment(), AdminRTProfileInterface {
     override fun onGetDataFailed(message: String) {
         TODO("Not yet implemented")
     }
+
+    private fun navigateEditProfilToAccount() {
+        findNavController().navigate(R.id.action_editProfileFragment_to_navigation_profil)
+    }
+
+
 
 }
