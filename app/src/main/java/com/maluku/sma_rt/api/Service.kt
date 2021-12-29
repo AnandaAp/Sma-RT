@@ -11,6 +11,7 @@ import com.maluku.sma_rt.model.keluarga.*
 import com.maluku.sma_rt.model.login.OnLoginSuccessResponse
 import com.maluku.sma_rt.model.order.CreateOrderBody
 import com.maluku.sma_rt.model.order.CreateOrderResponse
+import com.maluku.sma_rt.model.password.DefaultPasswordResponse
 import com.maluku.sma_rt.model.pengurus.CreatePengurusResponse
 import com.maluku.sma_rt.model.pengurus.DefaultPengurusResponse
 import com.maluku.sma_rt.model.pengurus.GetDataPengurusByLoginResponse
@@ -399,4 +400,14 @@ interface Service {
         @Header("Authorization") authHeader: String,
         @Field("order") order: ArrayList<CreateOrderBody>
     ): Call<CreateOrderResponse>
+
+    // Password
+    // Pengurus RT
+    @FormUrlEncoded
+    @PUT("pengurus/changepassword")
+    fun changePassAdmin(
+        @Header("Authorization") authHeader: String,
+        @Field("password") password: String,
+        @Field("new_password") new_password: String
+    ): Call<DefaultPasswordResponse>
 }

@@ -952,6 +952,18 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="gantiPasswordRTFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="206" />
+                            <option name="y" value="838" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="informasiFragment">
                     <value>
                       <LayoutPositions>

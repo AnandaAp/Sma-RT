@@ -209,6 +209,7 @@
             android:background="@color/putih_abu" />
 
         <LinearLayout
+            android:id="@+id/btnToGantiPass"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
