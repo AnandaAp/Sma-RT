@@ -23,10 +23,11 @@
         tools:targetApi="m">
         <activity
             android:name=".view.activity.DashboardWargaActivity"
+            android:windowSoftInputMode="adjustPan"
             android:exported="false" />
         <activity
             android:name=".view.activity.DashboardRTActivity"
-            android:exported="false"></activity>
+            android:exported="false"/>
         <activity
             android:name=".view.activity.MainActivity"
             android:enabled="true"
