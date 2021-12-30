@@ -18,34 +18,38 @@ import org.json.JSONObject
 //import retrofit2.Response
 import com.maluku.sma_rt.api.RetrofitService
 import com.maluku.sma_rt.model.keluarga.GetAllProdukKeluargaItem
+import com.maluku.sma_rt.model.keluarga.GetAllProdukKeluargaResponse
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import retrofit2.awaitResponse
 
 @DelicateCoroutinesApi
 class ProdukPresenter(private val view: ProdukInterface) {
 
     fun getListProdukByToken(token: String) {
-        /*RetrofitService
-            .getService()
-            .getAllProdukKeluarga("Bearer $token")
-            .enqueue(object : Callback<GetAllProdukKeluargaResponse> {
-                override fun onResponse(
-                    call: Call<GetAllProdukKeluargaResponse>,
-                    response: Response<GetAllProdukKeluargaResponse>
-                ) {
-                    if (response.isSuccessful){
-                        val result = response.body()?.getAllProdukKeluarga as List<GetAllProdukKeluargaItem>
-                        view.onGetAllDataSuccess(result)
-                    } else{
-                        val jObjError = JSONObject(response.errorBody()?.string())
-                        val message = jObjError.getString("message")
-                        view.onGetAllDataFailure(message)
-                    }
-                }
-
-                override fun onFailure(call: Call<GetAllProdukKeluargaResponse>, t: Throwable) {
-                    view.onGetAllDataFailure("Error")
-                }
-            })*/
+//        RetrofitService
+//            .getService()
+//            .getAllProdukKeluarga("Bearer $token")
+//            .enqueue(object : Callback<GetAllProdukKeluargaResponse> {
+//                override fun onResponse(
+//                    call: Call<GetAllProdukKeluargaResponse>,
+//                    response: Response<GetAllProdukKeluargaResponse>
+//                ) {
+//                    if (response.isSuccessful){
+//                        val result = response.body()?.getAllProdukKeluarga as List<GetAllProdukKeluargaItem>
+//                        view.onGetAllDataSuccess(result)
+//                    } else{
+//                        val jObjError = JSONObject(response.errorBody()?.string())
+//                        val message = jObjError.getString("message")
+//                        view.onGetAllDataFailure(message)
+//                    }
+//                }
+//
+//                override fun onFailure(call: Call<GetAllProdukKeluargaResponse>, t: Throwable) {
+//                    view.onGetAllDataFailure("Error")
+//                }
+//            })
         GlobalScope.launch(Dispatchers.IO){
             val res = RetrofitService
                 .getService()

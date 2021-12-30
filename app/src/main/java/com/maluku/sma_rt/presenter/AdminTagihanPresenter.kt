@@ -61,7 +61,9 @@ class AdminTagihanPresenter(private val view: AdminTagihanInterface) {
                         val list =  response.body()?.getAllTagihan as List<GetAllTagihanItem>
                         view.onGetDataSuccess(message,list)
                     } else{
-                        view.onGetDataFailed(response.message().toString())
+                        val jObjError = JSONObject(response.errorBody()?.string())
+                        val message = jObjError.getString("message")
+                        view.onGetDataFailed(message)
                     }
                 }
 

@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.maluku.sma_rt.databinding.FragmentRegisterTestBinding
-import com.maluku.sma_rt.presenter.WargaRegisterPresenter
 import com.maluku.sma_rt.view.viewInterface.RegisterTestInterface
 
 class RegisterTest : Fragment(),RegisterTestInterface {

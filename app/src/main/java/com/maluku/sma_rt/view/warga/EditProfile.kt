@@ -34,15 +34,15 @@ import com.maluku.sma_rt.R
 import com.maluku.sma_rt.databinding.FragmentWargaEditProfileBinding
 import com.maluku.sma_rt.extentions.UserSession
 import com.maluku.sma_rt.model.warga.GetMe
-import com.maluku.sma_rt.presenter.WargaEditProfilePresenter
-import com.maluku.sma_rt.view.viewInterface.WargaEditProfileInterface
+import com.maluku.sma_rt.presenter.WargaPresenter
+import com.maluku.sma_rt.view.viewInterface.WargaInterface
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
 
 private const val TAG = "EDIT PROFILE"
 
-class EditProfile : Fragment(), WargaEditProfileInterface {
+class EditProfile : Fragment(), WargaInterface {
     val args: EditProfileArgs by navArgs()
 
     private lateinit var binding: FragmentWargaEditProfileBinding
@@ -201,7 +201,7 @@ class EditProfile : Fragment(), WargaEditProfileInterface {
     }
 
     private fun updateProfile() {
-        WargaEditProfilePresenter(this).updateProfile(
+        WargaPresenter(requireActivity(), this).update(
             getToken(),
             idWarga,
             gender,
@@ -283,12 +283,52 @@ class EditProfile : Fragment(), WargaEditProfileInterface {
         return token
     }
 
+    override fun onLoginSuccess(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onLoginFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onRegisterSuccess(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onRegisterFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onChangePasswordSuccess(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onChangePasswordFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
     override fun onUpdateSuccess(message: String) {
         dialogSukses()
     }
 
     override fun onUpdateFailure(message: String) {
         Toast.makeText(activity,message, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onForgetPasswordSuccess(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onForgetPasswordFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onResetPasswordSuccess(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onResetPasswordFailure(message: String) {
+        TODO("Not yet implemented")
     }
 
     override fun onGetDataSuccess(result: GetMe?) {

@@ -62,13 +62,13 @@ class BuatIuranFragment : Fragment(), AdminTagihanInterface {
             AdminTagihanPresenter(this).createTagihan(nama,detail,jumlah,getToken())
         } else {
             if (!validNama){
-                binding.etNamaTagihan.error = "Masukan nama tagihan!"
+                binding.TILnamaTagihan.helperText = "Masukan nama tagihan!"
             }
             if (!validJumlah){
-                binding.etJumlah.error = "Masukan jumlah tagihan!"
+                binding.TILjumlahTagihan.helperText = "Masukan jumlah tagihan!"
             }
             if (!validDetail){
-                binding.etDetail.error = "Berikan detail tagihan!"
+                binding.TILdetailTagihan.helperText = "Berikan detail tagihan!"
             }
             Toast.makeText(requireContext(),"Seluruh field harus terisi!", Toast.LENGTH_LONG).show()
         }
@@ -82,7 +82,7 @@ class BuatIuranFragment : Fragment(), AdminTagihanInterface {
     private fun namaFocusListener() {
         binding.etNamaTagihan.setOnFocusChangeListener { view, focused ->
             if (!focused){
-                binding.etNamaTagihan.error = validNama()
+                binding.TILnamaTagihan.helperText = validNama()
             }
         }
     }
@@ -98,7 +98,7 @@ class BuatIuranFragment : Fragment(), AdminTagihanInterface {
     private fun jumlahFocusListener() {
         binding.etJumlah.setOnFocusChangeListener { view, focused ->
             if (!focused){
-                binding.etJumlah.error = validJumlah()
+                binding.TILjumlahTagihan.helperText = validJumlah()
             }
         }
     }
@@ -114,7 +114,7 @@ class BuatIuranFragment : Fragment(), AdminTagihanInterface {
     private fun detailFocusListener() {
         binding.etDetail.setOnFocusChangeListener { view, focused ->
             if (!focused){
-                binding.etDetail.error = validDetail()
+                binding.TILdetailTagihan.helperText = validDetail()
             }
         }
     }

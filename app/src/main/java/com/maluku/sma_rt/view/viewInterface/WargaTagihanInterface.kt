@@ -3,8 +3,8 @@ package com.maluku.sma_rt.view.viewInterface
 import com.maluku.sma_rt.model.tagihan.GetAllTagihanItem
 
 interface WargaTagihanInterface {
-    fun onGetDataSuccess(message: String,list: ArrayList<GetAllTagihanItem?>?)
-    fun onGetDataFailed(message: String)
-    fun onBillPaidSuccess(message: String)
-    fun onBillPaidFailed(message: String)
+    fun onGetDataSuccess(result: List<GetAllTagihanItem>)
+    fun onGetDataFailure(message: String)
+    fun onPayBillSuccess(message: String)
+    fun onPayBillFailure(message: String)
 }

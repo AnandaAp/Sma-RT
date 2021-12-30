@@ -220,8 +220,7 @@ interface Service {
     //ambil seluruh data pada tagihan
     @GET("tagihan")
     fun getAllTagihan(
-        @Header("Authorization") authHeader: String,
-        @Field("id_keluarga") idKeluarga: String
+        @Header("Authorization") authHeader: String
     ): Call<GetAllTagihanResponse>
 
     //ambil seluruh data pada tagihan untuk pengurus RT
@@ -231,11 +230,10 @@ interface Service {
     ): Call<GetAllTagihanResponse>
 
     //bayar tagihan
-    @FormUrlEncoded
-    @PUT("tagihan/{token}")
+    @PUT("tagihan/{id_tagihan}")
     fun bayarTagihan(
         @Header("Authorization") authHeader: String,
-        @Path("token") token: String
+        @Path("id_tagihan") id_tagihan: String
     ): Call<OnDataResponse>
 
     //Aduan
@@ -406,6 +404,15 @@ interface Service {
     @FormUrlEncoded
     @PUT("pengurus/changepassword")
     fun changePassAdmin(
+        @Header("Authorization") authHeader: String,
+        @Field("password") password: String,
+        @Field("new_password") new_password: String
+    ): Call<DefaultPasswordResponse>
+
+    // Warga
+    @FormUrlEncoded
+    @PUT("warga/changepassword")
+    fun changePasswordWarga(
         @Header("Authorization") authHeader: String,
         @Field("password") password: String,
         @Field("new_password") new_password: String

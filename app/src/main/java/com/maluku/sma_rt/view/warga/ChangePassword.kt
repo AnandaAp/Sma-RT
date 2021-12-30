@@ -22,17 +22,15 @@ import com.bumptech.glide.request.RequestOptions
 import com.google.firebase.storage.FirebaseStorage
 import com.maluku.sma_rt.R
 import com.maluku.sma_rt.databinding.FragmentChangePasswordBinding
-import com.maluku.sma_rt.databinding.FragmentIsisaldoTariksaldoBinding
 import com.maluku.sma_rt.extentions.UserSession
 import com.maluku.sma_rt.model.warga.GetMe
-import com.maluku.sma_rt.presenter.WargaEditProfilePresenter
-import com.maluku.sma_rt.view.viewInterface.WargaEditProfileInterface
-import com.maluku.sma_rt.view.viewInterface.WargaGetDataLoginInterface
+import com.maluku.sma_rt.presenter.WargaPresenter
+import com.maluku.sma_rt.view.viewInterface.WargaInterface
 import java.io.File
 
 private const val TAG = "CHANGE PASSWORD"
 
-class ChangePassword : Fragment(), WargaEditProfileInterface {
+class ChangePassword : Fragment(), WargaInterface {
     val args: ChangePasswordArgs by navArgs()
 
     private lateinit var binding: FragmentChangePasswordBinding
@@ -84,13 +82,8 @@ class ChangePassword : Fragment(), WargaEditProfileInterface {
 
         if (validPasswordLama && validPasswordBaru && validPasswordBaru2){
             if(passwordBaru == passwordBaru2) {
-                if(passwordLama == password) {
-                    updateProfile()
-                } else {
-                    Toast.makeText(activity,"Password lama: ${password}", Toast.LENGTH_SHORT).show()
-                }
+                gantiPassword()
             } else {
-
                 Toast.makeText(activity,"Password baru tidak sama!", Toast.LENGTH_SHORT).show()
             }
         } else {
@@ -114,15 +107,11 @@ class ChangePassword : Fragment(), WargaEditProfileInterface {
         return token
     }
 
-    private fun updateProfile() {
-        WargaEditProfilePresenter(this).updateProfile(
+    private fun gantiPassword() {
+        WargaPresenter(requireActivity(),this).changePassword(
             getToken(),
-            idWarga,
-            gender,
-            noHp,
-            nama,
-            email,
-            gambarWarga
+            passwordLama,
+            passwordBaru
         )
     }
 
@@ -193,7 +182,7 @@ class ChangePassword : Fragment(), WargaEditProfileInterface {
 
         btnSimpan.setOnClickListener {
             dialog.dismiss()
-            val direction = ChangePasswordDirections.actionChangePasswordToAkunWarga()
+            val direction = ChangePasswordDirections.actionChangePasswordToHomeWarga()
             findNavController().navigate(direction)
         }
 
@@ -215,12 +204,50 @@ class ChangePassword : Fragment(), WargaEditProfileInterface {
         }
     }
 
-    override fun onUpdateSuccess(message: String) {
+    override fun onLoginSuccess(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onLoginFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onRegisterSuccess(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onRegisterFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onChangePasswordSuccess(message: String) {
         dialogSukses()
     }
 
-    override fun onUpdateFailure(message: String) {
+    override fun onChangePasswordFailure(message: String) {
         Toast.makeText(activity,message, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onUpdateSuccess(message: String) {
+    }
+
+    override fun onUpdateFailure(message: String) {
+    }
+
+    override fun onForgetPasswordSuccess(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onForgetPasswordFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onResetPasswordSuccess(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onResetPasswordFailure(message: String) {
+        TODO("Not yet implemented")
     }
 
     override fun onGetDataSuccess(result: GetMe?) {
