@@ -7,16 +7,22 @@ import com.maluku.sma_rt.api.RetrofitService
 import com.maluku.sma_rt.model.warga.GetAllWargaItem
 import com.maluku.sma_rt.model.warga.GetAllWargaResponse
 import com.maluku.sma_rt.view.viewInterface.ListWargaViewInterface
+import kotlinx.coroutines.DelicateCoroutinesApi
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import retrofit2.awaitResponse
 
 private const val TAG = "ListWargaPresenter"
 
+@DelicateCoroutinesApi
 class ListWargaPresenter(private val activity: Activity, private var view: ListWargaViewInterface) {
     fun getListWargaPresenter(token: String, idKeluarga: String?, nama: String?) {
-        RetrofitService
+        /*RetrofitService
             .getService()
             .getListWarga("Bearer $token",idKeluarga,nama)
             .enqueue(object : Callback<GetAllWargaResponse> {
@@ -29,7 +35,7 @@ class ListWargaPresenter(private val activity: Activity, private var view: ListW
                         view.resultListWargaSuccess(result)
                         Toast.makeText(activity,"Pesan: ${response.message()}", Toast.LENGTH_SHORT).show()
                     } else{
-                        val jObjError = JSONObject(response.errorBody()?.string())
+                        val jObjError = JSONObject(response.errorBody()!!.string())
                         val message = jObjError.getString("message")
                         view.resultListWargaFailure(message)
                         Toast.makeText(activity,"Pesan: ${response.message()}", Toast.LENGTH_SHORT).show()
@@ -38,6 +44,22 @@ class ListWargaPresenter(private val activity: Activity, private var view: ListW
                 override fun onFailure(call: Call<GetAllWargaResponse>, t: Throwable) {
                     view.resultListWargaFailure(t.message.toString())
                 }
-            })
+            })*/
+        GlobalScope.launch(Dispatchers.IO){
+            val response = RetrofitService
+                .getService()
+                .getListWarga("Bearer $token",idKeluarga,nama)
+                .awaitResponse()
+            if (response.isSuccessful){
+                val result = response.body()?.getAllWarga as List<GetAllWargaItem>
+                view.resultListWargaSuccess(result)
+                Toast.makeText(activity,"Pesan: ${response.message()}", Toast.LENGTH_SHORT).show()
+            } else{
+                val jObjError = JSONObject(response.errorBody()!!.string())
+                val message = jObjError.getString("message")
+                view.resultListWargaFailure(message)
+                Toast.makeText(activity,"Pesan: ${response.message()}", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 }

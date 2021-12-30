@@ -26,7 +26,7 @@
             android:exported="false" />
         <activity
             android:name=".view.activity.DashboardRTActivity"
-            android:exported="false"></activity>
+            android:exported="false"/>
         <activity
             android:name=".view.activity.MainActivity"
             android:enabled="true"
@@ -37,6 +37,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <service android:name=".api.notification.PushNotification"
+            android:exported="false">
+            <intent-filter android:name="com.google.firebase.MESSAGING_EVENT"/>
+        </service>
 
         <meta-data
             android:name="preloaded_fonts"

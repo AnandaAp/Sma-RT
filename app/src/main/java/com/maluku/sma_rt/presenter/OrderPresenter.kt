@@ -4,17 +4,23 @@ import com.maluku.sma_rt.api.RetrofitService
 import com.maluku.sma_rt.model.order.CreateOrderBody
 import com.maluku.sma_rt.model.order.CreateOrderResponse
 import com.maluku.sma_rt.view.viewInterface.OrderInterface
+import kotlinx.coroutines.DelicateCoroutinesApi
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import retrofit2.awaitResponse
 
 class OrderPresenter(private val view: OrderInterface) {
 
+    @DelicateCoroutinesApi
     fun createOrder(
         token: String,
         order: ArrayList<CreateOrderBody>
     ){
-        RetrofitService
+        /*RetrofitService
             .getService()
             .createOrder(
                 "Bearer $token",
@@ -34,6 +40,22 @@ class OrderPresenter(private val view: OrderInterface) {
                         view.onCreateOrderFailed(message)
                     }
                 }
-            )
+            )*/
+        GlobalScope.launch(Dispatchers.IO) {
+            val res = RetrofitService
+                .getService()
+                .createOrder(
+                    "Bearer $token",
+                    order
+                ).awaitResponse()
+            if(res.isSuccessful){
+                val message = res.body()!!.message.toString()
+                view.onCreateOrderSuccess(message)
+            }
+            else{
+                val message = res.errorBody()!!.string()
+                view.onCreateOrderFailed(message)
+            }
+        }
     }
 }
