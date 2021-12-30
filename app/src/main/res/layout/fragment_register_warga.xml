@@ -226,7 +226,7 @@
                     android:layout_below="@id/idkeluarga"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="28dp"
-                    android:text="Saya setuju dengan SnK yang berlaku"
+                    android:text="Saya setuju dengan S&amp;K yang berlaku"
                     android:textColor="@color/white" />
 
 
