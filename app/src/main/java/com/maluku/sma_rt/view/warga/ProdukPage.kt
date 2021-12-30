@@ -87,22 +87,6 @@ class ProdukPage : Fragment(), ProdukInterface {
         binding = FragmentProdukPageBinding.inflate(layoutInflater)
         return binding.root
     }
-//
-//    override fun showDataProduk(produk: List<GetAllProdukKeluargaItem>) {
-//        updateDataProduk(produk)
-//    }
-//
-//    override fun updateDataProduk(produk: List<GetAllProdukKeluargaItem>) {
-//        adapterProduk.setData(produk as ArrayList<GetAllProdukKeluargaItem>)
-//    }
-//
-//    override fun resultSuccess(result: List<GetAllProdukKeluargaItem>) {
-//        showDataProduk(result)
-//    }
-//
-//    override fun resultFailed(t: Throwable) {
-//        Toast.makeText(requireContext(),"Pesan: $t", Toast.LENGTH_LONG).show()
-//    }
 
     override fun onGetAllDataSuccess(data: List<GetAllProdukKeluargaItem?>?) {
         Handler(Looper.getMainLooper()).post(Runnable { //do stuff like remove view etc
