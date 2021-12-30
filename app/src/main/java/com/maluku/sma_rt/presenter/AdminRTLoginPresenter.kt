@@ -59,6 +59,7 @@ class AdminRTLoginPresenter(private val activity: Activity, private val view: Lo
                                     password,
                                     token
                                 )
+                                else -> {}
                             }
                             view.onLoginSuccess(activity.getString(R.string.login_sukses))
                         }

@@ -1,26 +1,30 @@
 package com.maluku.sma_rt.presenter
 
-import android.app.Activity
-import android.util.Log
-import android.widget.Toast
+import com.maluku.sma_rt.view.viewInterface.ProdukInterface
+import kotlinx.coroutines.DelicateCoroutinesApi
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import org.json.JSONObject
+//import android.app.Activity
+//import android.util.Log
+//import android.widget.Toast
+//import com.maluku.sma_rt.model.keluarga.GetAllProdukKeluargaResponse
+//import com.maluku.sma_rt.model.produk.CreateProductResponse
+//import com.maluku.sma_rt.model.produk.DeleteProductByIDResponse
+//import com.maluku.sma_rt.model.produk.UpdateProductByIDResponse
+//import retrofit2.Call
+//import retrofit2.Callback
+//import retrofit2.Response
 import com.maluku.sma_rt.api.RetrofitService
 import com.maluku.sma_rt.model.keluarga.GetAllProdukKeluargaItem
-import com.maluku.sma_rt.model.keluarga.GetAllProdukKeluargaResponse
-import com.maluku.sma_rt.model.produk.CreateProductResponse
-import com.maluku.sma_rt.model.produk.DeleteProductByIDResponse
-import com.maluku.sma_rt.model.produk.UpdateProductByIDResponse
-import com.maluku.sma_rt.view.viewInterface.ProdukInterface
-import org.json.JSONObject
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import retrofit2.awaitResponse
 
-private const val TAG = "PRODUK PRESENTER"
-
+@DelicateCoroutinesApi
 class ProdukPresenter(private val view: ProdukInterface) {
 
     fun getListProdukByToken(token: String) {
-        RetrofitService
+        /*RetrofitService
             .getService()
             .getAllProdukKeluarga("Bearer $token")
             .enqueue(object : Callback<GetAllProdukKeluargaResponse> {
@@ -41,7 +45,22 @@ class ProdukPresenter(private val view: ProdukInterface) {
                 override fun onFailure(call: Call<GetAllProdukKeluargaResponse>, t: Throwable) {
                     view.onGetAllDataFailure("Error")
                 }
-            })
+            })*/
+        GlobalScope.launch(Dispatchers.IO){
+            val res = RetrofitService
+                .getService()
+                .getAllProdukKeluarga("Bearer $token")
+                .awaitResponse()
+            if(res.isSuccessful){
+                val result = res.body()?.getAllProdukKeluarga as List<GetAllProdukKeluargaItem>
+                view.onGetAllDataSuccess(result)
+            }
+            else{
+                val jObjError = JSONObject(res.errorBody()!!.string())
+                val message = jObjError.getString("message")
+                view.onGetAllDataFailure(message)
+            }
+        }
     }
 
     fun tambahProduk(
@@ -51,7 +70,7 @@ class ProdukPresenter(private val view: ProdukInterface) {
         gambar: String,
         harga: String
     ) {
-        RetrofitService
+        /*RetrofitService
             .getService()
             .createProduct(
                 "Bearer $token",
@@ -78,7 +97,27 @@ class ProdukPresenter(private val view: ProdukInterface) {
                     view.onCreateFailure("Gagal menambah produk!")
                     Log.i(TAG, "onFailure: ${t.message}")
                 }
-            })
+            })*/
+
+        GlobalScope.launch(Dispatchers.IO){
+            val res = RetrofitService
+                .getService()
+                .createProduct(
+                    "Bearer $token",
+                    nama,
+                    detail,
+                    gambar,
+                    harga
+                ).awaitResponse()
+            if(res.isSuccessful){
+                view.onCreateSuccess("Berhasil menambah produk!")
+            }
+            else{
+                val jObjError = JSONObject(res.errorBody()!!.string())
+                val message = jObjError.getString("message")
+                view.onCreateFailure(message)
+            }
+        }
     }
 
     fun updateProduk(
@@ -90,7 +129,7 @@ class ProdukPresenter(private val view: ProdukInterface) {
         harga: String,
         tersedia: String
     ) {
-        RetrofitService
+        /*RetrofitService
             .getService()
             .updateProductByID(
                 "Bearer $token",
@@ -119,14 +158,35 @@ class ProdukPresenter(private val view: ProdukInterface) {
                     view.onUpdateFailure("Gagal mengubah produk!")
                     Log.i(TAG, "onFailure: ${t.message}")
                 }
-            })
+            })*/
+
+        GlobalScope.launch(Dispatchers.IO){
+            val res = RetrofitService
+                .getService()
+                .updateProductByID(
+                    "Bearer $token",
+                    produkId,
+                    nama,
+                    detail,
+                    gambar,
+                    harga,
+                    tersedia
+                ).awaitResponse()
+            if(res.isSuccessful){
+                view.onUpdateSuccess("Berhasil mengubah produk!")
+            } else {
+                val jObjError = JSONObject(res.errorBody()!!.string())
+                val message = jObjError.getString("message")
+                view.onUpdateFailure(message)
+            }
+        }
     }
 
     fun hapusProduk(
         token: String,
         produkId: String
     ) {
-        RetrofitService
+        /*RetrofitService
             .getService()
             .deleteProductByID(
                 "Bearer $token",
@@ -150,6 +210,22 @@ class ProdukPresenter(private val view: ProdukInterface) {
                     view.onDeleteFailure("Gagal menghapus produk!")
                     Log.i(TAG, "onFailure: ${t.message}")
                 }
-            })
+            })*/
+
+        GlobalScope.launch(Dispatchers.IO){
+            val res = RetrofitService
+                .getService()
+                .deleteProductByID(
+                    "Bearer $token",
+                    produkId
+                ).awaitResponse()
+            if (res.isSuccessful){
+                view.onDeleteSuccess("Berhasil menghapus produk!")
+            } else {
+                val jObjError = JSONObject(res.errorBody()!!.string())
+                val message = jObjError.getString("message")
+                view.onDeleteFailure(message)
+            }
+        }
     }
 }

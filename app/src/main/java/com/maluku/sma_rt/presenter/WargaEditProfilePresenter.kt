@@ -10,17 +10,23 @@ import com.maluku.sma_rt.model.produk.UpdateProductByIDResponse
 import com.maluku.sma_rt.model.warga.UpdateWargaResponse
 import com.maluku.sma_rt.model.warga.WargaGetDataLoginResponse
 import com.maluku.sma_rt.view.viewInterface.WargaEditProfileInterface
+import kotlinx.coroutines.DelicateCoroutinesApi
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import retrofit2.awaitResponse
 
 private const val TAG = "EDIT PROFILE"
 
+@DelicateCoroutinesApi
 class WargaEditProfilePresenter(private val view: WargaEditProfileInterface) {
 
     fun getDataLogin(token: String) {
-        RetrofitService
+        /*RetrofitService
             .getService()
             .getDataLoginWarga("Bearer $token")
             .enqueue(object : Callback<WargaGetDataLoginResponse> {
@@ -33,7 +39,7 @@ class WargaEditProfilePresenter(private val view: WargaEditProfileInterface) {
                         view.onGetDataSuccess(result)
 //                        Toast.makeText(activity,"Pesan: ${response.message()}", Toast.LENGTH_SHORT).show()
                     } else{
-                        val jObjError = JSONObject(response.errorBody()?.string())
+                        val jObjError = JSONObject(response.errorBody()!!.string())
                         val message = jObjError.getString("message")
                         view.onGetDataFailure(message)
                     }
@@ -42,7 +48,22 @@ class WargaEditProfilePresenter(private val view: WargaEditProfileInterface) {
                 override fun onFailure(call: Call<WargaGetDataLoginResponse>, t: Throwable) {
                     view.onGetDataFailure(t.message.toString())
                 }
-            })
+            })*/
+        GlobalScope.launch(Dispatchers.IO){
+            val response = RetrofitService
+                .getService()
+                .getDataLoginWarga("Bearer $token")
+                .awaitResponse()
+            if (response.isSuccessful){
+                val result = response.body()?.getWargaById
+                view.onGetDataSuccess(result)
+//                        Toast.makeText(activity,"Pesan: ${response.message()}", Toast.LENGTH_SHORT).show()
+            } else{
+                val jObjError = JSONObject(response.errorBody()!!.string())
+                val message = jObjError.getString("message")
+                view.onGetDataFailure(message)
+            }
+        }
     }
 
     fun updateProfile(
@@ -54,7 +75,7 @@ class WargaEditProfilePresenter(private val view: WargaEditProfileInterface) {
         email: String,
         gambar: String
     ) {
-        RetrofitService
+        /*RetrofitService
             .getService()
             .updateWarga(
                 "Bearer $token",
@@ -83,6 +104,26 @@ class WargaEditProfilePresenter(private val view: WargaEditProfileInterface) {
                     view.onUpdateFailure(t.message.toString())
                     Log.i(TAG, "onFailure: ${t.message}")
                 }
-            })
+            })*/
+        GlobalScope.launch(Dispatchers.IO){
+            val response = RetrofitService
+                .getService()
+                .updateWarga(
+                    "Bearer $token",
+                    wargaId,
+                    gender,
+                    no_hp,
+                    nama,
+                    email,
+                    gambar
+                ).awaitResponse()
+            if (response.isSuccessful){
+                view.onUpdateSuccess("Berhasil memperbaharui data!")
+            } else {
+                val jObjError = JSONObject(response.errorBody()!!.string())
+                val message = jObjError.getString("message")
+                view.onGetDataFailure(message)
+            }
+        }
     }
 }
