@@ -54,7 +54,7 @@ class CatatanWarga : Fragment() {
         binding.btnBayar.setOnClickListener {
             val dialog = BottomSheetDialog(requireActivity())
             dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-            dialog.window?.setBackgroundDrawableResource(R.drawable.bg_bottomsheet)
+            dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
             dialog.setContentView(R.layout.fragment_detail_produk)
 
 
