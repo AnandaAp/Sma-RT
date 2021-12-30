@@ -26,7 +26,6 @@ import com.maluku.sma_rt.presenter.AdminRTProfilePresenter
 import com.maluku.sma_rt.presenter.DompetRTPresenter
 import com.maluku.sma_rt.presenter.ListWargaPresenter
 import com.maluku.sma_rt.view.activity.MainActivity
-import com.maluku.sma_rt.view.pengurus.DaftarBuatIuranFragmentDirections
 import com.maluku.sma_rt.view.viewInterface.AdminRTProfileInterface
 import com.maluku.sma_rt.view.viewInterface.DompetRTInterface
 import com.maluku.sma_rt.view.viewInterface.ListWargaViewInterface
@@ -60,6 +59,7 @@ class AccountFragment : Fragment(), DompetRTInterface, AdminRTProfileInterface, 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         navigateAkunToEditProfil()
+        navigateAkunToGantiPassword()
         AdminRTProfilePresenter(this).getDataLoginPengurus(getToken())
         DompetRTPresenter(this).getDompetRTByLogin(getToken())
         ListWargaPresenter(requireActivity(),this).getListWargaPresenter(getToken(),null,null)
@@ -73,6 +73,12 @@ class AccountFragment : Fragment(), DompetRTInterface, AdminRTProfileInterface, 
             val intent = Intent(requireActivity(), MainActivity::class.java)
             startActivity(intent)
             requireActivity().finish()
+        }
+    }
+
+    private fun navigateAkunToGantiPassword(){
+        binding.btnToGantiPass.setOnClickListener {
+            findNavController().navigate(R.id.action_navigation_profil_to_gantiPasswordRTFragment)
         }
     }
 

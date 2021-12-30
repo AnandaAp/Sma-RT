@@ -38,6 +38,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <service android:name=".api.notification.PushNotification"
+            android:exported="false">
+            <intent-filter android:name="com.google.firebase.MESSAGING_EVENT"/>
+        </service>
 
         <meta-data
             android:name="preloaded_fonts"

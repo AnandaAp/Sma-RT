@@ -246,9 +246,7 @@ class EditProfileFragment : Fragment(), AdminRTProfileInterface {
     }
 
     private fun navigateEditProfilToAccount() {
-        findNavController().navigate(R.id.action_editProfileFragment_to_navigation_profil)
+        findNavController().popBackStack()
     }
-
-
 
 }
