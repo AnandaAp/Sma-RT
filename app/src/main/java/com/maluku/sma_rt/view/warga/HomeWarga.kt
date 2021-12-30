@@ -187,7 +187,7 @@ class HomeWarga : Fragment(), InformasiInterface, DompetKeluargaInterface, Warga
     }
 
     override fun onGetInfoTerkiniSuccess(result: List<GetAllInformasiItem>) {
-        adapterInfo.setData(result as ArrayList<GetAllInformasiItem>)
+        adapterInfo.setData(result)
     }
 
     override fun onGetInfoTerkiniFailure(message: String) {
@@ -195,7 +195,7 @@ class HomeWarga : Fragment(), InformasiInterface, DompetKeluargaInterface, Warga
     }
 
     override fun onGetKegiatanSuccess(result: List<GetAllInformasiItem>) {
-        adapterKegiatan.setData((result as ArrayList<GetAllInformasiItem>))
+        adapterKegiatan.setData(result)
     }
 
     override fun onGetKegiatanFailure(message: String) {

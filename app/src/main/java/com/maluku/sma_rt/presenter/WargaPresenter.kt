@@ -138,7 +138,6 @@ class WargaPresenter(private val activity: Activity, private val view: WargaInte
             if (response.isSuccessful){
                 val result = response.body()?.getWargaById
                 view.onGetDataSuccess(result)
-//                        Toast.makeText(activity,"Pesan: ${response.message()}", Toast.LENGTH_SHORT).show()
             } else{
                 val jObjError = JSONObject(response.errorBody()!!.string())
                 val message = jObjError.getString("message")
