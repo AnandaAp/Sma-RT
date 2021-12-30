@@ -5,56 +5,107 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import com.maluku.sma_rt.R
+import com.maluku.sma_rt.databinding.FragmentLupaPasswordRTBinding
+import com.maluku.sma_rt.extentions.UserSession
+import com.maluku.sma_rt.extentions.UserValidator
+import com.maluku.sma_rt.presenter.AdminRTPasswordPresenter
+import com.maluku.sma_rt.view.viewInterface.AdminRTPasswordInterface
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+class LupaPasswordRTFragment : Fragment(), AdminRTPasswordInterface {
+    private lateinit var binding: FragmentLupaPasswordRTBinding
+    private var email: String = ""
 
-/**
- * A simple [Fragment] subclass.
- * Use the [LupaPasswordRTFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class LupaPasswordRTFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        emailFocusListener()
+        lupaPassword()
+        binding.btnBack.setOnClickListener {
+            findNavController().popBackStack()
         }
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_lupa_password_r_t, container, false)
+        return bindingView()
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment LupaPasswordRTFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            LupaPasswordRTFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+    private fun bindingView(): View? {
+        binding = FragmentLupaPasswordRTBinding.inflate(layoutInflater)
+        return binding.root
+    }
+
+    private fun lupaPassword(){
+        binding.btnLupaPass.setOnClickListener {
+            binding.etEmail.clearFocus()
+            submitForm()
+        }
+    }
+
+    private fun submitForm() {
+        val validEmail = !binding.etEmail.text.isNullOrEmpty()
+        if (validEmail){
+            AdminRTPasswordPresenter(this).forgetPassAdmin(getToken(),email)
+        } else {
+            if (!validEmail){
+                binding.TILemail.helperText = "Masukan email Anda!"
             }
+            Toast.makeText(requireContext(),"Seluruh field harus terisi!", Toast.LENGTH_LONG).show()
+        }
+    }
+
+    private fun getToken(): String {
+        val preferences = UserSession(requireActivity())
+        return preferences.getValueString(UserSession.SHARED_PREFERENCE_TOKEN_KEY)
+    }
+
+    private fun emailFocusListener() {
+        binding.etEmail.setOnFocusChangeListener { view, focused ->
+            if (!focused){
+                binding.TILemail.helperText = validEmail()
+            }
+        }
+    }
+
+    private fun validEmail(): String? {
+        email = binding.etEmail.text.toString().trim()
+        var isValidEmail = UserValidator.isEmailValid(email)
+        if (email.isEmpty()){
+            return "Masukan email!"
+        }
+        if (!isValidEmail){
+            return "Email tidak valid!"
+        }
+        return null
+    }
+
+    override fun onChangePassSuccess(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onChangePassFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onForgetPassSuccess(message: String) {
+        Toast.makeText(requireContext(),"Pesan: $message",Toast.LENGTH_LONG).show()
+        findNavController().navigate(R.id.action_lupaPasswordRTFragment2_to_resetPasswordRTFragment2)
+    }
+
+    override fun onForgetPassFailure(message: String) {
+        Toast.makeText(requireContext(),"Pesan: $message",Toast.LENGTH_LONG).show()
+    }
+
+    override fun onResetPassSuccess(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onResetPassFailure(message: String) {
+        TODO("Not yet implemented")
     }
 }

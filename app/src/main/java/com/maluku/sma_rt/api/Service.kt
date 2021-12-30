@@ -424,6 +424,23 @@ interface Service {
         @Field("new_password") new_password: String
     ): Call<DefaultPasswordResponse>
 
+    // Lupa Password Pengurus RT
+    @FormUrlEncoded
+    @POST("pengurus/forgetpassword")
+    fun forgetPassAdmin(
+        @Header("Authorization") authHeader: String,
+        @Field("email") email: String,
+    ): Call<DefaultPasswordResponse>
+
+    // Reset Password Pengurus RT
+    @FormUrlEncoded
+    @POST("pengurus/resetpasswordbykode")
+    fun resetPassAdmin(
+        @Header("Authorization") authHeader: String,
+        @Field("kode") kode: String,
+        @Field("password") password: String
+    ): Call<DefaultPasswordResponse>
+
     // Warga
     @FormUrlEncoded
     @PUT("warga/changepassword")
