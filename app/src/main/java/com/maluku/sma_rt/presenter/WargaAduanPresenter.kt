@@ -56,7 +56,7 @@ class WargaAduanPresenter(private val view: WargaAduanInterface) {
                     }
                 }
             )*/
-        GlobalScope.launch(Dispatchers.IO){
+        GlobalScope.launch(Dispatchers.Main){
             val res = RetrofitService
                 .getService()
                 .createAduan(
@@ -107,7 +107,7 @@ class WargaAduanPresenter(private val view: WargaAduanInterface) {
                     }
                 }
             )*/
-        GlobalScope.launch(Dispatchers.IO) {
+        GlobalScope.launch(Dispatchers.Main) {
             val response = RetrofitService
                 .getService()
                 .updateAduan(
@@ -151,7 +151,7 @@ class WargaAduanPresenter(private val view: WargaAduanInterface) {
                     view.onDeleteFailure(message)
                 }
             })*/
-        GlobalScope.launch(Dispatchers.IO){
+        GlobalScope.launch(Dispatchers.Main){
             val response = RetrofitService
                 .getService()
                 .deleteAduan(
@@ -193,7 +193,7 @@ class WargaAduanPresenter(private val view: WargaAduanInterface) {
                     view.onGetAllDataFailed(message)
                 }
             })*/
-        GlobalScope.launch(Dispatchers.IO){
+        GlobalScope.launch(Dispatchers.Main){
             val response =  RetrofitService
                 .getService()
                 .getAllAduan("Bearer $token")
@@ -227,7 +227,7 @@ class WargaAduanPresenter(private val view: WargaAduanInterface) {
                     view.onGetDataByIDFailed(message)
                 }
             })*/
-        GlobalScope.launch(Dispatchers.IO){
+        GlobalScope.launch(Dispatchers.Main){
             val response = RetrofitService
                 .getService()
                 .getAduanByID(token,id)

@@ -49,7 +49,7 @@ class WargaEditProfilePresenter(private val view: WargaEditProfileInterface) {
                     view.onGetDataFailure(t.message.toString())
                 }
             })*/
-        GlobalScope.launch(Dispatchers.IO){
+        GlobalScope.launch(Dispatchers.Main){
             val response = RetrofitService
                 .getService()
                 .getDataLoginWarga("Bearer $token")
@@ -105,7 +105,7 @@ class WargaEditProfilePresenter(private val view: WargaEditProfileInterface) {
                     Log.i(TAG, "onFailure: ${t.message}")
                 }
             })*/
-        GlobalScope.launch(Dispatchers.IO){
+        GlobalScope.launch(Dispatchers.Main){
             val response = RetrofitService
                 .getService()
                 .updateWarga(

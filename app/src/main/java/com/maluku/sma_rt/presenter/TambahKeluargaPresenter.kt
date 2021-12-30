@@ -46,7 +46,7 @@ class TambahKeluargaPresenter(private val activity: Activity, private val view: 
                     Log.i(TAG, "onFailure: ${t.message}")
                 }
             })*/
-        GlobalScope.launch(Dispatchers.IO){
+        GlobalScope.launch(Dispatchers.Main){
             val response = RetrofitService
                 .getService()
                 .tambahKeluarga(
@@ -59,7 +59,7 @@ class TambahKeluargaPresenter(private val activity: Activity, private val view: 
             }
             else {
                 view.onCreateFailed("Gagal menambah daftar keluarga!")
-                Log.i(TAG, "onFailure: ${response.errorBody()!!.string()}")
+                Log.i(TAG, "onFailure: ${response.errorBody()!!}")
             }
         }
     }
