@@ -28,6 +28,9 @@
         <action
             android:id="@+id/action_jualbeliWarga_to_pesananUserPage"
             app:destination="@id/pesananUserPage" />
+        <action
+            android:id="@+id/action_jualbeliWarga_to_riwayatPesananUser"
+            app:destination="@id/riwayatPesananUser" />
     </fragment>
     <fragment
         android:id="@+id/catatanWarga"
@@ -325,5 +328,13 @@
         <argument
             android:name="warga_password"
             app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/riwayatPesananUser"
+        android:name="com.maluku.sma_rt.view.warga.RiwayatPesananUser"
+        android:label="RiwayatPesananUser" >
+        <action
+            android:id="@+id/action_riwayatPesananUser_to_jualbeliWarga"
+            app:destination="@id/jualbeliWarga" />
     </fragment>
 </navigation>

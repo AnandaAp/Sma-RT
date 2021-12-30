@@ -48,6 +48,7 @@ class JualbeliWarga : Fragment(), WargaJualBeliInterface {
         setRecyclerViewProduk()
         setDataWarga()
         navigateToBasket()
+        navigateToHistoryOrder()
     }
 
     private fun setDataWarga() {
@@ -60,6 +61,11 @@ class JualbeliWarga : Fragment(), WargaJualBeliInterface {
     private fun navigateToBasket() {
         binding.troli.setOnClickListener {
             findNavController().navigate(R.id.action_jualbeliWarga_to_pesananUserPage)
+        }
+    }
+    private fun navigateToHistoryOrder() {
+        binding.history.setOnClickListener {
+            findNavController().navigate(R.id.action_jualbeliWarga_to_riwayatPesananUser)
         }
     }
 
