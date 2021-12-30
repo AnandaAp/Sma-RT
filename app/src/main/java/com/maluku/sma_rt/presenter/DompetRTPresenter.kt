@@ -16,7 +16,7 @@ import retrofit2.awaitResponse
 
 @DelicateCoroutinesApi
 class DompetRTPresenter(private var view: DompetRTInterface) {
-    fun getDompetRTByLogin(token: String) {
+    fun getDompetRTByLogin(token:  String) {
         /*RetrofitService
             .getService()
             .getDompetRT("Bearer $token")
