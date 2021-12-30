@@ -6,6 +6,7 @@ import com.maluku.sma_rt.model.tagihan.CreateTagihanResponse
 import com.maluku.sma_rt.model.tagihan.GetAllTagihanItem
 import com.maluku.sma_rt.model.tagihan.GetAllTagihanResponse
 import com.maluku.sma_rt.view.viewInterface.AdminTagihanInterface
+import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -34,10 +35,11 @@ class AdminTagihanPresenter(private val view: AdminTagihanInterface) {
                         val message = response.body()?.message.toString()
                         view.onCreateSuccess(message)
                     } else{
-                        view.onCreateFailed(response.message().toString())
+                        val jObjError = JSONObject(response.errorBody()?.string())
+                        val message = jObjError.getString("message")
+                        view.onCreateFailed(message)
                     }
                 }
-
                 override fun onFailure(call: Call<CreateTagihanResponse>, t: Throwable) {
                     view.onCreateFailed(t.message.toString())
                 }

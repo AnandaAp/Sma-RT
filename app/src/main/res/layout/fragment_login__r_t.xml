@@ -8,55 +8,58 @@
     android:background="@color/green"
     tools:context=".view.pengurus.LoginRT">
 
-    <!-- TODO: Update blank fragment layout -->
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/bgsecond"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/bgsec"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2"
-        app:layout_constraintVertical_bias="1.0"
-        android:layout_marginTop="30dp">
+        app:layout_constraintVertical_bias="0.0">
 
         <Button
             android:id="@+id/btndaftar"
-            android:layout_width="342dp"
+            android:layout_width="0dp"
             android:layout_height="61dp"
+            android:layout_marginStart="24dp"
             android:layout_marginTop="140dp"
+            android:layout_marginEnd="24dp"
             android:background="@drawable/shapebutton"
             android:backgroundTint="@color/primarybtn"
             android:fontFamily="@font/montserrat"
             android:text="Daftar sebagai RT"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/btnlgn"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="@+id/btnlgn"
-            app:layout_constraintTop_toBottomOf="@+id/textViewlupapassword"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnToLupaPass"
             app:layout_constraintVertical_bias="0.034" />
 
         <Button
             android:id="@+id/btnlgn"
-            android:layout_width="342dp"
-            android:layout_height="61dp"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="27dp"
             android:background="@drawable/shapebutton"
             android:backgroundTint="@color/primarybtn"
             android:fontFamily="@font/montserrat"
             android:text="Login"
             android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/view"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.507"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewlupapassword" />
+            app:layout_constraintTop_toBottomOf="@+id/btnToLupaPass" />
 
         <TextView
-            android:id="@+id/textViewlupapassword"
+            android:id="@+id/btnToLupaPass"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -68,45 +71,31 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/TILinputPassword" />
 
-<!--        <EditText
-            android:id="@+id/etLoginPasswordAdmin"
-            android:layout_width="370dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="132dp"
-            android:background="@drawable/shapebutton"
-            android:ems="10"
-            android:inputType="textPassword"
-            android:paddingStart="10dp"
-            android:paddingEnd="10dp"
-            app:layout_constraintEnd_toEndOf="@+id/etLoginEmailAdmin"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="@+id/etLoginEmailAdmin"
-            app:layout_constraintTop_toBottomOf="@+id/textViewusername"
-            tools:ignore="SpeakableTextPresentCheck" />-->
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/TILinputPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
             android:layout_marginTop="132dp"
-            app:passwordToggleEnabled="true"
-            android:id="@+id/TILinputPassword"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/shapebutton"
             app:helperTextTextColor="@color/yellow"
             app:layout_constraintEnd_toEndOf="@+id/TILinputEmailAdmin"
             app:layout_constraintStart_toStartOf="@+id/TILinputEmailAdmin"
             app:layout_constraintTop_toBottomOf="@+id/textViewusername"
-            android:background="@drawable/shapebutton">
+            app:passwordToggleEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etLoginPasswordAdmin"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                app:boxBackgroundMode="none"
                 android:background="@drawable/shapebutton"
                 android:inputType="textPassword"
                 android:padding="2dp"
                 android:paddingStart="10dp"
-                android:paddingEnd="10dp"/>
+                android:paddingEnd="10dp"
+                app:boxBackgroundMode="none"
+                tools:ignore="SpeakableTextPresentCheck" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -124,44 +113,30 @@
             app:layout_constraintVertical_bias="0.673" />
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/TILinputEmailAdmin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="20dp"
-            android:id="@+id/TILinputEmailAdmin"
-            app:helperTextTextColor="@color/yellow"
             app:boxBackgroundMode="none"
+            app:helperTextTextColor="@color/yellow"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewusername"
-            android:layout_marginTop="16dp">
+            app:layout_constraintTop_toBottomOf="@+id/textViewusername">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etLoginEmailAdmin"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:padding="2dp"
                 android:background="@drawable/shapebutton"
                 android:inputType="textEmailAddress"
+                android:padding="2dp"
                 android:paddingStart="10dp"
-                android:paddingEnd="10dp"/>
+                android:paddingEnd="10dp"
+                tools:ignore="SpeakableTextPresentCheck" />
         </com.google.android.material.textfield.TextInputLayout>
-        <!--<EditText
-            android:id="@+id/etLoginEmailAdmin"
-            android:layout_width="370dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/shapebutton"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:paddingStart="10dp"
-            android:paddingEnd="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewusername"
-            tools:ignore="SpeakableTextPresentCheck" />-->
 
         <TextView
             android:id="@+id/textViewusername"
@@ -178,13 +153,14 @@
 
         <View
             android:id="@+id/view"
-            android:layout_width="340dp"
+            android:layout_width="0dp"
             android:layout_height="3dp"
+            android:layout_marginStart="24dp"
             android:layout_marginTop="88dp"
+            android:layout_marginEnd="24dp"
             android:background="@color/white"
-            app:layout_constraintEnd_toEndOf="@+id/btnlgn"
-            app:layout_constraintHorizontal_bias="0.492"
-            app:layout_constraintStart_toStartOf="@+id/btnlgn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/btnlgn" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 

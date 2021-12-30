@@ -82,6 +82,9 @@
         <action
             android:id="@+id/action_navigation_profil_to_editProfileFragment"
             app:destination="@id/editProfileFragment" />
+        <action
+            android:id="@+id/action_navigation_profil_to_gantiPasswordRTFragment"
+            app:destination="@id/gantiPasswordRTFragment" />
     </fragment>
     <fragment
         android:id="@+id/tambahKeluargaFragment"
@@ -277,5 +280,14 @@
         <argument
             android:name="email_pengurus"
             app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/gantiPasswordRTFragment"
+        android:name="com.maluku.sma_rt.view.pengurus.GantiPasswordRTFragment"
+        android:label="fragment_ganti_password_rt"
+        tools:layout="@layout/fragment_ganti_password_rt" >
+        <action
+            android:id="@+id/action_gantiPasswordRTFragment_to_navigation_profil"
+            app:destination="@id/navigation_profil" />
     </fragment>
 </navigation>
