@@ -59,7 +59,7 @@ class TambahKeluargaPresenter(private val activity: Activity, private val view: 
             }
             else {
                 view.onCreateFailed("Gagal menambah daftar keluarga!")
-                Log.i(TAG, "onFailure: ${response.errorBody()!!.string()}")
+                Log.i(TAG, "onFailure: ${response.errorBody()!!}")
             }
         }
     }
