@@ -1,6 +1,8 @@
 package com.maluku.sma_rt.view.pengurus.bottomnavigation
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -45,8 +48,18 @@ class WargaFragment : Fragment(), ListWargaViewInterface, ListKeluargaViewInterf
         super.onViewCreated(view, savedInstanceState)
         // Refresh Data Warga
         onStart()
-        nama = binding.etCariWarga.text.toString().trim()
-        Log.d(TAG,"Nama Warga: $nama")
+        binding.etCariWarga.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable) {}
+
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                nama = s.toString()
+                ListWargaPresenter(requireActivity(), this@WargaFragment).getListWargaPresenter(getToken(), idKeluarga, nama)
+            }
+        })
+
     }
 
     override fun onStart() {
