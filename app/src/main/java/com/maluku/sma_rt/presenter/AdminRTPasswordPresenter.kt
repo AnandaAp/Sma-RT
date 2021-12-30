@@ -9,6 +9,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class AdminRTPasswordPresenter(private val view: AdminRTPasswordInterface) {
+    // Ganti Password
     fun changePassAdmin(
         token: String,
         password: String,
@@ -38,6 +39,72 @@ class AdminRTPasswordPresenter(private val view: AdminRTPasswordInterface) {
 
                 override fun onFailure(call: Call<DefaultPasswordResponse>, t: Throwable) {
                     view.onChangePassFailure(t.message.toString())
+                }
+            })
+    }
+
+    // Forget Password
+    fun forgetPassAdmin(
+        token: String,
+        email: String
+    ){
+        RetrofitService
+            .getService()
+            .forgetPassAdmin(
+                "Bearer $token",
+                email
+            )
+            .enqueue(object : Callback<DefaultPasswordResponse> {
+                override fun onResponse(
+                    call: Call<DefaultPasswordResponse>,
+                    response: Response<DefaultPasswordResponse>
+                ) {
+                    if (response.isSuccessful){
+                        val message = response.body()?.message.toString()
+                        view.onForgetPassSuccess(message)
+                    } else{
+                        val jObjError = JSONObject(response.errorBody()?.string())
+                        val message = jObjError.getString("message")
+                        view.onForgetPassFailure(message)
+                    }
+                }
+
+                override fun onFailure(call: Call<DefaultPasswordResponse>, t: Throwable) {
+                    view.onForgetPassFailure(t.message.toString())
+                }
+            })
+    }
+
+    // Reset Password
+    fun resetPassAdmin(
+        token: String,
+        kode: String,
+        password: String
+    ){
+        RetrofitService
+            .getService()
+            .resetPassAdmin(
+                "Bearer $token",
+                kode,
+                password
+            )
+            .enqueue(object : Callback<DefaultPasswordResponse> {
+                override fun onResponse(
+                    call: Call<DefaultPasswordResponse>,
+                    response: Response<DefaultPasswordResponse>
+                ) {
+                    if (response.isSuccessful){
+                        val message = response.body()?.message.toString()
+                        view.onResetPassSuccess(message)
+                    } else{
+                        val jObjError = JSONObject(response.errorBody()?.string())
+                        val message = jObjError.getString("message")
+                        view.onResetPassFailure(message)
+                    }
+                }
+
+                override fun onFailure(call: Call<DefaultPasswordResponse>, t: Throwable) {
+                    view.onResetPassFailure(t.message.toString())
                 }
             })
     }
