@@ -39,7 +39,7 @@ class DompetRTPresenter(private var view: DompetRTInterface) {
                     view.onGetAllDataFailure(t.message.toString())
                 }
             })*/
-        GlobalScope.launch(Dispatchers.IO){
+        GlobalScope.launch(Dispatchers.Main){
             val response = RetrofitService
                 .getService()
                 .getDompetRT("Bearer $token")
@@ -84,7 +84,7 @@ class DompetRTPresenter(private var view: DompetRTInterface) {
                     view.onWithdrawFailure("Withdraw failed")
                 }
             })*/
-        GlobalScope.launch(Dispatchers.IO){
+        GlobalScope.launch(Dispatchers.Main){
             val response = RetrofitService
                 .getService()
                 .withdrawDompetRT(

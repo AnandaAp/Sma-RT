@@ -45,7 +45,7 @@ class ListWargaPresenter(private val activity: Activity, private var view: ListW
                     view.resultListWargaFailure(t.message.toString())
                 }
             })*/
-        GlobalScope.launch(Dispatchers.IO){
+        GlobalScope.launch(Dispatchers.Main){
             val response = RetrofitService
                 .getService()
                 .getListWarga("Bearer $token",idKeluarga,nama)
