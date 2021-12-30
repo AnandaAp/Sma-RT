@@ -35,10 +35,6 @@ class FirstScreen : Fragment() {
             startActivity(intent)
         }
 
-
-
-
-
         return binding.root
     }
 }

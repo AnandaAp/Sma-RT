@@ -207,7 +207,10 @@ class RegisterWarga : Fragment(), WargaInterface {
 
     override fun onRegisterSuccess(message: String) {
         Toast.makeText(context,message,Toast.LENGTH_LONG).show()
-        navigateToDashboard()
+//        navigateToDashboard()
+        val direction = RegisterWargaDirections
+            .actionRegisterWargaToViewPagerFragment()
+        findNavController().navigate(direction)
     }
 
     override fun onRegisterFailure(message: String) {
