@@ -57,7 +57,7 @@ class InformasiPresenter(private val view: InformasiInterface) {
                     Log.i(TAG, "onFailure: ${t.message.toString()}")
                 }
             })*/
-        GlobalScope.launch(Dispatchers.IO){
+        GlobalScope.launch(Dispatchers.Main){
             val response = RetrofitService
                 .getService()
                 .createInformasi(
@@ -101,7 +101,7 @@ class InformasiPresenter(private val view: InformasiInterface) {
                     view.onGetAllInformasiFailure(t.message.toString())
                 }
             })*/
-        GlobalScope.launch(Dispatchers.IO){
+        GlobalScope.launch(Dispatchers.Main){
             val response = RetrofitService
                 .getService()
                 .getAllInformasi("Bearer $token")
@@ -141,7 +141,7 @@ class InformasiPresenter(private val view: InformasiInterface) {
                     view.onGetInfoTerkiniFailure(t.message.toString())
                 }
             })*/
-        GlobalScope.launch(Dispatchers.IO){
+        GlobalScope.launch(Dispatchers.Main){
             val response = RetrofitService
                 .getService()
                 .getInfoTerkini("Bearer $token")
@@ -180,7 +180,7 @@ class InformasiPresenter(private val view: InformasiInterface) {
                     view.onGetKegiatanFailure(t.message.toString())
                 }
             })*/
-        GlobalScope.launch(Dispatchers.IO){
+        GlobalScope.launch(Dispatchers.Main){
             val response = RetrofitService
                 .getService()
                 .getKegiatan("Bearer $token")
@@ -225,7 +225,7 @@ class InformasiPresenter(private val view: InformasiInterface) {
                     view.onGetInformasiFailure(t.message.toString())
                 }
             })*/
-        GlobalScope.launch(Dispatchers.IO){
+        GlobalScope.launch(Dispatchers.Main){
             val response = RetrofitService
                 .getService()
                 .getInformasiByID(

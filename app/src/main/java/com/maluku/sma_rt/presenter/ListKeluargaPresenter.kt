@@ -39,7 +39,7 @@ class ListKeluargaPresenter(private var view: ListKeluargaViewInterface) {
                     view.resultListKeluargaFailure(t.message.toString())
                 }
             })*/
-        GlobalScope.launch(Dispatchers.IO){
+        GlobalScope.launch(Dispatchers.Main){
             val response = RetrofitService
                 .getService()
                 .getListKeluarga("Bearer $token")
