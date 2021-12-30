@@ -73,6 +73,7 @@ class RecyclerViewTagihanWarga(
 
             btnOk.setOnClickListener {
                 listener.onBayarTagihan(data.id.toString())
+                dialog.dismiss()
             }
             btnBatal.setOnClickListener {
                 dialog.dismiss()

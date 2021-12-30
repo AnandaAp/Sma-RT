@@ -19,6 +19,12 @@ import com.maluku.sma_rt.view.viewInterface.WargaTagihanInterface
 import com.maluku.sma_rt.view.warga.adapter.RecyclerViewKegiatanWarga
 import com.maluku.sma_rt.view.warga.adapter.RecyclerViewTagihanWarga
 import java.util.ArrayList
+import android.R
+
+import androidx.navigation.fragment.NavHostFragment
+
+
+
 
 private const val TAG = "TAGIHAN WARGA"
 
@@ -88,6 +94,7 @@ class CatatanWarga : Fragment(), WargaTagihanInterface {
 
     override fun onPayBillSuccess(message: String) {
         Toast.makeText(requireContext(),message, Toast.LENGTH_LONG).show()
+        WargaTagihanPresenter(this).getAllTagihan(getToken())
     }
 
     override fun onPayBillFailure(message: String) {
