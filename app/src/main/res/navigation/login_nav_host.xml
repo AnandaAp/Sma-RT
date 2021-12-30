@@ -68,6 +68,9 @@
         <action
             android:id="@+id/action_loginRT_to_registerRT"
             app:destination="@id/registerRT" />
+        <action
+            android:id="@+id/action_loginRT_to_lupaPasswordRTFragment2"
+            app:destination="@id/lupaPasswordRTFragment2" />
     </fragment>
     <fragment
         android:id="@+id/registerRT"
@@ -77,6 +80,9 @@
         <action
             android:id="@+id/action_registerRT_to_loginRT"
             app:destination="@id/loginRT" />
+        <action
+            android:id="@+id/action_registerRT_to_viewPagerFragment"
+            app:destination="@id/viewPagerFragment" />
     </fragment>
     <fragment
         android:id="@+id/lupaPassword"
@@ -101,5 +107,29 @@
         <action
             android:id="@+id/action_resetPassword_to_loginWarga"
             app:destination="@id/loginWarga" />
+    </fragment>
+    <fragment
+        android:id="@+id/resetPasswordRTFragment2"
+        android:name="com.maluku.sma_rt.view.pengurus.ResetPasswordRTFragment"
+        android:label="fragment_reset_password_r_t"
+        tools:layout="@layout/fragment_reset_password_r_t" >
+        <action
+            android:id="@+id/action_resetPasswordRTFragment2_to_lupaPasswordRTFragment2"
+            app:destination="@id/lupaPasswordRTFragment2" />
+        <action
+            android:id="@+id/action_resetPasswordRTFragment2_to_loginRT"
+            app:destination="@id/loginRT" />
+    </fragment>
+    <fragment
+        android:id="@+id/lupaPasswordRTFragment2"
+        android:name="com.maluku.sma_rt.view.pengurus.LupaPasswordRTFragment"
+        android:label="fragment_lupa_password_r_t"
+        tools:layout="@layout/fragment_lupa_password_r_t" >
+        <action
+            android:id="@+id/action_lupaPasswordRTFragment2_to_loginRT"
+            app:destination="@id/loginRT" />
+        <action
+            android:id="@+id/action_lupaPasswordRTFragment2_to_resetPasswordRTFragment2"
+            app:destination="@id/resetPasswordRTFragment2" />
     </fragment>
 </navigation>

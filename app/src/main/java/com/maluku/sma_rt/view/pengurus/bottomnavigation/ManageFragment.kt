@@ -28,6 +28,7 @@ class ManageFragment : Fragment() {
         navigateManageToTambahInformasi()
         navigateManageToLaporan()
         navigateManageToKas()
+        navigateManageToTambahKeluarga()
     }
 
     private fun navigateManageToTambahInformasi(){
@@ -39,6 +40,12 @@ class ManageFragment : Fragment() {
     private fun navigateManageToLaporan() {
         binding.btnLaporan.setOnClickListener{
             findNavController().navigate(R.id.action_navigation_manage_to_laporanFragment)
+        }
+    }
+
+    private fun navigateManageToTambahKeluarga() {
+        binding.btnToTambahKeluarga.setOnClickListener{
+            findNavController().navigate(R.id.action_navigation_manage_to_tambahKeluargaFragment)
         }
     }
 
