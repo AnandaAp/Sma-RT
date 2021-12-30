@@ -5,6 +5,8 @@ import android.content.ContentValues
 import android.content.DialogInterface
 import android.net.Uri
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -282,13 +284,17 @@ class EditProduk : Fragment(), ProdukInterface {
     }
 
     override fun onUpdateSuccess(message: String) {
-        Toast.makeText(context,message, Toast.LENGTH_LONG).show()
-        val direction = EditProdukDirections.actionEditProdukToProdukPage()
-        findNavController().navigate(direction)
+        Handler(Looper.getMainLooper()).post {
+            Toast.makeText(context,message, Toast.LENGTH_LONG).show()
+            val direction = EditProdukDirections.actionEditProdukToProdukPage()
+            findNavController().navigate(direction)
+        }
     }
 
     override fun onUpdateFailure(message: String) {
-        Toast.makeText(context,message, Toast.LENGTH_LONG).show()
+        Handler(Looper.getMainLooper()).post {
+            Toast.makeText(context,message, Toast.LENGTH_LONG).show()
+        }
     }
 
     override fun onDeleteSuccess(message: String) {

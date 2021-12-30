@@ -24,15 +24,13 @@ import com.maluku.sma_rt.R
 import com.maluku.sma_rt.databinding.FragmentAkunWargaBinding
 import com.maluku.sma_rt.extentions.UserSession
 import com.maluku.sma_rt.model.warga.GetMe
-import com.maluku.sma_rt.presenter.WargaEditProfilePresenter
-import com.maluku.sma_rt.view.activity.DashboardWargaActivity
 import com.maluku.sma_rt.view.activity.MainActivity
-import com.maluku.sma_rt.view.viewInterface.WargaEditProfileInterface
+import com.maluku.sma_rt.view.viewInterface.WargaInterface
 import java.io.File
 
 private const val TAG = "AKUN WARGA"
 
-class AkunWarga : Fragment(), WargaEditProfileInterface {
+class AkunWarga : Fragment() {
 
     private lateinit var binding: FragmentAkunWargaBinding
 
@@ -153,21 +151,4 @@ class AkunWarga : Fragment(), WargaEditProfileInterface {
             dialog.show()
         }
     }
-
-    override fun onUpdateSuccess(message: String) {
-        TODO("Not yet implemented")
-    }
-
-    override fun onUpdateFailure(message: String) {
-        TODO("Not yet implemented")
-    }
-
-    override fun onGetDataSuccess(result: GetMe?) {
-//        setDataWarga(result!!)
-    }
-
-    override fun onGetDataFailure(message: String) {
-        Toast.makeText(requireContext(),message, Toast.LENGTH_LONG).show()
-    }
-
 }

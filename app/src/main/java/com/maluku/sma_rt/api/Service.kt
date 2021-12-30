@@ -410,4 +410,13 @@ interface Service {
         @Field("password") password: String,
         @Field("new_password") new_password: String
     ): Call<DefaultPasswordResponse>
+
+    // Warga
+    @FormUrlEncoded
+    @PUT("warga/changepassword")
+    fun changePasswordWarga(
+        @Header("Authorization") authHeader: String,
+        @Field("password") password: String,
+        @Field("new_password") new_password: String
+    ): Call<DefaultPasswordResponse>
 }

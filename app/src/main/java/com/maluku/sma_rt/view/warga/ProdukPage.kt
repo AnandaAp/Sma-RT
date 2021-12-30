@@ -1,6 +1,7 @@
 package com.maluku.sma_rt.view.warga
 
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -18,6 +19,10 @@ import com.maluku.sma_rt.model.produk.GetProdukById
 import com.maluku.sma_rt.presenter.ProdukPresenter
 import com.maluku.sma_rt.view.viewInterface.ProdukInterface
 import com.maluku.sma_rt.view.warga.adapter.RecyclerViewProdukpage
+import android.os.Looper
+
+
+
 
 private const val TAG = "PRODUK PAGE"
 
@@ -32,6 +37,7 @@ class ProdukPage : Fragment(), ProdukInterface {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        ProdukPresenter(this).getListProdukByToken(getToken())
         // Inflate the layout for this fragment
         return bindingView()
     }
@@ -46,7 +52,6 @@ class ProdukPage : Fragment(), ProdukInterface {
 
     override fun onStart() {
         super.onStart()
-        ProdukPresenter(this).getListProdukByToken(getToken())
     }
 
     private fun getToken(): String {
@@ -100,7 +105,9 @@ class ProdukPage : Fragment(), ProdukInterface {
 //    }
 
     override fun onGetAllDataSuccess(data: List<GetAllProdukKeluargaItem?>?) {
-        adapterProduk.setData(data as ArrayList<GetAllProdukKeluargaItem>)
+        Handler(Looper.getMainLooper()).post(Runnable { //do stuff like remove view etc
+            adapterProduk.setData(data as ArrayList<GetAllProdukKeluargaItem>)
+        })
     }
 
     override fun onGetAllDataFailure(message: String) {
