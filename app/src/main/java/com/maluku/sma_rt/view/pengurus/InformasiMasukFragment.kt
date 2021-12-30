@@ -33,7 +33,6 @@ class InformasiMasukFragment : Fragment(), InformasiInterface{
         super.onViewCreated(view, savedInstanceState)
         // Refresh Data Informasi
         onStart()
-        setRecyclerViewInformasi()
     }
 
     private fun setRecyclerViewInformasi() {
@@ -69,6 +68,7 @@ class InformasiMasukFragment : Fragment(), InformasiInterface{
 
 
     override fun onGetAllInformasiSuccess(result: List<GetAllInformasiItem>) {
+        setRecyclerViewInformasi()
         adapterInformasi.setData(result as ArrayList<GetAllInformasiItem>)
     }
 
