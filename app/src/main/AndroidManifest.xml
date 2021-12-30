@@ -23,6 +23,7 @@
         tools:targetApi="m">
         <activity
             android:name=".view.activity.DashboardWargaActivity"
+            android:windowSoftInputMode="adjustPan"
             android:exported="false" />
         <activity
             android:name=".view.activity.DashboardRTActivity"
@@ -37,13 +38,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <service android:name=".api.notification.PushNotification"
             android:exported="false">
+            android:permission="com.google.android.c2dm.permission.SEND">
             <intent-filter>
-                <action  android:name="com.google.firebase.MESSAGING_EVENT"/>
-                <action  android:name="com.google.android.c2dm.intent.RECEIVE"/>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
             </intent-filter>
-
         </service>
 
         <meta-data
