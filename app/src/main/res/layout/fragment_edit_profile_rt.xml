@@ -19,23 +19,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivEditPengurus" />
 
-    <TextView
-        android:id="@+id/btnPickProfilImg"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:background="@drawable/btn_changeprofile"
-        app:layout_constraintBottom_toTopOf="@+id/textView80"
-        app:layout_constraintEnd_toEndOf="@+id/ivEditPengurus"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.716" />
+
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout7"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
+        app:hintEnabled="false"
+        app:hintAnimationEnabled="false"
+        app:boxBackgroundMode="none"
         android:background="@drawable/round"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/textView80"
@@ -43,8 +36,9 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etEditNama"
+            android:padding="2dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:background="@drawable/round" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -64,6 +58,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@drawable/round"
+        app:hintEnabled="false"
+        app:boxBackgroundMode="none"
+        app:hintAnimationEnabled="false"
         app:layout_constraintEnd_toEndOf="@+id/textInputLayout7"
         app:layout_constraintStart_toStartOf="@+id/textView81"
         app:layout_constraintTop_toBottomOf="@+id/textView81">
@@ -71,7 +68,8 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etEditNoHP"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
+            android:padding="2dp"
             android:background="@drawable/round" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -88,6 +86,9 @@
         android:id="@+id/textInputLayout9"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        app:hintEnabled="false"
+        app:boxBackgroundMode="none"
+        app:hintAnimationEnabled="false"
         android:background="@drawable/round"
         app:layout_constraintEnd_toEndOf="@+id/textInputLayout8"
         app:layout_constraintStart_toStartOf="@+id/textView82"
@@ -96,7 +97,8 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etEditEmail"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
+            android:padding="2dp"
             android:background="@drawable/round" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -109,21 +111,6 @@
         app:layout_constraintStart_toStartOf="@+id/textInputLayout9"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout9" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout10"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/round"
-        app:layout_constraintEnd_toEndOf="@+id/textInputLayout9"
-        app:layout_constraintStart_toStartOf="@+id/textView83"
-        app:layout_constraintTop_toBottomOf="@+id/textView83">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etEditJenisKelamin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/round" />
-    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/btnUpdateProfil"
@@ -133,7 +120,7 @@
         android:backgroundTint="@color/green"
         android:text="Simpan"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/textInputLayout10" />
+        app:layout_constraintStart_toStartOf="@+id/etEditJenisKelamin" />
 
     <Button
         android:id="@+id/btnBatalEdit"
@@ -141,19 +128,41 @@
         android:layout_height="60dp"
         android:backgroundTint="@color/redbtn"
         android:text="Batal"
-        app:layout_constraintEnd_toEndOf="@+id/textInputLayout10"
+        app:layout_constraintEnd_toEndOf="@+id/etEditJenisKelamin"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/btnUpdateProfil"
         app:layout_constraintTop_toTopOf="@+id/btnUpdateProfil" />
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/ivEditPengurus"
         android:layout_width="100dp"
+        android:src="@drawable/icon_user"
         android:layout_height="100dp"
         android:layout_marginTop="16dp"
-        android:src="@drawable/circleimg"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:civ_border_color="@color/green"
+        app:civ_border_width="2dp" />
+
+    <TextView
+        android:id="@+id/btnPickProfilImg"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:background="@drawable/btn_changeprofile"
+        app:layout_constraintBottom_toBottomOf="@+id/ivEditPengurus"
+        app:layout_constraintEnd_toEndOf="@+id/ivEditPengurus"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/ivEditPengurus" />
+
+    <Spinner
+        android:id="@+id/etEditJenisKelamin"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="@+id/textInputLayout9"
+        app:layout_constraintStart_toStartOf="@+id/textInputLayout9"
+        app:layout_constraintTop_toBottomOf="@+id/textView83"
+        android:clickable="false"
+        android:background="@drawable/rectangle_round"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

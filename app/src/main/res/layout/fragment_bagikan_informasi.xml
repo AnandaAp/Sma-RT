@@ -44,6 +44,7 @@
         android:background="@drawable/rectangle"
         android:ems="10"
         android:inputType="textPersonName"
+        android:paddingStart="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/textView12"
@@ -67,12 +68,12 @@
         android:background="@drawable/rectangle"
         android:ems="10"
         android:inputType="textPersonName"
+        android:paddingStart="10dp"
         app:layout_constraintEnd_toEndOf="@+id/etJudul"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/textView13"
         app:layout_constraintTop_toBottomOf="@+id/textView13"
-        tools:ignore="MissingConstraints,SpeakableTextPresentCheck"
-        />
+        tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
 
     <EditText
         android:id="@+id/etDetailInformasi"
@@ -82,6 +83,8 @@
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine"
+        android:paddingStart="10dp"
+        android:paddingTop="10dp"
         app:layout_constraintEnd_toEndOf="@+id/etLokasi"
         app:layout_constraintStart_toStartOf="@+id/textView15"
         app:layout_constraintTop_toBottomOf="@+id/textView15"
@@ -94,7 +97,7 @@
         android:layout_marginTop="16dp"
         android:text="Detail Kegiatan : "
         app:layout_constraintStart_toStartOf="@+id/etLokasi"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout11"
+        app:layout_constraintTop_toBottomOf="@+id/etLokasi"
         tools:ignore="MissingConstraints" />
 
     <TextView
@@ -142,36 +145,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView12" />
 
-    <TextView
-        android:id="@+id/textView96"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Masukkan Tanggal :"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/etLokasi"
-        app:layout_constraintTop_toBottomOf="@+id/etLokasi" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout11"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:background="@drawable/rectangle"
-        app:endIconDrawable="@drawable/ic_date"
-        app:layout_constraintEnd_toEndOf="@+id/etLokasi"
-        app:layout_constraintStart_toStartOf="@+id/textView96"
-        app:layout_constraintTop_toBottomOf="@+id/textView96">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@drawable/rectangle"
-            android:drawableEnd="@drawable/ic_date"
-            android:drawablePadding="0dp"
-            android:inputType="date"
-            tools:ignore="SpeakableTextPresentCheck" />
-    </com.google.android.material.textfield.TextInputLayout>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

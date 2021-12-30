@@ -46,7 +46,7 @@
                 android:layout_marginBottom="32dp"
                 android:text="Rp. 150.000"
                 android:textColor="#fff"
-                android:textSize="48sp"
+                android:textSize="34sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -107,7 +107,9 @@
                 android:id="@+id/textInputLayout13"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                app:hintEnabled="false"
                 app:boxBackgroundMode="none"
+                app:hintAnimationEnabled="false"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -120,7 +122,7 @@
                     android:background="@drawable/rectangle_round"
                     android:padding="2dp"
                     android:inputType="number"
-                    android:paddingStart="8dp"
+                    android:paddingStart="10dp"
                     android:hint="Rp"
                     android:textSize="20sp" />
             </com.google.android.material.textfield.TextInputLayout>

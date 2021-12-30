@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/fragment_surat_keluar"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:layout_marginHorizontal="10dp"
     tools:context=".view.pengurus.FragmentSuratKeluar">
 
@@ -23,6 +23,7 @@
         android:id="@+id/textView33"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
         android:text="Pilih Bulan : "
         app:layout_constraintBottom_toBottomOf="@+id/spinner3"
         app:layout_constraintStart_toStartOf="parent"
