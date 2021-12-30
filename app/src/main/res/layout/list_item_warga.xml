@@ -23,17 +23,18 @@
             android:layout_height="match_parent"
             android:background="@drawable/rectangle">
 
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/ivProfilWarga"
                 android:layout_width="85dp"
                 android:layout_height="85dp"
-                android:backgroundTint="@color/black"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.051"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/circleimg" />
+                android:src="@drawable/icon_user"
+                app:civ_border_color="#000"
+                app:civ_border_width="2dp" />
 
             <TextView
                 android:id="@+id/textView16"

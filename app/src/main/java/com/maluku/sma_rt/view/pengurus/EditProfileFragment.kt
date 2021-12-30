@@ -81,7 +81,6 @@ class EditProfileFragment : Fragment(), AdminRTProfileInterface {
         binding.etEditNama.setText(nama)
         binding.etEditEmail.setText(email)
         binding.etEditNoHP.setText(noHp)
-        binding.etEditJenisKelamin.setText(jenisKelamin)
 
         // Firebase Storage
         val storageRef = FirebaseStorage.getInstance().reference.child("user/${gambarPengurus}")
@@ -191,9 +190,8 @@ class EditProfileFragment : Fragment(), AdminRTProfileInterface {
         val validNama = !binding.etEditNama.text.isNullOrEmpty()
         val validEmail = !binding.etEditEmail.text.isNullOrEmpty()
         val validNoHp = !binding.etEditNoHP.text.isNullOrEmpty()
-        val validGender = !binding.etEditJenisKelamin.text.isNullOrEmpty()
 
-        if (validNama && validEmail && validNoHp && validGender){
+        if (validNama && validEmail && validNoHp){
             if (imageUri != null){
                 uploadImage()
             }
@@ -208,9 +206,6 @@ class EditProfileFragment : Fragment(), AdminRTProfileInterface {
             }
             if (!validNoHp){
                 binding.etEditNoHP.error = "Masukkan nomor handphone!"
-            }
-            if (!validGender){
-                binding.etEditJenisKelamin.error = "Masukan jenis kelamin!"
             }
             Toast.makeText(requireContext(),"Seluruh field harus terisi!",Toast.LENGTH_LONG).show()
         }
