@@ -40,6 +40,11 @@ class RecyclerViewTerlaris(
         val data = listProduk[position]
         holder.namaBarang.text = data.nama
         holder.hargaBarang.text = toRupiah(data.harga.toString().toDouble())
+        if(data.detail!!.length > 22) {
+            holder.namaToko.text = data.detail.toString().take(22) + "..."
+        } else {
+            holder.namaToko.text = data.detail.toString()
+        }
 
         // Firebase Storage
         val storageRef = FirebaseStorage.getInstance().reference.child("produk/${data.gambar}")
