@@ -8,6 +8,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Spinner
 import android.widget.Toast
 import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.ActivityResultLauncher
@@ -19,10 +22,13 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.google.firebase.storage.FirebaseStorage
+import com.maluku.sma_rt.R
 import com.maluku.sma_rt.databinding.FragmentEditProfileRtBinding
 import com.maluku.sma_rt.extentions.UserSession
 import com.maluku.sma_rt.model.pengurus.GetPengurusById
 import com.maluku.sma_rt.presenter.AdminRTProfilePresenter
+import com.maluku.sma_rt.presenter.ListWargaPresenter
+import com.maluku.sma_rt.presenter.WargaEditProfilePresenter
 import com.maluku.sma_rt.view.viewInterface.AdminRTProfileInterface
 import java.io.File
 import java.text.SimpleDateFormat
@@ -79,7 +85,7 @@ class EditProfileFragment : Fragment(), AdminRTProfileInterface {
         binding.etEditNama.setText(nama)
         binding.etEditEmail.setText(email)
         binding.etEditNoHP.setText(noHp)
-
+        setGender()
         // Firebase Storage
         val storageRef = FirebaseStorage.getInstance().reference.child("user/${gambarPengurus}")
         Log.d(ContentValues.TAG,"Adapter get ref image: $storageRef")
@@ -92,6 +98,22 @@ class EditProfileFragment : Fragment(), AdminRTProfileInterface {
                 .into(binding.ivEditPengurus)
         }.addOnFailureListener {
 
+        }
+    }
+
+    private fun setGender(){
+        val spGender = binding.etEditJenisKelamin
+        spGender.isClickable = false
+        spGender.isEnabled = false
+        val listGender: ArrayList<String?> = arrayListOf("Laki-Laki", "Perempuan")
+        val adapter = ArrayAdapter(requireContext(), R.layout.support_simple_spinner_dropdown_item,listGender)
+        spGender.adapter = adapter
+        for(i in listGender.indices){
+            if (listGender[i]?.lowercase() == jenisKelamin){
+                spGender.setSelection(i)
+            } else {
+                spGender.setSelection(0)
+            }
         }
     }
 
@@ -108,7 +130,7 @@ class EditProfileFragment : Fragment(), AdminRTProfileInterface {
     private fun namaFocusListener() {
         binding.etEditNama.setOnFocusChangeListener { view, focused ->
             if (!focused){
-                binding.etEditNama.error = validNama()
+                binding.TILeditNama.helperText = validNama()
             }
         }
     }
@@ -124,7 +146,7 @@ class EditProfileFragment : Fragment(), AdminRTProfileInterface {
     private fun emailFocusListener() {
         binding.etEditEmail.setOnFocusChangeListener { view, focused ->
             if (!focused){
-                binding.etEditEmail.error = validEmail()
+                binding.TILeditEmail.helperText = validEmail()
             }
         }
     }
@@ -140,7 +162,7 @@ class EditProfileFragment : Fragment(), AdminRTProfileInterface {
     private fun noHPFocusListener() {
         binding.etEditNoHP.setOnFocusChangeListener { view, focused ->
             if (!focused){
-                binding.etEditNoHP.error = validNoHp()
+                binding.TILeditNoHP.helperText = validNoHp()
             }
         }
     }
@@ -197,13 +219,13 @@ class EditProfileFragment : Fragment(), AdminRTProfileInterface {
             updateProfile()
         } else {
             if (!validNama){
-                binding.etEditNama.error = "Masukkan nama!"
+                binding.TILeditNama.helperText = "Masukkan nama!"
             }
             if (!validEmail){
-                binding.etEditEmail.error = "Masukkan email!"
+                binding.TILeditEmail.helperText = "Masukkan email!"
             }
             if (!validNoHp){
-                binding.etEditNoHP.error = "Masukkan nomor handphone!"
+                binding.TILeditNoHP.helperText = "Masukkan nomor handphone!"
             }
             Toast.makeText(requireContext(),"Seluruh field harus terisi!",Toast.LENGTH_LONG).show()
         }

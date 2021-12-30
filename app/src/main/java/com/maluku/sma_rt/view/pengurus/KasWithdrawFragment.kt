@@ -54,7 +54,7 @@ class KasWithdrawFragment : Fragment(), DompetRTInterface {
             DompetRTPresenter(this).withdrawAdmin(getToken(),jumlah)
         } else {
             if (!validJumlah){
-                binding.etJumlahWithdraw.error = "Masukan jumlah withdraw!"
+                binding.TILjmlWithdraw.helperText = "Masukan jumlah withdraw!"
             }
             Toast.makeText(requireContext(),"Seluruh field harus terisi!", Toast.LENGTH_LONG).show()
         }
@@ -68,7 +68,7 @@ class KasWithdrawFragment : Fragment(), DompetRTInterface {
     private fun jumlahFocusListener() {
         binding.etJumlahWithdraw.setOnFocusChangeListener { view, focused ->
             if (!focused){
-                binding.etJumlahWithdraw.error = validJumlah()
+                binding.TILjmlWithdraw.helperText = validJumlah()
             }
         }
     }

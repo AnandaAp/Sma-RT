@@ -61,19 +61,19 @@ class GantiPasswordRTFragment : Fragment(), AdminRTPasswordInterface {
         if (validPassLama && validConfirmPass && validPassBaru){
             if (passBaru != confirmPass){
                 Log.d("GANTI_PASS","Pass Baru: $passBaru || confirm = $confirmPass")
-                binding.etConfirmPass.error = "Password tidak sesuai!"
+                binding.TILconfirmPass.helperText = "Password tidak sesuai!"
             } else {
                 AdminRTPasswordPresenter(this).changePassAdmin(getToken(),passLama,passBaru)
             }
         } else {
             if (!validPassLama){
-                binding.etPassLama.error = "Masukan password lama!"
+                binding.TILpassLama.helperText = "Masukan password lama!"
             }
             if (!validPassBaru){
-                binding.etPassBaru.error = "Masukan password baru!"
+                binding.TILpassBaru.helperText = "Masukan password baru!"
             }
             if (!validConfirmPass){
-                binding.etConfirmPass.error = "Masukan konfirmasi password!"
+                binding.TILconfirmPass.helperText = "Masukan konfirmasi password!"
             }
             Toast.makeText(requireContext(),"Seluruh field harus terisi!", Toast.LENGTH_LONG).show()
         }
@@ -87,7 +87,7 @@ class GantiPasswordRTFragment : Fragment(), AdminRTPasswordInterface {
     private fun passLamaFocusListener() {
         binding.etPassLama.setOnFocusChangeListener { view, focused ->
             if (!focused){
-                binding.etPassLama.error = validPassLama()
+                binding.TILpassLama.helperText = validPassLama()
             }
         }
     }
@@ -103,7 +103,7 @@ class GantiPasswordRTFragment : Fragment(), AdminRTPasswordInterface {
     private fun passBaruFocusListener() {
         binding.etPassBaru.setOnFocusChangeListener { view, focused ->
             if (!focused){
-                binding.etPassBaru.error = validPassBaru()
+                binding.TILpassBaru.helperText = validPassBaru()
             }
         }
     }
@@ -119,7 +119,7 @@ class GantiPasswordRTFragment : Fragment(), AdminRTPasswordInterface {
     private fun confirmPassFocusListener() {
         binding.etConfirmPass.setOnFocusChangeListener { view, focused ->
             if (!focused){
-                binding.etConfirmPass.error = validConfirmPass()
+                binding.TILconfirmPass.helperText = validConfirmPass()
             }
         }
     }

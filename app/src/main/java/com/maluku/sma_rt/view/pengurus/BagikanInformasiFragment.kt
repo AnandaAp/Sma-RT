@@ -31,7 +31,7 @@ class BagikanInformasiFragment : Fragment(), InformasiInterface {
     private var detail: String = ""
     private var kategori: String = ""
     private var imageUri: Uri? = null
-    private var gambarInformasi: String = "default_image"
+    private var gambarInformasi: String = "default_image.jpg"
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         judulFocusListener()
