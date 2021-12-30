@@ -127,6 +127,21 @@ interface Service {
         @Field("gambar") gambar: String,
     ): Call<UpdateWargaResponse>
 
+    // Warga lupa password
+    @FormUrlEncoded
+    @POST("warga/forgetpassword")
+    fun forgetPassword(
+        @Field("email") email: String
+    ): Call<DefaultWargaResponse>
+
+    // Warga reset password
+    @FormUrlEncoded
+    @POST("warga/resetpasswordbykode")
+    fun resetPassword(
+        @Field("kode") kode: String,
+        @Field("password") password: String
+    ): Call<DefaultWargaResponse>
+
     // Tambah Keluarga
     @FormUrlEncoded
     @POST("keluarga")

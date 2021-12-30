@@ -98,5 +98,8 @@
         <action
             android:id="@+id/action_resetPassword_to_lupaPassword"
             app:destination="@id/lupaPassword" />
+        <action
+            android:id="@+id/action_resetPassword_to_loginWarga"
+            app:destination="@id/loginWarga" />
     </fragment>
 </navigation>

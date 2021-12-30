@@ -12,6 +12,7 @@ import com.maluku.sma_rt.extentions.UserSession.Companion.SHARED_PREFERENCE_ROLE
 import com.maluku.sma_rt.extentions.UserSession.Companion.SHARED_PREFERENCE_TOKEN_KEY
 import com.maluku.sma_rt.model.password.DefaultPasswordResponse
 import com.maluku.sma_rt.model.warga.CreateWargaResponse
+import com.maluku.sma_rt.model.warga.DefaultWargaResponse
 import com.maluku.sma_rt.model.warga.WargaLoginResponse
 import com.maluku.sma_rt.view.viewInterface.WargaInterface
 import kotlinx.coroutines.Dispatchers
@@ -205,6 +206,65 @@ class WargaPresenter(private val activity: Activity, private val view: WargaInte
                 }
 
                 override fun onFailure(call: Call<DefaultPasswordResponse>, t: Throwable) {
+                    view.onChangePasswordFailure(t.message.toString())
+                }
+            })
+    }
+
+    fun forgetPassword(
+        email: String
+    ){
+        RetrofitService
+            .getService()
+            .forgetPassword(
+                email
+            )
+            .enqueue(object : Callback<DefaultWargaResponse> {
+                override fun onResponse(
+                    call: Call<DefaultWargaResponse>,
+                    response: Response<DefaultWargaResponse>
+                ) {
+                    if (response.isSuccessful){
+                        val message = response.body()?.message.toString()
+                        view.onForgetPasswordSuccess(message)
+                    } else{
+                        val jObjError = JSONObject(response.errorBody()?.string())
+                        val message = jObjError.getString("message")
+                        view.onForgetPasswordFailure(message)
+                    }
+                }
+
+                override fun onFailure(call: Call<DefaultWargaResponse>, t: Throwable) {
+                    view.onForgetPasswordFailure(t.message.toString())
+                }
+            })
+    }
+
+    fun resetPassword(
+        kode: String,
+        password: String
+    ){
+        RetrofitService
+            .getService()
+            .resetPassword(
+                kode, password
+            )
+            .enqueue(object : Callback<DefaultWargaResponse> {
+                override fun onResponse(
+                    call: Call<DefaultWargaResponse>,
+                    response: Response<DefaultWargaResponse>
+                ) {
+                    if (response.isSuccessful){
+                        val message = response.body()?.message.toString()
+                        view.onChangePasswordSuccess(message)
+                    } else{
+                        val jObjError = JSONObject(response.errorBody()?.string())
+                        val message = jObjError.getString("message")
+                        view.onChangePasswordFailure(message)
+                    }
+                }
+
+                override fun onFailure(call: Call<DefaultWargaResponse>, t: Throwable) {
                     view.onChangePasswordFailure(t.message.toString())
                 }
             })
