@@ -51,6 +51,7 @@ class WargaPresenter(private val activity: Activity, private val view: WargaInte
                                     token
                                 )
                             }
+                            view.onLoginSuccess("Selamat datang!")
                         }
                         false -> {
                             val jObjError = JSONObject(response.errorBody()?.string())
@@ -126,7 +127,6 @@ class WargaPresenter(private val activity: Activity, private val view: WargaInte
         userSession.save(SHARED_PREFERENCE_TOKEN_KEY,token)
         userSession.save(SHARED_PREFERENCE_EMAIL_KEY,email)
         userSession.save(SHARED_PREFERENCE_PASSWORD_KEY,password)
-        view.onLoginSuccess("Selamat datang!")
     }
 
     fun getDataLogin(token: String) {
