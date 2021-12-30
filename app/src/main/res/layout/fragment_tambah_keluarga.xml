@@ -9,11 +9,10 @@
     android:padding="1dp">
 
     <com.google.android.material.appbar.CollapsingToolbarLayout
-        android:id="@+id/toolbar_kelolatoko"
+        android:id="@+id/toolbar_tambah_keluarga"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="@color/green"
-        android:elevation="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -33,6 +32,18 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <TextView
+                android:id="@+id/textView56"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tambah Keluarga"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.578" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
