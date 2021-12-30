@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout12"
+        android:id="@+id/TILnamaTagihan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
@@ -54,17 +54,17 @@
         android:layout_marginTop="16dp"
         android:text="Jumlah yang Harus DIbayarkan"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/textInputLayout12"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout12" />
+        app:layout_constraintStart_toStartOf="@+id/TILnamaTagihan"
+        app:layout_constraintTop_toBottomOf="@+id/TILnamaTagihan" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout13"
+        android:id="@+id/TILjumlahTagihan"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:boxBackgroundMode="none"
         app:hintEnabled="false"
         app:hintAnimationEnabled="false"
-        app:layout_constraintEnd_toEndOf="@+id/textInputLayout12"
+        app:layout_constraintEnd_toEndOf="@+id/TILnamaTagihan"
         app:layout_constraintStart_toStartOf="@+id/textView97"
         app:layout_constraintTop_toBottomOf="@+id/textView97">
 
@@ -87,16 +87,16 @@
         android:layout_marginTop="16dp"
         android:text="Detail Tagihan"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/textInputLayout13"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout13" />
+        app:layout_constraintStart_toStartOf="@+id/TILjumlahTagihan"
+        app:layout_constraintTop_toBottomOf="@+id/TILjumlahTagihan" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout14"
+        android:id="@+id/TILdetailTagihan"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:boxBackgroundMode="none"
-        app:layout_constraintEnd_toEndOf="@+id/textInputLayout13"
-        app:layout_constraintStart_toStartOf="@+id/textInputLayout13"
+        app:layout_constraintEnd_toEndOf="@+id/TILjumlahTagihan"
+        app:layout_constraintStart_toStartOf="@+id/TILjumlahTagihan"
         app:layout_constraintTop_toBottomOf="@+id/textView98">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -117,8 +117,8 @@
         android:text="Batal"
         android:textColor="@color/green"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/textInputLayout14"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout14"
+        app:layout_constraintStart_toStartOf="@+id/TILdetailTagihan"
+        app:layout_constraintTop_toBottomOf="@+id/TILdetailTagihan"
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
@@ -130,7 +130,7 @@
         android:text="Buat Tagihan"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="@+id/btnBack"
-        app:layout_constraintEnd_toEndOf="@+id/textInputLayout14"
+        app:layout_constraintEnd_toEndOf="@+id/TILdetailTagihan"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/btnBack"
         app:layout_constraintTop_toTopOf="@+id/btnBack" />

@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.maluku.sma_rt.R
 import com.maluku.sma_rt.databinding.FragmentSplashScreenBinding
@@ -124,6 +125,6 @@ class SplashScreen : Fragment(), CekLoginSessionInterface {
     }
 
     override fun resultFailed(t: Throwable) {
-        TODO("Not yet implemented")
+        Toast.makeText(requireContext(),"Pesan: ${t.message.toString()}",Toast.LENGTH_SHORT).show()
     }
 }
