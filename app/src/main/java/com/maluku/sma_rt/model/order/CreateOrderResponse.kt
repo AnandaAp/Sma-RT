@@ -7,7 +7,7 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class CreateOrderBody(
-	val idProduct: String,
+	val id_produk: String,
 	val jumlah: Int,
 	val catatan: String
 ): Parcelable

@@ -409,12 +409,22 @@ interface Service {
 
     //Order
     // Create Order Pakai Saldo
+    @POST("order/create/Saldo")
+    fun createOrderPakaiSaldo(
+        @Header("Authorization") authHeader: String,
+        @Body order: ArrayList<CreateOrderBody>
+    ): Call<CreateOrderResponse>
+
+    // Backup Create Order Pakai Saldo
+    /*
     @FormUrlEncoded
     @POST("order/create/Saldo")
     fun createOrderPakaiSaldo(
         @Header("Authorization") authHeader: String,
         @Field("order") order: ArrayList<CreateOrderBody>
     ): Call<CreateOrderResponse>
+
+     */
 
     // Create Order Pakai COD
     @FormUrlEncoded

@@ -18,6 +18,8 @@ import androidx.cardview.widget.CardView
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import com.maluku.sma_rt.R
 import com.maluku.sma_rt.databinding.FragmentPesananUserPageBinding
 import com.maluku.sma_rt.extentions.UserSession
@@ -26,6 +28,7 @@ import com.maluku.sma_rt.model.order.GetAllOrderItem
 import com.maluku.sma_rt.presenter.OrderPresenter
 import com.maluku.sma_rt.view.viewInterface.OrderInterface
 import com.maluku.sma_rt.view.warga.adapter.RecyclerViewPesananuser
+import org.json.JSONObject
 
 private const val TAG = "PESANAN USER PAGE"
 
@@ -94,9 +97,11 @@ class PesananUserPage : Fragment(), OrderInterface {
 
     private fun submitPesan() {
         binding.btnPesan.setOnClickListener {
+            val arrOrder = ArrayList<CreateOrderBody>()
             val data = CreateOrderBody("01FQNTQ9KYRFW9YNMYGAXP1R8M", 1, "topping coklat")
-//            findNavController().navigate(R.id.action_pesananUserPage_to_pesananUserMenunggu)
-            OrderPresenter(this).createOrderPakaiSaldo(getToken(), arrayListOf(data))
+            arrOrder.add(data)
+            OrderPresenter(this).createOrderPakaiSaldo(getToken(), arrOrder)
+            //            findNavController().navigate(R.id.action_pesananUserPage_to_pesananUserMenunggu)
         }
     }
 
