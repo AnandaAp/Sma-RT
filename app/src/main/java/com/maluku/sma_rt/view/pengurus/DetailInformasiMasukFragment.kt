@@ -20,7 +20,7 @@ class DetailInformasiMasukFragment : Fragment() {
     private lateinit var binding: FragmentDetailInformasiMasukBinding
     private var judul: String = ""
     private var lokasi: String = ""
-    private var tanggal: String = ""
+    private var date: String = ""
     private var detail: String = ""
     private var gambar: String = ""
 
@@ -34,7 +34,7 @@ class DetailInformasiMasukFragment : Fragment() {
     private fun bindData() {
         judul = args.judulInformasi
         lokasi = args.lokasiInformasi
-        tanggal = args.tanggalInformasi
+        date = args.tanggalInformasi
         detail = args.detailInformasi
         gambar = args.gambarInformasi
         setDetailInformasi()
@@ -56,7 +56,7 @@ class DetailInformasiMasukFragment : Fragment() {
     private fun setDetailInformasi(){
         binding.tvJudulInformasi.text = judul
         binding.tvLokasiInformasi.text = lokasi
-        binding.tvTanggalInformasi.text = tanggal
+        binding.tvTanggalInformasi.text = tglIndonesia(splitDate())
         binding.tvDetailInformasi.text = detail
         // Firebase Storage
         val storageRef = FirebaseStorage.getInstance().reference.child("images/${gambar}")
@@ -71,6 +71,32 @@ class DetailInformasiMasukFragment : Fragment() {
         }.addOnFailureListener {
 
         }
+    }
+
+    private fun splitDate(): String {
+        val delim = "T"
+        val tanggal = date.split(delim)
+        return tanggal[0]
+    }
+
+    fun tglIndonesia(tgl: String): String {
+        val tgl = tgl.split("-")
+        val bulan = when (tgl[1]) {
+            "01" -> "Januari"
+            "02" -> "Februari"
+            "03" -> "Maret"
+            "04" -> "April"
+            "05" -> "Mei"
+            "06" -> "Juni"
+            "07" -> "Juli"
+            "08" -> "Agustus"
+            "09" -> "September"
+            "10" -> "Oktober"
+            "11" -> "November"
+            "12" -> "Desember"
+            else -> "Terjadi kesalahan"
+        }
+        return "${tgl[2]} $bulan ${tgl[0]}"
     }
 
 }

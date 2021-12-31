@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.cardview.widget.CardView
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
@@ -17,6 +19,8 @@ import com.google.firebase.storage.FirebaseStorage
 import com.maluku.sma_rt.R
 import com.maluku.sma_rt.model.informasi.GetAllInformasiItem
 import com.maluku.sma_rt.model.warga.GetAllWargaItem
+import com.maluku.sma_rt.view.pengurus.InformasiFragmentDirections
+import com.maluku.sma_rt.view.pengurus.bottomnavigation.HomeFragmentDirections
 import java.io.File
 
 class GaleriAdapter(val listKegiatan: ArrayList<GetAllInformasiItem>): RecyclerView.Adapter<GaleriAdapter.ViewHolder>() {
@@ -46,6 +50,13 @@ class GaleriAdapter(val listKegiatan: ArrayList<GetAllInformasiItem>): RecyclerV
         }.addOnFailureListener {
 
         }
+        // List Galeri
+        holder.cardGaleri.setOnClickListener { view ->
+            val direction = HomeFragmentDirections.actionNavigationHomeToDetailInformasiMasukFragment(
+                data.judul.toString(),data.createdAt.toString(),data.detail.toString(),data.lokasi.toString(),data.gambar.toString()
+            )
+            view.findNavController().navigate(direction)
+        }
     }
 
     override fun getItemCount(): Int {
@@ -54,5 +65,7 @@ class GaleriAdapter(val listKegiatan: ArrayList<GetAllInformasiItem>): RecyclerV
 
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         val galeriWarga: ImageView = itemView.findViewById(R.id.ivGaleriWargaRT)
+        var cardGaleri: CardView = itemView.findViewById(R.id.cardGaleriKegiatan)
     }
+
 }

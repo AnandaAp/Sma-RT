@@ -31,6 +31,9 @@
         <action
             android:id="@+id/action_navigation_home_to_riwayatKasFragment"
             app:destination="@id/riwayatKasFragment" />
+        <action
+            android:id="@+id/action_navigation_home_to_detailInformasiMasukFragment"
+            app:destination="@id/detailInformasiMasukFragment" />
     </fragment>
 
     <fragment
@@ -319,6 +322,9 @@
         <argument
             android:name="gambar_informasi"
             app:argType="string" />
+        <action
+            android:id="@+id/action_detailInformasiMasukFragment_to_navigation_home"
+            app:destination="@id/navigation_home" />
     </fragment>
     <fragment
         android:id="@+id/informasiMasukFragment"

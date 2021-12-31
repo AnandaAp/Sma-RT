@@ -40,7 +40,7 @@ class InformasiMasukAdapter(val listInformasi: ArrayList<GetAllInformasiItem>): 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val data = listInformasi[position]
         holder.judulInformasi.text = data.judul.toString()
-        holder.tanggalInformasi.text = data.createdAt.toString()
+        holder.tanggalInformasi.text = tglIndonesia(splitDate(data.createdAt.toString()))
         holder.lokasiInformasi.text = data.lokasi.toString()
 
         // Firebase Storage
@@ -76,6 +76,32 @@ class InformasiMasukAdapter(val listInformasi: ArrayList<GetAllInformasiItem>): 
         var tanggalInformasi: TextView = itemView.findViewById(R.id.tvTanggalInformasiMasuk)
         var gambarInformasi: ImageView = itemView.findViewById(R.id.ivInformasiMasuk)
         var cardInformasi: CardView = itemView.findViewById(R.id.cardInformasiMasuk)
+    }
+
+    private fun splitDate(date: String): String {
+        val delim = "T"
+        val tanggal = date.split(delim)
+        return tanggal[0]
+    }
+
+    private fun tglIndonesia(tgl: String): String {
+        val tgl = tgl.split("-")
+        val bulan = when (tgl[1]) {
+            "01" -> "Januari"
+            "02" -> "Februari"
+            "03" -> "Maret"
+            "04" -> "April"
+            "05" -> "Mei"
+            "06" -> "Juni"
+            "07" -> "Juli"
+            "08" -> "Agustus"
+            "09" -> "September"
+            "10" -> "Oktober"
+            "11" -> "November"
+            "12" -> "Desember"
+            else -> "Terjadi kesalahan"
+        }
+        return "${tgl[2]} $bulan ${tgl[0]}"
     }
 
 }
