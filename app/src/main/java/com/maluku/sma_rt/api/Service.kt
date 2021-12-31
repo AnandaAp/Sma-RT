@@ -11,6 +11,8 @@ import com.maluku.sma_rt.model.keluarga.*
 import com.maluku.sma_rt.model.login.OnLoginSuccessResponse
 import com.maluku.sma_rt.model.order.CreateOrderBody
 import com.maluku.sma_rt.model.order.CreateOrderResponse
+import com.maluku.sma_rt.model.order.DefaultOrderResponse
+import com.maluku.sma_rt.model.order.GetAllOrderResponse
 import com.maluku.sma_rt.model.password.DefaultPasswordResponse
 import com.maluku.sma_rt.model.pengurus.CreatePengurusResponse
 import com.maluku.sma_rt.model.pengurus.DefaultPengurusResponse
@@ -383,7 +385,7 @@ interface Service {
     ): Call<GetDompetKeluargaByIdResponse>
 
     // Get Dompet Keluarga dengan Id Keluarga
-    @PUT("dompetkeluarga/{id_keluarga}")
+    @GET("dompetkeluarga/{id_keluarga}")
     fun getDompetKeluargaById(
         @Header("Authorization") authHeader: String,
         @Path("id_keluarga") product_id: String
@@ -406,13 +408,48 @@ interface Service {
     ): Call<DefaultDompetKeluargaResponse>
 
     //Order
-    // Create Order
+    // Create Order Pakai Saldo
     @FormUrlEncoded
-    @POST("order")
-    fun createOrder(
+    @POST("order/create/Saldo")
+    fun createOrderPakaiSaldo(
         @Header("Authorization") authHeader: String,
         @Field("order") order: ArrayList<CreateOrderBody>
     ): Call<CreateOrderResponse>
+
+    // Create Order Pakai COD
+    @FormUrlEncoded
+    @POST("order/create/COD")
+    fun createOrderPakaiCOD(
+        @Header("Authorization") authHeader: String,
+        @Field("order") order: ArrayList<CreateOrderBody>
+    ): Call<CreateOrderResponse>
+
+    // Get All Order
+    @GET("order/warga")
+    fun getAllOrder(
+        @Header("Authorization") authHeader: String
+    ): Call<GetAllOrderResponse>
+
+    // Order Diproses
+    @PUT("order/proses/{id_order}")
+    fun prosesOrder(
+        @Header("Authorization") authHeader: String,
+        @Path("id_order") id_order: String
+    ): Call<DefaultOrderResponse>
+
+    // Order Dicancel
+    @PUT("order/cancel/{id_order}")
+    fun cancelOrder(
+        @Header("Authorization") authHeader: String,
+        @Path("id_order") id_order: String
+    ): Call<DefaultOrderResponse>
+
+    // Order Diproses
+    @PUT("order/selesai/{id_order}")
+    fun selesaiOrder(
+        @Header("Authorization") authHeader: String,
+        @Path("id_order") id_order: String
+    ): Call<DefaultOrderResponse>
 
     // Password
     // Pengurus RT
