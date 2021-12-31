@@ -64,7 +64,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="Kategori"
+                android:text="Tanggal"
                 app:layout_constraintEnd_toStartOf="@+id/textView48"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/textView32"
@@ -151,15 +151,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="TextView"
-                app:layout_constraintBottom_toTopOf="@+id/tvKategoriInformasi"
+                app:layout_constraintBottom_toTopOf="@+id/tvTanggalInformasi"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/tvKategoriInformasi"
+                app:layout_constraintStart_toStartOf="@+id/tvTanggalInformasi"
                 app:layout_constraintTop_toTopOf="@+id/textView47"
                 app:layout_constraintVertical_bias="0.0" />
 
             <TextView
-                android:id="@+id/tvKategoriInformasi"
+                android:id="@+id/tvTanggalInformasi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="TextView"

@@ -142,6 +142,12 @@
         <action
             android:id="@+id/action_informasiFragment_to_navigation_manage"
             app:destination="@id/navigation_manage" />
+        <action
+            android:id="@+id/action_informasiFragment_to_detailInformasiMasukFragment"
+            app:destination="@id/detailInformasiMasukFragment" />
+        <action
+            android:id="@+id/action_informasiFragment_to_informasiMasukFragment"
+            app:destination="@id/informasiMasukFragment" />
     </fragment>
     <fragment
         android:id="@+id/kasFragment"
@@ -289,5 +295,38 @@
         <action
             android:id="@+id/action_gantiPasswordRTFragment_to_navigation_profil"
             app:destination="@id/navigation_profil" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailInformasiMasukFragment"
+        android:name="com.maluku.sma_rt.view.pengurus.DetailInformasiMasukFragment"
+        android:label="fragment_detail_informasi_masuk"
+        tools:layout="@layout/fragment_detail_informasi_masuk" >
+        <action
+            android:id="@+id/action_detailInformasiMasukFragment_to_informasiMasukFragment"
+            app:destination="@id/informasiMasukFragment" />
+        <argument
+            android:name="judul_informasi"
+            app:argType="string" />
+        <argument
+            android:name="tanggal_informasi"
+            app:argType="string" />
+        <argument
+            android:name="detail_informasi"
+            app:argType="string" />
+        <argument
+            android:name="lokasi_informasi"
+            app:argType="string" />
+        <argument
+            android:name="gambar_informasi"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/informasiMasukFragment"
+        android:name="com.maluku.sma_rt.view.pengurus.InformasiMasukFragment"
+        android:label="fragment_informasi_masuk"
+        tools:layout="@layout/fragment_informasi_masuk" >
+        <action
+            android:id="@+id/action_informasiMasukFragment_to_detailInformasiMasukFragment"
+            app:destination="@id/detailInformasiMasukFragment" />
     </fragment>
 </navigation>

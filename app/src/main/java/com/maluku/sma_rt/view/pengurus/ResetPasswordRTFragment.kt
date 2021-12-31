@@ -1,60 +1,160 @@
 package com.maluku.sma_rt.view.pengurus
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import com.maluku.sma_rt.R
+import com.maluku.sma_rt.databinding.FragmentResetPasswordRTBinding
+import com.maluku.sma_rt.extentions.UserSession
+import com.maluku.sma_rt.presenter.AdminRTPasswordPresenter
+import com.maluku.sma_rt.view.viewInterface.AdminRTPasswordInterface
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [ResetPasswordRTFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class ResetPasswordRTFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+class ResetPasswordRTFragment : Fragment(), AdminRTPasswordInterface {
+    private lateinit var binding: FragmentResetPasswordRTBinding
+    private var kodeVerif: String = ""
+    private var passBaru: String = ""
+    private var confirmPass: String = ""
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        kodeVerifFocusListener()
+        passBaruFocusListener()
+        confirmPassFocusListener()
+        resetPassword()
+        binding.btnBack.setOnClickListener {
+            findNavController().popBackStack()
         }
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_reset_password_r_t, container, false)
+        return bindingView()
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ResetPasswordRTFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ResetPasswordRTFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    private fun bindingView(): View? {
+        binding = FragmentResetPasswordRTBinding.inflate(layoutInflater)
+        return binding.root
     }
+
+    private fun resetPassword(){
+        binding.btnResetPass.setOnClickListener {
+            binding.etKodeVerif.clearFocus()
+            binding.etPassBaru.clearFocus()
+            binding.etConfirmPass.clearFocus()
+            submitForm()
+        }
+    }
+
+    private fun submitForm() {
+        val validKodeVerif = !binding.etKodeVerif.text.isNullOrEmpty()
+        val validPassBaru = !binding.etPassBaru.text.isNullOrEmpty()
+        val validConfirmPass = !binding.etConfirmPass.text.isNullOrEmpty()
+        if (validKodeVerif && validConfirmPass && validPassBaru){
+            if (passBaru != confirmPass){
+                Log.d("RESET_PASS","Pass Baru: $passBaru || confirm = $confirmPass")
+                binding.TILconfirmPass.helperText = "Password tidak sesuai!"
+            } else {
+                AdminRTPasswordPresenter(this).resetPassAdmin(getToken(),kodeVerif,passBaru)
+            }
+        } else {
+            if (!validKodeVerif){
+                binding.TILkodeVerif.helperText = "Masukan kode verifikasi!"
+            }
+            if (!validPassBaru){
+                binding.TILpassBaru.helperText = "Masukan password baru!"
+            }
+            if (!validConfirmPass){
+                binding.TILconfirmPass.helperText = "Masukan konfirmasi password!"
+            }
+            Toast.makeText(requireContext(),"Seluruh field harus terisi!", Toast.LENGTH_LONG).show()
+        }
+    }
+
+    private fun getToken(): String {
+        val preferences = UserSession(requireActivity())
+        return preferences.getValueString(UserSession.SHARED_PREFERENCE_TOKEN_KEY)
+    }
+
+    private fun kodeVerifFocusListener() {
+        binding.etKodeVerif.setOnFocusChangeListener { view, focused ->
+            if (!focused){
+                binding.TILkodeVerif.helperText = validKodeVerif()
+            }
+        }
+    }
+
+    private fun validKodeVerif(): String? {
+        kodeVerif = binding.etKodeVerif.text.toString().trim()
+        if (kodeVerif.isEmpty()){
+            return "Masukan kode verifikasi!"
+        }
+        return null
+    }
+
+    private fun passBaruFocusListener() {
+        binding.etPassBaru.setOnFocusChangeListener { view, focused ->
+            if (!focused){
+                binding.TILpassBaru.helperText = validPassBaru()
+            }
+        }
+    }
+
+    private fun validPassBaru(): String? {
+        passBaru = binding.etPassBaru.text.toString().trim()
+        if (passBaru.isEmpty()){
+            return "Masukan password baru!"
+        }
+        return null
+    }
+
+    private fun confirmPassFocusListener() {
+        binding.etConfirmPass.setOnFocusChangeListener { view, focused ->
+            if (!focused){
+                binding.TILconfirmPass.helperText = validConfirmPass()
+            }
+        }
+    }
+
+    private fun validConfirmPass(): String? {
+        confirmPass = binding.etConfirmPass.text.toString().trim()
+        if (confirmPass.isEmpty()){
+            return "Masukan konfirmasi password!"
+        }
+        return null
+    }
+
+    override fun onChangePassSuccess(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onChangePassFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onForgetPassSuccess(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onForgetPassFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onResetPassSuccess(message: String) {
+        Toast.makeText(requireContext(),"Pesan: $message",Toast.LENGTH_LONG).show()
+        findNavController().navigate(R.id.action_resetPasswordRTFragment2_to_loginRT)
+    }
+
+    override fun onResetPassFailure(message: String) {
+        Toast.makeText(requireContext(),"Pesan: $message",Toast.LENGTH_LONG).show()
+    }
+
 }

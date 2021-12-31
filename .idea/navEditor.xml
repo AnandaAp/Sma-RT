@@ -697,6 +697,18 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="lupaPasswordRTFragment2">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="1001" />
+                            <option name="y" value="728" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="registerRT">
                     <value>
                       <LayoutPositions>
@@ -766,6 +778,18 @@
                               </value>
                             </entry>
                           </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="resetPasswordRTFragment2">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="1239" />
+                            <option name="y" value="731" />
+                          </Point>
                         </option>
                       </LayoutPositions>
                     </value>
@@ -866,6 +890,27 @@
                               </value>
                             </entry>
                             <entry key="action_daftarBuatIuranFragment_to_kasFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="detailInformasiMasukFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="1195" />
+                            <option name="y" value="138" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_detailInformasiMasukFragment_to_informasiMasukFragment">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -978,6 +1023,15 @@
                             <option name="y" value="838" />
                           </Point>
                         </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_gantiPasswordRTFragment_to_navigation_profil">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
                       </LayoutPositions>
                     </value>
                   </entry>
@@ -986,18 +1040,44 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="497" />
-                            <option name="y" value="726" />
+                            <option name="x" value="463" />
+                            <option name="y" value="750" />
                           </Point>
                         </option>
                         <option name="myPositions">
                           <map>
+                            <entry key="action_informasiFragment_to_detailInformasiMasukFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_informasiFragment_to_navigation_home">
                               <value>
                                 <LayoutPositions />
                               </value>
                             </entry>
                             <entry key="action_informasiFragment_to_navigation_manage">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="informasiMasukFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="1199" />
+                            <option name="y" value="-169" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_informasiMasukFragment_to_detailInformasiMasukFragment">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -1161,8 +1241,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="508" />
-                            <option name="y" value="98" />
+                            <option name="x" value="450" />
+                            <option name="y" value="2" />
                           </Point>
                         </option>
                         <option name="myPositions">
@@ -1219,6 +1299,11 @@
                         <option name="myPositions">
                           <map>
                             <entry key="action_navigation_profil_to_editProfileFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_navigation_profil_to_gantiPasswordRTFragment">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -1311,8 +1396,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="744" />
-                            <option name="y" value="246" />
+                            <option name="x" value="809" />
+                            <option name="y" value="243" />
                           </Point>
                         </option>
                         <option name="myPositions">

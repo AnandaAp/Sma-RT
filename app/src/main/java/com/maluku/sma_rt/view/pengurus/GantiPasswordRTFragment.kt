@@ -141,6 +141,22 @@ class GantiPasswordRTFragment : Fragment(), AdminRTPasswordInterface {
         Toast.makeText(requireContext(),"Pesan: $message",Toast.LENGTH_LONG).show()
     }
 
+    override fun onForgetPassSuccess(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onForgetPassFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onResetPassSuccess(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onResetPassFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
     private fun navigateGantiPassToAkun(){
         findNavController().navigate(R.id.action_gantiPasswordRTFragment_to_navigation_profil)
     }

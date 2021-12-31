@@ -78,7 +78,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="132dp"
             android:layout_marginEnd="20dp"
-            android:background="@drawable/shapebutton"
+            app:boxBackgroundMode="none"
             app:helperTextTextColor="@color/yellow"
             app:layout_constraintEnd_toEndOf="@+id/TILinputEmailAdmin"
             app:layout_constraintStart_toStartOf="@+id/TILinputEmailAdmin"

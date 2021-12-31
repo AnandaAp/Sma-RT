@@ -25,8 +25,7 @@ class LoginRT : Fragment(), LoginAdminInterface {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = bindingView()
-        return view
+        return bindingView()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -35,6 +34,7 @@ class LoginRT : Fragment(), LoginAdminInterface {
         emailFocusListener()
         passwordFocusListener()
         navigateToAdminRegister()
+        navigateLoginToLupaPassword()
         binding.btnlgn.setOnClickListener {
             binding.etLoginEmailAdmin.clearFocus()
             binding.etLoginPasswordAdmin.clearFocus()
@@ -68,10 +68,10 @@ class LoginRT : Fragment(), LoginAdminInterface {
             loginAdmin(emailAdmin,passwordAdmin)
         } else {
             if (!validEmail){
-                binding.etLoginEmailAdmin.error = "Masukan email!"
+                binding.TILinputEmailAdmin.helperText = "Masukan email!"
             }
             if (!validPassword){
-                binding.etLoginPasswordAdmin.error = "Masukan password!"
+                binding.TILinputPassword.helperText = "Masukan password!"
             }
             Toast.makeText(requireContext(),"Login gagal!",Toast.LENGTH_LONG).show()
         }
@@ -80,7 +80,7 @@ class LoginRT : Fragment(), LoginAdminInterface {
     private fun emailFocusListener() {
         binding.etLoginEmailAdmin.setOnFocusChangeListener { view, focused ->
             if (!focused){
-                binding.etLoginEmailAdmin.error = validEmail()
+                binding.TILinputEmailAdmin.helperText = validEmail()
             }
         }
     }
@@ -100,7 +100,7 @@ class LoginRT : Fragment(), LoginAdminInterface {
     private fun passwordFocusListener() {
         binding.etLoginPasswordAdmin.setOnFocusChangeListener { view, focused ->
             if (!focused){
-                binding.etLoginPasswordAdmin.error = validPassword()
+                binding.TILinputPassword.helperText = validPassword()
             }
         }
     }
@@ -134,6 +134,12 @@ class LoginRT : Fragment(), LoginAdminInterface {
         )
         startActivity(intent)
         requireActivity().finish()
+    }
+
+    private fun navigateLoginToLupaPassword(){
+        binding.btnToLupaPass.setOnClickListener {
+            findNavController().navigate(R.id.action_loginRT_to_lupaPasswordRTFragment2)
+        }
     }
 
 }
