@@ -29,12 +29,14 @@ class ListTagihanAdapter(val listTagihan: ArrayList<GetAllTagihanItem>): Recycle
         holder.ketTagihan.text = data.detail.toString()
         holder.totalTagihan.text = data.jumlah.toString()
         // Edit Tagihan
+        /*
         holder.editTagihan.setOnClickListener { view ->
             val direction = DaftarBuatIuranFragmentDirections.actionDaftarBuatIuranFragmentToDetailsBuatIuranFragment2(
                 data.id.toString(),data.nama.toString(),data.jumlah.toString(),data.detail.toString()
             )
             view.findNavController().navigate(direction)
         }
+         */
     }
 
     override fun getItemCount(): Int {
@@ -47,6 +49,6 @@ class ListTagihanAdapter(val listTagihan: ArrayList<GetAllTagihanItem>): Recycle
         var namaTagihan: TextView = itemView.findViewById(R.id.tvNamaTagihan)
         var ketTagihan: TextView = itemView.findViewById(R.id.tvKetTagihan)
         var totalTagihan: TextView = itemView.findViewById(R.id.tvTotalTagihan)
-        var editTagihan: CardView = itemView.findViewById(R.id.cardTagihan)
+//        var editTagihan: CardView = itemView.findViewById(R.id.cardTagihan)
     }
 }

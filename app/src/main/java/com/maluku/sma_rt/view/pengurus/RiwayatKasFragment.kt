@@ -66,7 +66,11 @@ class RiwayatKasFragment : Fragment(), AdminTagihanInterface {
 
     override fun onGetDataSuccess(message: String, list: List<GetAllTagihanItem>) {
         setRecyclerViewRiwayatKas()
-        adapterRiwayatKas.setData(list as ArrayList<GetAllTagihanItem>)
+        for (lunas in list){
+            if (lunas.terbayar == true){
+                adapterRiwayatKas.setData(list as ArrayList<GetAllTagihanItem>)
+            }
+        }
     }
 
     override fun onGetDataFailed(message: String) {

@@ -28,6 +28,7 @@ class DaftarBuatIuranFragment : Fragment(),AdminTagihanInterface {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setRecyclerViewListTagihan()
         navigateDaftarTagihanToCreateTagihan()
     }
 
@@ -77,8 +78,12 @@ class DaftarBuatIuranFragment : Fragment(),AdminTagihanInterface {
     }
 
     override fun onGetDataSuccess(message: String, list: List<GetAllTagihanItem>) {
-        setRecyclerViewListTagihan()
-        adapterListTagihan.setData(list as ArrayList<GetAllTagihanItem>)
+        for (lunas in list){
+            if (lunas.terbayar == false){
+                adapterListTagihan.setData(list as ArrayList<GetAllTagihanItem>)
+            }
+        }
+
     }
 
     override fun onGetDataFailed(message: String) {
