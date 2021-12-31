@@ -427,12 +427,22 @@ interface Service {
      */
 
     // Create Order Pakai COD
+    @POST("order/create/COD")
+    fun createOrderPakaiCOD(
+        @Header("Authorization") authHeader: String,
+        @Body order: ArrayList<CreateOrderBody>
+    ): Call<CreateOrderResponse>
+
+    // Backup Create Order Pakai COD
+    /*
     @FormUrlEncoded
     @POST("order/create/COD")
     fun createOrderPakaiCOD(
         @Header("Authorization") authHeader: String,
         @Field("order") order: ArrayList<CreateOrderBody>
     ): Call<CreateOrderResponse>
+
+     */
 
     // Get All Order
     @GET("order/warga")
