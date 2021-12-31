@@ -77,7 +77,7 @@ class RecyclerViewTerlaris(
             val deskripsi = dialog.findViewById<TextView>(R.id.deskripsiproduk)
 
             nama!!.text = data.nama.toString()
-            harga!!.text = data.harga.toString()
+            harga!!.text = toRupiah(data.harga.toString().toDouble())
             deskripsi!!.text = data.detail.toString()
             val storageRef = FirebaseStorage.getInstance().reference.child("images/${data.gambar}")
             Log.d(ContentValues.TAG,"Adapter get ref image: $storageRef")

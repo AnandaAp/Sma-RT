@@ -58,30 +58,29 @@ class RecyclerViewTagihanWarga(
             holder.namaTagihan.showStrikeThrough(true)
             holder.detailTagihan.showStrikeThrough(true)
             holder.jumlahTagihan.showStrikeThrough(true)
-        }
+        } else {
+            holder.layoutTagihan.setOnClickListener { view ->
+                val dialog = Dialog(view.context)
+                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+                dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+                dialog.setContentView(R.layout.custom_dialog_bayartagihan)
+                val message = dialog.findViewById<TextView>(R.id.tvKonfirmBayarTagihan)
+                val btnOk = dialog.findViewById<TextView>(R.id.btn_ok)
+                val btnBatal = dialog.findViewById<TextView>(R.id.btn_batal)
 
-        holder.layoutTagihan.setOnClickListener { view ->
-            val dialog = Dialog(view.context)
-            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-            dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            dialog.setContentView(R.layout.custom_dialog_bayartagihan)
-            val message = dialog.findViewById<TextView>(R.id.tvKonfirmBayarTagihan)
-            val btnOk = dialog.findViewById<TextView>(R.id.btn_ok)
-            val btnBatal = dialog.findViewById<TextView>(R.id.btn_batal)
+                message.text = "Yakin ingin membayar tagihan ${data.nama} senilai ${data.jumlah}?"
 
-            message.text = "Yakin ingin membayar tagihan ${data.nama} senilai ${data.jumlah}?"
+                btnOk.setOnClickListener {
+                    listener.onBayarTagihan(data.id.toString())
+                    dialog.dismiss()
+                }
+                btnBatal.setOnClickListener {
+                    dialog.dismiss()
+                }
 
-            btnOk.setOnClickListener {
-                listener.onBayarTagihan(data.id.toString())
-                dialog.dismiss()
+                dialog.show()
             }
-            btnBatal.setOnClickListener {
-                dialog.dismiss()
-            }
-
-            dialog.show()
         }
-
     }
 
     override fun getItemCount(): Int {
