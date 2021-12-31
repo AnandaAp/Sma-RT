@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import com.maluku.sma_rt.databinding.FragmentTambahKeluargaBinding
 import com.maluku.sma_rt.extentions.UserSession
 import com.maluku.sma_rt.presenter.TambahKeluargaPresenter
@@ -29,6 +30,7 @@ class TambahKeluargaFragment : Fragment(), TambahKeluargaInterface {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         tambahKeluarga()
+        navigateBack()
     }
 
     private fun tambahKeluarga() {
@@ -77,5 +79,11 @@ class TambahKeluargaFragment : Fragment(), TambahKeluargaInterface {
         val token = preferences.getValueString(UserSession.SHARED_PREFERENCE_TOKEN_KEY)
         Log.d(TAG,token)
         return token
+    }
+
+    private fun navigateBack() {
+        binding.btnBack.setOnClickListener{
+            findNavController().popBackStack()
+        }
     }
 }

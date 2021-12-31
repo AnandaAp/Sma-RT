@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.maluku.sma_rt.databinding.FragmentRiwayatKasBinding
@@ -20,18 +21,18 @@ class RiwayatKasFragment : Fragment(), AdminTagihanInterface {
     private lateinit var rvRiwayat: RecyclerView
     private lateinit var adapterRiwayatKas: RiwayatKasAdapter
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        // Refresh data riwayat kas
-        onStart()
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         return bindingView()
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        onStart()
+        navigateBack()
     }
 
     private fun bindingView(): View {
@@ -75,6 +76,12 @@ class RiwayatKasFragment : Fragment(), AdminTagihanInterface {
 
     override fun onGetDataFailed(message: String) {
         Toast.makeText(requireContext(),"Pesan: $message", Toast.LENGTH_LONG).show()
+    }
+
+    private fun navigateBack() {
+        binding.btnBack.setOnClickListener{
+            findNavController().popBackStack()
+        }
     }
 
 }

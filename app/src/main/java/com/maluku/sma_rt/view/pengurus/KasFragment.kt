@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.maluku.sma_rt.R
@@ -37,6 +38,7 @@ class KasFragment : Fragment(), DompetRTInterface {
         navigateKasToRiwayat()
         navigateKasToBuatTagihan()
         navigateKasToWithdraw()
+        navigateBack()
         DompetRTPresenter(this).getDompetRTByLogin(getToken())
     }
 
@@ -85,6 +87,10 @@ class KasFragment : Fragment(), DompetRTInterface {
         }
     }
 
-
+    private fun navigateBack() {
+        binding.btnBack.setOnClickListener{
+            findNavController().popBackStack()
+        }
+    }
 
 }

@@ -59,6 +59,8 @@ class HomeFragment : Fragment(), InformasiInterface, DompetRTInterface, AdminRTP
         navigateDashboardToInformasi()
         navigateDashboardToLaporan()
         navigateDashboardToRiwayat()
+        navigateInfoTerkiniToDetailInformasi()
+        navigateGaleriToDetailInformasi()
     }
 
     override fun onStart() {
@@ -213,5 +215,17 @@ class HomeFragment : Fragment(), InformasiInterface, DompetRTInterface, AdminRTP
 
     override fun onGetDataFailed(message: String) {
         Toast.makeText(requireContext(),"Pesan: $message",Toast.LENGTH_LONG).show()
+    }
+
+    private fun navigateInfoTerkiniToDetailInformasi() {
+        binding.btnSeeAll1.setOnClickListener{
+            findNavController().navigate(R.id.action_navigation_home_to_informasiMasukFragment)
+        }
+    }
+
+    private fun navigateGaleriToDetailInformasi() {
+        binding.btnSeeAll2.setOnClickListener{
+            findNavController().navigate(R.id.action_navigation_home_to_informasiMasukFragment)
+        }
     }
 }

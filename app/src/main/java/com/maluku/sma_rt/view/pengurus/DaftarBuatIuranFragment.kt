@@ -30,6 +30,7 @@ class DaftarBuatIuranFragment : Fragment(),AdminTagihanInterface {
         super.onViewCreated(view, savedInstanceState)
         setRecyclerViewListTagihan()
         navigateDaftarTagihanToCreateTagihan()
+        navigateBackToKas()
     }
 
     override fun onCreateView(
@@ -88,6 +89,12 @@ class DaftarBuatIuranFragment : Fragment(),AdminTagihanInterface {
 
     override fun onGetDataFailed(message: String) {
         Toast.makeText(requireContext(),"Pesan: $message", Toast.LENGTH_LONG).show()
+    }
+
+    private fun navigateBackToKas(){
+        binding.btnBack.setOnClickListener {
+            findNavController().popBackStack()
+        }
     }
 
 }

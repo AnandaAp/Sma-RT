@@ -5,8 +5,7 @@
     android:id="@+id/fragment_tambah_keluarga"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.pengurus.TambahKeluargaFragment"
-    android:padding="1dp">
+    tools:context=".view.pengurus.TambahKeluargaFragment">
 
     <com.google.android.material.appbar.CollapsingToolbarLayout
         android:id="@+id/toolbar_tambah_keluarga"

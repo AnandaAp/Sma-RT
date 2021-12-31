@@ -34,6 +34,9 @@
         <action
             android:id="@+id/action_navigation_home_to_detailInformasiMasukFragment"
             app:destination="@id/detailInformasiMasukFragment" />
+        <action
+            android:id="@+id/action_navigation_home_to_informasiMasukFragment"
+            app:destination="@id/informasiMasukFragment" />
     </fragment>
 
     <fragment

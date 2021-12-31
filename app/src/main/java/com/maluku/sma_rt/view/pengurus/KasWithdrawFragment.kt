@@ -38,6 +38,7 @@ class KasWithdrawFragment : Fragment(), DompetRTInterface {
         super.onViewCreated(view, savedInstanceState)
         DompetRTPresenter(this).getDompetRTByLogin(getToken())
         jumlahFocusListener()
+        navigateBackToKas()
         withdraw()
     }
 
@@ -94,7 +95,7 @@ class KasWithdrawFragment : Fragment(), DompetRTInterface {
 
     override fun onWithdrawSuccess(message: String) {
         Toast.makeText(requireContext(),"Pesan: $message",Toast.LENGTH_LONG).show()
-        navigateWithdrawToDashboard()
+        navigateWithdrawToKas()
     }
 
     override fun onWithdrawFailure(message: String) {
@@ -107,9 +108,13 @@ class KasWithdrawFragment : Fragment(), DompetRTInterface {
         return numberFormat.format(number).toString()
     }
 
-    private fun navigateWithdrawToDashboard() {
-        findNavController().navigate(R.id.action_kasWithdrawFragment_to_navigation_home)
+    private fun navigateWithdrawToKas() {
+        findNavController().navigate(R.id.action_kasWithdrawFragment_to_kasFragment)
     }
 
-
+    private fun navigateBackToKas(){
+        binding.btnBack.setOnClickListener {
+            findNavController().popBackStack()
+        }
+    }
 }
