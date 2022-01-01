@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_homeWarga_to_topupSaldo"
             app:destination="@id/topupSaldo" />
+        <action
+            android:id="@+id/action_homeWarga_to_informasiWarga"
+            app:destination="@id/informasiWarga" />
     </fragment>
     <fragment
         android:id="@+id/jualbeliWarga"
@@ -339,5 +342,26 @@
         <action
             android:id="@+id/action_riwayatPesananUser_to_jualbeliWarga"
             app:destination="@id/jualbeliWarga" />
+        <action
+            android:id="@+id/action_riwayatPesananUser_to_detailPesananUser"
+            app:destination="@id/detailPesananUser" />
+    </fragment>
+    <fragment
+        android:id="@+id/informasiWarga"
+        android:name="com.maluku.sma_rt.view.warga.InformasiWarga"
+        android:label="fragment_informasi_warga"
+        tools:layout="@layout/fragment_informasi_warga" >
+        <action
+            android:id="@+id/action_informasiWarga_to_homeWarga"
+            app:destination="@id/homeWarga" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailPesananUser"
+        android:name="com.maluku.sma_rt.view.warga.DetailPesananUser"
+        android:label="fragment_detail_pesanan_user"
+        tools:layout="@layout/fragment_detail_pesanan_user" >
+        <action
+            android:id="@+id/action_detailPesananUser_to_riwayatPesananUser"
+            app:destination="@id/riwayatPesananUser" />
     </fragment>
 </navigation>

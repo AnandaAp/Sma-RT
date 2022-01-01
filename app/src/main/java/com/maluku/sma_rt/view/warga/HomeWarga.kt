@@ -70,6 +70,7 @@ class HomeWarga : Fragment(), InformasiInterface, DompetKeluargaInterface, Warga
         super.onViewCreated(view, savedInstanceState)
         setRecyclerViewInfoTerkini()
         setRecyclerViewKegiatanWarga()
+        navigateToMenuInformasi()
         navigateToMenuLaporan()
         navigateToMenuPersuratan()
         navigateToTopUpSaldo()
@@ -115,6 +116,12 @@ class HomeWarga : Fragment(), InformasiInterface, DompetKeluargaInterface, Warga
     private fun navigateToTopUpSaldo() {
         binding.btnIsisaldo.setOnClickListener {
             findNavController().navigate(R.id.action_homeWarga_to_topupSaldo)
+        }
+    }
+
+    private fun navigateToMenuInformasi() {
+        binding.btnInfo.setOnClickListener {
+            findNavController().navigate(R.id.action_homeWarga_to_informasiWarga)
         }
     }
 

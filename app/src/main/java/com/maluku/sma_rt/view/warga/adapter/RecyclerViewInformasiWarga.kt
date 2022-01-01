@@ -6,10 +6,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.maluku.sma_rt.R
 
-class RecyclerViewRiwayatPesananUser: RecyclerView.Adapter<RecyclerViewRiwayatPesananUser.MyViewHolder>() {
+class RecyclerViewInformasiWarga: RecyclerView.Adapter<RecyclerViewInformasiWarga.MyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.riwayatpesanan_recycler_item, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.informasi_warga_recycler_item, parent, false)
         return MyViewHolder(view)
     }
 

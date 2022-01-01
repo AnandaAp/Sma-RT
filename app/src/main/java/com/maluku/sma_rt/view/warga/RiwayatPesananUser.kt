@@ -10,13 +10,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.maluku.sma_rt.R
 import com.maluku.sma_rt.databinding.FragmentRiwayatPesananUserBinding
-import com.maluku.sma_rt.view.warga.adapter.RecyclerViewRiwayatPesananUser
+import com.maluku.sma_rt.view.warga.adapter.AdapterParentProduk
+import com.maluku.sma_rt.view.warga.adapter.ModelChildProduk
+import com.maluku.sma_rt.view.warga.adapter.ModelParentProduk
 
 class RiwayatPesananUser : Fragment() {
 
     private lateinit var binding: FragmentRiwayatPesananUserBinding
-    private lateinit var rvRiwayatPesanan: RecyclerView
-    private lateinit var adapterRiwayatPesanan: RecyclerViewRiwayatPesananUser
+    private lateinit var recyclerView: RecyclerView
 
 
 
@@ -31,7 +32,8 @@ class RiwayatPesananUser : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         goback()
-        setRecyclerViewRiwayatPesanan()
+        initRecycler()
+
 
 
     }
@@ -42,12 +44,70 @@ class RiwayatPesananUser : Fragment() {
         }
     }
 
-    private fun setRecyclerViewRiwayatPesanan() {
-        rvRiwayatPesanan = binding.rvRiwayatpesanan
-        rvRiwayatPesanan.setHasFixedSize(true)
-        rvRiwayatPesanan.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL,false)
-        adapterRiwayatPesanan = RecyclerViewRiwayatPesananUser()
-        rvRiwayatPesanan.adapter = adapterRiwayatPesanan
+
+
+
+    private fun initRecycler(){
+        recyclerView = binding.rvParent
+        val list = mutableListOf<ModelParentProduk>()
+        recyclerView.apply {
+            layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
+            adapter = AdapterParentProduk(list)
+
+        }
+
+        list.add(
+            ModelParentProduk("Toko Agus",
+                mutableListOf(
+                    ModelChildProduk(R.drawable.gambarminyak, "Minyak Sampah"),
+                    ModelChildProduk(R.drawable.gambargula,"Gulaku Manis"),
+                    ModelChildProduk(R.drawable.gambargula,"Gulaku Enak")
+                ))
+        )
+
+        list.add(
+            ModelParentProduk("Toko Jarwo",
+                mutableListOf(
+                    ModelChildProduk(R.drawable.gambarminyak, "Minyak Goreng"),
+                    ModelChildProduk(R.drawable.gambargula,"Gulaku Manis")
+                ))
+        )
+
+        list.add(
+            ModelParentProduk("Toko Nunung",
+                mutableListOf(
+                    ModelChildProduk(R.drawable.gambarminyak, "Minyak Ikan"),
+                    ModelChildProduk(R.drawable.gambargula,"Gulaku Aren")
+                ))
+        )
+
+        list.add(
+            ModelParentProduk("Toko Ucok",
+                mutableListOf(
+                    ModelChildProduk(R.drawable.gambarminyak, "Minyak Ikan"),
+                    ModelChildProduk(R.drawable.gambargula,"Gulaku Aren"),
+                    ModelChildProduk(R.drawable.gambarminyak, "Minyak Ikan"),
+                    ModelChildProduk(R.drawable.gambargula,"Gulaku Aren"),
+                    ModelChildProduk(R.drawable.gambarminyak, "Minyak Ikan"),
+                    ModelChildProduk(R.drawable.gambargula,"Gulaku Aren"),
+                    ModelChildProduk(R.drawable.gambarminyak, "Minyak Ikan"),
+                    ModelChildProduk(R.drawable.gambargula,"Gulaku Aren")
+
+                ))
+        )
+
+        list.add(
+            ModelParentProduk("Toko Waluyo",
+                mutableListOf(
+                    ModelChildProduk(R.drawable.gambarminyak, "Minyak Tanah"),
+                    ModelChildProduk(R.drawable.gambargula,"Gula Pahit")
+                ))
+        )
+
+
+
+
+
     }
 
 
