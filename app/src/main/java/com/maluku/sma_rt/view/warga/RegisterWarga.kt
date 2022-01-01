@@ -1,7 +1,9 @@
 package com.maluku.sma_rt.view.warga
 
+import android.content.ContentValues
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.util.Patterns
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,12 +14,15 @@ import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.messaging.FirebaseMessaging
 import com.maluku.sma_rt.R
 import com.maluku.sma_rt.databinding.FragmentRegisterWargaBinding
 import com.maluku.sma_rt.model.warga.GetMe
 import com.maluku.sma_rt.presenter.WargaPresenter
 import com.maluku.sma_rt.view.activity.DashboardWargaActivity
 import com.maluku.sma_rt.view.viewInterface.WargaInterface
+
 
 class RegisterWarga : Fragment(), WargaInterface {
 
@@ -32,6 +37,7 @@ class RegisterWarga : Fragment(), WargaInterface {
     private var email: String = ""
     private var password : String = ""
     private var password2: String = ""
+    private var token_firebase: String = ""
     private var validRegister: Boolean = true
 
     override fun onCreateView(
@@ -48,6 +54,7 @@ class RegisterWarga : Fragment(), WargaInterface {
         setFormJenisKelamin()
         btnLoginNavigateToLoginWarga()
         btnDaftarOnRegister()
+        getFCMToken()
     }
 
     private fun btnDaftarOnRegister() {
@@ -61,7 +68,8 @@ class RegisterWarga : Fragment(), WargaInterface {
                     no_hp,
                     nama,
                     email,
-                    password
+                    password,
+                    token_firebase
                 )
             }
         }
@@ -174,7 +182,8 @@ class RegisterWarga : Fragment(), WargaInterface {
         no_hp: String,
         nama: String,
         email: String,
-        password: String
+        password: String,
+        token_firebase: String
     ) {
         WargaPresenter(requireActivity(), this)
             .create(
@@ -183,7 +192,8 @@ class RegisterWarga : Fragment(), WargaInterface {
                 no_hp,
                 nama,
                 email,
-                password
+                password,
+                token_firebase
             )
     }
 
@@ -255,6 +265,22 @@ class RegisterWarga : Fragment(), WargaInterface {
 
     override fun onGetDataFailure(message: String) {
         TODO("Not yet implemented")
+    }
+
+    private fun getFCMToken() {
+        FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
+            if (!task.isSuccessful) {
+                Log.w(ContentValues.TAG, "Fetching FCM registration token failed", task.exception)
+                return@OnCompleteListener
+            }
+            // Get FCM token
+            val token = task.result
+            token?.let { Log.d(ContentValues.TAG, it) }
+            // Isi token device saat ini
+            token_firebase = token.toString()
+            Log.d("WARGA", "Token Register Warga saat ini: $token_firebase")
+            Log.d(ContentValues.TAG, "Token saat ini: $token")
+        })
     }
 
 }

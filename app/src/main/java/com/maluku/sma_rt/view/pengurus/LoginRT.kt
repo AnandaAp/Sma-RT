@@ -1,5 +1,6 @@
 package com.maluku.sma_rt.view.pengurus
 
+import android.content.ContentValues
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -9,6 +10,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.messaging.FirebaseMessaging
 import com.maluku.sma_rt.R
 import com.maluku.sma_rt.databinding.FragmentLoginRTBinding
 import com.maluku.sma_rt.extentions.UserValidator
@@ -16,10 +19,12 @@ import com.maluku.sma_rt.presenter.AdminRTLoginPresenter
 import com.maluku.sma_rt.view.activity.DashboardRTActivity
 import com.maluku.sma_rt.view.viewInterface.LoginAdminInterface
 
+
 class LoginRT : Fragment(), LoginAdminInterface {
     private lateinit var binding: FragmentLoginRTBinding
-    private lateinit var emailAdmin: String
-    private lateinit var passwordAdmin: String
+    private var emailAdmin: String = ""
+    private var passwordAdmin: String = ""
+    private var token_firebase: String = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,6 +40,7 @@ class LoginRT : Fragment(), LoginAdminInterface {
         passwordFocusListener()
         navigateToAdminRegister()
         navigateLoginToLupaPassword()
+        getFCMToken()
         binding.btnlgn.setOnClickListener {
             binding.etLoginEmailAdmin.clearFocus()
             binding.etLoginPasswordAdmin.clearFocus()
@@ -140,6 +146,21 @@ class LoginRT : Fragment(), LoginAdminInterface {
         binding.btnToLupaPass.setOnClickListener {
             findNavController().navigate(R.id.action_loginRT_to_lupaPasswordRTFragment2)
         }
+    }
+
+    private fun getFCMToken() {
+        FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
+            if (!task.isSuccessful) {
+                Log.w(ContentValues.TAG, "Fetching FCM registration token failed", task.exception)
+                return@OnCompleteListener
+            }
+            // Get FCM token
+            val token = task.result
+            token?.let { Log.d(ContentValues.TAG, it) }
+            // Isi token device saat ini
+            token_firebase = token.toString()
+            Log.d(ContentValues.TAG, "Token saat ini: $token")
+        })
     }
 
 }
