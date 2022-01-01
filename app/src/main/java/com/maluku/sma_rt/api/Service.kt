@@ -42,7 +42,8 @@ interface Service {
         @Field("no_hp") no_hp: String,
         @Field("nama") nama: String,
         @Field("email") email: String,
-        @Field("password") password: String
+        @Field("password") password: String,
+        @Field("token_firebase") token_firebase: String
     ): Call<CreateWargaResponse>
 
     @FormUrlEncoded
@@ -50,6 +51,7 @@ interface Service {
     fun signInWarga(
          @Field("email") email: String,
          @Field("password") password: String,
+         @Field("token_firebase") token_firebase: String
     ): Call<WargaLoginResponse>
 
     @Headers("Authorization: Bearer Token")
@@ -65,7 +67,8 @@ interface Service {
         @Field("no_hp") noHpAdmin: String,
         @Field("nama") namaAdmin: String,
         @Field("email") emailAdmin: String,
-        @Field("password") password: String
+        @Field("password") password: String,
+        @Field("token_firebase") token_firebase: String
     ): Call<CreatePengurusResponse>
 
     @FormUrlEncoded

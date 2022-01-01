@@ -1,5 +1,6 @@
 package com.maluku.sma_rt.view.pengurus
 
+import android.content.ContentValues
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -9,6 +10,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.navigation.fragment.findNavController
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.messaging.FirebaseMessaging
 import com.maluku.sma_rt.R
 import com.maluku.sma_rt.databinding.FragmentRegisterRTBinding
 import com.maluku.sma_rt.extentions.UserValidator
@@ -17,6 +20,7 @@ import com.maluku.sma_rt.view.activity.DashboardRTActivity
 import com.maluku.sma_rt.view.viewInterface.RegisterAdminInterface
 
 private const val TAG = "REGISTER RT"
+private var token_firebase = ""
 
 class RegisterRT : Fragment(), RegisterAdminInterface {
     private lateinit var binding: FragmentRegisterRTBinding
@@ -33,8 +37,7 @@ class RegisterRT : Fragment(), RegisterAdminInterface {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val view = bindingView()
-        return view
+        return bindingView()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -47,6 +50,7 @@ class RegisterRT : Fragment(), RegisterAdminInterface {
         confirmPasswordFocusListener()
         numPhoneFocusListener()
         btnLoginNavigateToLoginAdmin()
+        getFCMToken()
         binding.btnDaftar.setOnClickListener {
             binding.inputNamaAdmin.clearFocus()
             binding.inputEmailAdmin.clearFocus()
@@ -67,7 +71,8 @@ class RegisterRT : Fragment(), RegisterAdminInterface {
         val validKodeRT = !binding.inputKodeRT.text.isNullOrEmpty()
         val validNoHp = !binding.inputNoHpAdmin.text.isNullOrEmpty()
         val validGender = !genderAdmin.isNullOrEmpty()
-        if (validName && validEmail && validPassword && validConfirmPassword && validKodeRT && validNoHp){
+        val validCheckBox = binding.checkBoxsk.isChecked
+        if (validName && validEmail && validPassword && validConfirmPassword && validKodeRT && validNoHp && validCheckBox){
             if (password != confirmPassword){
                 binding.TILinputConfirmPassword.helperText = "Password tidak sesuai!"
             } else {
@@ -96,7 +101,9 @@ class RegisterRT : Fragment(), RegisterAdminInterface {
             if (!validKodeRT){
                 binding.TILinputKodeRT.helperText = "Masukan kode RT!"
             }
-            Toast.makeText(requireContext(),"Registrasi gagal!",Toast.LENGTH_LONG).show()
+            if (!validCheckBox){
+                Toast.makeText(context,"Anda harus setuju dengan syarat dan ketentuan yang berlaku!",Toast.LENGTH_LONG).show()
+            }
         }
     }
 
@@ -234,7 +241,10 @@ class RegisterRT : Fragment(), RegisterAdminInterface {
         inputEmailAdmin: String,
         inputPassword: String
     ) {
-        AdminRTRegisterPresenter(requireActivity(), this).registerNewAdmin(inputKodeRT,inputGenderAdmin,inputNoHpAdmin,inputNamaAdmin,inputEmailAdmin,inputPassword)
+        AdminRTRegisterPresenter(requireActivity(), this).registerNewAdmin(
+            inputKodeRT,inputGenderAdmin,inputNoHpAdmin,inputNamaAdmin,inputEmailAdmin,inputPassword,
+            token_firebase
+        )
     }
 
     override fun onRegisterSuccess(message: String) {
@@ -271,6 +281,22 @@ class RegisterRT : Fragment(), RegisterAdminInterface {
         )
         startActivity(intent)
         requireActivity().finish()
+    }
+
+    private fun getFCMToken() {
+        FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
+            if (!task.isSuccessful) {
+                Log.w(ContentValues.TAG, "Fetching FCM registration token failed", task.exception)
+                return@OnCompleteListener
+            }
+            // Get FCM token
+            val token = task.result
+            token?.let { Log.d(ContentValues.TAG, it) }
+            // Isi token device saat ini
+            token_firebase = token.toString()
+            Log.d(TAG, "Token Pengurus saat ini: $token_firebase")
+            Log.d(ContentValues.TAG, "Token saat ini: $token")
+        })
     }
 
 }

@@ -9,6 +9,7 @@ import com.maluku.sma_rt.extentions.UserSession
 import com.maluku.sma_rt.extentions.UserSession.Companion.SHARED_PREFERENCE_EMAIL_KEY
 import com.maluku.sma_rt.extentions.UserSession.Companion.SHARED_PREFERENCE_PASSWORD_KEY
 import com.maluku.sma_rt.extentions.UserSession.Companion.SHARED_PREFERENCE_ROLE_KEY
+import com.maluku.sma_rt.extentions.UserSession.Companion.SHARED_PREFERENCE_TOKEN_FCM
 import com.maluku.sma_rt.extentions.UserSession.Companion.SHARED_PREFERENCE_TOKEN_KEY
 import com.maluku.sma_rt.model.password.DefaultPasswordResponse
 import com.maluku.sma_rt.model.warga.CreateWargaResponse
@@ -30,13 +31,16 @@ class WargaPresenter(private val activity: Activity, private val view: WargaInte
 
     fun login(
         email: String,
-        password: String
+        password: String,
+        token_firebase: String
     ) {
         RetrofitService
             .getService()
             .signInWarga(
                 email,
-                password)
+                password,
+                token_firebase
+            )
             .enqueue(object : Callback<WargaLoginResponse> {
                 override fun onResponse(
                     call: Call<WargaLoginResponse>,
@@ -49,7 +53,8 @@ class WargaPresenter(private val activity: Activity, private val view: WargaInte
                                 true -> saveSession(
                                     email,
                                     password,
-                                    token
+                                    token,
+                                    token_firebase
                                 )
                             }
                             view.onLoginSuccess("Selamat datang!")
@@ -75,7 +80,8 @@ class WargaPresenter(private val activity: Activity, private val view: WargaInte
         no_hp: String,
         nama: String,
         email: String,
-        password: String
+        password: String,
+        token_firebase: String
     ) {
         RetrofitService
             .getService()
@@ -85,7 +91,9 @@ class WargaPresenter(private val activity: Activity, private val view: WargaInte
                 no_hp,
                 nama,
                 email,
-                password)
+                password,
+                token_firebase
+            )
             .enqueue(object : Callback<CreateWargaResponse> {
                 override fun onResponse(
                     call: Call<CreateWargaResponse>,
@@ -98,7 +106,8 @@ class WargaPresenter(private val activity: Activity, private val view: WargaInte
                                 true -> saveSession(
                                     email,
                                     password,
-                                    token
+                                    token,
+                                    token_firebase
                                 )
                             }
                             view.onRegisterSuccess("Berhasil mendaftarkan akun!")
@@ -121,13 +130,15 @@ class WargaPresenter(private val activity: Activity, private val view: WargaInte
     private fun saveSession(
         email: String,
         password: String,
-        token: String
+        token: String,
+        token_firebase: String
     ) {
         val userSession = UserSession(activity)
         userSession.save(SHARED_PREFERENCE_ROLE_KEY,"warga")
         userSession.save(SHARED_PREFERENCE_TOKEN_KEY,token)
         userSession.save(SHARED_PREFERENCE_EMAIL_KEY,email)
         userSession.save(SHARED_PREFERENCE_PASSWORD_KEY,password)
+        userSession.save(SHARED_PREFERENCE_TOKEN_FCM,token_firebase)
     }
 
     fun getDataLogin(token: String) {

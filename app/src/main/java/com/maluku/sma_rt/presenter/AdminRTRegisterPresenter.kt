@@ -13,10 +13,12 @@ import com.maluku.sma_rt.extentions.UserSession.Companion.SHARED_PREFERENCE_NAME
 import com.maluku.sma_rt.extentions.UserSession.Companion.SHARED_PREFERENCE_PASSWORD_KEY
 import com.maluku.sma_rt.extentions.UserSession.Companion.SHARED_PREFERENCE_PHONE_NUMBER_KEY
 import com.maluku.sma_rt.extentions.UserSession.Companion.SHARED_PREFERENCE_ROLE_KEY
+import com.maluku.sma_rt.extentions.UserSession.Companion.SHARED_PREFERENCE_TOKEN_FCM
 import com.maluku.sma_rt.extentions.UserSession.Companion.SHARED_PREFERENCE_TOKEN_KEY
 import com.maluku.sma_rt.extentions.UserValidator
 import com.maluku.sma_rt.model.pengurus.CreatePengurusResponse
 import com.maluku.sma_rt.view.viewInterface.RegisterAdminInterface
+import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -31,11 +33,12 @@ class AdminRTRegisterPresenter(private val activity: Activity, private val view:
         noHpAdmin: String,
         namaAdmin: String,
         emailAdmin: String,
-        password: String
+        password: String,
+        token_firebase: String
     ) {
         when (UserValidator.verifyData(emailAdmin, password, namaAdmin)) {
             true -> {
-                pushToCloud(kodeRT, genderAdmin, noHpAdmin, namaAdmin,emailAdmin, password)
+                pushToCloud(kodeRT, genderAdmin, noHpAdmin, namaAdmin,emailAdmin, password, token_firebase)
             }
         }
     }
@@ -48,7 +51,8 @@ class AdminRTRegisterPresenter(private val activity: Activity, private val view:
         noHpAdmin: String,
         namaAdmin: String,
         emailAdmin: String,
-        password: String
+        password: String,
+        token_firebase: String
     ) {
         RetrofitService
             .getService()
@@ -58,7 +62,8 @@ class AdminRTRegisterPresenter(private val activity: Activity, private val view:
                 noHpAdmin,
                 namaAdmin,
                 emailAdmin,
-                password
+                password,
+                token_firebase
             )
             .enqueue(object : Callback<CreatePengurusResponse> {
                 override fun onResponse(
@@ -76,20 +81,23 @@ class AdminRTRegisterPresenter(private val activity: Activity, private val view:
                                     namaAdmin,
                                     emailAdmin,
                                     password,
-                                    token
+                                    token,
+                                    token_firebase
                                 )
                             }
                             Toast.makeText(activity,"Pesan: ${response.message()}",Toast.LENGTH_SHORT).show()
                             view.onRegisterSuccess(activity.getString(R.string.login_sukses))
                         }
                         false -> {
-                            Toast.makeText(activity,"Pesan: ${response.message()}",Toast.LENGTH_SHORT).show()
+                            val jObjError = JSONObject(response.errorBody()?.string())
+                            val message = jObjError.getString("message")
+                            Toast.makeText(activity,"Pesan: $message", Toast.LENGTH_SHORT).show()
                         }
                     }
                 }
 
                 override fun onFailure(call: Call<CreatePengurusResponse>, t: Throwable) {
-                    Log.i(TAG, "onFailure: ${t.message}")
+                    Log.i(TAG, "onFailure: ${t.message.toString()}")
                 }
             })
     }
@@ -101,7 +109,8 @@ class AdminRTRegisterPresenter(private val activity: Activity, private val view:
         namaAdmin: String,
         emailAdmin: String,
         password: String,
-        token: String
+        token: String,
+        token_firebase: String
     ) {
         val userSession = UserSession(activity)
         userSession.save(SHARED_PREFERENCE_ROLE_KEY,"pengurus")
@@ -112,6 +121,7 @@ class AdminRTRegisterPresenter(private val activity: Activity, private val view:
         userSession.save(SHARED_PREFERENCE_PHONE_NUMBER_KEY,noHpAdmin)
         userSession.save(SHARED_PREFERENCE_EMAIL_KEY,emailAdmin)
         userSession.save(SHARED_PREFERENCE_PASSWORD_KEY,password)
+        userSession.save(SHARED_PREFERENCE_TOKEN_FCM,token_firebase)
     }
 
 }
