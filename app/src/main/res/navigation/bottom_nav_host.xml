@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_homeWarga_to_informasiWarga"
             app:destination="@id/informasiWarga" />
+        <action
+            android:id="@+id/action_homeWarga_to_isisaldoTariksaldo"
+            app:destination="@id/isisaldoTariksaldo" />
     </fragment>
     <fragment
         android:id="@+id/jualbeliWarga"

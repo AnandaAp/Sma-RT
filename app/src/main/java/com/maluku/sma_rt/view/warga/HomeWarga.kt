@@ -73,6 +73,7 @@ class HomeWarga : Fragment(), InformasiInterface, DompetKeluargaInterface, Warga
         navigateToMenuInformasi()
         navigateToMenuLaporan()
         navigateToMenuPersuratan()
+        navigateToMenuMore()
         navigateToTopUpSaldo()
     }
 
@@ -136,6 +137,13 @@ class HomeWarga : Fragment(), InformasiInterface, DompetKeluargaInterface, Warga
             findNavController().navigate(R.id.action_homeWarga_to_persuratanWarga)
         }
     }
+
+    private fun navigateToMenuMore() {
+        binding.btnMore.setOnClickListener {
+            findNavController().navigate(R.id.action_homeWarga_to_isisaldoTariksaldo)
+        }
+    }
+
 
     private fun setRecyclerViewInfoTerkini() {
         rvInfo = binding.rvInfo
