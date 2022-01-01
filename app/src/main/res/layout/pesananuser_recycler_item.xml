@@ -25,6 +25,7 @@
                 app:cardCornerRadius="10dp">
 
                 <ImageView
+                    android:id="@+id/imageprodukpesanan"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:src="@drawable/gambarpesanan1"/>
@@ -37,6 +38,7 @@
                 android:layout_marginStart="16dp">
 
                 <TextView
+                    android:id="@+id/namaprodukpesanan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Gula gulaku"
@@ -44,6 +46,7 @@
                     android:fontFamily="@font/montserrat_medium"/>
 
                 <TextView
+                    android:id="@+id/hargaprodukpesanan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="18dp"
@@ -94,6 +97,7 @@
                         android:layout_weight="1" />
 
                     <ImageButton
+                        android:id="@+id/btndeletepesanan"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"

@@ -13,6 +13,7 @@
         android:layout_marginStart="12dp"
         android:layout_marginTop="8dp"
         android:text="Masukkan Judul : "
+        android:textCursorDrawable="@drawable/color_cursor"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
@@ -45,6 +46,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:paddingStart="10dp"
+        android:textCursorDrawable="@drawable/color_cursor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/textView12"
@@ -69,6 +71,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:paddingStart="10dp"
+        android:textCursorDrawable="@drawable/color_cursor"
         app:layout_constraintEnd_toEndOf="@+id/etJudul"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/textView13"
@@ -85,6 +88,7 @@
         android:inputType="textMultiLine"
         android:paddingStart="10dp"
         android:paddingTop="10dp"
+        android:textCursorDrawable="@drawable/color_cursor"
         app:layout_constraintEnd_toEndOf="@+id/etLokasi"
         app:layout_constraintStart_toStartOf="@+id/textView15"
         app:layout_constraintTop_toBottomOf="@+id/textView15"
@@ -114,7 +118,6 @@
         android:layout_width="0dp"
         android:layout_height="130dp"
         android:src="@drawable/rectangle"
-        app:layout_constraintBottom_toTopOf="@+id/btnBuatInformasi"
         app:layout_constraintEnd_toEndOf="@+id/etDetailInformasi"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/etDetailInformasi"
@@ -137,13 +140,13 @@
         android:id="@+id/btnBuatInformasi"
         android:layout_width="144dp"
         android:layout_height="65dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginTop="50dp"
         android:backgroundTint="#0CBC8B"
         android:text="Kirim"
         android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView12" />
 
 
 

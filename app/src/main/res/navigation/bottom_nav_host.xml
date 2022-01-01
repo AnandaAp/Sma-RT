@@ -357,6 +357,9 @@
         <action
             android:id="@+id/action_informasiWarga_to_homeWarga"
             app:destination="@id/homeWarga" />
+        <action
+            android:id="@+id/action_informasiWarga_to_detailInformasiBerita"
+            app:destination="@id/detailInformasiBerita" />
     </fragment>
     <fragment
         android:id="@+id/detailPesananUser"
@@ -366,5 +369,14 @@
         <action
             android:id="@+id/action_detailPesananUser_to_riwayatPesananUser"
             app:destination="@id/riwayatPesananUser" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailInformasiBerita"
+        android:name="com.maluku.sma_rt.view.warga.DetailInformasiBerita"
+        android:label="fragment_detail_informasi_berita"
+        tools:layout="@layout/fragment_detail_informasi_berita" >
+        <action
+            android:id="@+id/action_detailInformasiBerita_to_informasiWarga"
+            app:destination="@id/informasiWarga" />
     </fragment>
 </navigation>

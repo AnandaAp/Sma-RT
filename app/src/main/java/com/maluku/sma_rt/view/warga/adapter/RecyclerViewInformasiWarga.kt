@@ -3,8 +3,11 @@ package com.maluku.sma_rt.view.warga.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.maluku.sma_rt.R
+import com.maluku.sma_rt.view.warga.InformasiWargaDirections
+import com.maluku.sma_rt.view.warga.RiwayatPesananUserDirections
 
 class RecyclerViewInformasiWarga: RecyclerView.Adapter<RecyclerViewInformasiWarga.MyViewHolder>() {
 
@@ -15,10 +18,16 @@ class RecyclerViewInformasiWarga: RecyclerView.Adapter<RecyclerViewInformasiWarg
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 
+        holder.itemView.setOnClickListener { view ->
+            val direction = InformasiWargaDirections
+                .actionInformasiWargaToDetailInformasiBerita()
+            view.findNavController().navigate(direction)
+        }
+
     }
 
     override fun getItemCount(): Int {
-        return 5
+        return 20
     }
 
     class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {

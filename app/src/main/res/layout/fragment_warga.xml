@@ -66,6 +66,7 @@
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textColorHint="#000000"
+            android:textCursorDrawable="@drawable/color_cursor"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.493"

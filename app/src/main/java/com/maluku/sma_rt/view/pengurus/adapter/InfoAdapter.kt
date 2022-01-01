@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
@@ -33,6 +34,8 @@ class InfoAdapter(val listInfoTerkini: ArrayList<GetAllInformasiItem>): Recycler
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val data = listInfoTerkini[position]
+
+        holder.judul.text = data.judul.toString()
         // Firebase Storage
         val storageRef = FirebaseStorage.getInstance().reference.child("images/${data.gambar}")
         Log.d(ContentValues.TAG,"Adapter get ref image: $storageRef")
@@ -59,6 +62,7 @@ class InfoAdapter(val listInfoTerkini: ArrayList<GetAllInformasiItem>): Recycler
     }
 
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+        var judul: TextView = itemView.findViewById(R.id.judulberita)
         var infoTerkini: ImageView = itemView.findViewById(R.id.ivInfoTerkiniRT)
         var cardInfo: CardView = itemView.findViewById(R.id.cardInfoTerkini)
     }

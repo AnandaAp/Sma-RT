@@ -21,6 +21,7 @@ import com.maluku.sma_rt.model.informasi.GetAllInformasiItem
 import com.maluku.sma_rt.model.warga.GetAllWargaItem
 import com.maluku.sma_rt.view.pengurus.InformasiFragmentDirections
 import com.maluku.sma_rt.view.pengurus.bottomnavigation.HomeFragmentDirections
+import org.w3c.dom.Text
 import java.io.File
 
 class GaleriAdapter(val listKegiatan: ArrayList<GetAllInformasiItem>): RecyclerView.Adapter<GaleriAdapter.ViewHolder>() {
@@ -37,6 +38,8 @@ class GaleriAdapter(val listKegiatan: ArrayList<GetAllInformasiItem>): RecyclerV
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val data = listKegiatan[position]
+
+        holder.judul.text = data.judul.toString()
         // Firebase Storage
         val storageRef = FirebaseStorage.getInstance().reference.child("images/${data.gambar}")
         Log.d(ContentValues.TAG,"Adapter get ref image: $storageRef")
@@ -64,6 +67,7 @@ class GaleriAdapter(val listKegiatan: ArrayList<GetAllInformasiItem>): RecyclerV
     }
 
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+        val judul: TextView = itemView.findViewById(R.id.judulgaleri)
         val galeriWarga: ImageView = itemView.findViewById(R.id.ivGaleriWargaRT)
         var cardGaleri: CardView = itemView.findViewById(R.id.cardGaleriKegiatan)
     }

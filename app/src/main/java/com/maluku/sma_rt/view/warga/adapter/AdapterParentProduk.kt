@@ -26,18 +26,13 @@ class AdapterParentProduk(val parents: List<ModelParentProduk>) :
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val parent = parents[position]
-        holder.namaToko.text = parent.namatoko
-
+        holder.namaToko.text = parent.namatoko.toString()
         holder.recyclerView.apply {
             layoutManager = LinearLayoutManager(holder.recyclerView.context, LinearLayoutManager.VERTICAL, false)
             adapter = AdapterChildProduk(parent.children)
         }
 
-        holder.itemView.setOnClickListener { view ->
-            val direction = RiwayatPesananUserDirections
-                .actionRiwayatPesananUserToDetailPesananUser()
-            view.findNavController().navigate(direction)
-        }
+
 
 
 

@@ -26,11 +26,13 @@ class AdapterChildProduk(private val children: List<ModelChildProduk>) :
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val child = children[position]
         holder.imageProdukChild.setImageResource(child.imageproduk)
-        holder.namaProdukChild.text = child.namaproduk
+        holder.namaProdukChild.text = child.namaproduk.toString()
 
         holder.itemView.setOnClickListener { view ->
             val direction = RiwayatPesananUserDirections
-                .actionRiwayatPesananUserToDetailPesananUser()
+                .actionRiwayatPesananUserToDetailPesananUser(
+
+                )
             view.findNavController().navigate(direction)
         }
     }
@@ -43,3 +45,4 @@ class AdapterChildProduk(private val children: List<ModelChildProduk>) :
 
     }
 }
+
