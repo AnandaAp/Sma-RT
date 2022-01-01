@@ -1,25 +1,36 @@
 package com.maluku.sma_rt.view.warga
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.maluku.sma_rt.R
 import com.maluku.sma_rt.databinding.FragmentRiwayatPesananUserBinding
-import com.maluku.sma_rt.view.warga.adapter.AdapterParentProduk
-import com.maluku.sma_rt.view.warga.adapter.ModelChildProduk
-import com.maluku.sma_rt.view.warga.adapter.ModelParentProduk
+import com.maluku.sma_rt.extentions.UserSession
+import com.maluku.sma_rt.model.keluarga.GetAllProdukKeluargaItem
+import com.maluku.sma_rt.model.keluarga.GetKeluargaById
+import com.maluku.sma_rt.model.order.GetAllOrderItem
+import com.maluku.sma_rt.presenter.OrderPresenter
+import com.maluku.sma_rt.presenter.WargaTagihanPresenter
+import com.maluku.sma_rt.view.viewInterface.OrderInterface
+import com.maluku.sma_rt.view.warga.adapter.*
 
-class RiwayatPesananUser : Fragment() {
+private const val TAG = "RIWAYAT PESANAN USER"
+
+class RiwayatPesananUser : Fragment(), OrderInterface {
 
     private lateinit var binding: FragmentRiwayatPesananUserBinding
     private lateinit var recyclerView: RecyclerView
 
-
+    private lateinit var adapterOrder: AdapterParentProduk
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,11 +42,17 @@ class RiwayatPesananUser : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        OrderPresenter(this).getAllOrder(getToken())
         goback()
-        initRecycler()
+        setRecyclerViewListOrder()
+//        initRecycler()
+    }
 
-
-
+    private fun getToken(): String {
+        val preferences = UserSession(requireActivity())
+        val token = preferences.getValueString(UserSession.SHARED_PREFERENCE_TOKEN_KEY)
+        Log.d(TAG,token)
+        return token
     }
 
     private fun goback() {
@@ -44,70 +61,14 @@ class RiwayatPesananUser : Fragment() {
         }
     }
 
-
-
-
-    private fun initRecycler(){
+    private fun setRecyclerViewListOrder() {
         recyclerView = binding.rvParent
-        val list = mutableListOf<ModelParentProduk>()
-        recyclerView.apply {
-            layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
-            adapter = AdapterParentProduk(list)
-
-        }
-
-        list.add(
-            ModelParentProduk("Toko Agus",
-                mutableListOf(
-                    ModelChildProduk(R.drawable.gambarminyak, "Minyak Sampah"),
-                    ModelChildProduk(R.drawable.gambargula,"Gulaku Manis"),
-                    ModelChildProduk(R.drawable.gambargula,"Gulaku Enak")
-                ))
+        recyclerView.setHasFixedSize(true)
+        recyclerView.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL,false)
+        adapterOrder = AdapterParentProduk(
+            arrayListOf(), getToken()
         )
-
-        list.add(
-            ModelParentProduk("Toko Jarwo",
-                mutableListOf(
-                    ModelChildProduk(R.drawable.gambarminyak, "Minyak Goreng"),
-                    ModelChildProduk(R.drawable.gambargula,"Gulaku Manis")
-                ))
-        )
-
-        list.add(
-            ModelParentProduk("Toko Nunung",
-                mutableListOf(
-                    ModelChildProduk(R.drawable.gambarminyak, "Minyak Ikan"),
-                    ModelChildProduk(R.drawable.gambargula,"Gulaku Aren")
-                ))
-        )
-
-        list.add(
-            ModelParentProduk("Toko Ucok",
-                mutableListOf(
-                    ModelChildProduk(R.drawable.gambarminyak, "Minyak Ikan"),
-                    ModelChildProduk(R.drawable.gambargula,"Gulaku Aren"),
-                    ModelChildProduk(R.drawable.gambarminyak, "Minyak Ikan"),
-                    ModelChildProduk(R.drawable.gambargula,"Gulaku Aren"),
-                    ModelChildProduk(R.drawable.gambarminyak, "Minyak Ikan"),
-                    ModelChildProduk(R.drawable.gambargula,"Gulaku Aren"),
-                    ModelChildProduk(R.drawable.gambarminyak, "Minyak Ikan"),
-                    ModelChildProduk(R.drawable.gambargula,"Gulaku Aren")
-
-                ))
-        )
-
-        list.add(
-            ModelParentProduk("Toko Waluyo",
-                mutableListOf(
-                    ModelChildProduk(R.drawable.gambarminyak, "Minyak Tanah"),
-                    ModelChildProduk(R.drawable.gambargula,"Gula Pahit")
-                ))
-        )
-
-
-
-
-
+        recyclerView.adapter = adapterOrder
     }
 
 
@@ -116,4 +77,45 @@ class RiwayatPesananUser : Fragment() {
         return binding.root
     }
 
+    override fun onCreateOrderSuccess(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onCreateOrderFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetAllOrderSuccess(result: List<GetAllOrderItem>) {
+        Handler(Looper.getMainLooper()).post(Runnable { //do stuff like remove view etc
+            adapterOrder.setData(result as ArrayList<GetAllOrderItem>)
+        })
+    }
+
+    override fun onGetAllOrderFailure(message: String) {
+        Toast.makeText(requireContext(),message, Toast.LENGTH_LONG).show()
+    }
+
+    override fun onOrderProcessSuccess(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onOrderProcessFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onOrderCancelSuccess(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onOrderCancelFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onOrderCompleteSuccess(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onOrderCompleteFailure(message: String) {
+        TODO("Not yet implemented")
+    }
 }

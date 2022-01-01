@@ -67,6 +67,53 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
+                            <entry key="action_changePassword_to_homeWarga">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="detailInformasiBerita">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="12" />
+                            <option name="y" value="12" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_detailInformasiBerita_to_informasiWarga">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="detailPesananUser">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="256" />
+                            <option name="y" value="12" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_detailPesananUser_to_riwayatPesananUser">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                           </map>
                         </option>
                       </LayoutPositions>
@@ -130,6 +177,16 @@
                         </option>
                         <option name="myPositions">
                           <map>
+                            <entry key="action_homeWarga_to_informasiWarga">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_homeWarga_to_isisaldoTariksaldo">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_homeWarga_to_laporanWarga">
                               <value>
                                 <LayoutPositions />
@@ -141,6 +198,32 @@
                               </value>
                             </entry>
                             <entry key="action_homeWarga_to_topupSaldo">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="informasiWarga">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="12" />
+                            <option name="y" value="12" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_informasiWarga_to_detailInformasiBerita">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_informasiWarga_to_homeWarga">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -193,6 +276,11 @@
                         <option name="myPositions">
                           <map>
                             <entry key="action_jualbeliWarga_to_pesananUserPage">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_jualbeliWarga_to_riwayatPesananUser">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -516,6 +604,20 @@
                             <option name="x" value="690" />
                             <option name="y" value="-148" />
                           </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_riwayatPesananUser_to_detailPesananUser">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_riwayatPesananUser_to_jualbeliWarga">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
                         </option>
                       </LayoutPositions>
                     </value>

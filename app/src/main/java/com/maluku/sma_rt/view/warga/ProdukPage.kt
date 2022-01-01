@@ -21,9 +21,6 @@ import com.maluku.sma_rt.view.viewInterface.ProdukInterface
 import com.maluku.sma_rt.view.warga.adapter.RecyclerViewProdukpage
 import android.os.Looper
 
-
-
-
 private const val TAG = "PRODUK PAGE"
 
 class ProdukPage : Fragment(), ProdukInterface {

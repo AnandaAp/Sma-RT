@@ -114,6 +114,7 @@
                     android:orientation="horizontal">
 
                     <ImageView
+                        android:id="@+id/checkAwal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/ic_check_active" />
@@ -126,6 +127,7 @@
                         android:background="#B1B1B1" />
 
                     <ImageView
+                        android:id="@+id/checkProses"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/ic_check_non" />
@@ -138,6 +140,7 @@
                         android:background="#B1B1B1" />
 
                     <ImageView
+                        android:id="@+id/checkSelesai"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/ic_check_non" />

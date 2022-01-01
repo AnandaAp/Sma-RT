@@ -57,9 +57,6 @@ class RecyclerViewProdukpage(
         Log.d(ContentValues.TAG,"Adapter get ref image: $storageRef")
         val localFile = File.createTempFile("tempFile","jpg")
         storageRef.getFile(localFile).addOnSuccessListener {
-//            val bitmap = BitmapFactory.decodeFile(localFile.absolutePath)
-//            holder.gambarProduk.setImageBitmap(bitmap)
-            // Tampilkan gambar dengan Glide
             Glide.with(holder.itemView)
                 .load(localFile.path)
                 .apply(RequestOptions().transform(CenterCrop(), RoundedCorners(20)))

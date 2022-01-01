@@ -100,6 +100,7 @@ class PesananUserPage : Fragment(), OrderInterface {
             val arrOrder = ArrayList<CreateOrderBody>()
             val data = CreateOrderBody("01FQNTQ9KYRFW9YNMYGAXP1R8M", 1, "topping coklat")
             arrOrder.add(data)
+            arrOrder.add(CreateOrderBody("01FQNTQ9M1WA992RJY56VTJ4YX", 2, "topping keju"))
             OrderPresenter(this).createOrderPakaiSaldo(getToken(), arrOrder)
             //            findNavController().navigate(R.id.action_pesananUserPage_to_pesananUserMenunggu)
         }

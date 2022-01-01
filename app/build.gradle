@@ -84,6 +84,6 @@ dependencies {
     implementation 'androidx.viewpager2:viewpager2:1.0.0'
     // imageprofile circle
     implementation 'de.hdodenhof:circleimageview:3.1.0'
-
-
+    // fast android network
+    implementation 'com.amitshekhar.android:android-networking:1.0.2'
 }

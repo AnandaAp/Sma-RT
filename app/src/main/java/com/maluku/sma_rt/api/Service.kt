@@ -161,6 +161,13 @@ interface Service {
         @Header("Authorization") authHeader: String
     ): Call<GetKeluargaSayaResponse>
 
+    // Get Keluarga By ID
+    @GET("keluarga/{id_keluarga}")
+    fun getKeluargaById(
+        @Header("Authorization") authHeader: String,
+        @Path("id_keluarga") id_keluarga: String
+    ): Call<GetKeluargaByIDResponse>
+
     // Update Toko
     @FormUrlEncoded
     @PUT("keluarga/{id_keluarga}")

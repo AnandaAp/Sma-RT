@@ -2,7 +2,7 @@ package com.maluku.sma_rt.model.keluarga
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
-import kotlinx.parcelize.Parcelize
+import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class GetKeluargaByIDResponse(
@@ -26,6 +26,37 @@ data class GetKeluargaById(
 	@field:SerializedName("nama")
 	val nama: String? = null,
 
+	@field:SerializedName("kode_keluarga")
+	val kodeKeluarga: String? = null,
+
+	@field:SerializedName("updated_at")
+	val updatedAt: String? = null,
+
+	@field:SerializedName("dompet_keluarga")
+	val dompetKeluarga: DompetKeluarga? = null,
+
+	@field:SerializedName("created_at")
+	val createdAt: String? = null,
+
+	@field:SerializedName("id")
+	val id: String? = null,
+
+	@field:SerializedName("gambar")
+	val gambar: String? = null,
+
+	@field:SerializedName("alamat")
+	val alamat: String? = null,
+
+	@field:SerializedName("nama_toko")
+	val namaToko: String? = null
+) : Parcelable
+
+@Parcelize
+data class DompetKeluargaByID(
+
+	@field:SerializedName("jumlah")
+	val jumlah: Int? = null,
+
 	@field:SerializedName("updated_at")
 	val updatedAt: String? = null,
 
@@ -33,5 +64,8 @@ data class GetKeluargaById(
 	val createdAt: String? = null,
 
 	@field:SerializedName("id")
-	val id: String? = null
+	val id: String? = null,
+
+	@field:SerializedName("id_keluarga")
+	val idKeluarga: String? = null
 ) : Parcelable

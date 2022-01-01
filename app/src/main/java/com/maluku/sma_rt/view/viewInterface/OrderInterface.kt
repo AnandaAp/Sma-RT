@@ -1,5 +1,6 @@
 package com.maluku.sma_rt.view.viewInterface
 
+import com.maluku.sma_rt.model.keluarga.GetKeluargaSaya
 import com.maluku.sma_rt.model.order.GetAllOrderItem
 
 interface OrderInterface {
