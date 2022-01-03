@@ -22,6 +22,7 @@ import com.maluku.sma_rt.model.dompetkeluarga.GetAllDompetKeluargaItem
 import com.maluku.sma_rt.model.dompetkeluarga.GetDompetKeluargaById
 import com.maluku.sma_rt.presenter.DompetKeluargaPresenter
 import com.maluku.sma_rt.view.viewInterface.DompetKeluargaInterface
+import java.text.NumberFormat
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -89,6 +90,9 @@ class TopupSaldo : Fragment(), DompetKeluargaInterface {
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.setContentView(R.layout.custom_dialog_topupsaldo)
         val btnTopup = dialog.findViewById<TextView>(R.id.btn_ok)
+        val message = dialog.findViewById<TextView>(R.id.tv_tambahsaldo)
+
+        message.text = "Saldo sebesar ${toRupiah(jumlahTopUp.toDouble())} berhasil ditambahkan"
 
         btnTopup.setOnClickListener {
             dialog.dismiss()
@@ -123,6 +127,12 @@ class TopupSaldo : Fragment(), DompetKeluargaInterface {
             getToken(),
             jumlahTopUp
         )
+    }
+
+    private fun toRupiah(number: Double): String{
+        val localeID =  Locale("in", "ID")
+        val numberFormat = NumberFormat.getCurrencyInstance(localeID)
+        return numberFormat.format(number).toString()
     }
 
     override fun onTopupSuccess(message: String) {

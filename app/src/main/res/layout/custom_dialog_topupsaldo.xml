@@ -30,13 +30,12 @@
 
 
             <TextView
-                android:id="@+id/tv_maukeluar"
+                android:id="@+id/tv_tambahsaldo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_gravity="center"
                 android:fontFamily="@font/montserrat_semibold"
-                android:text="Saldo berhasil ditambahkan"
                 android:textAlignment="center"
                 android:textSize="18sp" />
 

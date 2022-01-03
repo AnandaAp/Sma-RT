@@ -105,6 +105,9 @@ class TarikSaldo : Fragment(), DompetKeluargaInterface {
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.setContentView(R.layout.custom_dialog_tariksaldo)
         val btnTarik = dialog.findViewById<TextView>(R.id.btn_ok)
+        val message = dialog.findViewById<TextView>(R.id.tv_tariksaldo)
+
+        message.text = "Saldo sebesar ${toRupiah(jumlahWithdraw.toDouble())} berhasil ditarik"
 
         btnTarik.setOnClickListener {
             dialog.dismiss()
