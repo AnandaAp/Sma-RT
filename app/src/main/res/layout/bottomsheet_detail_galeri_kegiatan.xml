@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -20,7 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat_semibold"
-            android:text="Detail Informasi"
+            android:text="Detail Galeri Kegiatan Warga"
             android:textSize="18dp" />
 
         <View
@@ -64,7 +63,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:scaleType="fitXY"
-            android:src="@drawable/image3" />
+            android:src="@drawable/image2" />
 
 
     </androidx.cardview.widget.CardView>
@@ -75,7 +74,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/montserrat_semibold"
-        android:text="Kebakaran Rumah di gunung"
+        android:text="Arisan"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="@+id/cardView11"
         app:layout_constraintStart_toStartOf="@+id/cardView11"
@@ -95,5 +94,4 @@
         app:layout_constraintStart_toStartOf="@+id/namainformasi"
         app:layout_constraintTop_toBottomOf="@+id/namainformasi"
         app:layout_constraintVertical_bias="0.6" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

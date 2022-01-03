@@ -17,7 +17,7 @@
             android:id="@+id/image_infomasi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/foto_banjir"
+            android:src="@drawable/image3"
             android:scaleType="centerCrop" />
     </androidx.cardview.widget.CardView>
 
@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:fontFamily="@font/montserrat_bold"
-        android:text="Banjir di Jambu Ijo"
+        android:text="Gunung"
         android:textSize="20sp"
         app:layout_constraintStart_toEndOf="@+id/informasi_card"
         app:layout_constraintTop_toTopOf="@+id/informasi_card" />
@@ -37,7 +37,7 @@
         android:layout_width="250dp"
         android:layout_height="80dp"
         android:fontFamily="@font/montserrat_regular"
-        android:text="Banjir di jambu ijo hingga saat ini telah merusak 46 rumah."
+        android:text="Gunung aja kembar"
         android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/view9"
         app:layout_constraintEnd_toEndOf="parent"
