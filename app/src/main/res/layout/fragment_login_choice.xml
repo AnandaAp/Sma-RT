@@ -35,7 +35,7 @@
             android:layout_height="61dp"
             android:layout_marginTop="141dp"
             android:background="@drawable/btn_rounded"
-            android:backgroundTint="@color/secondbtn"
+            android:backgroundTint="#79B4B7"
             android:fontFamily="@font/montserrat"
             android:text="Login as RT"
             android:textStyle="bold"
