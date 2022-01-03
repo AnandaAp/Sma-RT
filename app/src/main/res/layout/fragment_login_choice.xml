@@ -12,7 +12,7 @@
         android:layout_width="183dp"
         android:layout_height="72dp"
         android:layout_marginTop="66dp"
-        android:src="@drawable/logo_smart"
+        android:src="@drawable/logo_smart2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
