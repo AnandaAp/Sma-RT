@@ -182,6 +182,7 @@ class BagikanInformasiFragment : Fragment(), InformasiInterface {
         binding.etJudul.text = null
         binding.etLokasi.text = null
         binding.etDetailInformasi.text = null
+        binding.imageView12.setImageURI(null)
         Toast.makeText(requireContext(),message,Toast.LENGTH_LONG).show()
     }
 

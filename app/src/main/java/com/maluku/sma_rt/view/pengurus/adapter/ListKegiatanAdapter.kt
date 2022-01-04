@@ -37,8 +37,18 @@ class ListKegiatanAdapter(val listKegiatan: ArrayList<GetAllInformasiItem>): Rec
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val data = listKegiatan[position]
-        holder.judulKegiatan.text = data.judul.toString()
-        holder.detailKegiatan.text = data.detail.toString()
+        val judulInfoKegiatan = data.judul.toString()
+        val detailInfoKegiatan = data.detail.toString()
+        val lengthJudul = 20
+        val lengthDetail = 175
+        if (judulInfoKegiatan.length > lengthJudul)
+            holder.judulKegiatan.text = judulInfoKegiatan.substring(0, lengthJudul - 3) + "..."
+        else
+            holder.judulKegiatan.text = judulInfoKegiatan
+        if (detailInfoKegiatan.length > lengthDetail)
+            holder.detailKegiatan.text = detailInfoKegiatan.substring(0, lengthDetail - 3) + "..."
+        else
+            holder.detailKegiatan.text = detailInfoKegiatan
         // Firebase Storage
         val storageRef = FirebaseStorage.getInstance().reference.child("images/${data.gambar}")
         Log.d(ContentValues.TAG,"Adapter get ref image: $storageRef")

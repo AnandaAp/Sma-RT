@@ -36,8 +36,18 @@ class ListInfoTerkiniAdapter(val listInfoTerkini: ArrayList<GetAllInformasiItem>
 
     override fun onBindViewHolder(holder: ListInfoTerkiniAdapter.ViewHolder, position: Int) {
         val data = listInfoTerkini[position]
-        holder.judulInfoTerkini.text = data.judul.toString()
-        holder.detailInfoTerkini.text = data.detail.toString()
+        val judulInfoTerkini = data.judul.toString()
+        val detailInfoTerkini = data.detail.toString()
+        val lengthJudul = 20
+        val lengthDetail = 175
+        if (judulInfoTerkini.length > lengthJudul)
+            holder.judulInfoTerkini.text = judulInfoTerkini.substring(0, lengthJudul - 3) + "..."
+        else
+            holder.judulInfoTerkini.text = judulInfoTerkini
+        if (detailInfoTerkini.length > lengthDetail)
+            holder.detailInfoTerkini.text = detailInfoTerkini.substring(0, lengthDetail - 3) + "..."
+        else
+            holder.detailInfoTerkini.text = detailInfoTerkini
         // Firebase Storage
         val storageRef = FirebaseStorage.getInstance().reference.child("images/${data.gambar}")
         Log.d(ContentValues.TAG,"Adapter get ref image: $storageRef")
