@@ -59,7 +59,7 @@
         app:layout_constraintTop_toBottomOf="@+id/toolbar_detail_galeri_rt">
 
         <ImageView
-            android:id="@+id/image_detailinfo"
+            android:id="@+id/ivDetailKegiatan"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
@@ -69,7 +69,7 @@
     </androidx.cardview.widget.CardView>
 
     <TextView
-        android:id="@+id/textView29"
+        android:id="@+id/judulDetailKegiatan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -82,6 +82,7 @@
         app:layout_constraintTop_toBottomOf="@+id/card_imageinfodetail" />
 
     <TextView
+        android:id="@+id/descDetailKegiatan"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -91,8 +92,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textView29"
-        app:layout_constraintTop_toBottomOf="@+id/textView29"
+        app:layout_constraintStart_toStartOf="@+id/judulDetailKegiatan"
+        app:layout_constraintTop_toBottomOf="@+id/judulDetailKegiatan"
         app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

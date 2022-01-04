@@ -53,7 +53,6 @@ class ListWargaPresenter(private val activity: Activity, private var view: ListW
             if (response.isSuccessful){
                 val result = response.body()?.getAllWarga as List<GetAllWargaItem>
                 view.resultListWargaSuccess(result)
-                Toast.makeText(activity,"Pesan: ${response.message()}", Toast.LENGTH_SHORT).show()
             } else{
                 val jObjError = JSONObject(response.errorBody()!!.string())
                 val message = jObjError.getString("message")

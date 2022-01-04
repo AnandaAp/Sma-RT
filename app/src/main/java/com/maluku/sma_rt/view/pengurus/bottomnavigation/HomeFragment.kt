@@ -152,7 +152,7 @@ class HomeFragment : Fragment(), InformasiInterface, DompetRTInterface, AdminRTP
     }
 
     override fun onGetInfoTerkiniFailure(message: String) {
-        TODO("Not yet implemented")
+        Toast.makeText(requireContext(),"Pesan: $message",Toast.LENGTH_LONG).show()
     }
 
 
@@ -161,7 +161,7 @@ class HomeFragment : Fragment(), InformasiInterface, DompetRTInterface, AdminRTP
     }
 
     override fun onGetKegiatanFailure(message: String) {
-        TODO("Not yet implemented")
+        Toast.makeText(requireContext(),"Pesan: $message",Toast.LENGTH_LONG).show()
     }
 
     override fun onGetAllDataSuccess(result: GetDompetById?) {

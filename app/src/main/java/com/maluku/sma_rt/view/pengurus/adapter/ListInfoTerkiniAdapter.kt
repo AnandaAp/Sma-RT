@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -67,7 +68,7 @@ class ListInfoTerkiniAdapter(val listInfoTerkini: ArrayList<GetAllInformasiItem>
         var infoTerkini: ImageView = itemView.findViewById(R.id.ivListInformasi)
         var judulInfoTerkini: TextView = itemView.findViewById(R.id.tvJudulListInformasi)
         var detailInfoTerkini: TextView = itemView.findViewById(R.id.tvDescListInformasi)
-        var cardInfo: CardView = itemView.findViewById(R.id.cardListInformasi)
+        var cardInfo: ConstraintLayout = itemView.findViewById(R.id.constraintInformasi)
     }
 
 }

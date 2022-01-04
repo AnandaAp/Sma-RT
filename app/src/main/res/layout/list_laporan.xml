@@ -25,7 +25,7 @@
             android:padding="10dp">
 
             <ImageView
-                android:id="@+id/ivLaporan"
+                android:id="@+id/ivListLaporan"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -44,7 +44,7 @@
                 android:text="Judul Laporan"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.082"
-                app:layout_constraintStart_toEndOf="@+id/ivLaporan"
+                app:layout_constraintStart_toEndOf="@+id/ivListLaporan"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView

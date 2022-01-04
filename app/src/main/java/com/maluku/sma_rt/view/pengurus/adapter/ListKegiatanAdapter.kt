@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -68,6 +69,6 @@ class ListKegiatanAdapter(val listKegiatan: ArrayList<GetAllInformasiItem>): Rec
         var gambarKegiatan: ImageView = itemView.findViewById(R.id.ivListInformasi)
         var judulKegiatan: TextView = itemView.findViewById(R.id.tvJudulListInformasi)
         var detailKegiatan: TextView = itemView.findViewById(R.id.tvDescListInformasi)
-        var cardKegiatan: CardView = itemView.findViewById(R.id.cardListInformasi)
+        var cardKegiatan: ConstraintLayout = itemView.findViewById(R.id.constraintInformasi)
     }
 }
