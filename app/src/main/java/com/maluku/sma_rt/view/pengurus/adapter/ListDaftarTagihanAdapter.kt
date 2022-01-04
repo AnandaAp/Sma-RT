@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.maluku.sma_rt.R
 import com.maluku.sma_rt.model.tagihan.GetAllTagihanItem
 
-class RiwayatKasAdapter(val listTagihan: ArrayList<GetAllTagihanItem>): RecyclerView.Adapter<RiwayatKasAdapter.ViewHolder>() {
+class ListDaftarTagihanAdapter (val listTagihan: ArrayList<GetAllTagihanItem>): RecyclerView.Adapter<ListDaftarTagihanAdapter.ViewHolder>() {
     fun setData(data : List<GetAllTagihanItem>){
         listTagihan.clear()
         listTagihan.addAll(data)
@@ -16,16 +16,16 @@ class RiwayatKasAdapter(val listTagihan: ArrayList<GetAllTagihanItem>): Recycler
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.list_riwayat_kas, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.list_daftar_iuran, parent, false)
         return ViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val data = listTagihan[position]
-        if (data.terbayar.toString() == "true"){
-            holder.namaTagihan.text = data.namaKeluarga.toString()
-            holder.ketTagihan.text = data.nama.toString()
-            holder.totalTagihan.text = data.jumlah.toString()
+        if (data.terbayar.toString() == "false"){
+            holder.daftarIuranNama.text = data.namaKeluarga.toString()
+            holder.daftarIuranJudul.text = data.nama.toString()
+            holder.daftarIuranTotal.text = data.jumlah.toString()
         }
     }
 
@@ -34,9 +34,8 @@ class RiwayatKasAdapter(val listTagihan: ArrayList<GetAllTagihanItem>): Recycler
     }
 
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-        var namaTagihan: TextView = itemView.findViewById(R.id.tvNamaTagihan)
-        var ketTagihan: TextView = itemView.findViewById(R.id.tvKetTagihan)
-        var totalTagihan: TextView = itemView.findViewById(R.id.tvTotalTagihan)
+        var daftarIuranJudul: TextView = itemView.findViewById(R.id.daftarIuranJudulTagihan)
+        var daftarIuranTotal: TextView = itemView.findViewById(R.id.daftarIuranTotalTagihan)
+        var daftarIuranNama: TextView = itemView.findViewById(R.id.daftarIuranNamaTertagih)
     }
-
 }

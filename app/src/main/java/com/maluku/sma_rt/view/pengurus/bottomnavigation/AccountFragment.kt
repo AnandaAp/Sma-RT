@@ -41,6 +41,7 @@ class AccountFragment : Fragment(), DompetRTInterface, AdminRTProfileInterface, 
     private var gender : String = ""
     private var gambar : String = ""
     private var email : String = ""
+    private var kodeRT: String = ""
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -126,6 +127,7 @@ class AccountFragment : Fragment(), DompetRTInterface, AdminRTProfileInterface, 
         noHp = result!!.noHp.toString()
         gender = result!!.gender.toString()
         idPengurus = result!!.id.toString()
+        kodeRT = result!!.idRt.toString()
         binding.namaPengurus.text = nama
         // Firebase Storage
         val storageRef = FirebaseStorage.getInstance().reference.child("user/${gambar}")
@@ -149,7 +151,7 @@ class AccountFragment : Fragment(), DompetRTInterface, AdminRTProfileInterface, 
     private fun navigateAkunToEditProfil() {
         binding.btnEditProfil.setOnClickListener{
             val direction = AccountFragmentDirections.actionNavigationProfilToEditProfileFragment(
-                idPengurus,nama,gambar,noHp,gender,email
+                idPengurus,nama,gambar,noHp,gender,email,kodeRT
             )
             view!!.findNavController().navigate(direction)
         }

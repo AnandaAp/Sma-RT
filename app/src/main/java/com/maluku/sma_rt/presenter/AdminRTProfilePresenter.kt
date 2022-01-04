@@ -41,7 +41,8 @@ class AdminRTProfilePresenter(private val view: AdminRTProfileInterface) {
         no_hp: String,
         nama: String,
         email: String,
-        gambar: String
+        gambar: String,
+        kodeRT: String
     ) {
         RetrofitService
             .getService()
@@ -52,7 +53,8 @@ class AdminRTProfilePresenter(private val view: AdminRTProfileInterface) {
                 no_hp,
                 nama,
                 email,
-                gambar
+                gambar,
+                kodeRT
             )
             .enqueue(object : Callback<DefaultPengurusResponse> {
                 override fun onResponse(

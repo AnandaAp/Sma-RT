@@ -19,8 +19,7 @@ class ManageFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val view = bindingView()
-        return view
+        return bindingView()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -29,6 +28,7 @@ class ManageFragment : Fragment() {
         navigateManageToLaporan()
         navigateManageToKas()
         navigateManageToTambahKeluarga()
+        navigateManageToPersuratan()
     }
 
     private fun navigateManageToTambahInformasi(){
@@ -52,6 +52,12 @@ class ManageFragment : Fragment() {
     private fun navigateManageToKas() {
         binding.btnKas.setOnClickListener{
             findNavController().navigate(R.id.action_navigation_manage_to_kasFragment)
+        }
+    }
+
+    private fun navigateManageToPersuratan() {
+        binding.btnPersuratan.setOnClickListener{
+            findNavController().navigate(R.id.action_navigation_manage_to_suratFragment)
         }
     }
 

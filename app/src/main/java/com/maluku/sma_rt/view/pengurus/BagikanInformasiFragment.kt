@@ -41,6 +41,7 @@ class BagikanInformasiFragment : Fragment(), InformasiInterface {
         val getImage = registerForActivityResult(
             ActivityResultContracts.GetContent(),
             ActivityResultCallback {
+                binding.imageView12.setImageURI(it)
                 imageUri = it
             }
         )
@@ -147,7 +148,6 @@ class BagikanInformasiFragment : Fragment(), InformasiInterface {
         spKategori.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onItemSelected(adapterView: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 kategori = adapterView?.getItemAtPosition(position).toString()
-                Toast.makeText(requireContext(),"$kategori", Toast.LENGTH_LONG).show()
             }
 
             override fun onNothingSelected(p0: AdapterView<*>?) {

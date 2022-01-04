@@ -39,7 +39,7 @@ class GaleriAdapter(val listKegiatan: ArrayList<GetAllInformasiItem>): RecyclerV
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val data = listKegiatan[position]
 
-        holder.judul.text = data.judul.toString()
+        holder.judulKegiatan.text = data.judul.toString()
         // Firebase Storage
         val storageRef = FirebaseStorage.getInstance().reference.child("images/${data.gambar}")
         Log.d(ContentValues.TAG,"Adapter get ref image: $storageRef")
@@ -53,6 +53,7 @@ class GaleriAdapter(val listKegiatan: ArrayList<GetAllInformasiItem>): RecyclerV
         }.addOnFailureListener {
 
         }
+        holder.judulKegiatan.text = data.judul.toString()
         // List Galeri
         holder.cardGaleri.setOnClickListener { view ->
             val direction = HomeFragmentDirections.actionNavigationHomeToDetailInformasiMasukFragment(
@@ -67,9 +68,9 @@ class GaleriAdapter(val listKegiatan: ArrayList<GetAllInformasiItem>): RecyclerV
     }
 
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-        val judul: TextView = itemView.findViewById(R.id.judulgaleri)
         val galeriWarga: ImageView = itemView.findViewById(R.id.ivGaleriWargaRT)
         var cardGaleri: CardView = itemView.findViewById(R.id.cardGaleriKegiatan)
+        var judulKegiatan: TextView = itemView.findViewById(R.id.judulKegiatan)
     }
 
 }

@@ -1,6 +1,7 @@
 package com.maluku.sma_rt.view.pengurus
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,25 +11,22 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.maluku.sma_rt.R
-import com.maluku.sma_rt.databinding.FragmentBuatIuranBinding
 import com.maluku.sma_rt.databinding.FragmentDaftarBuatIuranBinding
 import com.maluku.sma_rt.extentions.UserSession
 import com.maluku.sma_rt.model.tagihan.GetAllTagihanItem
 import com.maluku.sma_rt.presenter.AdminTagihanPresenter
-import com.maluku.sma_rt.view.pengurus.adapter.InformasiMasukAdapter
-import com.maluku.sma_rt.view.pengurus.adapter.ListTagihanAdapter
-import com.maluku.sma_rt.view.pengurus.adapter.RiwayatKasAdapter
+import com.maluku.sma_rt.view.pengurus.adapter.ListDaftarTagihanAdapter
 import com.maluku.sma_rt.view.viewInterface.AdminTagihanInterface
 
 
 class DaftarBuatIuranFragment : Fragment(),AdminTagihanInterface {
     private lateinit var binding: FragmentDaftarBuatIuranBinding
     private lateinit var rvListTagihan: RecyclerView
-    private lateinit var adapterListTagihan: ListTagihanAdapter
+    private lateinit var adapterDaftarBuatIuran: ListDaftarTagihanAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setRecyclerViewListTagihan()
+        onStart()
         navigateDaftarTagihanToCreateTagihan()
         navigateBackToKas()
     }
@@ -46,12 +44,11 @@ class DaftarBuatIuranFragment : Fragment(),AdminTagihanInterface {
         AdminTagihanPresenter(this).getAllTagihan(getToken())
     }
 
-
     private fun setRecyclerViewListTagihan() {
         rvListTagihan = binding.rvListTagihan
         rvListTagihan.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL ,false)
-        adapterListTagihan = ListTagihanAdapter(arrayListOf())
-        rvListTagihan.adapter = adapterListTagihan
+        adapterDaftarBuatIuran = ListDaftarTagihanAdapter(arrayListOf())
+        rvListTagihan.adapter = adapterDaftarBuatIuran
     }
 
     private fun getToken(): String {
@@ -79,12 +76,16 @@ class DaftarBuatIuranFragment : Fragment(),AdminTagihanInterface {
     }
 
     override fun onGetDataSuccess(message: String, list: List<GetAllTagihanItem>) {
-        for (lunas in list){
-            if (lunas.terbayar == false){
-                adapterListTagihan.setData(list as ArrayList<GetAllTagihanItem>)
+        val listBelumLunas: ArrayList<GetAllTagihanItem> = arrayListOf()
+        for (belumLunas in list){
+            if (belumLunas.terbayar.toString() == "false"){
+                listBelumLunas.add(belumLunas)
             }
         }
-
+        if (listBelumLunas.size >= 1){
+            setRecyclerViewListTagihan()
+            adapterDaftarBuatIuran.setData(listBelumLunas)
+        }
     }
 
     override fun onGetDataFailed(message: String) {

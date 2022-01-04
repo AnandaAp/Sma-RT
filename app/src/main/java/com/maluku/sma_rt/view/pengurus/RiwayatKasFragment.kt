@@ -66,11 +66,15 @@ class RiwayatKasFragment : Fragment(), AdminTagihanInterface {
     }
 
     override fun onGetDataSuccess(message: String, list: List<GetAllTagihanItem>) {
-        setRecyclerViewRiwayatKas()
+        val listLunas: ArrayList<GetAllTagihanItem> = arrayListOf()
         for (lunas in list){
-            if (lunas.terbayar == true){
-                adapterRiwayatKas.setData(list as ArrayList<GetAllTagihanItem>)
+            if (lunas.terbayar.toString() == "true"){
+                listLunas.add(lunas)
             }
+        }
+        if (listLunas.size >= 1){
+            setRecyclerViewRiwayatKas()
+            adapterRiwayatKas.setData(listLunas)
         }
     }
 

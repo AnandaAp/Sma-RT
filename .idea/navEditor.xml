@@ -72,44 +72,6 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
-                            <entry key="action_changePassword_to_homeWarga">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
-                          </map>
-                        </option>
-                      </LayoutPositions>
-                    </value>
-                  </entry>
-                  <entry key="detailInformasiBerita">
-                    <value>
-                      <LayoutPositions>
-                        <option name="myPosition">
-                          <Point>
-                            <option name="x" value="1184" />
-                            <option name="y" value="185" />
-                          </Point>
-                        </option>
-                      </LayoutPositions>
-                    </value>
-                  </entry>
-                  <entry key="detailPesananUser">
-                    <value>
-                      <LayoutPositions>
-                        <option name="myPosition">
-                          <Point>
-                            <option name="x" value="1016" />
-                            <option name="y" value="-396" />
-                          </Point>
-                        </option>
-                        <option name="myPositions">
-                          <map>
-                            <entry key="action_detailPesananUser_to_riwayatPesananUser">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
                           </map>
                         </option>
                       </LayoutPositions>
@@ -236,32 +198,6 @@
                               </value>
                             </entry>
                             <entry key="action_homeWarga_to_topupSaldo">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
-                          </map>
-                        </option>
-                      </LayoutPositions>
-                    </value>
-                  </entry>
-                  <entry key="informasiWarga">
-                    <value>
-                      <LayoutPositions>
-                        <option name="myPosition">
-                          <Point>
-                            <option name="x" value="980" />
-                            <option name="y" value="248" />
-                          </Point>
-                        </option>
-                        <option name="myPositions">
-                          <map>
-                            <entry key="action_informasiWarga_to_homeWarga">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
-                            <entry key="action_jualbeliWarga_to_riwayatPesananUser">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -1065,6 +1001,27 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="detailGaleriKegiatanFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="396" />
+                            <option name="y" value="-592" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_detailGaleriKegiatanFragment_to_galeriKegiatanRTFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="detailInformasiMasukFragment">
                     <value>
                       <LayoutPositions>
@@ -1082,6 +1039,32 @@
                               </value>
                             </entry>
                             <entry key="action_detailInformasiMasukFragment_to_navigation_home">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="detailInformasiTerikiniRTFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="160" />
+                            <option name="y" value="-490" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_detailInformasiTerikiniRTFragment_to_informasiTerkiniRTFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_detailInformasiTerikiniRTFragment_to_informasiTerkiniRTFragment2">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -1185,6 +1168,37 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="galeriKegiatanRTFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="401" />
+                            <option name="y" value="-287" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_galeriKegiatanRTFragment_to_detailGaleriKegiatanFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_galeriKegiatanRTFragment_to_detailGaleriKegiatanFragment2">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_galeriKegiatanRTFragment_to_navigation_home">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="gantiPasswordRTFragment">
                     <value>
                       <LayoutPositions>
@@ -1263,6 +1277,47 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="informasiTerkiniRTFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="158" />
+                            <option name="y" value="-177" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_informasiTerkiniRTFragment_self">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_informasiTerkiniRTFragment_to_detailInformasiTerikiniRTFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_informasiTerkiniRTFragment_to_detailInformasiTerikiniRTFragment2">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_informasiTerkiniRTFragment_to_navigation_home">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_informasiTerkiniRTFragment_to_navigation_home2">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="kasFragment">
                     <value>
                       <LayoutPositions>
@@ -1314,8 +1369,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-130" />
-                            <option name="y" value="573" />
+                            <option name="x" value="-160" />
+                            <option name="y" value="547" />
                           </Point>
                         </option>
                         <option name="myPositions">
@@ -1377,7 +1432,22 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
+                            <entry key="action_navigation_home_to_galeriKegiatanRTFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_navigation_home_to_informasiFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_navigation_home_to_informasiTerkiniRTFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_navigation_home_to_informasiTerkiniRTFragment2">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -1551,8 +1621,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="743" />
-                            <option name="y" value="564" />
+                            <option name="x" value="703" />
+                            <option name="y" value="576" />
                           </Point>
                         </option>
                         <option name="myPositions">

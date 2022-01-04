@@ -17,55 +17,57 @@ import com.bumptech.glide.request.RequestOptions
 import com.google.firebase.storage.FirebaseStorage
 import com.maluku.sma_rt.R
 import com.maluku.sma_rt.model.informasi.GetAllInformasiItem
+import com.maluku.sma_rt.view.pengurus.GaleriKegiatanRTFragmentDirections
+import com.maluku.sma_rt.view.pengurus.InformasiTerkiniRTFragmentDirections
 import com.maluku.sma_rt.view.pengurus.bottomnavigation.HomeFragmentDirections
 import java.io.File
 
-class InfoAdapter(val listInfoTerkini: ArrayList<GetAllInformasiItem>): RecyclerView.Adapter<InfoAdapter.ViewHolder>() {
+class ListKegiatanAdapter(val listKegiatan: ArrayList<GetAllInformasiItem>): RecyclerView.Adapter<ListKegiatanAdapter.ViewHolder>() {
     fun setData(data : List<GetAllInformasiItem>){
-        listInfoTerkini.clear()
-        listInfoTerkini.addAll(data)
+        listKegiatan.clear()
+        listKegiatan.addAll(data)
         notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.info_terkini_rt,parent,false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.list_informasi_rt,parent,false)
         return ViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val data = listInfoTerkini[position]
-
-        holder.judulInfoTerkini.text = data.judul.toString()
+        val data = listKegiatan[position]
+        holder.judulKegiatan.text = data.judul.toString()
+        holder.detailKegiatan.text = data.detail.toString()
         // Firebase Storage
         val storageRef = FirebaseStorage.getInstance().reference.child("images/${data.gambar}")
         Log.d(ContentValues.TAG,"Adapter get ref image: $storageRef")
         val localFile = File.createTempFile("tempFile","jpg")
         storageRef.getFile(localFile).addOnSuccessListener {
+            // Tampilkan gambar dengan Glide
             Glide.with(holder.itemView)
                 .load(localFile.path)
                 .apply(RequestOptions().transform(CenterCrop(), RoundedCorners(20)))
-                .into(holder.infoTerkini)
+                .into(holder.gambarKegiatan)
         }.addOnFailureListener {
 
         }
-        holder.judulInfoTerkini.text = data.judul.toString()
-        // List Info Terkini
-        holder.cardInfo.setOnClickListener { view ->
-            val direction = HomeFragmentDirections.actionNavigationHomeToDetailInformasiMasukFragment(
-                data.judul.toString(),data.createdAt.toString(),data.detail.toString(),data.lokasi.toString(),data.gambar.toString()
+        // List Galeri
+        holder.cardKegiatan.setOnClickListener { view ->
+            val direction = GaleriKegiatanRTFragmentDirections.actionGaleriKegiatanRTFragmentToDetailGaleriKegiatanFragment2(
+                data.judul.toString(),data.detail.toString(),data.gambar.toString()
             )
             view.findNavController().navigate(direction)
         }
     }
 
     override fun getItemCount(): Int {
-        return listInfoTerkini.size
+        return listKegiatan.size
     }
 
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-        var infoTerkini: ImageView = itemView.findViewById(R.id.ivInfoTerkiniRT)
-        var judulInfoTerkini: TextView = itemView.findViewById(R.id.judulInfoTerkini)
-        var cardInfo: CardView = itemView.findViewById(R.id.cardInfoTerkini)
+        var gambarKegiatan: ImageView = itemView.findViewById(R.id.ivListInformasi)
+        var judulKegiatan: TextView = itemView.findViewById(R.id.tvJudulListInformasi)
+        var detailKegiatan: TextView = itemView.findViewById(R.id.tvDescListInformasi)
+        var cardKegiatan: CardView = itemView.findViewById(R.id.cardListInformasi)
     }
-
 }

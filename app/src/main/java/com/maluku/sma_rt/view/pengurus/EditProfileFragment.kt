@@ -40,6 +40,7 @@ class EditProfileFragment : Fragment(), AdminRTProfileInterface {
     private var nama: String = ""
     private var email: String = ""
     private var noHp: String = ""
+    private var kodeRT: String = ""
     private var jenisKelamin: String = ""
     private var gambarPengurus: String = "default_image.jpg"
     private var imageUri: Uri? = null
@@ -81,6 +82,7 @@ class EditProfileFragment : Fragment(), AdminRTProfileInterface {
         jenisKelamin = args.jenisKelamin
         noHp = args.noHp
         gambarPengurus = args.gambarPengurus
+        kodeRT = args.kodeRt
         binding.etEditNama.setText(nama)
         binding.etEditEmail.setText(email)
         binding.etEditNoHP.setText(noHp)
@@ -238,7 +240,8 @@ class EditProfileFragment : Fragment(), AdminRTProfileInterface {
             noHp,
             nama,
             email,
-            gambarPengurus
+            gambarPengurus,
+            kodeRT
         )
     }
 

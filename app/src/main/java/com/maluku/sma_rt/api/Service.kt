@@ -94,7 +94,8 @@ interface Service {
         @Field("no_hp") no_hp: String,
         @Field("nama") nama: String,
         @Field("email") email: String,
-        @Field("gambar") gambar: String
+        @Field("gambar") gambar: String,
+        @Field("kode_rt") kode_rt: String
     ): Call<DefaultPengurusResponse>
 
     // Warga

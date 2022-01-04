@@ -35,8 +35,14 @@
             android:id="@+id/action_navigation_home_to_detailInformasiMasukFragment"
             app:destination="@id/detailInformasiMasukFragment" />
         <action
-            android:id="@+id/action_navigation_home_to_informasiMasukFragment"
-            app:destination="@id/informasiMasukFragment" />
+            android:id="@+id/action_navigation_home_to_informasiTerkiniRTFragment"
+            app:destination="@id/informasiTerkiniRTFragment" />
+        <action
+            android:id="@+id/action_navigation_home_to_informasiTerkiniRTFragment2"
+            app:destination="@id/informasiTerkiniRTFragment" />
+        <action
+            android:id="@+id/action_navigation_home_to_galeriKegiatanRTFragment"
+            app:destination="@id/galeriKegiatanRTFragment" />
     </fragment>
 
     <fragment
@@ -292,6 +298,9 @@
         <argument
             android:name="email_pengurus"
             app:argType="string" />
+        <argument
+            android:name="kode_rt"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/gantiPasswordRTFragment"
@@ -337,5 +346,78 @@
         <action
             android:id="@+id/action_informasiMasukFragment_to_detailInformasiMasukFragment"
             app:destination="@id/detailInformasiMasukFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/informasiTerkiniRTFragment"
+        android:name="com.maluku.sma_rt.view.pengurus.InformasiTerkiniRTFragment"
+        android:label="fragment_informasi_terkini_r_t"
+        tools:layout="@layout/fragment_informasi_terkini_r_t" >
+        <action
+            android:id="@+id/action_informasiTerkiniRTFragment_to_detailInformasiTerikiniRTFragment"
+            app:destination="@id/detailInformasiTerikiniRTFragment" />
+        <action
+            android:id="@+id/action_informasiTerkiniRTFragment_to_navigation_home"
+            app:destination="@id/navigation_home" />
+        <action
+            android:id="@+id/action_informasiTerkiniRTFragment_self"
+            app:destination="@id/informasiTerkiniRTFragment" />
+        <action
+            android:id="@+id/action_informasiTerkiniRTFragment_to_detailInformasiTerikiniRTFragment2"
+            app:destination="@id/detailInformasiTerikiniRTFragment" />
+        <action
+            android:id="@+id/action_informasiTerkiniRTFragment_to_navigation_home2"
+            app:destination="@id/navigation_home" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailInformasiTerikiniRTFragment"
+        android:name="com.maluku.sma_rt.view.pengurus.DetailInformasiTerikiniRTFragment"
+        android:label="fragment_detail_informasi_terikini_r_t"
+        tools:layout="@layout/fragment_detail_informasi_terikini_r_t" >
+        <action
+            android:id="@+id/action_detailInformasiTerikiniRTFragment_to_informasiTerkiniRTFragment"
+            app:destination="@id/informasiTerkiniRTFragment" />
+        <action
+            android:id="@+id/action_detailInformasiTerikiniRTFragment_to_informasiTerkiniRTFragment2"
+            app:destination="@id/informasiTerkiniRTFragment" />
+        <argument
+            android:name="judul_info"
+            app:argType="string" />
+        <argument android:name="desc_info" />
+        <argument
+            android:name="gambar_info"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/galeriKegiatanRTFragment"
+        android:name="com.maluku.sma_rt.view.pengurus.GaleriKegiatanRTFragment"
+        android:label="fragment_galeri_kegiatan_r_t"
+        tools:layout="@layout/fragment_galeri_kegiatan_r_t" >
+        <action
+            android:id="@+id/action_galeriKegiatanRTFragment_to_detailGaleriKegiatanFragment"
+            app:destination="@id/detailGaleriKegiatanFragment" />
+        <action
+            android:id="@+id/action_galeriKegiatanRTFragment_to_navigation_home"
+            app:destination="@id/navigation_home" />
+        <action
+            android:id="@+id/action_galeriKegiatanRTFragment_to_detailGaleriKegiatanFragment2"
+            app:destination="@id/detailGaleriKegiatanFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailGaleriKegiatanFragment"
+        android:name="com.maluku.sma_rt.view.pengurus.DetailGaleriKegiatanFragment"
+        android:label="fragment_detail_galeri_kegiatan"
+        tools:layout="@layout/fragment_detail_galeri_kegiatan" >
+        <action
+            android:id="@+id/action_detailGaleriKegiatanFragment_to_galeriKegiatanRTFragment"
+            app:destination="@id/galeriKegiatanRTFragment" />
+        <argument
+            android:name="judul_kegiatan"
+            app:argType="string" />
+        <argument
+            android:name="desc_kegiatan"
+            app:argType="string" />
+        <argument
+            android:name="gambar_kegiatan"
+            app:argType="string" />
     </fragment>
 </navigation>

@@ -17,25 +17,26 @@ import com.bumptech.glide.request.RequestOptions
 import com.google.firebase.storage.FirebaseStorage
 import com.maluku.sma_rt.R
 import com.maluku.sma_rt.model.informasi.GetAllInformasiItem
+import com.maluku.sma_rt.view.pengurus.InformasiTerkiniRTFragmentDirections
 import com.maluku.sma_rt.view.pengurus.bottomnavigation.HomeFragmentDirections
 import java.io.File
 
-class InfoAdapter(val listInfoTerkini: ArrayList<GetAllInformasiItem>): RecyclerView.Adapter<InfoAdapter.ViewHolder>() {
+class ListInfoTerkiniAdapter(val listInfoTerkini: ArrayList<GetAllInformasiItem>): RecyclerView.Adapter<ListInfoTerkiniAdapter.ViewHolder>() {
     fun setData(data : List<GetAllInformasiItem>){
         listInfoTerkini.clear()
         listInfoTerkini.addAll(data)
         notifyDataSetChanged()
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.info_terkini_rt,parent,false)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListInfoTerkiniAdapter.ViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.list_informasi_rt,parent,false)
         return ViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ListInfoTerkiniAdapter.ViewHolder, position: Int) {
         val data = listInfoTerkini[position]
-
         holder.judulInfoTerkini.text = data.judul.toString()
+        holder.detailInfoTerkini.text = data.detail.toString()
         // Firebase Storage
         val storageRef = FirebaseStorage.getInstance().reference.child("images/${data.gambar}")
         Log.d(ContentValues.TAG,"Adapter get ref image: $storageRef")
@@ -51,8 +52,8 @@ class InfoAdapter(val listInfoTerkini: ArrayList<GetAllInformasiItem>): Recycler
         holder.judulInfoTerkini.text = data.judul.toString()
         // List Info Terkini
         holder.cardInfo.setOnClickListener { view ->
-            val direction = HomeFragmentDirections.actionNavigationHomeToDetailInformasiMasukFragment(
-                data.judul.toString(),data.createdAt.toString(),data.detail.toString(),data.lokasi.toString(),data.gambar.toString()
+            val direction = InformasiTerkiniRTFragmentDirections.actionInformasiTerkiniRTFragmentToDetailInformasiTerikiniRTFragment(
+                data.judul.toString(),data.detail.toString(),data.gambar.toString()
             )
             view.findNavController().navigate(direction)
         }
@@ -63,9 +64,10 @@ class InfoAdapter(val listInfoTerkini: ArrayList<GetAllInformasiItem>): Recycler
     }
 
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-        var infoTerkini: ImageView = itemView.findViewById(R.id.ivInfoTerkiniRT)
-        var judulInfoTerkini: TextView = itemView.findViewById(R.id.judulInfoTerkini)
-        var cardInfo: CardView = itemView.findViewById(R.id.cardInfoTerkini)
+        var infoTerkini: ImageView = itemView.findViewById(R.id.ivListInformasi)
+        var judulInfoTerkini: TextView = itemView.findViewById(R.id.tvJudulListInformasi)
+        var detailInfoTerkini: TextView = itemView.findViewById(R.id.tvDescListInformasi)
+        var cardInfo: CardView = itemView.findViewById(R.id.cardListInformasi)
     }
 
 }

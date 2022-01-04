@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/informasi_card"
+        android:id="@+id/cardListInformasi"
         android:layout_width="105dp"
         android:layout_height="105dp"
         android:layout_margin="20dp"
@@ -14,7 +14,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/image_infomasi"
+            android:id="@+id/ivListInformasi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/image3"
@@ -22,18 +22,18 @@
     </androidx.cardview.widget.CardView>
 
     <TextView
-        android:id="@+id/judul_informasi"
+        android:id="@+id/tvJudulListInformasi"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:fontFamily="@font/montserrat_bold"
         android:text="Gunung"
         android:textSize="20sp"
-        app:layout_constraintStart_toEndOf="@+id/informasi_card"
-        app:layout_constraintTop_toTopOf="@+id/informasi_card" />
+        app:layout_constraintStart_toEndOf="@+id/cardListInformasi"
+        app:layout_constraintTop_toTopOf="@+id/cardListInformasi" />
 
     <TextView
-        android:id="@+id/desc_informasi"
+        android:id="@+id/tvDescListInformasi"
         android:layout_width="250dp"
         android:layout_height="80dp"
         android:fontFamily="@font/montserrat_regular"
@@ -42,8 +42,8 @@
         app:layout_constraintBottom_toTopOf="@+id/view9"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/judul_informasi"
-        app:layout_constraintTop_toBottomOf="@+id/judul_informasi"
+        app:layout_constraintStart_toStartOf="@+id/tvJudulListInformasi"
+        app:layout_constraintTop_toBottomOf="@+id/tvJudulListInformasi"
         app:layout_constraintVertical_bias="0.444" />
 
     <View
@@ -52,6 +52,6 @@
         android:layout_height="1dp"
         android:layout_marginTop="20dp"
         android:background="#BE9D9D"
-        app:layout_constraintTop_toBottomOf="@+id/informasi_card" />
+        app:layout_constraintTop_toBottomOf="@+id/cardListInformasi" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

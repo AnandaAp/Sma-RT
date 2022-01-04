@@ -53,7 +53,7 @@ class RecyclerViewTagihanWarga(
         holder.detailTagihan.text = data.detail
         holder.jumlahTagihan.text = toRupiah(data.jumlah.toString().toDouble())
 
-        if(data.terbayar!!) {
+        if(data.terbayar.toBoolean()!!) {
             holder.status.isChecked = true
             holder.namaTagihan.showStrikeThrough(true)
             holder.detailTagihan.showStrikeThrough(true)

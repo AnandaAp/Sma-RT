@@ -219,13 +219,13 @@ class HomeFragment : Fragment(), InformasiInterface, DompetRTInterface, AdminRTP
 
     private fun navigateInfoTerkiniToDetailInformasi() {
         binding.btnSeeAll1.setOnClickListener{
-            findNavController().navigate(R.id.action_navigation_home_to_informasiMasukFragment)
+            findNavController().navigate(R.id.action_navigation_home_to_informasiTerkiniRTFragment2)
         }
     }
 
     private fun navigateGaleriToDetailInformasi() {
         binding.btnSeeAll2.setOnClickListener{
-            findNavController().navigate(R.id.action_navigation_home_to_informasiMasukFragment)
+            findNavController().navigate(R.id.action_navigation_home_to_galeriKegiatanRTFragment)
         }
     }
 }
