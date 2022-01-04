@@ -160,7 +160,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_terlaris" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_terlaris"
+                tools:listitem="@layout/terlaris_recycler_vertical_item"/>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -23,7 +23,8 @@
                 android:layout_height="110dp"
                 android:layout_marginStart="4dp"
                 android:padding="5dp"
-                android:src="@drawable/laris1"
+                android:scaleType="centerCrop"
+                android:src="@drawable/default_image"
                 tools:ignore="ContentDescription,MissingConstraints" />
 
             <TextView

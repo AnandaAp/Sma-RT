@@ -64,7 +64,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:scaleType="fitXY"
-            android:src="@drawable/image3" />
+            android:src="@drawable/default_image" />
 
 
     </androidx.cardview.widget.CardView>

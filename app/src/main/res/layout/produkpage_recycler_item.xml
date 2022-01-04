@@ -21,7 +21,8 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:padding="12dp"
-                android:src="@drawable/gambarproduk1"
+                android:scaleType="centerCrop"
+                android:src="@drawable/default_image"
                 tools:ignore="MissingConstraints" />
 
             <TextView

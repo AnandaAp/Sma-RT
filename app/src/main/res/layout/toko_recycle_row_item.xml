@@ -16,7 +16,8 @@
         android:padding="5dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/warung1"/>
+        android:scaleType="centerCrop"
+        android:src="@drawable/default_image"/>
 
     <TextView
         android:id="@+id/tv_namatoko"
