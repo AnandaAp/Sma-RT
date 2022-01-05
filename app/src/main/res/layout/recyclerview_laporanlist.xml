@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="18dp"
+        app:layout_constraintBottom_toBottomOf="@+id/view10"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profileLaporanSaya"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/default_image"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/namaPelapor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:fontFamily="@font/montserrat_semibold"
+            android:text="Pak Agus"
+            android:textSize="20sp"
+            app:layout_constraintStart_toEndOf="@+id/profileLaporanSaya"
+            app:layout_constraintTop_toTopOf="@+id/profileLaporanSaya" />
+
+        <TextView
+            android:id="@+id/isiLaporan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_regular"
+            android:text="Didepan rumah sering terdengar..."
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/namaPelapor"
+            app:layout_constraintTop_toBottomOf="@+id/namaPelapor" />
+
+        <TextView
+            android:id="@+id/jamLaporan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_medium"
+            android:text="Belum terbaca"
+            android:textColor="@color/grey"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/namaPelapor"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/namaPelapor" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:id="@+id/view10"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginBottom="2dp"
+        android:background="#EBDFDF"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+
+
+
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

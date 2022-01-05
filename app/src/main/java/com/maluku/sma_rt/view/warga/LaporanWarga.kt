@@ -71,7 +71,7 @@ class LaporanWarga : Fragment(), WargaAduanInterface {
 
     private fun btnBack() {
         binding.btnBack.setOnClickListener{
-            findNavController().navigate(R.id.action_laporanWarga_to_homeWarga)
+            findNavController().navigate(R.id.action_laporanWarga_to_laporanPage)
         }
     }
 
@@ -132,7 +132,7 @@ class LaporanWarga : Fragment(), WargaAduanInterface {
 
         btnSimpan.setOnClickListener {
             dialog.dismiss()
-            val direction = LaporanWargaDirections.actionLaporanWargaToHomeWarga()
+            val direction = LaporanWargaDirections.actionLaporanWargaToLaporanPage()
             findNavController().navigate(direction)
         }
 

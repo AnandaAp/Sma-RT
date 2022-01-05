@@ -11,9 +11,6 @@
         android:label="fragment_home_warga"
         tools:layout="@layout/fragment_home_warga" >
         <action
-            android:id="@+id/action_homeWarga_to_laporanWarga"
-            app:destination="@id/laporanWarga" />
-        <action
             android:id="@+id/action_homeWarga_to_persuratanWarga"
             app:destination="@id/persuratanWarga" />
         <action
@@ -25,6 +22,9 @@
         <action
             android:id="@+id/action_homeWarga_to_isisaldoTariksaldo"
             app:destination="@id/isisaldoTariksaldo" />
+        <action
+            android:id="@+id/action_homeWarga_to_laporanPage"
+            app:destination="@id/laporanPage" />
     </fragment>
     <fragment
         android:id="@+id/jualbeliWarga"
@@ -257,15 +257,6 @@
             app:argType="string" />
     </fragment>
     <fragment
-        android:id="@+id/laporanWarga"
-        android:name="com.maluku.sma_rt.view.warga.LaporanWarga"
-        android:label="fragment_laporan_warga"
-        tools:layout="@layout/fragment_laporan_warga" >
-        <action
-            android:id="@+id/action_laporanWarga_to_homeWarga"
-            app:destination="@id/homeWarga" />
-    </fragment>
-    <fragment
         android:id="@+id/persuratanWarga"
         android:name="com.maluku.sma_rt.view.warga.PersuratanWarga"
         android:label="PersuratanWarga" >
@@ -378,5 +369,26 @@
         <action
             android:id="@+id/action_detailInformasiBerita_to_informasiWarga"
             app:destination="@id/informasiWarga" />
+    </fragment>
+    <fragment
+        android:id="@+id/laporanPage"
+        android:name="com.maluku.sma_rt.view.warga.LaporanPage"
+        android:label="fragment_laporan_page"
+        tools:layout="@layout/fragment_laporan_page" >
+        <action
+            android:id="@+id/action_laporanPage_to_homeWarga"
+            app:destination="@id/homeWarga" />
+        <action
+            android:id="@+id/action_laporanPage_to_laporanWarga"
+            app:destination="@id/laporanWarga" />
+    </fragment>
+    <fragment
+        android:id="@+id/laporanWarga"
+        android:name="com.maluku.sma_rt.view.warga.LaporanWarga"
+        android:label="fragment_laporan_warga"
+        tools:layout="@layout/fragment_laporan_warga" >
+        <action
+            android:id="@+id/action_laporanWarga_to_laporanPage"
+            app:destination="@id/laporanPage" />
     </fragment>
 </navigation>
