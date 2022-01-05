@@ -127,7 +127,7 @@ class AkunWarga : Fragment() {
     }
 
     private fun logout() {
-        binding.btnLogout.setOnClickListener {
+        binding.menuLogout.setOnClickListener {
             val preferences = UserSession(requireActivity())
             preferences.clearSharedPreference()
             val intent = Intent(requireActivity(), MainActivity::class.java)
