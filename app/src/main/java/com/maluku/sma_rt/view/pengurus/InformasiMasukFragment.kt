@@ -75,7 +75,9 @@ class InformasiMasukFragment : Fragment(), InformasiInterface{
     }
 
     override fun onGetAllInformasiFailure(message: String) {
-        Toast.makeText(requireContext(),"Pesan: $message",Toast.LENGTH_LONG).show()
+        if (context!=null){
+            Toast.makeText(requireContext(),"Pesan: $message",Toast.LENGTH_LONG).show()
+        }
     }
 
     override fun onGetInformasiSuccess(result: GetInformasiById?) {

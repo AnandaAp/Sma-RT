@@ -90,16 +90,22 @@ class KasWithdrawFragment : Fragment(), DompetRTInterface {
     }
 
     override fun onGetAllDataFailure(message: String) {
-        Toast.makeText(requireContext(),"Pesan: $message",Toast.LENGTH_LONG).show()
+        if (context!=null){
+            Toast.makeText(requireContext(),"Pesan: $message",Toast.LENGTH_LONG).show()
+        }
     }
 
     override fun onWithdrawSuccess(message: String) {
-        Toast.makeText(requireContext(),"Pesan: $message",Toast.LENGTH_LONG).show()
-        navigateWithdrawToKas()
+        if (context!=null){
+            Toast.makeText(requireContext(),"Pesan: $message",Toast.LENGTH_LONG).show()
+            navigateWithdrawToKas()
+        }
     }
 
     override fun onWithdrawFailure(message: String) {
-        Toast.makeText(requireContext(),"Pesan: $message",Toast.LENGTH_LONG).show()
+        if (context!=null){
+            Toast.makeText(requireContext(),"Pesan: $message",Toast.LENGTH_LONG).show()
+        }
     }
 
     private fun rupiah(number: Double): String{

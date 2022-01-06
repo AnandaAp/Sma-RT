@@ -88,7 +88,9 @@ class AccountFragment : Fragment(), DompetRTInterface, AdminRTProfileInterface, 
     }
 
     override fun onGetAllDataFailure(message: String) {
-        Toast.makeText(requireContext(),"Pesan $message", Toast.LENGTH_LONG).show()
+        if(context!=null){
+            Toast.makeText(requireContext(),"Pesan $message", Toast.LENGTH_LONG).show()
+        }
     }
 
     override fun onWithdrawSuccess(message: String) {
@@ -145,7 +147,9 @@ class AccountFragment : Fragment(), DompetRTInterface, AdminRTProfileInterface, 
     }
 
     override fun onGetDataFailed(message: String) {
-        Toast.makeText(requireContext(),"Pesan: $message",Toast.LENGTH_LONG).show()
+        if (context!=null){
+            Toast.makeText(requireContext(),"Pesan: $message",Toast.LENGTH_LONG).show()
+        }
     }
 
     private fun navigateAkunToEditProfil() {
@@ -162,7 +166,9 @@ class AccountFragment : Fragment(), DompetRTInterface, AdminRTProfileInterface, 
     }
 
     override fun resultListWargaFailure(message: String) {
-        Toast.makeText(requireContext(),"Pesan $message", Toast.LENGTH_LONG).show()
+        if (context!=null){
+            Toast.makeText(requireContext(),"Pesan $message", Toast.LENGTH_LONG).show()
+        }
     }
 
 }

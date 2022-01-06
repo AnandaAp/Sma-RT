@@ -91,7 +91,9 @@ class DaftarBuatIuranFragment : Fragment(),AdminTagihanInterface {
     }
 
     override fun onGetDataFailed(message: String) {
-        Toast.makeText(requireContext(),"Pesan: $message", Toast.LENGTH_LONG).show()
+        if (context!=null){
+            Toast.makeText(requireContext(),"Pesan: $message", Toast.LENGTH_LONG).show()
+        }
     }
 
     private fun navigateBackToKas(){

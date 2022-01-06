@@ -183,11 +183,15 @@ class BagikanInformasiFragment : Fragment(), InformasiInterface {
         binding.etLokasi.text = null
         binding.etDetailInformasi.text = null
         binding.imageView12.setImageURI(null)
-        Toast.makeText(requireContext(),message,Toast.LENGTH_LONG).show()
+        if (context!=null){
+            Toast.makeText(requireContext(),message,Toast.LENGTH_LONG).show()
+        }
     }
 
     override fun onCreateInformasiFailure(message: String) {
-        TODO("Not yet implemented")
+        if (context!=null){
+            Toast.makeText(requireContext(),message,Toast.LENGTH_LONG).show()
+        }
     }
 
     override fun onGetAllInformasiSuccess(result: List<GetAllInformasiItem>) {

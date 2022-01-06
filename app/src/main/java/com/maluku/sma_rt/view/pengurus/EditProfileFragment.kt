@@ -248,12 +248,16 @@ class EditProfileFragment : Fragment(), AdminRTProfileInterface {
     }
 
     override fun onUpdateSuccess(message: String) {
-        Toast.makeText(requireContext(),message, Toast.LENGTH_SHORT).show()
-        navigateEditProfilToAccount()
+        if (context!=null){
+            Toast.makeText(requireContext(),message, Toast.LENGTH_SHORT).show()
+            navigateEditProfilToAccount()
+        }
     }
 
     override fun onUpdateFailure(message: String) {
-        Toast.makeText(requireContext(),message, Toast.LENGTH_SHORT).show()
+        if (context!=null){
+            Toast.makeText(requireContext(),message, Toast.LENGTH_SHORT).show()
+        }
     }
 
     override fun onGetDataSuccess(result: GetPengurusById?) {

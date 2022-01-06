@@ -66,12 +66,16 @@ class TambahKeluargaFragment : Fragment(), TambahKeluargaInterface {
     }
 
     override fun onCreateSuccess(message: String) {
-        binding.inputNamaKeluarga.text = null
-        Toast.makeText(context,message, Toast.LENGTH_LONG).show()
+        if (context!=null){
+            binding.inputNamaKeluarga.text = null
+            Toast.makeText(context,message, Toast.LENGTH_LONG).show()
+        }
     }
 
     override fun onCreateFailed(message: String) {
-        Toast.makeText(context,message, Toast.LENGTH_LONG).show()
+        if (context!=null){
+            Toast.makeText(context,message, Toast.LENGTH_LONG).show()
+        }
     }
 
     private fun getToken(): String {

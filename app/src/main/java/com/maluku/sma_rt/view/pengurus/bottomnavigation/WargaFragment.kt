@@ -83,7 +83,9 @@ class WargaFragment : Fragment(), ListWargaViewInterface, ListKeluargaViewInterf
     }
 
     override fun resultListWargaFailure(message: String) {
-        Toast.makeText(requireContext(),"Pesan: $message",Toast.LENGTH_LONG).show()
+        if (context!=null){
+            Toast.makeText(requireContext(),"Pesan: $message",Toast.LENGTH_LONG).show()
+        }
     }
 
     private fun getToken(): String {
@@ -128,7 +130,9 @@ class WargaFragment : Fragment(), ListWargaViewInterface, ListKeluargaViewInterf
     }
 
     override fun resultListKeluargaFailure(message: String) {
-        Toast.makeText(requireContext(),message,Toast.LENGTH_LONG).show()
+        if (context!=null){
+            Toast.makeText(requireContext(),message,Toast.LENGTH_LONG).show()
+        }
     }
 
 }

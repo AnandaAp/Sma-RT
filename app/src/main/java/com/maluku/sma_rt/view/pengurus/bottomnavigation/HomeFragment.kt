@@ -156,7 +156,9 @@ class HomeFragment : Fragment(), InformasiInterface, DompetRTInterface, AdminRTP
     }
 
     override fun onGetInfoTerkiniFailure(message: String) {
-        Toast.makeText(requireContext(),"Pesan: $message",Toast.LENGTH_LONG).show()
+        if (context!=null){
+            Toast.makeText(requireContext(),"Pesan: $message",Toast.LENGTH_LONG).show()
+        }
     }
 
 
@@ -165,7 +167,9 @@ class HomeFragment : Fragment(), InformasiInterface, DompetRTInterface, AdminRTP
     }
 
     override fun onGetKegiatanFailure(message: String) {
-        Toast.makeText(requireContext(),"Pesan: $message",Toast.LENGTH_LONG).show()
+        if (context!=null){
+            Toast.makeText(requireContext(),"Pesan: $message",Toast.LENGTH_LONG).show()
+        }
     }
 
     override fun onUpdateInformasiSuccess(message: String) {
@@ -181,7 +185,9 @@ class HomeFragment : Fragment(), InformasiInterface, DompetRTInterface, AdminRTP
     }
 
     override fun onGetAllDataFailure(message: String) {
-        Toast.makeText(requireContext(),"Pesan: $message",Toast.LENGTH_LONG).show()
+        if (context != null){
+            Toast.makeText(requireContext(),"Pesan: $message",Toast.LENGTH_LONG).show()
+        }
     }
 
     override fun onWithdrawSuccess(message: String) {
@@ -226,8 +232,10 @@ class HomeFragment : Fragment(), InformasiInterface, DompetRTInterface, AdminRTP
     }
 
     override fun onGetDataFailed(message: String) {
-        Toast.makeText(requireContext(),"Pesan: $message",Toast.LENGTH_LONG).show()
-        logout()
+        if (context!=null){
+            Toast.makeText(requireContext(),"Pesan: $message",Toast.LENGTH_LONG).show()
+            logout()
+        }
     }
 
     private fun logout(){

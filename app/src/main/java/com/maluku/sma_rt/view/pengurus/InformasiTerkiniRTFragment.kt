@@ -98,7 +98,9 @@ class InformasiTerkiniRTFragment : Fragment(), InformasiInterface {
     }
 
     override fun onGetInfoTerkiniFailure(message: String) {
-        Toast.makeText(requireContext(),message,Toast.LENGTH_SHORT).show()
+        if (context!=null){
+            Toast.makeText(requireContext(),message,Toast.LENGTH_SHORT).show()
+        }
     }
 
     override fun onGetKegiatanSuccess(result: List<GetAllInformasiItem>) {

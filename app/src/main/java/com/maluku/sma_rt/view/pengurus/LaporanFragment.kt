@@ -88,7 +88,9 @@ class LaporanFragment : Fragment(), WargaAduanInterface {
     }
 
     override fun onGetAllDataFailed(message: String) {
-        Toast.makeText(requireContext(),"Pesan: $message",Toast.LENGTH_LONG).show()
+        if (context!=null){
+            Toast.makeText(requireContext(),"Pesan: $message",Toast.LENGTH_LONG).show()
+        }
     }
 
     override fun onGetDataByIDSuccess(list: GetAduanById?) {

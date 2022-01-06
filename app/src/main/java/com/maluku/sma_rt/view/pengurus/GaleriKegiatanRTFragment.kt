@@ -103,7 +103,9 @@ class GaleriKegiatanRTFragment : Fragment(), InformasiInterface {
     }
 
     override fun onGetKegiatanFailure(message: String) {
-        Toast.makeText(requireContext(),message, Toast.LENGTH_SHORT).show()
+        if (context!=null){
+            Toast.makeText(requireContext(),message, Toast.LENGTH_SHORT).show()
+        }
     }
 
     override fun onUpdateInformasiSuccess(message: String) {
