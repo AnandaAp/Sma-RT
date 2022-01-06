@@ -1,6 +1,7 @@
 package com.maluku.sma_rt.view.pengurus.bottomnavigation
 
 import android.content.ContentValues
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -26,6 +27,7 @@ import com.maluku.sma_rt.model.pengurus.GetPengurusById
 import com.maluku.sma_rt.presenter.AdminRTProfilePresenter
 import com.maluku.sma_rt.presenter.DompetRTPresenter
 import com.maluku.sma_rt.presenter.InformasiPresenter
+import com.maluku.sma_rt.view.activity.MainActivity
 import com.maluku.sma_rt.view.pengurus.adapter.GaleriAdapter
 import com.maluku.sma_rt.view.pengurus.adapter.InfoAdapter
 import com.maluku.sma_rt.view.viewInterface.AdminRTProfileInterface
@@ -225,6 +227,15 @@ class HomeFragment : Fragment(), InformasiInterface, DompetRTInterface, AdminRTP
 
     override fun onGetDataFailed(message: String) {
         Toast.makeText(requireContext(),"Pesan: $message",Toast.LENGTH_LONG).show()
+        logout()
+    }
+
+    private fun logout(){
+        val preferences = UserSession(requireActivity())
+        preferences.clearSharedPreference()
+        val intent = Intent(requireActivity(), MainActivity::class.java)
+        startActivity(intent)
+        requireActivity().finish()
     }
 
     private fun navigateInfoTerkiniToDetailInformasi() {
