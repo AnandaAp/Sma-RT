@@ -320,23 +320,14 @@
             android:id="@+id/action_detailInformasiMasukFragment_to_informasiMasukFragment"
             app:destination="@id/informasiMasukFragment" />
         <argument
-            android:name="judul_informasi"
-            app:argType="string" />
-        <argument
-            android:name="tanggal_informasi"
-            app:argType="string" />
-        <argument
-            android:name="detail_informasi"
-            app:argType="string" />
-        <argument
-            android:name="lokasi_informasi"
-            app:argType="string" />
-        <argument
-            android:name="gambar_informasi"
+            android:name="id_informasi"
             app:argType="string" />
         <action
             android:id="@+id/action_detailInformasiMasukFragment_to_navigation_home"
             app:destination="@id/navigation_home" />
+        <action
+            android:id="@+id/action_detailInformasiMasukFragment_to_editInformasiFragment"
+            app:destination="@id/editInformasiFragment" />
     </fragment>
     <fragment
         android:id="@+id/informasiMasukFragment"
@@ -419,5 +410,34 @@
         <argument
             android:name="gambar_kegiatan"
             app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/editInformasiFragment"
+        android:name="com.maluku.sma_rt.view.pengurus.EditInformasiFragment"
+        android:label="fragment_edit_informasi"
+        tools:layout="@layout/fragment_edit_informasi" >
+        <argument
+            android:name="judul_informasi"
+            app:argType="string" />
+        <argument
+            android:name="kategori_informasi"
+            app:argType="string" />
+        <argument
+            android:name="lokasi"
+            app:argType="string" />
+        <argument android:name="detail_informasi"
+            app:argType="string" />
+        <argument
+            android:name="gambar_informasi"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_editInformasiFragment_to_detailInformasiMasukFragment"
+            app:destination="@id/detailInformasiMasukFragment" />
+        <argument
+            android:name="id_informasi"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_editInformasiFragment_to_detailInformasiMasukFragment2"
+            app:destination="@id/detailInformasiMasukFragment" />
     </fragment>
 </navigation>

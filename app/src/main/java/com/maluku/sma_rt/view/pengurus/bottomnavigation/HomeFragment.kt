@@ -164,6 +164,14 @@ class HomeFragment : Fragment(), InformasiInterface, DompetRTInterface, AdminRTP
         Toast.makeText(requireContext(),"Pesan: $message",Toast.LENGTH_LONG).show()
     }
 
+    override fun onUpdateInformasiSuccess(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onUpdateInformasiFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
     override fun onGetAllDataSuccess(result: GetDompetById?) {
         if (result != null) {
             binding.tvTotalKasRT.text = rupiah(result.jumlah.toString().toDouble())

@@ -323,7 +323,7 @@ interface Service {
 
     //update
     @FormUrlEncoded
-    @PUT("informasi/{token}")
+    @PUT("informasi/{id}")
     fun updateInformasi(
         @Header("Authorization") authHeader: String,
         @Path("id") id: String,

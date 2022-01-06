@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
@@ -14,30 +16,34 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.google.firebase.storage.FirebaseStorage
 import com.maluku.sma_rt.databinding.FragmentDetailInformasiMasukBinding
+import com.maluku.sma_rt.extentions.UserSession
+import com.maluku.sma_rt.model.informasi.GetAllInformasiItem
+import com.maluku.sma_rt.model.informasi.GetInformasiById
+import com.maluku.sma_rt.presenter.InformasiPresenter
+import com.maluku.sma_rt.view.viewInterface.InformasiInterface
 import java.io.File
 
-class DetailInformasiMasukFragment : Fragment() {
+class DetailInformasiMasukFragment : Fragment(), InformasiInterface {
     private lateinit var binding: FragmentDetailInformasiMasukBinding
-    private var judul: String = ""
-    private var lokasi: String = ""
-    private var date: String = ""
-    private var detail: String = ""
-    private var gambar: String = ""
+    private var idInformasi: String = ""
+    private var judulInformasi: String? = ""
+    private var kategoriInformasi: String? = ""
+    private var lokasiInformasi: String? = ""
+    private var detailInformasi: String? = ""
+    private var gambarInformasi: String? = ""
+    private var tanggalInformasi: String? = ""
 
     val args: DetailInformasiMasukFragmentArgs by navArgs()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         bindData()
+        navigateDetailToEditInformasi()
     }
 
     private fun bindData() {
-        judul = args.judulInformasi
-        lokasi = args.lokasiInformasi
-        date = args.tanggalInformasi
-        detail = args.detailInformasi
-        gambar = args.gambarInformasi
-        setDetailInformasi()
+        idInformasi = args.idInformasi
+        InformasiPresenter(this).getInformasiById(getToken(),idInformasi)
     }
 
     override fun onCreateView(
@@ -53,27 +59,13 @@ class DetailInformasiMasukFragment : Fragment() {
         return binding.root
     }
 
-    private fun setDetailInformasi(){
-        binding.tvJudulInformasi.text = judul
-        binding.tvLokasiInformasi.text = lokasi
-        binding.tvTanggalInformasi.text = tglIndonesia(splitDate())
-        binding.tvDetailInformasi.text = detail
-        // Firebase Storage
-        val storageRef = FirebaseStorage.getInstance().reference.child("images/${gambar}")
-        Log.d(ContentValues.TAG,"Adapter get ref image: $storageRef")
-        val localFile = File.createTempFile("tempFile","jpg")
-        storageRef.getFile(localFile).addOnSuccessListener {
-            // Tampilkan gambar dengan Glide
-            Glide.with(this)
-                .load(localFile.path)
-                .apply(RequestOptions().transform(CenterCrop(), RoundedCorners(20)))
-                .into(binding.ivInformasi)
-        }.addOnFailureListener {
-
-        }
+    private fun getToken(): String {
+        val preferences = UserSession(requireActivity())
+        val token = preferences.getValueString(UserSession.SHARED_PREFERENCE_TOKEN_KEY)
+        return token
     }
 
-    private fun splitDate(): String {
+    private fun splitDate(date: String): String {
         val delim = "T"
         val tanggal = date.split(delim)
         return tanggal[0]
@@ -97,6 +89,87 @@ class DetailInformasiMasukFragment : Fragment() {
             else -> "Terjadi kesalahan"
         }
         return "${tgl[2]} $bulan ${tgl[0]}"
+    }
+
+    private fun navigateDetailToEditInformasi(){
+        binding.button5.setOnClickListener {
+            val direction = DetailInformasiMasukFragmentDirections.actionDetailInformasiMasukFragmentToEditInformasiFragment(
+                judulInformasi!!,kategoriInformasi!!,lokasiInformasi!!,detailInformasi!!,gambarInformasi!!, idInformasi
+            )
+            view!!.findNavController().navigate(direction)
+        }
+    }
+
+    override fun onCreateInformasiSuccess(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onCreateInformasiFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetAllInformasiSuccess(result: List<GetAllInformasiItem>) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetAllInformasiFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetInformasiSuccess(result: GetInformasiById?) {
+        judulInformasi = result?.judul
+        lokasiInformasi = result?.lokasi
+        tanggalInformasi = result?.createdAt.toString()
+        detailInformasi = result?.detail
+        gambarInformasi = result?.gambar
+        kategoriInformasi = result?.kategori
+        binding.tvJudulInformasi.text = judulInformasi
+        binding.tvLokasiInformasi.text = lokasiInformasi
+        binding.tvTanggalInformasi.text = tglIndonesia(splitDate(tanggalInformasi.toString()))
+        binding.tvDetailInformasi.text = detailInformasi
+        // Firebase Storage
+        val storageRef = FirebaseStorage.getInstance().reference.child("images/${gambarInformasi}")
+        Log.d(ContentValues.TAG,"Adapter get ref image: $storageRef")
+        val localFile = File.createTempFile("tempFile","jpg")
+        storageRef.getFile(localFile).addOnSuccessListener {
+            if (activity != null){
+                // Tampilkan gambar dengan Glide
+                Glide.with(this)
+                    .load(localFile.path)
+                    .apply(RequestOptions().transform(CenterCrop(), RoundedCorners(20)))
+                    .into(binding.ivInformasi)
+            }
+        }.addOnFailureListener {
+
+        }
+    }
+
+    override fun onGetInformasiFailure(message: String) {
+        Toast.makeText(requireContext(),"Pesan: $message",Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onGetInfoTerkiniSuccess(result: List<GetAllInformasiItem>) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetInfoTerkiniFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetKegiatanSuccess(result: List<GetAllInformasiItem>) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetKegiatanFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onUpdateInformasiSuccess(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onUpdateInformasiFailure(message: String) {
+        TODO("Not yet implemented")
     }
 
 }

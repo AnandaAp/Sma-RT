@@ -14,4 +14,6 @@ interface InformasiInterface {
     fun onGetInfoTerkiniFailure(message: String)
     fun onGetKegiatanSuccess(result: List<GetAllInformasiItem>)
     fun onGetKegiatanFailure(message: String)
+    fun onUpdateInformasiSuccess(message: String)
+    fun onUpdateInformasiFailure(message: String)
 }

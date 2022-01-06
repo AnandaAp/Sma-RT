@@ -242,4 +242,35 @@ class InformasiPresenter(private val view: InformasiInterface) {
             }
         }
     }
+
+    fun updateInformasi(
+        token: String,
+        id: String,
+        judul: String,
+        kategori: String,
+        lokasi: String,
+        detail: String,
+        gambar: String
+    ) {
+        GlobalScope.launch(Dispatchers.Main){
+            val response = RetrofitService
+                .getService()
+                .updateInformasi(
+                    "Bearer $token",
+                    id,
+                    judul,
+                    gambar,
+                    detail,
+                    kategori,
+                    lokasi
+                ).awaitResponse()
+            if (response.isSuccessful){
+                view.onUpdateInformasiSuccess("Berhasil memperbaharui informasi!")
+            } else {
+                val jObjError = JSONObject(response.errorBody()!!.string())
+                val message = jObjError.getString("message")
+                view.onUpdateInformasiFailure(message)
+            }
+        }
+    }
 }

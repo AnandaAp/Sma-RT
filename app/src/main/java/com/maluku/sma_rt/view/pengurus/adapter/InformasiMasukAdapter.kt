@@ -60,11 +60,12 @@ class InformasiMasukAdapter(val listInformasi: ArrayList<GetAllInformasiItem>): 
         // List Informasi
         holder.cardInformasi.setOnClickListener { view ->
             val direction = InformasiFragmentDirections.actionInformasiFragmentToDetailInformasiMasukFragment(
-                data.judul.toString(),data.createdAt.toString(),data.detail.toString(),data.lokasi.toString(),data.gambar.toString()
+                data.id.toString()
             )
-            view.findNavController().navigate(direction)
+            view!!.findNavController()!!.navigate(direction)
         }
     }
+
 
     override fun getItemCount(): Int {
         return listInformasi.size

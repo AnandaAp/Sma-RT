@@ -104,6 +104,14 @@ class GaleriKegiatanRTFragment : Fragment(), InformasiInterface {
         Toast.makeText(requireContext(),message, Toast.LENGTH_SHORT).show()
     }
 
+    override fun onUpdateInformasiSuccess(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onUpdateInformasiFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
     private fun back(){
         binding.btnBack.setOnClickListener {
             findNavController().popBackStack()
