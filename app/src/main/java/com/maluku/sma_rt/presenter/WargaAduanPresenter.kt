@@ -27,35 +27,6 @@ class WargaAduanPresenter(private val view: WargaAduanInterface) {
         gambar: String,
         deskripsi: String
     ){
-        /*RetrofitService
-            .getService()
-            .createAduan(
-                "Bearer $token",
-                judul,
-                gambar,
-                deskripsi
-            ).enqueue(
-                object : Callback<CreateAduanResponse>{
-                    override fun onResponse(
-                        call: Call<CreateAduanResponse>,
-                        response: Response<CreateAduanResponse>
-                    ) {
-                        if (response.isSuccessful) {
-                            val message = response.body()?.message.toString()
-                            view.onCreateSuccess(message)
-                        } else {
-                            val jObjError = JSONObject(response.errorBody()?.string())
-                            val message = jObjError.getString("message")
-                            view.onCreateFailed(message)
-                        }
-                    }
-
-                    override fun onFailure(call: Call<CreateAduanResponse>, t: Throwable) {
-                        val message = t.message.toString()
-                        view.onCreateFailed(message)
-                    }
-                }
-            )*/
         GlobalScope.launch(Dispatchers.Main){
             val res = RetrofitService
                 .getService()
@@ -83,30 +54,6 @@ class WargaAduanPresenter(private val view: WargaAduanInterface) {
         gambar: String = "",
         deskripsi: String = ""
     ){
-        /*RetrofitService
-            .getService()
-            .updateAduan(
-                token,
-                id,
-                judul,
-                gambar,
-                deskripsi
-            ).enqueue(
-                object : Callback<OnDataResponse>{
-                    override fun onResponse(
-                        call: Call<OnDataResponse>,
-                        response: Response<OnDataResponse>
-                    ) {
-                        val message = response.body()?.message.toString()
-                        view.onUpdateSuccess(message)
-                    }
-
-                    override fun onFailure(call: Call<OnDataResponse>, t: Throwable) {
-                        val message = t.message.toString()
-                        view.onUpdateFailure(message)
-                    }
-                }
-            )*/
         GlobalScope.launch(Dispatchers.Main) {
             val response = RetrofitService
                 .getService()
@@ -132,25 +79,6 @@ class WargaAduanPresenter(private val view: WargaAduanInterface) {
         token: String,
         id: String
     ){
-        /*RetrofitService
-            .getService()
-            .deleteAduan(
-                token,
-                id
-            ).enqueue(object : Callback<OnDataResponse>{
-                override fun onResponse(
-                    call: Call<OnDataResponse>,
-                    response: Response<OnDataResponse>
-                ) {
-                    val message = response.body()?.message.toString()
-                    view.onDeleteSuccess(message)
-                }
-
-                override fun onFailure(call: Call<OnDataResponse>, t: Throwable) {
-                    val message = t.message.toString()
-                    view.onDeleteFailure(message)
-                }
-            })*/
         GlobalScope.launch(Dispatchers.Main){
             val response = RetrofitService
                 .getService()
@@ -170,29 +98,6 @@ class WargaAduanPresenter(private val view: WargaAduanInterface) {
     }
 
     fun getAllDataAduan(token: String){
-        /*RetrofitService
-            .getService()
-            .getAllAduan("Bearer $token")
-            .enqueue(object : Callback<GetAllAduanResponse>{
-                override fun onResponse(
-                    call: Call<GetAllAduanResponse>,
-                    response: Response<GetAllAduanResponse>
-                ) {
-                    if (response.isSuccessful){
-                        val list = response.body()?.getAllAduan as List<GetAllAduanItem>
-                        view.onGetAllDataSuccess(list)
-                    } else{
-                        val jObjError = JSONObject(response.errorBody()?.string())
-                        val message = jObjError.getString("message")
-                        view.onGetAllDataFailed(message)
-                    }
-                }
-
-                override fun onFailure(call: Call<GetAllAduanResponse>, t: Throwable) {
-                    val message = t.message.toString()
-                    view.onGetAllDataFailed(message)
-                }
-            })*/
         GlobalScope.launch(Dispatchers.Main){
             val response =  RetrofitService
                 .getService()
@@ -210,23 +115,6 @@ class WargaAduanPresenter(private val view: WargaAduanInterface) {
     }
 
     fun getDataAduanByID(token: String,id: String){
-        /*RetrofitService
-            .getService()
-            .getAduanByID(token,id)
-            .enqueue(object : Callback<GetAduanByIDResponse>{
-                override fun onResponse(
-                    call: Call<GetAduanByIDResponse>,
-                    response: Response<GetAduanByIDResponse>
-                ) {
-                    val list = response.body()?.getAduanById
-                    view.onGetDataByIDSuccess(list)
-                }
-
-                override fun onFailure(call: Call<GetAduanByIDResponse>, t: Throwable) {
-                    val message = t.message.toString()
-                    view.onGetDataByIDFailed(message)
-                }
-            })*/
         GlobalScope.launch(Dispatchers.Main){
             val response = RetrofitService
                 .getService()
@@ -240,7 +128,6 @@ class WargaAduanPresenter(private val view: WargaAduanInterface) {
                 val message = response.errorBody()!!.string()
                 view.onGetDataByIDFailed(message)
             }
-
         }
     }
 }

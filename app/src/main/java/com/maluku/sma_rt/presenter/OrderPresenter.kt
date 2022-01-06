@@ -1,10 +1,6 @@
 package com.maluku.sma_rt.presenter
 
-import android.widget.Toast
 import com.maluku.sma_rt.api.RetrofitService
-import com.maluku.sma_rt.model.keluarga.GetAllProdukKeluargaItem
-import com.maluku.sma_rt.model.keluarga.GetKeluargaByIDResponse
-import com.maluku.sma_rt.model.keluarga.GetKeluargaById
 import com.maluku.sma_rt.model.order.CreateOrderBody
 import com.maluku.sma_rt.model.order.GetAllOrderItem
 import com.maluku.sma_rt.view.viewInterface.OrderInterface
@@ -13,9 +9,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import org.json.JSONObject
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import retrofit2.awaitResponse
 
 class OrderPresenter(private val view: OrderInterface) {
