@@ -17,6 +17,10 @@ import com.maluku.sma_rt.model.password.DefaultPasswordResponse
 import com.maluku.sma_rt.model.pengurus.CreatePengurusResponse
 import com.maluku.sma_rt.model.pengurus.DefaultPengurusResponse
 import com.maluku.sma_rt.model.pengurus.GetDataPengurusByLoginResponse
+import com.maluku.sma_rt.model.persuratan.CreatePersuratanResponse
+import com.maluku.sma_rt.model.persuratan.GetAllPersuratanResponse
+import com.maluku.sma_rt.model.persuratan.GetPersuratanByIDResponse
+import com.maluku.sma_rt.model.persuratan.GetPersuratanById
 import com.maluku.sma_rt.model.produk.CreateProductResponse
 import com.maluku.sma_rt.model.produk.DeleteProductByIDResponse
 import com.maluku.sma_rt.model.produk.GetAllProdukResponse
@@ -28,9 +32,6 @@ import com.maluku.sma_rt.model.warga.*
 import retrofit2.Call
 import retrofit2.http.*
 import retrofit2.http.GET
-
-
-
 
 interface Service {
 
@@ -452,8 +453,7 @@ interface Service {
         @Header("Authorization") authHeader: String,
         @Field("order") order: ArrayList<CreateOrderBody>
     ): Call<CreateOrderResponse>
-
-     */
+    */
 
     // Get All Order
     @GET("order/warga")
@@ -517,4 +517,59 @@ interface Service {
         @Field("password") password: String,
         @Field("new_password") new_password: String
     ): Call<DefaultPasswordResponse>
+
+    /*
+        Persuratan
+     */
+    //warga
+    //create
+    @FormUrlEncoded
+    @POST("persuratan")
+    fun createWargaPersuratan(
+        @Header("Authorization") authHeader: String,
+        @Field("judul") judul: String,
+        @Field("penerima") penerima: String,
+        @Field("tanggal") tanggal: String,
+        @Field("keperluan") keperluan: String
+    ): Call<CreatePersuratanResponse>
+
+    //update
+    @FormUrlEncoded
+    @PUT("persuratan/{id_surat}")
+    fun updateWargaPersuratan(
+        @Header("Authorization") authHeader: String,
+        @Path("id_surat") id_surat: String,
+        @Field("judul") judul: String,
+        @Field("penerima") penerima: String,
+        @Field("tanggal") tanggal: String,
+        @Field("keperluan") keperluan: String
+    ): Call<OnDataResponse>
+
+    //delete
+    @FormUrlEncoded
+    @DELETE("persuratan/{id_surat}")
+    fun deleteSuratByID(
+        @Header("Authorization") authHeader: String,
+        @Path("id_surat") id_surat: String
+    ): Call<OnDataResponse>
+
+    //get all
+    @GET("persuratan")
+    fun getAllPersuratanData(token: String): Call<GetAllPersuratanResponse>
+
+    /*
+    get all data dengan dikelompokan berdasarkan status
+    0=Tolak, 1=Terkirim, 2=Di Proses, 3=Selesai
+    */
+    @GET("persuratan?status={status}")
+    fun getAllPersuratanDataCategorically(
+        @Header("Authorization") authHeader: String,
+        @Path("status") status: String
+    ): Call<GetAllPersuratanResponse>
+
+    @GET("persuratan/{id_surat}")
+    fun getPersuratanDataByID(
+        @Header("Authorization") authHeader: String,
+        @Path("id_surat") id_surat: String
+    ): Call<GetPersuratanByIDResponse>
 }
