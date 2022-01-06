@@ -79,18 +79,18 @@ class AccountFragment : Fragment(), DompetRTInterface, AdminRTProfileInterface, 
 
     private fun navigateAkunToGantiPassword(){
         binding.btnToGantiPass.setOnClickListener {
-            findNavController().navigate(R.id.action_navigation_profil_to_gantiPasswordRTFragment)
+            findNavController()!!.navigate(R.id.action_navigation_profil_to_gantiPasswordRTFragment)
         }
     }
 
     override fun onGetAllDataSuccess(result: GetDompetById?) {
-        if (result != null) {
-            binding.tvTotalKasRT.text = rupiah(result.jumlah.toString().toDouble())
-        }
+        binding.tvTotalKasRT.text = rupiah(result?.jumlah.toString().toDouble())
     }
 
     override fun onGetAllDataFailure(message: String) {
-        Toast.makeText(requireContext(),"Pesan $message", Toast.LENGTH_LONG).show()
+        if(context!=null){
+            Toast.makeText(requireContext(),"Pesan $message", Toast.LENGTH_LONG).show()
+        }
     }
 
     override fun onWithdrawSuccess(message: String) {
@@ -134,18 +134,22 @@ class AccountFragment : Fragment(), DompetRTInterface, AdminRTProfileInterface, 
         Log.d(ContentValues.TAG,"Adapter get ref image: $storageRef")
         val localFile = File.createTempFile("tempFile","jpg")
         storageRef.getFile(localFile).addOnSuccessListener {
-            // Tampilkan gambar dengan Glide
-            Glide.with(this)
-                .load(localFile.path)
-                .apply(RequestOptions().transform(CenterCrop(), RoundedCorners(10)))
-                .into(binding.ivPengurus)
+            if (activity!=null){
+                // Tampilkan gambar dengan Glide
+                Glide.with(this)
+                    .load(localFile.path)
+                    .apply(RequestOptions().transform(CenterCrop(), RoundedCorners(10)))
+                    .into(binding.ivPengurus)
+            }
         }.addOnFailureListener {
 
         }
     }
 
     override fun onGetDataFailed(message: String) {
-        Toast.makeText(requireContext(),"Pesan: $message",Toast.LENGTH_LONG).show()
+        if (context!=null){
+            Toast.makeText(requireContext(),"Pesan: $message",Toast.LENGTH_LONG).show()
+        }
     }
 
     private fun navigateAkunToEditProfil() {
@@ -153,7 +157,7 @@ class AccountFragment : Fragment(), DompetRTInterface, AdminRTProfileInterface, 
             val direction = AccountFragmentDirections.actionNavigationProfilToEditProfileFragment(
                 idPengurus,nama,gambar,noHp,gender,email,kodeRT
             )
-            view!!.findNavController().navigate(direction)
+            view!!.findNavController()!!.navigate(direction)
         }
     }
 
@@ -162,7 +166,9 @@ class AccountFragment : Fragment(), DompetRTInterface, AdminRTProfileInterface, 
     }
 
     override fun resultListWargaFailure(message: String) {
-        Toast.makeText(requireContext(),"Pesan $message", Toast.LENGTH_LONG).show()
+        if (context!=null){
+            Toast.makeText(requireContext(),"Pesan $message", Toast.LENGTH_LONG).show()
+        }
     }
 
 }

@@ -37,17 +37,20 @@ class InformasiTerkiniRTFragment : Fragment(), InformasiInterface {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setRecyclerViewInformasi()
         // Refresh Data Informasi
         onStart()
         back()
     }
 
     private fun setRecyclerViewInformasi() {
-        rvInformasi = binding.rvListInfoTerkiniRT
-        rvInformasi.layoutManager = LinearLayoutManager(requireContext(),
-            LinearLayoutManager.VERTICAL ,false)
-        adapterInformasi = ListInfoTerkiniAdapter(arrayListOf())
-        rvInformasi.adapter = adapterInformasi
+        if (context!=null){
+            rvInformasi = binding.rvListInfoTerkiniRT
+            rvInformasi.layoutManager = LinearLayoutManager(requireContext(),
+                LinearLayoutManager.VERTICAL ,false)
+            adapterInformasi = ListInfoTerkiniAdapter(arrayListOf())
+            rvInformasi.adapter = adapterInformasi
+        }
     }
 
     override fun onStart() {
@@ -91,12 +94,13 @@ class InformasiTerkiniRTFragment : Fragment(), InformasiInterface {
     }
 
     override fun onGetInfoTerkiniSuccess(result: List<GetAllInformasiItem>) {
-        setRecyclerViewInformasi()
         adapterInformasi.setData(result as ArrayList<GetAllInformasiItem>)
     }
 
     override fun onGetInfoTerkiniFailure(message: String) {
-        Toast.makeText(requireContext(),message,Toast.LENGTH_SHORT).show()
+        if (context!=null){
+            Toast.makeText(requireContext(),message,Toast.LENGTH_SHORT).show()
+        }
     }
 
     override fun onGetKegiatanSuccess(result: List<GetAllInformasiItem>) {

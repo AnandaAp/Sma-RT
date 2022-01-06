@@ -290,14 +290,16 @@ class EditInformasiFragment : Fragment(), InformasiInterface {
     }
 
     override fun onUpdateInformasiFailure(message: String) {
-        Toast.makeText(requireContext(),"Pesan: $message",Toast.LENGTH_SHORT).show()
+        if (context!=null){
+            Toast.makeText(requireContext(),"Pesan: $message",Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun navigateEditToDetailInformasiMasuk(){
         val direction = EditInformasiFragmentDirections.actionEditInformasiFragmentToDetailInformasiMasukFragment2(
             id
         )
-        view!!.findNavController().navigate(direction)
+        view!!.findNavController()!!.navigate(direction)
     }
 
 }

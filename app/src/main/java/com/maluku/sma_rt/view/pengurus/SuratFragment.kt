@@ -42,7 +42,7 @@ class SuratFragment : Fragment() {
 
         val backBtn = view.findViewById<TextView>(R.id.btnBackSurat)
         backBtn.setOnClickListener {
-            findNavController().popBackStack()
+            findNavController()!!.popBackStack()
         }
     }
 

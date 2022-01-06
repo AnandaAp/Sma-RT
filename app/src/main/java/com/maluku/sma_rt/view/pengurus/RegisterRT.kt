@@ -248,8 +248,16 @@ class RegisterRT : Fragment(), RegisterAdminInterface {
     }
 
     override fun onRegisterSuccess(message: String) {
-        Toast.makeText(context,message,Toast.LENGTH_LONG).show()
-        navigateToDashboard()
+        if (context!=null){
+            Toast.makeText(context,message,Toast.LENGTH_LONG).show()
+            navigateToDashboard()
+        }
+    }
+
+    override fun onRegisterFailure(message: String) {
+        if (context!=null){
+            Toast.makeText(context,message,Toast.LENGTH_LONG).show()
+        }
     }
 
     private fun setFormJenisKelamin() {

@@ -31,6 +31,7 @@ class RiwayatKasFragment : Fragment(), AdminTagihanInterface {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setRecyclerViewRiwayatKas()
         onStart()
         navigateBack()
     }
@@ -46,10 +47,12 @@ class RiwayatKasFragment : Fragment(), AdminTagihanInterface {
     }
 
     private fun setRecyclerViewRiwayatKas() {
-        rvRiwayat = binding.rvRiwayatKas
-        rvRiwayat.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL ,false)
-        adapterRiwayatKas = RiwayatKasAdapter(arrayListOf())
-        rvRiwayat.adapter = adapterRiwayatKas
+        if (context!=null){
+            rvRiwayat = binding.rvRiwayatKas
+            rvRiwayat.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL ,false)
+            adapterRiwayatKas = RiwayatKasAdapter(arrayListOf())
+            rvRiwayat.adapter = adapterRiwayatKas
+        }
     }
 
     private fun getToken(): String {
@@ -73,7 +76,6 @@ class RiwayatKasFragment : Fragment(), AdminTagihanInterface {
             }
         }
         if (listLunas.size >= 1){
-            setRecyclerViewRiwayatKas()
             adapterRiwayatKas.setData(listLunas)
         }
     }
@@ -84,7 +86,7 @@ class RiwayatKasFragment : Fragment(), AdminTagihanInterface {
 
     private fun navigateBack() {
         binding.btnBack.setOnClickListener{
-            findNavController().popBackStack()
+            findNavController()!!.popBackStack()
         }
     }
 

@@ -33,31 +33,31 @@ class ManageFragment : Fragment() {
 
     private fun navigateManageToTambahInformasi(){
         binding.btnInformasi.setOnClickListener {
-            findNavController().navigate(R.id.action_navigation_manage_to_informasiFragment)
+            findNavController()!!.navigate(R.id.action_navigation_manage_to_informasiFragment)
         }
     }
 
     private fun navigateManageToLaporan() {
         binding.btnLaporan.setOnClickListener{
-            findNavController().navigate(R.id.action_navigation_manage_to_laporanFragment)
+            findNavController()!!.navigate(R.id.action_navigation_manage_to_laporanFragment)
         }
     }
 
     private fun navigateManageToTambahKeluarga() {
         binding.btnToTambahKeluarga.setOnClickListener{
-            findNavController().navigate(R.id.action_navigation_manage_to_tambahKeluargaFragment)
+            findNavController()!!.navigate(R.id.action_navigation_manage_to_tambahKeluargaFragment)
         }
     }
 
     private fun navigateManageToKas() {
         binding.btnKas.setOnClickListener{
-            findNavController().navigate(R.id.action_navigation_manage_to_kasFragment)
+            findNavController()!!.navigate(R.id.action_navigation_manage_to_kasFragment)
         }
     }
 
     private fun navigateManageToPersuratan() {
         binding.btnPersuratan.setOnClickListener{
-            findNavController().navigate(R.id.action_navigation_manage_to_suratFragment)
+            findNavController()!!.navigate(R.id.action_navigation_manage_to_suratFragment)
         }
     }
 

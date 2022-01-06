@@ -131,11 +131,15 @@ class BuatIuranFragment : Fragment(), AdminTagihanInterface {
         binding.etNamaTagihan.text = null
         binding.etDetail.text = null
         binding.etJumlah.text = null
-        Toast.makeText(requireContext(),message,Toast.LENGTH_LONG).show()
+        if (context!=null){
+            Toast.makeText(requireContext(),message,Toast.LENGTH_LONG).show()
+        }
     }
 
     override fun onCreateFailed(message: String) {
-        Toast.makeText(requireContext(),message,Toast.LENGTH_LONG).show()
+        if (context!=null){
+            Toast.makeText(requireContext(),message,Toast.LENGTH_LONG).show()
+        }
     }
 
     override fun onGetDataSuccess(message: String, list: List<GetAllTagihanItem>) {

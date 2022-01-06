@@ -52,7 +52,9 @@ class KasFragment : Fragment(), DompetRTInterface {
     }
 
     override fun onGetAllDataFailure(message: String) {
-        Toast.makeText(requireContext(),"Pesan: $message",Toast.LENGTH_LONG).show()
+        if (context!=null){
+            Toast.makeText(requireContext(),"Pesan: $message",Toast.LENGTH_LONG).show()
+        }
     }
 
     override fun onWithdrawSuccess(message: String) {
@@ -71,25 +73,25 @@ class KasFragment : Fragment(), DompetRTInterface {
 
     private fun navigateKasToRiwayat() {
         binding.btnRiwayatKas.setOnClickListener{
-            findNavController().navigate(R.id.action_kasFragment_to_riwayatKasFragment)
+            findNavController()!!.navigate(R.id.action_kasFragment_to_riwayatKasFragment)
         }
     }
 
     private fun navigateKasToBuatTagihan() {
         binding.btnBuatTagihan.setOnClickListener{
-            findNavController().navigate(R.id.action_kasFragment_to_daftarBuatIuranFragment)
+            findNavController()!!.navigate(R.id.action_kasFragment_to_daftarBuatIuranFragment)
         }
     }
 
     private fun navigateKasToWithdraw() {
         binding.btnToWithdraw.setOnClickListener{
-            findNavController().navigate(R.id.action_kasFragment_to_kasWithdrawFragment)
+            findNavController()!!.navigate(R.id.action_kasFragment_to_kasWithdrawFragment)
         }
     }
 
     private fun navigateBack() {
         binding.btnBack.setOnClickListener{
-            findNavController().popBackStack()
+            findNavController()!!.popBackStack()
         }
     }
 

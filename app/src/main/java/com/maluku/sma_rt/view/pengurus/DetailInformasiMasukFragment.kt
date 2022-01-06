@@ -96,7 +96,7 @@ class DetailInformasiMasukFragment : Fragment(), InformasiInterface {
             val direction = DetailInformasiMasukFragmentDirections.actionDetailInformasiMasukFragmentToEditInformasiFragment(
                 judulInformasi!!,kategoriInformasi!!,lokasiInformasi!!,detailInformasi!!,gambarInformasi!!, idInformasi
             )
-            view!!.findNavController().navigate(direction)
+            view!!.findNavController()!!.navigate(direction)
         }
     }
 
@@ -145,7 +145,10 @@ class DetailInformasiMasukFragment : Fragment(), InformasiInterface {
     }
 
     override fun onGetInformasiFailure(message: String) {
-        Toast.makeText(requireContext(),"Pesan: $message",Toast.LENGTH_SHORT).show()
+        if (context != null){
+            Toast.makeText(requireContext(),"Pesan: $message",Toast.LENGTH_SHORT).show()
+        }
+
     }
 
     override fun onGetInfoTerkiniSuccess(result: List<GetAllInformasiItem>) {

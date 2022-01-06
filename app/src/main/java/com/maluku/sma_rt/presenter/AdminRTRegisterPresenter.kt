@@ -92,12 +92,14 @@ class AdminRTRegisterPresenter(private val activity: Activity, private val view:
                             val jObjError = JSONObject(response.errorBody()?.string())
                             val message = jObjError.getString("message")
                             Toast.makeText(activity,"Pesan: $message", Toast.LENGTH_SHORT).show()
+                            view.onRegisterFailure(activity.getString(R.string.login_gagal))
                         }
                     }
                 }
 
                 override fun onFailure(call: Call<CreatePengurusResponse>, t: Throwable) {
                     Log.i(TAG, "onFailure: ${t.message.toString()}")
+                    view.onRegisterFailure(activity.getString(R.string.login_gagal))
                 }
             })
     }

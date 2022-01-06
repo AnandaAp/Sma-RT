@@ -1,6 +1,7 @@
 package com.maluku.sma_rt.view.pengurus.bottomnavigation
 
 import android.content.ContentValues
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -26,6 +27,7 @@ import com.maluku.sma_rt.model.pengurus.GetPengurusById
 import com.maluku.sma_rt.presenter.AdminRTProfilePresenter
 import com.maluku.sma_rt.presenter.DompetRTPresenter
 import com.maluku.sma_rt.presenter.InformasiPresenter
+import com.maluku.sma_rt.view.activity.MainActivity
 import com.maluku.sma_rt.view.pengurus.adapter.GaleriAdapter
 import com.maluku.sma_rt.view.pengurus.adapter.InfoAdapter
 import com.maluku.sma_rt.view.viewInterface.AdminRTProfileInterface
@@ -72,43 +74,45 @@ class HomeFragment : Fragment(), InformasiInterface, DompetRTInterface, AdminRTP
     }
 
     private fun setRecyclerViewInformasi(){
-        rvGaleri = binding.rvGaleriWarga
-        adapterGaleri = GaleriAdapter(arrayListOf())
-        rvInfo = binding.rvInfoTerkini
-        adapterInfo = InfoAdapter(arrayListOf())
-        rvGaleri.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL,false)
-        rvGaleri.adapter = adapterGaleri
-        rvInfo.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL,false)
-        rvInfo.adapter = adapterInfo
+        if (context!=null){
+            rvGaleri = binding.rvGaleriWarga
+            adapterGaleri = GaleriAdapter(arrayListOf())
+            rvInfo = binding.rvInfoTerkini
+            adapterInfo = InfoAdapter(arrayListOf())
+            rvGaleri.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL,false)
+            rvGaleri.adapter = adapterGaleri
+            rvInfo.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL,false)
+            rvInfo.adapter = adapterInfo
+        }
     }
 
     private fun navigateDashboardToTambahKelurga() {
         binding.btnTambahKeluarga.setOnClickListener{
-            findNavController().navigate(R.id.action_navigation_home_to_tambahKeluargaFragment)
+            findNavController()!!.navigate(R.id.action_navigation_home_to_tambahKeluargaFragment)
         }
     }
 
     private fun navigateDashboardToRiwayat() {
         binding.btnToRiwayat.setOnClickListener{
-            findNavController().navigate(R.id.action_navigation_home_to_riwayatKasFragment)
+            findNavController()!!.navigate(R.id.action_navigation_home_to_riwayatKasFragment)
         }
     }
 
     private fun navigateDashboardToSurat() {
         binding.btnSurat.setOnClickListener{
-            findNavController().navigate(R.id.action_navigation_home_to_suratFragment)
+            findNavController()!!.navigate(R.id.action_navigation_home_to_suratFragment)
         }
     }
 
     private fun navigateDashboardToInformasi() {
         binding.btnInformasi.setOnClickListener{
-            findNavController().navigate(R.id.action_navigation_home_to_informasiFragment)
+            findNavController()!!.navigate(R.id.action_navigation_home_to_informasiFragment)
         }
     }
 
     private fun navigateDashboardToLaporan() {
         binding.btnLaporan.setOnClickListener{
-            findNavController().navigate(R.id.action_navigation_home_to_laporanFragment)
+            findNavController()!!.navigate(R.id.action_navigation_home_to_laporanFragment)
         }
     }
 
@@ -152,7 +156,9 @@ class HomeFragment : Fragment(), InformasiInterface, DompetRTInterface, AdminRTP
     }
 
     override fun onGetInfoTerkiniFailure(message: String) {
-        Toast.makeText(requireContext(),"Pesan: $message",Toast.LENGTH_LONG).show()
+        if (context!=null){
+            Toast.makeText(requireContext(),"Pesan: $message",Toast.LENGTH_LONG).show()
+        }
     }
 
 
@@ -161,7 +167,9 @@ class HomeFragment : Fragment(), InformasiInterface, DompetRTInterface, AdminRTP
     }
 
     override fun onGetKegiatanFailure(message: String) {
-        Toast.makeText(requireContext(),"Pesan: $message",Toast.LENGTH_LONG).show()
+        if (context!=null){
+            Toast.makeText(requireContext(),"Pesan: $message",Toast.LENGTH_LONG).show()
+        }
     }
 
     override fun onUpdateInformasiSuccess(message: String) {
@@ -173,13 +181,13 @@ class HomeFragment : Fragment(), InformasiInterface, DompetRTInterface, AdminRTP
     }
 
     override fun onGetAllDataSuccess(result: GetDompetById?) {
-        if (result != null) {
-            binding.tvTotalKasRT.text = rupiah(result.jumlah.toString().toDouble())
-        }
+        binding.tvTotalKasRT.text = rupiah(result?.jumlah.toString().toDouble())
     }
 
     override fun onGetAllDataFailure(message: String) {
-        Toast.makeText(requireContext(),"Pesan: $message",Toast.LENGTH_LONG).show()
+        if (context != null){
+            Toast.makeText(requireContext(),"Pesan: $message",Toast.LENGTH_LONG).show()
+        }
     }
 
     override fun onWithdrawSuccess(message: String) {
@@ -211,29 +219,42 @@ class HomeFragment : Fragment(), InformasiInterface, DompetRTInterface, AdminRTP
         Log.d(ContentValues.TAG,"Adapter get ref image: $storageRef")
         val localFile = File.createTempFile("tempFile","jpg")
         storageRef.getFile(localFile).addOnSuccessListener {
-            // Tampilkan gambar dengan Glide
-            Glide.with(this)
-                .load(localFile.path)
-                .apply(RequestOptions().transform(CenterCrop(), RoundedCorners(10)))
-                .into(binding.ivProfilPengurus)
+            if (activity != null){
+                // Tampilkan gambar dengan Glide
+                Glide.with(this)
+                    .load(localFile.path)
+                    .apply(RequestOptions().transform(CenterCrop(), RoundedCorners(10)))
+                    .into(binding.ivProfilPengurus)
+            }
         }.addOnFailureListener {
 
         }
     }
 
     override fun onGetDataFailed(message: String) {
-        Toast.makeText(requireContext(),"Pesan: $message",Toast.LENGTH_LONG).show()
+        if (context!=null){
+            Toast.makeText(requireContext(),"Pesan: $message",Toast.LENGTH_LONG).show()
+            logout()
+        }
+    }
+
+    private fun logout(){
+        val preferences = UserSession(requireActivity())
+        preferences.clearSharedPreference()
+        val intent = Intent(requireActivity(), MainActivity::class.java)
+        startActivity(intent)
+        requireActivity().finish()
     }
 
     private fun navigateInfoTerkiniToDetailInformasi() {
         binding.btnSeeAll1.setOnClickListener{
-            findNavController().navigate(R.id.action_navigation_home_to_informasiTerkiniRTFragment2)
+            findNavController()!!.navigate(R.id.action_navigation_home_to_informasiTerkiniRTFragment2)
         }
     }
 
     private fun navigateGaleriToDetailInformasi() {
         binding.btnSeeAll2.setOnClickListener{
-            findNavController().navigate(R.id.action_navigation_home_to_galeriKegiatanRTFragment)
+            findNavController()!!.navigate(R.id.action_navigation_home_to_galeriKegiatanRTFragment)
         }
     }
 }

@@ -31,15 +31,18 @@ class InformasiMasukFragment : Fragment(), InformasiInterface{
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setRecyclerViewInformasi()
         // Refresh Data Informasi
         onStart()
     }
 
     private fun setRecyclerViewInformasi() {
-        rvInformasi = binding.rvInformasiMasuk
-        rvInformasi.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL ,false)
-        adapterInformasi = InformasiMasukAdapter(arrayListOf())
-        rvInformasi.adapter = adapterInformasi
+        if (context!=null){
+            rvInformasi = binding.rvInformasiMasuk
+            rvInformasi.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL ,false)
+            adapterInformasi = InformasiMasukAdapter(arrayListOf())
+            rvInformasi.adapter = adapterInformasi
+        }
     }
 
     override fun onStart() {
@@ -68,12 +71,13 @@ class InformasiMasukFragment : Fragment(), InformasiInterface{
 
 
     override fun onGetAllInformasiSuccess(result: List<GetAllInformasiItem>) {
-        setRecyclerViewInformasi()
         adapterInformasi.setData(result as ArrayList<GetAllInformasiItem>)
     }
 
     override fun onGetAllInformasiFailure(message: String) {
-        Toast.makeText(requireContext(),"Pesan: $message",Toast.LENGTH_LONG).show()
+        if (context!=null){
+            Toast.makeText(requireContext(),"Pesan: $message",Toast.LENGTH_LONG).show()
+        }
     }
 
     override fun onGetInformasiSuccess(result: GetInformasiById?) {

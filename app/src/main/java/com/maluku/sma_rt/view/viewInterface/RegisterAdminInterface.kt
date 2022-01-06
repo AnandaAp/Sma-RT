@@ -10,4 +10,5 @@ interface RegisterAdminInterface {
         inputPassword: String
     )
     fun onRegisterSuccess(message: String)
+    fun onRegisterFailure(message: String)
 }
