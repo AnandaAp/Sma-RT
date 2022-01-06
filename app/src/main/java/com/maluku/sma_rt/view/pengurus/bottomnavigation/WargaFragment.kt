@@ -46,6 +46,7 @@ class WargaFragment : Fragment(), ListWargaViewInterface, ListKeluargaViewInterf
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setRecyclerViewWarga()
         // Refresh Data Warga
         onStart()
         binding.etCariWarga.addTextChangedListener(object : TextWatcher {
@@ -74,9 +75,11 @@ class WargaFragment : Fragment(), ListWargaViewInterface, ListKeluargaViewInterf
 
     private fun setRecyclerViewWarga(){
         rvWarga = binding.rvListWarga
-        rvWarga.layoutManager = LinearLayoutManager(requireContext())
-        adapterWarga = WargaAdapter(arrayListOf())
-        rvWarga.adapter = adapterWarga
+        if (context!=null){
+            rvWarga.layoutManager = LinearLayoutManager(requireContext())
+            adapterWarga = WargaAdapter(arrayListOf())
+            rvWarga.adapter = adapterWarga
+        }
     }
 
     override fun resultListWargaFailure(message: String) {
@@ -91,7 +94,6 @@ class WargaFragment : Fragment(), ListWargaViewInterface, ListKeluargaViewInterf
     }
 
     override fun resultListWargaSuccess(warga: List<GetAllWargaItem>) {
-        setRecyclerViewWarga()
         adapterWarga.setData(warga as ArrayList<GetAllWargaItem>)
     }
 
@@ -101,27 +103,28 @@ class WargaFragment : Fragment(), ListWargaViewInterface, ListKeluargaViewInterf
         val listKeluarga: ArrayList<String> = arrayListOf("Pilih Keluarga")
         for (data in result){
             listIdKeluarga.add(data.id.toString())
-            listKeluarga.add(data.nama.toString())
+            listKeluarga.add("${data.nama.toString()} - ${data.kodeKeluarga.toString()}")
         }
-        val adapter = ArrayAdapter(requireContext(), R.layout.support_simple_spinner_dropdown_item,listKeluarga)
-        spListFamily.adapter = adapter
-        spListFamily.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
-            override fun onItemSelected(adapterView: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                if(isSpinnerInitial)
-                {
-                    isSpinnerInitial = false
+        if (context!=null){
+            val adapter = ArrayAdapter(requireContext(), R.layout.support_simple_spinner_dropdown_item,listKeluarga)
+            spListFamily.adapter = adapter
+            spListFamily.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+                override fun onItemSelected(adapterView: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                    if(isSpinnerInitial)
+                    {
+                        isSpinnerInitial = false
+                    }
+                    else  {
+                        idKeluarga = listIdKeluarga[position]
+                    }
+                    ListWargaPresenter(requireActivity(), this@WargaFragment).getListWargaPresenter(getToken(), idKeluarga, nama)
                 }
-                else  {
-                    idKeluarga = listIdKeluarga[position]
-                }
-                ListWargaPresenter(requireActivity(), this@WargaFragment).getListWargaPresenter(getToken(), idKeluarga, nama)
-            }
 
-            override fun onNothingSelected(p0: AdapterView<*>?) {
-                TODO("Not yet implemented")
+                override fun onNothingSelected(p0: AdapterView<*>?) {
+                    TODO("Not yet implemented")
+                }
             }
         }
-
     }
 
     override fun resultListKeluargaFailure(message: String) {

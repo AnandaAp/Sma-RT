@@ -96,7 +96,7 @@ class DetailInformasiMasukFragment : Fragment(), InformasiInterface {
             val direction = DetailInformasiMasukFragmentDirections.actionDetailInformasiMasukFragmentToEditInformasiFragment(
                 judulInformasi!!,kategoriInformasi!!,lokasiInformasi!!,detailInformasi!!,gambarInformasi!!, idInformasi
             )
-            view!!.findNavController().navigate(direction)
+            view!!.findNavController()!!.navigate(direction)
         }
     }
 

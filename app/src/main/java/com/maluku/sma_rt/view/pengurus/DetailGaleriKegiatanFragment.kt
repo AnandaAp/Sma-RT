@@ -61,11 +61,13 @@ class DetailGaleriKegiatanFragment : Fragment() {
         Log.d(ContentValues.TAG,"Adapter get ref image: $storageRef")
         val localFile = File.createTempFile("tempFile","jpg")
         storageRef.getFile(localFile).addOnSuccessListener {
-            // Tampilkan gambar dengan Glide
-            Glide.with(this)
-                .load(localFile.path)
-                .apply(RequestOptions().transform(CenterCrop(), RoundedCorners(20)))
-                .into(binding.ivDetailKegiatan)
+            if (activity!=null){
+                // Tampilkan gambar dengan Glide
+                Glide.with(this)
+                    .load(localFile.path)
+                    .apply(RequestOptions().transform(CenterCrop(), RoundedCorners(20)))
+                    .into(binding.ivDetailKegiatan)
+            }
         }.addOnFailureListener {
 
         }

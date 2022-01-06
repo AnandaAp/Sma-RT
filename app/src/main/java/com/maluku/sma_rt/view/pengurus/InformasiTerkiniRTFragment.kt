@@ -37,17 +37,20 @@ class InformasiTerkiniRTFragment : Fragment(), InformasiInterface {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setRecyclerViewInformasi()
         // Refresh Data Informasi
         onStart()
         back()
     }
 
     private fun setRecyclerViewInformasi() {
-        rvInformasi = binding.rvListInfoTerkiniRT
-        rvInformasi.layoutManager = LinearLayoutManager(requireContext(),
-            LinearLayoutManager.VERTICAL ,false)
-        adapterInformasi = ListInfoTerkiniAdapter(arrayListOf())
-        rvInformasi.adapter = adapterInformasi
+        if (context!=null){
+            rvInformasi = binding.rvListInfoTerkiniRT
+            rvInformasi.layoutManager = LinearLayoutManager(requireContext(),
+                LinearLayoutManager.VERTICAL ,false)
+            adapterInformasi = ListInfoTerkiniAdapter(arrayListOf())
+            rvInformasi.adapter = adapterInformasi
+        }
     }
 
     override fun onStart() {
@@ -91,7 +94,6 @@ class InformasiTerkiniRTFragment : Fragment(), InformasiInterface {
     }
 
     override fun onGetInfoTerkiniSuccess(result: List<GetAllInformasiItem>) {
-        setRecyclerViewInformasi()
         adapterInformasi.setData(result as ArrayList<GetAllInformasiItem>)
     }
 

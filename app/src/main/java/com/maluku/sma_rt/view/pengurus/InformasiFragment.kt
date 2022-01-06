@@ -40,7 +40,7 @@ class InformasiFragment : Fragment() {
         }.attach()
         val backBtn = view.findViewById<TextView>(R.id.btnBackInformasi)
         backBtn.setOnClickListener {
-            findNavController().popBackStack()
+            findNavController()!!.popBackStack()
         }
     }
 }

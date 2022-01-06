@@ -109,12 +109,12 @@ class KasWithdrawFragment : Fragment(), DompetRTInterface {
     }
 
     private fun navigateWithdrawToKas() {
-        findNavController().navigate(R.id.action_kasWithdrawFragment_to_kasFragment)
+        findNavController()!!.navigate(R.id.action_kasWithdrawFragment_to_kasFragment)
     }
 
     private fun navigateBackToKas(){
         binding.btnBack.setOnClickListener {
-            findNavController().popBackStack()
+            findNavController()!!.popBackStack()
         }
     }
 }

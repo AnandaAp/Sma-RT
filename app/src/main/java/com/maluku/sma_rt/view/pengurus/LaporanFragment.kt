@@ -41,10 +41,12 @@ class LaporanFragment : Fragment(), WargaAduanInterface {
     }
 
     private fun setRecyclerViewLaporan() {
-        rvLaporan = binding.rvListLaporan
-        rvLaporan.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL ,false)
-        adapterLaporan = LaporanAdapter(arrayListOf())
-        rvLaporan.adapter = adapterLaporan
+        if (context!=null){
+            rvLaporan = binding.rvListLaporan
+            rvLaporan.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL ,false)
+            adapterLaporan = LaporanAdapter(arrayListOf())
+            rvLaporan.adapter = adapterLaporan
+        }
     }
 
     private fun bindingView(): View {

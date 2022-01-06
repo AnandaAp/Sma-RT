@@ -26,6 +26,7 @@ class DaftarBuatIuranFragment : Fragment(),AdminTagihanInterface {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setRecyclerViewListTagihan()
         onStart()
         navigateDaftarTagihanToCreateTagihan()
         navigateBackToKas()
@@ -45,10 +46,12 @@ class DaftarBuatIuranFragment : Fragment(),AdminTagihanInterface {
     }
 
     private fun setRecyclerViewListTagihan() {
-        rvListTagihan = binding.rvListTagihan
-        rvListTagihan.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL ,false)
-        adapterDaftarBuatIuran = ListDaftarTagihanAdapter(arrayListOf())
-        rvListTagihan.adapter = adapterDaftarBuatIuran
+        if (context != null){
+            rvListTagihan = binding.rvListTagihan
+            rvListTagihan.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL ,false)
+            adapterDaftarBuatIuran = ListDaftarTagihanAdapter(arrayListOf())
+            rvListTagihan.adapter = adapterDaftarBuatIuran
+        }
     }
 
     private fun getToken(): String {
@@ -63,7 +66,7 @@ class DaftarBuatIuranFragment : Fragment(),AdminTagihanInterface {
 
     private fun navigateDaftarTagihanToCreateTagihan(){
         binding.btnTambahTagihan.setOnClickListener {
-            findNavController().navigate(R.id.action_daftarBuatIuranFragment_to_buatIuranFragment2)
+            findNavController()!!.navigate(R.id.action_daftarBuatIuranFragment_to_buatIuranFragment2)
         }
     }
 
@@ -83,7 +86,6 @@ class DaftarBuatIuranFragment : Fragment(),AdminTagihanInterface {
             }
         }
         if (listBelumLunas.size >= 1){
-            setRecyclerViewListTagihan()
             adapterDaftarBuatIuran.setData(listBelumLunas)
         }
     }
@@ -94,7 +96,7 @@ class DaftarBuatIuranFragment : Fragment(),AdminTagihanInterface {
 
     private fun navigateBackToKas(){
         binding.btnBack.setOnClickListener {
-            findNavController().popBackStack()
+            findNavController()!!.popBackStack()
         }
     }
 

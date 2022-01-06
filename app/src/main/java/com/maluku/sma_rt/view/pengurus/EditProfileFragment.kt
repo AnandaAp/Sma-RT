@@ -92,11 +92,13 @@ class EditProfileFragment : Fragment(), AdminRTProfileInterface {
         Log.d(ContentValues.TAG,"Adapter get ref image: $storageRef")
         val localFile = File.createTempFile("tempFile","jpg")
         storageRef.getFile(localFile).addOnSuccessListener {
-            // Tampilkan gambar dengan Glide
-            Glide.with(this)
-                .load(localFile.path)
-                .apply(RequestOptions().transform(CenterCrop(), RoundedCorners(20)))
-                .into(binding.ivEditPengurus)
+            if (activity != null){
+                // Tampilkan gambar dengan Glide
+                Glide.with(this)
+                    .load(localFile.path)
+                    .apply(RequestOptions().transform(CenterCrop(), RoundedCorners(20)))
+                    .into(binding.ivEditPengurus)
+            }
         }.addOnFailureListener {
 
         }
@@ -263,7 +265,7 @@ class EditProfileFragment : Fragment(), AdminRTProfileInterface {
     }
 
     private fun navigateEditProfilToAccount() {
-        findNavController().popBackStack()
+        findNavController()!!.popBackStack()
     }
 
 }

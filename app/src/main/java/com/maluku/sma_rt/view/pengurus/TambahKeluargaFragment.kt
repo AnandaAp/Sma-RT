@@ -83,7 +83,7 @@ class TambahKeluargaFragment : Fragment(), TambahKeluargaInterface {
 
     private fun navigateBack() {
         binding.btnBack.setOnClickListener{
-            findNavController().popBackStack()
+            findNavController()!!.popBackStack()
         }
     }
 }

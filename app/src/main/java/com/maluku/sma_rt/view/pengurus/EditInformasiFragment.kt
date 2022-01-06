@@ -297,7 +297,7 @@ class EditInformasiFragment : Fragment(), InformasiInterface {
         val direction = EditInformasiFragmentDirections.actionEditInformasiFragmentToDetailInformasiMasukFragment2(
             id
         )
-        view!!.findNavController().navigate(direction)
+        view!!.findNavController()!!.navigate(direction)
     }
 
 }

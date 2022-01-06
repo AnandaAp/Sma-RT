@@ -34,17 +34,20 @@ class GaleriKegiatanRTFragment : Fragment(), InformasiInterface {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setRecyclerViewInformasi()
         // Refresh Data Informasi
         onStart()
         back()
     }
 
     private fun setRecyclerViewInformasi() {
-        rvKegiatan = binding.rvListKegiatan
-        rvKegiatan.layoutManager = LinearLayoutManager(requireContext(),
-            LinearLayoutManager.VERTICAL ,false)
-        adapterKegiatan = ListKegiatanAdapter(arrayListOf())
-        rvKegiatan.adapter = adapterKegiatan
+        if (context!=null){
+            rvKegiatan = binding.rvListKegiatan
+            rvKegiatan.layoutManager = LinearLayoutManager(requireContext(),
+                LinearLayoutManager.VERTICAL ,false)
+            adapterKegiatan = ListKegiatanAdapter(arrayListOf())
+            rvKegiatan.adapter = adapterKegiatan
+        }
     }
 
     override fun onStart() {
@@ -96,7 +99,6 @@ class GaleriKegiatanRTFragment : Fragment(), InformasiInterface {
     }
 
     override fun onGetKegiatanSuccess(result: List<GetAllInformasiItem>) {
-        setRecyclerViewInformasi()
         adapterKegiatan.setData(result as ArrayList<GetAllInformasiItem>)
     }
 
