@@ -11,7 +11,7 @@ data class GetAllAduanResponse(
 	val code: Int? = null,
 
 	@field:SerializedName("get_all_aduan")
-	val getAllAduan: ArrayList<GetAllAduanItem?>? = null,
+	val getAllAduan: List<GetAllAduanItem?>? = null,
 
 	@field:SerializedName("message")
 	val message: String? = null
@@ -45,5 +45,8 @@ data class GetAllAduanItem(
 	val gambar: String? = null,
 
 	@field:SerializedName("id_warga")
-	val idWarga: String? = null
+	val idWarga: String? = null,
+
+	@field:SerializedName("status")
+	val status: String? = null
 ) : Parcelable

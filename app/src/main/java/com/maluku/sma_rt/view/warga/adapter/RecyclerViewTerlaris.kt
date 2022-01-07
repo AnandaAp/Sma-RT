@@ -79,7 +79,7 @@ class RecyclerViewTerlaris(
             nama!!.text = data.nama.toString()
             harga!!.text = toRupiah(data.harga.toString().toDouble())
             deskripsi!!.text = data.detail.toString()
-            val storageRef = FirebaseStorage.getInstance().reference.child("images/${data.gambar}")
+            val storageRef = FirebaseStorage.getInstance().reference.child("produk/${data.gambar}")
             Log.d(ContentValues.TAG,"Adapter get ref image: $storageRef")
             val localFile = File.createTempFile("tempFile","jpg")
             storageRef.getFile(localFile).addOnSuccessListener {

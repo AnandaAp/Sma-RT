@@ -7,6 +7,7 @@
     >
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutLaporan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="18dp"
@@ -47,7 +48,7 @@
             app:layout_constraintTop_toBottomOf="@+id/namaPelapor" />
 
         <TextView
-            android:id="@+id/jamLaporan"
+            android:id="@+id/statusLaporan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat_medium"

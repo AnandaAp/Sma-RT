@@ -206,7 +206,7 @@ class HomeWarga : Fragment(), InformasiInterface, DompetKeluargaInterface, Warga
     }
 
     override fun onGetInfoTerkiniFailure(message: String) {
-        TODO("Not yet implemented")
+        Toast.makeText(requireContext(),message, Toast.LENGTH_LONG).show()
     }
 
     override fun onGetKegiatanSuccess(result: List<GetAllInformasiItem>) {
@@ -214,7 +214,7 @@ class HomeWarga : Fragment(), InformasiInterface, DompetKeluargaInterface, Warga
     }
 
     override fun onGetKegiatanFailure(message: String) {
-        TODO("Not yet implemented")
+        Toast.makeText(requireContext(),message, Toast.LENGTH_LONG).show()
     }
 
     override fun onUpdateInformasiSuccess(message: String) {

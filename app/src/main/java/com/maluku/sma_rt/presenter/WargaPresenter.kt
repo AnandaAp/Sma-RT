@@ -25,7 +25,6 @@ import retrofit2.Response
 import org.json.JSONObject
 import retrofit2.awaitResponse
 
-
 private const val TAG = "WARGA PRESENTER"
 class WargaPresenter(private val activity: Activity, private val view: WargaInterface) {
 
@@ -184,7 +183,7 @@ class WargaPresenter(private val activity: Activity, private val view: WargaInte
             } else {
                 val jObjError = JSONObject(response.errorBody()!!.string())
                 val message = jObjError.getString("message")
-                view.onGetDataFailure(message)
+                view.onUpdateFailure(message)
             }
         }
     }
