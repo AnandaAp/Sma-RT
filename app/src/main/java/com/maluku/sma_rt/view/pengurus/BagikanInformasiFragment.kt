@@ -101,11 +101,6 @@ class BagikanInformasiFragment : Fragment(), InformasiInterface {
         gambarInformasi = fileName
         val storageReference = FirebaseStorage.getInstance().getReference("images/$fileName")
         storageReference.putFile(imageUri!!)
-            .addOnSuccessListener {
-                Toast.makeText(requireContext(),"Upload gambar sukses!",Toast.LENGTH_LONG).show()
-            }.addOnFailureListener {
-                Toast.makeText(requireContext(),"Upload gambar gagal!",Toast.LENGTH_LONG).show()
-            }
     }
 
     private fun lokasiFocusListener() {

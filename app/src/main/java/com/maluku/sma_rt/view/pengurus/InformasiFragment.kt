@@ -1,11 +1,13 @@
 package com.maluku.sma_rt.view.pengurus
 
 import android.os.Bundle
+import android.os.Handler
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.view.doOnAttach
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.viewpager2.widget.ViewPager2
@@ -15,7 +17,6 @@ import com.maluku.sma_rt.R
 import com.maluku.sma_rt.view.pengurus.adapter.PagerAdapter
 
 class InformasiFragment : Fragment() {
-    private lateinit var viewPager: ViewPager2
     private var index = 0
 
     val args: InformasiFragmentArgs by navArgs()
@@ -29,19 +30,15 @@ class InformasiFragment : Fragment() {
     }
 
     private fun bindData() {
-        if (index != null){
-            index = args.idNav
-        }
+        index = args.idNav
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        bindData()
         val listFragment: ArrayList<Fragment> = arrayListOf(BagikanInformasiFragment(),InformasiMasukFragment())
         val tabLayout = view.findViewById<TabLayout>(R.id.tabLayoutInformasi)
-        viewPager = view.findViewById<ViewPager2>(R.id.vwInformasiPager)
-        val informasiAdapter = PagerAdapter(listFragment,this)
+        val viewPager = view.findViewById<ViewPager2>(R.id.vwInformasiPager)
+        var informasiAdapter = PagerAdapter(listFragment,this)
         viewPager.adapter = informasiAdapter
-        viewPager.currentItem = index
         TabLayoutMediator(tabLayout,viewPager){tab,position->
             when(position){
                 0->{
@@ -52,9 +49,18 @@ class InformasiFragment : Fragment() {
                 }
             }
         }.attach()
+        bindData()
+        viewPager.post {
+            viewPager.setCurrentItem(index, true)
+        }
+        back(view)
+    }
+
+    private fun back(view: View){
         val backBtn = view.findViewById<TextView>(R.id.btnBackInformasi)
         backBtn.setOnClickListener {
             findNavController().popBackStack()
         }
     }
+
 }

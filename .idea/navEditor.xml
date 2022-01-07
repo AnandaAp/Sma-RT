@@ -98,6 +98,30 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="detailLaporanList">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="256" />
+                            <option name="y" value="368" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="detailLaporanSaya">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="500" />
+                            <option name="y" value="12" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="detailPesananUser">
                     <value>
                       <LayoutPositions>
@@ -187,7 +211,7 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
-                            <entry key="action_homeWarga_to_laporanWarga">
+                            <entry key="action_homeWarga_to_laporanPage">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -331,6 +355,74 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="laporanList">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="12" />
+                            <option name="y" value="368" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_laporanList_to_detailLaporanList">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="laporanPage">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="12" />
+                            <option name="y" value="12" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_laporanPage_to_homeWarga">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_laporanPage_to_laporanWarga">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="laporanSaya">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="256" />
+                            <option name="y" value="12" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_laporanSaya_to_detailLaporanSaya">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="laporanWarga">
                     <value>
                       <LayoutPositions>
@@ -342,7 +434,7 @@
                         </option>
                         <option name="myPositions">
                           <map>
-                            <entry key="action_laporanWarga_to_homeWarga">
+                            <entry key="action_laporanWarga_to_laporanPage">
                               <value>
                                 <LayoutPositions />
                               </value>
