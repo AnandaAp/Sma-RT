@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="18dp"
             android:fontFamily="@font/montserrat_semibold"
-            android:text="Pak Agus"
+            android:text="Kevin Agustinus"
             android:textSize="20sp"
             app:layout_constraintStart_toEndOf="@+id/profileLaporanSaya"
             app:layout_constraintTop_toTopOf="@+id/profileLaporanSaya" />
