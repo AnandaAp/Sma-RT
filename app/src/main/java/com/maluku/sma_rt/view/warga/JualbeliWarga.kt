@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -106,7 +107,7 @@ class JualbeliWarga : Fragment(), WargaJualBeliInterface {
     }
 
     override fun onGetAllTokoFailure(message: String) {
-        TODO("Not yet implemented")
+        Toast.makeText(requireContext(),message, Toast.LENGTH_LONG).show()
     }
 
     override fun onGetAllProdukSuccess(result: List<GetAllProdukItem>) {
@@ -114,7 +115,7 @@ class JualbeliWarga : Fragment(), WargaJualBeliInterface {
     }
 
     override fun onGetAllProdukFailure(message: String) {
-        TODO("Not yet implemented")
+        Toast.makeText(requireContext(),message, Toast.LENGTH_LONG).show()
     }
 
 }

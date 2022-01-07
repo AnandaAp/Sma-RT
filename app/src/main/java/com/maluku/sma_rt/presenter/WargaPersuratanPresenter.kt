@@ -5,6 +5,7 @@ import com.maluku.sma_rt.view.viewInterface.WargaPersuratanInterface
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import org.json.JSONObject
 import retrofit2.awaitResponse
 
 class WargaPersuratanPresenter(private val view: WargaPersuratanInterface) {
@@ -19,7 +20,7 @@ class WargaPersuratanPresenter(private val view: WargaPersuratanInterface) {
             val response = RetrofitService
                 .getService()
                 .createWargaPersuratan(
-                    token,
+                    "Bearer ${token}",
                     judul,
                     penerima,
                     tanggal,
@@ -30,7 +31,8 @@ class WargaPersuratanPresenter(private val view: WargaPersuratanInterface) {
                 view.onCreateSuccess(message)
             }
             else{
-                val message = response.errorBody()!!.string()
+                val jObjError = JSONObject(response.errorBody()!!.string())
+                val message = jObjError.getString("message")
                 view.onCreateFailure(message)
             }
         }

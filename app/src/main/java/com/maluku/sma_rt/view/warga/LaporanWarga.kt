@@ -5,6 +5,8 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -193,7 +195,9 @@ class LaporanWarga : Fragment(), WargaAduanInterface {
     }
 
     override fun onCreateFailed(message: String) {
-        Toast.makeText(context,message, Toast.LENGTH_LONG).show()
+        Handler(Looper.getMainLooper()).post {
+            Toast.makeText(context,message, Toast.LENGTH_LONG).show()
+        }
     }
 
     override fun onUpdateSuccess(message: String) {
