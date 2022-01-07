@@ -41,6 +41,7 @@ class RecyclerViewLaporanList(
 
         holder.judul.text = data.judul
         holder.deskripsi.text = data.deskripsi
+        holder.status.text = data.status
 
         // Firebase Storage
         val storageRef = FirebaseStorage.getInstance().reference.child("aduan/${data.gambar}")
@@ -71,6 +72,7 @@ class RecyclerViewLaporanList(
     class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         var judul: TextView = itemView.findViewById(R.id.namaPelapor)
         var deskripsi: TextView = itemView.findViewById(R.id.isiLaporan)
+        var status: TextView = itemView.findViewById(R.id.statusLaporan)
         var gambar: ImageView = itemView.findViewById(R.id.profileLaporanSaya)
         var layout: ConstraintLayout = itemView.findViewById(R.id.layoutLaporan)
     }
