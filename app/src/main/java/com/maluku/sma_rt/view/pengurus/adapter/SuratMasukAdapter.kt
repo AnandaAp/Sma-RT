@@ -6,32 +6,16 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.maluku.sma_rt.R
+import com.maluku.sma_rt.model.informasi.GetAllInformasiItem
+import com.maluku.sma_rt.model.persuratan.GetAllPersuratanItem
+import com.maluku.sma_rt.model.tagihan.GetAllTagihanItem
 
-class SuratMasukAdapter: RecyclerView.Adapter<SuratMasukAdapter.ViewHolder>() {
-    private var judulSuratMasuk = arrayOf(
-        "Surat Keterangan SKCK",
-        "Surat Keterangan Penghasilan"
-    )
-
-    private var tujuanSuratMasuk = arrayOf(
-        "Bapak Irvan",
-        "Bapak Joko"
-    )
-
-    private var tanggalSuratMasuk = arrayOf(
-        "12 Agustus 2021",
-        "20 November 2021"
-    )
-
-    private var keperluanSuratMasuk = arrayOf(
-        "Membuat SKCK",
-        "Beasiswa"
-    )
-
-    private var statusSuratMasuk = arrayOf(
-        "Diajukan",
-        "Diterima"
-    )
+class SuratMasukAdapter(val listSuratMasuk: ArrayList<GetAllPersuratanItem>): RecyclerView.Adapter<SuratMasukAdapter.ViewHolder>() {
+    fun setData(data : List<GetAllPersuratanItem>){
+        listSuratMasuk.clear()
+        listSuratMasuk.addAll(data)
+        notifyDataSetChanged()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.list_surat_masuk,parent,false)
@@ -39,15 +23,16 @@ class SuratMasukAdapter: RecyclerView.Adapter<SuratMasukAdapter.ViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.judulSurat.text = judulSuratMasuk[position]
-        holder.keperluanSurat.text = keperluanSuratMasuk[position]
-        holder.statusSurat.text = statusSuratMasuk[position]
-        holder.tanggalSurat.text = tanggalSuratMasuk[position]
-        holder.tujuanSurat.text = tujuanSuratMasuk[position]
+        val data = listSuratMasuk[position]
+        holder.judulSurat.text = data.judul.toString()
+        holder.keperluanSurat.text = data.keperluan.toString()
+        holder.statusSurat.text = data.status.toString()
+        holder.tanggalSurat.text = data.tanggal.toString()
+        holder.tujuanSurat.text = data.penerima.toString()
     }
 
     override fun getItemCount(): Int {
-        return judulSuratMasuk.size
+        return listSuratMasuk.size
     }
 
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {

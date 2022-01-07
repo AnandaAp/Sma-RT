@@ -560,10 +560,10 @@ interface Service {
     get all data dengan dikelompokan berdasarkan status
     0=Tolak, 1=Terkirim, 2=Di Proses, 3=Selesai
     */
-    @GET("persuratan?status={status}")
+    @GET("persuratan")
     fun getAllPersuratanDataCategorically(
         @Header("Authorization") authHeader: String,
-        @Path("status") status: String
+        @Query("status") status: String
     ): Call<GetAllPersuratanResponse>
 
     @GET("persuratan/{id_surat}")

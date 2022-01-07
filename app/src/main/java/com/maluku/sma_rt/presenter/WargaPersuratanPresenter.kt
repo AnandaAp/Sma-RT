@@ -1,6 +1,8 @@
 package com.maluku.sma_rt.presenter
 
 import com.maluku.sma_rt.api.RetrofitService
+import com.maluku.sma_rt.model.keluarga.GetAllKeluargaWargaItem
+import com.maluku.sma_rt.model.persuratan.GetAllPersuratanItem
 import com.maluku.sma_rt.view.viewInterface.WargaPersuratanInterface
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -73,26 +75,28 @@ class WargaPersuratanPresenter(private val view: WargaPersuratanInterface) {
         terdapat 4 nilai pada status:
         ""=tanpa pengelompokan,0=Tolak, 1=Terkirim, 2=Di Proses, 3=Selesai
      */
-    fun getAllData(
+    fun getAllDataSurat(
         token: String,
-        status: String = ""
+        status: String? = null
     ){
         GlobalScope.launch(Dispatchers.IO){
             /* jika status tidak kosong, maka akan memanggil methode service
                 khusus pengelompokan
              */
-            if(status.isNotEmpty()){
+            if(!status.isNullOrEmpty()){
                 val response = RetrofitService
                     .getService()
                     .getAllPersuratanDataCategorically(
-                        token,status
+                        "Bearer $token",
+                        status
                     ).awaitResponse()
                 if(response.isSuccessful){
-                    val message = response.body()!!.message.toString()
-                    view.onGetDataSuccess(message)
+                    val result = response.body()?.getAllPersuratan as List<GetAllPersuratanItem>
+                    view.onGetDataSuccess(result)
                 }
                 else{
-                    val message = response.errorBody()!!.string()
+                    val jObjError = JSONObject(response.errorBody()!!.string())
+                    val message = jObjError.getString("message")
                     view.onGetDataFailure(message)
                 }
             }
@@ -103,11 +107,12 @@ class WargaPersuratanPresenter(private val view: WargaPersuratanInterface) {
                         token
                     ).awaitResponse()
                 if(response.isSuccessful){
-                    val message = response.body()!!.message.toString()
-                    view.onGetDataSuccess(message)
+                    val result = response.body()?.getAllPersuratan as List<GetAllPersuratanItem>
+                    view.onGetDataSuccess(result)
                 }
                 else{
-                    val message = response.errorBody()!!.string()
+                    val jObjError = JSONObject(response.errorBody()!!.string())
+                    val message = jObjError.getString("message")
                     view.onGetDataFailure(message)
                 }
             }
@@ -126,12 +131,13 @@ class WargaPersuratanPresenter(private val view: WargaPersuratanInterface) {
                     id_surat
                 ).awaitResponse()
             if(response.isSuccessful){
-                val message = response.body()!!.message.toString()
-                view.onGetDataSuccess(message)
+                val result = response.body()?.getPersuratanById
+                view.onGetDataByIDSuccess(result)
             }
             else{
-                val message = response.errorBody()!!.string()
-                view.onGetDataFailure(message)
+                val jObjError = JSONObject(response.errorBody()!!.string())
+                val message = jObjError.getString("message")
+                view.onGetDataByIDFailure(message)
             }
         }
     }
@@ -149,11 +155,12 @@ class WargaPersuratanPresenter(private val view: WargaPersuratanInterface) {
                 ).awaitResponse()
             if(response.isSuccessful){
                 val message = response.body()!!.message.toString()
-                view.onGetDataSuccess(message)
+                view.onDeleteSuccess(message)
             }
             else{
-                val message = response.errorBody()!!.string()
-                view.onGetDataFailure(message)
+                val jObjError = JSONObject(response.errorBody()!!.string())
+                val message = jObjError.getString("message")
+                view.onDeleteFailure(message)
             }
         }
     }

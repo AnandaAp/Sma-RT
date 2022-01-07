@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.maluku.sma_rt.R
 import com.maluku.sma_rt.databinding.FragmentManageBinding
@@ -33,7 +34,8 @@ class ManageFragment : Fragment() {
 
     private fun navigateManageToTambahInformasi(){
         binding.btnInformasi.setOnClickListener {
-            findNavController()!!.navigate(R.id.action_navigation_manage_to_informasiFragment)
+            val direction = ManageFragmentDirections.actionNavigationManageToInformasiFragment(0)
+            view!!.findNavController()!!.navigate(direction)
         }
     }
 

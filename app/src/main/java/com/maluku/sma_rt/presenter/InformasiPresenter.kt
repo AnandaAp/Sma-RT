@@ -286,7 +286,7 @@ class InformasiPresenter(private val view: InformasiInterface) {
                     id
                 ).awaitResponse()
             if (response.isSuccessful){
-                view.onDeleteInformasiSuccess("Berhasil memperbaharui informasi!")
+                view.onDeleteInformasiSuccess("Berhasil menghapus informasi!")
             } else {
                 val jObjError = JSONObject(response.errorBody()!!.string())
                 val message = jObjError.getString("message")

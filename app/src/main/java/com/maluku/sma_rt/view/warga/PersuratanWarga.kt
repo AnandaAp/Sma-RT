@@ -21,6 +21,8 @@ import com.google.android.material.datepicker.MaterialDatePicker
 import com.maluku.sma_rt.R
 import com.maluku.sma_rt.databinding.FragmentPersuratanWargaBinding
 import com.maluku.sma_rt.extentions.UserSession
+import com.maluku.sma_rt.model.persuratan.GetAllPersuratanItem
+import com.maluku.sma_rt.model.persuratan.GetPersuratanById
 import com.maluku.sma_rt.presenter.WargaAduanPresenter
 import com.maluku.sma_rt.presenter.WargaPersuratanPresenter
 import com.maluku.sma_rt.view.viewInterface.WargaPersuratanInterface
@@ -247,16 +249,22 @@ class PersuratanWarga : Fragment(), WargaPersuratanInterface {
         TODO("Not yet implemented")
     }
 
-    override fun onGetDataSuccess(message: String) {
-        Handler(Looper.getMainLooper()).post {
-            Toast.makeText(context,message, Toast.LENGTH_LONG).show()
-        }
+    override fun onGetDataSuccess(result: List<GetAllPersuratanItem>) {
+        TODO("Not yet implemented")
     }
 
     override fun onGetDataFailure(message: String) {
         Handler(Looper.getMainLooper()).post {
             Toast.makeText(context,message, Toast.LENGTH_LONG).show()
         }
+    }
+
+    override fun onGetDataByIDSuccess(data: GetPersuratanById?) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetDataByIDFailure(message: String) {
+        TODO("Not yet implemented")
     }
 
 
