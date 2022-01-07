@@ -295,6 +295,14 @@ class EditInformasiFragment : Fragment(), InformasiInterface {
         }
     }
 
+    override fun onDeleteInformasiSuccess(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onDeleteInformasiFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
     private fun navigateEditToDetailInformasiMasuk(){
         val direction = EditInformasiFragmentDirections.actionEditInformasiFragmentToDetailInformasiMasukFragment2(
             id

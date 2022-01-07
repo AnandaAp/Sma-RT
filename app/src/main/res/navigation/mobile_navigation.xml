@@ -160,6 +160,9 @@
         <action
             android:id="@+id/action_informasiFragment_to_informasiMasukFragment"
             app:destination="@id/informasiMasukFragment" />
+        <argument
+            android:name="idNav"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/kasFragment"
@@ -319,15 +322,16 @@
         <action
             android:id="@+id/action_detailInformasiMasukFragment_to_informasiMasukFragment"
             app:destination="@id/informasiMasukFragment" />
-        <argument
-            android:name="id_informasi"
-            app:argType="string" />
         <action
             android:id="@+id/action_detailInformasiMasukFragment_to_navigation_home"
             app:destination="@id/navigation_home" />
         <action
             android:id="@+id/action_detailInformasiMasukFragment_to_editInformasiFragment"
             app:destination="@id/editInformasiFragment" />
+        <action
+            android:id="@+id/action_detailInformasiMasukFragment_to_informasiFragment"
+            app:destination="@id/informasiFragment" />
+        <argument android:name="idInformasi" />
     </fragment>
     <fragment
         android:id="@+id/informasiMasukFragment"

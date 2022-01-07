@@ -116,6 +116,14 @@ class GaleriKegiatanRTFragment : Fragment(), InformasiInterface {
         TODO("Not yet implemented")
     }
 
+    override fun onDeleteInformasiSuccess(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onDeleteInformasiFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
     private fun back(){
         binding.btnBack.setOnClickListener {
             findNavController().popBackStack()

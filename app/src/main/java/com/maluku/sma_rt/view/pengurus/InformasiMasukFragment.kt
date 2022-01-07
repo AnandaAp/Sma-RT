@@ -112,4 +112,12 @@ class InformasiMasukFragment : Fragment(), InformasiInterface{
         TODO("Not yet implemented")
     }
 
+    override fun onDeleteInformasiSuccess(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onDeleteInformasiFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
 }

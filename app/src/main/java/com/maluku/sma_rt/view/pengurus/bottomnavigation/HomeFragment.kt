@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -28,6 +29,7 @@ import com.maluku.sma_rt.presenter.AdminRTProfilePresenter
 import com.maluku.sma_rt.presenter.DompetRTPresenter
 import com.maluku.sma_rt.presenter.InformasiPresenter
 import com.maluku.sma_rt.view.activity.MainActivity
+import com.maluku.sma_rt.view.pengurus.DetailInformasiMasukFragmentDirections
 import com.maluku.sma_rt.view.pengurus.adapter.GaleriAdapter
 import com.maluku.sma_rt.view.pengurus.adapter.InfoAdapter
 import com.maluku.sma_rt.view.viewInterface.AdminRTProfileInterface
@@ -106,7 +108,8 @@ class HomeFragment : Fragment(), InformasiInterface, DompetRTInterface, AdminRTP
 
     private fun navigateDashboardToInformasi() {
         binding.btnInformasi.setOnClickListener{
-            findNavController()!!.navigate(R.id.action_navigation_home_to_informasiFragment)
+            val direction = HomeFragmentDirections.actionNavigationHomeToInformasiFragment(0)
+            view!!.findNavController()!!.navigate(direction)
         }
     }
 
@@ -177,6 +180,14 @@ class HomeFragment : Fragment(), InformasiInterface, DompetRTInterface, AdminRTP
     }
 
     override fun onUpdateInformasiFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onDeleteInformasiSuccess(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onDeleteInformasiFailure(message: String) {
         TODO("Not yet implemented")
     }
 

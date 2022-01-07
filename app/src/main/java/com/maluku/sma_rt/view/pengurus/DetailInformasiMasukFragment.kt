@@ -9,12 +9,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.google.firebase.storage.FirebaseStorage
+import com.maluku.sma_rt.R
 import com.maluku.sma_rt.databinding.FragmentDetailInformasiMasukBinding
 import com.maluku.sma_rt.extentions.UserSession
 import com.maluku.sma_rt.model.informasi.GetAllInformasiItem
@@ -39,6 +41,7 @@ class DetailInformasiMasukFragment : Fragment(), InformasiInterface {
         super.onViewCreated(view, savedInstanceState)
         bindData()
         navigateDetailToEditInformasi()
+        deleteInformasi()
     }
 
     private fun bindData() {
@@ -92,11 +95,17 @@ class DetailInformasiMasukFragment : Fragment(), InformasiInterface {
     }
 
     private fun navigateDetailToEditInformasi(){
-        binding.button5.setOnClickListener {
+        binding.btnToEditInformasi.setOnClickListener {
             val direction = DetailInformasiMasukFragmentDirections.actionDetailInformasiMasukFragmentToEditInformasiFragment(
                 judulInformasi!!,kategoriInformasi!!,lokasiInformasi!!,detailInformasi!!,gambarInformasi!!, idInformasi
             )
             view!!.findNavController()!!.navigate(direction)
+        }
+    }
+
+    private fun deleteInformasi(){
+        binding.btnHapusInformasi.setOnClickListener {
+            InformasiPresenter(this).deleteInformasi(getToken(), idInformasi)
         }
     }
 
@@ -148,7 +157,6 @@ class DetailInformasiMasukFragment : Fragment(), InformasiInterface {
         if (context != null){
             Toast.makeText(requireContext(),"Pesan: $message",Toast.LENGTH_SHORT).show()
         }
-
     }
 
     override fun onGetInfoTerkiniSuccess(result: List<GetAllInformasiItem>) {
@@ -173,6 +181,20 @@ class DetailInformasiMasukFragment : Fragment(), InformasiInterface {
 
     override fun onUpdateInformasiFailure(message: String) {
         TODO("Not yet implemented")
+    }
+
+    override fun onDeleteInformasiSuccess(message: String) {
+        if (context != null){
+            Toast.makeText(requireContext(),"Pesan: $message",Toast.LENGTH_SHORT).show()
+            val direction = DetailInformasiMasukFragmentDirections.actionDetailInformasiMasukFragmentToInformasiFragment(1)
+            view!!.findNavController()!!.navigate(direction)
+        }
+    }
+
+    override fun onDeleteInformasiFailure(message: String) {
+        if (context != null){
+            Toast.makeText(requireContext(),"Pesan: $message",Toast.LENGTH_SHORT).show()
+        }
     }
 
 }

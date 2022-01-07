@@ -188,7 +188,7 @@
     </androidx.cardview.widget.CardView>
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/btnHapusInformasi"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
@@ -202,17 +202,17 @@
         app:layout_constraintVertical_bias="0.032" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/btnToEditInformasi"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:text="Edit"
         android:backgroundTint="@color/green"
         android:textColor="@color/white"
         android:background="@drawable/btn_rounded"
-        app:layout_constraintBottom_toBottomOf="@+id/button3"
+        app:layout_constraintBottom_toBottomOf="@+id/btnHapusInformasi"
         app:layout_constraintEnd_toEndOf="@+id/cardView12"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/button3"
-        app:layout_constraintTop_toTopOf="@+id/button3"
+        app:layout_constraintStart_toEndOf="@+id/btnHapusInformasi"
+        app:layout_constraintTop_toTopOf="@+id/btnHapusInformasi"
         app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>

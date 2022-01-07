@@ -273,4 +273,25 @@ class InformasiPresenter(private val view: InformasiInterface) {
             }
         }
     }
+
+    fun deleteInformasi(
+        token: String,
+        id: String
+    ) {
+        GlobalScope.launch(Dispatchers.Main){
+            val response = RetrofitService
+                .getService()
+                .deleteInformasi(
+                    "Bearer $token",
+                    id
+                ).awaitResponse()
+            if (response.isSuccessful){
+                view.onDeleteInformasiSuccess("Berhasil memperbaharui informasi!")
+            } else {
+                val jObjError = JSONObject(response.errorBody()!!.string())
+                val message = jObjError.getString("message")
+                view.onDeleteInformasiFailure(message)
+            }
+        }
+    }
 }

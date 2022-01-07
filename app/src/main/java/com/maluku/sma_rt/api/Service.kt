@@ -336,7 +336,6 @@ interface Service {
     ): Call<UpdateInformasiResponse>
 
     //delete
-    @FormUrlEncoded
     @DELETE("informasi/{id}")
     fun deleteInformasi(
         @Header("Authorization") authHeader: String,

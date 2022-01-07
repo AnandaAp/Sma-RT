@@ -234,6 +234,14 @@ class BagikanInformasiFragment : Fragment(), InformasiInterface {
         TODO("Not yet implemented")
     }
 
+    override fun onDeleteInformasiSuccess(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onDeleteInformasiFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
     private fun getToken(): String {
         val preferences = UserSession(requireActivity())
         val token = preferences.getValueString(UserSession.SHARED_PREFERENCE_TOKEN_KEY)

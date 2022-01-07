@@ -225,6 +225,14 @@ class HomeWarga : Fragment(), InformasiInterface, DompetKeluargaInterface, Warga
         TODO("Not yet implemented")
     }
 
+    override fun onDeleteInformasiSuccess(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onDeleteInformasiFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
     private fun toRupiah(number: Double): String{
         val localeID =  Locale("in", "ID")
         val numberFormat = NumberFormat.getCurrencyInstance(localeID)
