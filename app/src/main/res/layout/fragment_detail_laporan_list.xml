@@ -44,7 +44,7 @@
             android:id="@+id/imageButton2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="20"
+            android:layout_margin="20dp"
             android:background="@android:color/transparent"
             android:src="@drawable/ic_hapus"
             app:layout_constraintEnd_toEndOf="parent"
