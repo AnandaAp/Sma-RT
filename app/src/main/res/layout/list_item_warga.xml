@@ -32,7 +32,7 @@
                 app:layout_constraintHorizontal_bias="0.051"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:src="@drawable/icon_user"
+                android:src="@drawable/default_image_profile"
                 app:civ_border_color="#000"
                 app:civ_border_width="2dp" />
 

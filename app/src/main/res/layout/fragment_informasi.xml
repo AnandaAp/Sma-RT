@@ -47,6 +47,7 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.appbar.CollapsingToolbarLayout>
+
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayoutInformasi"
         android:layout_width="match_parent"
@@ -56,8 +57,14 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar_informasi"
-        app:layout_constraintVertical_bias="0.001">
-    </com.google.android.material.tabs.TabLayout>
+        app:layout_constraintVertical_bias="0.0"
+        app:tabIndicator="@drawable/tab_indicator2"
+        app:tabIndicatorAnimationMode="linear"
+        app:tabIndicatorColor="@color/green"
+        app:tabIndicatorGravity="stretch"
+        app:tabSelectedTextColor="@color/white"
+        app:tabTextAppearance="@style/tab_text"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/vwInformasiPager"
