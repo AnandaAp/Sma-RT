@@ -7,7 +7,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.maluku.sma_rt.R
 import com.maluku.sma_rt.view.warga.InformasiWargaDirections
-import com.maluku.sma_rt.view.warga.LaporanSayaDirections
+import com.maluku.sma_rt.view.warga.LaporanPageDirections
 
 class RecyclerViewLaporanSaya: RecyclerView.Adapter<RecyclerViewLaporanSaya.MyViewHolder>() {
 
@@ -19,8 +19,8 @@ class RecyclerViewLaporanSaya: RecyclerView.Adapter<RecyclerViewLaporanSaya.MyVi
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.itemView.setOnClickListener { view ->
-            val direction = LaporanSayaDirections
-                .actionLaporanSayaToDetailLaporanSaya()
+            val direction = LaporanPageDirections
+                .actionLaporanPageToDetailLaporanSaya()
             view.findNavController().navigate(direction)
         }
 

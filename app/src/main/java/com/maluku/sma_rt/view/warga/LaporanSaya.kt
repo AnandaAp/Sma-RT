@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.maluku.sma_rt.R
@@ -35,6 +36,7 @@ class LaporanSaya : Fragment(), WargaAduanInterface {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setRecyclerViewLaporanSaya()
+        fabAddLaporan()
     }
 
     private fun setRecyclerViewLaporanSaya() {
@@ -43,6 +45,12 @@ class LaporanSaya : Fragment(), WargaAduanInterface {
         rvLaporanSaya.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL,false)
         adapterLaporanSaya = RecyclerViewLaporanSaya()
         rvLaporanSaya.adapter = adapterLaporanSaya
+    }
+
+    private fun fabAddLaporan() {
+        binding.addLaporan.setOnClickListener {
+            findNavController().navigate(R.id.action_laporanPage_to_laporanWarga)
+        }
     }
 
 

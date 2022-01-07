@@ -58,9 +58,10 @@ class RecyclerViewInformasiWarga(
         }
 
 
-        holder.itemView.setOnClickListener { view ->
+        holder.layout.setOnClickListener { view ->
             val direction = InformasiWargaDirections
-                .actionInformasiWargaToDetailInformasiBerita()
+                .actionInformasiWargaToDetailInformasiBerita(
+                )
             view.findNavController().navigate(direction)
         }
 

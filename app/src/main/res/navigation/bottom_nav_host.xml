@@ -381,6 +381,12 @@
         <action
             android:id="@+id/action_laporanPage_to_laporanWarga"
             app:destination="@id/laporanWarga" />
+        <action
+            android:id="@+id/action_laporanPage_to_detailLaporanList"
+            app:destination="@id/detailLaporanList" />
+        <action
+            android:id="@+id/action_laporanPage_to_detailLaporanSaya"
+            app:destination="@id/detailLaporanSaya" />
     </fragment>
     <fragment
         android:id="@+id/laporanWarga"
@@ -397,23 +403,10 @@
         android:label="fragment_detail_laporan_saya"
         tools:layout="@layout/fragment_detail_laporan_saya" />
     <fragment
-        android:id="@+id/laporanSaya"
-        android:name="com.maluku.sma_rt.view.warga.LaporanSaya"
-        android:label="fragment_laporan_saya"
-        tools:layout="@layout/fragment_laporan_saya" >
-        <action
-            android:id="@+id/action_laporanSaya_to_detailLaporanSaya"
-            app:destination="@id/detailLaporanSaya" />
-    </fragment>
-    <fragment
         android:id="@+id/laporanList"
         android:name="com.maluku.sma_rt.view.warga.LaporanList"
         android:label="fragment_laporan_list"
-        tools:layout="@layout/fragment_laporan_list" >
-        <action
-            android:id="@+id/action_laporanList_to_detailLaporanList"
-            app:destination="@id/detailLaporanList" />
-    </fragment>
+        tools:layout="@layout/fragment_laporan_list" />
     <fragment
         android:id="@+id/detailLaporanList"
         android:name="com.maluku.sma_rt.view.warga.DetailLaporanList"

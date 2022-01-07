@@ -38,7 +38,6 @@ class LaporanList : Fragment(), WargaAduanInterface {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         WargaAduanPresenter(this).getAllDataAduan(getToken())
-        fabAddLaporan()
         setRecyclerViewLaporanList()
     }
 
@@ -59,11 +58,7 @@ class LaporanList : Fragment(), WargaAduanInterface {
         rvLaporanList.adapter = adapterLaporanList
     }
 
-    private fun fabAddLaporan() {
-        binding.addLaporan.setOnClickListener {
-            findNavController().navigate(R.id.action_laporanPage_to_laporanWarga)
-        }
-    }
+
 
 
 

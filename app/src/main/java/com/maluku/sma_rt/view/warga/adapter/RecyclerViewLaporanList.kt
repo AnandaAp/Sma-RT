@@ -18,7 +18,7 @@ import com.google.firebase.storage.FirebaseStorage
 import com.maluku.sma_rt.R
 import com.maluku.sma_rt.model.aduan.GetAllAduanItem
 import com.maluku.sma_rt.model.informasi.GetAllInformasiItem
-import com.maluku.sma_rt.view.warga.LaporanListDirections
+import com.maluku.sma_rt.view.warga.LaporanPageDirections
 import java.io.File
 
 class RecyclerViewLaporanList(
@@ -39,13 +39,13 @@ class RecyclerViewLaporanList(
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val data = listLaporan[position]
 
-        holder.judul.text = data.judul
-        holder.deskripsi.text = data.deskripsi
-        holder.status.text = data.status
+        holder.judul.text = data.judul.toString()
+        holder.deskripsi.text = data.deskripsi.toString()
+        holder.status.text = data.status.toString()
 
-        // Firebase Storage
+        //Firebase Storage
         val storageRef = FirebaseStorage.getInstance().reference.child("aduan/${data.gambar}")
-        Log.d(ContentValues.TAG,"Adapter get ref image: $storageRef")
+        Log.d(ContentValues.TAG,"Adapter get ref image   : $storageRef")
         val localFile = File.createTempFile("tempFile","jpg")
         storageRef.getFile(localFile).addOnSuccessListener {
             Glide.with(holder.itemView)
@@ -57,8 +57,9 @@ class RecyclerViewLaporanList(
         }
 
         holder.itemView.setOnClickListener { view ->
-            val direction = LaporanListDirections
-                .actionLaporanListToDetailLaporanList()
+            val direction = LaporanPageDirections
+                .actionLaporanPageToDetailLaporanList(
+                )
             view.findNavController().navigate(direction)
         }
 
@@ -70,10 +71,9 @@ class RecyclerViewLaporanList(
     }
 
     class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-        var judul: TextView = itemView.findViewById(R.id.namaPelapor)
+        var judul: TextView = itemView.findViewById(R.id.judulLaporan)
         var deskripsi: TextView = itemView.findViewById(R.id.isiLaporan)
-        var status: TextView = itemView.findViewById(R.id.statusLaporan)
-        var gambar: ImageView = itemView.findViewById(R.id.profileLaporanSaya)
-        var layout: ConstraintLayout = itemView.findViewById(R.id.layoutLaporan)
+        var status: TextView = itemView.findViewById(R.id.jamLaporan)
+        var gambar: ImageView = itemView.findViewById(R.id.buktiLaporan)
     }
 }

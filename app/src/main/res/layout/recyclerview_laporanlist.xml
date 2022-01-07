@@ -3,11 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    >
+    android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/layoutLaporan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="18dp"
@@ -16,8 +14,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/profileLaporanSaya"
+        <ImageView
+            android:id="@+id/buktiLaporan"
             android:layout_width="52dp"
             android:layout_height="52dp"
             android:scaleType="centerCrop"
@@ -27,15 +25,15 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/namaPelapor"
+            android:id="@+id/judulLaporan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="18dp"
             android:fontFamily="@font/montserrat_semibold"
-            android:text="Kevin Agustinus"
+            android:text="Anonymous"
             android:textSize="20sp"
-            app:layout_constraintStart_toEndOf="@+id/profileLaporanSaya"
-            app:layout_constraintTop_toTopOf="@+id/profileLaporanSaya" />
+            app:layout_constraintStart_toEndOf="@+id/buktiLaporan"
+            app:layout_constraintTop_toTopOf="@+id/buktiLaporan" />
 
         <TextView
             android:id="@+id/isiLaporan"
@@ -44,20 +42,20 @@
             android:fontFamily="@font/montserrat_regular"
             android:text="Didepan rumah sering terdengar..."
             android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="@+id/namaPelapor"
-            app:layout_constraintTop_toBottomOf="@+id/namaPelapor" />
+            app:layout_constraintStart_toStartOf="@+id/judulLaporan"
+            app:layout_constraintTop_toBottomOf="@+id/judulLaporan" />
 
         <TextView
-            android:id="@+id/statusLaporan"
+            android:id="@+id/jamLaporan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat_medium"
-            android:text="Belum terbaca"
+            android:text="17.50 PM"
             android:textColor="@color/grey"
             android:textSize="12sp"
-            app:layout_constraintBottom_toBottomOf="@+id/namaPelapor"
+            app:layout_constraintBottom_toBottomOf="@+id/judulLaporan"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/namaPelapor" />
+            app:layout_constraintTop_toTopOf="@+id/judulLaporan" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <View
