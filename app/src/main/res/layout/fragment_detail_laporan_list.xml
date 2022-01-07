@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".view.warga.DetailLaporanList">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/toolbar_laporanpage"
@@ -37,7 +38,6 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar_laporanpage">
 
         <de.hdodenhof.circleimageview.CircleImageView
@@ -58,7 +58,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="8dp"
             android:fontFamily="@font/montserrat_semibold"
-            android:text="Anonymous"
+            android:text="Kevin Agustinus"
             android:textSize="20sp"
             app:layout_constraintStart_toEndOf="@+id/profileLaporanSaya"
             app:layout_constraintTop_toTopOf="@+id/profileLaporanSaya" />
@@ -92,11 +92,11 @@
             android:id="@+id/textlayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:layout_marginTop="40dp"
             android:layout_marginStart="20dp"
+            android:layout_marginTop="40dp"
             android:layout_marginEnd="20dp"
             android:background="@drawable/bg_edtext_border"
+            android:padding="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/judulLaporan">
@@ -122,7 +122,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/foto_agustusan"/>
+                    android:src="@drawable/foto_agustusan" />
 
 
             </androidx.cardview.widget.CardView>
@@ -130,5 +130,6 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

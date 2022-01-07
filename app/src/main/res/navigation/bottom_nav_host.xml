@@ -391,4 +391,32 @@
             android:id="@+id/action_laporanWarga_to_laporanPage"
             app:destination="@id/laporanPage" />
     </fragment>
+    <fragment
+        android:id="@+id/detailLaporanSaya"
+        android:name="com.maluku.sma_rt.view.warga.DetailLaporanSaya"
+        android:label="fragment_detail_laporan_saya"
+        tools:layout="@layout/fragment_detail_laporan_saya" />
+    <fragment
+        android:id="@+id/laporanSaya"
+        android:name="com.maluku.sma_rt.view.warga.LaporanSaya"
+        android:label="fragment_laporan_saya"
+        tools:layout="@layout/fragment_laporan_saya" >
+        <action
+            android:id="@+id/action_laporanSaya_to_detailLaporanSaya"
+            app:destination="@id/detailLaporanSaya" />
+    </fragment>
+    <fragment
+        android:id="@+id/laporanList"
+        android:name="com.maluku.sma_rt.view.warga.LaporanList"
+        android:label="fragment_laporan_list"
+        tools:layout="@layout/fragment_laporan_list" >
+        <action
+            android:id="@+id/action_laporanList_to_detailLaporanList"
+            app:destination="@id/detailLaporanList" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailLaporanList"
+        android:name="com.maluku.sma_rt.view.warga.DetailLaporanList"
+        android:label="fragment_detail_laporan_list"
+        tools:layout="@layout/fragment_detail_laporan_list" />
 </navigation>
