@@ -168,7 +168,7 @@
                                     android:layout_gravity="center"
                                     android:layout_marginStart="20dp"
                                     android:fontFamily="@font/montserrat_medium"
-                                    android:text="Transfer Bank"
+                                    android:text="Bayar dengan saldo"
                                     android:textSize="18sp" />
 
                                 <View
