@@ -32,29 +32,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <Switch
-                android:id="@+id/sw_statustoko"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:thumb="@drawable/bg_thumb"
-                android:track="@drawable/bg_track"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/tv_statustoko"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:text="Status Toko"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:textColor="@color/green"
-                android:fontFamily="@font/montserrat_extrabold"
-                app:layout_constraintBottom_toBottomOf="@+id/sw_statustoko"
-                app:layout_constraintEnd_toStartOf="@+id/sw_statustoko"
-                app:layout_constraintTop_toTopOf="@+id/sw_statustoko" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
