@@ -460,6 +460,13 @@ interface Service {
         @Header("Authorization") authHeader: String
     ): Call<GetAllOrderResponse>
 
+    // Get All Toko Order
+    @GET("order/toko")
+    fun getAllTokoOrder(
+        @Header("Authorization") authHeader: String,
+        @Query("status") status: String?
+    ): Call<GetAllOrderResponse>
+
     // Order Diproses
     @PUT("order/proses/{id_order}")
     fun prosesOrder(

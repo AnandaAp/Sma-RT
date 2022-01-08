@@ -99,6 +99,27 @@ class OrderPresenter(private val view: OrderInterface) {
         }
     }
 
+    fun getAllTokoOrder(
+        token: String,
+        status: String? = null
+    ) {
+        GlobalScope.launch(Dispatchers.IO){
+            val res = RetrofitService
+                .getService()
+                .getAllTokoOrder("Bearer $token",status)
+                .awaitResponse()
+            if(res.isSuccessful){
+                val result = res.body()?.getAllOrder as List<GetAllOrderItem>
+                view.onGetAllOrderSuccess(result)
+            }
+            else{
+                val jObjError = JSONObject(res.errorBody()!!.string())
+                val message = jObjError.getString("message")
+                view.onGetAllOrderFailure(message)
+            }
+        }
+    }
+
     fun prosesOrder(
         token: String,
         idOrder: String
