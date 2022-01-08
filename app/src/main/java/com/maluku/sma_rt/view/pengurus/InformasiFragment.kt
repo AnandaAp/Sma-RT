@@ -45,7 +45,7 @@ class InformasiFragment : Fragment() {
                     tab.text = "Bagikan Informasi"
                 }
                 1->{
-                    tab.text = "Informasi Masuk"
+                    tab.text = "Daftar Informasi"
                 }
             }
         }.attach()
