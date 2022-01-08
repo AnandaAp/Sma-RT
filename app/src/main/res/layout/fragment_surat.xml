@@ -64,8 +64,7 @@
         app:tabIndicatorGravity="stretch"
         app:tabRippleColor="@android:color/transparent"
         app:tabSelectedTextColor="@color/white"
-        app:tabTextAppearance="@style/tab_text"
-        app:tabTextColor="@color/black" />
+        app:tabTextAppearance="@style/tab_text" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/vwSuratPager"

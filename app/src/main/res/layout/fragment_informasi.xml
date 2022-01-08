@@ -62,6 +62,7 @@
         app:tabIndicatorAnimationMode="linear"
         app:tabIndicatorColor="@color/green"
         app:tabIndicatorGravity="stretch"
+        app:tabRippleColor="@android:color/transparent"
         app:tabSelectedTextColor="@color/white"
         app:tabTextAppearance="@style/tab_text"
         tools:ignore="SpeakableTextPresentCheck" />
