@@ -1,5 +1,8 @@
 package com.maluku.sma_rt.api
 
+import com.maluku.sma_rt.api.notification.Constants
+import com.maluku.sma_rt.api.notification.PushNotification
+import com.maluku.sma_rt.api.notification.SendNotification
 import com.maluku.sma_rt.model.aduan.CreateAduanResponse
 import com.maluku.sma_rt.model.aduan.GetAduanByIDResponse
 import com.maluku.sma_rt.model.aduan.GetAllAduanResponse
@@ -29,7 +32,9 @@ import com.maluku.sma_rt.model.tagihan.CreateTagihanResponse
 import com.maluku.sma_rt.model.tagihan.GetAllTagihanResponse
 import com.maluku.sma_rt.model.updateanddelete.OnDataResponse
 import com.maluku.sma_rt.model.warga.*
+import okhttp3.ResponseBody
 import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.*
 import retrofit2.http.GET
 
@@ -578,4 +583,12 @@ interface Service {
         @Header("Authorization") authHeader: String,
         @Path("id_surat") id_surat: String
     ): Call<GetPersuratanByIDResponse>
+
+    // Push Notification API
+    @Headers("Authorization: key=${Constants.SERVER_KEY}", "Content-Type: ${Constants.CONTENT_TYPE}")
+    @POST("fcm/send")
+    fun postNotification(
+        @Body notification: SendNotification,
+    ): Response<ResponseBody>
+
 }
