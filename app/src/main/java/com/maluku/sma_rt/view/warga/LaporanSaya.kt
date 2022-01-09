@@ -24,6 +24,7 @@ class LaporanSaya : Fragment(), WargaAduanInterface {
     private lateinit var rvLaporanSaya: RecyclerView
     private lateinit var adapterLaporanSaya: RecyclerViewLaporanSaya
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
