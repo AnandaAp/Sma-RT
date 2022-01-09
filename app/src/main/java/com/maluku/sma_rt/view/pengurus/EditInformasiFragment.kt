@@ -62,6 +62,7 @@ class EditInformasiFragment : Fragment(), InformasiInterface {
         )
         pickImage(getImage)
         saveInformasi()
+        back()
     }
 
     private fun bindData() {
@@ -85,6 +86,12 @@ class EditInformasiFragment : Fragment(), InformasiInterface {
     private fun bindingView(): View? {
         binding = FragmentEditInformasiBinding.inflate(layoutInflater)
         return binding.root
+    }
+
+    private fun back(){
+        binding.btnBack.setOnClickListener {
+            findNavController()!!.popBackStack()
+        }
     }
 
     private fun setEditDataInformasi() {

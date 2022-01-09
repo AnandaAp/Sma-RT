@@ -27,6 +27,11 @@ class GantiPasswordRTFragment : Fragment(), AdminRTPasswordInterface {
         passBaruFocusListener()
         confirmPassFocusListener()
         gantiPassword()
+        back()
+        batal()
+    }
+
+    private fun batal() {
         binding.btnBatal.setOnClickListener {
             findNavController().popBackStack()
         }
@@ -159,6 +164,12 @@ class GantiPasswordRTFragment : Fragment(), AdminRTPasswordInterface {
 
     private fun navigateGantiPassToAkun(){
         findNavController().navigate(R.id.action_gantiPasswordRTFragment_to_navigation_profil)
+    }
+
+    private fun back(){
+        binding.btnBack.setOnClickListener {
+            findNavController().popBackStack()
+        }
     }
 
 }

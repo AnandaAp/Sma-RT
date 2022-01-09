@@ -3,6 +3,8 @@ package com.maluku.sma_rt.view.pengurus.bottomnavigation
 import android.content.ContentValues
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -155,7 +157,9 @@ class HomeFragment : Fragment(), InformasiInterface, DompetRTInterface, AdminRTP
 
 
     override fun onGetInfoTerkiniSuccess(data: List<GetAllInformasiItem>) {
-        adapterInfo.setData(data as ArrayList<GetAllInformasiItem>)
+        Handler(Looper.getMainLooper()).post {
+            adapterInfo.setData(data)
+        }
     }
 
     override fun onGetInfoTerkiniFailure(message: String) {
@@ -164,9 +168,10 @@ class HomeFragment : Fragment(), InformasiInterface, DompetRTInterface, AdminRTP
         }
     }
 
-
     override fun onGetKegiatanSuccess(data: List<GetAllInformasiItem>) {
-        adapterGaleri.setData(data as ArrayList<GetAllInformasiItem>)
+        Handler(Looper.getMainLooper()).post {
+            adapterGaleri.setData(data)
+        }
     }
 
     override fun onGetKegiatanFailure(message: String) {
@@ -192,7 +197,9 @@ class HomeFragment : Fragment(), InformasiInterface, DompetRTInterface, AdminRTP
     }
 
     override fun onGetAllDataSuccess(result: GetDompetById?) {
-        binding.tvTotalKasRT.text = rupiah(result?.jumlah.toString().toDouble())
+        Handler(Looper.getMainLooper()).post {
+            binding.tvTotalKasRT.text = rupiah(result?.jumlah.toString().toDouble())
+        }
     }
 
     override fun onGetAllDataFailure(message: String) {

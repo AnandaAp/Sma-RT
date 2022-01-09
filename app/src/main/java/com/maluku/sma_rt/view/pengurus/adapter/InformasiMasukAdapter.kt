@@ -39,9 +39,19 @@ class InformasiMasukAdapter(val listInformasi: ArrayList<GetAllInformasiItem>): 
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val data = listInformasi[position]
-        holder.judulInformasi.text = data.judul.toString()
+        val judul = data.judul.toString()
+        val lokasi = data.lokasi.toString()
+        val lengthJudul = 17
+        val lengthLokasi = 17
+        if (judul.length > lengthJudul)
+            holder.judulInformasi.text = judul.substring(0, lengthJudul - 3) + "..."
+        else
+            holder.judulInformasi.text = judul
+        if (lokasi.length > lengthLokasi)
+            holder.lokasiInformasi.text = lokasi.substring(0, lengthLokasi - 3) + "..."
+        else
+            holder.lokasiInformasi.text = lokasi
         holder.tanggalInformasi.text = tglIndonesia(splitDate(data.createdAt.toString()))
-        holder.lokasiInformasi.text = data.lokasi.toString()
 
         // Firebase Storage
         val storageRef = FirebaseStorage.getInstance().reference.child("images/${data.gambar}")

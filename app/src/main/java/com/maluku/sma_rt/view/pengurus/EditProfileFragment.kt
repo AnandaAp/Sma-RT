@@ -57,6 +57,7 @@ class EditProfileFragment : Fragment(), AdminRTProfileInterface {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        back()
         bindData()
         namaFocusListener()
         emailFocusListener()
@@ -70,6 +71,10 @@ class EditProfileFragment : Fragment(), AdminRTProfileInterface {
         )
         pickImage(getImage)
         savePengurusProfil()
+        batalEdit()
+    }
+
+    private fun batalEdit() {
         binding.btnBatalEdit.setOnClickListener {
             navigateEditProfilToAccount()
         }
@@ -270,6 +275,12 @@ class EditProfileFragment : Fragment(), AdminRTProfileInterface {
 
     private fun navigateEditProfilToAccount() {
         findNavController()!!.popBackStack()
+    }
+
+    private fun back(){
+        binding.btnBack.setOnClickListener {
+            findNavController()!!.popBackStack()
+        }
     }
 
 }

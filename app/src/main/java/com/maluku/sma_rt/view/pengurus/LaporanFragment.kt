@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.maluku.sma_rt.databinding.FragmentLaporanBinding
@@ -33,12 +34,20 @@ class LaporanFragment : Fragment(), WargaAduanInterface {
         // Refresh Data Laporan
         onStart()
         setRecyclerViewLaporan()
+        back()
     }
 
     override fun onStart() {
         super.onStart()
         WargaAduanPresenter(this).getAllDataAduan(getToken())
     }
+
+    private fun back(){
+        binding.btnBack.setOnClickListener {
+            findNavController()!!.popBackStack()
+        }
+    }
+
 
     private fun setRecyclerViewLaporan() {
         if (context!=null){
