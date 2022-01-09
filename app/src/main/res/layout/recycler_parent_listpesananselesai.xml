@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -11,10 +11,10 @@
         android:layout_margin="20dp"
         android:background="@drawable/bg_edtext_grey"
         android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="20dp">
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -55,7 +55,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_childlistpesanan"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content" />
 
         <View
             android:layout_width="match_parent"
@@ -96,10 +96,10 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="20dp"
             android:layout_marginStart="10dp"
+            android:layout_marginTop="30dp"
             android:layout_marginEnd="10dp"
+            android:layout_marginBottom="20dp"
             android:orientation="horizontal">
 
 
@@ -107,21 +107,20 @@
                 android:id="@+id/btn_pesananselesai"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:padding="10dp"
-                android:layout_marginEnd="16dp"
                 android:layout_marginStart="16dp"
-                android:background="@drawable/btn_tolak">
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/btn_tolak"
+                android:gravity="center"
+                android:padding="10dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Pesanan Selesai"
                     android:layout_gravity="center"
-                    android:textSize="18sp"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:text="Pesanan Selesai"
                     android:textColor="@color/green"
-                    android:fontFamily="@font/montserrat_regular"/>
-
+                    android:textSize="18sp" />
 
 
             </LinearLayout>
