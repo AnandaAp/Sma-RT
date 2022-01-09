@@ -136,7 +136,7 @@ class HomeWarga : Fragment(), InformasiInterface, DompetKeluargaInterface, Warga
 
     private fun navigateToMenuPersuratan() {
         binding.btnPersuratan.setOnClickListener {
-            findNavController().navigate(R.id.action_homeWarga_to_persuratanWarga)
+            findNavController().navigate(R.id.action_homeWarga_to_persuratanPage)
         }
     }
 

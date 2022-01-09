@@ -16,8 +16,8 @@
 
         <ImageView
             android:id="@+id/logo_smart"
-            android:layout_width="167dp"
-            android:layout_height="66dp"
+            android:layout_width="183dp"
+            android:layout_height="72dp"
             android:src="@drawable/logo_smart2"
             android:layout_marginTop="66dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -146,7 +146,7 @@
             android:layout_height="47dp"
             android:background="@drawable/btn_rounded"
             android:backgroundTint="@color/primarybtn"
-            android:text="Daftar Sebagai Warga"
+            android:text="Daftar sebagai Warga"
             android:textSize="20sp"
             android:textAllCaps="false"
             android:textColor="@color/white"
