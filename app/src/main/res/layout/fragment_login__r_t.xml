@@ -23,40 +23,20 @@
 
         <Button
             android:id="@+id/btndaftar"
-            android:layout_width="0dp"
-            android:layout_height="61dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="140dp"
-            android:layout_marginEnd="24dp"
-            android:background="@drawable/shapebutton"
+            android:layout_width="match_parent"
+            android:layout_height="47dp"
+            android:layout_marginTop="35dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/btn_rounded"
             android:backgroundTint="@color/primarybtn"
-            android:fontFamily="@font/montserrat"
             android:text="Daftar sebagai RT"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnToLupaPass"
-            app:layout_constraintVertical_bias="0.034" />
-
-        <Button
-            android:id="@+id/btnlgn"
-            android:layout_width="0dp"
-            android:layout_height="60dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="24dp"
-            android:layout_marginBottom="27dp"
-            android:background="@drawable/shapebutton"
-            android:backgroundTint="@color/primarybtn"
-            android:fontFamily="@font/montserrat"
-            android:text="Login"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/view"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.507"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnToLupaPass" />
+            app:layout_constraintTop_toTopOf="@+id/view" />
 
         <TextView
             android:id="@+id/btnToLupaPass"
@@ -70,6 +50,23 @@
             app:layout_constraintHorizontal_bias="0.931"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/TILinputPassword" />
+
+        <Button
+            android:id="@+id/btnlgn"
+            android:layout_width="match_parent"
+            android:layout_height="47dp"
+            android:background="@drawable/btn_rounded"
+            android:backgroundTint="@color/secondbtn"
+            android:text="Login"
+            android:textSize="20sp"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:layout_marginTop="24dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintTop_toBottomOf="@+id/btnToLupaPass" />
+
+
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/TILinputPassword"
@@ -156,12 +153,12 @@
             android:layout_width="0dp"
             android:layout_height="3dp"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="88dp"
             android:layout_marginEnd="24dp"
+            android:layout_marginTop="35dp"
             android:background="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/btnlgn" />
+            app:layout_constraintTop_toBottomOf="@+id/btnlgn" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageView
