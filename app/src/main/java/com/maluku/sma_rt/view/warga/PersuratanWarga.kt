@@ -67,7 +67,7 @@ class PersuratanWarga : Fragment(), WargaPersuratanInterface {
 
     private fun btnBack() {
         binding.btnBack.setOnClickListener{
-            findNavController().navigate(R.id.action_persuratanWarga_to_homeWarga)
+            findNavController().navigate(R.id.action_persuratanWarga_to_persuratanPage)
         }
     }
 
@@ -168,7 +168,7 @@ class PersuratanWarga : Fragment(), WargaPersuratanInterface {
 
         btnSimpan.setOnClickListener {
             dialog.dismiss()
-            val direction = PersuratanWargaDirections.actionPersuratanWargaToHomeWarga()
+            val direction = PersuratanWargaDirections.actionPersuratanWargaToPersuratanPage()
             findNavController().navigate(direction)
         }
 

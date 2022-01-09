@@ -11,9 +11,6 @@
         android:label="fragment_home_warga"
         tools:layout="@layout/fragment_home_warga" >
         <action
-            android:id="@+id/action_homeWarga_to_persuratanWarga"
-            app:destination="@id/persuratanWarga" />
-        <action
             android:id="@+id/action_homeWarga_to_topupSaldo"
             app:destination="@id/topupSaldo" />
         <action
@@ -25,6 +22,9 @@
         <action
             android:id="@+id/action_homeWarga_to_laporanPage"
             app:destination="@id/laporanPage" />
+        <action
+            android:id="@+id/action_homeWarga_to_persuratanPage"
+            app:destination="@id/persuratanPage" />
     </fragment>
     <fragment
         android:id="@+id/jualbeliWarga"
@@ -261,8 +261,8 @@
         android:name="com.maluku.sma_rt.view.warga.PersuratanWarga"
         android:label="PersuratanWarga" >
         <action
-            android:id="@+id/action_persuratanWarga_to_homeWarga"
-            app:destination="@id/homeWarga" />
+            android:id="@+id/action_persuratanWarga_to_persuratanPage"
+            app:destination="@id/persuratanPage" />
     </fragment>
     <fragment
         android:id="@+id/topupSaldo"
@@ -412,4 +412,34 @@
         android:name="com.maluku.sma_rt.view.warga.DetailLaporanList"
         android:label="fragment_detail_laporan_list"
         tools:layout="@layout/fragment_detail_laporan_list" />
+    <fragment
+        android:id="@+id/persuratanPage"
+        android:name="com.maluku.sma_rt.view.warga.PersuratanPage"
+        android:label="fragment_persuratan_page"
+        tools:layout="@layout/fragment_persuratan_page" >
+        <action
+            android:id="@+id/action_persuratanPage_to_homeWarga"
+            app:destination="@id/homeWarga" />
+        <action
+            android:id="@+id/action_persuratanPage_to_homeWarga2"
+            app:destination="@id/homeWarga" />
+        <action
+            android:id="@+id/action_persuratanPage_to_persuratanWarga"
+            app:destination="@id/persuratanWarga" />
+        <action
+            android:id="@+id/action_persuratanPage_to_homeWarga3"
+            app:destination="@id/homeWarga" />
+        <action
+            android:id="@+id/action_persuratanPage_to_persuratanWargaMasuk"
+            app:destination="@id/persuratanWargaMasuk" />
+    </fragment>
+    <fragment
+        android:id="@+id/persuratanWargaMasuk"
+        android:name="com.maluku.sma_rt.view.warga.PersuratanWargaMasuk"
+        android:label="fragment_persuratan_warga_masuk"
+        tools:layout="@layout/fragment_persuratan_warga_masuk" >
+        <action
+            android:id="@+id/action_persuratanWargaMasuk_to_persuratanPage"
+            app:destination="@id/persuratanPage" />
+    </fragment>
 </navigation>
