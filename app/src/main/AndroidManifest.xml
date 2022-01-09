@@ -14,9 +14,9 @@
     <application
         android:allowBackup="true"
         android:fullBackupContent="@xml/backup_descriptor"
-        android:icon="@mipmap/iconapp_foreground"
+        android:icon="@mipmap/iconapp_round"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/iconapp_foreground"
+        android:roundIcon="@mipmap/iconapp_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SmaRT"
         android:usesCleartextTraffic="true"
