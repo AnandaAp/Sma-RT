@@ -40,8 +40,13 @@ class RecyclerViewLaporanList(
         val data = listLaporan[position]
 
         holder.judul.text = data.judul.toString()
-        holder.deskripsi.text = data.deskripsi.toString()
         holder.status.text = data.status.toString()
+
+        if(data.deskripsi!!.length > 30) {
+            holder.deskripsi.text = data.deskripsi.toString().take(30) + "..."
+        } else {
+            holder.deskripsi.text = data.deskripsi.toString()
+        }
 
         //Firebase Storage
         val storageRef = FirebaseStorage.getInstance().reference.child("aduan/${data.gambar}")
