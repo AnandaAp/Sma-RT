@@ -28,6 +28,7 @@ import com.maluku.sma_rt.extentions.UserSession.Companion.SHARED_PREFERENCE_NAME
 import com.maluku.sma_rt.extentions.UserSession.Companion.SHARED_PREFERENCE_PASSWORD_KEY
 import com.maluku.sma_rt.extentions.UserSession.Companion.SHARED_PREFERENCE_PHONE_NUMBER_KEY
 import com.maluku.sma_rt.extentions.UserSession.Companion.SHARED_PREFERENCE_PICTURE_KEY
+import com.maluku.sma_rt.extentions.UserSession.Companion.SHARED_PREFERENCE_TOKEN_FCM
 import com.maluku.sma_rt.model.dompetkeluarga.GetAllDompetKeluargaItem
 import com.maluku.sma_rt.model.dompetkeluarga.GetDompetKeluargaById
 import com.maluku.sma_rt.model.informasi.GetAllInformasiItem
@@ -92,6 +93,7 @@ class HomeWarga : Fragment(), InformasiInterface, DompetKeluargaInterface, Warga
         userSession.save(SHARED_PREFERENCE_PICTURE_KEY, data.gambar!!)
         userSession.save(SHARED_PREFERENCE_PHONE_NUMBER_KEY, data.noHp!!)
         userSession.save(SHARED_PREFERENCE_PASSWORD_KEY, data.password!!)
+        userSession.save(SHARED_PREFERENCE_TOKEN_FCM,data.tokenFirebase!!)
 
         namaWarga = data.nama.toString()
 

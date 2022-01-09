@@ -23,6 +23,9 @@ data class GetMe(
 	@field:SerializedName("password")
 	val password: String? = null,
 
+	@field:SerializedName("token_firebase")
+	val tokenFirebase: String? = null,
+
 	@field:SerializedName("nama")
 	val nama: String? = null,
 

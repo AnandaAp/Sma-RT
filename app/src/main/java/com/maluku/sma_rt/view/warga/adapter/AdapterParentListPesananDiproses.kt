@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.maluku.sma_rt.R
 import com.maluku.sma_rt.model.order.GetAllOrderItem
 
-
 class AdapterParentListPesananDiproses(
     val listPesananDiproses: ArrayList<GetAllOrderItem>,
     val listener: OnAdapterListener

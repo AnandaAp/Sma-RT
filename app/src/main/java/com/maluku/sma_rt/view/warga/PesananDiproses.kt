@@ -10,6 +10,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.maluku.sma_rt.api.notification.NotificationData
+import com.maluku.sma_rt.api.notification.PushNotification
 import com.maluku.sma_rt.databinding.FragmentPesananDiprosesBinding
 import com.maluku.sma_rt.extentions.UserSession
 import com.maluku.sma_rt.model.order.GetAllOrderItem
@@ -19,11 +21,12 @@ import com.maluku.sma_rt.presenter.OrderPresenter
 import com.maluku.sma_rt.view.viewInterface.OrderInterface
 import com.maluku.sma_rt.view.warga.adapter.AdapterParentListPesananDiproses
 
-
+private var TOPIC = "/order/selesai"
 class PesananDiproses : Fragment(), OrderInterface {
     private lateinit var binding: FragmentPesananDiprosesBinding
     private lateinit var rvPesananDiproses: RecyclerView
     private lateinit var adapterPesananDiproses: AdapterParentListPesananDiproses
+    private var idOrder: String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -56,6 +59,7 @@ class PesananDiproses : Fragment(), OrderInterface {
             adapterPesananDiproses = AdapterParentListPesananDiproses(
                 arrayListOf(),object : AdapterParentListPesananDiproses.OnAdapterListener{
                     override fun onSelesai(orderId: String) {
+                        idOrder = orderId
                         OrderPresenter(this@PesananDiproses).selesaiOrder(
                             getToken(),orderId
                         )
@@ -109,7 +113,10 @@ class PesananDiproses : Fragment(), OrderInterface {
 
     override fun onOrderCompleteSuccess(message: String) {
         Handler(Looper.getMainLooper()).post {
-            Toast.makeText(context,"Pesan: $message",Toast.LENGTH_SHORT)
+            TOPIC = "$TOPIC/$idOrder"
+            val judulNotif = "Pesanan Selesai"
+            val pesanNotif = "Saat ini pesanan kamu sedang dikirim oleh kurir"
+            Toast.makeText(context,"Pesan: $message",Toast.LENGTH_LONG)
             OrderPresenter(this).getAllTokoOrder(getToken(),"2")
         }
     }
