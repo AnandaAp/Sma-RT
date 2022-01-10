@@ -202,7 +202,8 @@ class PesananUserPage : Fragment(), OrderInterface, KeranjangInterface {
 
     override fun onAddQuantitySuccess(message: String) {
         Handler(Looper.getMainLooper()).post {
-            Toast.makeText(context,message,Toast.LENGTH_SHORT)
+            Toast.makeText(requireContext(),message,Toast.LENGTH_SHORT)
+            KeranjangPresenter(this).getKeranjang(getToken())
         }
     }
 
@@ -215,6 +216,7 @@ class PesananUserPage : Fragment(), OrderInterface, KeranjangInterface {
     override fun onReduceQuantitySuccess(message: String) {
         Handler(Looper.getMainLooper()).post {
             Toast.makeText(context,message,Toast.LENGTH_SHORT)
+            KeranjangPresenter(this).getKeranjang(getToken())
         }
     }
 
