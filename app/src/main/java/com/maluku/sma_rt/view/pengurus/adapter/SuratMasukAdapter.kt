@@ -4,11 +4,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.cardview.widget.CardView
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.maluku.sma_rt.R
-import com.maluku.sma_rt.model.informasi.GetAllInformasiItem
 import com.maluku.sma_rt.model.persuratan.GetAllPersuratanItem
-import com.maluku.sma_rt.model.tagihan.GetAllTagihanItem
+import com.maluku.sma_rt.view.pengurus.SuratFragmentDirections
 
 class SuratMasukAdapter(val listSuratMasuk: ArrayList<GetAllPersuratanItem>): RecyclerView.Adapter<SuratMasukAdapter.ViewHolder>() {
     fun setData(data : List<GetAllPersuratanItem>){
@@ -29,6 +30,12 @@ class SuratMasukAdapter(val listSuratMasuk: ArrayList<GetAllPersuratanItem>): Re
         holder.statusSurat.text = data.status.toString()
         holder.tanggalSurat.text = data.tanggal.toString()
         holder.tujuanSurat.text = data.penerima.toString()
+        holder.cardSurat.setOnClickListener { view ->
+            val direction = SuratFragmentDirections.actionSuratFragmentToDetailSuratMasuk(
+                data.id.toString()
+            )
+            view!!.findNavController()!!.navigate(direction)
+        }
     }
 
     override fun getItemCount(): Int {
@@ -41,5 +48,7 @@ class SuratMasukAdapter(val listSuratMasuk: ArrayList<GetAllPersuratanItem>): Re
         var keperluanSurat: TextView = itemView.findViewById(R.id.vwKeperluanMasuk)
         var tanggalSurat: TextView = itemView.findViewById(R.id.vwTanggalMasuk)
         var statusSurat: TextView = itemView.findViewById(R.id.vwStatusMasuk)
+        var cardSurat: CardView = itemView.findViewById(R.id.cardSurat)
     }
+
 }
