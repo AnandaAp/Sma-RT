@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="18dp"
+        android:layout_margin="16dp"
         app:layout_constraintBottom_toBottomOf="@+id/view10"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,18 +29,19 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="18dp"
             android:fontFamily="@font/montserrat_semibold"
-            android:text="Anonymous"
+            android:text="Pengurus RT"
             android:textSize="18sp"
             app:layout_constraintStart_toEndOf="@+id/buktiLaporan"
-            app:layout_constraintTop_toTopOf="@+id/buktiLaporan" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/isiLaporan"
-            android:layout_width="wrap_content"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/montserrat_regular"
-            android:text="Didepan rumah sering terdengar..."
-            android:textSize="16sp"
+            android:layout_marginTop="2dp"
+            android:fontFamily="@font/montserrat_semibold"
+            android:text="https://drive.google.com/drive/folders/1tHAMarab1WkZEMX8tcTk9uBv5ToDJavx"
+            android:textSize="12sp"
             app:layout_constraintStart_toStartOf="@+id/judulLaporan"
             app:layout_constraintTop_toBottomOf="@+id/judulLaporan" />
 
@@ -65,12 +65,6 @@
         android:layout_marginBottom="2dp"
         android:background="#EBDFDF"
         app:layout_constraintBottom_toBottomOf="parent"/>
-
-
-
-
-
-
 
 
 

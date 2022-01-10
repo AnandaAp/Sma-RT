@@ -9,7 +9,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.maluku.sma_rt.R
-import com.maluku.sma_rt.databinding.FragmentKelolaTokoBinding
 import com.maluku.sma_rt.databinding.FragmentLaporanSayaBinding
 import com.maluku.sma_rt.model.aduan.GetAduanById
 import com.maluku.sma_rt.model.aduan.GetAllAduanItem
@@ -24,6 +23,7 @@ class LaporanSaya : Fragment(), WargaAduanInterface {
     private lateinit var binding: FragmentLaporanSayaBinding
     private lateinit var rvLaporanSaya: RecyclerView
     private lateinit var adapterLaporanSaya: RecyclerViewLaporanSaya
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

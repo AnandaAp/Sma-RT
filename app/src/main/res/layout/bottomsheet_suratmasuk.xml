@@ -47,12 +47,13 @@
         android:background="@color/grey"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
 
-    <de.hdodenhof.circleimageview.CircleImageView
+    <ImageView
         android:id="@+id/foto"
-        android:layout_width="39dp"
-        android:layout_height="39dp"
+        android:layout_width="52dp"
+        android:layout_height="52dp"
+        android:scaleType="centerCrop"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
         android:src="@drawable/default_image"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view8" />
@@ -87,7 +88,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="60dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         app:boxBackgroundMode="none"
@@ -101,11 +102,35 @@
             android:layout_width="match_parent"
             android:layout_height="163dp"
             android:background="@drawable/bg_edtext_border"
-            android:fontFamily="@font/montserrat_regular"
+            android:fontFamily="@font/montserrat_semibold"
+            android:textSize="12sp"
+            android:text="https://drive.google.com/drive/folders/1tHAMarab1WkZEMX8tcTk9uBv5ToDJavx"
             android:gravity="top"
             android:paddingTop="10dp"
             android:textCursorDrawable="@drawable/color_cursor" />
     </com.google.android.material.textfield.TextInputLayout>
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_seru"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textlayout_suratmasuk" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:text="download file surat anda dalam link yang sudah diberikan."
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageButton"
+        app:layout_constraintStart_toEndOf="@+id/imageButton"
+        app:layout_constraintTop_toTopOf="@+id/imageButton" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

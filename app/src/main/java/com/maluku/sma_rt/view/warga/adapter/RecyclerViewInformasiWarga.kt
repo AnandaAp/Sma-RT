@@ -40,8 +40,8 @@ class RecyclerViewInformasiWarga(
         val data = listInformasi[position]
 
         holder.judul.text = data.judul.toString()
-        if(data.detail!!.length > 23) {
-            holder.desc.text = data.detail.toString().take(23)+"..."
+        if(data.detail!!.length > 30) {
+            holder.desc.text = data.detail.toString().take(30)+"..."
         } else {
             holder.desc.text = data.detail.toString()
         }
