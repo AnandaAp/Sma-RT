@@ -21,7 +21,6 @@ import com.maluku.sma_rt.presenter.OrderPresenter
 import com.maluku.sma_rt.view.viewInterface.OrderInterface
 import com.maluku.sma_rt.view.warga.adapter.AdapterParentListPesananDiproses
 
-private var TOPIC = "/order/selesai"
 class PesananDiproses : Fragment(), OrderInterface {
     private lateinit var binding: FragmentPesananDiprosesBinding
     private lateinit var rvPesananDiproses: RecyclerView
@@ -57,7 +56,7 @@ class PesananDiproses : Fragment(), OrderInterface {
             rvPesananDiproses.layoutManager = LinearLayoutManager(requireContext(),
                 LinearLayoutManager.VERTICAL ,false)
             adapterPesananDiproses = AdapterParentListPesananDiproses(
-                arrayListOf(),object : AdapterParentListPesananDiproses.OnAdapterListener{
+                arrayListOf(),getToken(),object : AdapterParentListPesananDiproses.OnAdapterListener{
                     override fun onSelesai(orderId: String) {
                         idOrder = orderId
                         OrderPresenter(this@PesananDiproses).selesaiOrder(
@@ -113,9 +112,6 @@ class PesananDiproses : Fragment(), OrderInterface {
 
     override fun onOrderCompleteSuccess(message: String) {
         Handler(Looper.getMainLooper()).post {
-            TOPIC = "$TOPIC/$idOrder"
-            val judulNotif = "Pesanan Selesai"
-            val pesanNotif = "Saat ini pesanan kamu sedang dikirim oleh kurir"
             Toast.makeText(context,"Pesan: $message",Toast.LENGTH_LONG)
             OrderPresenter(this).getAllTokoOrder(getToken(),"2")
         }

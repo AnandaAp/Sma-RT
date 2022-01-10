@@ -3,6 +3,7 @@ package com.maluku.sma_rt.view.viewInterface
 import com.maluku.sma_rt.model.keluarga.GetAllProdukKeluargaItem
 import com.maluku.sma_rt.model.produk.GetProdukById
 
+
 interface ProdukInterface {
     fun onGetAllDataSuccess(data: List<GetAllProdukKeluargaItem?>?)
     fun onGetAllDataFailure(message: String)

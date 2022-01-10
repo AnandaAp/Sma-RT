@@ -19,6 +19,7 @@ import org.json.JSONObject
 import com.maluku.sma_rt.api.RetrofitService
 import com.maluku.sma_rt.model.keluarga.GetAllProdukKeluargaItem
 import com.maluku.sma_rt.model.keluarga.GetAllProdukKeluargaResponse
+import com.maluku.sma_rt.model.produk.GetProdukById
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -229,6 +230,24 @@ class ProdukPresenter(private val view: ProdukInterface) {
                 val jObjError = JSONObject(res.errorBody()!!.string())
                 val message = jObjError.getString("message")
                 view.onDeleteFailure(message)
+            }
+        }
+    }
+
+    fun getProdukById(token: String,idProduk: String) {
+        GlobalScope.launch(Dispatchers.IO){
+            val res = RetrofitService
+                .getService()
+                .getProdukById("Bearer $token", idProduk)
+                .awaitResponse()
+            if(res.isSuccessful){
+                val result = res.body()?.getProdukById
+                view.onGetDataSuccess(result)
+            }
+            else{
+                val jObjError = JSONObject(res.errorBody()!!.string())
+                val message = jObjError.getString("message")
+                view.onGetDataFailure(message)
             }
         }
     }

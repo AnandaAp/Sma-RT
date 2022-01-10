@@ -24,10 +24,7 @@ import com.maluku.sma_rt.model.persuratan.CreatePersuratanResponse
 import com.maluku.sma_rt.model.persuratan.GetAllPersuratanResponse
 import com.maluku.sma_rt.model.persuratan.GetPersuratanByIDResponse
 import com.maluku.sma_rt.model.persuratan.GetPersuratanById
-import com.maluku.sma_rt.model.produk.CreateProductResponse
-import com.maluku.sma_rt.model.produk.DeleteProductByIDResponse
-import com.maluku.sma_rt.model.produk.GetAllProdukResponse
-import com.maluku.sma_rt.model.produk.UpdateProductByIDResponse
+import com.maluku.sma_rt.model.produk.*
 import com.maluku.sma_rt.model.tagihan.CreateTagihanResponse
 import com.maluku.sma_rt.model.tagihan.GetAllTagihanResponse
 import com.maluku.sma_rt.model.updateanddelete.OnDataResponse
@@ -196,6 +193,13 @@ interface Service {
     fun getAllProduk(
         @Header("Authorization") authHeader: String
     ): Call<GetAllProdukResponse>
+
+    // Get Produk By ID
+    @GET("produk/{id_produk}")
+    fun getProdukById(
+        @Header("Authorization") authHeader: String,
+        @Path("id_produk") idProduk: String
+    ): Call<GetProductByIDResponse>
 
 
     // Get All Data Keluarga
