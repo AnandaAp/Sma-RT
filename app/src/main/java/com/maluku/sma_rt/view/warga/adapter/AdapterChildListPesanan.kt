@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.maluku.sma_rt.R
 import com.maluku.sma_rt.model.keluarga.GetAllProdukKeluargaItem
@@ -72,7 +73,7 @@ class AdapterChildListPesanan (
 
 
     override fun onGetDataFailure(message: String) {
-        TODO("Not yet implemented")
+        namaProduk = ""
     }
 
     override fun onCreateSuccess(message: String) {

@@ -10,13 +10,9 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.maluku.sma_rt.api.notification.NotificationData
-import com.maluku.sma_rt.api.notification.PushNotification
 import com.maluku.sma_rt.databinding.FragmentPesananDiprosesBinding
 import com.maluku.sma_rt.extentions.UserSession
 import com.maluku.sma_rt.model.order.GetAllOrderItem
-import com.maluku.sma_rt.model.persuratan.GetAllPersuratanItem
-import com.maluku.sma_rt.presenter.InformasiPresenter
 import com.maluku.sma_rt.presenter.OrderPresenter
 import com.maluku.sma_rt.view.viewInterface.OrderInterface
 import com.maluku.sma_rt.view.warga.adapter.AdapterParentListPesananDiproses
