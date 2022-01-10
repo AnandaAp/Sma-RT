@@ -23,16 +23,20 @@ import com.google.gson.GsonBuilder
 import com.maluku.sma_rt.R
 import com.maluku.sma_rt.databinding.FragmentPesananUserPageBinding
 import com.maluku.sma_rt.extentions.UserSession
+import com.maluku.sma_rt.model.keranjang.GetKeranjangById
+import com.maluku.sma_rt.model.keranjang.ItemKeranjangItem
 import com.maluku.sma_rt.model.order.CreateOrderBody
 import com.maluku.sma_rt.model.order.GetAllOrderItem
+import com.maluku.sma_rt.presenter.KeranjangPresenter
 import com.maluku.sma_rt.presenter.OrderPresenter
+import com.maluku.sma_rt.view.viewInterface.KeranjangInterface
 import com.maluku.sma_rt.view.viewInterface.OrderInterface
 import com.maluku.sma_rt.view.warga.adapter.RecyclerViewPesananuser
 import org.json.JSONObject
 
 private const val TAG = "PESANAN USER PAGE"
 
-class PesananUserPage : Fragment(), OrderInterface {
+class PesananUserPage : Fragment(), OrderInterface, KeranjangInterface {
     private lateinit var binding: FragmentPesananUserPageBinding
 
     private lateinit var cardView: CardView
@@ -53,6 +57,7 @@ class PesananUserPage : Fragment(), OrderInterface {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        KeranjangPresenter(this).getKeranjang(getToken())
         setRecylerViewPesanan()
         goBack()
         submitPesan()
@@ -76,7 +81,10 @@ class PesananUserPage : Fragment(), OrderInterface {
 
     private fun setRecylerViewPesanan() {
         rvPesananuser = binding.rvPesnanuser
-        adapterPesananuser = RecyclerViewPesananuser()
+        adapterPesananuser = RecyclerViewPesananuser(
+            arrayListOf(),
+            getToken()
+        )
 
         rvPesananuser.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL,false)
         rvPesananuser.setAdapter(adapterPesananuser)
@@ -153,5 +161,29 @@ class PesananUserPage : Fragment(), OrderInterface {
 
     override fun onOrderCompleteFailure(message: String) {
         TODO("Not yet implemented")
+    }
+
+    override fun onGetKeranjangSuccess(result: List<ItemKeranjangItem>) {
+        adapterPesananuser.setData(result)
+    }
+
+    override fun onGetKeranjangFailure(message: String) {
+        Toast.makeText(requireContext(),message, Toast.LENGTH_LONG).show()
+    }
+
+    override fun onAddProductKeranjangSuccess(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onAddProductKeranjangFailure(message: String, item: CreateOrderBody) {
+        Toast.makeText(requireContext(),message, Toast.LENGTH_LONG).show()
+    }
+
+    override fun onUpdateKeranjangSuccess(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onUpdateKeranjangFailure(message: String) {
+        Toast.makeText(requireContext(),message, Toast.LENGTH_LONG).show()
     }
 }

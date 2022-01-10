@@ -298,13 +298,17 @@ class EditProduk : Fragment(), ProdukInterface {
     }
 
     override fun onDeleteSuccess(message: String) {
-        Toast.makeText(context,message, Toast.LENGTH_LONG).show()
-        val direction = EditProdukDirections.actionEditProdukToProdukPage()
-        findNavController().navigate(direction)
+        Handler(Looper.getMainLooper()).post(Runnable { //do stuff like remove view etc
+            Toast.makeText(context,message, Toast.LENGTH_LONG).show()
+            val direction = EditProdukDirections.actionEditProdukToProdukPage()
+            findNavController().navigate(direction)
+        })
     }
 
     override fun onDeleteFailure(message: String) {
-        Toast.makeText(context,message, Toast.LENGTH_LONG).show()
+        Handler(Looper.getMainLooper()).post(Runnable { //do stuff like remove view etc
+            Toast.makeText(requireContext(),message, Toast.LENGTH_LONG).show()
+        })
     }
 
     private fun getToken(): String {

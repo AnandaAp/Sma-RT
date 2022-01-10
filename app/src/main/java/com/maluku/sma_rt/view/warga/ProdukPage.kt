@@ -92,7 +92,9 @@ class ProdukPage : Fragment(), ProdukInterface {
     }
 
     override fun onGetAllDataFailure(message: String) {
-        Toast.makeText(requireContext(),message, Toast.LENGTH_LONG).show()
+        Handler(Looper.getMainLooper()).post(Runnable { //do stuff like remove view etc
+            Toast.makeText(requireContext(),message, Toast.LENGTH_LONG).show()
+        })
     }
 
     override fun onGetDataSuccess(data: GetProdukById?) {
