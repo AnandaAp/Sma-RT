@@ -95,6 +95,7 @@ class CatatanWarga : Fragment(), WargaTagihanInterface {
     override fun onPayBillSuccess(message: String) {
         Toast.makeText(requireContext(),message, Toast.LENGTH_LONG).show()
         WargaTagihanPresenter(this).getAllTagihan(getToken())
+        setRecyclerViewListTagihan()
     }
 
     override fun onPayBillFailure(message: String) {

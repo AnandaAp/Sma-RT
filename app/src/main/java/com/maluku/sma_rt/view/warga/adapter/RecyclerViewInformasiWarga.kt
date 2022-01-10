@@ -61,6 +61,7 @@ class RecyclerViewInformasiWarga(
         holder.layout.setOnClickListener { view ->
             val direction = InformasiWargaDirections
                 .actionInformasiWargaToDetailInformasiBerita(
+                    data.judul.toString(), data.detail.toString(), data.gambar.toString()
                 )
             view.findNavController().navigate(direction)
         }

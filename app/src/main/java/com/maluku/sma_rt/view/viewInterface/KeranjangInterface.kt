@@ -13,4 +13,8 @@ interface KeranjangInterface {
     fun onAddProductKeranjangFailure(message: String, item: CreateOrderBody)
     fun onUpdateKeranjangSuccess(message: String)
     fun onUpdateKeranjangFailure(message: String)
+    fun onAddQuantitySuccess(message: String)
+    fun onAddQuantityFailure(message: String)
+    fun onReduceQuantitySuccess(message: String)
+    fun onReduceQuantityFailure(message: String)
 }

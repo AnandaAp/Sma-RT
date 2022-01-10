@@ -369,6 +369,15 @@
         <action
             android:id="@+id/action_detailInformasiBerita_to_informasiWarga"
             app:destination="@id/informasiWarga" />
+        <argument
+            android:name="informasi_judul"
+            app:argType="string" />
+        <argument
+            android:name="informasi_detail"
+            app:argType="string" />
+        <argument
+            android:name="informasi_gambar"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/laporanPage"

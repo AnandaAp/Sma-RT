@@ -31,6 +31,7 @@ import com.maluku.sma_rt.presenter.KeranjangPresenter
 import com.maluku.sma_rt.presenter.OrderPresenter
 import com.maluku.sma_rt.view.viewInterface.KeranjangInterface
 import com.maluku.sma_rt.view.viewInterface.OrderInterface
+import com.maluku.sma_rt.view.warga.adapter.AdapterParentListPesananDiproses
 import com.maluku.sma_rt.view.warga.adapter.RecyclerViewPesananuser
 import org.json.JSONObject
 
@@ -83,7 +84,19 @@ class PesananUserPage : Fragment(), OrderInterface, KeranjangInterface {
         rvPesananuser = binding.rvPesnanuser
         adapterPesananuser = RecyclerViewPesananuser(
             arrayListOf(),
-            getToken()
+            getToken(),object : RecyclerViewPesananuser.OnAdapterListener{
+                override fun onAdd(idProduk: String) {
+                    KeranjangPresenter(this@PesananUserPage).tambahJumlahProduk(
+                        getToken(),idProduk
+                    )
+                }
+
+                override fun onReduce(idProduk: String) {
+                    KeranjangPresenter(this@PesananUserPage).kurangJumlahProduk(
+                        getToken(),idProduk
+                    )
+                }
+            }
         )
 
         rvPesananuser.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL,false)
@@ -185,5 +198,29 @@ class PesananUserPage : Fragment(), OrderInterface, KeranjangInterface {
 
     override fun onUpdateKeranjangFailure(message: String) {
         Toast.makeText(requireContext(),message, Toast.LENGTH_LONG).show()
+    }
+
+    override fun onAddQuantitySuccess(message: String) {
+        Handler(Looper.getMainLooper()).post {
+            Toast.makeText(context,message,Toast.LENGTH_SHORT)
+        }
+    }
+
+    override fun onAddQuantityFailure(message: String) {
+        Handler(Looper.getMainLooper()).post {
+            Toast.makeText(context,message,Toast.LENGTH_SHORT)
+        }
+    }
+
+    override fun onReduceQuantitySuccess(message: String) {
+        Handler(Looper.getMainLooper()).post {
+            Toast.makeText(context,message,Toast.LENGTH_SHORT)
+        }
+    }
+
+    override fun onReduceQuantityFailure(message: String) {
+        Handler(Looper.getMainLooper()).post {
+            Toast.makeText(context,message,Toast.LENGTH_SHORT)
+        }
     }
 }

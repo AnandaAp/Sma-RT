@@ -99,4 +99,50 @@ class KeranjangPresenter(private var view: KeranjangInterface) {
         }
     }
 
+    fun tambahJumlahProduk(
+        token: String,
+        idProduk: String
+    ){
+        GlobalScope.launch(Dispatchers.IO) {
+            val res = RetrofitService
+                .getService()
+                .tambahJumlahProduk(
+                    "Bearer $token",
+                    idProduk
+                ).awaitResponse()
+            if(res.isSuccessful){
+                val result = res.body()?.message.toString()
+                view.onAddQuantitySuccess(result)
+            }
+            else{
+                val jObjError = JSONObject(res.errorBody()!!.string())
+                val message = jObjError.getString("message")
+                view.onAddQuantityFailure(message)
+            }
+        }
+    }
+
+    fun kurangJumlahProduk(
+        token: String,
+        idProduk: String
+    ){
+        GlobalScope.launch(Dispatchers.IO) {
+            val res = RetrofitService
+                .getService()
+                .kurangJumlahProduk(
+                    "Bearer $token",
+                    idProduk
+                ).awaitResponse()
+            if(res.isSuccessful){
+                val result = res.body()?.message.toString()
+                view.onReduceQuantitySuccess(result)
+            }
+            else{
+                val jObjError = JSONObject(res.errorBody()!!.string())
+                val message = jObjError.getString("message")
+                view.onReduceQuantityFailure(message)
+            }
+        }
+    }
+
 }

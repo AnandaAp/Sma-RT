@@ -218,4 +218,20 @@ class JualbeliWarga : Fragment(), WargaJualBeliInterface, KeranjangInterface{
         }
     }
 
+    override fun onAddQuantitySuccess(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onAddQuantityFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onReduceQuantitySuccess(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onReduceQuantityFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
 }

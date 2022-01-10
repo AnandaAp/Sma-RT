@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
@@ -29,7 +30,9 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 class RecyclerViewPesananuser(
-    private val listItem: ArrayList<ItemKeranjangItem>, private val token: String
+    private val listItem: ArrayList<ItemKeranjangItem>,
+    private val token: String,
+    val listener: RecyclerViewPesananuser.OnAdapterListener
 ): RecyclerView.Adapter<RecyclerViewPesananuser.MyViewHolder>() {
 
     fun setData(data : List<ItemKeranjangItem>){
@@ -76,6 +79,14 @@ class RecyclerViewPesananuser(
                     holder.nama.text = error!!.message.toString()
                 }
             })
+
+        holder.btnTambah.setOnClickListener {
+            listener.onAdd(data.idProduk.toString())
+        }
+
+        holder.btnKurang.setOnClickListener {
+            listener.onReduce(data.idProduk.toString())
+        }
     }
 
     override fun getItemCount(): Int {
@@ -87,6 +98,8 @@ class RecyclerViewPesananuser(
         var harga: TextView = itemView.findViewById(R.id.hargaprodukpesanan)
         var jumlah: TextView = itemView.findViewById(R.id.tv_jumlah)
         var gambar: ImageView = itemView.findViewById(R.id.imageprodukpesanan)
+        var btnTambah: ImageButton = itemView.findViewById(R.id.btn_tambah)
+        var btnKurang: ImageButton = itemView.findViewById(R.id.btn_kurang)
         var layout: CardView = itemView.findViewById(R.id.cvitem)
     }
 
@@ -94,6 +107,11 @@ class RecyclerViewPesananuser(
         val localeID =  Locale("in", "ID")
         val numberFormat = NumberFormat.getCurrencyInstance(localeID)
         return numberFormat.format(number).toString()
+    }
+
+    interface OnAdapterListener {
+        fun onAdd(idProduk:String)
+        fun onReduce(idProduk:String)
     }
 
 }

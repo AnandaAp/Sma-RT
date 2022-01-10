@@ -524,6 +524,20 @@ interface Service {
         @Body item: ArrayList<CreateOrderBody>
     ): Call<KeranjangDefaultResponse>
 
+    // Tambah Jumlah Produk
+    @PUT("item/add/{idProduk}")
+    fun tambahJumlahProduk(
+        @Header("Authorization") authHeader: String,
+        @Path("idProduk") idProduk: String
+    ): Call<KeranjangDefaultResponse>
+
+    // Kurang Jumlah Produk
+    @PUT("item/min/{idProduk}")
+    fun kurangJumlahProduk(
+        @Header("Authorization") authHeader: String,
+        @Path("idProduk") idProduk: String
+    ): Call<KeranjangDefaultResponse>
+
     // Password
     // Pengurus RT
     @FormUrlEncoded
