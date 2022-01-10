@@ -16,7 +16,6 @@ import com.maluku.sma_rt.model.persuratan.GetAllPersuratanItem
 import com.maluku.sma_rt.model.persuratan.GetPersuratanById
 import com.maluku.sma_rt.presenter.WargaPersuratanPresenter
 import com.maluku.sma_rt.view.pengurus.adapter.SuratKeluarAdapter
-import com.maluku.sma_rt.view.pengurus.adapter.SuratMasukAdapter
 import com.maluku.sma_rt.view.viewInterface.WargaPersuratanInterface
 
 
@@ -24,7 +23,6 @@ class FragmentSuratKeluar : Fragment(), WargaPersuratanInterface {
     private lateinit var binding: FragmentSuratKeluarBinding
     private lateinit var rvSuratKeluar: RecyclerView
     private lateinit var adapterSuratKeluar: SuratKeluarAdapter
-    private var statusSurat: String? = "3"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,16 +34,14 @@ class FragmentSuratKeluar : Fragment(), WargaPersuratanInterface {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setRecyclerViewSuratKeluar()
-        onStart()
+        WargaPersuratanPresenter(this).getAllDataSurat(getToken(),"3")
     }
 
     private fun setRecyclerViewSuratKeluar() {
         rvSuratKeluar = binding.rvSuratKeluar
-        if (context != null){
-            rvSuratKeluar.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL ,false)
-            adapterSuratKeluar = SuratKeluarAdapter(arrayListOf())
-            rvSuratKeluar.adapter = adapterSuratKeluar
-        }
+        rvSuratKeluar.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL ,false)
+        adapterSuratKeluar = SuratKeluarAdapter(arrayListOf())
+        rvSuratKeluar.adapter = adapterSuratKeluar
     }
 
     private fun bindingView(): View {
@@ -53,10 +49,6 @@ class FragmentSuratKeluar : Fragment(), WargaPersuratanInterface {
         return binding.root
     }
 
-    override fun onStart() {
-        super.onStart()
-        WargaPersuratanPresenter(this).getAllDataSurat(getToken(),statusSurat)
-    }
 
     private fun getToken(): String {
         val preferences = UserSession(requireActivity())
@@ -89,15 +81,13 @@ class FragmentSuratKeluar : Fragment(), WargaPersuratanInterface {
 
     override fun onGetDataSuccess(result: List<GetAllPersuratanItem>) {
         Handler(Looper.getMainLooper()).post {
-            adapterSuratKeluar.setData(result as ArrayList<GetAllPersuratanItem>)
+            adapterSuratKeluar.setData(result)
         }
     }
 
     override fun onGetDataFailure(message: String) {
-        if (context!=null){
-            Handler(Looper.getMainLooper()).post {
-                Toast.makeText(context,message, Toast.LENGTH_LONG).show()
-            }
+        Handler(Looper.getMainLooper()).post {
+            Toast.makeText(requireContext(),message, Toast.LENGTH_LONG).show()
         }
     }
 

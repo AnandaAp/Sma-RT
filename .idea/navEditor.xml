@@ -1176,6 +1176,27 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="detailSuratMasuk">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="978" />
+                            <option name="y" value="1072" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_detailSuratMasuk_to_suratFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="detailsBuatIuranFragment">
                     <value>
                       <LayoutPositions>
@@ -1755,6 +1776,11 @@
                         </option>
                         <option name="myPositions">
                           <map>
+                            <entry key="action_suratFragment_to_detailSuratMasuk">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_suratFragment_to_navigation_home">
                               <value>
                                 <LayoutPositions />

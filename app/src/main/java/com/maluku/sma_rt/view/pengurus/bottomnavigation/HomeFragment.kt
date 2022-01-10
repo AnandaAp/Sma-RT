@@ -205,6 +205,7 @@ class HomeFragment : Fragment(), InformasiInterface, DompetRTInterface, AdminRTP
     override fun onGetAllDataFailure(message: String) {
         if (context != null){
             Toast.makeText(requireContext(),"Pesan: $message",Toast.LENGTH_LONG).show()
+            logout()
         }
     }
 
@@ -252,7 +253,6 @@ class HomeFragment : Fragment(), InformasiInterface, DompetRTInterface, AdminRTP
     override fun onGetDataFailed(message: String) {
         if (context!=null){
             Toast.makeText(requireContext(),"Pesan: $message",Toast.LENGTH_LONG).show()
-            logout()
         }
     }
 

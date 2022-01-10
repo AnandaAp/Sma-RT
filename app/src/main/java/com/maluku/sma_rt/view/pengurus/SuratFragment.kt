@@ -1,6 +1,8 @@
 package com.maluku.sma_rt.view.pengurus
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,8 +14,10 @@ import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.maluku.sma_rt.R
 import com.maluku.sma_rt.view.pengurus.adapter.PagerAdapter
+import kotlinx.coroutines.currentCoroutineContext
 
 class SuratFragment : Fragment() {
+    private lateinit var suratAdapter : PagerAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -27,7 +31,7 @@ class SuratFragment : Fragment() {
         val listFragment: ArrayList<Fragment> = arrayListOf(FragmentSuratMasuk(),FragmentSuratKeluar())
         val tabLayout = view.findViewById<TabLayout>(R.id.tabLayoutSurat)
         val viewPager = view.findViewById<ViewPager2>(R.id.vwSuratPager)
-        val suratAdapter = PagerAdapter(listFragment,this)
+        suratAdapter = PagerAdapter(listFragment,this)
         viewPager.adapter = suratAdapter
         TabLayoutMediator(tabLayout,viewPager){tab,position->
             when(position){
@@ -39,11 +43,9 @@ class SuratFragment : Fragment() {
                 }
             }
         }.attach()
-
         val backBtn = view.findViewById<TextView>(R.id.btnBackSurat)
         backBtn.setOnClickListener {
             findNavController()!!.popBackStack()
         }
     }
-
 }

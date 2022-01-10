@@ -108,18 +108,6 @@
             app:destination="@id/navigation_manage" />
     </fragment>
     <fragment
-        android:id="@+id/fragmentSuratMasuk"
-        android:name="com.maluku.sma_rt.view.pengurus.FragmentSuratMasuk"
-        android:label="fragment_surat__masuk"
-        tools:layout="@layout/fragment_surat_masuk" >
-        <action
-            android:id="@+id/action_fragmentSuratMasuk_to_suratFragment"
-            app:destination="@id/suratFragment" />
-        <action
-            android:id="@+id/action_fragmentSuratMasuk_to_fragmentSuratKeluar"
-            app:destination="@id/fragmentSuratKeluar" />
-    </fragment>
-    <fragment
         android:id="@+id/suratFragment"
         android:name="com.maluku.sma_rt.view.pengurus.SuratFragment"
         android:label="fragment_surat"
@@ -130,18 +118,9 @@
         <action
             android:id="@+id/action_suratFragment_to_navigation_manage"
             app:destination="@id/navigation_manage" />
-    </fragment>
-    <fragment
-        android:id="@+id/fragmentSuratKeluar"
-        android:name="com.maluku.sma_rt.view.pengurus.FragmentSuratKeluar"
-        android:label="fragment_surat__keluar"
-        tools:layout="@layout/fragment_surat_keluar" >
         <action
-            android:id="@+id/action_fragmentSuratKeluar_to_suratFragment"
-            app:destination="@id/suratFragment" />
-        <action
-            android:id="@+id/action_fragmentSuratKeluar_to_fragmentSuratMasuk"
-            app:destination="@id/fragmentSuratMasuk" />
+            android:id="@+id/action_suratFragment_to_detailSuratMasuk"
+            app:destination="@id/detailSuratMasuk" />
     </fragment>
     <fragment
         android:id="@+id/informasiFragment"
@@ -443,5 +422,17 @@
         <action
             android:id="@+id/action_editInformasiFragment_to_detailInformasiMasukFragment2"
             app:destination="@id/detailInformasiMasukFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailSuratMasuk"
+        android:name="com.maluku.sma_rt.view.pengurus.DetailSuratMasuk"
+        android:label="detail_surat_masuk"
+        tools:layout="@layout/detail_surat_masuk" >
+        <action
+            android:id="@+id/action_detailSuratMasuk_to_suratFragment"
+            app:destination="@id/suratFragment" />
+        <argument
+            android:name="idSurat"
+            app:argType="string" />
     </fragment>
 </navigation>
