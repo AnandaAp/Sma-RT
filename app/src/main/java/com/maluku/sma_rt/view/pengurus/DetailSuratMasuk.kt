@@ -1,21 +1,28 @@
 package com.maluku.sma_rt.view.pengurus
 
+import android.app.Dialog
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.maluku.sma_rt.R
 import com.maluku.sma_rt.databinding.DetailSuratMasukBinding
 import com.maluku.sma_rt.extentions.UserSession
 import com.maluku.sma_rt.model.persuratan.GetAllPersuratanItem
 import com.maluku.sma_rt.model.persuratan.GetPersuratanById
 import com.maluku.sma_rt.presenter.WargaPersuratanPresenter
 import com.maluku.sma_rt.view.viewInterface.WargaPersuratanInterface
+import com.maluku.sma_rt.view.warga.LaporanWargaDirections
 
 class DetailSuratMasuk: Fragment(), WargaPersuratanInterface {
     private lateinit var binding: DetailSuratMasukBinding
@@ -31,6 +38,7 @@ class DetailSuratMasuk: Fragment(), WargaPersuratanInterface {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         bindData()
+        dialogSetuju()
 //        back()
     }
 
@@ -65,6 +73,57 @@ class DetailSuratMasuk: Fragment(), WargaPersuratanInterface {
         }
     }
      */
+
+    private fun dialogSetuju(){
+        binding.btnSetuju.setOnClickListener {
+            val dialog = Dialog(requireActivity())
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+            dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            dialog.setContentView(R.layout.custom_dialog_ngirim_persuratan)
+            val btnOk = dialog.findViewById<TextView>(R.id.btn_ok)
+            val btnBatal = dialog.findViewById<TextView>(R.id.btn_batal)
+
+            btnOk.setOnClickListener {
+                Toast.makeText(requireContext(),"Berhasil setuju, dengan kirim file",Toast.LENGTH_LONG).show()
+                dialogKirimSurat()
+                dialog.dismiss()
+            }
+            btnBatal.setOnClickListener {
+                Toast.makeText(requireContext(),"Berhasil setuju, tanpa kirim file",Toast.LENGTH_LONG).show()
+                dialogSukses()
+                dialog.dismiss()
+            }
+            dialog.show()
+        }
+    }
+
+    private fun dialogSukses() {
+        val dialog = Dialog(requireActivity())
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.setContentView(R.layout.custom_dialog_persuratan)
+        val btnSimpan = dialog.findViewById<TextView>(R.id.btn_ok)
+
+        btnSimpan.setOnClickListener {
+            dialog.dismiss()
+            findNavController()!!.navigate(R.id.action_detailSuratMasuk_to_suratFragment)
+        }
+        dialog.show()
+    }
+
+    private fun dialogKirimSurat(){
+        val dialog = Dialog(requireActivity())
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.setContentView(R.layout.custom_dialog_kirim_link)
+        val btnSimpan = dialog.findViewById<TextView>(R.id.btn_ok)
+
+        btnSimpan.setOnClickListener {
+            dialog.dismiss()
+            dialogSukses()
+        }
+        dialog.show()
+    }
 
     override fun onCreateSuccess(message: String) {
         TODO("Not yet implemented")

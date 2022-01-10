@@ -42,12 +42,14 @@
                 android:layout_height="wrap_content"
                 app:boxBackgroundMode="none"
                 android:layout_gravity="center">
+
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etLinkDrive"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:background="@drawable/round"
                     android:padding="2dp"
-                    android:paddingStart="8dp"
-                    android:background="@drawable/round"/>
+                    android:paddingStart="8dp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <LinearLayout

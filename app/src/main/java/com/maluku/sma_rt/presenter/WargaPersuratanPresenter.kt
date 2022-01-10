@@ -127,7 +127,7 @@ class WargaPersuratanPresenter(private val view: WargaPersuratanInterface) {
             val response = RetrofitService
                 .getService()
                 .getPersuratanDataByID(
-                    token,
+                    "Bearer $token",
                     id_surat
                 ).awaitResponse()
             if(response.isSuccessful){
