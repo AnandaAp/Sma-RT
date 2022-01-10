@@ -143,7 +143,7 @@ class JualbeliWarga : Fragment(), WargaJualBeliInterface, KeranjangInterface{
         val dialog = Dialog(requireActivity())
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        dialog.setContentView(R.layout.custom_dialog_logout)
+        dialog.setContentView(R.layout.custom_dialog_tambahkeranjang)
         val btnOk = dialog.findViewById<TextView>(R.id.btn_ok)
         val btnBatal = dialog.findViewById<TextView>(R.id.btn_batal)
 
