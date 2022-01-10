@@ -19,27 +19,26 @@ import java.text.NumberFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
-class AdapterParentListPesananDiproses(
-    val listPesananDiproses: ArrayList<GetAllOrderItem>,
+class AdapterParentListPesananMasuk(
+    val listItem: ArrayList<GetAllOrderItem>,
     val token: String,
     val listener: OnAdapterListener
-): RecyclerView.Adapter<AdapterParentListPesananDiproses.ViewHolder>() {
+): RecyclerView.Adapter<AdapterParentListPesananMasuk.ViewHolder>() {
     fun setData(data: List<GetAllOrderItem>) {
-        listPesananDiproses.clear()
-        listPesananDiproses.addAll(data)
+        listItem.clear()
+        listItem.addAll(data)
         notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.recycler_parent_listpesanandiproses, parent, false)
+            .inflate(R.layout.recycler_parent_listpesananmasuk, parent, false)
         return ViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val data = listPesananDiproses[position]
+        val data = listItem[position]
         holder.total.text = toRupiah(data.hargaTotal.toString().toDouble())
-//        holder.idOrderProses.text = data.id.toString()
 
         // buat dapetin nama pembeli
         AndroidNetworking.get("http://smart.aliven.my.id:2001/warga/detail/{idWarga}")
@@ -50,11 +49,11 @@ class AdapterParentListPesananDiproses(
             .getAsJSONObject(object : JSONObjectRequestListener {
                 override fun onResponse(response: JSONObject) {
                     val data: JSONObject = response.getJSONObject("get_warga_by_id")
-                    holder.idOrderProses.text = data.getString("nama")
+                    holder.namaPembeli.text = data.getString("nama")
 
                 }
                 override fun onError(error: ANError?) {
-                    holder.idOrderProses.text = error!!.message.toString()
+                    holder.namaPembeli.text = error!!.message.toString()
                 }
             })
 
@@ -63,24 +62,29 @@ class AdapterParentListPesananDiproses(
             layoutManager = LinearLayoutManager(holder.recyclerViewListPesanan.context, LinearLayoutManager.VERTICAL, false)
             adapter = AdapterChildListPesanan(result, token)
         }
-        holder.btnSelesai.setOnClickListener {
-            listener.onSelesai(data.id.toString())
+        holder.btnTerima.setOnClickListener {
+            listener.onProses(data.id.toString())
+        }
+        holder.btnTolak.setOnClickListener {
+            listener.onCancel(data.id.toString())
         }
     }
 
     override fun getItemCount(): Int {
-        return listPesananDiproses.size
+        return listItem.size
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var total: TextView = itemView.findViewById(R.id.total_harga)
-        var btnSelesai: LinearLayout = itemView.findViewById(R.id.btn_selesai)
-        var idOrderProses: TextView = itemView.findViewById(R.id.tvIdOrderProses)
+        var btnTerima: LinearLayout = itemView.findViewById(R.id.btn_terima)
+        var btnTolak: LinearLayout = itemView.findViewById(R.id.btnTolak)
+        var namaPembeli: TextView = itemView.findViewById(R.id.namaPembeli)
         var recyclerViewListPesanan: RecyclerView = itemView.findViewById(R.id.rv_childlistpesanan)
     }
 
     interface OnAdapterListener {
-        fun onSelesai(orderId:String)
+        fun onProses(orderId:String)
+        fun onCancel(orderId:String)
     }
 
     private fun toRupiah(number: Double): String{
