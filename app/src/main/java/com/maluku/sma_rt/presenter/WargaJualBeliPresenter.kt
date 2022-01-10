@@ -15,10 +15,10 @@ import retrofit2.Response
 
 
 class WargaJualBeliPresenter(private var view: WargaJualBeliInterface) {
-    fun getAllKeluarga(token: String) {
+    fun getAllKeluarga(token: String, nama: String?) {
         RetrofitService
             .getService()
-            .getAllKeluarga("Bearer $token")
+            .getAllKeluarga("Bearer $token",nama)
             .enqueue(object : Callback<GetAllKeluargaResponse> {
                 override fun onResponse(
                     call: Call<GetAllKeluargaResponse>,
@@ -40,10 +40,10 @@ class WargaJualBeliPresenter(private var view: WargaJualBeliInterface) {
             })
     }
 
-    fun getAllProduk(token: String) {
+    fun getAllProduk(token: String, idKeluarga: String?, nama: String?) {
         RetrofitService
             .getService()
-            .getAllProduk("Bearer $token")
+            .getAllProduk("Bearer $token",idKeluarga,nama)
             .enqueue(object : Callback<GetAllProdukResponse> {
                 override fun onResponse(
                     call: Call<GetAllProdukResponse>,

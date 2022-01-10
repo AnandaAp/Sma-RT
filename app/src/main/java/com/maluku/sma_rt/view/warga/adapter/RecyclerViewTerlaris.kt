@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.view.Window
 import android.widget.ImageButton
 import android.widget.ImageView
+import android.widget.TextClock
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
@@ -21,14 +22,18 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.firebase.storage.FirebaseStorage
 import com.maluku.sma_rt.R
 import com.maluku.sma_rt.model.keluarga.GetAllKeluargaItem
+import com.maluku.sma_rt.model.order.CreateOrderBody
 import com.maluku.sma_rt.model.produk.GetAllProdukItem
+import com.maluku.sma_rt.presenter.KeranjangPresenter
+import com.maluku.sma_rt.presenter.OrderPresenter
 import java.io.File
 import java.text.NumberFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
 class RecyclerViewTerlaris(
-    private val listProduk: ArrayList<GetAllProdukItem>
+    private val listProduk: ArrayList<GetAllProdukItem>,
+    val listener: OnAdapterListener
 ): RecyclerView.Adapter<RecyclerViewTerlaris.MyViewHolder>() {
 
     fun setData(data : List<GetAllProdukItem>){
@@ -90,6 +95,13 @@ class RecyclerViewTerlaris(
             }.addOnFailureListener {
             }
 
+            val btnTambah = dialog.findViewById<TextView>(R.id.btn_keranjang)
+            btnTambah?.setOnClickListener {
+                val item = CreateOrderBody(data.id.toString(), 1, "")
+                listener.onAddToChart(item)
+            }
+
+
             val btnClose = dialog.findViewById<ImageButton>(R.id.btn_close)
 
             btnClose?.setOnClickListener {
@@ -119,5 +131,9 @@ class RecyclerViewTerlaris(
         val localeID =  Locale("in", "ID")
         val numberFormat = NumberFormat.getCurrencyInstance(localeID)
         return numberFormat.format(number).toString()
+    }
+
+    interface OnAdapterListener {
+        fun onAddToChart(item: CreateOrderBody)
     }
 }

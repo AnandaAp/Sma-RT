@@ -129,7 +129,7 @@ class AkunWarga : Fragment() {
     private fun logout() {
         binding.menuLogout.setOnClickListener {
             val preferences = UserSession(requireActivity())
-            preferences.clearSharedPreference()
+
             val intent = Intent(requireActivity(), MainActivity::class.java)
 
             val dialog = Dialog(requireActivity())
@@ -142,6 +142,7 @@ class AkunWarga : Fragment() {
 
             btnOk.setOnClickListener {
                     dialog ->startActivity(intent)
+                preferences.clearSharedPreference()
                 requireActivity().finish()
             }
             btnBatal.setOnClickListener {

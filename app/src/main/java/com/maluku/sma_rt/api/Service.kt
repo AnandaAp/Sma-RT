@@ -11,6 +11,9 @@ import com.maluku.sma_rt.model.dompetrt.DefaultDompetRTResponse
 import com.maluku.sma_rt.model.dompetrt.GetDompetRTByLoginResponse
 import com.maluku.sma_rt.model.informasi.*
 import com.maluku.sma_rt.model.keluarga.*
+import com.maluku.sma_rt.model.keranjang.GetKeranjangById
+import com.maluku.sma_rt.model.keranjang.GetKeranjangResponse
+import com.maluku.sma_rt.model.keranjang.KeranjangDefaultResponse
 import com.maluku.sma_rt.model.login.OnLoginSuccessResponse
 import com.maluku.sma_rt.model.order.CreateOrderBody
 import com.maluku.sma_rt.model.order.CreateOrderResponse
@@ -180,7 +183,7 @@ interface Service {
     @PUT("keluarga/{id_keluarga}")
     fun updateToko(
         @Header("Authorization") authHeader: String,
-        @Path("id_keluarga") product_id: String,
+        @Path("id_keluarga") id_keluarga: String,
         @Field("nama_toko") nama_toko: String,
         @Field("gambar") gambar: String,
     ): Call<UpdateKeluargaResponse>
@@ -189,12 +192,15 @@ interface Service {
     @GET("keluarga")
     fun getAllKeluarga(
         @Header("Authorization") authHeader: String,
+        @Query("search") nama: String?
     ): Call<GetAllKeluargaResponse>
 
     // Get All Produk
     @GET("produk")
     fun getAllProduk(
-        @Header("Authorization") authHeader: String
+        @Header("Authorization") authHeader: String,
+        @Query("id_keluarga") idKeluarga: String?,
+        @Query("nama") nama: String?
     ): Call<GetAllProdukResponse>
 
 
@@ -492,6 +498,27 @@ interface Service {
         @Header("Authorization") authHeader: String,
         @Path("id_order") id_order: String
     ): Call<DefaultOrderResponse>
+
+    // Keranjang
+    // Get Keranjang
+    @GET("cart")
+    fun getKeranjang(
+        @Header("Authorization") authHeader: String,
+    ): Call<GetKeranjangResponse>
+
+    // Tambah Produk Ke Keranjang
+    @PUT("cart/add")
+    fun tambahProdukKeKeranjang(
+        @Header("Authorization") authHeader: String,
+        @Body item: CreateOrderBody
+    ): Call<KeranjangDefaultResponse>
+
+    // Update Keranjang
+    @PUT("cart")
+    fun updateKeranjang(
+        @Header("Authorization") authHeader: String,
+        @Body item: ArrayList<CreateOrderBody>
+    ): Call<KeranjangDefaultResponse>
 
     // Password
     // Pengurus RT

@@ -60,9 +60,6 @@ class LaporanList : Fragment(), WargaAduanInterface {
 
 
 
-
-
-
     private fun bindingView(): View {
         binding = FragmentLaporanListBinding.inflate(layoutInflater)
         return binding.root

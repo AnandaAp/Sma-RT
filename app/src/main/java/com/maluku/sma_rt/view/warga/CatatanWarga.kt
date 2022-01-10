@@ -89,7 +89,7 @@ class CatatanWarga : Fragment(), WargaTagihanInterface {
     }
 
     override fun onGetDataFailure(message: String) {
-        TODO("Not yet implemented")
+        Toast.makeText(requireContext(),message, Toast.LENGTH_LONG).show()
     }
 
     override fun onPayBillSuccess(message: String) {
