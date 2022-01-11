@@ -6,13 +6,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.maluku.sma_rt.R
 import com.maluku.sma_rt.databinding.FragmentPersuratanPageBinding
 import com.maluku.sma_rt.databinding.FragmentPersuratanWargaBinding
+import com.maluku.sma_rt.view.warga.adapter.RecyclerViewPersuratanPage
+import com.maluku.sma_rt.view.warga.adapter.RecyclerViewSuratMasuk
 
 class PersuratanPage : Fragment() {
 
     private lateinit var binding: FragmentPersuratanPageBinding
+
+    private lateinit var rvSuratPage: RecyclerView
+    private lateinit var adapterSuratPage: RecyclerViewPersuratanPage
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,6 +32,7 @@ class PersuratanPage : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         btnBack()
+        setRecyclerViewPersuratanPage()
         btnSuratMasuk()
         fabAddSurat()
 
@@ -34,6 +42,14 @@ class PersuratanPage : Fragment() {
         binding.btnBack.setOnClickListener{
             findNavController().navigate(R.id.action_persuratanPage_to_homeWarga)
         }
+    }
+
+    private fun setRecyclerViewPersuratanPage() {
+        rvSuratPage = binding.rvPersuratanpage
+        rvSuratPage.setHasFixedSize(true)
+        rvSuratPage.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL,false)
+        adapterSuratPage = RecyclerViewPersuratanPage()
+        rvSuratPage.adapter = adapterSuratPage
     }
 
     private fun btnSuratMasuk() {

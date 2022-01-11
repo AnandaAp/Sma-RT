@@ -3,13 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/layout_listlaporan">
+    android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout7"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="18dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="6dp"
         app:layout_constraintBottom_toBottomOf="@+id/view10"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,23 +28,35 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/judulLaporan"
+            android:id="@+id/namaPelapor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="18dp"
             android:fontFamily="@font/montserrat_semibold"
-            android:text="Anonymous"
+            android:text="Kevin Agustinus"
             android:textSize="18sp"
             app:layout_constraintStart_toEndOf="@+id/buktiLaporan"
             app:layout_constraintTop_toTopOf="@+id/buktiLaporan" />
 
         <TextView
-            android:id="@+id/isiLaporan"
+            android:id="@+id/judulLaporan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/montserrat_medium"
+            android:text="Pengajuan surat pindah"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@+id/namaPelapor"
+            app:layout_constraintTop_toBottomOf="@+id/namaPelapor" />
+
+        <TextView
+            android:id="@+id/isiLaporan"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
             android:fontFamily="@font/montserrat_regular"
-            android:text="Didepan rumah sering terdengar..."
-            android:textSize="16sp"
+            android:text="Ingin mengajukan surat untuk pindah rumah"
+            android:textSize="10sp"
             app:layout_constraintStart_toStartOf="@+id/judulLaporan"
             app:layout_constraintTop_toBottomOf="@+id/judulLaporan" />
 
@@ -50,28 +64,35 @@
             android:id="@+id/jamLaporan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
             android:fontFamily="@font/montserrat_medium"
             android:text="17.50 PM"
             android:textColor="@color/grey"
-            android:textSize="12sp"
-            app:layout_constraintBottom_toBottomOf="@+id/judulLaporan"
+            android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="@+id/isiLaporan"
+            app:layout_constraintTop_toBottomOf="@+id/isiLaporan" />
+
+        <TextView
+            android:id="@+id/statusLaporan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_medium"
+            android:text="Terkirim"
+            android:textColor="@color/grey"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="@+id/namaPelapor"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/judulLaporan" />
+            app:layout_constraintTop_toTopOf="@+id/namaPelapor" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <View
         android:id="@+id/view10"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginBottom="2dp"
         android:background="#EBDFDF"
-        app:layout_constraintBottom_toBottomOf="parent"/>
-
-
-
-
-
-
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 

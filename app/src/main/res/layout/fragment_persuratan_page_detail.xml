@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.warga.DetailLaporanList">
+    tools:context=".view.warga.PersuratanPageDetail">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/toolbar_laporanpage"
@@ -86,59 +86,80 @@
             app:layout_constraintTop_toTopOf="@+id/namaPelapor" />
 
         <TextView
-            android:id="@+id/judulLaporan"
+            android:id="@+id/tv_tglkeperluan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="38dp"
-            android:fontFamily="@font/montserrat_medium"
-            android:text="Terganggu kebisingan"
-            android:textSize="16sp"
+            android:fontFamily="@font/montserrat_regular"
+            android:text="Tanggal Keperluan :"
+            android:textColor="@color/black"
+            android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/profileLaporanSaya" />
 
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/textlayout"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textlayout_tglkeperluan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="40dp"
             android:layout_marginEnd="20dp"
-            android:background="@drawable/bg_edtext_border"
-            android:padding="16dp"
+            app:boxBackgroundMode="none"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/judulLaporan">
+            app:layout_constraintTop_toBottomOf="@+id/tv_tglkeperluan">
 
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ed_tglkeperluan"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:background="@drawable/bg_edtext_border"
                 android:fontFamily="@font/montserrat_regular"
-                android:text="Berisi laporan yang warga laporkan"
-                app:layout_constraintStart_toStartOf="parent" />
+                android:padding="2dp"
+                android:inputType="date"
+                android:text="17-01-2021"
+                android:textCursorDrawable="@drawable/color_cursor" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="150dp"
-                android:layout_height="100dp"
-                android:layout_marginTop="20dp"
-                app:cardCornerRadius="5dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView3">
+        <TextView
+            android:id="@+id/tv_keperluan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginStart="20dp"
+            android:fontFamily="@font/montserrat_regular"
+            android:text="Keperluan :"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textlayout_tglkeperluan" />
 
-                <ImageView
-                    android:id="@+id/imageLaporan"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/foto_agustusan" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textlayout_keperluan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            app:boxBackgroundMode="none"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_keperluan">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ed_keperluan"
+                android:layout_width="match_parent"
+                android:layout_height="184dp"
+                android:background="@drawable/bg_edtext_border"
+                android:fontFamily="@font/montserrat_regular"
+                android:padding="10dp"
+                android:gravity="top"
+                android:text="Ingin mengajukan surat untuk pindah rumah ke rumah tetangga"
+                android:textCursorDrawable="@drawable/color_cursor" />
+        </com.google.android.material.textfield.TextInputLayout>
 
 
-            </androidx.cardview.widget.CardView>
 
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

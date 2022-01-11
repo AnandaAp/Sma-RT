@@ -35,21 +35,27 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_laporanpage">
+    <ImageButton
+        android:id="@+id/btnDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:layout_marginEnd="16dp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_hapus"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_laporanpage" />
 
-        <de.hdodenhof.circleimageview.CircleImageView
+    <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/profileLaporanSaya"
             android:layout_width="52dp"
             android:layout_height="52dp"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="20dp"
             android:scaleType="centerCrop"
             android:src="@drawable/default_image"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/btnDelete" />
 
         <TextView
             android:id="@+id/namaPelapor"
@@ -58,7 +64,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="8dp"
             android:fontFamily="@font/montserrat_semibold"
-            android:text="Anonymous"
+            android:text="Kevin Agustinus"
             android:textSize="20sp"
             app:layout_constraintStart_toEndOf="@+id/profileLaporanSaya"
             app:layout_constraintTop_toTopOf="@+id/profileLaporanSaya" />
@@ -106,8 +112,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/montserrat_regular"
-                android:text="Berisi laporan yang warga laporkan"
-                app:layout_constraintStart_toStartOf="parent" />
+                android:text="mohoh maaf pak RT,
+
+Didepan rumah sering terdengar suara berisik, suara tersebut sangat mengganggu pak apalagi waktu malam hari saya jadi tidak bisa tidur gara gara suara berisik , kayaknya gara gara anak muda pada nongkrong sampai pagi "
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.cardview.widget.CardView
                 android:layout_width="150dp"
@@ -129,6 +138,5 @@
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

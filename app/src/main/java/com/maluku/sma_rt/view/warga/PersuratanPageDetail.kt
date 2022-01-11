@@ -1,7 +1,6 @@
 package com.maluku.sma_rt.view.warga
 
 import android.app.Dialog
-import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -13,16 +12,14 @@ import android.view.Window
 import android.widget.TextView
 import androidx.navigation.fragment.findNavController
 import com.maluku.sma_rt.R
-import com.maluku.sma_rt.databinding.FragmentDetailInformasiBeritaBinding
-import com.maluku.sma_rt.databinding.FragmentDetailLaporanListBinding
-import com.maluku.sma_rt.databinding.FragmentDetailLaporanSayaBinding
-import com.maluku.sma_rt.databinding.FragmentInformasiMasukBinding
+import com.maluku.sma_rt.databinding.FragmentPersuratanPageBinding
+import com.maluku.sma_rt.databinding.FragmentPersuratanPageDetailBinding
 import com.maluku.sma_rt.extentions.UserSession
-import com.maluku.sma_rt.view.activity.MainActivity
 
-class DetailLaporanList : Fragment() {
 
-    private lateinit var binding: FragmentDetailLaporanListBinding
+class PersuratanPageDetail : Fragment() {
+
+    private lateinit var binding: FragmentPersuratanPageDetailBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,15 +31,17 @@ class DetailLaporanList : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        goBack()
+        btnBack()
         btnDelete()
+
+
     }
 
-//    private fun goBack(){
-//        binding.btnBack.setOnClickListener {
-//            findNavController().navigate(R.id.action_)
-//        }
-//    }
+    private fun btnBack() {
+        binding.btnBack.setOnClickListener{
+            findNavController().navigate(R.id.action_persuratanPageDetail_to_persuratanPage)
+        }
+    }
 
     private fun btnDelete() {
         binding.btnDelete.setOnClickListener {
@@ -52,13 +51,13 @@ class DetailLaporanList : Fragment() {
             val dialog = Dialog(requireActivity())
             dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
             dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            dialog.setContentView(R.layout.custom_dialog_delete_laporan)
+            dialog.setContentView(R.layout.custom_dialog_delete_surat)
             val btnYa = dialog.findViewById<TextView>(R.id.btn_ya)
             val btnTidak = dialog.findViewById<TextView>(R.id.btn_tidak)
 
 
             btnYa.setOnClickListener {
-                    dialog.dismiss()
+                dialog.dismiss()
             }
             btnTidak.setOnClickListener {
                 dialog.dismiss()
@@ -69,10 +68,8 @@ class DetailLaporanList : Fragment() {
         }
     }
 
-
-
     private fun bindingView(): View {
-        binding = FragmentDetailLaporanListBinding.inflate(layoutInflater)
+        binding = FragmentPersuratanPageDetailBinding.inflate(layoutInflater)
         return binding.root
     }
 

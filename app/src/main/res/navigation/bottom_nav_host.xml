@@ -410,7 +410,11 @@
         android:id="@+id/detailLaporanSaya"
         android:name="com.maluku.sma_rt.view.warga.DetailLaporanSaya"
         android:label="fragment_detail_laporan_saya"
-        tools:layout="@layout/fragment_detail_laporan_saya" />
+        tools:layout="@layout/fragment_detail_laporan_saya" >
+        <action
+            android:id="@+id/action_detailLaporanSaya_to_laporanPage"
+            app:destination="@id/laporanPage" />
+    </fragment>
     <fragment
         android:id="@+id/laporanList"
         android:name="com.maluku.sma_rt.view.warga.LaporanList"
@@ -441,6 +445,9 @@
         <action
             android:id="@+id/action_persuratanPage_to_persuratanWargaMasuk"
             app:destination="@id/persuratanWargaMasuk" />
+        <action
+            android:id="@+id/action_persuratanPage_to_persuratanPageDetail"
+            app:destination="@id/persuratanPageDetail" />
     </fragment>
     <fragment
         android:id="@+id/persuratanWargaMasuk"
@@ -449,6 +456,15 @@
         tools:layout="@layout/fragment_persuratan_warga_masuk" >
         <action
             android:id="@+id/action_persuratanWargaMasuk_to_persuratanPage"
+            app:destination="@id/persuratanPage" />
+    </fragment>
+    <fragment
+        android:id="@+id/persuratanPageDetail"
+        android:name="com.maluku.sma_rt.view.warga.PersuratanPageDetail"
+        android:label="fragment_persuratan_page_detail"
+        tools:layout="@layout/fragment_persuratan_page_detail" >
+        <action
+            android:id="@+id/action_persuratanPageDetail_to_persuratanPage"
             app:destination="@id/persuratanPage" />
     </fragment>
 </navigation>

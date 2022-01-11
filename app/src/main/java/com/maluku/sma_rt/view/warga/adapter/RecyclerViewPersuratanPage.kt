@@ -1,40 +1,35 @@
 package com.maluku.sma_rt.view.warga.adapter
 
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.Window
-import android.widget.ImageButton
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.maluku.sma_rt.R
-import com.maluku.sma_rt.view.warga.InformasiWargaDirections
 import com.maluku.sma_rt.view.warga.LaporanPageDirections
+import com.maluku.sma_rt.view.warga.PersuratanPage
+import com.maluku.sma_rt.view.warga.PersuratanPageDirections
 
-class RecyclerViewLaporanSaya:
-    RecyclerView.Adapter<RecyclerViewLaporanSaya.MyViewHolder>() {
+class RecyclerViewPersuratanPage:
+    RecyclerView.Adapter<RecyclerViewPersuratanPage.MyViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.recyclerview_laporansaya, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.recycler_persuratan_page, parent, false)
         return MyViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.itemView.setOnClickListener { view ->
-            val direction = LaporanPageDirections
-                .actionLaporanPageToDetailLaporanSaya(
-                )
+            val direction = PersuratanPageDirections
+                .actionPersuratanPageToPersuratanPageDetail()
             view.findNavController().navigate(direction)
         }
 
     }
 
     override fun getItemCount(): Int {
-        return 10
+        return 8
     }
 
     class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
