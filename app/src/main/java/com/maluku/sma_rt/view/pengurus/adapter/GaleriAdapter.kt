@@ -8,12 +8,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
-import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
@@ -23,10 +21,6 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.firebase.storage.FirebaseStorage
 import com.maluku.sma_rt.R
 import com.maluku.sma_rt.model.informasi.GetAllInformasiItem
-import com.maluku.sma_rt.model.warga.GetAllWargaItem
-import com.maluku.sma_rt.view.pengurus.InformasiFragmentDirections
-import com.maluku.sma_rt.view.pengurus.bottomnavigation.HomeFragmentDirections
-import org.w3c.dom.Text
 import java.io.File
 
 class GaleriAdapter(val listKegiatan: ArrayList<GetAllInformasiItem>): RecyclerView.Adapter<GaleriAdapter.ViewHolder>() {
@@ -66,9 +60,9 @@ class GaleriAdapter(val listKegiatan: ArrayList<GetAllInformasiItem>): RecyclerV
             dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
             dialog.setContentView(R.layout.bottomsheet_detail_informasi_rt)
 
-            val judul = dialog.findViewById<TextView>(R.id.judulInfoRT)
-            val gambar = dialog.findViewById<ImageView>(R.id.ivInfoRT)
-            val deskripsi = dialog.findViewById<TextView>(R.id.descInfoRT)
+            val judul = dialog.findViewById<TextView>(R.id.tvJudulDetailLaporan)
+            val gambar = dialog.findViewById<ImageView>(R.id.ivDetailLaporan)
+            val deskripsi = dialog.findViewById<TextView>(R.id.tvKetDetailLaporan)
 
             judul!!.text = data.judul.toString()
             deskripsi!!.text = data.detail.toString()

@@ -60,7 +60,7 @@
         app:layout_constraintTop_toBottomOf="@+id/view8">
 
         <ImageView
-            android:id="@+id/ivInfoRT"
+            android:id="@+id/ivDetailLaporan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:scaleType="fitXY"
@@ -70,7 +70,7 @@
     </androidx.cardview.widget.CardView>
 
     <TextView
-        android:id="@+id/judulInfoRT"
+        android:id="@+id/tvJudulDetailLaporan"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -82,7 +82,7 @@
         app:layout_constraintTop_toBottomOf="@+id/cardView11" />
 
     <TextView
-        android:id="@+id/descInfoRT"
+        android:id="@+id/tvKetDetailLaporan"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
@@ -90,9 +90,9 @@
         android:text="@string/ket_informasi"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/judulInfoRT"
-        app:layout_constraintStart_toStartOf="@+id/judulInfoRT"
-        app:layout_constraintTop_toBottomOf="@+id/judulInfoRT"
+        app:layout_constraintEnd_toEndOf="@+id/tvJudulDetailLaporan"
+        app:layout_constraintStart_toStartOf="@+id/tvJudulDetailLaporan"
+        app:layout_constraintTop_toBottomOf="@+id/tvJudulDetailLaporan"
         app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
