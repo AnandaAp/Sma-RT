@@ -88,6 +88,12 @@ class PesananUserPage : Fragment(), OrderInterface, KeranjangInterface {
                         getToken(),idProduk
                     )
                 }
+
+                override fun onRemove(idProduk: String) {
+                    KeranjangPresenter(this@PesananUserPage).hapusProduk(
+                        getToken(),idProduk
+                    )
+                }
             }
         )
 
@@ -164,9 +170,11 @@ class PesananUserPage : Fragment(), OrderInterface, KeranjangInterface {
         if(hide) {
             binding.layoutMetodePembayaran.visibility = View.GONE
             binding.layoutTotalharga.visibility = View.GONE
+            binding.tvKeranjangKosong.visibility = View.VISIBLE
         } else {
             binding.layoutMetodePembayaran.visibility = View.VISIBLE
             binding.layoutTotalharga.visibility = View.VISIBLE
+            binding.tvKeranjangKosong.visibility = View.GONE
         }
     }
 
@@ -277,7 +285,7 @@ class PesananUserPage : Fragment(), OrderInterface, KeranjangInterface {
 
     override fun onUpdateKeranjangSuccess(message: String) {
         Handler(Looper.getMainLooper()).post {
-            Toast.makeText(context,message,Toast.LENGTH_SHORT)
+            Toast.makeText(context,message, Toast.LENGTH_LONG).show()
         }
     }
 
@@ -287,20 +295,18 @@ class PesananUserPage : Fragment(), OrderInterface, KeranjangInterface {
 
     override fun onAddQuantitySuccess(message: String) {
         Handler(Looper.getMainLooper()).post {
-            Toast.makeText(requireContext(),message,Toast.LENGTH_SHORT)
             KeranjangPresenter(this).getKeranjang(getToken())
         }
     }
 
     override fun onAddQuantityFailure(message: String) {
         Handler(Looper.getMainLooper()).post {
-            Toast.makeText(context,message,Toast.LENGTH_SHORT)
+            Toast.makeText(context,message,Toast.LENGTH_SHORT).show()
         }
     }
 
     override fun onReduceQuantitySuccess(message: String) {
         Handler(Looper.getMainLooper()).post {
-            Toast.makeText(context,message,Toast.LENGTH_SHORT)
             KeranjangPresenter(this).getKeranjang(getToken())
             setRecylerViewPesanan()
         }
@@ -308,7 +314,21 @@ class PesananUserPage : Fragment(), OrderInterface, KeranjangInterface {
 
     override fun onReduceQuantityFailure(message: String) {
         Handler(Looper.getMainLooper()).post {
-            Toast.makeText(context,message,Toast.LENGTH_SHORT)
+            Toast.makeText(context,message,Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    override fun onRemoveItemSuccess(message: String) {
+        Handler(Looper.getMainLooper()).post {
+            Toast.makeText(context,"Produk berhasil dihapus dari keranjang",Toast.LENGTH_SHORT).show()
+            KeranjangPresenter(this).getKeranjang(getToken())
+            setRecylerViewPesanan()
+        }
+    }
+
+    override fun onRemoveItemFailure(message: String) {
+        Handler(Looper.getMainLooper()).post {
+            Toast.makeText(context,message,Toast.LENGTH_SHORT).show()
         }
     }
 }

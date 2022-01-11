@@ -165,4 +165,27 @@ class KeranjangPresenter(private var view: KeranjangInterface) {
         }
     }
 
+    fun hapusProduk(
+        token: String,
+        idProduk: String
+    ){
+        GlobalScope.launch(Dispatchers.IO) {
+            val res = RetrofitService
+                .getService()
+                .hapusProdukKeranjang(
+                    "Bearer $token",
+                    idProduk
+                ).awaitResponse()
+            if(res.isSuccessful){
+                val result = res.body()?.message.toString()
+                view.onRemoveItemSuccess(result)
+            }
+            else{
+                val jObjError = JSONObject(res.errorBody()!!.string())
+                val message = jObjError.getString("message")
+                view.onRemoveItemFailure(message)
+            }
+        }
+    }
+
 }

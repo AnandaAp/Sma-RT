@@ -20,4 +20,6 @@ interface KeranjangInterface {
     fun onAddQuantityFailure(message: String)
     fun onReduceQuantitySuccess(message: String)
     fun onReduceQuantityFailure(message: String)
+    fun onRemoveItemSuccess(message: String)
+    fun onRemoveItemFailure(message: String)
 }

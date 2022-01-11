@@ -533,6 +533,13 @@ interface Service {
         @Path("idProduk") idProduk: String
     ): Call<KeranjangDefaultResponse>
 
+    // Hapus Produk
+    @PUT("item/del/{idProduk}")
+    fun hapusProdukKeranjang(
+        @Header("Authorization") authHeader: String,
+        @Path("idProduk") idProduk: String
+    ): Call<KeranjangDefaultResponse>
+
     // Password
     // Pengurus RT
     @FormUrlEncoded

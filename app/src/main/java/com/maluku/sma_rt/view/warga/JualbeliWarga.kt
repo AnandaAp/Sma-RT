@@ -244,4 +244,12 @@ class JualbeliWarga : Fragment(), WargaJualBeliInterface, KeranjangInterface{
         TODO("Not yet implemented")
     }
 
+    override fun onRemoveItemSuccess(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onRemoveItemFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
 }

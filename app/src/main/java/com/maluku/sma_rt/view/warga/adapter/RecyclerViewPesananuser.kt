@@ -87,6 +87,10 @@ class RecyclerViewPesananuser(
         holder.btnKurang.setOnClickListener {
             listener.onReduce(data.idProduk.toString())
         }
+
+        holder.btnHapus.setOnClickListener {
+            listener.onRemove(data.idProduk.toString())
+        }
     }
 
     override fun getItemCount(): Int {
@@ -100,6 +104,7 @@ class RecyclerViewPesananuser(
         var gambar: ImageView = itemView.findViewById(R.id.imageprodukpesanan)
         var btnTambah: ImageButton = itemView.findViewById(R.id.btn_tambah)
         var btnKurang: ImageButton = itemView.findViewById(R.id.btn_kurang)
+        var btnHapus: ImageButton = itemView.findViewById(R.id.btndeletepesanan)
         var layout: CardView = itemView.findViewById(R.id.cvitem)
     }
 
@@ -112,6 +117,7 @@ class RecyclerViewPesananuser(
     interface OnAdapterListener {
         fun onAdd(idProduk:String)
         fun onReduce(idProduk:String)
+        fun onRemove(idProduk:String)
     }
 
 }
