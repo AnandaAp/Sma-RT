@@ -14,4 +14,8 @@ interface WargaPersuratanInterface {
     fun onGetDataFailure(message: String)
     fun onGetDataByIDSuccess(data: GetPersuratanById?)
     fun onGetDataByIDFailure(message: String)
+    fun onLetterReceivedSuccess(message: String)
+    fun onLetterReceivedFailure(message: String)
+    fun onLetterRejectedSuccess(message: String)
+    fun onLetterRejectedFailure(message: String)
 }

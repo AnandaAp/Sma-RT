@@ -27,7 +27,7 @@ class SuratMasukAdapter(val listSuratMasuk: ArrayList<GetAllPersuratanItem>): Re
         val data = listSuratMasuk[position]
         holder.judulSurat.text = data.judul.toString()
         holder.keperluanSurat.text = data.keperluan.toString()
-        holder.statusSurat.text = data.status.toString()
+        holder.statusSurat.text = "Diajukan"
         holder.tanggalSurat.text = data.tanggal.toString()
         holder.tujuanSurat.text = data.penerima.toString()
         holder.cardSurat.setOnClickListener { view ->

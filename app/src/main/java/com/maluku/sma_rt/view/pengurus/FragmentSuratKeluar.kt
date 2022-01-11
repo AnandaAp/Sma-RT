@@ -98,4 +98,20 @@ class FragmentSuratKeluar : Fragment(), WargaPersuratanInterface {
     override fun onGetDataByIDFailure(message: String) {
         TODO("Not yet implemented")
     }
+
+    override fun onLetterReceivedSuccess(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onLetterReceivedFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onLetterRejectedSuccess(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onLetterRejectedFailure(message: String) {
+        TODO("Not yet implemented")
+    }
 }

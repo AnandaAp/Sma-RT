@@ -164,4 +164,54 @@ class WargaPersuratanPresenter(private val view: WargaPersuratanInterface) {
             }
         }
     }
+
+    // Terima surat
+    fun terimaSurat(
+        token: String,
+        idSurat: String,
+        link: String
+    ){
+        GlobalScope.launch(Dispatchers.IO){
+            val response = RetrofitService
+                .getService()
+                .terimaSurat(
+                    "Bearer $token",
+                    idSurat,
+                    link
+                ).awaitResponse()
+            if(response.isSuccessful){
+                val message = response.body()!!.message.toString()
+                view.onLetterReceivedSuccess(message)
+            }
+            else{
+                val jObjError = JSONObject(response.errorBody()!!.string())
+                val message = jObjError.getString("message")
+                view.onLetterReceivedFailure(message)
+            }
+        }
+    }
+
+    // Tolak surat
+    fun tolakSurat(
+        token: String,
+        idSurat: String
+    ){
+        GlobalScope.launch(Dispatchers.IO){
+            val response = RetrofitService
+                .getService()
+                .tolakSurat(
+                    "Bearer $token",
+                    idSurat
+                ).awaitResponse()
+            if(response.isSuccessful){
+                val message = response.body()!!.message.toString()
+                view.onLetterReceivedSuccess(message)
+            }
+            else{
+                val jObjError = JSONObject(response.errorBody()!!.string())
+                val message = jObjError.getString("message")
+                view.onLetterReceivedFailure(message)
+            }
+        }
+    }
 }

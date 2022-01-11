@@ -23,10 +23,7 @@ import com.maluku.sma_rt.model.password.DefaultPasswordResponse
 import com.maluku.sma_rt.model.pengurus.CreatePengurusResponse
 import com.maluku.sma_rt.model.pengurus.DefaultPengurusResponse
 import com.maluku.sma_rt.model.pengurus.GetDataPengurusByLoginResponse
-import com.maluku.sma_rt.model.persuratan.CreatePersuratanResponse
-import com.maluku.sma_rt.model.persuratan.GetAllPersuratanResponse
-import com.maluku.sma_rt.model.persuratan.GetPersuratanByIDResponse
-import com.maluku.sma_rt.model.persuratan.GetPersuratanById
+import com.maluku.sma_rt.model.persuratan.*
 import com.maluku.sma_rt.model.produk.*
 import com.maluku.sma_rt.model.tagihan.CreateTagihanResponse
 import com.maluku.sma_rt.model.tagihan.GetAllTagihanResponse
@@ -629,11 +626,19 @@ interface Service {
         @Path("id_surat") id_surat: String
     ): Call<GetPersuratanByIDResponse>
 
-    // Push Notification API
-    @Headers("Authorization: key=${Constants.SERVER_KEY}", "Content-Type: ${Constants.CONTENT_TYPE}")
-    @POST("fcm/send")
-    fun postNotification(
-        @Body notification: SendNotification,
-    ): Response<ResponseBody>
+    // Surat Diterima
+    @FormUrlEncoded
+    @PUT("persuratan/selesai/{id_surat}")
+    fun terimaSurat(
+        @Header("Authorization") authHeader: String,
+        @Path("id_surat") id_surat: String,
+        @Field("link") link: String
+    ): Call<PersuratanDefaultResponse>
 
+    // Surat Ditolak
+    @PUT("persuratan/tolak/{id_surat}")
+    fun tolakSurat(
+        @Header("Authorization") authHeader: String,
+        @Path("id_surat") id_surat: String
+    ): Call<PersuratanDefaultResponse>
 }
