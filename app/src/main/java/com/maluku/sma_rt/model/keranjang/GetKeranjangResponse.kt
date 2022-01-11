@@ -5,6 +5,18 @@ import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
+data class KeranjangCheckout(
+	@field:SerializedName("id_produk")
+	val idProduk: String? = null,
+
+	@field:SerializedName("jumlah")
+	val jumlah: Int? = null,
+
+	@field:SerializedName("catatan")
+	val catatan: String? = null,
+) : Parcelable
+
+@Parcelize
 data class GetKeranjangResponse(
 
 	@field:SerializedName("code")

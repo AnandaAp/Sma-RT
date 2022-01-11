@@ -5,10 +5,7 @@ import android.widget.Toast
 import com.maluku.sma_rt.api.RetrofitService
 import com.maluku.sma_rt.model.keluarga.GetAllKeluargaItem
 import com.maluku.sma_rt.model.keluarga.GetAllKeluargaResponse
-import com.maluku.sma_rt.model.keranjang.GetKeranjangById
-import com.maluku.sma_rt.model.keranjang.GetKeranjangResponse
-import com.maluku.sma_rt.model.keranjang.ItemKeranjangItem
-import com.maluku.sma_rt.model.keranjang.KeranjangDefaultResponse
+import com.maluku.sma_rt.model.keranjang.*
 import com.maluku.sma_rt.model.order.CreateOrderBody
 import com.maluku.sma_rt.model.produk.GetAllProdukItem
 import com.maluku.sma_rt.model.produk.GetAllProdukResponse
@@ -36,14 +33,37 @@ class KeranjangPresenter(private var view: KeranjangInterface) {
                     response: Response<GetKeranjangResponse>
                 ) {
                     if (response.isSuccessful){
-                        val result = response.body()?.getKeranjangById?.itemKeranjang as? List<ItemKeranjangItem>
-                        if(!result.isNullOrEmpty()) {
-                            view.onGetKeranjangSuccess(result)
-                        }
+                        val result = response.body()?.getKeranjangById as GetKeranjangById
+                        view.onGetKeranjangSuccess(result)
                     } else{
                         val jObjError = JSONObject(response.errorBody()?.string())
                         val message = jObjError.getString("message")
                         view.onGetKeranjangFailure(message)
+                    }
+                }
+
+                override fun onFailure(call: Call<GetKeranjangResponse>, t: Throwable) {
+                    view.onGetKeranjangFailure(t.message.toString())
+                }
+            })
+    }
+
+    fun getKeranjangCheckout(token: String) {
+        RetrofitService
+            .getService()
+            .getKeranjang("Bearer $token")
+            .enqueue(object : Callback<GetKeranjangResponse> {
+                override fun onResponse(
+                    call: Call<GetKeranjangResponse>,
+                    response: Response<GetKeranjangResponse>
+                ) {
+                    if (response.isSuccessful){
+                        val result = response.body()?.getKeranjangById as GetKeranjangById
+                        view.onGetKeranjangCheckoutSuccess(result)
+                    } else{
+                        val jObjError = JSONObject(response.errorBody()?.string())
+                        val message = jObjError.getString("message")
+                        view.onGetKeranjangCheckoutFailure(message)
                     }
                 }
 

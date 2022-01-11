@@ -25,6 +25,7 @@ import com.maluku.sma_rt.databinding.FragmentPesananUserPageBinding
 import com.maluku.sma_rt.extentions.UserSession
 import com.maluku.sma_rt.model.keranjang.GetKeranjangById
 import com.maluku.sma_rt.model.keranjang.ItemKeranjangItem
+import com.maluku.sma_rt.model.keranjang.KeranjangCheckout
 import com.maluku.sma_rt.model.order.CreateOrderBody
 import com.maluku.sma_rt.model.order.GetAllOrderItem
 import com.maluku.sma_rt.presenter.KeranjangPresenter
@@ -34,6 +35,9 @@ import com.maluku.sma_rt.view.viewInterface.OrderInterface
 import com.maluku.sma_rt.view.warga.adapter.AdapterParentListPesananDiproses
 import com.maluku.sma_rt.view.warga.adapter.RecyclerViewPesananuser
 import org.json.JSONObject
+import java.text.NumberFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 private const val TAG = "PESANAN USER PAGE"
 
@@ -46,6 +50,9 @@ class PesananUserPage : Fragment(), OrderInterface, KeranjangInterface {
 
     private lateinit var rvPesananuser: RecyclerView
     private lateinit var adapterPesananuser: RecyclerViewPesananuser
+
+    private var bayarPakaiSaldo: Boolean = false
+    private var keranjang: ArrayList<KeranjangCheckout> = arrayListOf()
 
 
     override fun onCreateView(
@@ -61,23 +68,8 @@ class PesananUserPage : Fragment(), OrderInterface, KeranjangInterface {
         KeranjangPresenter(this).getKeranjang(getToken())
         setRecylerViewPesanan()
         goBack()
+        metodePembayaran(view)
         submitPesan()
-        cardView = view.findViewById(R.id.card_view)
-        showButton = view.findViewById(R.id.image_button)
-        hiddenLayout = view.findViewById(R.id.layout_expand)
-        hiddenLayout.layoutTransition.enableTransitionType(LayoutTransition.CHANGING)
-
-        showButton.setOnClickListener {
-            if (hiddenLayout.visibility == View.VISIBLE) {
-                TransitionManager.beginDelayedTransition(cardView, AutoTransition())
-                hiddenLayout.visibility = View.GONE
-                showButton.setImageResource(R.drawable.ic_arrow_down)
-            } else {
-                TransitionManager.beginDelayedTransition(cardView, AutoTransition())
-                hiddenLayout.visibility = View.VISIBLE
-                showButton.setImageResource(R.drawable.ic_arrow_up)
-            }
-        }
     }
 
     private fun setRecylerViewPesanan() {
@@ -101,6 +93,9 @@ class PesananUserPage : Fragment(), OrderInterface, KeranjangInterface {
 
         rvPesananuser.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL,false)
         rvPesananuser.setAdapter(adapterPesananuser)
+
+        hideJikaKeranjangKosong(true)
+
     }
 
     private fun getToken(): String {
@@ -118,13 +113,66 @@ class PesananUserPage : Fragment(), OrderInterface, KeranjangInterface {
 
     private fun submitPesan() {
         binding.btnPesan.setOnClickListener {
-            val arrOrder = ArrayList<CreateOrderBody>()
-            val data = CreateOrderBody("01FQNTQ9KYRFW9YNMYGAXP1R8M", 1, "topping coklat")
-            arrOrder.add(data)
-            arrOrder.add(CreateOrderBody("01FQNTQ9M1WA992RJY56VTJ4YX", 2, "topping keju"))
-            OrderPresenter(this).createOrderPakaiSaldo(getToken(), arrOrder)
-            //            findNavController().navigate(R.id.action_pesananUserPage_to_pesananUserMenunggu)
+            if(binding.rbCOD.isChecked || binding.rbSaldo.isChecked) {
+                KeranjangPresenter(this).getKeranjangCheckout(getToken())
+            } else {
+                Toast.makeText(requireContext(),"Pilih metode pembayaran terlebih dahulu!", Toast.LENGTH_LONG).show()
+            }
         }
+    }
+
+    private fun createOrderPakaiSaldo() {
+        OrderPresenter(this).createOrderPakaiSaldo(getToken(), keranjang)
+    }
+
+    private fun createOrderPakaiCOD() {
+        OrderPresenter(this).createOrderPakaiCOD(getToken(), keranjang)
+    }
+
+    private fun metodePembayaran(view: View) {
+        cardView = view.findViewById(R.id.card_view)
+        showButton = view.findViewById(R.id.image_button)
+        hiddenLayout = view.findViewById(R.id.layout_expand)
+        hiddenLayout.layoutTransition.enableTransitionType(LayoutTransition.CHANGING)
+
+        showButton.setOnClickListener {
+            if (hiddenLayout.visibility == View.VISIBLE) {
+                TransitionManager.beginDelayedTransition(cardView, AutoTransition())
+                hiddenLayout.visibility = View.GONE
+                showButton.setImageResource(R.drawable.ic_arrow_down)
+            } else {
+                TransitionManager.beginDelayedTransition(cardView, AutoTransition())
+                hiddenLayout.visibility = View.VISIBLE
+                showButton.setImageResource(R.drawable.ic_arrow_up)
+            }
+        }
+        binding.rbCOD.setOnClickListener {
+            binding.rbCOD.isChecked = true
+            binding.rbSaldo.isChecked = false
+            bayarPakaiSaldo = false
+        }
+
+        binding.rbSaldo.setOnClickListener {
+            binding.rbCOD.isChecked = false
+            binding.rbSaldo.isChecked = true
+            bayarPakaiSaldo = true
+        }
+
+    }
+
+    private fun hideJikaKeranjangKosong(hide: Boolean) {
+        if(hide) {
+            binding.layoutMetodePembayaran.visibility = View.GONE
+            binding.layoutTotalharga.visibility = View.GONE
+        } else {
+            binding.layoutMetodePembayaran.visibility = View.VISIBLE
+            binding.layoutTotalharga.visibility = View.VISIBLE
+        }
+    }
+
+    private fun resetKeranjang() {
+        val arrOrder = ArrayList<CreateOrderBody>()
+        KeranjangPresenter(this).updateKeranjang(getToken(), arrOrder)
     }
 
     private fun bindingView(): View {
@@ -132,9 +180,17 @@ class PesananUserPage : Fragment(), OrderInterface, KeranjangInterface {
         return binding.root
     }
 
+    private fun toRupiah(number: Double): String{
+        val localeID =  Locale("in", "ID")
+        val numberFormat = NumberFormat.getCurrencyInstance(localeID)
+        return numberFormat.format(number).toString()
+    }
+
     override fun onCreateOrderSuccess(message: String) {
         Handler(Looper.getMainLooper()).post {
             Toast.makeText(context,message, Toast.LENGTH_SHORT).show()
+            val direction = PesananUserPageDirections.actionPesananUserPageToRiwayatPesananUser()
+            findNavController().navigate(direction)
         }
     }
 
@@ -176,12 +232,39 @@ class PesananUserPage : Fragment(), OrderInterface, KeranjangInterface {
         TODO("Not yet implemented")
     }
 
-    override fun onGetKeranjangSuccess(result: List<ItemKeranjangItem>) {
-        adapterPesananuser.setData(result)
+    override fun onGetKeranjangSuccess(result: GetKeranjangById) {
+        val items = result.itemKeranjang as? List<ItemKeranjangItem>
+        if(!items.isNullOrEmpty()) {
+            adapterPesananuser.setData(items!!)
+            hideJikaKeranjangKosong(false)
+        }
+        binding.tvTotalpembayaran.text = toRupiah(result.hargaTotal.toString().toDouble())
     }
 
     override fun onGetKeranjangFailure(message: String) {
-        Toast.makeText(requireContext(),message, Toast.LENGTH_LONG).show()
+        Toast.makeText(context,message, Toast.LENGTH_LONG).show()
+    }
+
+    override fun onGetKeranjangCheckoutSuccess(result: GetKeranjangById) {
+        val items = result.itemKeranjang as? ArrayList<KeranjangCheckout>
+        if(!items.isNullOrEmpty()) {
+            keranjang = items
+            if(binding.rbCOD.isChecked) {
+                createOrderPakaiCOD()
+            } else if(binding.rbSaldo.isChecked) {
+                createOrderPakaiSaldo()
+            }
+            resetKeranjang()
+        } else {
+            Toast.makeText(context,"Keranjang masih kosong!", Toast.LENGTH_LONG).show()
+        }
+
+    }
+
+    override fun onGetKeranjangCheckoutFailure(message: String) {
+        Handler(Looper.getMainLooper()).post {
+            Toast.makeText(context,message,Toast.LENGTH_SHORT)
+        }
     }
 
     override fun onAddProductKeranjangSuccess(message: String) {
@@ -193,7 +276,9 @@ class PesananUserPage : Fragment(), OrderInterface, KeranjangInterface {
     }
 
     override fun onUpdateKeranjangSuccess(message: String) {
-        TODO("Not yet implemented")
+        Handler(Looper.getMainLooper()).post {
+            Toast.makeText(context,message,Toast.LENGTH_SHORT)
+        }
     }
 
     override fun onUpdateKeranjangFailure(message: String) {
@@ -217,6 +302,7 @@ class PesananUserPage : Fragment(), OrderInterface, KeranjangInterface {
         Handler(Looper.getMainLooper()).post {
             Toast.makeText(context,message,Toast.LENGTH_SHORT)
             KeranjangPresenter(this).getKeranjang(getToken())
+            setRecylerViewPesanan()
         }
     }
 

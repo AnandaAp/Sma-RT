@@ -92,6 +92,7 @@
                 tools:layout_editor_absoluteX="20dp">
 
                 <LinearLayout
+                    android:id="@+id/layoutMetodePembayaran"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
@@ -138,107 +139,115 @@
                         android:orientation="vertical"
                         android:visibility="gone">
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:layout_marginBottom="8dp"
-                            android:background="@drawable/bg_payment"
-                            android:orientation="vertical"
-                            android:paddingStart="8dp"
-                            android:paddingTop="20dp"
-                            android:paddingEnd="8dp"
-                            android:paddingBottom="20dp">
+                        <RadioGroup
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
 
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="16dp"
-                                android:layout_marginEnd="8dp"
-                                android:orientation="horizontal">
+                                android:layout_marginTop="8dp"
+                                android:layout_marginBottom="8dp"
+                                android:background="@drawable/bg_payment"
+                                android:orientation="vertical"
+                                android:paddingStart="8dp"
+                                android:paddingTop="20dp"
+                                android:paddingEnd="8dp"
+                                android:paddingBottom="20dp">
 
-                                <ImageView
-                                    android:layout_width="wrap_content"
+                                <LinearLayout
+                                    android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:src="@drawable/ic_transfer" />
+                                    android:layout_marginStart="16dp"
+                                    android:layout_marginEnd="8dp"
+                                    android:orientation="horizontal">
 
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center"
-                                    android:layout_marginStart="20dp"
-                                    android:fontFamily="@font/montserrat_medium"
-                                    android:text="Bayar dengan saldo"
-                                    android:textSize="18sp" />
+                                    <ImageView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:src="@drawable/ic_transfer" />
 
-                                <View
-                                    android:layout_width="0dp"
-                                    android:layout_height="0dp"
-                                    android:layout_gravity="center"
-                                    android:layout_weight="1" />
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_marginStart="20dp"
+                                        android:fontFamily="@font/montserrat_medium"
+                                        android:text="Bayar dengan saldo"
+                                        android:textSize="18sp" />
 
-                                <RadioButton
-                                    android:layout_width="32dp"
-                                    android:layout_height="32dp"
-                                    android:layout_gravity="center"
-                                    android:buttonTint="@color/grey" />
+                                    <View
+                                        android:layout_width="0dp"
+                                        android:layout_height="0dp"
+                                        android:layout_gravity="center"
+                                        android:layout_weight="1" />
+
+                                    <RadioButton
+                                        android:id="@+id/rbSaldo"
+                                        android:layout_width="32dp"
+                                        android:layout_height="32dp"
+                                        android:layout_gravity="center"
+                                        android:buttonTint="@color/grey" />
+
+
+                                </LinearLayout>
 
 
                             </LinearLayout>
-
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:layout_marginBottom="8dp"
-                            android:background="@drawable/bg_payment"
-                            android:orientation="vertical"
-                            android:paddingStart="8dp"
-                            android:paddingTop="20dp"
-                            android:paddingEnd="8dp"
-                            android:paddingBottom="20dp">
 
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="16dp"
-                                android:layout_marginEnd="8dp"
-                                android:orientation="horizontal">
+                                android:layout_marginTop="8dp"
+                                android:layout_marginBottom="8dp"
+                                android:background="@drawable/bg_payment"
+                                android:orientation="vertical"
+                                android:paddingStart="8dp"
+                                android:paddingTop="20dp"
+                                android:paddingEnd="8dp"
+                                android:paddingBottom="20dp">
 
-                                <ImageView
-                                    android:layout_width="wrap_content"
+                                <LinearLayout
+                                    android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:src="@drawable/ic_cod" />
+                                    android:layout_marginStart="16dp"
+                                    android:layout_marginEnd="8dp"
+                                    android:orientation="horizontal">
 
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center"
-                                    android:layout_marginStart="20dp"
-                                    android:fontFamily="@font/montserrat_medium"
-                                    android:text="Bayar ditempat"
-                                    android:textSize="18sp" />
+                                    <ImageView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:src="@drawable/ic_cod" />
 
-                                <View
-                                    android:layout_width="0dp"
-                                    android:layout_height="0dp"
-                                    android:layout_gravity="center"
-                                    android:layout_weight="1" />
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_marginStart="20dp"
+                                        android:fontFamily="@font/montserrat_medium"
+                                        android:text="Bayar ditempat"
+                                        android:textSize="18sp" />
 
-                                <RadioButton
-                                    android:layout_width="32dp"
-                                    android:layout_height="32dp"
-                                    android:layout_gravity="center"
-                                    android:buttonTint="@color/grey" />
+                                    <View
+                                        android:layout_width="0dp"
+                                        android:layout_height="0dp"
+                                        android:layout_gravity="center"
+                                        android:layout_weight="1" />
+
+                                    <RadioButton
+                                        android:id="@+id/rbCOD"
+                                        android:layout_width="32dp"
+                                        android:layout_height="32dp"
+                                        android:layout_gravity="center"
+                                        android:buttonTint="@color/grey" />
+
+
+                                </LinearLayout>
 
 
                             </LinearLayout>
 
-
-                        </LinearLayout>
+                        </RadioGroup>
 
 
                     </LinearLayout>

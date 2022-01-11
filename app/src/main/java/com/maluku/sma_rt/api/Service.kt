@@ -11,9 +11,7 @@ import com.maluku.sma_rt.model.dompetrt.DefaultDompetRTResponse
 import com.maluku.sma_rt.model.dompetrt.GetDompetRTByLoginResponse
 import com.maluku.sma_rt.model.informasi.*
 import com.maluku.sma_rt.model.keluarga.*
-import com.maluku.sma_rt.model.keranjang.GetKeranjangById
-import com.maluku.sma_rt.model.keranjang.GetKeranjangResponse
-import com.maluku.sma_rt.model.keranjang.KeranjangDefaultResponse
+import com.maluku.sma_rt.model.keranjang.*
 import com.maluku.sma_rt.model.login.OnLoginSuccessResponse
 import com.maluku.sma_rt.model.order.CreateOrderBody
 import com.maluku.sma_rt.model.order.CreateOrderResponse
@@ -435,7 +433,7 @@ interface Service {
     @POST("order/create/Saldo")
     fun createOrderPakaiSaldo(
         @Header("Authorization") authHeader: String,
-        @Body order: ArrayList<CreateOrderBody>
+        @Body order: ArrayList<KeranjangCheckout>
     ): Call<CreateOrderResponse>
 
     // Backup Create Order Pakai Saldo
@@ -453,7 +451,7 @@ interface Service {
     @POST("order/create/COD")
     fun createOrderPakaiCOD(
         @Header("Authorization") authHeader: String,
-        @Body order: ArrayList<CreateOrderBody>
+        @Body order: ArrayList<KeranjangCheckout>
     ): Call<CreateOrderResponse>
 
     // Backup Create Order Pakai COD

@@ -2,6 +2,7 @@ package com.maluku.sma_rt.view.warga
 
 
 import android.content.ContentValues
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -35,6 +36,7 @@ import com.maluku.sma_rt.model.informasi.GetAllInformasiItem
 import com.maluku.sma_rt.model.informasi.GetInformasiById
 import com.maluku.sma_rt.model.warga.GetMe
 import com.maluku.sma_rt.presenter.*
+import com.maluku.sma_rt.view.activity.MainActivity
 import com.maluku.sma_rt.view.viewInterface.*
 import com.maluku.sma_rt.view.warga.adapter.RecyclerViewInfoTerkini
 import com.maluku.sma_rt.view.warga.adapter.RecyclerViewKegiatanWarga
@@ -217,6 +219,7 @@ class HomeWarga : Fragment(), InformasiInterface, DompetKeluargaInterface, Warga
 
     override fun onGetKegiatanFailure(message: String) {
         Toast.makeText(requireContext(),message, Toast.LENGTH_LONG).show()
+
     }
 
     override fun onUpdateInformasiSuccess(message: String) {
@@ -322,7 +325,11 @@ class HomeWarga : Fragment(), InformasiInterface, DompetKeluargaInterface, Warga
     }
 
     override fun onGetDataFailure(message: String) {
-        Toast.makeText(requireContext(),message, Toast.LENGTH_LONG).show()
+//        Toast.makeText(requireContext(),message, Toast.LENGTH_LONG).show()
+        val preferences = UserSession(requireActivity())
+        preferences.clearSharedPreference()
+        val intent = Intent(requireActivity(), MainActivity::class.java)
+        startActivity(intent)
     }
 
 }

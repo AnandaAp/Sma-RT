@@ -25,7 +25,9 @@ import com.maluku.sma_rt.databinding.FragmentJualbeliWargaBinding
 import com.maluku.sma_rt.extentions.UserSession
 import com.maluku.sma_rt.extentions.UserSession.Companion.SHARED_PREFERENCE_NAME_KEY
 import com.maluku.sma_rt.model.keluarga.GetAllKeluargaItem
+import com.maluku.sma_rt.model.keranjang.GetKeranjangById
 import com.maluku.sma_rt.model.keranjang.ItemKeranjangItem
+import com.maluku.sma_rt.model.keranjang.KeranjangCheckout
 import com.maluku.sma_rt.model.order.CreateOrderBody
 import com.maluku.sma_rt.model.produk.GetAllProdukItem
 import com.maluku.sma_rt.presenter.KeranjangPresenter
@@ -183,7 +185,7 @@ class JualbeliWarga : Fragment(), WargaJualBeliInterface, KeranjangInterface{
         }
     }
 
-    override fun onGetKeranjangSuccess(result: List<ItemKeranjangItem>) {
+    override fun onGetKeranjangSuccess(result: GetKeranjangById) {
         TODO("Not yet implemented")
     }
 
@@ -191,6 +193,14 @@ class JualbeliWarga : Fragment(), WargaJualBeliInterface, KeranjangInterface{
         Handler(Looper.getMainLooper()).post {
             Toast.makeText(context,message, Toast.LENGTH_LONG).show()
         }
+    }
+
+    override fun onGetKeranjangCheckoutSuccess(result: GetKeranjangById) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetKeranjangCheckoutFailure(message: String) {
+        TODO("Not yet implemented")
     }
 
     override fun onAddProductKeranjangSuccess(message: String) {

@@ -139,8 +139,8 @@
             android:id="@+id/action_pesananUserPage_to_jualbeliWarga"
             app:destination="@id/jualbeliWarga" />
         <action
-            android:id="@+id/action_pesananUserPage_to_pesananUserMenunggu"
-            app:destination="@id/pesananUserMenunggu" />
+            android:id="@+id/action_pesananUserPage_to_riwayatPesananUser"
+            app:destination="@id/riwayatPesananUser" />
     </fragment>
     <fragment
         android:id="@+id/pesananPenjualPage"
