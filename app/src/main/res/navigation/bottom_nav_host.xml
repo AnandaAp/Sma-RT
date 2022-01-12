@@ -37,6 +37,9 @@
         <action
             android:id="@+id/action_jualbeliWarga_to_riwayatPesananUser"
             app:destination="@id/riwayatPesananUser" />
+        <action
+            android:id="@+id/action_jualbeliWarga_to_detailToko"
+            app:destination="@id/detailToko" />
     </fragment>
     <fragment
         android:id="@+id/catatanWarga"
@@ -466,5 +469,14 @@
         <action
             android:id="@+id/action_persuratanPageDetail_to_persuratanPage"
             app:destination="@id/persuratanPage" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailToko"
+        android:name="com.maluku.sma_rt.view.warga.DetailToko"
+        android:label="fragment_detail_toko"
+        tools:layout="@layout/fragment_detail_toko" >
+        <action
+            android:id="@+id/action_detailToko_to_jualbeliWarga"
+            app:destination="@id/jualbeliWarga" />
     </fragment>
 </navigation>

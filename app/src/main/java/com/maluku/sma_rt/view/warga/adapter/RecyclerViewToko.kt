@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.cardview.widget.CardView
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
@@ -16,6 +18,8 @@ import com.google.firebase.storage.FirebaseStorage
 import com.maluku.sma_rt.R
 import com.maluku.sma_rt.model.informasi.GetAllInformasiItem
 import com.maluku.sma_rt.model.keluarga.GetAllKeluargaItem
+import com.maluku.sma_rt.view.warga.JualbeliWargaDirections
+import com.maluku.sma_rt.view.warga.LaporanPageDirections
 import java.io.File
 
 class RecyclerViewToko(
@@ -49,6 +53,13 @@ class RecyclerViewToko(
 
         }
 
+        holder.cardToko.setOnClickListener { view ->
+            val direction = JualbeliWargaDirections
+                .actionJualbeliWargaToDetailToko(
+                )
+            view.findNavController().navigate(direction)
+        }
+
     }
 
     override fun getItemCount(): Int {
@@ -58,5 +69,6 @@ class RecyclerViewToko(
     class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         var namaToko: TextView = itemView.findViewById(R.id.tv_namatoko)
         var gambarToko: ImageView = itemView.findViewById(R.id.iv_gambartoko)
+        var cardToko: CardView = itemView.findViewById(R.id.cardToko)
     }
 }
