@@ -296,7 +296,6 @@ interface Service {
     ): Call<OnDataResponse>
 
     //delete
-    @FormUrlEncoded
     @DELETE("aduan/{id}")
     fun deleteAduan(
         @Header("Authorization") authHeader: String,
@@ -307,7 +306,7 @@ interface Service {
     @GET("aduan/{id}")
     fun getAduanByID(
         @Header("Authorization") authHeader: String,
-        @Path("token") token: String
+        @Path("id") id: String
     ): Call<GetAduanByIDResponse>
 
     //Get Data All Aduan
@@ -617,7 +616,9 @@ interface Service {
 
     //get all
     @GET("persuratan")
-    fun getAllPersuratanData(token: String): Call<GetAllPersuratanResponse>
+    fun getAllPersuratanData(
+        @Header("Authorization") authHeader: String
+    ): Call<GetAllPersuratanResponse>
 
     /*
     get all data dengan dikelompokan berdasarkan status

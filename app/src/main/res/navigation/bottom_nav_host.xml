@@ -420,6 +420,9 @@
         <action
             android:id="@+id/action_detailLaporanSaya_to_laporanPage"
             app:destination="@id/laporanPage" />
+        <argument
+            android:name="aduan_id"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/laporanList"

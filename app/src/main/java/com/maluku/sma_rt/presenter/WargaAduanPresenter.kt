@@ -118,7 +118,7 @@ class WargaAduanPresenter(private val view: WargaAduanInterface) {
         GlobalScope.launch(Dispatchers.Main){
             val response = RetrofitService
                 .getService()
-                .getAduanByID(token,id)
+                .getAduanByID("Bearer $token",id)
                 .awaitResponse()
             if(response.isSuccessful){
                 val list = response.body()?.getAduanById
