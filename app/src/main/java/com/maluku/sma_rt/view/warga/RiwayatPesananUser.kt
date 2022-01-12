@@ -18,6 +18,8 @@ import com.maluku.sma_rt.extentions.UserSession
 import com.maluku.sma_rt.model.keluarga.GetAllProdukKeluargaItem
 import com.maluku.sma_rt.model.keluarga.GetKeluargaById
 import com.maluku.sma_rt.model.order.GetAllOrderItem
+import com.maluku.sma_rt.model.order.GetOrderByIDResponse
+import com.maluku.sma_rt.model.order.GetOrderById
 import com.maluku.sma_rt.presenter.OrderPresenter
 import com.maluku.sma_rt.presenter.WargaTagihanPresenter
 import com.maluku.sma_rt.view.viewInterface.OrderInterface
@@ -92,7 +94,17 @@ class RiwayatPesananUser : Fragment(), OrderInterface {
     }
 
     override fun onGetAllOrderFailure(message: String) {
-        Toast.makeText(requireContext(),message, Toast.LENGTH_LONG).show()
+        Handler(Looper.getMainLooper()).post(Runnable {
+            Toast.makeText(requireContext(),message, Toast.LENGTH_LONG).show()
+        })
+    }
+
+    override fun onGetOrderByIDSuccess(result: GetOrderById) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetOrderByIDFailure(message: String) {
+        TODO("Not yet implemented")
     }
 
     override fun onOrderProcessSuccess(message: String) {

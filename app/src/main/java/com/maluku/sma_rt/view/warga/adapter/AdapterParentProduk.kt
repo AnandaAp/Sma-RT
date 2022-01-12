@@ -59,7 +59,7 @@ class AdapterParentProduk(
 
         holder.itemView.setOnClickListener { view ->
             val direction = RiwayatPesananUserDirections
-                .actionRiwayatPesananUserToDetailPesananUser()
+                .actionRiwayatPesananUserToDetailPesananUser(data.id.toString())
             view.findNavController().navigate(direction)
         }
 

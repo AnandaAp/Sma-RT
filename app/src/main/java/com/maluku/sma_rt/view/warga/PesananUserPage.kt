@@ -28,6 +28,7 @@ import com.maluku.sma_rt.model.keranjang.ItemKeranjangItem
 import com.maluku.sma_rt.model.keranjang.KeranjangCheckout
 import com.maluku.sma_rt.model.order.CreateOrderBody
 import com.maluku.sma_rt.model.order.GetAllOrderItem
+import com.maluku.sma_rt.model.order.GetOrderById
 import com.maluku.sma_rt.presenter.KeranjangPresenter
 import com.maluku.sma_rt.presenter.OrderPresenter
 import com.maluku.sma_rt.view.viewInterface.KeranjangInterface
@@ -213,6 +214,14 @@ class PesananUserPage : Fragment(), OrderInterface, KeranjangInterface {
     }
 
     override fun onGetAllOrderFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetOrderByIDSuccess(result: GetOrderById) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetOrderByIDFailure(message: String) {
         TODO("Not yet implemented")
     }
 

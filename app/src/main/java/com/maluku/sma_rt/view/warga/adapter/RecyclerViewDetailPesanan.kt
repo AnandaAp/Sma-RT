@@ -1,14 +1,16 @@
 package com.maluku.sma_rt.view.warga.adapter
 
 import android.content.ContentValues
-import android.graphics.Color
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.androidnetworking.AndroidNetworking
 import com.androidnetworking.common.Priority
@@ -21,48 +23,49 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.google.firebase.storage.FirebaseStorage
 import com.maluku.sma_rt.R
-import com.maluku.sma_rt.extentions.UserSession
+import com.maluku.sma_rt.model.keluarga.GetAllKeluargaItem
+import com.maluku.sma_rt.model.keluarga.GetAllProdukKeluargaItem
+import com.maluku.sma_rt.model.keluarga.GetKeluargaById
+import com.maluku.sma_rt.model.order.GetAllOrderItem
 import com.maluku.sma_rt.model.order.ItemOrderItem
+import com.maluku.sma_rt.model.order.ItemOrderItemById
+import com.maluku.sma_rt.model.produk.GetProdukById
+import com.maluku.sma_rt.view.warga.ProdukPageDirections
+import com.maluku.sma_rt.view.warga.RiwayatPesananUser
 import com.maluku.sma_rt.view.warga.RiwayatPesananUserDirections
-import java.text.NumberFormat
-import java.util.*
-import kotlin.collections.ArrayList
 import org.json.JSONArray
 import org.json.JSONObject
 import java.io.File
+import java.text.NumberFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
+class RecyclerViewDetailPesanan(
+    private val listOrder: ArrayList<ItemOrderItemById>, private val token: String
+) : RecyclerView.Adapter<RecyclerViewDetailPesanan.MyViewHolder>() {
 
-class AdapterChildProduk(private val orderItem: ArrayList<ItemOrderItem>, private val token: String) :
-    RecyclerView.Adapter<AdapterChildProduk.MyViewHolder>() {
-
-    fun setData(data : ArrayList<ItemOrderItem>){
-        orderItem.clear()
-        orderItem.addAll(data)
+    fun setData(data : ArrayList<ItemOrderItemById>){
+        listOrder.clear()
+        listOrder.addAll(data)
         notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val view =  LayoutInflater.from(parent.context)
-            .inflate(R.layout.recycler_child_produk,parent,false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.recycler_detailpesananuser,parent,false)
         return MyViewHolder(view)
     }
 
-    override fun getItemCount(): Int {
-        return orderItem.size
-    }
-
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val data = orderItem[position]
-//        holder.imageProdukChild.setImageResource(data.idProduk)
-        holder.namaProdukChild.text = data.idProduk
-        holder.jumlahProdukChild.text = "x${data.jumlah.toString()}"
-        holder.hargaProdukChild.text = toRupiah(data.hargaTotal.toString().toDouble())
+        val data = listOrder[position]
 
         holder.itemView.setOnClickListener { view ->
-            val direction = RiwayatPesananUserDirections
-                .actionRiwayatPesananUserToDetailPesananUser(data.idOrder.toString())
-            view.findNavController().navigate(direction)
+//            val direction = RiwayatPesananUserDirections
+//                .actionRiwayatPesananUserToDetailPesananUser()
+//            view.findNavController().navigate(direction)
         }
+
+        holder.jumlahProduk.text = "x${data.jumlah.toString()}"
+        holder.hargaProduk.text = toRupiah(data.hargaTotal.toString().toDouble())
 
         // buat dapetin nama produk
         AndroidNetworking.get("http://smart.aliven.my.id:2001/produk/{idProduk}")
@@ -73,7 +76,7 @@ class AdapterChildProduk(private val orderItem: ArrayList<ItemOrderItem>, privat
             .getAsJSONObject(object : JSONObjectRequestListener {
                 override fun onResponse(response: JSONObject) {
                     val data: JSONObject = response.getJSONObject("get_produk_by_id")
-                    holder.namaProdukChild.text = data.getString("nama")
+                    holder.namaProduk.text = data.getString("nama")
                     // Firebase Storage
                     val storageRef = FirebaseStorage.getInstance().reference.child("produk/${data.getString("gambar")}")
                     Log.d(ContentValues.TAG,"Adapter get ref image: $storageRef")
@@ -82,22 +85,27 @@ class AdapterChildProduk(private val orderItem: ArrayList<ItemOrderItem>, privat
                         Glide.with(holder.itemView)
                             .load(localFile.path)
                             .apply(RequestOptions().transform(CenterCrop(), RoundedCorners(20)))
-                            .into(holder.imageProdukChild)
+                            .into(holder.gambarProduk)
                     }.addOnFailureListener {
 
                     }
                 }
                 override fun onError(error: ANError?) {
-                    holder.namaProdukChild.text = error!!.message.toString()
+                    holder.namaProduk.text = error!!.message.toString()
                 }
             })
+
+    }
+
+    override fun getItemCount(): Int {
+       return listOrder.size
     }
 
     inner class MyViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
-        var imageProdukChild: ImageView = itemView.findViewById(R.id.imageprodukchild)
-        var namaProdukChild: TextView = itemView.findViewById(R.id.namaprodukchild)
-        var jumlahProdukChild: TextView = itemView.findViewById(R.id.jumlahprodukchild)
-        var hargaProdukChild: TextView = itemView.findViewById(R.id.hargaprodukchild)
+        var namaProduk: TextView = itemView.findViewById(R.id.produkpesananuser)
+        var jumlahProduk: TextView = itemView.findViewById(R.id.jumlahpesananuser)
+        var hargaProduk: TextView = itemView.findViewById(R.id.hargapesananuser)
+        var gambarProduk: ImageView = itemView.findViewById(R.id.image_detailpesananuser)
     }
 
     private fun toRupiah(number: Double): String{
@@ -106,3 +114,5 @@ class AdapterChildProduk(private val orderItem: ArrayList<ItemOrderItem>, privat
         return numberFormat.format(number).toString()
     }
 }
+
+

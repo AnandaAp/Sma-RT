@@ -13,10 +13,7 @@ import com.maluku.sma_rt.model.informasi.*
 import com.maluku.sma_rt.model.keluarga.*
 import com.maluku.sma_rt.model.keranjang.*
 import com.maluku.sma_rt.model.login.OnLoginSuccessResponse
-import com.maluku.sma_rt.model.order.CreateOrderBody
-import com.maluku.sma_rt.model.order.CreateOrderResponse
-import com.maluku.sma_rt.model.order.DefaultOrderResponse
-import com.maluku.sma_rt.model.order.GetAllOrderResponse
+import com.maluku.sma_rt.model.order.*
 import com.maluku.sma_rt.model.password.DefaultPasswordResponse
 import com.maluku.sma_rt.model.pengurus.CreatePengurusResponse
 import com.maluku.sma_rt.model.pengurus.DefaultPengurusResponse
@@ -476,6 +473,13 @@ interface Service {
         @Header("Authorization") authHeader: String,
         @Query("status") status: String?
     ): Call<GetAllOrderResponse>
+
+    // Get Order By ID
+    @GET("order/warga/{id_order}")
+    fun getOrderByID(
+        @Header("Authorization") authHeader: String,
+        @Path("id_order") id_order: String
+    ): Call<GetOrderByIDResponse>
 
     // Order Diproses
     @PUT("order/proses/{id_order}")

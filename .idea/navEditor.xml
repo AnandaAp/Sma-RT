@@ -118,6 +118,15 @@
                             <option name="y" value="12" />
                           </Point>
                         </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_detailLaporanSaya_to_laporanPage">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
                       </LayoutPositions>
                     </value>
                   </entry>
@@ -133,6 +142,27 @@
                         <option name="myPositions">
                           <map>
                             <entry key="action_detailPesananUser_to_riwayatPesananUser">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="detailToko">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="256" />
+                            <option name="y" value="12" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_detailToko_to_jualbeliWarga">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -298,6 +328,11 @@
                         </option>
                         <option name="myPositions">
                           <map>
+                            <entry key="action_jualbeliWarga_to_detailToko">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_jualbeliWarga_to_pesananUserPage">
                               <value>
                                 <LayoutPositions />
@@ -470,12 +505,38 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
+                            <entry key="action_persuratanPage_to_persuratanPageDetail">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_persuratanPage_to_persuratanWarga">
                               <value>
                                 <LayoutPositions />
                               </value>
                             </entry>
                             <entry key="action_persuratanPage_to_persuratanWargaMasuk">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="persuratanPageDetail">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="12" />
+                            <option name="y" value="12" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_persuratanPageDetail_to_persuratanPage">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -626,7 +687,7 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
-                            <entry key="action_pesananUserPage_to_pesananUserMenunggu">
+                            <entry key="action_pesananUserPage_to_riwayatPesananUser">
                               <value>
                                 <LayoutPositions />
                               </value>

@@ -5,6 +5,7 @@ import com.maluku.sma_rt.model.keranjang.ItemKeranjangItem
 import com.maluku.sma_rt.model.keranjang.KeranjangCheckout
 import com.maluku.sma_rt.model.order.CreateOrderBody
 import com.maluku.sma_rt.model.order.GetAllOrderItem
+import com.maluku.sma_rt.model.order.GetOrderById
 import com.maluku.sma_rt.view.viewInterface.OrderInterface
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
@@ -97,6 +98,24 @@ class OrderPresenter(private val view: OrderInterface) {
                 val jObjError = JSONObject(res.errorBody()!!.string())
                 val message = jObjError.getString("message")
                 view.onGetAllOrderFailure(message)
+            }
+        }
+    }
+
+    fun getOrderByID(token: String, id_order: String) {
+        GlobalScope.launch(Dispatchers.IO){
+            val res = RetrofitService
+                .getService()
+                .getOrderByID("Bearer $token", id_order)
+                .awaitResponse()
+            if(res.isSuccessful){
+                val result = res.body()?.getOrderById as GetOrderById
+                view.onGetOrderByIDSuccess(result)
+            }
+            else{
+                val jObjError = JSONObject(res.errorBody()!!.string())
+                val message = jObjError.getString("message")
+                view.onGetOrderByIDFailure(message)
             }
         }
     }

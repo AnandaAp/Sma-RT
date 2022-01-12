@@ -121,6 +121,7 @@
                         android:src="@drawable/ic_check_active" />
 
                     <View
+                        android:id="@+id/garisDiproses"
                         android:layout_width="0dp"
                         android:layout_height="1dp"
                         android:layout_gravity="center"
@@ -134,6 +135,7 @@
                         android:src="@drawable/ic_check_non" />
 
                     <View
+                        android:id="@+id/garisSelesai"
                         android:layout_width="0dp"
                         android:layout_height="1dp"
                         android:layout_gravity="center"
@@ -157,6 +159,7 @@
                     android:gravity="center">
 
                     <TextView
+                        android:id="@+id/tvStatusPesanan"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/montserrat_medium"
@@ -272,6 +275,7 @@
                                 android:layout_weight="1" />
 
                             <TextView
+                                android:id="@+id/tvMetodePembayaran"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/montserrat_medium"
@@ -315,6 +319,7 @@
                             android:layout_weight="1" />
 
                         <TextView
+                            android:id="@+id/tvTotalHarga"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/montserrat_medium"

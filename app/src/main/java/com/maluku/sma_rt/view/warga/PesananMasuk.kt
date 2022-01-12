@@ -15,6 +15,7 @@ import com.maluku.sma_rt.databinding.FragmentPesananDiprosesBinding
 import com.maluku.sma_rt.databinding.FragmentPesananMasukBinding
 import com.maluku.sma_rt.extentions.UserSession
 import com.maluku.sma_rt.model.order.GetAllOrderItem
+import com.maluku.sma_rt.model.order.GetOrderById
 import com.maluku.sma_rt.presenter.OrderPresenter
 import com.maluku.sma_rt.view.viewInterface.OrderInterface
 import com.maluku.sma_rt.view.warga.adapter.AdapterParentListPesananDiproses
@@ -96,6 +97,14 @@ class PesananMasuk : Fragment(), OrderInterface {
         Handler(Looper.getMainLooper()).post {
             Toast.makeText(context,"Pesan: $message", Toast.LENGTH_SHORT)
         }
+    }
+
+    override fun onGetOrderByIDSuccess(result: GetOrderById) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetOrderByIDFailure(message: String) {
+        TODO("Not yet implemented")
     }
 
     override fun onOrderProcessSuccess(message: String) {
