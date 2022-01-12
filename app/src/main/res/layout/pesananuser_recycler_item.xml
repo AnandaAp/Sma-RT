@@ -43,7 +43,7 @@
                     android:id="@+id/namaprodukpesanan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Gula gulaku"
+                    android:text=""
                     android:textSize="18sp"
                     android:fontFamily="@font/montserrat_medium"/>
 
@@ -52,7 +52,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="18dp"
-                    android:text="Rp 15.900/kg"
+                    android:text=""
                     android:textSize="18sp"
                     android:fontFamily="@font/montserrat_regular"/>
 
@@ -79,7 +79,7 @@
                         android:fontFamily="@font/montserrat_regular"
                         android:inputType="number"
                         android:gravity="center"
-                        android:text="2"
+                        android:text="0"
                         android:background="@android:color/transparent"
                         android:textCursorDrawable="@drawable/color_cursor"
                         android:textSize="18sp" />
