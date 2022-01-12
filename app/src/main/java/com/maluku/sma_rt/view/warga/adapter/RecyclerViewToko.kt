@@ -55,7 +55,7 @@ class RecyclerViewToko(
 
         holder.cardToko.setOnClickListener { view ->
             val direction = JualbeliWargaDirections
-                .actionJualbeliWargaToDetailToko(
+                .actionJualbeliWargaToDetailToko(data.id.toString()
                 )
             view.findNavController().navigate(direction)
         }

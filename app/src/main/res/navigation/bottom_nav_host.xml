@@ -481,5 +481,8 @@
         <action
             android:id="@+id/action_detailToko_to_jualbeliWarga"
             app:destination="@id/jualbeliWarga" />
+        <argument
+            android:name="keluarga_id"
+            app:argType="string" />
     </fragment>
 </navigation>
