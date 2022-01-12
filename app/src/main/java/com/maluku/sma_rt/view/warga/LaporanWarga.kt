@@ -232,5 +232,13 @@ class LaporanWarga : Fragment(), WargaAduanInterface {
         TODO("Not yet implemented")
     }
 
+    override fun onReceiveComplaintSuccess(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onReceiveComplaintFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
 
 }

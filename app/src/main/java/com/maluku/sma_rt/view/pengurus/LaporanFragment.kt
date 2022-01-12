@@ -48,12 +48,20 @@ class LaporanFragment : Fragment(), WargaAduanInterface {
         }
     }
 
-
     private fun setRecyclerViewLaporan() {
         if (context!=null){
             rvLaporan = binding.rvListLaporan
             rvLaporan.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL ,false)
-            adapterLaporan = LaporanAdapter(arrayListOf())
+            adapterLaporan = LaporanAdapter(
+                arrayListOf(),object : LaporanAdapter.OnAdapterListener{
+                    override fun onReceiveAduan(idAduan: String) {
+                        WargaAduanPresenter(this@LaporanFragment).terimaAduan(
+                            getToken(),
+                            idAduan
+                        )
+                    }
+                }
+            )
             rvLaporan.adapter = adapterLaporan
         }
     }
@@ -108,6 +116,18 @@ class LaporanFragment : Fragment(), WargaAduanInterface {
 
     override fun onGetDataByIDFailed(message: String) {
         TODO("Not yet implemented")
+    }
+
+    override fun onReceiveComplaintSuccess(message: String) {
+        if (context!=null){
+            Toast.makeText(requireContext(),"Pesan: $message",Toast.LENGTH_LONG).show()
+        }
+    }
+
+    override fun onReceiveComplaintFailure(message: String) {
+        if (context!=null){
+            Toast.makeText(requireContext(),"Pesan: $message",Toast.LENGTH_LONG).show()
+        }
     }
 
 }

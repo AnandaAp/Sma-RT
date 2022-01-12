@@ -41,7 +41,7 @@ class DetailSuratMasuk: Fragment(), WargaPersuratanInterface {
         bindData()
         dialogTerimaSurat()
         dialogTolakSurat()
-//        back()
+        back()
     }
 
     private fun bindData() {
@@ -68,13 +68,11 @@ class DetailSuratMasuk: Fragment(), WargaPersuratanInterface {
         return binding.root
     }
 
-    /*
     private fun back(){
         binding.btnBack.setOnClickListener{
             findNavController().popBackStack()
         }
     }
-     */
 
     private fun dialogTerimaSurat(){
         binding.btnSetuju.setOnClickListener {

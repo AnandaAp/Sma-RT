@@ -130,4 +130,28 @@ class WargaAduanPresenter(private val view: WargaAduanInterface) {
             }
         }
     }
+
+    fun terimaAduan(
+        token: String,
+        id_aduan: String)
+    {
+        GlobalScope.launch(Dispatchers.Main){
+            val response = RetrofitService
+                .getService()
+                .terimaAduan(
+                    "Bearer $token",
+                    id_aduan
+                )
+                .awaitResponse()
+            if(response.isSuccessful){
+                val message = response.body()?.message.toString()
+                view.onReceiveComplaintSuccess(message)
+            }
+            else{
+                val jObjError = JSONObject(response.errorBody()?.string())
+                val message = jObjError.getString("message")
+                view.onReceiveComplaintFailure(message)
+            }
+        }
+    }
 }

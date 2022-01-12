@@ -316,6 +316,13 @@ interface Service {
         @Header("Authorization") authHeader: String
     ): Call<GetAllAduanResponse>
 
+    //Terima Aduan
+    @PUT("aduan/terima/{id_aduan}")
+    fun terimaAduan(
+        @Header("Authorization") authHeader: String,
+        @Path("id_aduan") id_aduan: String
+    ): Call<GetAduanByIDResponse>
+
     //Informasi
     //Create
     @FormUrlEncoded

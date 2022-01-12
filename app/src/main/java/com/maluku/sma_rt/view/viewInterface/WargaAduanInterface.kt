@@ -14,4 +14,6 @@ interface WargaAduanInterface {
     fun onGetAllDataFailed(message: String)
     fun onGetDataByIDSuccess(list: GetAduanById?)
     fun onGetDataByIDFailed(message: String)
+    fun onReceiveComplaintSuccess(message: String)
+    fun onReceiveComplaintFailure(message: String)
 }

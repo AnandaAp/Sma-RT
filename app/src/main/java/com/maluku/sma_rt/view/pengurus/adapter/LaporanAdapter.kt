@@ -8,9 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
-import android.widget.ImageButton
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.*
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -23,7 +21,10 @@ import com.maluku.sma_rt.R
 import com.maluku.sma_rt.model.aduan.GetAllAduanItem
 import java.io.File
 
-class LaporanAdapter(val listLaporan: ArrayList<GetAllAduanItem>): RecyclerView.Adapter<LaporanAdapter.ViewHolder>() {
+class LaporanAdapter(
+    val listLaporan: ArrayList<GetAllAduanItem>,
+    val listener: OnAdapterListener
+): RecyclerView.Adapter<LaporanAdapter.ViewHolder>() {
     fun setData(data : List<GetAllAduanItem>){
         listLaporan.clear()
         listLaporan.addAll(data)
@@ -63,6 +64,7 @@ class LaporanAdapter(val listLaporan: ArrayList<GetAllAduanItem>): RecyclerView.
             val judulDetail = dialog.findViewById<TextView>(R.id.tvJudulDetailLaporan)
             val gambarDetail = dialog.findViewById<ImageView>(R.id.ivDetailLaporan)
             val deskripsiDetail = dialog.findViewById<TextView>(R.id.tvKetDetailLaporan)
+            val btnTerimaAduan = dialog.findViewById<Button>(R.id.btnTerimaAduan)
 
             judulDetail!!.text = data.judul.toString()
             deskripsiDetail!!.text = data.deskripsi.toString()
@@ -75,6 +77,14 @@ class LaporanAdapter(val listLaporan: ArrayList<GetAllAduanItem>): RecyclerView.
                     .apply(RequestOptions().transform(CenterCrop(), RoundedCorners(20)))
                     .into(gambarDetail!!)
             }.addOnFailureListener {
+            }
+            btnTerimaAduan!!.setOnClickListener {
+                listener.onReceiveAduan(data.id.toString())
+                btnTerimaAduan.visibility = View.GONE
+            }
+
+            if (data.status.toString() == "Diterima"){
+                btnTerimaAduan.visibility = View.GONE
             }
 
             val btnClose = dialog.findViewById<ImageButton>(R.id.btnCloseInfoRT)
@@ -96,5 +106,9 @@ class LaporanAdapter(val listLaporan: ArrayList<GetAllAduanItem>): RecyclerView.
         var keteranganLaporan: TextView = itemView.findViewById(R.id.tvKetLaporan)
         var gambar: ImageView = itemView.findViewById(R.id.ivListLaporan)
         var cardLaporan: CardView = itemView.findViewById(R.id.cardLaporanPengurus)
+    }
+
+    interface OnAdapterListener {
+        fun onReceiveAduan(idAduan:String)
     }
 }
