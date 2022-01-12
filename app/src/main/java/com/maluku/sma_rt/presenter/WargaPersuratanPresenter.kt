@@ -104,7 +104,7 @@ class WargaPersuratanPresenter(private val view: WargaPersuratanInterface) {
                 val response = RetrofitService
                     .getService()
                     .getAllPersuratanData(
-                        token
+                        "Bearer $token"
                     ).awaitResponse()
                 if(response.isSuccessful){
                     val result = response.body()?.getAllPersuratan as List<GetAllPersuratanItem>

@@ -1,22 +1,27 @@
 package com.maluku.sma_rt.view.warga
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.maluku.sma_rt.R
 import com.maluku.sma_rt.databinding.FragmentLaporanSayaBinding
+import com.maluku.sma_rt.extentions.UserSession
 import com.maluku.sma_rt.model.aduan.GetAduanById
 import com.maluku.sma_rt.model.aduan.GetAllAduanItem
+import com.maluku.sma_rt.presenter.WargaAduanPresenter
 import com.maluku.sma_rt.presenter.WargaKelolaTokoPresenter
 import com.maluku.sma_rt.view.viewInterface.WargaAduanInterface
 import com.maluku.sma_rt.view.warga.adapter.RecyclerViewLaporanSaya
 import com.maluku.sma_rt.view.warga.adapter.RecyclerViewProdukpage
 
+private const val TAG = "LAPORAN SAYA"
 
 class LaporanSaya : Fragment(), WargaAduanInterface {
 
@@ -35,6 +40,7 @@ class LaporanSaya : Fragment(), WargaAduanInterface {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        WargaAduanPresenter(this).getAllDataAduan(getToken())
         setRecyclerViewLaporanSaya()
         fabAddLaporan()
     }
@@ -43,8 +49,17 @@ class LaporanSaya : Fragment(), WargaAduanInterface {
         rvLaporanSaya = binding.rvLaporanSaya
         rvLaporanSaya.setHasFixedSize(true)
         rvLaporanSaya.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL,false)
-        adapterLaporanSaya = RecyclerViewLaporanSaya()
+        adapterLaporanSaya = RecyclerViewLaporanSaya(
+            arrayListOf()
+        )
         rvLaporanSaya.adapter = adapterLaporanSaya
+    }
+
+    private fun getToken(): String {
+        val preferences = UserSession(requireActivity())
+        val token = preferences.getValueString(UserSession.SHARED_PREFERENCE_TOKEN_KEY)
+        Log.d(TAG,token)
+        return token
     }
 
     private fun fabAddLaporan() {
@@ -85,11 +100,11 @@ class LaporanSaya : Fragment(), WargaAduanInterface {
     }
 
     override fun onGetAllDataSuccess(list: List<GetAllAduanItem?>?) {
-        TODO("Not yet implemented")
+        adapterLaporanSaya.setData(list as List<GetAllAduanItem>)
     }
 
     override fun onGetAllDataFailed(message: String) {
-        TODO("Not yet implemented")
+        Toast.makeText(requireContext(),message, Toast.LENGTH_LONG).show()
     }
 
     override fun onGetDataByIDSuccess(list: GetAduanById?) {

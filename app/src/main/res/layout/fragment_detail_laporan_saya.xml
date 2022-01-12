@@ -131,7 +131,7 @@ Didepan rumah sering terdengar suara berisik, suara tersebut sangat mengganggu p
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/foto_agustusan" />
+                    android:src="@drawable/default_image" />
 
 
             </androidx.cardview.widget.CardView>

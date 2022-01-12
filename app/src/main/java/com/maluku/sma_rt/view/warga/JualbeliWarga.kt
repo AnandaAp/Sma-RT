@@ -25,6 +25,7 @@ import com.maluku.sma_rt.databinding.FragmentJualbeliWargaBinding
 import com.maluku.sma_rt.extentions.UserSession
 import com.maluku.sma_rt.extentions.UserSession.Companion.SHARED_PREFERENCE_NAME_KEY
 import com.maluku.sma_rt.model.keluarga.GetAllKeluargaItem
+import com.maluku.sma_rt.model.keluarga.GetKeluargaById
 import com.maluku.sma_rt.model.keranjang.GetKeranjangById
 import com.maluku.sma_rt.model.keranjang.ItemKeranjangItem
 import com.maluku.sma_rt.model.keranjang.KeranjangCheckout
@@ -183,6 +184,14 @@ class JualbeliWarga : Fragment(), WargaJualBeliInterface, KeranjangInterface{
         Handler(Looper.getMainLooper()).post {
             Toast.makeText(context,message, Toast.LENGTH_LONG).show()
         }
+    }
+
+    override fun onGetKeluargaByIDSuccess(result: GetKeluargaById) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetKeluargaByIDFailure(message: String) {
+        TODO("Not yet implemented")
     }
 
     override fun onGetKeranjangSuccess(result: GetKeranjangById) {

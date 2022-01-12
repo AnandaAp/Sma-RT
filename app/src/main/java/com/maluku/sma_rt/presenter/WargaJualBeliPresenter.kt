@@ -5,13 +5,19 @@ import android.widget.Toast
 import com.maluku.sma_rt.api.RetrofitService
 import com.maluku.sma_rt.model.keluarga.GetAllKeluargaItem
 import com.maluku.sma_rt.model.keluarga.GetAllKeluargaResponse
+import com.maluku.sma_rt.model.keluarga.GetKeluargaById
+import com.maluku.sma_rt.model.order.GetOrderById
 import com.maluku.sma_rt.model.produk.GetAllProdukItem
 import com.maluku.sma_rt.model.produk.GetAllProdukResponse
 import com.maluku.sma_rt.view.viewInterface.WargaJualBeliInterface
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import retrofit2.awaitResponse
 
 
 class WargaJualBeliPresenter(private var view: WargaJualBeliInterface) {
@@ -63,5 +69,23 @@ class WargaJualBeliPresenter(private var view: WargaJualBeliInterface) {
                     view.onGetAllProdukFailure(t.message.toString())
                 }
             })
+    }
+
+    fun getKeluargaByID(token: String, id_keluarga: String) {
+        GlobalScope.launch(Dispatchers.IO){
+            val res = RetrofitService
+                .getService()
+                .getKeluargaById("Bearer $token", id_keluarga)
+                .awaitResponse()
+            if(res.isSuccessful){
+                val result = res.body()?.getKeluargaById as GetKeluargaById
+                view.onGetKeluargaByIDSuccess(result)
+            }
+            else{
+                val jObjError = JSONObject(res.errorBody()!!.string())
+                val message = jObjError.getString("message")
+                view.onGetKeluargaByIDFailure(message)
+            }
+        }
     }
 }
