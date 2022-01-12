@@ -31,6 +31,13 @@ class FragmentSuratKeluar : Fragment(), WargaPersuratanInterface {
         return bindingView()
     }
 
+    override fun setUserVisibleHint(isVisibleToUser: Boolean) {
+        super.setUserVisibleHint(isVisibleToUser)
+        if (isVisibleToUser) {
+            fragmentManager!!.beginTransaction().detach(this).attach(this).commit()
+        }
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setRecyclerViewSuratKeluar()
