@@ -33,6 +33,13 @@ class PesananSelesai : Fragment(), OrderInterface {
         return bindingView()
     }
 
+    override fun setUserVisibleHint(isVisibleToUser: Boolean) {
+        super.setUserVisibleHint(isVisibleToUser)
+        if (isVisibleToUser) {
+            fragmentManager!!.beginTransaction().detach(this).attach(this).commit()
+        }
+    }
+
     private fun bindingView(): View {
         binding = FragmentPesananSelesaiBinding.inflate(layoutInflater)
         return binding.root
@@ -41,12 +48,20 @@ class PesananSelesai : Fragment(), OrderInterface {
     override fun onStart() {
         super.onStart()
         OrderPresenter(this).getAllTokoOrder(getToken(),"3")
+        setRecyclerViewPesananSelesai()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setRecyclerViewPesananSelesai()
         onStart()
+        swipeRefreshLayout()
+    }
+
+    private fun swipeRefreshLayout() {
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            onStart()
+            binding.swipeRefreshLayout.isRefreshing = false
+        }
     }
 
     private fun setRecyclerViewPesananSelesai() {

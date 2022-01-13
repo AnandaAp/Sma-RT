@@ -39,12 +39,20 @@ class PesananDiproses : Fragment(), OrderInterface {
     override fun onStart() {
         super.onStart()
         OrderPresenter(this).getAllTokoOrder(getToken(),"2")
+        setRecyclerViewPesananDiproses()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setRecyclerViewPesananDiproses()
         onStart()
+        swipeRefreshLayout()
+    }
+
+    private fun swipeRefreshLayout() {
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            onStart()
+            binding.swipeRefreshLayout.isRefreshing = false
+        }
     }
 
     private fun setRecyclerViewPesananDiproses() {
