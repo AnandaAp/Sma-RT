@@ -659,9 +659,11 @@ interface Service {
     ): Call<PersuratanDefaultResponse>
 
     // Surat Ditolak
+    @FormUrlEncoded
     @PUT("persuratan/tolak/{id_surat}")
     fun tolakSurat(
         @Header("Authorization") authHeader: String,
-        @Path("id_surat") id_surat: String
+        @Path("id_surat") id_surat: String,
+        @Field("link") alasan: String
     ): Call<PersuratanDefaultResponse>
 }

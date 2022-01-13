@@ -41,7 +41,7 @@ class FragmentSuratKeluar : Fragment(), WargaPersuratanInterface {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setRecyclerViewSuratKeluar()
-        WargaPersuratanPresenter(this).getAllDataSurat(getToken(),"3")
+        WargaPersuratanPresenter(this).getAllDataSurat(getToken(),"4")
     }
 
     private fun setRecyclerViewSuratKeluar() {

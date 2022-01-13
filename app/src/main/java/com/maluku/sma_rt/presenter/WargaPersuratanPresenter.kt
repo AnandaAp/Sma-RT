@@ -194,14 +194,16 @@ class WargaPersuratanPresenter(private val view: WargaPersuratanInterface) {
     // Tolak surat
     fun tolakSurat(
         token: String,
-        idSurat: String
+        idSurat: String,
+        alasan: String
     ){
         GlobalScope.launch(Dispatchers.IO){
             val response = RetrofitService
                 .getService()
                 .tolakSurat(
                     "Bearer $token",
-                    idSurat
+                    idSurat,
+                    alasan
                 ).awaitResponse()
             if(response.isSuccessful){
                 val message = response.body()!!.message.toString()

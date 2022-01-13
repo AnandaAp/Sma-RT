@@ -59,6 +59,13 @@ class LaporanDiterimaFragment : Fragment(), WargaAduanInterface {
         return binding.root
     }
 
+    override fun setUserVisibleHint(isVisibleToUser: Boolean) {
+        super.setUserVisibleHint(isVisibleToUser)
+        if (isVisibleToUser) {
+            fragmentManager!!.beginTransaction().detach(this).attach(this).commit()
+        }
+    }
+
     private fun getToken(): String {
         val preferences = UserSession(requireActivity())
         return preferences.getValueString(UserSession.SHARED_PREFERENCE_TOKEN_KEY)
