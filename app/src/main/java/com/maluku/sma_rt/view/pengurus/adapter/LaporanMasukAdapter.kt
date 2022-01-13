@@ -81,6 +81,7 @@ class LaporanMasukAdapter(
                 }
                 btnTerimaAduan!!.setOnClickListener {
                     listener.onReceiveAduan(data.id.toString())
+                    dialog.dismiss()
                 }
 
                 val btnClose = dialog.findViewById<ImageButton>(R.id.btnCloseInfoRT)

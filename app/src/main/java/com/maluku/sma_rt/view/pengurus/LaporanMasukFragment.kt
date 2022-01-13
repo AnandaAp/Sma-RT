@@ -38,6 +38,13 @@ class LaporanMasukFragment : Fragment(), WargaAduanInterface {
         setRecyclerViewLaporan()
     }
 
+    override fun setUserVisibleHint(isVisibleToUser: Boolean) {
+        super.setUserVisibleHint(isVisibleToUser)
+        if (isVisibleToUser) {
+            fragmentManager!!.beginTransaction().detach(this).attach(this).commit()
+        }
+    }
+
     override fun onStart() {
         super.onStart()
         WargaAduanPresenter(this).getAllDataAduan(getToken())

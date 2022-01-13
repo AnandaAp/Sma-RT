@@ -31,10 +31,21 @@ class WargaAdapter(val listWarga: ArrayList<GetAllWargaItem>): RecyclerView.Adap
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val data = listWarga[position]
-        holder.nama.text = data.nama.toString()
+        val nama = data.nama.toString()
+        val email = data.email.toString()
+        val lengthNama = 20
+        val lengthEmail = 20
+        if (nama.length > lengthNama)
+            holder.nama.text = nama.substring(0, lengthNama - 3) + "..."
+        else
+            holder.nama.text = nama
+        if (email.length > lengthEmail)
+            holder.email.text = email.substring(0, lengthEmail - 3) + "..."
+        else
+            holder.email.text = email
+
         holder.noHp.text = data.noHp.toString()
-        holder.email.text = data.email.toString()
-        holder.gender.text = data.gender.toString()
+        holder.gender.text = data.gender.toString().capitalize()
         // Firebase Storage
         val storageRef = FirebaseStorage.getInstance().reference.child("user/${data.gambar}")
         Log.d(ContentValues.TAG,"Adapter get ref image: $storageRef")

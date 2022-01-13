@@ -38,13 +38,14 @@
                 android:text="Masukkan Link Dibawah Ini"
                 android:textSize="14sp" />
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/TILkirimLink"
                 android:layout_width="340dp"
                 android:layout_height="wrap_content"
                 app:boxBackgroundMode="none"
                 android:layout_gravity="center">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etLinkDrive"
+                    android:id="@+id/etKirimLink"
                     android:layout_width="250dp"
                     android:gravity="center"
                     android:layout_gravity="center"

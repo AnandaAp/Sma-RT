@@ -15,6 +15,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.google.android.material.textfield.TextInputLayout
 import com.maluku.sma_rt.R
 import com.maluku.sma_rt.databinding.DetailSuratMasukBinding
 import com.maluku.sma_rt.extentions.UserSession
@@ -22,7 +23,6 @@ import com.maluku.sma_rt.model.persuratan.GetAllPersuratanItem
 import com.maluku.sma_rt.model.persuratan.GetPersuratanById
 import com.maluku.sma_rt.presenter.WargaPersuratanPresenter
 import com.maluku.sma_rt.view.viewInterface.WargaPersuratanInterface
-import com.maluku.sma_rt.view.warga.LaporanWargaDirections
 
 class DetailSuratMasuk: Fragment(), WargaPersuratanInterface {
     private lateinit var binding: DetailSuratMasukBinding
@@ -33,6 +33,7 @@ class DetailSuratMasuk: Fragment(), WargaPersuratanInterface {
     private var tanggal = ""
     private var penerima = ""
     private var linkDrive = ""
+    private var alasanTolak = ""
 
     val args: DetailSuratMasukArgs by navArgs()
 
@@ -88,7 +89,7 @@ class DetailSuratMasuk: Fragment(), WargaPersuratanInterface {
                 dialog.dismiss()
             }
             btnBatal.setOnClickListener {
-                dialogSukses()
+                dialogSuratDiterimaSukses()
                 dialog.dismiss()
             }
             dialog.show()
@@ -97,21 +98,11 @@ class DetailSuratMasuk: Fragment(), WargaPersuratanInterface {
 
     private fun dialogTolakSurat(){
         binding.btnTolak.setOnClickListener {
-            val dialog = Dialog(requireActivity())
-            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-            dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            dialog.setContentView(R.layout.custom_dialog_surat_ditolak)
-            val btnSimpan = dialog.findViewById<TextView>(R.id.btn_ok)
-            btnSimpan.setOnClickListener {
-                WargaPersuratanPresenter(this).tolakSurat(getToken(),id)
-                dialog.dismiss()
-                findNavController()!!.navigate(R.id.action_detailSuratMasuk_to_suratFragment)
-            }
-            dialog.show()
+            dialogAlasanTolak()
         }
     }
 
-    private fun dialogSukses() {
+    private fun dialogSuratDiterimaSukses() {
         val dialog = Dialog(requireActivity())
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
@@ -135,11 +126,50 @@ class DetailSuratMasuk: Fragment(), WargaPersuratanInterface {
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.setContentView(R.layout.custom_dialog_kirim_link)
         val btnSimpan = dialog.findViewById<TextView>(R.id.btn_ok)
-        val etLink = dialog.findViewById<TextView>(R.id.etLinkDrive)
+        val etLink = dialog.findViewById<TextView>(R.id.etKirimLink)
+        val TILlinkDrive = dialog.findViewById<TextInputLayout>(R.id.TILkirimLink)
         btnSimpan.setOnClickListener {
             linkDrive = etLink.text.toString()
+            if (linkDrive.isNullOrEmpty() || linkDrive == ""){
+                TILlinkDrive.helperText = "Masukkan link drive!"
+            } else {
+                dialog.dismiss()
+                dialogSuratDiterimaSukses()
+            }
+        }
+        dialog.show()
+    }
+
+    private fun dialogAlasanTolak(){
+        val dialog = Dialog(requireActivity())
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.setContentView(R.layout.custom_dialog_kirim_alasan_tolak_persuratan)
+        val btnSimpan = dialog.findViewById<TextView>(R.id.btn_ok)
+        val etAlasan = dialog.findViewById<TextView>(R.id.etAlasanTolak)
+        val TILalasanTolak = dialog.findViewById<TextInputLayout>(R.id.TILalasanTolak)
+        btnSimpan.setOnClickListener {
+            alasanTolak = etAlasan.text.toString()
+            if (alasanTolak.isNullOrEmpty() || alasanTolak == ""){
+                TILalasanTolak.helperText = "Masukkan Alasan!"
+            } else {
+                WargaPersuratanPresenter(this).tolakSurat(getToken(),id,alasanTolak)
+                dialog.dismiss()
+                dialogSuratDitolakSukses()
+            }
+        }
+        dialog.show()
+    }
+
+    private fun dialogSuratDitolakSukses(){
+        val dialog = Dialog(requireActivity())
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.setContentView(R.layout.custom_dialog_surat_ditolak)
+        val btnSimpan = dialog.findViewById<TextView>(R.id.btn_ok)
+        btnSimpan.setOnClickListener {
             dialog.dismiss()
-            dialogSukses()
+            findNavController()!!.navigate(R.id.action_detailSuratMasuk_to_suratFragment)
         }
         dialog.show()
     }
