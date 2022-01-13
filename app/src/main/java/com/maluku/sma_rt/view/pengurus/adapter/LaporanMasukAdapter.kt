@@ -21,10 +21,10 @@ import com.maluku.sma_rt.R
 import com.maluku.sma_rt.model.aduan.GetAllAduanItem
 import java.io.File
 
-class LaporanAdapter(
+class LaporanMasukAdapter(
     val listLaporan: ArrayList<GetAllAduanItem>,
     val listener: OnAdapterListener
-): RecyclerView.Adapter<LaporanAdapter.ViewHolder>() {
+): RecyclerView.Adapter<LaporanMasukAdapter.ViewHolder>() {
     fun setData(data : List<GetAllAduanItem>){
         listLaporan.clear()
         listLaporan.addAll(data)
@@ -38,62 +38,59 @@ class LaporanAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val data = listLaporan[position]
-        holder.judulLaporan.text = data.judul.toString()
-        holder.keteranganLaporan.text = data.deskripsi.toString()
-        // Firebase Storage
-        val storageRef = FirebaseStorage.getInstance().reference.child("aduan/${data.gambar}")
-        Log.d(ContentValues.TAG,"Adapter get ref image: $storageRef")
-        val localFile = File.createTempFile("tempFile","jpg")
-        storageRef.getFile(localFile).addOnSuccessListener {
-            // Tampilkan gambar dengan Glide
-            Glide.with(holder.itemView)
-                .load(localFile.path)
-                .apply(RequestOptions().transform(CenterCrop(), RoundedCorners(20)))
-                .into(holder.gambar)
-        }.addOnFailureListener {
-
-        }
-
-        // Item Laporan
-        holder.cardLaporan.setOnClickListener { view ->
-            val dialog = BottomSheetDialog(view.context, R.style.AppBottomSheetDialogTheme)
-            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-            dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            dialog.setContentView(R.layout.bottomsheet_detail_laporan)
-
-            val judulDetail = dialog.findViewById<TextView>(R.id.tvJudulDetailLaporan)
-            val gambarDetail = dialog.findViewById<ImageView>(R.id.ivDetailLaporan)
-            val deskripsiDetail = dialog.findViewById<TextView>(R.id.tvKetDetailLaporan)
-            val btnTerimaAduan = dialog.findViewById<Button>(R.id.btnTerimaAduan)
-
-            judulDetail!!.text = data.judul.toString()
-            deskripsiDetail!!.text = data.deskripsi.toString()
+        if (data.status.toString() == "Terkirim"){
+            holder.judulLaporan.text = data.judul.toString()
+            holder.keteranganLaporan.text = data.deskripsi.toString()
+            // Firebase Storage
             val storageRef = FirebaseStorage.getInstance().reference.child("aduan/${data.gambar}")
             Log.d(ContentValues.TAG,"Adapter get ref image: $storageRef")
             val localFile = File.createTempFile("tempFile","jpg")
             storageRef.getFile(localFile).addOnSuccessListener {
+                // Tampilkan gambar dengan Glide
                 Glide.with(holder.itemView)
                     .load(localFile.path)
                     .apply(RequestOptions().transform(CenterCrop(), RoundedCorners(20)))
-                    .into(gambarDetail!!)
+                    .into(holder.gambar)
             }.addOnFailureListener {
-            }
-            btnTerimaAduan!!.setOnClickListener {
-                listener.onReceiveAduan(data.id.toString())
-                btnTerimaAduan.visibility = View.GONE
+
             }
 
-            if (data.status.toString() == "Diterima"){
-                btnTerimaAduan.visibility = View.GONE
+            // Item Laporan
+            holder.cardLaporan.setOnClickListener { view ->
+                val dialog = BottomSheetDialog(view.context, R.style.AppBottomSheetDialogTheme)
+                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+                dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+                dialog.setContentView(R.layout.bottomsheet_detail_laporan)
+
+                val judulDetail = dialog.findViewById<TextView>(R.id.tvJudulDetailLaporan)
+                val gambarDetail = dialog.findViewById<ImageView>(R.id.ivDetailLaporan)
+                val deskripsiDetail = dialog.findViewById<TextView>(R.id.tvKetDetailLaporan)
+                val btnTerimaAduan = dialog.findViewById<Button>(R.id.btnTerimaAduan)
+
+                judulDetail!!.text = data.judul.toString()
+                deskripsiDetail!!.text = data.deskripsi.toString()
+                val storageRef = FirebaseStorage.getInstance().reference.child("aduan/${data.gambar}")
+                Log.d(ContentValues.TAG,"Adapter get ref image: $storageRef")
+                val localFile = File.createTempFile("tempFile","jpg")
+                storageRef.getFile(localFile).addOnSuccessListener {
+                    Glide.with(holder.itemView)
+                        .load(localFile.path)
+                        .apply(RequestOptions().transform(CenterCrop(), RoundedCorners(20)))
+                        .into(gambarDetail!!)
+                }.addOnFailureListener {
+                }
+                btnTerimaAduan!!.setOnClickListener {
+                    listener.onReceiveAduan(data.id.toString())
+                }
+
+                val btnClose = dialog.findViewById<ImageButton>(R.id.btnCloseInfoRT)
+
+                btnClose?.setOnClickListener {
+                    dialog.dismiss()
+                }
+
+                dialog.show()
             }
-
-            val btnClose = dialog.findViewById<ImageButton>(R.id.btnCloseInfoRT)
-
-            btnClose?.setOnClickListener {
-                dialog.dismiss()
-            }
-
-            dialog.show()
         }
     }
 

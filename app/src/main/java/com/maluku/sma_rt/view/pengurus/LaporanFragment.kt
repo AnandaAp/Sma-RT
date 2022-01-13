@@ -4,130 +4,56 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
+import com.maluku.sma_rt.R
 import com.maluku.sma_rt.databinding.FragmentLaporanBinding
+import com.maluku.sma_rt.databinding.FragmentLaporanMasukBinding
 import com.maluku.sma_rt.extentions.UserSession
 import com.maluku.sma_rt.model.aduan.GetAduanById
 import com.maluku.sma_rt.model.aduan.GetAllAduanItem
 import com.maluku.sma_rt.presenter.WargaAduanPresenter
-import com.maluku.sma_rt.view.pengurus.adapter.LaporanAdapter
+import com.maluku.sma_rt.view.pengurus.adapter.LaporanMasukAdapter
+import com.maluku.sma_rt.view.pengurus.adapter.PagerAdapter
 import com.maluku.sma_rt.view.viewInterface.WargaAduanInterface
 
-class LaporanFragment : Fragment(), WargaAduanInterface {
-    private lateinit var binding: FragmentLaporanBinding
-    private lateinit var rvLaporan: RecyclerView
-    private lateinit var adapterLaporan: LaporanAdapter
+class LaporanFragment : Fragment(){
+    private lateinit var laporanAdapter : PagerAdapter
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        return bindingView()
+    ): View? {
+        return inflater.inflate(R.layout.fragment_laporan, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        // Refresh Data Laporan
-        onStart()
-        setRecyclerViewLaporan()
-        back()
-    }
-
-    override fun onStart() {
-        super.onStart()
-        WargaAduanPresenter(this).getAllDataAduan(getToken())
-    }
-
-    private fun back(){
-        binding.btnBack.setOnClickListener {
+        val listFragment: ArrayList<Fragment> = arrayListOf(LaporanMasukFragment(),LaporanDiterimaFragment())
+        val tabLayout = view.findViewById<TabLayout>(R.id.tabLayoutLaporan)
+        val viewPager = view.findViewById<ViewPager2>(R.id.vwLaporanPager)
+        laporanAdapter = PagerAdapter(listFragment,this)
+        viewPager.adapter = laporanAdapter
+        TabLayoutMediator(tabLayout,viewPager){tab,position->
+            when(position){
+                0->{
+                    tab.text = "Aduan Masuk"
+                }
+                1->{
+                    tab.text = "Aduan Diterima"
+                }
+            }
+        }.attach()
+        val backBtn = view.findViewById<TextView>(R.id.btn_back)
+        backBtn.setOnClickListener {
             findNavController()!!.popBackStack()
         }
     }
-
-    private fun setRecyclerViewLaporan() {
-        if (context!=null){
-            rvLaporan = binding.rvListLaporan
-            rvLaporan.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL ,false)
-            adapterLaporan = LaporanAdapter(
-                arrayListOf(),object : LaporanAdapter.OnAdapterListener{
-                    override fun onReceiveAduan(idAduan: String) {
-                        WargaAduanPresenter(this@LaporanFragment).terimaAduan(
-                            getToken(),
-                            idAduan
-                        )
-                    }
-                }
-            )
-            rvLaporan.adapter = adapterLaporan
-        }
-    }
-
-    private fun bindingView(): View {
-        binding = FragmentLaporanBinding.inflate(layoutInflater)
-        return binding.root
-    }
-
-    private fun getToken(): String {
-        val preferences = UserSession(requireActivity())
-        return preferences.getValueString(UserSession.SHARED_PREFERENCE_TOKEN_KEY)
-    }
-
-    override fun onCreateSuccess(message: String) {
-        TODO("Not yet implemented")
-    }
-
-    override fun onCreateFailed(message: String) {
-        TODO("Not yet implemented")
-    }
-
-    override fun onUpdateSuccess(message: String) {
-        TODO("Not yet implemented")
-    }
-
-    override fun onUpdateFailure(message: String) {
-        TODO("Not yet implemented")
-    }
-
-    override fun onDeleteSuccess(message: String) {
-        TODO("Not yet implemented")
-    }
-
-    override fun onDeleteFailure(message: String) {
-        TODO("Not yet implemented")
-    }
-
-    override fun onGetAllDataSuccess(list: List<GetAllAduanItem?>?) {
-        adapterLaporan.setData(list as ArrayList<GetAllAduanItem>)
-    }
-
-    override fun onGetAllDataFailed(message: String) {
-        if (context!=null){
-            Toast.makeText(requireContext(),"Pesan: $message",Toast.LENGTH_LONG).show()
-        }
-    }
-
-    override fun onGetDataByIDSuccess(list: GetAduanById?) {
-        TODO("Not yet implemented")
-    }
-
-    override fun onGetDataByIDFailed(message: String) {
-        TODO("Not yet implemented")
-    }
-
-    override fun onReceiveComplaintSuccess(message: String) {
-        if (context!=null){
-            Toast.makeText(requireContext(),"Pesan: $message",Toast.LENGTH_LONG).show()
-        }
-    }
-
-    override fun onReceiveComplaintFailure(message: String) {
-        if (context!=null){
-            Toast.makeText(requireContext(),"Pesan: $message",Toast.LENGTH_LONG).show()
-        }
-    }
-
 }
