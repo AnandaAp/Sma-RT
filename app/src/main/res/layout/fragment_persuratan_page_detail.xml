@@ -50,28 +50,18 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/profileLaporanSaya"
-            android:layout_width="52dp"
-            android:layout_height="52dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/default_image"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnDelete" />
 
         <TextView
             android:id="@+id/namaPelapor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="80dp"
             android:fontFamily="@font/montserrat_semibold"
             android:text="Kevin Agustinus"
             android:textSize="20sp"
-            app:layout_constraintStart_toEndOf="@+id/profileLaporanSaya"
-            app:layout_constraintTop_toTopOf="@+id/profileLaporanSaya" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/jamLaporan"
@@ -96,7 +86,7 @@
             android:textColor="@color/black"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/profileLaporanSaya" />
+            app:layout_constraintTop_toBottomOf="@+id/namaPelapor" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textlayout_tglkeperluan"

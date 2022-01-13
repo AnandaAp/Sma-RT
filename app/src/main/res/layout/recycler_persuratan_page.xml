@@ -9,34 +9,22 @@
         android:id="@+id/constraintLayout7"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="6dp"
+        android:layout_margin="16dp"
         app:layout_constraintBottom_toBottomOf="@+id/view10"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:id="@+id/buktiLaporan"
-            android:layout_width="52dp"
-            android:layout_height="52dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/default_image"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/namaPelapor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="18dp"
             android:fontFamily="@font/montserrat_semibold"
             android:text="Kevin Agustinus"
             android:textSize="18sp"
-            app:layout_constraintStart_toEndOf="@+id/buktiLaporan"
-            app:layout_constraintTop_toTopOf="@+id/buktiLaporan" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/judulLaporan"
