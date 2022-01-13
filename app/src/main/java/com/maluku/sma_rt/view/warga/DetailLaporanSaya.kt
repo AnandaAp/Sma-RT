@@ -37,7 +37,7 @@ import java.time.format.DateTimeFormatter
 
 private const val TAG = "DETAIL LAPORAN SAYA"
 
-class DetailLaporanSaya : Fragment(), WargaAduanInterface {
+    class DetailLaporanSaya : Fragment(), WargaAduanInterface {
     val args: DetailLaporanSayaArgs by navArgs()
 
     private lateinit var binding: FragmentDetailLaporanSayaBinding
