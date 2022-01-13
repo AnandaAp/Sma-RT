@@ -49,6 +49,7 @@
     </com.google.android.material.appbar.CollapsingToolbarLayout>
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayoutLaporan"
+        app:tabRippleColor="@android:color/transparent"
         android:backgroundTint="@color/green"
         app:tabSelectedTextColor="@color/black"
         app:tabTextColor="@color/white"
