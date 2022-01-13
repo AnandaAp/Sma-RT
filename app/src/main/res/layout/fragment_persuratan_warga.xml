@@ -120,6 +120,7 @@
                 android:layout_height="46dp"
                 android:background="@drawable/bg_edtext_border"
                 android:fontFamily="@font/montserrat_regular"
+                android:inputType="textCapWords"
                 android:padding="2dp"
                 android:textCursorDrawable="@drawable/color_cursor" />
         </com.google.android.material.textfield.TextInputLayout>
