@@ -42,7 +42,7 @@ class PersuratanPage : Fragment(), WargaPersuratanInterface {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        WargaPersuratanPresenter(this).getAllDataSurat(getToken())
+        WargaPersuratanPresenter(this).getAllDataSurat(getToken(), "1")
         setRecyclerViewPersuratanPage()
         btnBack()
         btnSuratMasuk()

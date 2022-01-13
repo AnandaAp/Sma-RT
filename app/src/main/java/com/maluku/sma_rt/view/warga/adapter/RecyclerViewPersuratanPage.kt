@@ -17,6 +17,9 @@ import com.maluku.sma_rt.view.warga.PersuratanPage
 import com.maluku.sma_rt.view.warga.PersuratanPageDirections
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
+import java.time.format.TextStyle
+import java.util.*
+import kotlin.collections.ArrayList
 
 class RecyclerViewPersuratanPage(
     private val listSurat: ArrayList<GetAllPersuratanItem>
@@ -42,7 +45,7 @@ class RecyclerViewPersuratanPage(
         holder.judul.text = data.judul.toString()
         holder.deskripsi.text = data.keperluan.toString()
         holder.status.text = data.status.toString()
-        holder.jam.text = formatTanggal(data.createdAt.toString())
+        holder.jam.text = formatTanggal(data.createdAt.toString().take(19))
 
 
         holder.itemView.setOnClickListener { view ->
@@ -63,18 +66,13 @@ class RecyclerViewPersuratanPage(
         var deskripsi: TextView = itemView.findViewById(R.id.isiLaporan)
         var status: TextView = itemView.findViewById(R.id.statusLaporan)
         var jam: TextView = itemView.findViewById(R.id.jamLaporan)
-//        var gambar: ImageView = itemView.findViewById(R.id.buktiLaporan)
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun formatTanggal(tanggal: String): String {
-        val secondApiFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss'Z'")
-        val timestamp = 1565209665.toLong() // timestamp in Long
-        val timestampAsDateString = java.time.format.DateTimeFormatter.ISO_INSTANT
-            .format(java.time.Instant.ofEpochSecond(timestamp))
-        val date = LocalDate.parse(timestampAsDateString, secondApiFormat)
+        val firstApiFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss")
+        val date = LocalDate.parse(tanggal , firstApiFormat)
 
-        return date.dayOfMonth.toString()+" "+date.month.toString()
-
+        return date.dayOfMonth.toString()+" "+date.month.getDisplayName(TextStyle.SHORT, Locale("id", "ID"))
     }
 }
