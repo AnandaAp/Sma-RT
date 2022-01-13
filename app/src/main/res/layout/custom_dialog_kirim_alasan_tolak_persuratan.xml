@@ -24,7 +24,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:fontFamily="@font/montserrat_semibold"
-                android:text="Kirim File"
+                android:text="Kirim Alasan"
                 android:textSize="18sp" />
 
 

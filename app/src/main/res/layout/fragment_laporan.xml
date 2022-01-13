@@ -49,6 +49,9 @@
     </com.google.android.material.appbar.CollapsingToolbarLayout>
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayoutLaporan"
+        android:backgroundTint="@color/green"
+        app:tabSelectedTextColor="@color/black"
+        app:tabTextColor="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -57,12 +60,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar_informasi"
         app:layout_constraintVertical_bias="0.0"
-        app:tabIndicator="@drawable/tab_indicator2"
+        app:tabIndicator="@drawable/tab_indicator"
         app:tabIndicatorAnimationMode="linear"
-        app:tabIndicatorColor="@color/green"
+        app:tabIndicatorColor="@color/white"
         app:tabIndicatorGravity="stretch"
-        app:tabRippleColor="@android:color/transparent"
-        app:tabSelectedTextColor="@color/white"
         app:tabTextAppearance="@style/tab_text"  />
 
     <androidx.viewpager2.widget.ViewPager2
