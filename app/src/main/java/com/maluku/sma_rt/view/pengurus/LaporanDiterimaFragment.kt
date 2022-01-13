@@ -15,6 +15,7 @@ import com.maluku.sma_rt.databinding.FragmentLaporanMasukBinding
 import com.maluku.sma_rt.extentions.UserSession
 import com.maluku.sma_rt.model.aduan.GetAduanById
 import com.maluku.sma_rt.model.aduan.GetAllAduanItem
+import com.maluku.sma_rt.model.tagihan.GetAllTagihanItem
 import com.maluku.sma_rt.presenter.WargaAduanPresenter
 import com.maluku.sma_rt.view.pengurus.adapter.LaporanDiterimaAdapter
 import com.maluku.sma_rt.view.pengurus.adapter.LaporanMasukAdapter
@@ -97,7 +98,15 @@ class LaporanDiterimaFragment : Fragment(), WargaAduanInterface {
 
     override fun onGetAllDataSuccess(list: List<GetAllAduanItem?>?) {
         Handler(Looper.getMainLooper()).post {
-            adapterLaporanDiterima.setData(list as ArrayList<GetAllAduanItem>)
+            val listLaporanDiterima: ArrayList<GetAllAduanItem> = arrayListOf()
+            for (laporan in list!!){
+                if (laporan!!.status.toString() == "Diterima"){
+                    listLaporanDiterima.add(laporan!!)
+                }
+            }
+            if (listLaporanDiterima.size >= 1){
+                adapterLaporanDiterima.setData(listLaporanDiterima)
+            }
         }
     }
 

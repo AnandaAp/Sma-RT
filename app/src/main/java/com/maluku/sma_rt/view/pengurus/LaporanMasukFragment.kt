@@ -33,9 +33,10 @@ class LaporanMasukFragment : Fragment(), WargaAduanInterface {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setRecyclerViewLaporan()
+        WargaAduanPresenter(this).getAllDataAduan(getToken())
         // Refresh Data Laporan
         onStart()
-        setRecyclerViewLaporan()
     }
 
     override fun setUserVisibleHint(isVisibleToUser: Boolean) {
@@ -105,7 +106,15 @@ class LaporanMasukFragment : Fragment(), WargaAduanInterface {
 
     override fun onGetAllDataSuccess(list: List<GetAllAduanItem?>?) {
         Handler(Looper.getMainLooper()).post {
-            adapterLaporanMasuk.setData(list as ArrayList<GetAllAduanItem>)
+            val listLaporanMasuk: ArrayList<GetAllAduanItem> = arrayListOf()
+            for (laporan in list!!){
+                if (laporan!!.status.toString() == "Terkirim"){
+                    listLaporanMasuk.add(laporan!!)
+                }
+            }
+            if (listLaporanMasuk.size >= 1){
+                adapterLaporanMasuk.setData(listLaporanMasuk)
+            }
         }
     }
 
