@@ -51,6 +51,7 @@ class InformasiMasukAdapter(val listInformasi: ArrayList<GetAllInformasiItem>): 
             holder.lokasiInformasi.text = lokasi.substring(0, lengthLokasi - 3) + "..."
         else
             holder.lokasiInformasi.text = lokasi
+
         holder.tanggalInformasi.text = tglIndonesia(splitDate(data.createdAt.toString()))
 
         // Firebase Storage

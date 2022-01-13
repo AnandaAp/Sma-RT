@@ -22,8 +22,19 @@ class SuratKeluarAdapter(val listSuratKeluar: ArrayList<GetAllPersuratanItem>): 
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val data = listSuratKeluar[position]
-        holder.judulSurat.text = data.judul.toString()
-        holder.keperluanSurat.text = data.keperluan.toString()
+        val judul = data.judul.toString()
+        val keperluan = data.keperluan.toString()
+        val lengthJudul = 30
+        val lengthKeperluan = 30
+        if (judul.length > lengthJudul)
+            holder.judulSurat.text = judul.substring(0, lengthJudul - 3) + "..."
+        else
+            holder.judulSurat.text = judul
+        if (keperluan.length > lengthKeperluan)
+            holder.keperluanSurat.text = keperluan.substring(0, lengthKeperluan - 3) + "..."
+        else
+            holder.keperluanSurat.text = keperluan
+
         holder.statusSurat.text = data.status.toString()
         holder.tanggalSurat.text = data.tanggal.toString()
         holder.tujuanSurat.text = data.penerima.toString()
