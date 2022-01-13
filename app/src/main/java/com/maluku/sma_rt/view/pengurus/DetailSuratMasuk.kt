@@ -10,11 +10,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
+import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.maluku.sma_rt.R
 import com.maluku.sma_rt.databinding.DetailSuratMasukBinding
@@ -106,11 +108,7 @@ class DetailSuratMasuk: Fragment(), WargaPersuratanInterface {
         val dialog = Dialog(requireActivity())
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        if (linkDrive == "" || linkDrive.isNullOrEmpty()){
-            dialog.setContentView(R.layout.custom_dialog_surat_diterima)
-        } else {
-            dialog.setContentView(R.layout.custom_dialog_file_terkirim)
-        }
+        dialog.setContentView(R.layout.custom_dialog_surat_diterima)
         val btnSimpan = dialog.findViewById<TextView>(R.id.btn_ok)
         btnSimpan.setOnClickListener {
             WargaPersuratanPresenter(this).terimaSurat(getToken(),id,linkDrive)
@@ -126,7 +124,7 @@ class DetailSuratMasuk: Fragment(), WargaPersuratanInterface {
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.setContentView(R.layout.custom_dialog_kirim_link)
         val btnSimpan = dialog.findViewById<TextView>(R.id.btn_ok)
-        val etLink = dialog.findViewById<TextView>(R.id.etKirimLink)
+        val etLink = dialog.findViewById<TextInputEditText>(R.id.etKirimLink)
         val TILlinkDrive = dialog.findViewById<TextInputLayout>(R.id.TILkirimLink)
         btnSimpan.setOnClickListener {
             linkDrive = etLink.text.toString()
@@ -134,7 +132,7 @@ class DetailSuratMasuk: Fragment(), WargaPersuratanInterface {
                 TILlinkDrive.helperText = "Masukkan link drive!"
             } else {
                 dialog.dismiss()
-                dialogSuratDiterimaSukses()
+                linkDikirim()
             }
         }
         dialog.show()
@@ -146,7 +144,7 @@ class DetailSuratMasuk: Fragment(), WargaPersuratanInterface {
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.setContentView(R.layout.custom_dialog_kirim_alasan_tolak_persuratan)
         val btnSimpan = dialog.findViewById<TextView>(R.id.btn_ok)
-        val etAlasan = dialog.findViewById<TextView>(R.id.etAlasanTolak)
+        val etAlasan = dialog.findViewById<TextInputEditText>(R.id.etAlasanTolak)
         val TILalasanTolak = dialog.findViewById<TextInputLayout>(R.id.TILalasanTolak)
         btnSimpan.setOnClickListener {
             alasanTolak = etAlasan.text.toString()
@@ -155,8 +153,34 @@ class DetailSuratMasuk: Fragment(), WargaPersuratanInterface {
             } else {
                 WargaPersuratanPresenter(this).tolakSurat(getToken(),id,alasanTolak)
                 dialog.dismiss()
-                dialogSuratDitolakSukses()
+                alasanDikirim()
             }
+        }
+        dialog.show()
+    }
+
+    private fun alasanDikirim(){
+        val dialog = Dialog(requireActivity())
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.setContentView(R.layout.custom_dialog_alasan_persuratan_ditolak)
+        val btnSimpan = dialog.findViewById<TextView>(R.id.btn_ok)
+        btnSimpan.setOnClickListener {
+            dialog.dismiss()
+            dialogSuratDitolakSukses()
+        }
+        dialog.show()
+    }
+
+    private fun linkDikirim(){
+        val dialog = Dialog(requireActivity())
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.setContentView(R.layout.custom_dialog_file_terkirim)
+        val btnSimpan = dialog.findViewById<TextView>(R.id.btn_ok)
+        btnSimpan.setOnClickListener {
+            dialog.dismiss()
+            dialogSuratDiterimaSukses()
         }
         dialog.show()
     }
@@ -168,6 +192,7 @@ class DetailSuratMasuk: Fragment(), WargaPersuratanInterface {
         dialog.setContentView(R.layout.custom_dialog_surat_ditolak)
         val btnSimpan = dialog.findViewById<TextView>(R.id.btn_ok)
         btnSimpan.setOnClickListener {
+            WargaPersuratanPresenter(this).tolakSurat(getToken(),id,alasanTolak)
             dialog.dismiss()
             findNavController()!!.navigate(R.id.action_detailSuratMasuk_to_suratFragment)
         }
@@ -218,42 +243,32 @@ class DetailSuratMasuk: Fragment(), WargaPersuratanInterface {
     }
 
     override fun onGetDataByIDFailure(message: String) {
-        if (context!=null){
-            Handler(Looper.getMainLooper()).post {
-                Toast.makeText(context,message, Toast.LENGTH_LONG).show()
-            }
+        Handler(Looper.getMainLooper()).post {
+            Toast.makeText(context,message, Toast.LENGTH_LONG).show()
         }
     }
 
     override fun onLetterReceivedSuccess(message: String) {
-        if (context!=null){
-            Handler(Looper.getMainLooper()).post {
-                Toast.makeText(context,message, Toast.LENGTH_LONG).show()
-            }
+        Handler(Looper.getMainLooper()).post {
+            Toast.makeText(context,message, Toast.LENGTH_LONG).show()
         }
     }
 
     override fun onLetterReceivedFailure(message: String) {
-        if (context!=null){
-            Handler(Looper.getMainLooper()).post {
-                Toast.makeText(context,message, Toast.LENGTH_LONG).show()
-            }
+        Handler(Looper.getMainLooper()).post {
+            Toast.makeText(context,message, Toast.LENGTH_LONG).show()
         }
     }
 
     override fun onLetterRejectedSuccess(message: String) {
-        if (context!=null){
-            Handler(Looper.getMainLooper()).post {
-                Toast.makeText(context,message, Toast.LENGTH_LONG).show()
-            }
+        Handler(Looper.getMainLooper()).post {
+            Toast.makeText(context,message, Toast.LENGTH_LONG).show()
         }
     }
 
     override fun onLetterRejectedFailure(message: String) {
-        if (context!=null){
-            Handler(Looper.getMainLooper()).post {
-                Toast.makeText(context,message, Toast.LENGTH_LONG).show()
-            }
+        Handler(Looper.getMainLooper()).post {
+            Toast.makeText(context,message, Toast.LENGTH_LONG).show()
         }
     }
 
