@@ -114,6 +114,23 @@ class WargaAduanPresenter(private val view: WargaAduanInterface) {
         }
     }
 
+    fun getAllAduanRT(token: String){
+        GlobalScope.launch(Dispatchers.Main){
+            val response =  RetrofitService
+                .getService()
+                .getAllAduanRT("Bearer $token")
+                .awaitResponse()
+            if (response.isSuccessful){
+                val list = response.body()?.getAllAduan as List<GetAllAduanItem>
+                view.onGetAllDataSuccess(list)
+            } else{
+                val jObjError = JSONObject(response.errorBody()?.string())
+                val message = jObjError.getString("message")
+                view.onGetAllDataFailed(message)
+            }
+        }
+    }
+
     fun getDataAduanByID(token: String,id: String){
         GlobalScope.launch(Dispatchers.Main){
             val response = RetrofitService

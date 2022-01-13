@@ -49,7 +49,13 @@ class RecyclerViewTerlaris(
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val data = listProduk[position]
-        holder.namaBarang.text = data.nama
+
+        if(data.nama!!.length > 17) {
+            holder.namaBarang.text = data.nama.toString().take(17) + "..."
+        } else {
+            holder.namaBarang.text = data.nama.toString()
+        }
+
         holder.hargaBarang.text = toRupiah(data.harga.toString().toDouble())
         if(data.detail!!.length > 22) {
             holder.namaToko.text = data.detail.toString().take(22) + "..."

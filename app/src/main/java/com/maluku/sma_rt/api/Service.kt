@@ -315,6 +315,12 @@ interface Service {
         @Header("Authorization") authHeader: String
     ): Call<GetAllAduanResponse>
 
+    //Get Data All Aduan 1 RT
+    @GET("alladuan")
+    fun getAllAduanRT(
+        @Header("Authorization") authHeader: String
+    ): Call<GetAllAduanResponse>
+
     //Terima Aduan
     @PUT("aduan/terima/{id_aduan}")
     fun terimaAduan(

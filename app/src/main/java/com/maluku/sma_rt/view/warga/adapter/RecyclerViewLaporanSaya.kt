@@ -45,7 +45,12 @@ class RecyclerViewLaporanSaya(
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val data = listLaporan[position]
 
-        holder.judul.text = data.judul.toString()
+        if(data.judul!!.length > 20) {
+            holder.judul.text = data.judul.toString().take(20) + "..."
+        } else {
+            holder.judul.text = data.judul.toString()
+        }
+
         holder.status.text = data.status.toString()
 
         if(data.deskripsi!!.length > 30) {
