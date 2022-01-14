@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="@color/white"
-        android:elevation="0dp"
+        android:elevation="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -30,6 +30,19 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <TextView
+                android:id="@+id/tv_persuratan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="Edit Surat"
+                android:textColor="@color/green"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -38,6 +51,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar_laporanpage">
 
         <ImageButton
@@ -50,46 +64,20 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-
         <TextView
-            android:id="@+id/namaPelapor"
+            android:id="@+id/tv_nama"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="80dp"
             android:fontFamily="@font/montserrat_semibold"
-            android:text="Kevin Agustinus"
-            android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/jamLaporan"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="20dp"
-            android:fontFamily="@font/montserrat_medium"
-            android:text="17.50 PM"
-            android:textColor="@color/grey"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/namaPelapor" />
-
-        <TextView
-            android:id="@+id/tv_tglkeperluan"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:layout_marginStart="20dp"
-            android:fontFamily="@font/montserrat_regular"
-            android:text="Tanggal Keperluan :"
+            android:text="Nama"
             android:textColor="@color/black"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/namaPelapor" />
+            app:layout_constraintTop_toBottomOf="@+id/btnDelete" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textlayout_tglkeperluan"
+            android:id="@+id/textlayout_nama"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -97,32 +85,122 @@
             app:boxBackgroundMode="none"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_tglkeperluan">
+            app:layout_constraintTop_toBottomOf="@+id/tv_nama">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/ed_tglkeperluan"
+                android:id="@+id/ed_nama"
                 android:layout_width="match_parent"
                 android:layout_height="46dp"
                 android:background="@drawable/bg_edtext_border"
                 android:fontFamily="@font/montserrat_regular"
                 android:padding="2dp"
-                android:inputType="date"
-                android:text="17-01-2021"
+                android:inputType="textCapWords"
                 android:textCursorDrawable="@drawable/color_cursor" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/tv_judulsurat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/montserrat_semibold"
+            android:text="Judul Surat"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textlayout_nama" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textlayout_judulsurat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            app:boxBackgroundMode="none"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_judulsurat">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ed_judulsurat"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:background="@drawable/bg_edtext_border"
+                android:fontFamily="@font/montserrat_regular"
+                android:inputType="textCapWords"
+                android:padding="2dp"
+                android:textCursorDrawable="@drawable/color_cursor" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <TextView
+            android:id="@+id/tv_tanggalkeperluan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/montserrat_semibold"
+            android:text="Tanggal keperluan"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textlayout_judulsurat" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textlayout_tanggalkeperluan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            app:boxBackgroundMode="none"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_tanggalkeperluan">
+
+
+            <LinearLayout
+                android:id="@+id/layoutTanggal"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:gravity="center"
+                android:background="@drawable/bg_edtext_border">
+
+                <TextView
+                    android:id="@+id/tv_tanggal"
+                    android:layout_marginStart="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/btn_tanggal"
+                    android:layout_marginEnd="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_calender" />
+            </LinearLayout>
+
+
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
             android:id="@+id/tv_keperluan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
             android:layout_marginStart="20dp"
-            android:fontFamily="@font/montserrat_regular"
-            android:text="Keperluan :"
+            android:layout_marginTop="25dp"
+            android:fontFamily="@font/montserrat_semibold"
+            android:text="Keperluan"
             android:textColor="@color/black"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textlayout_tglkeperluan" />
+            app:layout_constraintTop_toBottomOf="@+id/textlayout_tanggalkeperluan" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textlayout_keperluan"
@@ -138,16 +216,56 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/ed_keperluan"
                 android:layout_width="match_parent"
-                android:layout_height="184dp"
+                android:layout_height="wrap_content"
                 android:background="@drawable/bg_edtext_border"
                 android:fontFamily="@font/montserrat_regular"
-                android:padding="10dp"
+                android:paddingTop="10dp"
+                android:lines="6"
                 android:gravity="top"
-                android:text="Ingin mengajukan surat untuk pindah rumah ke rumah tetangga"
                 android:textCursorDrawable="@drawable/color_cursor" />
         </com.google.android.material.textfield.TextInputLayout>
 
+        <CheckBox
+            android:id="@+id/checkBox"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="20dp"
+            android:background="@drawable/checkbox_selector"
+            android:button="@null"
+            android:gravity="center"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textlayout_keperluan" />
 
+        <TextView
+            android:id="@+id/textView25"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:fontFamily="@font/montserrat_medium"
+            android:text="Pastikan anda sudah mengecek  semua pengisian dengan benar "
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/checkBox"
+            app:layout_constraintStart_toEndOf="@+id/checkBox"
+            app:layout_constraintTop_toTopOf="@+id/checkBox" />
+
+
+        <TextView
+            android:id="@+id/btn_ajukan"
+            android:layout_width="match_parent"
+            android:layout_height="43dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/btn_rounded"
+            android:backgroundTint="#4B6858"
+            android:clickable="true"
+            android:fontFamily="@font/montserrat_bold"
+            android:foreground="?attr/selectableItemBackground"
+            android:gravity="center"
+            android:text="Ajukan"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintTop_toBottomOf="@+id/textView25" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

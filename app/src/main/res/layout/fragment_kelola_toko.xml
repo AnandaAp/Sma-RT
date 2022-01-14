@@ -48,7 +48,8 @@
             android:layout_width="320dp"
             android:layout_height="123dp"
             android:layout_marginTop="30dp"
-            android:src="@drawable/warunbuagung"
+            android:src="@drawable/default_image"
+            android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
@@ -244,7 +245,7 @@
             android:id="@+id/tv_namawarung"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Warung Bu Agus"
+            android:text="Nama Warung"
             android:textSize="18sp"
             android:fontFamily="@font/montserrat_semibold"
             android:textColor="@color/white"
