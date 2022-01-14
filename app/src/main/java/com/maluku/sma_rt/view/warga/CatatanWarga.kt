@@ -44,12 +44,24 @@ class CatatanWarga : Fragment(), WargaTagihanInterface {
         return bindingView()
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onStart() {
+        super.onStart()
         WargaTagihanPresenter(this).getAllTagihan(getToken())
         setRecyclerViewListTagihan()
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        onStart()
+        swipeRefreshLayout()
+    }
+
+    private fun swipeRefreshLayout() {
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            onStart()
+            binding.swipeRefreshLayout.isRefreshing = false
+        }
+    }
 
     private fun setRecyclerViewListTagihan() {
         rvTagihan = binding.rvTagihanwarga

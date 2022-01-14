@@ -55,12 +55,24 @@ class DetailPesananUser : Fragment(), OrderInterface {
         return view
     }
 
+    override fun onStart() {
+        super.onStart()
+        bindData()
+        setRecyclerViewListOrder()
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        bindData()
+        onStart()
+        swipeRefreshLayout()
         goBack()
-        setRecyclerViewListOrder()
+    }
 
+    private fun swipeRefreshLayout() {
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            onStart()
+            binding.swipeRefreshLayout.isRefreshing = false
+        }
     }
 
     private fun setRecyclerViewListOrder() {
