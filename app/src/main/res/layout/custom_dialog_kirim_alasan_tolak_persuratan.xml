@@ -41,13 +41,14 @@
                 android:textAlignment="center"
                 android:textSize="14sp" />
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/TILalasanTolak"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:boxBackgroundMode="none"
                 android:layout_gravity="center">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etLinkDrive"
+                    android:id="@+id/etAlasanTolak"
                     android:layout_width="match_parent"
                     android:gravity="center"
                     android:layout_gravity="center"
