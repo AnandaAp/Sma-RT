@@ -47,28 +47,18 @@
         android:background="@color/grey"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
 
-    <ImageView
-        android:id="@+id/foto"
-        android:layout_width="52dp"
-        android:layout_height="52dp"
-        android:scaleType="centerCrop"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="30dp"
-        android:src="@drawable/default_image"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view8" />
 
     <TextView
         android:id="@+id/tv_pengurusRT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:layout_marginStart="20dp"
         android:fontFamily="@font/montserrat_semibold"
         android:text="Pengurus RT"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/foto"
-        app:layout_constraintStart_toEndOf="@+id/foto"
-        app:layout_constraintTop_toTopOf="@+id/foto" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view8" />
 
     <TextView
         android:id="@+id/waktu"
@@ -87,15 +77,15 @@
         android:id="@+id/textlayout_suratmasuk"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="60dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="60dp"
         app:boxBackgroundMode="none"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/foto">
+        app:layout_constraintTop_toBottomOf="@+id/tv_pengurusRT">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/ed_suratmasuk"
@@ -103,11 +93,11 @@
             android:layout_height="163dp"
             android:background="@drawable/bg_edtext_border"
             android:fontFamily="@font/montserrat_semibold"
-            android:textSize="12sp"
-            android:text="https://drive.google.com/drive/folders/1tHAMarab1WkZEMX8tcTk9uBv5ToDJavx"
             android:gravity="top"
             android:paddingTop="10dp"
-            android:textCursorDrawable="@drawable/color_cursor" />
+            android:text="https://drive.google.com/drive/folders/1tHAMarab1WkZEMX8tcTk9uBv5ToDJavx"
+            android:textCursorDrawable="@drawable/color_cursor"
+            android:textSize="12sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <ImageButton
