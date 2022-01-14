@@ -1,6 +1,9 @@
 package com.maluku.sma_rt.view.pengurus
 
+import android.app.Dialog
 import android.content.ContentValues
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -8,8 +11,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.ActivityResultLauncher
@@ -116,6 +121,18 @@ class EditInformasiFragment : Fragment(), InformasiInterface {
         setKategori()
     }
 
+    private fun dialogEditInformasiSukses(){
+        val dialog = Dialog(requireActivity())
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.setContentView(R.layout.custom_dialog_edit_informasi)
+        val btnSimpan = dialog.findViewById<TextView>(R.id.btn_ok)
+        btnSimpan.setOnClickListener {
+            dialog.dismiss()
+        }
+        dialog.show()
+    }
+
     private fun setKategori(){
         val spKategori = binding.spKategori
         val arrKategori =  resources.getStringArray(R.array.kategori)
@@ -213,6 +230,7 @@ class EditInformasiFragment : Fragment(), InformasiInterface {
             }
 //            Log.d("EDIT_PROFILE","ID = $id, nama = $nama, email = $email, NoHP = $noHp, Gambar = $gambarPengurus, Gender = $jenisKelamin")
             updateInformasi()
+            dialogEditInformasiSukses()
         } else {
             if (!validJudul){
                 binding.etJudul.error = "Masukkan judul!"

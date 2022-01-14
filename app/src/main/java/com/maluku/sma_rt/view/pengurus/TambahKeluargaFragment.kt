@@ -1,13 +1,19 @@
 package com.maluku.sma_rt.view.pengurus
 
+import android.app.Dialog
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
+import android.widget.TextView
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
+import com.maluku.sma_rt.R
 import com.maluku.sma_rt.databinding.FragmentTambahKeluargaBinding
 import com.maluku.sma_rt.extentions.UserSession
 import com.maluku.sma_rt.presenter.TambahKeluargaPresenter
@@ -45,6 +51,7 @@ class TambahKeluargaFragment : Fragment(), TambahKeluargaInterface {
         if (validNama){
             namaKeluarga = binding.inputNamaKeluarga.text.toString()
             addFamily(namaKeluarga)
+            dialogTambahKeluargaSukses()
         } else {
             if (!validNama){
                 binding.TILinputNamaKeluarga.helperText = "Masukan nama keluarga!"
@@ -63,6 +70,18 @@ class TambahKeluargaFragment : Fragment(), TambahKeluargaInterface {
             getToken(),
             namaKeluarga
         )
+    }
+
+    private fun dialogTambahKeluargaSukses(){
+        val dialog = Dialog(requireActivity())
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.setContentView(R.layout.custom_dialog_buat_keluarga)
+        val btnSimpan = dialog.findViewById<TextView>(R.id.btn_ok)
+        btnSimpan.setOnClickListener {
+            dialog.dismiss()
+        }
+        dialog.show()
     }
 
     override fun onCreateSuccess(message: String) {

@@ -88,6 +88,7 @@ class BagikanInformasiFragment : Fragment(), InformasiInterface {
             if (imageUri != null){
                 uploadImage()
             }
+            InformasiPresenter(this).createInformasi(getToken(),judul,kategori,lokasi,detail,gambarInformasi)
             dialogBagikanInformasiSukses()
         } else {
             if (!validJudul){
@@ -110,7 +111,6 @@ class BagikanInformasiFragment : Fragment(), InformasiInterface {
         dialog.setContentView(R.layout.custom_dialog_kirim_informasi)
         val btnSimpan = dialog.findViewById<TextView>(R.id.btn_ok)
         btnSimpan.setOnClickListener {
-            InformasiPresenter(this).createInformasi(getToken(),judul,kategori,lokasi,detail,gambarInformasi)
             dialog.dismiss()
         }
         dialog.show()

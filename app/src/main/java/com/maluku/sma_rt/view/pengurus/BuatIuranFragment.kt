@@ -1,11 +1,16 @@
 package com.maluku.sma_rt.view.pengurus
 
+import android.app.Dialog
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
+import android.widget.TextView
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.maluku.sma_rt.R
@@ -53,6 +58,7 @@ class BuatIuranFragment : Fragment(), AdminTagihanInterface {
         }
     }
 
+
     private fun submitForm() {
         val validNama = !binding.etNamaTagihan.text.isNullOrEmpty()
         val validJumlah = !binding.etJumlah.text.isNullOrEmpty()
@@ -60,6 +66,7 @@ class BuatIuranFragment : Fragment(), AdminTagihanInterface {
         if (validNama && validDetail && validJumlah){
             Log.d("CREATE_IURAN","Nama: $nama, Jumlah: $jumlah, Detail: $detail")
             AdminTagihanPresenter(this).createTagihan(nama,detail,jumlah,getToken())
+            dialogBuatIuranSukses()
         } else {
             if (!validNama){
                 binding.TILnamaTagihan.helperText = "Masukan nama tagihan!"
@@ -72,6 +79,18 @@ class BuatIuranFragment : Fragment(), AdminTagihanInterface {
             }
             Toast.makeText(requireContext(),"Seluruh field harus terisi!", Toast.LENGTH_LONG).show()
         }
+    }
+
+    private fun dialogBuatIuranSukses(){
+        val dialog = Dialog(requireActivity())
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.setContentView(R.layout.custom_dialog_buat_tagihan)
+        val btnSimpan = dialog.findViewById<TextView>(R.id.btn_ok)
+        btnSimpan.setOnClickListener {
+            dialog.dismiss()
+        }
+        dialog.show()
     }
 
     private fun getToken(): String {
