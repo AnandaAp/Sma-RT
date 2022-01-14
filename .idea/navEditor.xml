@@ -1367,58 +1367,6 @@
                       </LayoutPositions>
                     </value>
                   </entry>
-                  <entry key="fragmentSuratKeluar">
-                    <value>
-                      <LayoutPositions>
-                        <option name="myPosition">
-                          <Point>
-                            <option name="x" value="969" />
-                            <option name="y" value="775" />
-                          </Point>
-                        </option>
-                        <option name="myPositions">
-                          <map>
-                            <entry key="action_fragmentSuratKeluar_to_fragmentSuratMasuk">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
-                            <entry key="action_fragmentSuratKeluar_to_suratFragment">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
-                          </map>
-                        </option>
-                      </LayoutPositions>
-                    </value>
-                  </entry>
-                  <entry key="fragmentSuratMasuk">
-                    <value>
-                      <LayoutPositions>
-                        <option name="myPosition">
-                          <Point>
-                            <option name="x" value="962" />
-                            <option name="y" value="466" />
-                          </Point>
-                        </option>
-                        <option name="myPositions">
-                          <map>
-                            <entry key="action_fragmentSuratMasuk_to_fragmentSuratKeluar">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
-                            <entry key="action_fragmentSuratMasuk_to_suratFragment">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
-                          </map>
-                        </option>
-                      </LayoutPositions>
-                    </value>
-                  </entry>
                   <entry key="galeriKegiatanRTFragment">
                     <value>
                       <LayoutPositions>
@@ -1620,8 +1568,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-160" />
-                            <option name="y" value="547" />
+                            <option name="x" value="-158" />
+                            <option name="y" value="533" />
                           </Point>
                         </option>
                         <option name="myPositions">
