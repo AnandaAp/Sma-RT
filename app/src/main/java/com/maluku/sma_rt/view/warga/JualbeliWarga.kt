@@ -63,16 +63,29 @@ class JualbeliWarga : Fragment(), WargaJualBeliInterface, KeranjangInterface{
         return bindingView()
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onStart() {
+        super.onStart()
         WargaJualBeliPresenter(this).getAllKeluarga(getToken(),nama)
         WargaJualBeliPresenter(this).getAllProduk(getToken(),idKeluarga, nama)
-        pencarian()
         setRecyclerViewToko()
         setRecyclerViewProduk()
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        onStart()
+        swipeRefreshLayout()
+        pencarian()
         setDataWarga()
         navigateToBasket()
         navigateToHistoryOrder()
+    }
+
+    private fun swipeRefreshLayout() {
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            onStart()
+            binding.swipeRefreshLayout.isRefreshing = false
+        }
     }
 
     private fun pencarian() {

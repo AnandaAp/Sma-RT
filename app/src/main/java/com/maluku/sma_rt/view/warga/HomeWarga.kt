@@ -62,22 +62,35 @@ class HomeWarga : Fragment(), InformasiInterface, DompetKeluargaInterface, Warga
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        return bindingView()
+    }
+
+    override fun onStart() {
+        super.onStart()
         WargaPresenter(requireActivity(), this).getDataLogin(getToken())
         InformasiPresenter(this).getAllInfoTerkini(getToken())
         InformasiPresenter(this).getAllKegiatan(getToken())
         DompetKeluargaPresenter(this).getDompetKeluargaByLoginSession(getToken())
-        return bindingView()
+        setRecyclerViewInfoTerkini()
+        setRecyclerViewKegiatanWarga()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setRecyclerViewInfoTerkini()
-        setRecyclerViewKegiatanWarga()
+        onStart()
+        swipeRefreshLayout()
         navigateToMenuInformasi()
         navigateToMenuLaporan()
         navigateToMenuPersuratan()
         navigateToMenuMore()
         navigateToTopUpSaldo()
+    }
+
+    private fun swipeRefreshLayout() {
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            onStart()
+            binding.swipeRefreshLayout.isRefreshing = false
+        }
     }
 
     private fun setDompetKeluarga(list: GetDompetKeluargaById) {
