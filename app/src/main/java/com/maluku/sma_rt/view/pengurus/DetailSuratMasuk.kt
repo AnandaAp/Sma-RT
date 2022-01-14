@@ -124,8 +124,8 @@ class DetailSuratMasuk: Fragment(), WargaPersuratanInterface {
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.setContentView(R.layout.custom_dialog_kirim_link)
         val btnSimpan = dialog.findViewById<TextView>(R.id.btn_ok)
-        val etLink = dialog.findViewById<TextInputEditText>(R.id.etKirimLink)
-        val TILlinkDrive = dialog.findViewById<TextInputLayout>(R.id.TILkirimLink)
+        val etLink = dialog.findViewById<TextInputEditText>(R.id.etLinkDrive)
+        val TILlinkDrive = dialog.findViewById<TextInputLayout>(R.id.TILlinkDrive)
         btnSimpan.setOnClickListener {
             linkDrive = etLink.text.toString()
             if (linkDrive.isNullOrEmpty() || linkDrive == ""){
