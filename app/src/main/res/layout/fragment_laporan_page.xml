@@ -12,7 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="@color/green"
-        android:elevation="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -53,16 +52,17 @@
         android:id="@+id/tabLayoutLaporan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/green"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar_laporanpage"
-        app:tabIndicator="@drawable/tab_indicator2"
-        app:tabIndicatorColor="@color/green"
+        app:tabIndicator="@drawable/tab_indicator"
+        app:tabIndicatorColor="@color/white"
         app:tabIndicatorGravity="stretch"
         app:tabIndicatorAnimationMode="linear"
         app:tabRippleColor="@android:color/transparent"
-        app:tabSelectedTextColor="@color/white"
-        app:tabTextColor="@color/black"
+        app:tabSelectedTextColor="@color/black"
+        app:tabTextColor="@color/white"
         app:tabTextAppearance="@style/tab_text" />
 
 
