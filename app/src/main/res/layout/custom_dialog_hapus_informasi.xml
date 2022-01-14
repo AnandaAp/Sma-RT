@@ -24,7 +24,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:fontFamily="@font/montserrat_semibold"
-                android:text="Kirim File"
+                android:text="Hapus Informasi"
                 android:textSize="18sp" />
 
 
@@ -35,7 +35,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_gravity="center"
                 android:fontFamily="@font/montserrat_regular"
-                android:text="Anda Yakin Ingin Menghapus Informasi?"
+                android:text="Anda Yakin Ingin Menghapus Informasi ini?"
                 android:textSize="14sp" />
 
             <LinearLayout
