@@ -34,21 +34,29 @@ class ProdukPage : Fragment(), ProdukInterface {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        ProdukPresenter(this).getListProdukByToken(getToken())
         // Inflate the layout for this fragment
         return bindingView()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setRecyclerViewListProduk()
+        onStart()
+        swipeRefreshLayout()
         goBack()
         navigateToTambahProduk()
-//        ProdukPresenter(this).getListProdukByToken(getToken())
     }
 
     override fun onStart() {
         super.onStart()
+        ProdukPresenter(this).getListProdukByToken(getToken())
+        setRecyclerViewListProduk()
+    }
+
+    private fun swipeRefreshLayout() {
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            onStart()
+            binding.swipeRefreshLayout.isRefreshing = false
+        }
     }
 
     private fun getToken(): String {

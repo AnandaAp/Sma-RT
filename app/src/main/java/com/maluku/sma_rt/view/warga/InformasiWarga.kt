@@ -37,12 +37,24 @@ class InformasiWarga : Fragment(), InformasiInterface {
         return view
     }
 
+    override fun onStart() {
+        super.onStart()
+        InformasiPresenter(this).getAllInformasi(getToken())
+        setRecyclerViewInformasiWarga()
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        InformasiPresenter(this).getAllInformasi(getToken())
         goBack()
-        setRecyclerViewInformasiWarga()
+        onStart()
+        swipeRefreshLayout()
+    }
 
+    private fun swipeRefreshLayout() {
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            onStart()
+            binding.swipeRefreshLayout.isRefreshing = false
+        }
     }
 
     private fun goBack() {

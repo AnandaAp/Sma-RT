@@ -64,13 +64,26 @@ class PesananUserPage : Fragment(), OrderInterface, KeranjangInterface {
         return bindingView()
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onStart() {
+        super.onStart()
         KeranjangPresenter(this).getKeranjang(getToken())
         setRecylerViewPesanan()
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        onStart()
+        swipeRefreshLayout()
         goBack()
         metodePembayaran(view)
         submitPesan()
+    }
+
+    private fun swipeRefreshLayout() {
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            onStart()
+            binding.swipeRefreshLayout.isRefreshing = false
+        }
     }
 
     private fun setRecylerViewPesanan() {

@@ -41,12 +41,24 @@ class PersuratanWargaMasuk : Fragment(), WargaPersuratanInterface {
         return view
     }
 
+    override fun onStart() {
+        super.onStart()
+        WargaPersuratanPresenter(this).getAllDataSurat(getToken(), "4")
+        setRecyclerViewSuratMasuk()
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        WargaPersuratanPresenter(this).getAllDataSurat(getToken(), "4")
+        onStart()
+        swipeRefreshLayout()
         btnBack()
-        setRecyclerViewSuratMasuk()
+    }
 
+    private fun swipeRefreshLayout() {
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            onStart()
+            binding.swipeRefreshLayout.isRefreshing = false
+        }
     }
 
     private fun btnBack() {

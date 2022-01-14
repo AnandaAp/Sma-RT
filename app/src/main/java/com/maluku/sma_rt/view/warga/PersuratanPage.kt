@@ -40,14 +40,26 @@ class PersuratanPage : Fragment(), WargaPersuratanInterface {
         return view
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onStart() {
+        super.onStart()
         WargaPersuratanPresenter(this).getAllDataSurat(getToken(), "1")
         setRecyclerViewPersuratanPage()
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        onStart()
+        swipeRefreshLayout()
         btnBack()
         btnSuratMasuk()
         fabAddSurat()
+    }
 
+    private fun swipeRefreshLayout() {
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            onStart()
+            binding.swipeRefreshLayout.isRefreshing = false
+        }
     }
 
     private fun btnBack() {
