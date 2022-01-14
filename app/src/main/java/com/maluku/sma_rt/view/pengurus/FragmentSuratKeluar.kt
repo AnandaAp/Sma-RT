@@ -40,8 +40,15 @@ class FragmentSuratKeluar : Fragment(), WargaPersuratanInterface {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setRecyclerViewSuratKeluar()
-        WargaPersuratanPresenter(this).getAllDataSurat(getToken(),"4")
+        swipeRefreshLayout()
+        onStart()
+    }
+
+    private fun swipeRefreshLayout() {
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            onStart()
+            binding.swipeRefreshLayout.isRefreshing = false
+        }
     }
 
     private fun setRecyclerViewSuratKeluar() {
@@ -49,6 +56,12 @@ class FragmentSuratKeluar : Fragment(), WargaPersuratanInterface {
         rvSuratKeluar.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL ,false)
         adapterSuratKeluar = SuratKeluarAdapter(arrayListOf())
         rvSuratKeluar.adapter = adapterSuratKeluar
+    }
+
+    override fun onStart() {
+        super.onStart()
+        setRecyclerViewSuratKeluar()
+        WargaPersuratanPresenter(this).getAllDataSurat(getToken(),"4")
     }
 
     private fun bindingView(): View {

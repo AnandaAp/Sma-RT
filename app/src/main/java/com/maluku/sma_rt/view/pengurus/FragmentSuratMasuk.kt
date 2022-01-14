@@ -14,6 +14,7 @@ import com.maluku.sma_rt.databinding.FragmentSuratMasukBinding
 import com.maluku.sma_rt.extentions.UserSession
 import com.maluku.sma_rt.model.persuratan.GetAllPersuratanItem
 import com.maluku.sma_rt.model.persuratan.GetPersuratanById
+import com.maluku.sma_rt.presenter.WargaAduanPresenter
 import com.maluku.sma_rt.presenter.WargaPersuratanPresenter
 import com.maluku.sma_rt.view.pengurus.adapter.SuratMasukAdapter
 import com.maluku.sma_rt.view.viewInterface.WargaPersuratanInterface
@@ -38,10 +39,23 @@ class FragmentSuratMasuk : Fragment(),WargaPersuratanInterface {
         }
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    private fun swipeRefreshLayout() {
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            onStart()
+            binding.swipeRefreshLayout.isRefreshing = false
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
         setRecyclerViewSuratMasuk()
         WargaPersuratanPresenter(this).getAllDataSurat(getToken(),"1")
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        swipeRefreshLayout()
+        onStart()
     }
 
     private fun setRecyclerViewSuratMasuk() {
