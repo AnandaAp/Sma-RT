@@ -38,11 +38,24 @@ class LaporanSaya : Fragment(), WargaAduanInterface {
         return bindingView()
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onStart() {
+        super.onStart()
         WargaAduanPresenter(this).getAllDataAduan(getToken())
         setRecyclerViewLaporanSaya()
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        onStart()
+        swipeRefreshLayout()
         fabAddLaporan()
+    }
+
+    private fun swipeRefreshLayout() {
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            onStart()
+            binding.swipeRefreshLayout.isRefreshing = false
+        }
     }
 
     private fun setRecyclerViewLaporanSaya() {
