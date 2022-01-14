@@ -42,12 +42,25 @@ class RiwayatPesananUser : Fragment(), OrderInterface {
         return bindingView()
     }
 
+    override fun onStart() {
+        super.onStart()
+        OrderPresenter(this).getAllOrder(getToken())
+        setRecyclerViewListOrder()
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        OrderPresenter(this).getAllOrder(getToken())
+        onStart()
+        swipeRefreshLayout()
         goback()
-        setRecyclerViewListOrder()
 //        initRecycler()
+    }
+
+    private fun swipeRefreshLayout() {
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            onStart()
+            binding.swipeRefreshLayout.isRefreshing = false
+        }
     }
 
     private fun getToken(): String {
