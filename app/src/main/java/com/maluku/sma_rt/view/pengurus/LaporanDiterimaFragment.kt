@@ -35,13 +35,14 @@ class LaporanDiterimaFragment : Fragment(), WargaAduanInterface {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        swipeRefreshLayout()
         // Refresh Data Laporan
         onStart()
-        setRecyclerViewLaporan()
     }
 
     override fun onStart() {
         super.onStart()
+        setRecyclerViewLaporan()
         WargaAduanPresenter(this).getAllDataAduan(getToken())
     }
 
@@ -52,6 +53,13 @@ class LaporanDiterimaFragment : Fragment(), WargaAduanInterface {
                 LinearLayoutManager.VERTICAL ,false)
             adapterLaporanDiterima = LaporanDiterimaAdapter(arrayListOf())
             rvLaporan.adapter = adapterLaporanDiterima
+        }
+    }
+
+    private fun swipeRefreshLayout() {
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            onStart()
+            binding.swipeRefreshLayout.isRefreshing = false
         }
     }
 

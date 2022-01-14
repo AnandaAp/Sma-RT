@@ -171,7 +171,7 @@ class BuatIuranFragment : Fragment(), AdminTagihanInterface {
 
     private fun navigateBackToKas(){
         binding.btnBack.setOnClickListener {
-            findNavController().popBackStack()
+            findNavController()!!.navigate(R.id.action_buatIuranFragment2_to_kasFragment)
         }
     }
 

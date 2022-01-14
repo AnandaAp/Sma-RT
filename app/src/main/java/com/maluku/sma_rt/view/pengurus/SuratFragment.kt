@@ -45,7 +45,7 @@ class SuratFragment : Fragment() {
         }.attach()
         val backBtn = view.findViewById<TextView>(R.id.btnBackSurat)
         backBtn.setOnClickListener {
-            findNavController()!!.popBackStack()
+            findNavController()!!.navigate(R.id.action_suratFragment_to_navigation_home)
         }
     }
 }
