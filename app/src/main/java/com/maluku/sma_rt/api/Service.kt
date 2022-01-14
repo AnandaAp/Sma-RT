@@ -620,7 +620,6 @@ interface Service {
     ): Call<OnDataResponse>
 
     //delete
-    @FormUrlEncoded
     @DELETE("persuratan/{id_surat}")
     fun deleteSuratByID(
         @Header("Authorization") authHeader: String,

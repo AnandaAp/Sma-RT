@@ -41,16 +41,31 @@ class RecyclerViewPersuratanPage(
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val data = listSurat[position]
 
-        holder.nama.text = data.penerima.toString()
-        holder.judul.text = data.judul.toString()
-        holder.deskripsi.text = data.keperluan.toString()
+        if(data.penerima!!.length > 30) {
+            holder.nama.text = data.penerima.toString().take(30) + "..."
+        } else {
+            holder.nama.text = data.penerima.toString()
+        }
+
+        if(data.judul!!.length > 50) {
+            holder.judul.text = data.judul.toString().take(50) + "..."
+        } else {
+            holder.judul.text = data.judul.toString()
+        }
+
+        if(data.keperluan!!.length > 50) {
+            holder.deskripsi.text = data.keperluan.toString().take(50) + "..."
+        } else {
+            holder.deskripsi.text = data.keperluan.toString()
+        }
+
         holder.status.text = data.status.toString()
         holder.jam.text = formatTanggal(data.createdAt.toString().take(19))
 
 
         holder.itemView.setOnClickListener { view ->
             val direction = PersuratanPageDirections
-                .actionPersuratanPageToPersuratanPageDetail()
+                .actionPersuratanPageToPersuratanPageDetail(data.id.toString(),data.penerima.toString(),data.judul.toString(),data.tanggal.toString(),data.keperluan.toString())
             view.findNavController().navigate(direction)
         }
 

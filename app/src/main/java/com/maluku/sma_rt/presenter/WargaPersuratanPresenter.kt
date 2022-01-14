@@ -52,7 +52,7 @@ class WargaPersuratanPresenter(private val view: WargaPersuratanInterface) {
             val response = RetrofitService
                 .getService()
                 .updateWargaPersuratan(
-                    token,
+                    "Bearer ${token}",
                     id_surat,
                     judul,
                     penerima,
@@ -142,7 +142,7 @@ class WargaPersuratanPresenter(private val view: WargaPersuratanInterface) {
         }
     }
 
-    fun deleteMail(
+    fun deleteSurat(
         token: String,
         id_surat: String
     ){
@@ -150,7 +150,7 @@ class WargaPersuratanPresenter(private val view: WargaPersuratanInterface) {
             val response = RetrofitService
                 .getService()
                 .deleteSuratByID(
-                    token,
+                    "Bearer ${token}",
                     id_surat
                 ).awaitResponse()
             if(response.isSuccessful){

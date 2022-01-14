@@ -90,10 +90,6 @@ class PersuratanWarga : Fragment(), WargaPersuratanInterface {
             tvTanggal.setText(outputDateFormat.format(it))
             tanggal = outputDateFormat.format(it)
         }
-
-//        picker.addOnPositiveButtonClickListener {
-//            tvTanggal.setText(" Pada tanggal : "+picker.headerText)
-//        }
     }
 
     private val outputDateFormat = SimpleDateFormat("dd MMM yyyy", Locale.getDefault()).apply {

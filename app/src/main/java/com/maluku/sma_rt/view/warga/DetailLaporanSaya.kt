@@ -34,6 +34,8 @@ import com.maluku.sma_rt.view.viewInterface.WargaAduanInterface
 import java.io.File
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
+import java.time.format.TextStyle
+import java.util.*
 
 private const val TAG = "DETAIL LAPORAN SAYA"
 
@@ -68,7 +70,7 @@ private const val TAG = "DETAIL LAPORAN SAYA"
     private fun setData(result: GetAduanById) {
         binding.namaPelapor.text = result.judul.toString()
         binding.textView3.text = result.deskripsi.toString()
-        binding.jamLaporan.text = formatTanggal(result.createdAt.toString())
+        binding.jamLaporan.text = formatTanggal(result.createdAt.toString().take(19))
 
         //Firebase Storage
         val storageRef = FirebaseStorage.getInstance().reference.child("aduan/${result.gambar}")
@@ -93,13 +95,10 @@ private const val TAG = "DETAIL LAPORAN SAYA"
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun formatTanggal(tanggal: String): String {
-        val secondApiFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss'Z'")
-        val timestamp = 1565209665.toLong() // timestamp in Long
-        val timestampAsDateString = java.time.format.DateTimeFormatter.ISO_INSTANT
-            .format(java.time.Instant.ofEpochSecond(timestamp))
-        val date = LocalDate.parse(timestampAsDateString, secondApiFormat)
+        val firstApiFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss")
+        val date = LocalDate.parse(tanggal , firstApiFormat)
 
-        return date.dayOfMonth.toString()+" "+date.month.toString()+" "+date.year.toString()
+        return date.dayOfMonth.toString()+" "+date.month.getDisplayName(TextStyle.SHORT, Locale("id", "ID"))
     }
 
     private fun goBack(){
