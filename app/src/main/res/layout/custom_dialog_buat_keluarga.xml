@@ -36,7 +36,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_gravity="center"
                 android:fontFamily="@font/montserrat_semibold"
-                android:text="Keluarga Baru Berhasi Dibuat"
+                android:text="Keluarga Baru Berhasil Dibuat"
                 android:textAlignment="center"
                 android:textSize="18sp" />
 
