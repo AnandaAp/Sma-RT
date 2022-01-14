@@ -55,7 +55,7 @@ class RecyclerViewSuratMasuk(
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val data = listSurat[position]
 
-        holder.judul.text = data.judul.toString() + " - " + data.status.toString()
+        holder.judul.text = data.judul.toString() + " [${data.status.toString()}]"
         holder.deskripsi.text = data.keperluan.toString()
         holder.jam.text = formatTanggal(data.updatedAt.toString().take(19))
 
@@ -65,11 +65,13 @@ class RecyclerViewSuratMasuk(
             dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
             dialog.setContentView(R.layout.bottomsheet_suratmasuk)
 
+            val titleSurat = dialog.findViewById<TextView>(R.id.titlesuratmasuk)
             val judulSurat = dialog.findViewById<TextView>(R.id.tv_pengurusRT)
             val isiSurat = dialog.findViewById<TextInputEditText>(R.id.ed_suratmasuk)
             val waktuSurat = dialog.findViewById<TextView>(R.id.waktu)
 
-            judulSurat!!.text = data.judul.toString() + " - " + data.status.toString()
+            titleSurat!!.text = "Surat Masuk [${data.status.toString()}]"
+            judulSurat!!.text = data.judul.toString()
             isiSurat!!.setText(data.link.toString())
             waktuSurat!!.text = formatJam(data.updatedAt.toString().take(19))
 

@@ -1,10 +1,12 @@
 package com.maluku.sma_rt.view.warga.adapter
 
+import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.androidnetworking.AndroidNetworking
@@ -16,6 +18,9 @@ import com.maluku.sma_rt.model.order.GetAllOrderItem
 import com.maluku.sma_rt.model.order.ItemOrderItem
 import org.json.JSONObject
 import java.text.NumberFormat
+import java.time.LocalDateTime
+import java.time.ZoneId
+import java.time.format.DateTimeFormatter
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -36,9 +41,11 @@ class AdapterParentListPesananMasuk(
         return ViewHolder(view)
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val data = listItem[position]
         holder.total.text = toRupiah(data.hargaTotal.toString().toDouble())
+        holder.waktu.text = formatJam(data.createdAt.toString().take(19))
 
         // buat dapetin nama pembeli
         AndroidNetworking.get("http://smart.aliven.my.id:2001/warga/detail/{idWarga}")
@@ -79,6 +86,7 @@ class AdapterParentListPesananMasuk(
         var btnTerima: LinearLayout = itemView.findViewById(R.id.btn_terima)
         var btnTolak: LinearLayout = itemView.findViewById(R.id.btnTolak)
         var namaPembeli: TextView = itemView.findViewById(R.id.namaPembeli)
+        var waktu: TextView = itemView.findViewById(R.id.waktu_mubazir)
         var recyclerViewListPesanan: RecyclerView = itemView.findViewById(R.id.rv_childlistpesanan)
     }
 
@@ -91,5 +99,13 @@ class AdapterParentListPesananMasuk(
         val localeID =  Locale("in", "ID")
         val numberFormat = NumberFormat.getCurrencyInstance(localeID)
         return numberFormat.format(number).toString()
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun formatJam(tanggal: String): String {
+        val firstApiFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss")
+        val date = LocalDateTime.parse(tanggal , firstApiFormat).atZone(ZoneId.of("Asia/Jakarta"))
+
+        return date.hour.toString()+":"+date.minute.toString()+" WIB"
     }
 }
