@@ -139,27 +139,20 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/btn_terima"
-                android:padding="10dp">
+                android:paddingStart="20dp"
+                android:paddingTop="10dp"
+                android:paddingEnd="20dp"
+                android:paddingBottom="10dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginEnd="24dp"
                     android:fontFamily="@font/montserrat_regular"
                     android:text="Terima"
+                    android:gravity="center"
                     android:textColor="@color/white"
                     android:textSize="18sp" />
 
-                <TextView
-                    android:id="@+id/limit_terima"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:fontFamily="@font/montserrat_regular"
-                    android:text="04:59"
-                    android:textColor="@color/white"
-                    android:textSize="18sp" />
 
 
             </LinearLayout>
