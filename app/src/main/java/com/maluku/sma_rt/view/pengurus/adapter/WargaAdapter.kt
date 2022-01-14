@@ -33,8 +33,8 @@ class WargaAdapter(val listWarga: ArrayList<GetAllWargaItem>): RecyclerView.Adap
         val data = listWarga[position]
         val nama = data.nama.toString()
         val email = data.email.toString()
-        val lengthNama = 20
-        val lengthEmail = 20
+        val lengthNama = 15
+        val lengthEmail = 15
         if (nama.length > lengthNama)
             holder.nama.text = nama.substring(0, lengthNama - 3) + "..."
         else

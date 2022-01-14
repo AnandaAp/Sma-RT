@@ -47,6 +47,7 @@ class DetailInformasiMasukFragment : Fragment(), InformasiInterface {
         bindData()
         navigateDetailToEditInformasi()
         dialogDeleteInformasi()
+        back()
     }
 
     private fun bindData() {
@@ -60,6 +61,13 @@ class DetailInformasiMasukFragment : Fragment(), InformasiInterface {
         savedInstanceState: Bundle?
     ): View? {
         return bindingView()
+    }
+
+    private fun back(){
+        binding.btnBack.setOnClickListener{
+            val direction = DetailInformasiMasukFragmentDirections.actionDetailInformasiMasukFragmentToInformasiFragment(1)
+            view!!.findNavController()!!.navigate(direction)
+        }
     }
 
     private fun bindingView(): View? {
@@ -149,12 +157,18 @@ class DetailInformasiMasukFragment : Fragment(), InformasiInterface {
         lokasiInformasi = result?.lokasi
         tanggalInformasi = result?.createdAt.toString()
         detailInformasi = result?.detail
+        val lengthDetail = 35
+        if (detailInformasi!!.length > lengthDetail)
+            binding.tvDetailInformasi.text = detailInformasi!!.substring(0, lengthDetail - 3) + "..."
+        else
+            binding.tvDetailInformasi.text = detailInformasi
+
         gambarInformasi = result?.gambar
         kategoriInformasi = result?.kategori
         binding.tvJudulInformasi.text = judulInformasi
         binding.tvLokasiInformasi.text = lokasiInformasi
         binding.tvTanggalInformasi.text = tglIndonesia(splitDate(tanggalInformasi.toString()))
-        binding.tvDetailInformasi.text = detailInformasi
+
         // Firebase Storage
         val storageRef = FirebaseStorage.getInstance().reference.child("images/${gambarInformasi}")
         Log.d(ContentValues.TAG,"Adapter get ref image: $storageRef")

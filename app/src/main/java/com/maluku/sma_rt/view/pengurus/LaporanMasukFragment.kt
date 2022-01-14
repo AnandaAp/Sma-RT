@@ -33,10 +33,16 @@ class LaporanMasukFragment : Fragment(), WargaAduanInterface {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setRecyclerViewLaporan()
-        WargaAduanPresenter(this).getAllDataAduan(getToken())
+        swipeRefreshLayout()
         // Refresh Data Laporan
         onStart()
+    }
+
+    private fun swipeRefreshLayout() {
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            onStart()
+            binding.swipeRefreshLayout.isRefreshing = false
+        }
     }
 
     override fun setUserVisibleHint(isVisibleToUser: Boolean) {
@@ -48,6 +54,7 @@ class LaporanMasukFragment : Fragment(), WargaAduanInterface {
 
     override fun onStart() {
         super.onStart()
+        setRecyclerViewLaporan()
         WargaAduanPresenter(this).getAllDataAduan(getToken())
     }
 

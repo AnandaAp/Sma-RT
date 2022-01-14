@@ -59,7 +59,7 @@ class InformasiFragment : Fragment() {
     private fun back(view: View){
         val backBtn = view.findViewById<TextView>(R.id.btnBackInformasi)
         backBtn.setOnClickListener {
-            findNavController().popBackStack()
+            findNavController()!!.navigate(R.id.action_informasiFragment_to_navigation_home)
         }
     }
 

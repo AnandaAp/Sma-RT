@@ -106,7 +106,7 @@ class TambahKeluargaFragment : Fragment(), TambahKeluargaInterface {
 
     private fun navigateBack() {
         binding.btnBack.setOnClickListener{
-            findNavController()!!.popBackStack()
+            findNavController()!!.navigate(R.id.action_tambahKeluargaFragment_to_navigation_home)
         }
     }
 }

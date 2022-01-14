@@ -98,7 +98,7 @@ class DaftarBuatIuranFragment : Fragment(),AdminTagihanInterface {
 
     private fun navigateBackToKas(){
         binding.btnBack.setOnClickListener {
-            findNavController()!!.popBackStack()
+            findNavController()!!.navigate(R.id.action_daftarBuatIuranFragment_to_kasFragment)
         }
     }
 

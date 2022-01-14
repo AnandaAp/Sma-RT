@@ -1,5 +1,6 @@
 package com.maluku.sma_rt.view.pengurus.adapter
 
+import android.app.Dialog
 import android.content.ContentValues
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -38,8 +39,20 @@ class LaporanMasukAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val data = listLaporan[position]
-        holder.judulLaporan.text = data.judul.toString()
-        holder.keteranganLaporan.text = data.deskripsi.toString()
+
+        val keterangan = data.deskripsi.toString()
+        val lengthKeterangan = 70
+        if (keterangan.length > lengthKeterangan)
+            holder.keteranganLaporan.text = keterangan.substring(0, lengthKeterangan - 3) + "..."
+        else
+            holder.keteranganLaporan.text = keterangan
+
+        val judul = data.judul.toString()
+        val lengthJudul = 20
+        if (judul.length > lengthJudul)
+            holder.judulLaporan.text = judul.substring(0, lengthJudul - 3) + "..."
+        else
+            holder.judulLaporan.text = judul
         // Firebase Storage
         val storageRef = FirebaseStorage.getInstance().reference.child("aduan/${data.gambar}")
         Log.d(ContentValues.TAG,"Adapter get ref image: $storageRef")

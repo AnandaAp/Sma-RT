@@ -91,7 +91,7 @@ class KasFragment : Fragment(), DompetRTInterface {
 
     private fun navigateBack() {
         binding.btnBack.setOnClickListener{
-            findNavController()!!.popBackStack()
+            findNavController()!!.navigate(R.id.action_kasFragment_to_navigation_manage)
         }
     }
 

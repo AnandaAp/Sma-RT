@@ -106,6 +106,9 @@
         <action
             android:id="@+id/action_tambahKeluargaFragment_to_navigation_manage"
             app:destination="@id/navigation_manage" />
+        <action
+            android:id="@+id/action_tambahKeluargaFragment_to_navigation_home"
+            app:destination="@id/navigation_home" />
     </fragment>
     <fragment
         android:id="@+id/suratFragment"

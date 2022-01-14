@@ -73,7 +73,7 @@ class DetailSuratMasuk: Fragment(), WargaPersuratanInterface {
 
     private fun back(){
         binding.btnBack.setOnClickListener{
-            findNavController().popBackStack()
+            findNavController()!!.navigate(R.id.action_detailSuratMasuk_to_suratFragment)
         }
     }
 
@@ -111,7 +111,6 @@ class DetailSuratMasuk: Fragment(), WargaPersuratanInterface {
         dialog.setContentView(R.layout.custom_dialog_surat_diterima)
         val btnSimpan = dialog.findViewById<TextView>(R.id.btn_ok)
         btnSimpan.setOnClickListener {
-            WargaPersuratanPresenter(this).terimaSurat(getToken(),id,linkDrive)
             dialog.dismiss()
             findNavController()!!.navigate(R.id.action_detailSuratMasuk_to_suratFragment)
         }
@@ -131,6 +130,7 @@ class DetailSuratMasuk: Fragment(), WargaPersuratanInterface {
             if (linkDrive.isNullOrEmpty() || linkDrive == ""){
                 TILlinkDrive.helperText = "Masukkan link drive!"
             } else {
+                WargaPersuratanPresenter(this).terimaSurat(getToken(),id,linkDrive)
                 dialog.dismiss()
                 linkDikirim()
             }
@@ -151,6 +151,7 @@ class DetailSuratMasuk: Fragment(), WargaPersuratanInterface {
             if (alasanTolak.isNullOrEmpty() || alasanTolak == ""){
                 TILalasanTolak.helperText = "Masukkan Alasan!"
             } else {
+                Toast.makeText(context,"Alasan: $alasanTolak", Toast.LENGTH_LONG).show()
                 WargaPersuratanPresenter(this).tolakSurat(getToken(),id,alasanTolak)
                 dialog.dismiss()
                 alasanDikirim()
@@ -192,7 +193,6 @@ class DetailSuratMasuk: Fragment(), WargaPersuratanInterface {
         dialog.setContentView(R.layout.custom_dialog_surat_ditolak)
         val btnSimpan = dialog.findViewById<TextView>(R.id.btn_ok)
         btnSimpan.setOnClickListener {
-            WargaPersuratanPresenter(this).tolakSurat(getToken(),id,alasanTolak)
             dialog.dismiss()
             findNavController()!!.navigate(R.id.action_detailSuratMasuk_to_suratFragment)
         }
