@@ -98,7 +98,6 @@ class JualbeliWarga : Fragment(), WargaJualBeliInterface, KeranjangInterface{
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
                 nama = s.toString()
                 WargaJualBeliPresenter( this@JualbeliWarga).getAllProduk(getToken(), idKeluarga, nama)
-                WargaJualBeliPresenter( this@JualbeliWarga).getAllKeluarga(getToken(), nama)
             }
         })
     }
