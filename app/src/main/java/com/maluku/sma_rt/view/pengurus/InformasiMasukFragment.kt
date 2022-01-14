@@ -32,8 +32,16 @@ class InformasiMasukFragment : Fragment(), InformasiInterface{
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setRecyclerViewInformasi()
+        InformasiPresenter(this).getAllInformasi(getToken())
         // Refresh Data Informasi
         onStart()
+    }
+
+    override fun setUserVisibleHint(isVisibleToUser: Boolean) {
+        super.setUserVisibleHint(isVisibleToUser)
+        if (isVisibleToUser) {
+            fragmentManager!!.beginTransaction().detach(this).attach(this).commit()
+        }
     }
 
     private fun setRecyclerViewInformasi() {

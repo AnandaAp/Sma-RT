@@ -1,17 +1,25 @@
 package com.maluku.sma_rt.view.pengurus
 
+import android.app.Dialog
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.net.Uri
+import android.os.Handler
+import android.os.Looper
 import android.view.ViewGroup
+import android.view.Window
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.navigation.fragment.findNavController
 import com.google.firebase.storage.FirebaseStorage
 import com.maluku.sma_rt.R
 import com.maluku.sma_rt.databinding.FragmentBagikanInformasiBinding
@@ -19,6 +27,7 @@ import com.maluku.sma_rt.extentions.UserSession
 import com.maluku.sma_rt.model.informasi.GetAllInformasiItem
 import com.maluku.sma_rt.model.informasi.GetInformasiById
 import com.maluku.sma_rt.presenter.InformasiPresenter
+import com.maluku.sma_rt.presenter.WargaPersuratanPresenter
 import com.maluku.sma_rt.view.viewInterface.InformasiInterface
 import java.text.SimpleDateFormat
 import java.util.*
@@ -79,7 +88,7 @@ class BagikanInformasiFragment : Fragment(), InformasiInterface {
             if (imageUri != null){
                 uploadImage()
             }
-            InformasiPresenter(this).createInformasi(getToken(),judul,kategori,lokasi,detail,gambarInformasi)
+            dialogBagikanInformasiSukses()
         } else {
             if (!validJudul){
                 binding.etJudul.error = "Masukan judul informasi!"
@@ -92,6 +101,19 @@ class BagikanInformasiFragment : Fragment(), InformasiInterface {
             }
             Toast.makeText(requireContext(),"Seluruh field harus terisi!", Toast.LENGTH_LONG).show()
         }
+    }
+
+    private fun dialogBagikanInformasiSukses(){
+        val dialog = Dialog(requireActivity())
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.setContentView(R.layout.custom_dialog_kirim_informasi)
+        val btnSimpan = dialog.findViewById<TextView>(R.id.btn_ok)
+        btnSimpan.setOnClickListener {
+            InformasiPresenter(this).createInformasi(getToken(),judul,kategori,lokasi,detail,gambarInformasi)
+            dialog.dismiss()
+        }
+        dialog.show()
     }
 
     private fun uploadImage() {
@@ -124,6 +146,13 @@ class BagikanInformasiFragment : Fragment(), InformasiInterface {
             if (!focused){
                 binding.etJudul.error = validJudul()
             }
+        }
+    }
+
+    override fun setUserVisibleHint(isVisibleToUser: Boolean) {
+        super.setUserVisibleHint(isVisibleToUser)
+        if (isVisibleToUser) {
+            fragmentManager!!.beginTransaction().detach(this).attach(this).commit()
         }
     }
 
@@ -178,14 +207,15 @@ class BagikanInformasiFragment : Fragment(), InformasiInterface {
         binding.etLokasi.text = null
         binding.etDetailInformasi.text = null
         binding.imageView12.setImageURI(null)
-        if (context!=null){
-            Toast.makeText(requireContext(),message,Toast.LENGTH_LONG).show()
+        binding.spKategori.setSelection(0)
+        Handler(Looper.getMainLooper()).post {
+            Toast.makeText(requireContext(),"Pesan: $message", Toast.LENGTH_LONG).show()
         }
     }
 
     override fun onCreateInformasiFailure(message: String) {
-        if (context!=null){
-            Toast.makeText(requireContext(),message,Toast.LENGTH_LONG).show()
+        Handler(Looper.getMainLooper()).post {
+            Toast.makeText(requireContext(),"Pesan: $message", Toast.LENGTH_LONG).show()
         }
     }
 
