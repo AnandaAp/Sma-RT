@@ -67,6 +67,7 @@ class JualbeliWarga : Fragment(), WargaJualBeliInterface, KeranjangInterface{
         super.onStart()
         WargaJualBeliPresenter(this).getAllKeluarga(getToken(),nama)
         WargaJualBeliPresenter(this).getAllProduk(getToken(),idKeluarga, nama)
+        KeranjangPresenter(this).getKeranjang(getToken())
         setRecyclerViewToko()
         setRecyclerViewProduk()
     }
@@ -207,13 +208,16 @@ class JualbeliWarga : Fragment(), WargaJualBeliInterface, KeranjangInterface{
     }
 
     override fun onGetKeranjangSuccess(result: GetKeranjangById) {
-        TODO("Not yet implemented")
+        val items = result.itemKeranjang as? List<ItemKeranjangItem>
+        if(!items.isNullOrEmpty()) {
+            binding.tvNumbertroli.text = items.size.toString()
+        } else {
+            binding.trolinumber.visibility = View.GONE
+        }
     }
 
     override fun onGetKeranjangFailure(message: String) {
-        Handler(Looper.getMainLooper()).post {
-            Toast.makeText(context,message, Toast.LENGTH_LONG).show()
-        }
+        Toast.makeText(context,message, Toast.LENGTH_LONG).show()
     }
 
     override fun onGetKeranjangCheckoutSuccess(result: GetKeranjangById) {
@@ -227,6 +231,7 @@ class JualbeliWarga : Fragment(), WargaJualBeliInterface, KeranjangInterface{
     override fun onAddProductKeranjangSuccess(message: String) {
         Handler(Looper.getMainLooper()).post {
             Toast.makeText(context,message, Toast.LENGTH_LONG).show()
+            KeranjangPresenter(this).getKeranjang(getToken())
         }
     }
 
@@ -240,6 +245,7 @@ class JualbeliWarga : Fragment(), WargaJualBeliInterface, KeranjangInterface{
     override fun onUpdateKeranjangSuccess(message: String) {
         Handler(Looper.getMainLooper()).post {
             Toast.makeText(context,message, Toast.LENGTH_LONG).show()
+            KeranjangPresenter(this).getKeranjang(getToken())
         }
     }
 
