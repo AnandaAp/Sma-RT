@@ -17,6 +17,7 @@ import android.view.Window
 import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
@@ -159,13 +160,16 @@ private const val TAG = "DETAIL LAPORAN SAYA"
 
     override fun onDeleteSuccess(message: String) {
         Handler(Looper.getMainLooper()).post {
-            Toast.makeText(context,message, Toast.LENGTH_SHORT)
+            Toast.makeText(context,message, Toast.LENGTH_SHORT).show()
+            val direction = DetailLaporanSayaDirections
+                .actionDetailLaporanSayaToLaporanPage()
+            findNavController().navigate(direction)
         }
     }
 
     override fun onDeleteFailure(message: String) {
         Handler(Looper.getMainLooper()).post {
-            Toast.makeText(context,message, Toast.LENGTH_SHORT)
+            Toast.makeText(context,message, Toast.LENGTH_SHORT).show()
         }
     }
 

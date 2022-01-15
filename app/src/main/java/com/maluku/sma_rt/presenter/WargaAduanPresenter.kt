@@ -83,7 +83,7 @@ class WargaAduanPresenter(private val view: WargaAduanInterface) {
             val response = RetrofitService
                 .getService()
                 .deleteAduan(
-                    token,
+                    "Bearer $token",
                     id
                 ).awaitResponse()
             if(response.isSuccessful){
