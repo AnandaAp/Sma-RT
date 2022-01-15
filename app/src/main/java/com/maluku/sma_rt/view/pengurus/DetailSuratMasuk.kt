@@ -151,7 +151,6 @@ class DetailSuratMasuk: Fragment(), WargaPersuratanInterface {
             if (alasanTolak.isNullOrEmpty() || alasanTolak == ""){
                 TILalasanTolak.helperText = "Masukkan Alasan!"
             } else {
-                Toast.makeText(context,"Alasan: $alasanTolak", Toast.LENGTH_LONG).show()
                 WargaPersuratanPresenter(this).tolakSurat(getToken(),id,alasanTolak)
                 dialog.dismiss()
                 alasanDikirim()
